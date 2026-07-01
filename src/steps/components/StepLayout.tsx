@@ -1,6 +1,7 @@
-// src/steps/components/StepLayout.tsx
 import React from 'react';
 import { Sparkles, LayoutGrid, Gift, Leaf, UserRound, Check } from 'lucide-react';
+// 🟢 [개선] Framer Motion 추가
+import { motion, AnimatePresence } from 'framer-motion';
 
 const STEPS_DATA = [
   { num: 1, title: '성별 선택', icon: UserRound },
@@ -12,7 +13,6 @@ const STEPS_DATA = [
 
 interface StepLayoutProps {
   currentStep: number;
-  totalSteps?: number;
   title: string;
   description: string;
   children: React.ReactNode;
@@ -31,8 +31,9 @@ export default function StepLayout({
   isNextDisabled = false
 }: StepLayoutProps) {
   return (
-    <div className="w-full lg:w-[1024px] xl:w-[1200px] mx-auto my-auto flex flex-col md:flex-row gap-12 md:gap-20 items-stretch relative z-10 px-6 lg:px-4 py-8 md:py-10">
+    <div className="w-full lg:w-[1024px] xl:w-[1200px] mx-auto my-auto flex flex-col md:flex-row gap-12 md:gap-20 items-stretch relative z-10 px-6 lg:px-4 py-4 md:py-6">
 
+      {/* 좌측 패널 영역 (고정) - 애니메이션 없이 가만히 유지됩니다. */}
       <div className="w-full md:w-[340px] bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[26px] p-6 shadow-lg flex flex-col shrink-0">
         <div className="flex flex-col relative w-full">
           <div className="absolute left-[43px] top-[44px] bottom-[44px] w-[2px] bg-gray-200 z-10">
@@ -50,25 +51,16 @@ export default function StepLayout({
 
             return (
               <div key={step.num} className="relative flex items-center gap-5 p-5 w-full">
-                
                 <div className={`absolute inset-0 bg-slate-50 border border-gray-200/60 shadow-[0_2px_10px_rgba(0,0,0,0.03)] rounded-[20px] z-0 transition-opacity duration-300 pointer-events-none ${
                   isActive ? 'opacity-100' : 'opacity-0'
                 }`} />
-                
                 <div className={`relative z-20 w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
-                  isPassed 
-                    ? 'bg-[#1e4a38] border-2 border-[#1e4a38] text-white shadow-sm' 
-                    : isActive
-                    ? 'bg-white border-2 border-[#1e4a38] text-gray-500' 
+                  isPassed ? 'bg-[#1e4a38] border-2 border-[#1e4a38] text-white shadow-sm' 
+                    : isActive ? 'bg-white border-2 border-[#1e4a38] text-gray-500' 
                     : 'bg-white border-2 border-gray-200 text-gray-400' 
                 }`}>
-                  {isPassed ? (
-                    <Check size={22} strokeWidth={3} />
-                  ) : (
-                    <step.icon size={22} strokeWidth={isActive ? 2.5 : 2} />
-                  )}
+                  {isPassed ? <Check size={22} strokeWidth={3} /> : <step.icon size={22} strokeWidth={isActive ? 2.5 : 2} />}
                 </div>
-                
                 <div className="relative z-20 flex flex-col">
                   <span className={`text-[12px] font-extrabold tracking-widest mb-0.5 transition-colors duration-300 ${
                     isActive ? 'text-[#1e4a38]' : isPassed ? 'text-gray-500' : 'text-gray-400'
@@ -87,21 +79,38 @@ export default function StepLayout({
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col w-full">
+      {/* 우측 콘텐츠 영역 */}
+      <div className="flex-1 flex flex-col w-full relative">
         
-        <div className="mb-10 px-2 mt-0 pt-0">
-          <h2 className="text-[32px] md:text-[40px] font-bold text-gray-900 mb-4 leading-[1.1] drop-shadow-sm">
-            {title}
-          </h2>
-          <p className="text-gray-600 text-lg font-medium drop-shadow-sm break-keep">
-            {description}
-          </p>
-        </div>
+        {/* 🟢 [개선] AnimatePresence와 motion.div를 활용해 내용물만 애니메이션 처리합니다. */}
+        {/* mode="wait"는 이전 화면이 완전히 사라진 뒤에 다음 화면이 나타나도록 하여 레이아웃 깨짐을 방지합니다. */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentStep} // 스텝이 바뀔 때마다 애니메이션을 새로 트리거하는 핵심 키
+            initial={{ opacity: 0, y: 15 }} // 처음 나타날 때 (투명하고 살짝 아래에서)
+            animate={{ opacity: 1, y: 0 }}  // 제자리로
+            exit={{ opacity: 0, y: -15 }}   // 사라질 때 (투명해지며 위로 스르륵)
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="w-full flex-1 flex flex-col"
+          >
+            {/* 주제 및 소주제 */}
+            <div className="mb-10 px-2 mt-0 pt-0">
+              <h2 className="text-[32px] md:text-[40px] font-bold text-gray-900 mb-4 leading-[1.1] drop-shadow-sm">
+                {title}
+              </h2>
+              <p className="text-gray-600 text-lg font-medium drop-shadow-sm break-keep">
+                {description}
+              </p>
+            </div>
 
-        <div className="w-full flex-1 flex flex-col">
-          {children}
-        </div>
+            {/* 개별 스텝 알맹이 카드 영역 */}
+            <div className="w-full flex-1 flex flex-col">
+              {children}
+            </div>
+          </motion.div>
+        </AnimatePresence>
 
+        {/* 🟢 버튼 영역은 애니메이션 밖으로 뺐습니다. 전환 시 버튼이 위아래로 흔들리지 않고 바닥에 단단히 고정됩니다. */}
         <div className="mt-auto pt-8 flex justify-between items-center w-full px-2">
           <button 
             onClick={onPrev}
@@ -119,7 +128,7 @@ export default function StepLayout({
                 : 'bg-[#1e4a38] hover:bg-[#143427] hover:-translate-y-[1px] hover:shadow-lg'
             }`}
           >
-            다음 
+            {currentStep === 5 ? '결과 보기' : '다음'}
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="m9 18 6-6-6-6"/>
             </svg>

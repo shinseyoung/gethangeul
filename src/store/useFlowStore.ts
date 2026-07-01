@@ -16,7 +16,7 @@ interface FlowState {
   nextStep: () => void;
   prevStep: () => void;
   
-  setGender: (gender: 'male' | 'female' | 'neutral') => void;
+  setGender: (gender: 'male' | 'female' | 'neutral' | null) => void;
   setVibe: (vibe: string[]) => void;
   setPersonality: (personality: string[]) => void;
   setSeasonNature: (seasonNature: string[]) => void;
