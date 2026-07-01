@@ -38,10 +38,9 @@ export default function Step1Gender() {
             <img
               src={option.icon}
               alt={option.label}
-              className={`
-                w-28 h-28 mb-4 object-contain transition-all duration-300
-                ${isSelected ? 'scale-110' : 'scale-100'}
-              `}
+              draggable={false} // HTML 속성: 이미지 드래그 고스트 방지
+              className={`w-28 h-28 mb-4 object-contain transition-all duration-300 select-none pointer-events-none ${isSelected ? 'scale-110' : 'scale-100'}`} 
+              // select-none: 선택 방지, pointer-events-none: 마우스 클릭이 이미지에 막히지 않고 부모 버튼으로 바로 전달되게 함
             />
             <span
               className={`

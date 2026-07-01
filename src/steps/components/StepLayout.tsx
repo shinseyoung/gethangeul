@@ -31,7 +31,7 @@ export default function StepLayout({
   isNextDisabled = false
 }: StepLayoutProps) {
   return (
-    <div className="w-full lg:w-[1024px] xl:w-[1200px] mx-auto my-auto flex flex-col md:flex-row gap-12 md:gap-20 items-stretch relative z-10 px-6 lg:px-4 py-4 md:py-6">
+    <div className="w-full lg:w-[1024px] xl:w-[1200px] mx-auto my-auto flex flex-col md:flex-row gap-8 lg:gap-12 items-stretch relative z-10 px-6 lg:px-4 py-4 md:py-6">
 
       {/* 좌측 패널 영역 (고정) - 애니메이션 없이 가만히 유지됩니다. */}
       <div className="w-full md:w-[340px] bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[26px] p-6 shadow-lg flex flex-col shrink-0">
@@ -80,25 +80,25 @@ export default function StepLayout({
       </div>
 
       {/* 우측 콘텐츠 영역 */}
-      <div className="flex-1 flex flex-col w-full relative">
+      <div className="flex-1 flex flex-col w-full relative pt-3 md:pt-6">
         
         {/* 🟢 [개선] AnimatePresence와 motion.div를 활용해 내용물만 애니메이션 처리합니다. */}
         {/* mode="wait"는 이전 화면이 완전히 사라진 뒤에 다음 화면이 나타나도록 하여 레이아웃 깨짐을 방지합니다. */}
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep} // 스텝이 바뀔 때마다 애니메이션을 새로 트리거하는 핵심 키
-            initial={{ opacity: 0, y: 15 }} // 처음 나타날 때 (투명하고 살짝 아래에서)
-            animate={{ opacity: 1, y: 0 }}  // 제자리로
-            exit={{ opacity: 0, y: -15 }}   // 사라질 때 (투명해지며 위로 스르륵)
+            initial={{ opacity: 0 }} // 처음 나타날 때 (투명하고 살짝 아래에서)
+            animate={{ opacity: 1 }}  // 제자리로
+            exit={{ opacity: 0 }}   // 사라질 때 (투명해지며 위로 스르륵)
             transition={{ duration: 0.3, ease: 'easeOut' }}
             className="w-full flex-1 flex flex-col"
           >
             {/* 주제 및 소주제 */}
-            <div className="mb-10 px-2 mt-0 pt-0">
-              <h2 className="text-[32px] md:text-[40px] font-bold text-gray-900 mb-4 leading-[1.1] drop-shadow-sm">
+            <div className="mb-6 mt-0 pt-0">
+              <h2 className="text-[28px] md:text-[34px] font-bold text-gray-900 mb-4 leading-[1.1] drop-shadow-sm whitespace-nowrap tracking-tight">
                 {title}
               </h2>
-              <p className="text-gray-600 text-lg font-medium drop-shadow-sm break-keep">
+              <p className="text-gray-600 text-lg font-medium drop-shadow-sm break-keep -ml-[-4.5px]">
                 {description}
               </p>
             </div>
@@ -111,7 +111,7 @@ export default function StepLayout({
         </AnimatePresence>
 
         {/* 🟢 버튼 영역은 애니메이션 밖으로 뺐습니다. 전환 시 버튼이 위아래로 흔들리지 않고 바닥에 단단히 고정됩니다. */}
-        <div className="mt-auto pt-8 flex justify-between items-center w-full px-2">
+        <div className="mt-auto pt-8 flex justify-between items-center w-full">
           <button 
             onClick={onPrev}
             className={`px-8 py-4 rounded-full font-bold text-gray-700 bg-white/80 backdrop-blur-sm border border-gray-300 hover:bg-white transition-colors shadow-sm ${currentStep === 1 ? 'invisible' : ''}`}

@@ -27,7 +27,7 @@ export default function Step0Landing({ onNext }: Step0Props) {
   return (
     // [개선 1] h-[100dvh]를 h-full로 변경 -> 헤더와 푸터 사이의 남은 공간에 완벽히 맞추어 푸터 밀림 현상 해결
     <div
-      className="relative h-full w-full flex flex-col overflow-y-auto overflow-x-hidden font-serif bg-[#ffffff]"
+      className="relative h-full w-full flex flex-col overflow-y-hidden overflow-x-hidden font-serif bg-[#ffffff]"
       style={{ fontFamily: "'Gowun Batang', serif" }} 
     >
       <div
