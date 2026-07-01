@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { User, BookOpen, Share2, ShieldCheck } from "lucide-react";
-import { Header } from "../components/layout/Header";
-import { Footer } from "../components/layout/Footer";
 
 interface Step0Props {
   onNext: () => void;
@@ -27,9 +25,9 @@ export default function Step0Landing({ onNext }: Step0Props) {
   }, []);
 
   return (
-    // [개선 1] min-h-[800px] 삭제 -> 기본 100% 상태에서 불필요한 스크롤 완벽히 제거
+    // [개선 1] h-[100dvh]를 h-full로 변경 -> 헤더와 푸터 사이의 남은 공간에 완벽히 맞추어 푸터 밀림 현상 해결
     <div
-      className="relative h-[100dvh] w-full flex flex-col overflow-y-auto overflow-x-hidden font-serif bg-[#ffffff]"
+      className="relative h-full w-full flex flex-col overflow-y-auto overflow-x-hidden font-serif bg-[#ffffff]"
       style={{ fontFamily: "'Gowun Batang', serif" }} 
     >
       <div
@@ -37,8 +35,7 @@ export default function Step0Landing({ onNext }: Step0Props) {
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
         }`}
       >
-        {/* 공통 컴포넌트: 헤더 */}
-        <Header />
+
 
         {/* 본문 영역 */}
         {/* main은 flex-1과 shrink-0을 가져서 콘텐츠가 넘칠 때 찌그러지지 않고 부모에 스크롤을 발생시킵니다. */}
@@ -137,8 +134,7 @@ export default function Step0Landing({ onNext }: Step0Props) {
           </div>
         </main>
 
-        {/* 공통 컴포넌트: 푸터 */}
-        <Footer />
+
       </div>
     </div>
   );
