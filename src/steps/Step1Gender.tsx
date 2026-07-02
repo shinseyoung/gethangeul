@@ -2,7 +2,6 @@ import React from 'react';
 import { useFlowStore } from '../store/useFlowStore';
 
 export default function Step1Gender() {
-  // 🟢 [개선] App.tsx가 주는 데이터를 기다리지 않고, 스토어에서 직접 구독(Subscribe)합니다.
   const { gender: selectedGender, setGender } = useFlowStore();
 
   const genderOptions = [
@@ -16,31 +15,32 @@ export default function Step1Gender() {
       {genderOptions.map((option) => {
         const isSelected = selectedGender === option.id;
 
+        // 🟢 [수정] 네온 느낌을 빼고 한 단계 더 부드러워진 리얼 파스텔톤 컬러셋
         const selectedStyle =
           option.id === 'male'
-            ? 'border-[#b7d7f7] shadow-[0_8px_24px_rgba(183,215,247,0.35)]'
+            ? 'border-[#bae6fd] shadow-[0_10px_30px_rgba(186,230,253,0.5)]' // 부드러운 파스텔 블루
             : option.id === 'female'
-            ? 'border-[#f2c6d6] shadow-[0_8px_24px_rgba(242,198,214,0.35)]'
-            : 'border-[#aeb4b0] shadow-[0_8px_24px_rgba(174,180,176,0.30)]';
+            ? 'border-[#fbcfe8] shadow-[0_10px_30px_rgba(251,207,232,0.5)]' // 부드러운 파스텔 핑크
+            : 'border-[#e2e8f0] shadow-[0_10px_30px_rgba(226,232,240,0.4)]'; // 차분한 파스텔 그레이
         
         return (
           <button
             key={option.id}
-            onClick={() =>  setGender(selectedGender === option.id ? null : option.id)}
-            className={`flex flex-col items-center justify-center p-8 h-full rounded-[24px] border-2 transition-all duration-300 bg-white/80 backdrop-blur-sm shadow-sm 
+            onClick={() => setGender(selectedGender === option.id ? null : option.id)}
+            // 🟢 [버그수정] shadow-sm을 선택 안되었을 때만 주도록 분기하여, 선택 시 컬러그림자가 씹히는 현상 100% 해결
+            className={`flex flex-col items-center justify-center p-8 h-full rounded-[24px] border-2 transition-all duration-300 bg-white/80 backdrop-blur-sm 
               ${
                 isSelected 
-                  ? `${selectedStyle} bg-white/80 -translate-y-2`
-                  : 'border-gray-200 hover:border-gray-300 hover:bg-white/80 hover:shadow-md hover:-translate-y-1'
+                  ? `${selectedStyle} bg-white -translate-y-2`
+                  : 'border-gray-200 shadow-sm hover:border-gray-300 hover:bg-white/80 hover:shadow-md hover:-translate-y-1'
               }
             `}
           >
             <img
               src={option.icon}
               alt={option.label}
-              draggable={false} // HTML 속성: 이미지 드래그 고스트 방지
+              draggable={false}
               className={`w-28 h-28 mb-4 object-contain transition-all duration-300 select-none pointer-events-none ${isSelected ? 'scale-110' : 'scale-100'}`} 
-              // select-none: 선택 방지, pointer-events-none: 마우스 클릭이 이미지에 막히지 않고 부모 버튼으로 바로 전달되게 함
             />
             <span
               className={`
@@ -49,7 +49,7 @@ export default function Step1Gender() {
               `}
             >
               {option.label}
-          </span>
+            </span>
           </button>
         );
       })}
