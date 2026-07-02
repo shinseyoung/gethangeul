@@ -40,7 +40,8 @@ export default function Step1Gender() {
               src={option.icon}
               alt={option.label}
               draggable={false}
-              className={`w-28 h-28 mb-4 object-contain transition-all duration-300 select-none pointer-events-none ${isSelected ? 'scale-110' : 'scale-100'}`} 
+              className={`w-28 h-28 mb-4 object-contain transition-all duration-300 select-none pointer-events-none 
+                ${isSelected ? 'scale-110 opacity-100' : 'scale-100 opacity-80'}`} 
             />
             <span
               className={`
