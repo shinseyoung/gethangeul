@@ -6,9 +6,9 @@ export default function Step1Gender() {
   const { gender: selectedGender, setGender } = useFlowStore();
 
   const genderOptions = [
-    { id: 'male', label: '남성', icon: 'icons/male_icon.svg'},
-    { id: 'female', label: '여성', icon: 'icons/female_icon.svg'},
-    { id: 'neutral', label: '성별 무관', icon: 'icons/neutral_icon.svg'},
+    { id: 'male', label: '남성', icon: 'icons/Gender/male_icon.svg'},
+    { id: 'female', label: '여성', icon: 'icons/Gender/female_icon.svg'},
+    { id: 'neutral', label: '성별 무관', icon: 'icons/Gender/neutral_icon.svg'},
   ] as const;
 
   return (

@@ -7,7 +7,7 @@ interface FlowState {
 
   // 2. 스텝별 유저 선택 데이터 공간
   gender: 'male' | 'female' | 'neutral' | null;     // Step 1: 성별
-  vibe: string[] | null;                            // Step 2: 이름의 분위기 (다중 선택 가능성 고려)
+  vibe: string | null;                              // Step 2: 이름의 분위기 (단일 선택으로 타입 변경)
   personality: string[] | null;                     // Step 3: 성격 및 가치관
   seasonNature: string[] | null;                    // Step 4: 계절 및 자연
 
@@ -17,7 +17,7 @@ interface FlowState {
   prevStep: () => void;
   
   setGender: (gender: 'male' | 'female' | 'neutral' | null) => void;
-  setVibe: (vibe: string[]) => void;
+  setVibe: (vibe: string | null) => void;           // 🟢 타입 변경
   setPersonality: (personality: string[]) => void;
   setSeasonNature: (seasonNature: string[]) => void;
   
@@ -40,7 +40,7 @@ export const useFlowStore = create<FlowState>((set) => ({
 
   // 개별 데이터 저장 로직
   setGender: (gender) => set({ gender }),
-  setVibe: (vibe) => set({ vibe }),
+  setVibe: (vibe) => set({ vibe }),                 // 🟢 저장 로직 연결
   setPersonality: (personality) => set({ personality }),
   setSeasonNature: (seasonNature) => set({ seasonNature }),
 

@@ -2,7 +2,7 @@ import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import Step0Landing from './steps/Step0Landing';
 import Step1Gender from './steps/Step1Gender';
-// 🟢 기획자님이 만들어두신 빈 파일들을 import 합니다 (파일 이름이 다르면 여기를 수정해주세요)
+// 🟢 빈 파일들을 import 합니다
 import Step2Vibe from './steps/Step2Vibe';
 import Step3Personality from './steps/Step3Personality';
 import Step4Nature from './steps/Step4Nature';
@@ -10,7 +10,8 @@ import StepLayout from './steps/components/StepLayout';
 import { useFlowStore } from './store/useFlowStore';
 
 export default function App() {
-  const { step, gender, nextStep, prevStep } = useFlowStore();
+  // 🟢 vibe 상태를 추가로 불러옵니다.
+  const { step, gender, vibe, nextStep, prevStep } = useFlowStore();
 
   const getStepContent = () => {
     switch (step) {
@@ -21,13 +22,12 @@ export default function App() {
           component: <Step1Gender />,
           isNextDisabled: gender === null,
         };
-      // 🟢 빈 파일들을 흐름에 맞게 배치합니다. (아직 안 만들었으니 isNextDisabled는 임시로 false로 둡니다)
       case 2:
         return {
           title: '사람들에게 어떤 분위기로 기억되고 싶으신가요?',
           description: '이름이 주는 첫인상을 결정해요.',
-          //component: <Step2Vibe />, // 빈 파일
-          isNextDisabled: false, 
+          component: <Step2Vibe />, // 🟢 주석 해제
+          isNextDisabled: vibe === null, // 🟢 선택하지 않으면 다음 버튼 비활성화
         };
       case 3:
         return {
