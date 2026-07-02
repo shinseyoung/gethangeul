@@ -8,8 +8,8 @@ interface FlowState {
   // 2. 스텝별 유저 선택 데이터 공간
   gender: 'male' | 'female' | 'neutral' | null;     // Step 1: 성별
   vibe: string | null;                              // Step 2: 이름의 분위기 (단일 선택으로 타입 변경)
-  personality: string[] | null;                     // Step 3: 성격 및 가치관
-  seasonNature: string[] | null;                    // Step 4: 계절 및 자연
+  personality: string | null;                     // Step 3: 성격 및 가치관
+  seasonNature: string | null;                    // Step 4: 계절 및 자연
 
   // 3. 상태 변경 함수(Actions)
   setStep: (step: number) => void;
@@ -18,8 +18,8 @@ interface FlowState {
   
   setGender: (gender: 'male' | 'female' | 'neutral' | null) => void;
   setVibe: (vibe: string | null) => void;           // 🟢 타입 변경
-  setPersonality: (personality: string[]) => void;
-  setSeasonNature: (seasonNature: string[]) => void;
+  setPersonality: (personality: string | null) => void;
+  setSeasonNature: (seasonNature: string | null) => void;
   
   // 4. 서비스 초기화 (다시 하기 기능)
   resetFlow: () => void;

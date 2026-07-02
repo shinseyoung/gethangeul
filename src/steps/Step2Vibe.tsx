@@ -3,13 +3,13 @@ import { useFlowStore } from '../store/useFlowStore';
 
 const VIBE_OPTIONS = [
   { id: 'bright', label: '밝고 긍정적인', icon: 'icons/Vibe/radiant_icon.svg' },
-  { id: 'calm', label: '차분하고 단아한', icon: 'icons/Vibe/serene_icon.svg' },
-  { id: 'natural', label: '자연스럽고 편안한', icon: 'icons/Vibe/relaxed_icon.svg' },
+  { id: 'calm', label: '차분하고 단아한', icon: 'icons/Common/serene_icon.svg' },
+  { id: 'natural', label: '자연스럽고 편안한', icon: 'icons/Common/relaxed_icon.svg' },
   { id: 'soft', label: '부드럽고 따뜻한', icon: 'icons/Vibe/warm_icon.svg' },
   { id: 'mystic', label: '신비롭고 매력적인', icon: 'icons/Vibe/enchanting_icon.svg' },
   { id: 'trendy', label: '세련되고 트렌디한', icon: 'icons/Vibe/chic_icon.svg' },
-  { id: 'strong', label: '강인하고 멋진', icon: 'icons/Vibe/badass_icon.svg' },
-  { id: 'lovely', label: '사랑스럽고 귀여운', icon: 'icons/Vibe/adorable_icon.svg' },
+  { id: 'strong', label: '강인하고 멋진', icon: 'icons/Common/badass_icon.svg' },
+  { id: 'lovely', label: '사랑스럽고 귀여운', icon: 'icons/Common/adorable_icon.svg' },
 ] as const;
 
 export default function Step2Vibe() {
@@ -26,7 +26,7 @@ export default function Step2Vibe() {
           switch (option.id) {
             case 'bright':   colorStyle = 'border-[#fecaca] shadow-[0_10px_25px_rgba(254,202,202,0.5)]'; break; // 빨강 파스텔
             case 'calm':     colorStyle = 'border-[#bfdbfe] shadow-[0_10px_25px_rgba(191,219,254,0.5)]'; break; // 파랑 파스텔
-            case 'natural':  colorStyle = 'border-[#cce2cb] shadow-[0_10px_25px_rgba(187,247,208,0.5)]'; break; // 초록 파스텔
+            case 'natural':  colorStyle = 'border-[#cce2cb] shadow-[0_10px_25px_rgba(204,226,203,0.5)]'; break; // 초록 파스텔
             case 'soft':     colorStyle = 'border-[#c4bee2] shadow-[0_10px_25px_rgba(233,213,255,0.5)]'; break; // 보라 파스텔
             case 'mystic':   colorStyle = 'border-[#c7d2fe] shadow-[0_10px_25px_rgba(199,210,254,0.5)]'; break; // 남색 파스텔
             case 'trendy':   colorStyle = 'border-[#ffe880] shadow-[0_10px_25px_rgba(254,240,138,0.5)]'; break; // 노랑 파스텔

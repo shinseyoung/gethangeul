@@ -11,7 +11,7 @@ import { useFlowStore } from './store/useFlowStore';
 
 export default function App() {
   // 🟢 vibe 상태를 추가로 불러옵니다.
-  const { step, gender, vibe, nextStep, prevStep } = useFlowStore();
+  const { step, gender, vibe, personality, nextStep, prevStep } = useFlowStore();
 
   const getStepContent = () => {
     switch (step) {
@@ -33,12 +33,12 @@ export default function App() {
         return {
           title: '당신을 가장 잘 표현하는 모습은 무엇인가요?',
           description: '당신의 개성을 반영하는 중요한 요소예요.',
-          //component: <Step3Personality />, // 빈 파일
-          isNextDisabled: false,
+          component: <Step3Personality />, // 빈 파일
+          isNextDisabled: personality === null,
         };
       case 4:
         return {
-          title: '이름에 어떤 계절이나 자연의 감성을 담고 싶으신가요?',
+          title: '어떤 계절이나 자연의 감성을 담고 싶으신가요?',
           description: '이름에 담길 의미와 상징을 더해요.',
           //component: <Step4Nature />, // 빈 파일
           isNextDisabled: false,
