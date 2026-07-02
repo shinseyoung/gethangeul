@@ -20,18 +20,17 @@ export default function Step2Vibe() {
       {VIBE_OPTIONS.map((option) => {
         const isSelected = selectedVibe === option.id;
 
-        // 🟢 [수정] 기획자님이 지시하신 8가지 파스텔 컬러 라인업 100% 반영
         let colorStyle = 'border-gray-200'; 
         if (isSelected) {
           switch (option.id) {
-            case 'bright':   colorStyle = 'border-[#fecaca] shadow-[0_10px_25px_rgba(254,202,202,0.5)]'; break; // 빨강 파스텔
-            case 'calm':     colorStyle = 'border-[#bfdbfe] shadow-[0_10px_25px_rgba(191,219,254,0.5)]'; break; // 파랑 파스텔
-            case 'natural':  colorStyle = 'border-[#cce2cb] shadow-[0_10px_25px_rgba(204,226,203,0.5)]'; break; // 초록 파스텔
-            case 'soft':     colorStyle = 'border-[#c4bee2] shadow-[0_10px_25px_rgba(233,213,255,0.5)]'; break; // 보라 파스텔
-            case 'mystic':   colorStyle = 'border-[#c7d2fe] shadow-[0_10px_25px_rgba(199,210,254,0.5)]'; break; // 남색 파스텔
-            case 'trendy':   colorStyle = 'border-[#ffe880] shadow-[0_10px_25px_rgba(254,240,138,0.5)]'; break; // 노랑 파스텔
-            case 'strong':   colorStyle = 'border-[#cbd5e1] shadow-[0_10px_25px_rgba(203,213,225,0.6)]'; break; // 먹색 파스텔 
-            case 'lovely':   colorStyle = 'border-[#ffc5bf] shadow-[0_10px_25px_rgba(251,207,232,0.5)]'; break; // 핑크 파스텔
+            case 'bright':   colorStyle = 'border-[#fecaca] shadow-[0_10px_25px_rgba(254,202,202,0.5)]'; break;
+            case 'calm':     colorStyle = 'border-[#bfdbfe] shadow-[0_10px_25px_rgba(191,219,254,0.5)]'; break;
+            case 'natural':  colorStyle = 'border-[#cce2cb] shadow-[0_10px_25px_rgba(204,226,203,0.5)]'; break;
+            case 'soft':     colorStyle = 'border-[#c4bee2] shadow-[0_10px_25px_rgba(233,213,255,0.5)]'; break;
+            case 'mystic':   colorStyle = 'border-[#c7d2fe] shadow-[0_10px_25px_rgba(199,210,254,0.5)]'; break;
+            case 'trendy':   colorStyle = 'border-[#ffe880] shadow-[0_10px_25px_rgba(254,240,138,0.5)]'; break;
+            case 'strong':   colorStyle = 'border-[#cbd5e1] shadow-[0_10px_25px_rgba(203,213,225,0.6)]'; break;
+            case 'lovely':   colorStyle = 'border-[#ffc5bf] shadow-[0_10px_25px_rgba(251,207,232,0.5)]'; break;
           }
         }
 
@@ -56,13 +55,16 @@ export default function Step2Vibe() {
                 ${isSelected ? 'scale-110 opacity-100' : 'scale-100 opacity-80'}
               `}
             />
+            {/* 🟢 [개선] 띄어쓰기 기준으로 무조건 블록(줄바꿈) 처리 */}
             <span
               className={`
-                text-[13.5px] md:text-[14px] font-bold text-center break-keep leading-tight transition-colors duration-300
+                text-[13.5px] md:text-[14px] font-bold text-center leading-tight transition-colors duration-300
                 ${isSelected ? 'text-gray-900' : 'text-gray-700'}
               `}
             >
-              {option.label}
+              {option.label.split(' ').map((word, index) => (
+                <span key={index} className="block">{word}</span>
+              ))}
             </span>
           </button>
         );

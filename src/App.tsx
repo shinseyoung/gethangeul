@@ -11,7 +11,7 @@ import { useFlowStore } from './store/useFlowStore';
 
 export default function App() {
   // 🟢 vibe 상태를 추가로 불러옵니다.
-  const { step, gender, vibe, personality, nextStep, prevStep } = useFlowStore();
+  const { step, gender, vibe, personality, seasonNature,nextStep, prevStep } = useFlowStore();
 
   const getStepContent = () => {
     switch (step) {
@@ -40,8 +40,8 @@ export default function App() {
         return {
           title: '어떤 계절이나 자연의 감성을 담고 싶으신가요?',
           description: '이름에 담길 의미와 상징을 더해요.',
-          //component: <Step4Nature />, // 빈 파일
-          isNextDisabled: false,
+          component: <Step4Nature />, // 빈 파일
+          isNextDisabled: seasonNature === null,
         };
       case 5:
         // 결과 페이지는 StepLayout을 쓸 수도 있고 안 쓸 수도 있습니다. 임시 처리합니다.
