@@ -7,7 +7,7 @@ const VIBE_OPTIONS = [
   { id: 'natural', label: '자연스럽고 편안한', icon: 'icons/Common/relaxed_icon.svg' },
   { id: 'soft', label: '부드럽고 따뜻한', icon: 'icons/Vibe/warm_icon.svg' },
   { id: 'mystic', label: '신비롭고 매력적인', icon: 'icons/Vibe/enchanting_icon.svg' },
-  { id: 'trendy', label: '세련되고 트렌디한', icon: 'icons/Vibe/chic_icon.svg' },
+  { id: 'trendy', label: '세련되고 트렌디한', icon: 'icons/Common/chic_icon.svg' },
   { id: 'strong', label: '강인하고 멋진', icon: 'icons/Common/badass_icon.svg' },
   { id: 'lovely', label: '사랑스럽고 귀여운', icon: 'icons/Common/adorable_icon.svg' },
 ] as const;

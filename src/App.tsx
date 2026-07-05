@@ -5,12 +5,11 @@ import Step1Gender from './steps/Step1Gender';
 import Step2Vibe from './steps/Step2Vibe';
 import Step3Personality from './steps/Step3Personality';
 import Step4Nature from './steps/Step4Nature';
-import Step5Result from './steps/Step5Result'; // 🟢 Step 5 추가
+import Step5Result from './steps/Step5Result';
 import StepLayout from './steps/components/StepLayout';
 import { useFlowStore } from './store/useFlowStore';
 
 export default function App() {
-  // 🟢 seasonNature 상태도 추가로 불러옵니다.
   const { step, gender, vibe, personality, seasonNature, nextStep, prevStep } = useFlowStore();
 
   const getStepContent = () => {
@@ -40,17 +39,8 @@ export default function App() {
         return {
           title: '어떤 계절이나 자연의 감성을 담고 싶으신가요?',
           description: '이름에 담길 의미와 상징을 더해요.',
-          component: <Step4Nature />, // 🟢 빈 파일 주석 해제 및 연결
-          isNextDisabled: seasonNature === null, // 🟢 Step 4 검증 로직 추가
-        };
-      case 5:
-        return {
-          // 🟢 기획하신 대로 상단의 "결과 분석 중..." 텍스트를 완전히 비우고 화면을 제공합니다.
-          title: '', 
-          description: '',
-          component: <Step5Result />, 
-          // 🟢 어차피 Step5 내부에 3개의 커스텀 버튼이 있으므로 기존 Next 버튼은 숨김(비활성화) 처리합니다.
-          isNextDisabled: true, 
+          component: <Step4Nature />,
+          isNextDisabled: seasonNature === null,
         };
       default:
         return null;
@@ -68,10 +58,16 @@ export default function App() {
     >
       <Header />
 
-      <main className={`flex-1 flex w-full min-h-0 flex-col ${step === 0 ? '' : 'overflow-y-auto'}`}>
+      <main className="flex-1 flex w-full min-h-0 flex-col overflow-hidden">
         {step === 0 ? (
           <Step0Landing onNext={nextStep} />
+        ) : step === 5 ? (
+          /* 🟢 [지시 완벽 준수] Step 5는 좌측 단계 표시 영역 없이 오직 메인 분할창만 100% 맞춤 렌더링 */
+          <div className="w-full lg:w-[1024px] xl:w-[1200px] mx-auto my-auto flex flex-col items-center justify-center relative z-10 px-6 lg:px-4 py-3 md:py-4 min-h-0 flex-1 h-full overflow-hidden">
+            <Step5Result />
+          </div>
         ) : (
+          /* 🟢 Step 1 ~ 4 전용 단계 표시 레이아웃 */
           <StepLayout
             currentStep={step}
             title={stepData?.title || ''}

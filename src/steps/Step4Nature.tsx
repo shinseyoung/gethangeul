@@ -3,14 +3,14 @@ import { useFlowStore } from '../store/useFlowStore';
 
 // 🟢 기획자님이 지시하신 8가지 라벨과 공통 임시 아이콘 적용
 const NATURE_OPTIONS = [
-  { id: 'spring', label: '봄', icon: 'icons/Common/adorable_icon.svg' },
-  { id: 'summer', label: '여름', icon: 'icons/Common/adorable_icon.svg' },
-  { id: 'autumn', label: '가을', icon: 'icons/Common/adorable_icon.svg' },
-  { id: 'winter', label: '겨울', icon: 'icons/Common/adorable_icon.svg' },
-  { id: 'mountain', label: '산', icon: 'icons/Common/adorable_icon.svg' },
-  { id: 'sea', label: '바다', icon: 'icons/Common/adorable_icon.svg' },
-  { id: 'river', label: '강', icon: 'icons/Common/adorable_icon.svg' },
-  { id: 'forest', label: '숲', icon: 'icons/Common/adorable_icon.svg' },
+  { id: 'spring', label: '봄', icon: 'icons/Nature/spring_icon.svg' },
+  { id: 'summer', label: '여름', icon: 'icons/Common/chic_icon.svg' },
+  { id: 'autumn', label: '가을', icon: 'icons/Nature/autumn_icon.svg' },
+  { id: 'winter', label: '겨울', icon: 'icons/Nature/winter_icon.svg' },
+  { id: 'mountain', label: '산', icon: 'icons/Common/badass_icon.svg' },
+  { id: 'sea', label: '바다', icon: 'icons/Common/sea_icon.svg' },
+  { id: 'river', label: '강', icon: 'icons/Nature/valley_icon.svg' },
+  { id: 'forest', label: '숲', icon: 'icons/Nature/forest_icon.svg' },
 ] as const;
 
 export default function Step4Nature() {
@@ -27,13 +27,13 @@ export default function Step4Nature() {
         if (isSelected) {
           switch (option.id) {
             case 'spring':   colorStyle = 'border-[#fcd5ce] shadow-[0_10px_25px_rgba(252,213,206,0.5)]'; break; // 봄 - 피치 핑크
-            case 'summer':   colorStyle = 'border-[#bfdbfe] shadow-[0_10px_25px_rgba(191,219,254,0.5)]'; break; // 여름 - 시원한 파랑
+            case 'summer':   colorStyle = 'border-[#ffe880] shadow-[0_10px_25px_rgba(254,240,138,0.5)]'; break; // 여름 - 시원한 파랑
             case 'autumn':   colorStyle = 'border-[#ffe0b2] shadow-[0_10px_25px_rgba(255,224,178,0.5)]'; break; // 가을 - 파스텔 오렌지
-            case 'winter':   colorStyle = 'border-[#e2e8f0] shadow-[0_10px_25px_rgba(226,232,240,0.5)]'; break; // 겨울 - 눈(회백색)
-            case 'mountain': colorStyle = 'border-[#cce2cb] shadow-[0_10px_25px_rgba(204,226,203,0.5)]'; break; // 산 - 파스텔 초록
+            case 'winter':   colorStyle = 'border-[#bfdbfe] shadow-[0_10px_25px_rgba(191,219,254,0.5)]'; break; // 겨울 - 눈(회백색)
+            case 'mountain': colorStyle = 'border-[#cbd5e1] shadow-[0_10px_25px_rgba(203,213,225,0.6)]'; break; // 산 - 
             case 'sea':      colorStyle = 'border-[#c7d2fe] shadow-[0_10px_25px_rgba(199,210,254,0.5)]'; break; // 바다 - 깊은 파스텔 남색
-            case 'river':    colorStyle = 'border-[#a7f3d0] shadow-[0_10px_25px_rgba(167,243,208,0.5)]'; break; // 강 - 에메랄드/민트
-            case 'forest':   colorStyle = 'border-[#bbf7d0] shadow-[0_10px_25px_rgba(187,247,208,0.5)]'; break; // 숲 - 진한 파스텔 초록
+            case 'river':    colorStyle = 'border-[#b7d7e8] shadow-[0_8px_20px_rgba(183,215,232,0.25)]'; break; // 강 - 에메랄드/민트
+            case 'forest':   colorStyle = 'border-[#cce2cb] shadow-[0_10px_25px_rgba(204,226,203,0.5)]'; break; // 숲 - 진한 파스텔 초록
           }
         }
 
