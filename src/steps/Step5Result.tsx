@@ -19,7 +19,6 @@ const NATURE_MAP: Record<string, string> = {
   mountain: '산', sea: '바다', river: '강', forest: '숲',
 };
 
-// Step 1~4 실제 선택 옵션에 따른 테두리 파스텔 Hex 컬러 매핑
 const STEP_COLOR_MAP: Record<string, string> = {
   male: '#bae6fd',
   female: '#fbcfe8',
@@ -52,7 +51,6 @@ const STEP_COLOR_MAP: Record<string, string> = {
   forest: '#cce2cb',
 };
 
-// 🟢 [요구사항 2 해결 helper] Hex 코드를 받아 원하는 투명도의 RGBA 배경색으로 변환
 const hexToRgba = (hex: string, alpha: number): string => {
   const cleanHex = hex.replace('#', '');
   const r = parseInt(cleanHex.substring(0, 2), 16);
@@ -73,7 +71,6 @@ const getKeywordTags = (gender: string | null, vibe: string | null, personality:
   return tags;
 };
 
-// 전통 코너 장식 SVG 에셋
 const FretCorner = () => {
   const brackets = [
     { path: 'M7 37 V7 H37', width: 1.6, opacity: 1 },
@@ -83,18 +80,10 @@ const FretCorner = () => {
   const tickPositions = [6.5, 12, 17.5, 23, 28.5, 34];
   return (
     <svg viewBox="0 0 40 40" fill="none" className="w-full h-full overflow-visible">
-      {brackets.map((b) => (
-        <path key={b.path} d={b.path} stroke="currentColor" strokeWidth={b.width} strokeLinecap="square" opacity={b.opacity} />
-      ))}
-      {tickPositions.map((p) => (
-        <rect key={`h-${p}`} x={p - 0.7} y={1.1} width={1.4} height={1.4} fill="currentColor" opacity={0.5} />
-      ))}
-      {tickPositions.map((p) => (
-        <rect key={`v-${p}`} x={1.1} y={p - 0.7} width={1.4} height={1.4} fill="currentColor" opacity={0.5} />
-      ))}
-      {[15.5, 22, 28.5].map((p) => (
-        <line key={`d-${p}`} x1={p} y1={4.5} x2={4.5} y2={p} stroke="currentColor" strokeWidth={0.6} opacity={0.22} />
-      ))}
+      {brackets.map((b) => <path key={b.path} d={b.path} stroke="currentColor" strokeWidth={b.width} strokeLinecap="square" opacity={b.opacity} />)}
+      {tickPositions.map((p) => <rect key={`h-${p}`} x={p - 0.7} y={1.1} width={1.4} height={1.4} fill="currentColor" opacity={0.5} />)}
+      {tickPositions.map((p) => <rect key={`v-${p}`} x={1.1} y={p - 0.7} width={1.4} height={1.4} fill="currentColor" opacity={0.5} />)}
+      {[15.5, 22, 28.5].map((p) => <line key={`d-${p}`} x1={p} y1={4.5} x2={4.5} y2={p} stroke="currentColor" strokeWidth={0.6} opacity={0.22} />)}
       <rect x="19" y="19" width="6" height="6" fill="currentColor" fillOpacity={0.14} />
       <rect x="-2.1" y="-2.1" width="4.2" height="4.2" fill="currentColor" opacity={0.92} transform="rotate(45 0 0)" />
     </svg>
@@ -116,20 +105,14 @@ const BlossomCorner = () => {
       <path d="M0 0 Q10 2 13 9 Q16 16 9 20 Q4 23 6 30 Q7 35 2 39" stroke="currentColor" strokeWidth={1} strokeLinecap="round" fill="none" opacity={0.5} />
       <path d="M13 9 Q19 8 24 3" stroke="currentColor" strokeWidth={0.8} strokeLinecap="round" fill="none" opacity={0.4} />
       <path d="M9 20 Q17 18 23 12" stroke="currentColor" strokeWidth={0.7} strokeLinecap="round" fill="none" opacity={0.35} />
-      {leaves.map((l, i) => (
-        <ellipse key={i} cx={l.cx} cy={l.cy} rx={l.rx} ry={l.ry} fill="currentColor" fillOpacity={0.22} transform={`rotate(${l.rot} ${l.cx} ${l.cy})`} />
-      ))}
+      {leaves.map((l, i) => <ellipse key={i} cx={l.cx} cy={l.cy} rx={l.rx} ry={l.ry} fill="currentColor" fillOpacity={0.22} transform={`rotate(${l.rot} ${l.cx} ${l.cy})`} />)}
       {flowers.map((f, idx) => (
         <g key={idx} opacity={0.95 - idx * 0.1}>
-          {[0, 72, 144, 216, 288].map((deg) => (
-            <ellipse key={deg} cx={f.cx} cy={f.cy - f.r * 0.85} rx={f.r * 0.5} ry={f.r * 0.95} fill="currentColor" fillOpacity={0.32} transform={`rotate(${deg} ${f.cx} ${f.cy})`} />
-          ))}
+          {[0, 72, 144, 216, 288].map((deg) => <ellipse key={deg} cx={f.cx} cy={f.cy - f.r * 0.85} rx={f.r * 0.5} ry={f.r * 0.95} fill="currentColor" fillOpacity={0.32} transform={`rotate(${deg} ${f.cx} ${f.cy})`} />)}
           <circle cx={f.cx} cy={f.cy} r={f.r * 0.26} fill="currentColor" fillOpacity={0.85} />
         </g>
       ))}
-      {buds.map(([x, y]) => (
-        <circle key={`${x}-${y}`} cx={x} cy={y} r={0.9} fill="currentColor" fillOpacity={0.55} />
-      ))}
+      {buds.map(([x, y]) => <circle key={`${x}-${y}`} cx={x} cy={y} r={0.9} fill="currentColor" fillOpacity={0.55} />)}
     </svg>
   );
 };
@@ -162,12 +145,8 @@ const EdgeBeads = ({ dotClass }: { dotClass: string }) => {
   const positions = [22, 38, 62, 78];
   return (
     <>
-      {positions.map((p) => (
-        <span key={`l-${p}`} style={{ top: `${p}%` }} className={`absolute -left-[3px] -translate-y-1/2 w-[5px] h-[5px] rotate-45 ${dotClass} opacity-70`} />
-      ))}
-      {positions.map((p) => (
-        <span key={`r-${p}`} style={{ top: `${p}%` }} className={`absolute -right-[3px] -translate-y-1/2 w-[5px] h-[5px] rotate-45 ${dotClass} opacity-70`} />
-      ))}
+      {positions.map((p) => <span key={`l-${p}`} style={{ top: `${p}%` }} className={`absolute -left-[3px] -translate-y-1/2 w-[5px] h-[5px] rotate-45 ${dotClass} opacity-70`} />)}
+      {positions.map((p) => <span key={`r-${p}`} style={{ top: `${p}%` }} className={`absolute -right-[3px] -translate-y-1/2 w-[5px] h-[5px] rotate-45 ${dotClass} opacity-70`} />)}
     </>
   );
 };
@@ -184,7 +163,7 @@ const TraditionalGenderBorder = ({ gender }: { gender: string | null }) => {
   const CornerOrnament = theme.variant === 'female' ? BlossomCorner : FretCorner;
 
   return (
-    <div className="absolute inset-4 md:inset-5 pointer-events-none z-0">
+    <div className="absolute inset-3 md:inset-5 pointer-events-none z-0">
       <div className={`absolute inset-0 border ${theme.border} rounded-lg transition-all duration-500`} />
       <div className={`absolute inset-[3px] border ${theme.border} rounded-md opacity-60 transition-all duration-500`} />
 
@@ -193,31 +172,27 @@ const TraditionalGenderBorder = ({ gender }: { gender: string | null }) => {
       <span className={`absolute top-1/2 -left-[3px] -translate-y-1/2 w-[7px] h-[7px] rotate-45 ${theme.dot} opacity-80`} />
       <span className={`absolute top-1/2 -right-[3px] -translate-y-1/2 w-[7px] h-[7px] rotate-45 ${theme.dot} opacity-80`} />
 
-      <div className={`absolute -top-[7px] -left-[7px] w-16 h-16 md:w-[4.6rem] md:h-[4.6rem] ${theme.text} transition-colors duration-500`}><CornerOrnament /></div>
-      <div className={`absolute -top-[7px] -right-[7px] w-16 h-16 md:w-[4.6rem] md:h-[4.6rem] ${theme.text} rotate-90 transition-colors duration-500`}><CornerOrnament /></div>
-      <div className={`absolute -bottom-[7px] -right-[7px] w-16 h-16 md:w-[4.6rem] md:h-[4.6rem] ${theme.text} rotate-180 transition-colors duration-500`}><CornerOrnament /></div>
-      <div className={`absolute -bottom-[7px] -left-[7px] w-16 h-16 md:w-[4.6rem] md:h-[4.6rem] ${theme.text} -rotate-90 transition-colors duration-500`}><CornerOrnament /></div>
+      <div className={`absolute -top-[7px] -left-[7px] w-12 h-12 md:w-[4.6rem] md:h-[4.6rem] ${theme.text} transition-colors duration-500`}><CornerOrnament /></div>
+      <div className={`absolute -top-[7px] -right-[7px] w-12 h-12 md:w-[4.6rem] md:h-[4.6rem] ${theme.text} rotate-90 transition-colors duration-500`}><CornerOrnament /></div>
+      <div className={`absolute -bottom-[7px] -right-[7px] w-12 h-12 md:w-[4.6rem] md:h-[4.6rem] ${theme.text} rotate-180 transition-colors duration-500`}><CornerOrnament /></div>
+      <div className={`absolute -bottom-[7px] -left-[7px] w-12 h-12 md:w-[4.6rem] md:h-[4.6rem] ${theme.text} -rotate-90 transition-colors duration-500`}><CornerOrnament /></div>
 
       <span className={`absolute -top-[4px] left-1/2 -translate-x-1/2 w-[9px] h-[9px] rotate-45 ${theme.dot} opacity-85`} />
       <span className={`absolute -bottom-[4px] left-1/2 -translate-x-1/2 w-[9px] h-[9px] rotate-45 ${theme.dot} opacity-85`} />
 
       {theme.variant === 'male' && (
         <>
-          <div className={`absolute top-[24%] -left-3.5 w-9 h-20 md:w-10 md:h-24 ${theme.text} opacity-80`}><BambooAccent /></div>
-          <div className={`absolute top-[56%] -right-3.5 w-9 h-20 md:w-10 md:h-24 ${theme.text} opacity-80 scale-x-[-1]`}><BambooAccent /></div>
+          <div className={`absolute top-[24%] -left-3 w-7 h-16 md:w-10 md:h-24 ${theme.text} opacity-80`}><BambooAccent /></div>
+          <div className={`absolute top-[56%] -right-3 w-7 h-16 md:w-10 md:h-24 ${theme.text} opacity-80 scale-x-[-1]`}><BambooAccent /></div>
         </>
       )}
 
       {theme.variant === 'neutral' && (
         <>
-          <div className={`absolute -top-2.5 left-[22%] -translate-x-1/2 w-9 h-5.5 ${theme.text} opacity-65`}><CloudMotif /></div>
-          <div className={`absolute -top-2.5 right-[22%] translate-x-1/2 w-9 h-5.5 ${theme.text} opacity-65 scale-x-[-1]`}><CloudMotif /></div>
-          <div className={`absolute -bottom-2.5 left-[22%] -translate-x-1/2 w-9 h-5.5 ${theme.text} opacity-65 scale-y-[-1]`}><CloudMotif /></div>
-          <div className={`absolute -bottom-2.5 right-[22%] translate-x-1/2 w-9 h-5.5 ${theme.text} opacity-65 -scale-x-[1] scale-y-[-1]`}><CloudMotif /></div>
-          <div className={`absolute top-[30%] -left-4 w-9 h-5.5 -translate-y-1/2 rotate-90 ${theme.text} opacity-60`}><CloudMotif /></div>
-          <div className={`absolute top-[70%] -left-4 w-9 h-5.5 -translate-y-1/2 rotate-90 ${theme.text} opacity-60 scale-x-[-1]`}><CloudMotif /></div>
-          <div className={`absolute top-[30%] -right-4 w-9 h-5.5 -translate-y-1/2 -rotate-90 ${theme.text} opacity-60`}><CloudMotif /></div>
-          <div className={`absolute top-[70%] -right-4 w-9 h-5.5 -translate-y-1/2 -rotate-90 ${theme.text} opacity-60 scale-x-[-1]`}><CloudMotif /></div>
+          <div className={`absolute -top-2.5 left-[22%] -translate-x-1/2 w-7 h-4 md:w-9 md:h-5.5 ${theme.text} opacity-65`}><CloudMotif /></div>
+          <div className={`absolute -top-2.5 right-[22%] translate-x-1/2 w-7 h-4 md:w-9 md:h-5.5 ${theme.text} opacity-65 scale-x-[-1]`}><CloudMotif /></div>
+          <div className={`absolute -bottom-2.5 left-[22%] -translate-x-1/2 w-7 h-4 md:w-9 md:h-5.5 ${theme.text} opacity-65 scale-y-[-1]`}><CloudMotif /></div>
+          <div className={`absolute -bottom-2.5 right-[22%] translate-x-1/2 w-7 h-4 md:w-9 md:h-5.5 ${theme.text} opacity-65 -scale-x-[1] scale-y-[-1]`}><CloudMotif /></div>
         </>
       )}
     </div>
@@ -250,87 +225,71 @@ export default function Step5Result() {
     gender === 'female' ? 'bg-pink-400 text-pink-500' : 'bg-slate-400 text-slate-500';
 
   return (
+    // 🟢 [이슈 2 해결] StepLayout.tsx와 완벽하게 동일한 여백(gap-6 md:gap-8 lg:gap-12)을 사용하여 레이아웃 밀림 방지
     <motion.div
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="w-full h-full flex flex-col lg:flex-row gap-5 lg:gap-6 items-stretch justify-center min-h-0 overflow-hidden"
+      className="w-full flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-12 items-stretch justify-start lg:justify-center pt-4 lg:pt-0 min-h-0"
     >
-      {/* 메인 결과 카드 영역 */}
+      {/* 🟢 [이슈 2 해결] 메인 결과 카드 영역: lg:w-2/3를 빼고 flex-1 w-full 적용 */}
       <motion.div 
         variants={cardVariants}
-        className="flex-1 lg:w-2/3 bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[30px] shadow-xl flex flex-col justify-between relative overflow-hidden min-h-0"
+        className="flex-1 w-full bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[24px] md:rounded-[30px] shadow-xl flex flex-col justify-between relative overflow-hidden min-h-[550px] lg:min-h-0"
       >
         <div className="flex-1 flex flex-col relative min-h-0 w-full">
           
           <TraditionalGenderBorder gender={gender} />
 
-          {/* 내부 콘텐츠 컨테이너: 상/하 고정 패딩을 최소화하고 스페이서(my-auto)를 통해 각 섹션 간의 여백을 1:1로 완벽 분배 */}
-          <div className="relative z-10 flex flex-col min-h-0 flex-1 justify-between items-center text-center px-12 md:px-16 py-8 md:py-10">
+          <div className="relative z-10 flex flex-col min-h-0 flex-1 justify-between items-center text-center px-6 md:px-12 py-6 md:py-8 gap-4 md:gap-6">
             
-            {/* 🟢 [요구사항 4 해결] 상단 테두리선과 이름 블록 사이의 정중앙에 라벨이 오도록 my-auto 스페이서 적용 */}
-            <div className="w-full flex justify-center items-center my-auto">
-              <span className="text-xs md:text-sm font-extrabold tracking-widest text-gray-400 uppercase">
+            <div className="w-full flex justify-center items-center my-auto pt-2 md:pt-0">
+              <span className="text-[10px] md:text-sm font-extrabold tracking-widest text-gray-400 uppercase">
                 당신의 한글 이름
               </span>
             </div>
 
-            {/* 이름 및 한자 블록 */}
             <div className="flex flex-col items-center justify-center shrink-0">
-              <div className="relative inline-flex items-baseline justify-center">
-                {/* 🟢 [요구사항 1 해결] tracking-[0.12em]을 부여하여 글자를 고급스럽게 벌리고, 오른쪽으로 늘어난 자간만큼 왼쪽 패딩(pl-[0.12em])을 주어 시각적 정중앙을 완벽히 일치시킴 */}
-                <h2 className="text-7xl md:text-8xl font-extrabold text-gray-900 tracking-[0.12em] pl-[0.12em] drop-shadow-sm text-center leading-none">
+              <div className="relative inline-flex items-baseline justify-center mt-2 md:mt-0">
+                <h2 className="text-5xl sm:text-6xl md:text-8xl font-extrabold text-gray-900 tracking-[0.12em] pl-[0.12em] drop-shadow-sm text-center leading-none">
                   {MOCK_RESULT.hangul}
                 </h2>
-                <span className="absolute left-full pl-3 md:pl-4 bottom-0 text-3xl md:text-4xl font-serif font-normal text-gray-400 tracking-widest whitespace-nowrap leading-none">
+                <span className="absolute left-full pl-2 md:pl-4 bottom-0 text-xl sm:text-2xl md:text-4xl font-serif font-normal text-gray-400 tracking-widest whitespace-nowrap leading-none">
                   {MOCK_RESULT.hanja}
                 </span>
               </div>
             </div>
 
-            {/* 🟢 [요구사항 2 해결] 이름과 뜻 사이의 100% 정중앙에 아이콘이 위치하도록 위아래 여백 균등화(my-auto) */}
             <div className="w-full flex justify-center items-center my-auto">
               <div 
-                className={`w-56 md:w-64 h-6 md:h-7 transition-colors duration-500 opacity-80 ${genderColorClass.split(' ')[0]}`}
+                className={`w-36 sm:w-48 md:w-64 h-4 md:h-7 transition-colors duration-500 opacity-80 ${genderColorClass.split(' ')[0]}`}
                 style={{
-                  maskImage: "url('icons/Common/name_under_icon.svg')",
-                  WebkitMaskImage: "url('icons/Common/name_under_icon.svg')",
-                  maskRepeat: 'no-repeat',
-                  WebkitMaskRepeat: 'no-repeat',
-                  maskPosition: 'center',
-                  WebkitMaskPosition: 'center',
-                  maskSize: 'contain',
-                  WebkitMaskSize: 'contain'
+                  maskImage: "url('icons/Common/name_under_icon.svg')", WebkitMaskImage: "url('icons/Common/name_under_icon.svg')",
+                  maskRepeat: 'no-repeat', WebkitMaskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskPosition: 'center',
+                  maskSize: 'contain', WebkitMaskSize: 'contain'
                 }}
               />
             </div>
 
-            {/* 뜻 풀이 및 시사문 */}
-            <div className="flex flex-col items-center gap-2 max-w-lg mx-auto shrink-0">
-              {/* 🟢 [요구사항 3 해결] 연회색이었던 '뜻' 설명 문구를 또렷한 검은색(text-gray-900 font-bold)으로 변경 */}
+            <div className="flex flex-col items-center gap-2 w-full max-w-[90%] md:max-w-lg mx-auto shrink-0 px-2">
               <p className="text-xs md:text-sm font-bold text-gray-900 tracking-wider">
                 뜻 : {MOCK_RESULT.shortMeaning}
               </p>
-              <p className="text-2xl md:text-3xl font-serif font-extrabold text-[#1e4a38] leading-relaxed break-keep drop-shadow-sm">
+              <p className="text-lg sm:text-xl md:text-2xl font-serif font-extrabold text-[#1e4a38] leading-[1.6] break-keep drop-shadow-sm w-full">
                 {MOCK_RESULT.poeticQuote}
               </p>
             </div>
 
-            {/* 고유 키워드 해시태그 칩 영역 */}
-            <div className="flex flex-col items-center gap-2 w-full shrink-0 my-auto">
-              <span className="text-[11px] md:text-xs font-bold text-gray-400 tracking-widest uppercase">
+            <div className="flex flex-col items-center gap-2 w-full shrink-0 my-auto pb-2 md:pb-0">
+              <span className="text-[10px] md:text-xs font-bold text-gray-400 tracking-widest uppercase">
                 이름에 담긴 고유 키워드
               </span>
-              <div className="flex flex-wrap justify-center items-center gap-2 max-w-lg">
+              <div className="flex flex-wrap justify-center items-center gap-1.5 md:gap-2 max-w-lg">
                 {keywordTags.map((tag, idx) => (
                   <span 
                     key={idx}
-                    /* 🟢 [요구사항 2 해결] 테두리는 100% 선명한 색상, 내부 배경은 22% 투명도를 주어 은은하게 연출하고 글씨는 투명도 없이 진한 먹색(text-gray-900) 적용 */
-                    style={{ 
-                      backgroundColor: hexToRgba(tag.color, 0.22), 
-                      borderColor: tag.color 
-                    }}
-                    className="px-3.5 py-1.5 rounded-2xl border text-gray-900 text-xs md:text-sm font-extrabold shadow-2xs transition-transform hover:-translate-y-0.5"
+                    style={{ backgroundColor: hexToRgba(tag.color, 0.22), borderColor: tag.color }}
+                    className="px-2.5 py-1 md:px-3.5 md:py-1.5 rounded-2xl border text-gray-900 text-[10px] md:text-sm font-extrabold shadow-2xs transition-transform hover:-translate-y-0.5"
                   >
                     #{tag.text}
                   </span>
@@ -341,22 +300,22 @@ export default function Step5Result() {
           </div>
         </div>
 
-        {/* 하단 제어 버튼 바 */}
-        <div className="relative z-10 border-t border-gray-100 bg-white/40 backdrop-blur-xs py-4 px-6 md:py-5 md:px-8 flex items-center justify-between shrink-0 w-full">
+        {/* 하단 제어 버튼 바 (모바일 UI 대폭 수정) */}
+        <div className="relative z-10 border-t border-gray-100 bg-white/40 backdrop-blur-xs py-4 px-4 md:py-5 md:px-8 flex flex-col md:flex-row items-center gap-3 md:justify-between shrink-0 w-full">
           <button 
             onClick={resetFlow}
-            className="flex items-center justify-center gap-2 px-5 py-3 rounded-full text-xs md:text-sm font-bold text-gray-600 bg-gray-100 hover:bg-gray-200 transition-colors shrink-0 whitespace-nowrap min-w-[125px] md:min-w-[135px]"
+            className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-3.5 md:py-3 rounded-[16px] md:rounded-full text-sm font-bold text-gray-600 bg-gray-100/80 hover:bg-gray-200 transition-colors shrink-0"
           >
             <RotateCcw size={15} strokeWidth={2.5} className="shrink-0" />
             <span>다시 하기</span>
           </button>
           
-          <div className="flex items-center gap-2 md:gap-2.5 shrink-0">
-            <button className="flex items-center justify-center gap-1.5 px-5 py-3 rounded-full text-xs md:text-sm font-bold text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 transition-all shadow-sm whitespace-nowrap">
+          <div className="flex items-center gap-2 w-full md:w-auto shrink-0">
+            <button className="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-3.5 md:px-5 md:py-3 rounded-[16px] md:rounded-full text-sm font-bold text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 transition-all shadow-sm">
               <Share2 size={15} className="shrink-0" />
               <span>결과 공유</span>
             </button>
-            <button className="flex items-center justify-center gap-1.5 px-6 py-3 rounded-full text-xs md:text-sm font-bold text-white bg-[#1e4a38] hover:bg-[#143427] transition-all shadow-md hover:shadow-lg whitespace-nowrap">
+            <button className="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-3.5 md:px-6 md:py-3 rounded-[16px] md:rounded-full text-sm font-bold text-white bg-[#1e4a38] hover:bg-[#143427] transition-all shadow-md hover:shadow-lg">
               <Download size={15} className="shrink-0" />
               <span>이미지 저장</span>
             </button>
@@ -364,38 +323,35 @@ export default function Step5Result() {
         </div>
       </motion.div>
 
-      {/* 우측 광고 영역 */}
-      <div className="w-full lg:w-[340px] xl:w-[360px] flex flex-col gap-5 shrink-0 min-h-0 overflow-hidden">
+      {/* 🟢 [이슈 2 해결] 우측 PC 광고 영역: w-[340px]로 고정하여 StepLayout의 좌측 패널 너비와 완벽 대칭 구조 형성 */}
+      <div className="hidden lg:flex w-[340px] flex-col gap-5 shrink-0 min-h-0">
         <div className="flex-1 bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[26px] p-4 shadow-xl flex flex-col justify-center items-center relative overflow-hidden min-h-[140px]">
           <div className="absolute inset-0 bg-slate-50/50 pointer-events-none" />
           <div className="relative z-10 flex flex-col items-center justify-center gap-1">
-            <span className="text-[9px] font-extrabold tracking-widest text-gray-400 bg-gray-200/60 px-2 py-0.5 rounded">
-              ADVERTISEMENT
-            </span>
-            <p className="text-sm font-extrabold text-gray-400 mt-1">
-              스폰서 배너 광고
-            </p>
-            <span className="text-[10px] font-medium text-gray-400/80">
-              [ 상단 디스플레이 영역 ]
-            </span>
+            <span className="text-[9px] font-extrabold tracking-widest text-gray-400 bg-gray-200/60 px-2 py-0.5 rounded">ADVERTISEMENT</span>
+            <p className="text-sm font-extrabold text-gray-400 mt-1">스폰서 배너 광고</p>
+            <span className="text-[10px] font-medium text-gray-400/80">[ 상단 디스플레이 영역 ]</span>
           </div>
         </div>
 
         <div className="h-[240px] bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[26px] p-4 shadow-xl flex flex-col justify-center items-center relative overflow-hidden shrink-0">
           <div className="absolute inset-0 bg-slate-50/50 pointer-events-none" />
           <div className="relative z-10 flex flex-col items-center justify-center gap-1">
-            <span className="text-[9px] font-extrabold tracking-widest text-gray-400 bg-gray-200/60 px-2 py-0.5 rounded">
-              ADVERTISEMENT
-            </span>
-            <p className="text-sm font-extrabold text-gray-400 mt-1">
-              광고
-            </p>
-            <span className="text-[10px] font-medium text-gray-400/80">
-              [ 300 × 250 디스플레이 배너 영역 ]
-            </span>
+            <span className="text-[9px] font-extrabold tracking-widest text-gray-400 bg-gray-200/60 px-2 py-0.5 rounded">ADVERTISEMENT</span>
+            <p className="text-sm font-extrabold text-gray-400 mt-1">광고</p>
+            <span className="text-[10px] font-medium text-gray-400/80">[ 300 × 250 디스플레이 배너 영역 ]</span>
           </div>
         </div>
       </div>
+
+      {/* 🟢 [이슈 1 해결] 모바일 전용 띠 광고를 Fixed 속성에서 해제하여, 결과창 하단-푸터 상단에 자연스럽게 삽입되도록 변경 */}
+      <div className="lg:hidden w-full h-[80px] bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[20px] shadow-sm flex flex-col items-center justify-center shrink-0 mt-6 mb-8">
+        <div className="flex items-center gap-2">
+          <span className="text-[9px] font-extrabold tracking-widest text-white bg-gray-400 px-2 py-0.5 rounded">AD</span>
+          <span className="text-xs font-bold text-gray-500">모바일 띠 배너 광고 영역</span>
+        </div>
+      </div>
+
     </motion.div>
   );
 }

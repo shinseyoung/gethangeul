@@ -59,10 +59,11 @@ export default function Step0Landing({ onNext }: Step0Props) {
           <div className="relative z-10 w-full lg:w-[1024px] xl:w-[1200px] mx-auto px-6 lg:px-4 py-8 md:py-12 flex flex-col flex-1 justify-center gap-10 md:gap-14">
             
             {/* 메인 텍스트 영역 (shrink-0을 부여해 확대 시 텍스트 영역 자체가 압축되는 것 방지) */}
-            <div className="flex flex-col max-w-[600px] shrink-0 items-start text-left">
-              <h1 className="text-[34px] sm:text-[42px] md:text-[52px] font-bold text-gray-900 leading-[1.3] mb-4 md:mb-6 tracking-tight">
-                모든 한글 이름에는<br />
-                예쁜 의미가 담겨 있습니다.
+            <div className="flex flex-col max-w-[800px] shrink-0 items-start text-left">
+              <h1 className="text-[32px] sm:text-[42px] md:text-[52px] font-bold text-gray-900 leading-[1.3] mb-4 md:mb-6 tracking-tight break-keep">
+                모든 한글 이름에는{' '}
+                <br className="block md:hidden" />
+                <span className="inline-block mt-1 md:mt-0">예쁜 이야기가 담겨 있습니다.</span>
               </h1>
 
               <p className="text-[16px] md:text-[20px] text-gray-500 mb-8 md:mb-10 leading-relaxed break-keep">

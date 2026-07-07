@@ -41,7 +41,7 @@ export default function Step4Nature() {
           <button
             key={option.id}
             onClick={() => setSeasonNature(selectedNature === option.id ? null : option.id)}
-            className={`flex flex-col items-center justify-center p-4 rounded-[20px] border-2 transition-all duration-300 bg-white/80 backdrop-blur-sm min-h-[120px] h-full
+            className={`flex flex-col items-center justify-center p-3 md:p-4 rounded-[16px] md:rounded-[20px] border-2 transition-all duration-300 bg-white/80 backdrop-blur-sm min-h-[90px] md:min-h-[120px] h-full
               ${
                 isSelected
                   ? `${colorStyle} bg-white -translate-y-1`
@@ -54,14 +54,14 @@ export default function Step4Nature() {
               alt={option.label}
               draggable={false}
               className={`
-                w-10 h-10 mb-2.5 object-contain select-none pointer-events-none transition-transform duration-300
+                w-10 h-10 mb-w-12 md:h-12 mb-2 md:mb-2.5 object-contain select-none pointer-events-none transition-transform duration-300
                 ${isSelected ? 'scale-110 opacity-100' : 'scale-100 opacity-80'}
               `}
             />
             {/* 🟢 1줄짜리 단어라도 앞선 스텝과 완벽하게 동일한 렌더링 로직 사용 (안정성 확보) */}
             <span
               className={`
-                text-[13.5px] md:text-[14px] font-bold text-center leading-tight transition-colors duration-300
+                text-[12px] md:text-[14px] font-bold text-center leading-tight transition-colors duration-300
                 ${isSelected ? 'text-gray-900' : 'text-gray-700'}
               `}
             >

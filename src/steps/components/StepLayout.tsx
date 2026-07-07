@@ -30,13 +30,16 @@ export default function StepLayout({
 }: StepLayoutProps) {
   const isResultPage = currentStep === 5;
 
+  // 🟢 모바일 가로 게이지 바 채우기 비율 계산
+  const progressPercentage = isResultPage ? 100 : (currentStep / 4) * 100;
+
   return (
-    <div className="w-full lg:w-[1024px] xl:w-[1200px] mx-auto my-auto flex flex-col md:flex-row gap-8 lg:gap-12 items-stretch justify-center relative z-10 px-6 lg:px-4 py-8 md:py-12">
+    // 🟢 변경 포인트 1: 모바일 전체 상하 패딩을 py-4로 콤팩트하게 줄여 요소들이 화면 위로 쫙 붙게 조절
+    <div className="w-full lg:w-[1024px] xl:w-[1200px] mx-auto mt-2 mb-auto md:my-auto flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-12 items-stretch justify-center relative z-10 px-6 lg:px-4 py-4 md:py-12">
       
-      {/* 🟢 좌측 패널: 상하좌우 패딩을 p-6(24px)으로 균일하게 잡아 상단/하단 대칭 여백의 기준 확보 */}
-      <div className="w-full md:w-[340px] bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[26px] p-6 shadow-lg flex flex-col shrink-0 h-fit">
-        
-        {/* 상단 헤더 영역 (회색 구분선 border-b) */}
+      {/* 🟢 변경 포인트 2: [PC 전용 패널] md 미만(모바일) 해상도에서는 hidden으로 아예 렌더링 스페이스에서 제거 */}
+      <div className="hidden md:flex w-[340px] bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[26px] p-6 shadow-lg flex-col shrink-0 h-fit">
+        {/* 상단 헤더 영역 */}
         <div className="pb-4 border-b border-gray-100 shrink-0">
           <div className="flex items-center gap-2 text-[#1e4a38]">
             <span className="text-[11px] font-extrabold tracking-widest uppercase bg-[#1e4a38]/10 px-2.5 py-1 rounded-md">
@@ -48,13 +51,9 @@ export default function StepLayout({
           </p>
         </div>
 
-        {/* 🟢 스텝 리스트 컨테이너:
-            - mt-4를 주어 [회색선 ~ 스텝 1 윗면] 간격을 생성
-            - 아래쪽은 추가 여백 없이 카드 자체의 pb-6만 작동하게 하여 [스텝 4 아랫면 ~ 카드 바닥선] 간격과 1:1 일치시킴 */}
+        {/* 세로 스텝 진행 리스트 */}
         <div className="flex flex-col mt-4">
           <div className="relative w-full flex flex-col gap-3">
-            
-            {/* 세로 진행선 */}
             <div className="absolute left-[39px] top-[40px] bottom-[40px] w-[2px] bg-gray-200 z-10">
               <div
                 className="absolute left-0 top-0 w-full bg-[#1e4a38] transition-all duration-500 ease-out z-10"
@@ -103,25 +102,44 @@ export default function StepLayout({
             })}
           </div>
         </div>
-
       </div>
 
-      {/* 🟢 우측 콘텐츠 영역: justify-between 구조로 바닥 버튼을 정렬하면서 타이틀 여백 확보 */}
+      {/* 우측 콘텐츠 영역 */}
       <div className="flex-1 flex flex-col w-full justify-between relative min-h-0">
         
-        {/* 🟢 상단 타이틀: pt-4 md:pt-6 패딩을 주어 왼쪽 흰색 카드 윗면보다 살짝 여유롭게 내려와 안착 (스텝 1의 예쁜 마진 고정) */}
+        {/* 🟢 변경 포인트 3: [모바일 전용 상단 프로그레스 UI] md 미만(모바일)에서만 노출되는 초슬림 게이지 바 */}
+        {!isResultPage && (
+          <div className="flex flex-col w-full md:hidden mb-4 shrink-0">
+            <div className="flex justify-between items-center mb-1.5">
+              <span className="text-[10px] font-extrabold tracking-widest text-[#1e4a38] bg-[#1e4a38]/10 px-2 py-0.5 rounded">
+                STEP {currentStep} / 4
+              </span>
+              <span className="text-[12px] font-bold text-gray-700">
+                {STEPS_DATA[currentStep - 1]?.title}
+              </span>
+            </div>
+            <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-[#1e4a38] transition-all duration-300 ease-out"
+                style={{ width: `${progressPercentage}%` }}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* 🟢 변경 포인트 4: 모바일용 헤딩 폰트 크기를 text-[22px]로 다이어트하여 스페이싱 최적화 */}
         {!isResultPage && (title || description) && (
-          <div className="mb-4 pt-4 md:pt-6 shrink-0">
-            <h2 className="text-[28px] md:text-[34px] font-bold text-gray-900 mb-3 leading-[1.1] drop-shadow-sm break-keep tracking-tight">
+          <div className="mb-4 pt-1 md:pt-6 shrink-0">
+            <h2 className="text-[22px] md:text-[34px] font-bold text-gray-900 mb-2 md:mb-3 leading-[1.2] md:leading-[1.1] drop-shadow-sm break-keep tracking-tight">
               {title}
             </h2>
-            <p className="text-gray-600 text-lg font-medium drop-shadow-sm break-keep">
+            <p className="text-gray-500 md:text-gray-600 text-xs md:text-lg font-medium drop-shadow-sm break-keep">
               {description}
             </p>
           </div>
         )}
 
-        {/* 중앙 알맹이 영역 */}
+        {/* 중앙 선택지 렌더링 영역 */}
         <div className="w-full flex-1 flex flex-col justify-center min-h-0 py-2">
           <AnimatePresence mode="wait">
             <motion.div
@@ -137,12 +155,12 @@ export default function StepLayout({
           </AnimatePresence>
         </div>
 
-        {/* 하단 버튼 내비게이션: 항상 좌측 흰색 카드 바닥선과 1:1로 칼같이 떨어짐 */}
+        {/* 🟢 변경 포인트 5: 하단 내비게이션 버튼 크기 및 패딩 모바일 미세 축소 (px-6 py-3.5) */}
         {!isResultPage && (
-          <div className="pt-6 flex justify-between items-center w-full shrink-0">
+          <div className="pt-4 md:pt-6 flex justify-between items-center w-full shrink-0">
             <button 
               onClick={onPrev}
-              className={`px-8 py-4 rounded-full font-bold text-gray-700 bg-white/80 backdrop-blur-sm border border-gray-300 hover:bg-white transition-colors shadow-sm ${currentStep === 1 ? 'invisible' : ''}`}
+              className={`px-6 py-3.5 md:px-8 md:py-4 rounded-full font-bold text-gray-700 bg-white/80 backdrop-blur-sm border border-gray-300 hover:bg-white transition-colors shadow-sm text-sm md:text-base ${currentStep === 1 ? 'invisible' : ''}`}
             >
               이전
             </button>
@@ -150,12 +168,12 @@ export default function StepLayout({
             <button 
               onClick={onNext}
               disabled={isNextDisabled}
-              className={`flex items-center gap-2 px-10 py-4 rounded-full font-bold text-white transition-all shadow-md ${
+              className={`flex items-center gap-2 px-8 py-3.5 md:px-10 md:py-4 rounded-full font-bold text-white transition-all shadow-md text-sm md:text-base ${
                 isNextDisabled ? 'bg-gray-300 cursor-not-allowed shadow-none' : 'bg-[#1e4a38] hover:bg-[#143427] hover:-translate-y-[1px] hover:shadow-lg'
               }`}
             >
               다음
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="18" height="18" className="md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m9 18 6-6-6-6"/>
               </svg>
             </button>
