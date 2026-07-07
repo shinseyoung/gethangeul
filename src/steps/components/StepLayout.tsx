@@ -31,12 +31,13 @@ export default function StepLayout({
   const isResultPage = currentStep === 5;
 
   return (
-    // 🟢 최상단 래퍼: 불필요한 overflow-hidden 제거하여 호버 그림자 절단 방어
-    <div className="w-full lg:w-[1024px] xl:w-[1200px] mx-auto my-auto flex flex-col md:flex-row gap-8 lg:gap-12 items-stretch relative z-10 px-6 lg:px-4 py-4 md:py-6 flex-1 min-h-0">
-
-      {/* 좌측 패널 가이드 영역 */}
-      <div className="w-full md:w-[340px] bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[26px] p-6 shadow-lg flex flex-col shrink-0">
-        <div className="pt-2 pb-4 border-b border-gray-100 mb-4 shrink-0">
+    <div className="w-full lg:w-[1024px] xl:w-[1200px] mx-auto my-auto flex flex-col md:flex-row gap-8 lg:gap-12 items-stretch justify-center relative z-10 px-6 lg:px-4 py-8 md:py-12">
+      
+      {/* 🟢 좌측 패널: 상하좌우 패딩을 p-6(24px)으로 균일하게 잡아 상단/하단 대칭 여백의 기준 확보 */}
+      <div className="w-full md:w-[340px] bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[26px] p-6 shadow-lg flex flex-col shrink-0 h-fit">
+        
+        {/* 상단 헤더 영역 (회색 구분선 border-b) */}
+        <div className="pb-4 border-b border-gray-100 shrink-0">
           <div className="flex items-center gap-2 text-[#1e4a38]">
             <span className="text-[11px] font-extrabold tracking-widest uppercase bg-[#1e4a38]/10 px-2.5 py-1 rounded-md">
               HANGEUL NAME
@@ -47,60 +48,70 @@ export default function StepLayout({
           </p>
         </div>
 
-        <div className="flex-1 flex flex-col gap-4 relative w-full">
-          <div className="absolute left-[39px] top-[40px] bottom-[40px] w-[2px] bg-gray-200 z-10">
-            <div
-              className="absolute left-0 top-0 w-full bg-[#1e4a38] transition-all duration-500 ease-out z-10"
-              style={{
-                height: isResultPage ? '100%' 
-                      : currentStep === 1 ? '40px' 
-                      : currentStep === 2 ? '120px' 
-                      : currentStep === 3 ? '200px' 
-                      : '100%'
-              }}
-            />
+        {/* 🟢 스텝 리스트 컨테이너:
+            - mt-4를 주어 [회색선 ~ 스텝 1 윗면] 간격을 생성
+            - 아래쪽은 추가 여백 없이 카드 자체의 pb-6만 작동하게 하여 [스텝 4 아랫면 ~ 카드 바닥선] 간격과 1:1 일치시킴 */}
+        <div className="flex flex-col mt-4">
+          <div className="relative w-full flex flex-col gap-3">
+            
+            {/* 세로 진행선 */}
+            <div className="absolute left-[39px] top-[40px] bottom-[40px] w-[2px] bg-gray-200 z-10">
+              <div
+                className="absolute left-0 top-0 w-full bg-[#1e4a38] transition-all duration-500 ease-out z-10"
+                style={{
+                  height: isResultPage ? '100%' 
+                        : currentStep === 1 ? '0%' 
+                        : currentStep === 2 ? '33.33%' 
+                        : currentStep === 3 ? '66.66%' 
+                        : '100%'
+                }}
+              />
+            </div>
+
+            {STEPS_DATA.map((step) => {
+              const isPassed = isResultPage ? true : currentStep > step.num;
+              const isActive = isResultPage ? false : currentStep === step.num;
+
+              return (
+                <div key={step.num} className="relative flex items-center gap-5 p-3.5 w-full shrink-0">
+                  <div className={`absolute inset-0 bg-slate-50 border border-gray-200/60 shadow-[0_2px_10px_rgba(0,0,0,0.03)] rounded-[20px] z-0 transition-opacity duration-300 pointer-events-none ${
+                    isActive ? 'opacity-100' : 'opacity-0'
+                  }`} />
+                  
+                  <div className={`relative z-20 w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                    isPassed ? 'bg-[#1e4a38] border-2 border-[#1e4a38] text-white shadow-sm' 
+                      : isActive ? 'bg-white border-2 border-[#1e4a38] text-gray-500' 
+                      : 'bg-white border-2 border-gray-200 text-gray-400' 
+                  }`}>
+                    {isPassed ? <Check size={22} strokeWidth={3} /> : <step.icon size={22} strokeWidth={isActive ? 2.5 : 2} />}
+                  </div>
+
+                  <div className="relative z-20 flex flex-col">
+                    <span className={`text-[11px] font-extrabold tracking-widest mb-0.5 transition-colors duration-300 ${
+                      isActive ? 'text-[#1e4a38]' : isPassed ? 'text-gray-500' : 'text-gray-400'
+                    }`}>
+                      STEP {step.num}
+                    </span>
+                    <span className={`text-[16px] font-bold transition-colors duration-300 ${
+                      isActive ? 'text-gray-900' : isPassed ? 'text-gray-700' : 'text-gray-400'
+                    }`}>
+                      {step.title}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-
-          {STEPS_DATA.map((step) => {
-            const isPassed = isResultPage ? true : currentStep > step.num;
-            const isActive = isResultPage ? false : currentStep === step.num;
-
-            return (
-              <div key={step.num} className="relative flex items-center gap-5 p-4 w-full shrink-0">
-                <div className={`absolute inset-0 bg-slate-50 border border-gray-200/60 shadow-[0_2px_10px_rgba(0,0,0,0.03)] rounded-[20px] z-0 transition-opacity duration-300 pointer-events-none ${
-                  isActive ? 'opacity-100' : 'opacity-0'
-                }`} />
-                
-                <div className={`relative z-20 w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
-                  isPassed ? 'bg-[#1e4a38] border-2 border-[#1e4a38] text-white shadow-sm' 
-                    : isActive ? 'bg-white border-2 border-[#1e4a38] text-gray-500' 
-                    : 'bg-white border-2 border-gray-200 text-gray-400' 
-                }`}>
-                  {isPassed ? <Check size={22} strokeWidth={3} /> : <step.icon size={22} strokeWidth={isActive ? 2.5 : 2} />}
-                </div>
-
-                <div className="relative z-20 flex flex-col">
-                  <span className={`text-[11px] font-extrabold tracking-widest mb-0.5 transition-colors duration-300 ${
-                    isActive ? 'text-[#1e4a38]' : isPassed ? 'text-gray-500' : 'text-gray-400'
-                  }`}>
-                    STEP {step.num}
-                  </span>
-                  <span className={`text-[16px] font-bold transition-colors duration-300 ${
-                    isActive ? 'text-gray-900' : isPassed ? 'text-gray-700' : 'text-gray-400'
-                  }`}>
-                    {step.title}
-                  </span>
-                </div>
-              </div>
-            );
-          })}
         </div>
+
       </div>
 
-      {/* 우측 콘텐츠 영역 */}
-      <div className="flex-1 flex flex-col w-full relative min-h-0 justify-between">
+      {/* 🟢 우측 콘텐츠 영역: justify-between 구조로 바닥 버튼을 정렬하면서 타이틀 여백 확보 */}
+      <div className="flex-1 flex flex-col w-full justify-between relative min-h-0">
+        
+        {/* 🟢 상단 타이틀: pt-4 md:pt-6 패딩을 주어 왼쪽 흰색 카드 윗면보다 살짝 여유롭게 내려와 안착 (스텝 1의 예쁜 마진 고정) */}
         {!isResultPage && (title || description) && (
-          <div className="mb-4 md:mb-6 mt-0 pt-3 md:pt-6 shrink-0">
+          <div className="mb-4 pt-4 md:pt-6 shrink-0">
             <h2 className="text-[28px] md:text-[34px] font-bold text-gray-900 mb-3 leading-[1.1] drop-shadow-sm break-keep tracking-tight">
               {title}
             </h2>
@@ -110,9 +121,8 @@ export default function StepLayout({
           </div>
         )}
 
-        {/* 🟢 [버그 완벽 해결] overflow-hidden을 삭제하고 overflow-visible 및 안전 여백(py-3)을 주어 
-            마우스를 올렸을 때 버튼이 위로 떠올라도 윗면이 절대 잘리지 않게 수리함 */}
-        <div className="w-full flex-1 flex flex-col justify-center min-h-0 overflow-visible py-3">
+        {/* 중앙 알맹이 영역 */}
+        <div className="w-full flex-1 flex flex-col justify-center min-h-0 py-2">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentStep}
@@ -120,16 +130,16 @@ export default function StepLayout({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="w-full flex flex-col justify-center min-h-0 overflow-visible py-2"
+              className="w-full flex flex-col justify-center"
             >
               {children}
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* 하단 이전/다음 네비게이션 버튼 바 */}
+        {/* 하단 버튼 내비게이션: 항상 좌측 흰색 카드 바닥선과 1:1로 칼같이 떨어짐 */}
         {!isResultPage && (
-          <div className="mt-auto pt-6 md:pt-8 flex justify-between items-center w-full shrink-0">
+          <div className="pt-6 flex justify-between items-center w-full shrink-0">
             <button 
               onClick={onPrev}
               className={`px-8 py-4 rounded-full font-bold text-gray-700 bg-white/80 backdrop-blur-sm border border-gray-300 hover:bg-white transition-colors shadow-sm ${currentStep === 1 ? 'invisible' : ''}`}
@@ -152,6 +162,7 @@ export default function StepLayout({
           </div>
         )}
       </div>
+
     </div>
   );
 }

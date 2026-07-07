@@ -1,9 +1,8 @@
 import React from 'react';
 import { useFlowStore } from '../store/useFlowStore';
 import { motion, type Variants } from 'framer-motion';
-import { Download, Share2, RotateCcw, Sparkles } from 'lucide-react';
+import { Download, Share2, RotateCcw } from 'lucide-react';
 
-// 🟢 [개선 3] 영어 ID -> 사용자 선택 한글 라벨 완벽 매핑 딕셔너리
 const VIBE_MAP: Record<string, string> = {
   bright: '밝고 긍정적인', calm: '차분하고 단아한', natural: '자연스럽고 편안한', soft: '부드럽고 따뜻한',
   mystic: '신비롭고 매력적인', trendy: '세련되고 트렌디한', strong: '강인하고 멋진', lovely: '사랑스럽고 귀여운',
@@ -20,47 +19,61 @@ const NATURE_MAP: Record<string, string> = {
   mountain: '산', sea: '바다', river: '강', forest: '숲',
 };
 
-// 유저 선택 속성에 따른 파스텔 톤 컬러 추출
-const getDynamicPastelColor = (vibe: string | null, personality: string | null): string => {
-  const colorMap: Record<string, string> = {
-    bright: '#fecaca', serene: '#bfdbfe', comfortable: '#bbf7d0', warm: '#ddd6fe',
-    mystic: '#c7d2fe', trendy: '#fde047', strong: '#cbd5e1', lovely: '#fbcfe8',
-    considerate: '#fecdd3', dependable: '#a7f3d0', inquisitive: '#a5b4fc', enterprising: '#facc15',
-    prudent: '#7dd3fc', upright: '#fed7aa', sensitive: '#f472b6',
-  };
-  return colorMap[vibe || ''] || colorMap[personality || ''] || '#cbd5e1';
+// Step 1~4 실제 선택 옵션에 따른 테두리 파스텔 Hex 컬러 매핑
+const STEP_COLOR_MAP: Record<string, string> = {
+  male: '#bae6fd',
+  female: '#fbcfe8',
+  neutral: '#e2e8f0',
+  bright: '#fecaca',
+  radiant: '#ffe880',
+  calm: '#bfdbfe',
+  prudent: '#bfdbfe',
+  natural: '#cce2cb',
+  genuine: '#cce2cb',
+  soft: '#c4bee2',
+  whimsical: '#c4bee2',
+  mystic: '#c7d2fe',
+  inquisitive: '#c7d2fe',
+  trendy: '#ffe880',
+  enterprising: '#ffe0b2',
+  strong: '#cbd5e1',
+  dependable: '#cbd5e1',
+  lovely: '#ffc5bf',
+  considerate: '#ffc5bf',
+  upright: '#fcd5ce',
+  sensitive: '#fad2e1',
+  spring: '#fcd5ce',
+  summer: '#ffe880',
+  autumn: '#ffe0b2',
+  winter: '#bfdbfe',
+  mountain: '#cbd5e1',
+  sea: '#c7d2fe',
+  river: '#b7d7e8',
+  forest: '#cce2cb',
 };
 
-// 🟢 [개선 3] 선택한 각 키워드에 맞춘 한국어 파스텔 해시태그 칩 생성
+// 🟢 [요구사항 2 해결 helper] Hex 코드를 받아 원하는 투명도의 RGBA 배경색으로 변환
+const hexToRgba = (hex: string, alpha: number): string => {
+  const cleanHex = hex.replace('#', '');
+  const r = parseInt(cleanHex.substring(0, 2), 16);
+  const g = parseInt(cleanHex.substring(2, 4), 16);
+  const b = parseInt(cleanHex.substring(4, 6), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
+
 const getKeywordTags = (gender: string | null, vibe: string | null, personality: string | null, seasonNature: string | null) => {
   const tags = [];
-  if (gender === 'male') tags.push({ text: '남성', bg: 'bg-blue-50 border-blue-200/60 text-blue-700' });
-  else if (gender === 'female') tags.push({ text: '여성', bg: 'bg-rose-50 border-rose-200/60 text-rose-700' });
-  else if (gender === 'neutral') tags.push({ text: '성별무관', bg: 'bg-slate-50 border-slate-200/60 text-slate-700' });
+  if (gender === 'male') tags.push({ text: '남성', color: STEP_COLOR_MAP.male });
+  else if (gender === 'female') tags.push({ text: '여성', color: STEP_COLOR_MAP.female });
+  else if (gender === 'neutral') tags.push({ text: '성별무관', color: STEP_COLOR_MAP.neutral });
 
-  if (vibe && VIBE_MAP[vibe]) tags.push({ text: VIBE_MAP[vibe], bg: 'bg-rose-50 border-rose-200/60 text-rose-700' });
-  if (personality && PERSONALITY_MAP[personality]) tags.push({ text: PERSONALITY_MAP[personality], bg: 'bg-amber-50 border-amber-200/60 text-amber-800' });
-  if (seasonNature && NATURE_MAP[seasonNature]) tags.push({ text: NATURE_MAP[seasonNature], bg: 'bg-emerald-50 border-emerald-200/60 text-emerald-700' });
+  if (vibe && VIBE_MAP[vibe]) tags.push({ text: VIBE_MAP[vibe], color: STEP_COLOR_MAP[vibe] || '#e2e8f0' });
+  if (personality && PERSONALITY_MAP[personality]) tags.push({ text: PERSONALITY_MAP[personality], color: STEP_COLOR_MAP[personality] || '#e2e8f0' });
+  if (seasonNature && NATURE_MAP[seasonNature]) tags.push({ text: NATURE_MAP[seasonNature], color: STEP_COLOR_MAP[seasonNature] || '#e2e8f0' });
   return tags;
 };
 
-// 모서리 꾸밈 수채화 SVG 일러스트
-const DynamicCornerIllustration = ({ seasonNature, color }: { seasonNature: string | null; color: string }) => {
-  return (
-    <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-sm transition-all duration-700" style={{ filter: 'blur(0.8px)' }}>
-      {seasonNature === 'spring' && <path d="M100,20 C120,60 160,80 180,100 C160,120 120,140 100,180 C80,140 40,120 20,100 C40,80 80,60 100,20 Z" fill={color} />}
-      {seasonNature === 'summer' && <circle cx="100" cy="100" r="70" fill={color} />}
-      {seasonNature === 'autumn' && <path d="M100,10 L130,70 L190,80 L145,120 L160,180 L100,150 L40,180 L55,120 L10,80 L70,70 Z" fill={color} />}
-      {seasonNature === 'winter' && <path d="M100,15 L115,85 L185,100 L115,115 L100,185 L85,115 L15,100 L85,85 Z" fill={color} />}
-      {seasonNature === 'mountain' && <path d="M20,180 L80,60 L120,120 L160,40 L190,180 Z" fill={color} />}
-      {seasonNature === 'sea' && <path d="M10,140 Q55,90 100,140 T190,140 L190,190 L10,190 Z" fill={color} />}
-      {seasonNature === 'river' && <path d="M20,40 Q100,100 60,180 C120,160 160,80 180,40 Z" fill={color} />}
-      {(!seasonNature || seasonNature === 'forest') && <path d="M100,20 C150,70 170,120 100,180 C30,120 50,70 100,20 Z" fill={color} />}
-    </svg>
-  );
-};
-
-// 남성 / 성별무관 공용 전통 회문(回紋) 코너 장식
+// 전통 코너 장식 SVG 에셋
 const FretCorner = () => {
   const brackets = [
     { path: 'M7 37 V7 H37', width: 1.6, opacity: 1 },
@@ -88,7 +101,6 @@ const FretCorner = () => {
   );
 };
 
-// 여성 전용 매화 코너 일러스트
 const BlossomCorner = () => {
   const flowers = [
     { cx: 11, cy: 8, r: 3.8 }, { cx: 22, cy: 4, r: 2.6 }, { cx: 3, cy: 17, r: 2.6 },
@@ -122,7 +134,6 @@ const BlossomCorner = () => {
   );
 };
 
-// 남성 전용 대나무 일러스트
 const BambooAccent = () => (
   <svg viewBox="0 0 40 90" fill="none" className="w-full h-full overflow-visible">
     <path d="M9 88 C6 70 11 54 7 37 C5 24 9 13 15 2" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" fill="none" opacity={0.55} />
@@ -139,7 +150,6 @@ const BambooAccent = () => (
   </svg>
 );
 
-// 성별무관 전용 구름 일러스트
 const CloudMotif = () => (
   <svg viewBox="0 0 26 16" fill="none" className="w-full h-full overflow-visible">
     <path d="M3 12.5 Q0.4 12.3 0.5 9.3 Q0.6 6.3 3.7 6.5 Q3.8 3 7.2 2.8 Q9.2 0.5 12.2 2 Q14.7 0.1 17.2 2.1 Q20.8 0.9 22 4.2 Q25.4 4.1 25 7.6 Q25.8 10.7 22.2 11.4 Q20.1 13.3 17 11.8 Q14 13.7 10.9 11.8 Q7.3 13.7 4.7 11.6 Q3.7 12.6 3 12.5 Z" stroke="currentColor" strokeWidth={0.85} fill="currentColor" fillOpacity={0.12} />
@@ -233,10 +243,8 @@ const cardVariants: Variants = {
 
 export default function Step5Result() {
   const { gender, vibe, personality, seasonNature, resetFlow } = useFlowStore();
-  const dynamicColor = getDynamicPastelColor(vibe, personality);
   const keywordTags = getKeywordTags(gender, vibe, personality, seasonNature);
 
-  // 성별별 아이콘 및 텍스트 색상 분기
   const genderColorClass = 
     gender === 'male' ? 'bg-blue-400 text-blue-500' : 
     gender === 'female' ? 'bg-pink-400 text-pink-500' : 'bg-slate-400 text-slate-500';
@@ -248,7 +256,7 @@ export default function Step5Result() {
       animate="visible"
       className="w-full h-full flex flex-col lg:flex-row gap-5 lg:gap-6 items-stretch justify-center min-h-0 overflow-hidden"
     >
-      {/* <좌측 영역 - 2/3 차지> 메인 카드 본체 */}
+      {/* 메인 결과 카드 영역 */}
       <motion.div 
         variants={cardVariants}
         className="flex-1 lg:w-2/3 bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[30px] shadow-xl flex flex-col justify-between relative overflow-hidden min-h-0"
@@ -257,38 +265,33 @@ export default function Step5Result() {
           
           <TraditionalGenderBorder gender={gender} />
 
-          {/* 🟢 [개선 4] 수채화 일러스트를 테두리(inset-4) 안쪽 컨테이너로 안착 및 약간 안쪽으로 이동 */}
-          <div className="absolute inset-4 md:inset-5 pointer-events-none overflow-hidden rounded-lg z-0">
-            <div className="absolute -top-4 -right-4 w-48 h-48 md:w-56 md:h-56 opacity-35">
-              <DynamicCornerIllustration seasonNature={seasonNature} color={dynamicColor} />
-            </div>
-            <div className="absolute -bottom-4 -left-4 w-48 h-48 md:w-56 md:h-56 opacity-35 rotate-180">
-              <DynamicCornerIllustration seasonNature={seasonNature} color={dynamicColor} />
-            </div>
-          </div>
-
-          <div className="relative z-10 flex flex-col min-h-0 flex-1 justify-around items-center text-center my-auto px-10 py-5 md:py-6">
+          {/* 내부 콘텐츠 컨테이너: 상/하 고정 패딩을 최소화하고 스페이서(my-auto)를 통해 각 섹션 간의 여백을 1:1로 완벽 분배 */}
+          <div className="relative z-10 flex flex-col min-h-0 flex-1 justify-between items-center text-center px-12 md:px-16 py-8 md:py-10">
             
-            {/* 🟢 [개선 1] 상단 라벨 위치를 더 아래로 내려 이름 영역과 자연스럽게 붙임 */}
-            <div className="inline-flex items-center gap-1.5 bg-[#1e4a38]/10 text-[#1e4a38] px-4.5 py-1.5 rounded-full text-xs md:text-sm font-extrabold tracking-wider shadow-2xs mt-4 md:mt-6 mb-1 shrink-0">
-              <Sparkles size={14} />
-              <span>당신을 위한 한글 이름</span>
+            {/* 🟢 [요구사항 4 해결] 상단 테두리선과 이름 블록 사이의 정중앙에 라벨이 오도록 my-auto 스페이서 적용 */}
+            <div className="w-full flex justify-center items-center my-auto">
+              <span className="text-xs md:text-sm font-extrabold tracking-widest text-gray-400 uppercase">
+                당신의 한글 이름
+              </span>
             </div>
 
-            {/* 이름 및 한자 영역 */}
-            <div className="flex flex-col items-center justify-center my-1 md:my-2 shrink-0">
+            {/* 이름 및 한자 블록 */}
+            <div className="flex flex-col items-center justify-center shrink-0">
               <div className="relative inline-flex items-baseline justify-center">
-                <h2 className="text-7xl md:text-8xl font-extrabold text-gray-900 tracking-tight drop-shadow-sm text-center">
+                {/* 🟢 [요구사항 1 해결] tracking-[0.12em]을 부여하여 글자를 고급스럽게 벌리고, 오른쪽으로 늘어난 자간만큼 왼쪽 패딩(pl-[0.12em])을 주어 시각적 정중앙을 완벽히 일치시킴 */}
+                <h2 className="text-7xl md:text-8xl font-extrabold text-gray-900 tracking-[0.12em] pl-[0.12em] drop-shadow-sm text-center leading-none">
                   {MOCK_RESULT.hangul}
                 </h2>
-                <span className="absolute left-full pl-3.5 md:pl-5 bottom-0 pb-[3px] md:pb-[6px] text-4xl md:text-5xl font-serif font-normal text-gray-400 tracking-widest whitespace-nowrap">
+                <span className="absolute left-full pl-3 md:pl-4 bottom-0 text-3xl md:text-4xl font-serif font-normal text-gray-400 tracking-widest whitespace-nowrap leading-none">
                   {MOCK_RESULT.hanja}
                 </span>
               </div>
+            </div>
 
-              {/* 🟢 [개선 2] 이름과 뜻 사이의 name_under_icon.svg (성별 동적 컬러 투영) */}
+            {/* 🟢 [요구사항 2 해결] 이름과 뜻 사이의 100% 정중앙에 아이콘이 위치하도록 위아래 여백 균등화(my-auto) */}
+            <div className="w-full flex justify-center items-center my-auto">
               <div 
-                className={`w-56 md:w-64 h-8 md:h-7 mt-4 mb-4 transition-colors duration-500 opacity-80 ${genderColorClass.split(' ')[0]}`}
+                className={`w-56 md:w-64 h-6 md:h-7 transition-colors duration-500 opacity-80 ${genderColorClass.split(' ')[0]}`}
                 style={{
                   maskImage: "url('icons/Common/name_under_icon.svg')",
                   WebkitMaskImage: "url('icons/Common/name_under_icon.svg')",
@@ -303,8 +306,9 @@ export default function Step5Result() {
             </div>
 
             {/* 뜻 풀이 및 시사문 */}
-            <div className="flex flex-col items-center gap-2.5 max-w-lg mx-auto shrink-0 my-1">
-              <p className="text-base md:text-xl font-bold text-gray-500 tracking-wide">
+            <div className="flex flex-col items-center gap-2 max-w-lg mx-auto shrink-0">
+              {/* 🟢 [요구사항 3 해결] 연회색이었던 '뜻' 설명 문구를 또렷한 검은색(text-gray-900 font-bold)으로 변경 */}
+              <p className="text-xs md:text-sm font-bold text-gray-900 tracking-wider">
                 뜻 : {MOCK_RESULT.shortMeaning}
               </p>
               <p className="text-2xl md:text-3xl font-serif font-extrabold text-[#1e4a38] leading-relaxed break-keep drop-shadow-sm">
@@ -312,22 +316,28 @@ export default function Step5Result() {
               </p>
             </div>
 
-            {/* 🟢 [개선 3] 하단 키워드 해시태그 (완벽한 한글 변환 출력) */}
-            <div className="flex flex-col items-center gap-2.5 w-full shrink-0 mt-2">
+            {/* 고유 키워드 해시태그 칩 영역 */}
+            <div className="flex flex-col items-center gap-2 w-full shrink-0 my-auto">
               <span className="text-[11px] md:text-xs font-bold text-gray-400 tracking-widest uppercase">
                 이름에 담긴 고유 키워드
               </span>
-              <div className="flex flex-wrap justify-center items-center gap-2 max-w-xl">
+              <div className="flex flex-wrap justify-center items-center gap-2 max-w-lg">
                 {keywordTags.map((tag, idx) => (
                   <span 
                     key={idx}
-                    className={`px-3.5 py-1.5 md:py-2 rounded-2xl border text-xs md:text-sm font-extrabold shadow-sm transition-transform hover:-translate-y-0.5 ${tag.bg}`}
+                    /* 🟢 [요구사항 2 해결] 테두리는 100% 선명한 색상, 내부 배경은 22% 투명도를 주어 은은하게 연출하고 글씨는 투명도 없이 진한 먹색(text-gray-900) 적용 */
+                    style={{ 
+                      backgroundColor: hexToRgba(tag.color, 0.22), 
+                      borderColor: tag.color 
+                    }}
+                    className="px-3.5 py-1.5 rounded-2xl border text-gray-900 text-xs md:text-sm font-extrabold shadow-2xs transition-transform hover:-translate-y-0.5"
                   >
                     #{tag.text}
                   </span>
                 ))}
               </div>
             </div>
+
           </div>
         </div>
 
@@ -354,12 +364,8 @@ export default function Step5Result() {
         </div>
       </motion.div>
 
-      {/* =========================================================================
-          🟢 [개선 5] <우측 영역 - 1/3 차지> 상단/하단 모두 디스플레이 배너 광고 영역으로 변경
-          ========================================================================= */}
+      {/* 우측 광고 영역 */}
       <div className="w-full lg:w-[340px] xl:w-[360px] flex flex-col gap-5 shrink-0 min-h-0 overflow-hidden">
-        
-        {/* 상단 광고 박스 */}
         <div className="flex-1 bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[26px] p-4 shadow-xl flex flex-col justify-center items-center relative overflow-hidden min-h-[140px]">
           <div className="absolute inset-0 bg-slate-50/50 pointer-events-none" />
           <div className="relative z-10 flex flex-col items-center justify-center gap-1">
@@ -375,7 +381,6 @@ export default function Step5Result() {
           </div>
         </div>
 
-        {/* 하단 광고 박스 */}
         <div className="h-[240px] bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[26px] p-4 shadow-xl flex flex-col justify-center items-center relative overflow-hidden shrink-0">
           <div className="absolute inset-0 bg-slate-50/50 pointer-events-none" />
           <div className="relative z-10 flex flex-col items-center justify-center gap-1">
@@ -390,7 +395,6 @@ export default function Step5Result() {
             </span>
           </div>
         </div>
-
       </div>
     </motion.div>
   );
