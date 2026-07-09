@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react'
 import { useFlowStore } from '../store/useFlowStore';
+import { getRecommendedName } from '../utils/nameMatcher';
 import { motion, type Variants } from 'framer-motion';
 import { Download, Share2, RotateCcw } from 'lucide-react';
 
@@ -199,13 +200,6 @@ const TraditionalGenderBorder = ({ gender }: { gender: string | null }) => {
   );
 };
 
-const MOCK_RESULT = {
-  hangul: '서온',
-  hanja: '舒溫',
-  shortMeaning: '상서롭고 따뜻한',
-  poeticQuote: '“ 따뜻한 마음으로 사람들을 비추는 빛 ”',
-};
-
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
@@ -223,6 +217,23 @@ export default function Step5Result() {
   const genderColorClass = 
     gender === 'male' ? 'bg-blue-400 text-blue-500' : 
     gender === 'female' ? 'bg-pink-400 text-pink-500' : 'bg-slate-400 text-slate-500';
+
+  const resultName = useMemo(() => {
+    return getRecommendedName(gender, vibe, personality, seasonNature);
+  }, [gender, vibe, personality, seasonNature]);
+
+  const isPureKorean = resultName.hangul === resultName.hanja;
+
+  const badgeTheme = useMemo(() => {
+    switch (gender) {
+      case 'male': 
+        return 'text-blue-500 border-blue-300/60 bg-blue-50/50';
+      case 'female': 
+        return 'text-pink-500 border-pink-300/60 bg-pink-50/50';
+      default: 
+        return 'text-slate-500 border-slate-300/60 bg-slate-50/50';
+    }
+  }, [gender]);
 
   return (
     // 🟢 [이슈 2 해결] StepLayout.tsx와 완벽하게 동일한 여백(gap-6 md:gap-8 lg:gap-12)을 사용하여 레이아웃 밀림 방지
@@ -243,26 +254,35 @@ export default function Step5Result() {
 
           <div className="relative z-10 flex flex-col min-h-0 flex-1 justify-between items-center text-center px-6 md:px-12 py-6 md:py-8 gap-4 md:gap-6">
             
-            <div className="w-full flex justify-center items-center my-auto pt-2 md:pt-0">
-              <span className="text-[10px] md:text-sm font-extrabold tracking-widest text-gray-400 uppercase">
-                당신의 한글 이름
+            {/* 1. 상단 타이틀 문구: 구조는 그대로 두고, 상단 테두리와의 간격만 좁히기 위해 mt 수치 축소 */}
+            <div className="w-full flex flex-col justify-center items-center mt-2 md:mt-3 shrink-0 opacity-60">
+              <span className="text-xs md:text-sm font-serif font-bold tracking-[0.2em] text-gray-400">
+                나의 한글 이름
               </span>
             </div>
 
-            <div className="flex flex-col items-center justify-center shrink-0">
-              <div className="relative inline-flex items-baseline justify-center mt-2 md:mt-0">
-                <h2 className="text-5xl sm:text-6xl md:text-8xl font-extrabold text-gray-900 tracking-[0.12em] pl-[0.12em] drop-shadow-sm text-center leading-none">
-                  {MOCK_RESULT.hangul}
+            {/* 2. 메인 이름 출력부: 기존 코드 100% 그대로 유지 */}
+            <div className="flex justify-center items-baseline shrink-0 w-full relative">
+              <div className="inline-flex items-baseline justify-center relative -translate-x-0 sm:-translate-x-0.5 md:-translate-x-1">
+                <h2 className="text-5xl sm:text-6xl md:text-7xl font-KimSaeng text-gray-900 tracking-[0.3em] pl-[0.3em] drop-shadow-sm text-center leading-none">
+                  {resultName.hangul}
                 </h2>
-                <span className="absolute left-full pl-2 md:pl-4 bottom-0 text-xl sm:text-2xl md:text-4xl font-serif font-normal text-gray-400 tracking-widest whitespace-nowrap leading-none">
-                  {MOCK_RESULT.hanja}
-                </span>
+                {!isPureKorean ? (
+                  <span className="absolute left-full pl-2 md:pl-4 bottom-0 text-xl sm:text-2xl md:text-4xl font-serif font-normal text-gray-400 tracking-widest whitespace-nowrap leading-none">
+                    {resultName.hanja}
+                  </span>
+                ) : (
+                  <span className={`absolute left-full ml-2 md:ml-3 bottom-1 md:bottom-1.5 text-[10px] md:text-xs font-serif font-bold tracking-widest border px-2 py-0.5 rounded-md whitespace-nowrap leading-none shadow-xs transition-colors duration-500 ${badgeTheme}`}>
+                    순우리말
+                  </span>
+                )}
               </div>
             </div>
 
-            <div className="w-full flex justify-center items-center my-auto">
+            {/* 3. 하단 꽃받침 장식: 영역 배치를 해치던 'my-auto'를 제거하여, 이름의 위/아래 간격을 완벽하게 대칭으로 통일 */}
+            <div className="w-full flex justify-center items-center">
               <div 
-                className={`w-36 sm:w-48 md:w-64 h-4 md:h-7 transition-colors duration-500 opacity-80 ${genderColorClass.split(' ')[0]}`}
+                className={`w-40 sm:w-56 md:w-72 h-5 md:h-8 transition-colors duration-500 opacity-80 ${genderColorClass.split(' ')[0]}`}
                 style={{
                   maskImage: "url('icons/Common/name_under_icon.svg')", WebkitMaskImage: "url('icons/Common/name_under_icon.svg')",
                   maskRepeat: 'no-repeat', WebkitMaskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskPosition: 'center',
@@ -271,25 +291,22 @@ export default function Step5Result() {
               />
             </div>
 
-            <div className="flex flex-col items-center gap-2 w-full max-w-[90%] md:max-w-lg mx-auto shrink-0 px-2">
-              <p className="text-xs md:text-sm font-bold text-gray-900 tracking-wider">
-                뜻 : {MOCK_RESULT.shortMeaning}
-              </p>
-              <p className="text-lg sm:text-xl md:text-2xl font-serif font-extrabold text-[#1e4a38] leading-[1.6] break-keep drop-shadow-sm w-full">
-                {MOCK_RESULT.poeticQuote}
-              </p>
-            </div>
+            
+            <p className="text-xs md:text-sm font-bold text-gray-900 tracking-wider shrink-0">
+              뜻 : {resultName.shortMeaning.ko}
+            </p>
+            <p className="text-lg sm:text-xl md:text-2xl font-serif font-extrabold text-[#1e4a38] leading-[1.6] break-keep drop-shadow-sm w-full max-w-[90%] md:max-w-lg mx-auto shrink-0 px-2">
+              {resultName.poeticQuote.ko}
+            </p>
+            
 
-            <div className="flex flex-col items-center gap-2 w-full shrink-0 my-auto pb-2 md:pb-0">
-              <span className="text-[10px] md:text-xs font-bold text-gray-400 tracking-widest uppercase">
-                이름에 담긴 고유 키워드
-              </span>
-              <div className="flex flex-wrap justify-center items-center gap-1.5 md:gap-2 max-w-lg">
+            <div className="w-full shrink-0">
+              <div className="flex flex-wrap justify-center items-center gap-2 md:gap-2.5 max-w-lg md:max-w-3xl mx-auto px-4">
                 {keywordTags.map((tag, idx) => (
                   <span 
                     key={idx}
                     style={{ backgroundColor: hexToRgba(tag.color, 0.22), borderColor: tag.color }}
-                    className="px-2.5 py-1 md:px-3.5 md:py-1.5 rounded-2xl border text-gray-900 text-[10px] md:text-sm font-extrabold shadow-2xs transition-transform hover:-translate-y-0.5"
+                    className="px-3 py-1.5 md:px-4 md:py-2 rounded-full border text-gray-900 text-xs md:text-sm font-extrabold shadow-2xs transition-transform hover:-translate-y-0.5 duration-300 whitespace-nowrap"
                   >
                     #{tag.text}
                   </span>
