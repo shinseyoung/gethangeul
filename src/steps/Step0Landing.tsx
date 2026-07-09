@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { User, BookOpen, Share2, ShieldCheck } from "lucide-react";
 
 interface Step0Props {
   onNext: () => void;
@@ -9,10 +8,26 @@ interface Step0Props {
 // 📁 3. src/steps/Step0Landing.tsx
 // =====================================================================
 const FEATURES = [
-  { icon: User, title: "나만을 위한 맞춤 이름", desc: "당신의 성격과 가치관을\n반영한 특별한 한글 이름입니다." },
-  { icon: BookOpen, title: "이름 속에 담긴 의미", desc: "글자가 가진\n아름다운 의미를 알려드려요." },
-  { icon: Share2, title: "공유하고 간직하는 경험", desc: "이름과 의미를 이미지로\n다운로드하고 공유해보세요." },
-  { icon: ShieldCheck, title: "안심하고 사용하세요", desc: "입력하신 정보는 안전하게 보호되며,\n저장되지 않습니다." },
+  { 
+    iconSrc: "/icons/Landing/user_icon.svg", 
+    title: "나만을 위한 맞춤 이름", 
+    desc: "당신의 성격과 가치관을\n반영한 특별한 한글 이름입니다." 
+  },
+  { 
+    iconSrc: "/icons/Landing/book_icon.svg", 
+    title: "이름 속에 담긴 의미", 
+    desc: "글자가 가진\n아름다운 의미를 알려드려요." 
+  },
+  { 
+    iconSrc: "/icons/Landing/share_icon.svg", 
+    title: "공유하고 간직하는 경험", 
+    desc: "이름과 의미를 이미지로\n다운로드하고 공유해보세요." 
+  },
+  { 
+    iconSrc: "/icons/Landing/shield_icon.svg", 
+    title: "안심하고 사용하세요", 
+    desc: "입력하신 정보는 안전하게 보호되며,\n저장되지 않습니다." 
+  },
 ];
 
 export default function Step0Landing({ onNext }: Step0Props) {
@@ -103,7 +118,6 @@ export default function Step0Landing({ onNext }: Step0Props) {
             <div className="border border-gray-200/80 rounded-2xl bg-white/40 backdrop-blur-sm overflow-hidden shadow-sm shrink-0">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:gap-y-0 lg:divide-x divide-gray-200/70">
                 {FEATURES.map((f, i) => {
-                  const Icon = f.icon;
                   return (
                     <div
                       key={i}
@@ -116,9 +130,14 @@ export default function Step0Landing({ onNext }: Step0Props) {
                       }`}
                       style={{ transitionDelay: `${200 + i * 80}ms` }}
                     >
-                      <div className="w-9 h-9 rounded-full bg-gray-400/80 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
-                        <Icon size={16} className="text-white" strokeWidth={2} />
-                      </div>
+                      {/* 🛠️ 개선: 불필요한 div 래퍼를 걷어내고 img 태그로 직관적으로 렌더링 */}
+                      <img 
+                        src={f.iconSrc} 
+                        alt={f.title} 
+                        draggable={false} // 드래그 방지
+                        className="w-10 h-10 object-contain shrink-0 mt-0.5 sm:mt-0 select-none pointer-events-none border-0 outline-none" 
+                        // drop-shadow를 완전히 제거하고, Step 1처럼 상호작용(터치/선택)을 막는 방어 코드를 추가했습니다.
+                      />
                       <div>
                         <p className="text-left text-[13px] md:text-[14px] font-bold text-gray-800 mb-1 leading-snug">
                           {f.title}

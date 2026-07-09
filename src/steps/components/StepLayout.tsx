@@ -43,11 +43,13 @@ export default function StepLayout({
         <div className="pb-4 border-b border-gray-100 shrink-0">
           <div className="flex items-center gap-2 text-[#1e4a38]">
             <span className="text-[11px] font-extrabold tracking-widest uppercase bg-[#1e4a38]/10 px-2.5 py-1 rounded-md">
-              HANGEUL NAME
+              진행 단계
             </span>
           </div>
-          <p className="text-[13px] text-gray-400 mt-2 font-medium break-keep">
-            당신의 고유한 성향을 분석하여 단 하나뿐인 아름다운 우리말 이름을 짓습니다.
+          <p className="text-[13px] text-gray-400 mt-2 font-medium break-keep ml-[2.5px]">
+            당신의 고유한 성향을 분석하여 
+            <br />
+            단 하나뿐인 아름다운 우리말 이름을 짓습니다.
           </p>
         </div>
 

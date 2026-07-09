@@ -28,7 +28,7 @@ export const Header = () => {
           <span className="font-KimSaeng text-xl md:text-[30px] text-[#1e4a38] tracking-widest leading-none mt-1 whitespace-nowrap">
             나의 한글 이름 짓기
           </span>
-          <span className="text-[9px] md:text-[10px] text-[#1e4a38]/60 font-sans font-bold tracking-[0.2em] uppercase whitespace-nowrap mt-0.5 md:mt-1">
+          <span className="text-[9px] md:text-[10px] text-[#1e4a38]/60 font-sans font-bold tracking-[0.2em] uppercase whitespace-nowrap mt-0.5 md:mt-1 ml-[2.5px]">
             Get Your Hangeul Name
           </span>
         </div>
@@ -41,10 +41,6 @@ export const Header = () => {
             className="flex items-center gap-1 md:gap-2 px-2.5 py-1.5 md:px-4 md:py-2 rounded-full bg-gray-50/80 hover:bg-gray-100 border border-gray-200/60 transition-all text-[#1e4a38]"
           >
             <img src="/icons/language_icon.svg" alt="Language" className="w-5 h-5 opacity-80 shrink-0" />
-            
-            <span className="hidden md:block text-[14px] font-bold font-sans mb-[1px]">
-              {currentLang}
-            </span>
             
             <ChevronDown size={14} className={`transition-transform duration-200 opacity-60 shrink-0 ${langOpen ? "rotate-180" : ""}`} />
           </button>

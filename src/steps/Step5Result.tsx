@@ -3,6 +3,7 @@ import { useFlowStore } from '../store/useFlowStore';
 import { getRecommendedName } from '../utils/nameMatcher';
 import { motion, type Variants } from 'framer-motion';
 import { Download, Share2, RotateCcw } from 'lucide-react';
+import { useImageShare } from '../hooks/useImageShare';
 
 const VIBE_MAP: Record<string, string> = {
   bright: '밝고 긍정적인', calm: '차분하고 단아한', natural: '자연스럽고 편안한', soft: '부드럽고 따뜻한',
@@ -235,33 +236,39 @@ export default function Step5Result() {
     }
   }, [gender]);
 
+  // 커스텀 훅을 통해 로직 주입 (캡처 영역 레퍼런스와 저장/공유 핸들러 등)
+  const { captureRef, isSaving, isSharing, handleDownload, handleShare } = useImageShare(
+    `나의한글이름_${resultName.hangul}`
+  );
+
   return (
-    // 🟢 [이슈 2 해결] StepLayout.tsx와 완벽하게 동일한 여백(gap-6 md:gap-8 lg:gap-12)을 사용하여 레이아웃 밀림 방지
     <motion.div
       variants={containerVariants}
       initial="hidden"
       animate="visible"
       className="w-full flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-12 items-stretch justify-start lg:justify-center pt-4 lg:pt-0 min-h-0"
     >
-      {/* 🟢 [이슈 2 해결] 메인 결과 카드 영역: lg:w-2/3를 빼고 flex-1 w-full 적용 */}
       <motion.div 
         variants={cardVariants}
         className="flex-1 w-full bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[24px] md:rounded-[30px] shadow-xl flex flex-col justify-between relative overflow-hidden min-h-[550px] lg:min-h-0"
       >
-        <div className="flex-1 flex flex-col relative min-h-0 w-full">
+        {/* captureRef를 이름 카드 정보가 들어간 본문 영역을 타겟으로 지정합니다. */}
+        {/* bg-white를 추가하여 캡처 이미지 생성 시 투명 배경으로 인한 렌더링 오류를 차단합니다. */}
+        <div 
+          ref={captureRef}
+          className="flex-1 flex flex-col relative min-h-0 w-full bg-white"
+        >
           
           <TraditionalGenderBorder gender={gender} />
 
           <div className="relative z-10 flex flex-col min-h-0 flex-1 justify-between items-center text-center px-6 md:px-12 py-6 md:py-8 gap-4 md:gap-6">
             
-            {/* 1. 상단 타이틀 문구: 구조는 그대로 두고, 상단 테두리와의 간격만 좁히기 위해 mt 수치 축소 */}
             <div className="w-full flex flex-col justify-center items-center mt-2 md:mt-3 shrink-0 opacity-60">
               <span className="text-xs md:text-sm font-serif font-bold tracking-[0.2em] text-gray-400">
                 나의 한글 이름
               </span>
             </div>
 
-            {/* 2. 메인 이름 출력부: 기존 코드 100% 그대로 유지 */}
             <div className="flex justify-center items-baseline shrink-0 w-full relative">
               <div className="inline-flex items-baseline justify-center relative -translate-x-0 sm:-translate-x-0.5 md:-translate-x-1">
                 <h2 className="text-5xl sm:text-6xl md:text-7xl font-KimSaeng text-gray-900 tracking-[0.3em] pl-[0.3em] drop-shadow-sm text-center leading-none">
@@ -279,7 +286,6 @@ export default function Step5Result() {
               </div>
             </div>
 
-            {/* 3. 하단 꽃받침 장식: 영역 배치를 해치던 'my-auto'를 제거하여, 이름의 위/아래 간격을 완벽하게 대칭으로 통일 */}
             <div className="w-full flex justify-center items-center">
               <div 
                 className={`w-40 sm:w-56 md:w-72 h-5 md:h-8 transition-colors duration-500 opacity-80 ${genderColorClass.split(' ')[0]}`}
@@ -317,30 +323,38 @@ export default function Step5Result() {
           </div>
         </div>
 
-        {/* 하단 제어 버튼 바 (모바일 UI 대폭 수정) */}
+        {/* 캡처에 포함되지 않는 하단 제어 버튼 바 */}
         <div className="relative z-10 border-t border-gray-100 bg-white/40 backdrop-blur-xs py-4 px-4 md:py-5 md:px-8 flex flex-col md:flex-row items-center gap-3 md:justify-between shrink-0 w-full">
           <button 
             onClick={resetFlow}
-            className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-3.5 md:py-3 rounded-[16px] md:rounded-full text-sm font-bold text-gray-600 bg-gray-100/80 hover:bg-gray-200 transition-colors shrink-0"
+            disabled={isSaving || isSharing}
+            className={`w-full md:w-auto flex items-center justify-center gap-2 px-5 py-3.5 md:py-3 rounded-[16px] md:rounded-full text-sm font-bold text-gray-600 bg-gray-100/80 transition-colors shrink-0 ${isSaving || isSharing ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-200'}`}
           >
             <RotateCcw size={15} strokeWidth={2.5} className="shrink-0" />
             <span>다시 하기</span>
           </button>
           
           <div className="flex items-center gap-2 w-full md:w-auto shrink-0">
-            <button className="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-3.5 md:px-5 md:py-3 rounded-[16px] md:rounded-full text-sm font-bold text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 transition-all shadow-sm">
+            <button 
+              onClick={handleShare}
+              disabled={isSaving || isSharing}
+              className={`flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-3.5 md:px-5 md:py-3 rounded-[16px] md:rounded-full text-sm font-bold text-gray-700 bg-white border border-gray-300 transition-all shadow-sm ${isSaving || isSharing ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50'}`}
+            >
               <Share2 size={15} className="shrink-0" />
-              <span>결과 공유</span>
+              <span>{isSharing ? '준비 중...' : '결과 공유'}</span>
             </button>
-            <button className="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-3.5 md:px-6 md:py-3 rounded-[16px] md:rounded-full text-sm font-bold text-white bg-[#1e4a38] hover:bg-[#143427] transition-all shadow-md hover:shadow-lg">
+            <button 
+              onClick={handleDownload}
+              disabled={isSaving || isSharing}
+              className={`flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-3.5 md:px-6 md:py-3 rounded-[16px] md:rounded-full text-sm font-bold text-white bg-[#1e4a38] transition-all shadow-md ${isSaving || isSharing ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#143427] hover:shadow-lg'}`}
+            >
               <Download size={15} className="shrink-0" />
-              <span>이미지 저장</span>
+              <span>{isSaving ? '저장 중...' : '이미지 저장'}</span>
             </button>
           </div>
         </div>
       </motion.div>
 
-      {/* 🟢 [이슈 2 해결] 우측 PC 광고 영역: w-[340px]로 고정하여 StepLayout의 좌측 패널 너비와 완벽 대칭 구조 형성 */}
       <div className="hidden lg:flex w-[340px] flex-col gap-5 shrink-0 min-h-0">
         <div className="flex-1 bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[26px] p-4 shadow-xl flex flex-col justify-center items-center relative overflow-hidden min-h-[140px]">
           <div className="absolute inset-0 bg-slate-50/50 pointer-events-none" />
@@ -361,7 +375,6 @@ export default function Step5Result() {
         </div>
       </div>
 
-      {/* 🟢 [이슈 1 해결] 모바일 전용 띠 광고를 Fixed 속성에서 해제하여, 결과창 하단-푸터 상단에 자연스럽게 삽입되도록 변경 */}
       <div className="lg:hidden w-full h-[80px] bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[20px] shadow-sm flex flex-col items-center justify-center shrink-0 mt-6 mb-8">
         <div className="flex items-center gap-2">
           <span className="text-[9px] font-extrabold tracking-widest text-white bg-gray-400 px-2 py-0.5 rounded">AD</span>
