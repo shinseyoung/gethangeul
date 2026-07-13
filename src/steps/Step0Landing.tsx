@@ -46,7 +46,7 @@ export default function Step0Landing({ onNext }: Step0Props) {
       style={{ fontFamily: "'Gowun Batang', serif" }} 
     >
       <div
-        className={`relative z-10 flex flex-col min-h-full w-full mx-auto transition-all duration-700 ease-out ${
+        className={`relative z-10 flex flex-col min-h-full w-full mx-auto transition-[opacity,transform] duration-700 ease-out ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
         }`}
       >
@@ -71,14 +71,14 @@ export default function Step0Landing({ onNext }: Step0Props) {
 
           {/* [개선 2] justify-between을 justify-center gap-10 md:gap-14 로 변경
               양끝으로 밀어붙여 압축(Squash)되는 현상을 막고, 확대 시 자연스럽게 요소 간 고정 거리를 유지합니다. */}
-          <div className="relative z-10 w-full lg:w-[1024px] xl:w-[1200px] mx-auto px-6 lg:px-4 py-8 md:py-12 flex flex-col flex-1 justify-center gap-10 md:gap-14">
+          <div className="relative z-10 w-full lg:w-[1024px] xl:w-[1200px] mx-auto px-6 lg:px-4 py-8 md:py-12 flex flex-col flex-1 justify-center gap-10 md:gap-14 transform-gpu will-change-transform backface-hidden">
             
             {/* 메인 텍스트 영역 (shrink-0을 부여해 확대 시 텍스트 영역 자체가 압축되는 것 방지) */}
-            <div className="flex flex-col max-w-[800px] shrink-0 items-start text-left">
+            <div className="flex flex-col max-w-[800px] shrink-0 items-start text-left min-h-[150px] sm:min-h-0">
               <h1 className="text-[32px] sm:text-[42px] md:text-[52px] font-bold text-gray-900 leading-[1.3] mb-4 md:mb-6 tracking-tight break-keep">
                 모든 한글 이름에는{' '}
-                <br className="block md:hidden" />
-                <span className="inline-block mt-1 md:mt-0">예쁜 이야기가 담겨 있습니다.</span>
+                <br className="block" />
+                <span>예쁜 이야기가 담겨 있습니다.</span>
               </h1>
 
               <p className="text-[16px] md:text-[20px] text-gray-500 mb-8 md:mb-10 leading-relaxed break-keep">
@@ -90,7 +90,7 @@ export default function Step0Landing({ onNext }: Step0Props) {
                   onClick={onNext}
                   onMouseEnter={() => setBtnHover(true)}
                   onMouseLeave={() => setBtnHover(false)}
-                  className={`relative inline-flex items-center gap-3 bg-[#1e4a38] text-white rounded-full text-[16px] md:text-[17px] font-bold shadow-lg overflow-hidden px-8 py-3.5 md:px-10 md:py-4 transition-all duration-200 ${
+                  className={`relative inline-flex items-center gap-3 bg-[#1e4a38] text-white rounded-full text-[16px] md:text-[17px] font-bold shadow-lg overflow-hidden px-8 py-3.5 md:px-10 md:py-4 transition-[opacity,transform] duration-200 ${
                     btnHover ? "bg-[#2a6350] -translate-y-[1px] shadow-xl" : ""
                   }`}
                 >
@@ -121,7 +121,7 @@ export default function Step0Landing({ onNext }: Step0Props) {
                   return (
                     <div
                       key={i}
-                      className={`flex items-start sm:items-center gap-3.5 px-5 py-5 transition-all duration-700 ease-out sm:border-t-0 ${
+                      className={`transform-gpu will-change-transform backface-hidden flex items-center gap-3.5 px-5 py-5 transition-[opacity,transform] duration-700 ease-out sm:border-t-0 ${
                         i === 1 || i === 3 ? "sm:border-l border-gray-200/70 lg:border-l-0" : ""
                       } ${
                         i > 1 ? "sm:border-t border-gray-200/70 lg:border-t-0" : ""
@@ -134,8 +134,10 @@ export default function Step0Landing({ onNext }: Step0Props) {
                       <img 
                         src={f.iconSrc} 
                         alt={f.title} 
+                        width={40}
+                        height={40}
                         draggable={false} // 드래그 방지
-                        className="w-10 h-10 object-contain shrink-0 mt-0.5 sm:mt-0 select-none pointer-events-none border-0 outline-none" 
+                        className="block w-10 h-10 object-contain shrink-0 select-none pointer-events-none border-0 outline-none" 
                         // drop-shadow를 완전히 제거하고, Step 1처럼 상호작용(터치/선택)을 막는 방어 코드를 추가했습니다.
                       />
                       <div>
