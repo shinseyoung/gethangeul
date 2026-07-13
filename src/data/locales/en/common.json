@@ -1,0 +1,136 @@
+{
+  "header": {
+    "title": "Get Your Hangeul Name",
+    "subtitle": "Get Your Hangeul Name",
+    "languages": {
+      "ko": "한국어",
+      "en": "English",
+      "th": "ไทย",
+      "vi": "Tiếng Việt"
+    }
+  },
+  "footer": {
+    "copyright": "© 2026 gethangeul.com All rights reserved."
+  },
+  "layout": {
+    "progress_badge": "Progress",
+    "progress_desc": "We analyze your unique traits to create \na beautiful, one-of-a-kind Korean name.",
+    "step_prefix": "STEP",
+    "steps": {
+      "1": "Gender",
+      "2": "Vibe",
+      "3": "Personality",
+      "4": "Nature"
+    },
+    "buttons": {
+      "prev": "Previous",
+      "next": "Next"
+    }
+  },
+  "landing": {
+    "title_main": "Every Korean name holds \na beautiful story.",
+    "subtitle": "Find a special name that is uniquely yours.",
+    "cta_button": "Find My Name",
+    "features": [
+      {
+        "title": "Customized Just for You",
+        "desc": "A special Korean name that reflects\nyour unique personality and values."
+      },
+      {
+        "title": "Deep Meaning Inside",
+        "desc": "Discover the beautiful story and meaning\nbehind each character."
+      },
+      {
+        "title": "Share & Keep Your Name",
+        "desc": "Download your name card as an image\nto save and share with others."
+      },
+      {
+        "title": "Safe & Secure",
+        "desc": "Your information is completely protected\nand is never stored."
+      }
+    ]
+  },
+  "questions": {
+    "step1": {
+      "title": "What gender would you like for your name?",
+      "description": "This is used to determine the range of recommended names."
+    },
+    "step2": {
+      "title": "What kind of vibe do you want to be remembered for?",
+      "description": "This shapes the first impression your name gives off."
+    },
+    "step3": {
+      "title": "Which trait describes you the best?",
+      "description": "This is an important factor that reflects your true personality."
+    },
+    "step4": {
+      "title": "What kind of season or nature vibe would you like to capture?",
+      "description": "This adds deeper meaning and symbolism to your name."
+    }
+  },
+  "options": {
+    "gender": {
+      "male": "Male",
+      "female": "Female",
+      "neutral": "Gender Neutral"
+    },
+    "vibe": {
+      "bright": "Bright & Positive",
+      "calm": "Calm & Graceful",
+      "natural": "Natural & Relaxed",
+      "soft": "Soft & Warm",
+      "mystic": "Mystic & Charming",
+      "trendy": "Chic & Trendy",
+      "strong": "Strong & Cool",
+      "lovely": "Lovely & Cute"
+    },
+    "personality": {
+      "radiant": "Bright & Positive",
+      "considerate": "Warm & Considerate",
+      "dependable": "Responsible & Trustworthy",
+      "whimsical": "Creative & Original",
+      "genuine": "Natural & Genuine",
+      "inquisitive": "Intellectual & Curious",
+      "enterprising": "Bold & Ambitious",
+      "prudent": "Calm & Thoughtful",
+      "upright": "Honest & Principled",
+      "sensitive": "Expressive & Delicate"
+    },
+    "nature": {
+      "spring": "Spring",
+      "summer": "Summer",
+      "autumn": "Autumn",
+      "winter": "Winter",
+      "mountain": "Mountain",
+      "sea": "Sea",
+      "river": "River",
+      "forest": "Forest"
+    }
+  },
+  "result": {
+    "title": "My Korean Name",
+    "badge_pure_korean": "Pure Korean",
+    "meaning_prefix": "Meaning: ",
+    "tags": {
+      "male": "Male",
+      "female": "Female",
+      "neutral": "Gender Neutral"
+    },
+    "buttons": {
+      "retry": "Try Again",
+      "share": "Share Result",
+      "sharing": "Sharing...",
+      "download": "Save Image",
+      "downloading": "Saving..."
+    },
+    "ads": {
+      "sponsor_badge": "ADVERTISEMENT",
+      "sponsor_title": "Sponsored Banner",
+      "sponsor_desc": "[ Top Display Area ]",
+      "banner_title": "Advertisement",
+      "banner_desc": "[ 300 × 250 Display Banner Area ]",
+      "mobile_badge": "AD",
+      "mobile_desc": "Mobile Anchor Banner Area"
+    }
+  }
+}

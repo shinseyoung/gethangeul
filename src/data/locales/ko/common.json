@@ -1,0 +1,136 @@
+{
+  "header": {
+    "title": "나의 한글 이름 짓기",
+    "subtitle": "Get Your Hangeul Name",
+    "languages": {
+      "ko": "한국어",
+      "en": "English",
+      "th": "ไทย",
+      "vi": "Tiếng Việt"
+    }
+  },
+  "footer": {
+    "copyright": "© 2026 gethangeul.com All rights reserved."
+  },
+  "layout": {
+    "progress_badge": "진행 단계",
+    "progress_desc": "당신의 고유한 성향을 분석하여 \n단 하나뿐인 아름다운 우리말 이름을 짓습니다.",
+    "step_prefix": "STEP",
+    "steps": {
+      "1": "성별 선택",
+      "2": "이름의 분위기",
+      "3": "성격 및 가치관",
+      "4": "계절 및 자연"
+    },
+    "buttons": {
+      "prev": "이전",
+      "next": "다음"
+    }
+  },
+  "landing": {
+    "title_main": "모든 한글 이름에는 \n예쁜 이야기가 담겨 있습니다.",
+    "subtitle": "당신만의 특별한 이름을 찾아보세요.",
+    "cta_button": "내 이름 찾기",
+    "features": [
+      {
+        "title": "나만을 위한 맞춤 이름",
+        "desc": "당신의 성격과 가치관을\n반영한 특별한 한글 이름입니다."
+      },
+      {
+        "title": "이름 속에 담긴 의미",
+        "desc": "글자가 가진\n아름다운 의미를 알려드려요."
+      },
+      {
+        "title": "공유하고 간직하는 경험",
+        "desc": "이름과 의미를 이미지로\n다운로드하고 공유해보세요."
+      },
+      {
+        "title": "안심하고 사용하세요",
+        "desc": "입력하신 정보는 안전하게 보호되며,\n저장되지 않습니다."
+      }
+    ]
+  },
+  "questions": {
+    "step1": {
+      "title": "어떤 성별에 어울리는 이름을 원하시나요?",
+      "description": "추천될 이름의 범위를 정하는 데 활용돼요."
+    },
+    "step2": {
+      "title": "사람들에게 어떤 분위기로 기억되고 싶으신가요?",
+      "description": "이름이 주는 첫인상을 결정해요."
+    },
+    "step3": {
+      "title": "당신을 가장 잘 표현하는 모습은 무엇인가요?",
+      "description": "당신의 개성을 반영하는 중요한 요소예요."
+    },
+    "step4": {
+      "title": "어떤 계절이나 자연의 감성을 담고 싶으신가요?",
+      "description": "이름에 담길 의미와 상징을 더해요."
+    }
+  },
+  "options": {
+    "gender": {
+      "male": "남성",
+      "female": "여성",
+      "neutral": "성별 무관"
+    },
+    "vibe": {
+      "bright": "밝고 긍정적인",
+      "calm": "차분하고 단아한",
+      "natural": "자연스럽고 편안한",
+      "soft": "부드럽고 따뜻한",
+      "mystic": "신비롭고 매력적인",
+      "trendy": "세련되고 트렌디한",
+      "strong": "강인하고 멋진",
+      "lovely": "사랑스럽고 귀여운"
+    },
+    "personality": {
+      "radiant": "밝고 긍정적인",
+      "considerate": "따뜻하고 배려하는",
+      "dependable": "책임감있고 신뢰하는",
+      "whimsical": "창의적이고 독창적인",
+      "genuine": "자연스럽고 솔직한",
+      "inquisitive": "지적이고 탐구적인",
+      "enterprising": "도전적이고 진취적인",
+      "prudent": "차분하고 신중한",
+      "upright": "정직하고 원칙적인",
+      "sensitive": "감성적이고 섬세한"
+    },
+    "nature": {
+      "spring": "봄",
+      "summer": "여름",
+      "autumn": "가을",
+      "winter": "겨울",
+      "mountain": "산",
+      "sea": "바다",
+      "river": "강",
+      "forest": "숲"
+    }
+  },
+  "result": {
+    "title": "나의 한글 이름",
+    "badge_pure_korean": "순우리말",
+    "meaning_prefix": "뜻 : ",
+    "tags": {
+      "male": "남성",
+      "female": "여성",
+      "neutral": "성별무관"
+    },
+    "buttons": {
+      "retry": "다시 하기",
+      "share": "결과 공유",
+      "sharing": "준비 중...",
+      "download": "이미지 저장",
+      "downloading": "저장 중..."
+    },
+    "ads": {
+      "sponsor_badge": "ADVERTISEMENT",
+      "sponsor_title": "스폰서 배너 광고",
+      "sponsor_desc": "[ 상단 디스플레이 영역 ]",
+      "banner_title": "광고",
+      "banner_desc": "[ 300 × 250 디스플레이 배너 영역 ]",
+      "mobile_badge": "AD",
+      "mobile_desc": "모바일 띠 배너 광고 영역"
+    }
+  }
+}

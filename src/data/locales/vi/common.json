@@ -1,0 +1,136 @@
+{
+  "header": {
+    "title": "Tạo Tên Tiếng Hàn Của Bạn",
+    "subtitle": "Get Your Hangeul Name",
+    "languages": {
+      "ko": "한국어",
+      "en": "English",
+      "th": "ไทย",
+      "vi": "Tiếng Việt"
+    }
+  },
+  "footer": {
+    "copyright": "© 2026 gethangeul.com All rights reserved."
+  },
+  "layout": {
+    "progress_badge": "Tiến trình",
+    "progress_desc": "Phân tích tính cách đặc trưng của bạn để \ntạo nên một tên tiếng Hàn độc nhất và ý nghĩa.",
+    "step_prefix": "BƯỚC",
+    "steps": {
+      "1": "Chọn giới tính",
+      "2": "Phong cách tên",
+      "3": "Tính cách & Giá trị",
+      "4": "Mùa & Tự nhiên"
+    },
+    "buttons": {
+      "prev": "Quay lại",
+      "next": "Tiếp theo"
+    }
+  },
+  "landing": {
+    "title_main": "Mỗi tên tiếng Hàn đều ẩn chứa \nmột câu chuyện đẹp.",
+    "subtitle": "Hãy tìm một cái tên đặc biệt dành riêng cho bạn.",
+    "cta_button": "Bắt đầu tìm tên",
+    "features": [
+      {
+        "title": "Tên thiết kế riêng cho bạn",
+        "desc": "Một tên tiếng Hàn đặc biệt phản ánh\ntính cách và giá trị của riêng bạn."
+      },
+      {
+        "title": "Ý nghĩa ẩn sau mỗi cái tên",
+        "desc": "Khám phá câu chuyện và ý nghĩa\ntuyệt đẹp của từng chữ cái."
+      },
+      {
+        "title": "Chia sẻ và lưu giữ kỷ niệm",
+        "desc": "Tải thẻ tên dưới dạng hình ảnh\nđể lưu lại và chia sẻ với mọi người."
+      },
+      {
+        "title": "An tâm sử dụng",
+        "desc": "Thông tin của bạn được bảo mật tuyệt đối\nvà không lưu trữ trên hệ thống."
+      }
+    ]
+  },
+  "questions": {
+    "step1": {
+      "title": "Bạn muốn một cái tên phù hợp với giới tính nào?",
+      "description": "Thông tin này giúp xác định phạm vi tên gợi ý."
+    },
+    "step2": {
+      "title": "Bạn muốn mọi người nhớ đến mình với phong cách thế nào?",
+      "description": "Lựa chọn này định hình ấn tượng đầu tiên về cái tên."
+    },
+    "step3": {
+      "title": "Đặc điểm nào mô tả chính xác nhất con người bạn?",
+      "description": "Đây là yếu tố quan trọng phản ánh cá tính của bạn."
+    },
+    "step4": {
+      "title": "Bạn muốn mang sắc màu của mùa hay vẻ đẹp tự nhiên nào vào tên mình?",
+      "description": "Điều này giúp tăng thêm tầng ý nghĩa và biểu tượng cho cái tên."
+    }
+  },
+  "options": {
+    "gender": {
+      "male": "Nam",
+      "female": "Nữ",
+      "neutral": "Mọi giới tính"
+    },
+    "vibe": {
+      "bright": "Tươi sáng & Tích cực",
+      "calm": "Điềm đạm & Thanh lịch",
+      "natural": "Tự nhiên & Thoải mái",
+      "soft": "Nhẹ nhàng & Ấm áp",
+      "mystic": "Huyền bí & Cuốn hút",
+      "trendy": "Sành điệu & Hợp mốt",
+      "strong": "Mạnh mẽ & Bản lĩnh",
+      "lovely": "Đáng yêu & Dễ thương"
+    },
+    "personality": {
+      "radiant": "Tươi sáng & Tích cực",
+      "considerate": "Ấm áp & Chu đáo",
+      "dependable": "Trách nhiệm & Đáng tin cậy",
+      "whimsical": "Sáng tạo & Độc đáo",
+      "genuine": "Tự nhiên & Chân thành",
+      "inquisitive": "Thông tuệ & Ham học hỏi",
+      "enterprising": "Bản lĩnh & Tiến thủ",
+      "prudent": "Điềm tĩnh & Thận trọng",
+      "upright": "Chính trực & Nguyên tắc",
+      "sensitive": "Tinh tế & Giàu cảm xúc"
+    },
+    "nature": {
+      "spring": "Mùa xuân",
+      "summer": "Mùa hạ",
+      "autumn": "Mùa thu",
+      "winter": "Mùa đông",
+      "mountain": "Núi",
+      "sea": "Biển",
+      "river": "Sông",
+      "forest": "Rừng"
+    }
+  },
+  "result": {
+    "title": "Tên Tiếng Hàn Của Bạn",
+    "badge_pure_korean": "Thuần Hàn",
+    "meaning_prefix": "Ý nghĩa: ",
+    "tags": {
+      "male": "Nam",
+      "female": "Nữ",
+      "neutral": "Mọi giới tính"
+    },
+    "buttons": {
+      "retry": "Thử lại",
+      "share": "Chia sẻ kết quả",
+      "sharing": "Đang chuẩn bị...",
+      "download": "Lưu hình ảnh",
+      "downloading": "Đang lưu..."
+    },
+    "ads": {
+      "sponsor_badge": "QUẢNG CÁO",
+      "sponsor_title": "Banner quảng cáo tài trợ",
+      "sponsor_desc": "[ Vùng hiển thị phía trên ]",
+      "banner_title": "Quảng cáo",
+      "banner_desc": "[ Khu vực banner hiển thị 300 × 250 ]",
+      "mobile_badge": "QC",
+      "mobile_desc": "Khu vực banner thanh ngang di động"
+    }
+  }
+}
