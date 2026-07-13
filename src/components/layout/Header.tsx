@@ -1,12 +1,19 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { useFlowStore, type Language } from "../../store/useFlowStore";
 
-const LANGUAGES = ["한국어", "English", "ไทย", "Tiếng Việt"];
+const LANGUAGES: { code: Language; name: string }[] = [
+  { code: "ko", name: "한국어" },
+  { code: "en", name: "English" },
+  { code: "vi", name: "Tiếng Việt" },
+  { code: "th", name: "ไทย" },
+];
 
 export const Header = () => {
   const [langOpen, setLangOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState("한국어");
   const [logoHover, setLogoHover] = useState(false);
+  const { lang, setLang } = useFlowStore();
+  const currentLangName = LANGUAGES.find((l) => l.code === lang)?.name || "한국어";
 
   return (
     // 🟢 개선 1: 높이를 h-[70px] md:h-[92px]로 정밀 축소하여 화면 하단 푸터(Footer)의 안정적인 가시성 확보
@@ -54,22 +61,26 @@ export const Header = () => {
             }`}
           >
             <div className="py-1">
-              {LANGUAGES.map((lang) => (
-                <button
-                  key={lang}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setCurrentLang(lang);
-                    setLangOpen(false);
-                  }}
-                  className="w-full flex items-center justify-between px-4 py-2.5 text-[12px] md:text-[13px] text-gray-700 hover:bg-gray-100 transition-colors font-sans text-left"
-                >
-                  <span>{lang}</span>
-                  {currentLang === lang && (
-                    <span className="text-[#1e4a38] font-bold">✔</span>
-                  )}
-                </button>
-              ))}
+              {LANGUAGES.map((item, index) => {
+                // 사용자가 전역 상태로 선택한 언어와 일치하는지 비교합니다.
+                const isSelected = lang === item.code;
+                
+                return (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setLang(item.code);  // 언어 변경!
+                      setLangOpen(false);  // 메뉴 닫기!
+                    }}
+                    className="w-full flex items-center justify-between px-4 py-2.5 text-[12px] md:text-[13px] text-gray-700 hover:bg-gray-100 transition-colors font-sans text-left"
+                  >
+                    <span>{item.name}</span>
+                    
+                    {item.code === lang && (
+                    <span className="text-[#1e4a38] font-bold">✓</span>)}
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>

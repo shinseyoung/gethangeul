@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sparkles, LayoutGrid, Leaf, UserRound, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from "../../hooks/useTranslation";
 
 const STEPS_DATA = [
   { num: 1, title: '성별 선택', icon: UserRound },
@@ -29,6 +30,8 @@ export default function StepLayout({
   isNextDisabled = false
 }: StepLayoutProps) {
   const isResultPage = currentStep === 5;
+
+  const { t } = useTranslation();
 
   // 🟢 모바일 가로 게이지 바 채우기 비율 계산
   const progressPercentage = isResultPage ? 100 : (currentStep / 4) * 100;
@@ -164,7 +167,7 @@ export default function StepLayout({
               onClick={onPrev}
               className={`px-6 py-3.5 md:px-8 md:py-4 rounded-full font-bold text-gray-700 bg-white/80 backdrop-blur-sm border border-gray-300 hover:bg-white transition-colors shadow-sm text-sm md:text-base ${currentStep === 1 ? 'invisible' : ''}`}
             >
-              이전
+              {t("layout.buttons.prev")}
             </button>
             
             <button 
@@ -174,7 +177,7 @@ export default function StepLayout({
                 isNextDisabled ? 'bg-gray-300 cursor-not-allowed shadow-none' : 'bg-[#1e4a38] hover:bg-[#143427] hover:-translate-y-[1px] hover:shadow-lg'
               }`}
             >
-              다음
+              {t("layout.buttons.next")}
               <svg width="18" height="18" className="md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m9 18 6-6-6-6"/>
               </svg>
