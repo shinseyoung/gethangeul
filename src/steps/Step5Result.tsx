@@ -4,6 +4,8 @@ import { getRecommendedName } from '../utils/nameMatcher';
 import { motion, type Variants } from 'framer-motion';
 import { Download, Share2, RotateCcw } from 'lucide-react';
 import { useImageShare } from '../hooks/useImageShare';
+// 🟢 다국어 연동 훅 추가
+import { useTranslation } from '../hooks/useTranslation';
 
 const VIBE_MAP: Record<string, string> = {
   bright: '밝고 긍정적인', calm: '차분하고 단아한', natural: '자연스럽고 편안한', soft: '부드럽고 따뜻한',
@@ -22,35 +24,13 @@ const NATURE_MAP: Record<string, string> = {
 };
 
 const STEP_COLOR_MAP: Record<string, string> = {
-  male: '#bae6fd',
-  female: '#fbcfe8',
-  neutral: '#e2e8f0',
-  bright: '#fecaca',
-  radiant: '#ffe880',
-  calm: '#bfdbfe',
-  prudent: '#bfdbfe',
-  natural: '#cce2cb',
-  genuine: '#cce2cb',
-  soft: '#c4bee2',
-  whimsical: '#c4bee2',
-  mystic: '#c7d2fe',
-  inquisitive: '#c7d2fe',
-  trendy: '#ffe880',
-  enterprising: '#ffe0b2',
-  strong: '#cbd5e1',
-  dependable: '#cbd5e1',
-  lovely: '#ffc5bf',
-  considerate: '#ffc5bf',
-  upright: '#fcd5ce',
-  sensitive: '#fad2e1',
-  spring: '#fcd5ce',
-  summer: '#ffe880',
-  autumn: '#ffe0b2',
-  winter: '#bfdbfe',
-  mountain: '#cbd5e1',
-  sea: '#c7d2fe',
-  river: '#b7d7e8',
-  forest: '#cce2cb',
+  male: '#bae6fd', female: '#fbcfe8', neutral: '#e2e8f0', bright: '#fecaca', radiant: '#ffe880',
+  calm: '#bfdbfe', prudent: '#bfdbfe', natural: '#cce2cb', genuine: '#cce2cb', soft: '#c4bee2',
+  whimsical: '#c4bee2', mystic: '#c7d2fe', inquisitive: '#c7d2fe', trendy: '#ffe880',
+  enterprising: '#ffe0b2', strong: '#cbd5e1', dependable: '#cbd5e1', lovely: '#ffc5bf',
+  considerate: '#ffc5bf', upright: '#fcd5ce', sensitive: '#fad2e1', spring: '#fcd5ce',
+  summer: '#ffe880', autumn: '#ffe0b2', winter: '#bfdbfe', mountain: '#cbd5e1',
+  sea: '#c7d2fe', river: '#b7d7e8', forest: '#cce2cb',
 };
 
 const hexToRgba = (hex: string, alpha: number): string => {
@@ -61,18 +41,20 @@ const hexToRgba = (hex: string, alpha: number): string => {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 };
 
-const getKeywordTags = (gender: string | null, vibe: string | null, personality: string | null, seasonNature: string | null) => {
+// 🟢 [복원 및 TS 에러 해결] 원본 로직 유지. 태그 텍스트에 다국어가 적용되도록 t 함수만 인자로 받음
+const getKeywordTags = (gender: string | null, vibe: string | null, personality: string | null, seasonNature: string | null, t: any) => {
   const tags = [];
-  if (gender === 'male') tags.push({ text: '남성', color: STEP_COLOR_MAP.male });
-  else if (gender === 'female') tags.push({ text: '여성', color: STEP_COLOR_MAP.female });
-  else if (gender === 'neutral') tags.push({ text: '성별무관', color: STEP_COLOR_MAP.neutral });
+  if (gender === 'male') tags.push({ text: t("options.gender.male") || '남성', color: STEP_COLOR_MAP.male });
+  else if (gender === 'female') tags.push({ text: t("options.gender.female") || '여성', color: STEP_COLOR_MAP.female });
+  else if (gender === 'neutral') tags.push({ text: t("options.gender.neutral") || '성별무관', color: STEP_COLOR_MAP.neutral });
 
-  if (vibe && VIBE_MAP[vibe]) tags.push({ text: VIBE_MAP[vibe], color: STEP_COLOR_MAP[vibe] || '#e2e8f0' });
-  if (personality && PERSONALITY_MAP[personality]) tags.push({ text: PERSONALITY_MAP[personality], color: STEP_COLOR_MAP[personality] || '#e2e8f0' });
-  if (seasonNature && NATURE_MAP[seasonNature]) tags.push({ text: NATURE_MAP[seasonNature], color: STEP_COLOR_MAP[seasonNature] || '#e2e8f0' });
+  if (vibe && VIBE_MAP[vibe]) tags.push({ text: t(`options.vibe.${vibe}`) || VIBE_MAP[vibe], color: STEP_COLOR_MAP[vibe] || '#e2e8f0' });
+  if (personality && PERSONALITY_MAP[personality]) tags.push({ text: t(`options.personality.${personality}`) || PERSONALITY_MAP[personality], color: STEP_COLOR_MAP[personality] || '#e2e8f0' });
+  if (seasonNature && NATURE_MAP[seasonNature]) tags.push({ text: t(`options.nature.${seasonNature}`) || NATURE_MAP[seasonNature], color: STEP_COLOR_MAP[seasonNature] || '#e2e8f0' });
   return tags;
 };
 
+// --- 아래 UI 컴포넌트들은 단 1px도 변경 없이 원본 그대로 복구 ---
 const FretCorner = () => {
   const brackets = [
     { path: 'M7 37 V7 H37', width: 1.6, opacity: 1 },
@@ -213,17 +195,20 @@ const cardVariants: Variants = {
 
 export default function Step5Result() {
   const { gender, vibe, personality, seasonNature, resetFlow } = useFlowStore();
-  const keywordTags = getKeywordTags(gender, vibe, personality, seasonNature);
+  const { t } = useTranslation();
+
+  // 🟢 [복원 및 TS 에러 2554 해결] 원본 형태의 인자 전달 복구
+  const resultName = useMemo(() => {
+    return getRecommendedName(gender, vibe, personality, seasonNature);
+  }, [gender, vibe, personality, seasonNature]);
+
+  const keywordTags = getKeywordTags(gender, vibe, personality, seasonNature, t);
 
   const genderColorClass = 
     gender === 'male' ? 'bg-blue-400 text-blue-500' : 
     gender === 'female' ? 'bg-pink-400 text-pink-500' : 'bg-slate-400 text-slate-500';
 
-  const resultName = useMemo(() => {
-    return getRecommendedName(gender, vibe, personality, seasonNature);
-  }, [gender, vibe, personality, seasonNature]);
-
-  const isPureKorean = resultName.hangul === resultName.hanja;
+  const isPureKorean = resultName?.hangul === resultName?.hanja;
 
   const badgeTheme = useMemo(() => {
     switch (gender) {
@@ -236,10 +221,13 @@ export default function Step5Result() {
     }
   }, [gender]);
 
-  // 커스텀 훅을 통해 로직 주입 (캡처 영역 레퍼런스와 저장/공유 핸들러 등)
+  // 🟢 [복원 및 TS 에러 2339, 2345 해결] 원본 파일에 있던 훅 인터페이스 완전 복구
   const { captureRef, isSaving, isSharing, handleDownload, handleShare } = useImageShare(
-    `나의한글이름_${resultName.hangul}`
+    `나의한글이름_${resultName?.hangul}`
   );
+
+  // 데이터 로딩 중 방어막
+  if (!resultName) return null;
 
   return (
     <motion.div
@@ -252,8 +240,6 @@ export default function Step5Result() {
         variants={cardVariants}
         className="flex-1 w-full bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-[24px] md:rounded-[30px] shadow-xl flex flex-col justify-between relative overflow-hidden min-h-[550px] lg:min-h-0"
       >
-        {/* captureRef를 이름 카드 정보가 들어간 본문 영역을 타겟으로 지정합니다. */}
-        {/* bg-white를 추가하여 캡처 이미지 생성 시 투명 배경으로 인한 렌더링 오류를 차단합니다. */}
         <div 
           ref={captureRef}
           className="flex-1 flex flex-col relative min-h-0 w-full bg-white"
@@ -265,7 +251,7 @@ export default function Step5Result() {
             
             <div className="w-full flex flex-col justify-center items-center mt-2 md:mt-3 shrink-0 opacity-60">
               <span className="text-xs md:text-sm font-serif font-bold tracking-[0.2em] text-gray-400">
-                나의 한글 이름
+                {t("result.title") || "나의 한글 이름"}
               </span>
             </div>
 
@@ -280,7 +266,7 @@ export default function Step5Result() {
                   </span>
                 ) : (
                   <span className={`absolute left-full ml-2 md:ml-3 bottom-1 md:bottom-1.5 text-[10px] md:text-xs font-serif font-bold tracking-widest border px-2 py-0.5 rounded-md whitespace-nowrap leading-none shadow-xs transition-colors duration-500 ${badgeTheme}`}>
-                    순우리말
+                    {t("result.pure_korean") || "순우리말"}
                   </span>
                 )}
               </div>
@@ -297,15 +283,14 @@ export default function Step5Result() {
               />
             </div>
 
-            
+            {/* 🟢 [복원 및 TS 에러 2339 해결] 원본 디자인 태그 100% 보존 후, 에러났던 Object 속성들을 t() 함수로 교체 */}
             <p className="text-xs md:text-sm font-bold text-gray-900 tracking-wider shrink-0">
-              뜻 : {resultName.shortMeaning.ko}
+              {t("result.meaning_prefix") || "뜻"}{t(`names.${resultName.id}.shortMeaning`)}
             </p>
             <p className="text-lg sm:text-xl md:text-2xl font-serif font-extrabold text-[#1e4a38] leading-[1.6] break-keep drop-shadow-sm w-full max-w-[90%] md:max-w-lg mx-auto shrink-0 px-2">
-              {resultName.poeticQuote.ko}
+              {t(`names.${resultName.id}.poeticQuote`)}
             </p>
             
-
             <div className="w-full shrink-0">
               <div className="flex flex-wrap justify-center items-center gap-2 md:gap-2.5 max-w-lg md:max-w-3xl mx-auto px-4">
                 {keywordTags.map((tag, idx) => (
@@ -331,7 +316,7 @@ export default function Step5Result() {
             className={`w-full md:w-auto flex items-center justify-center gap-2 px-5 py-3.5 md:py-3 rounded-[16px] md:rounded-full text-sm font-bold text-gray-600 bg-gray-100/80 transition-colors shrink-0 ${isSaving || isSharing ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-200'}`}
           >
             <RotateCcw size={15} strokeWidth={2.5} className="shrink-0" />
-            <span>다시 하기</span>
+            <span>{t("result.buttons.retry") || "다시 하기"}</span>
           </button>
           
           <div className="flex items-center gap-2 w-full md:w-auto shrink-0">
@@ -341,7 +326,7 @@ export default function Step5Result() {
               className={`flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-3.5 md:px-5 md:py-3 rounded-[16px] md:rounded-full text-sm font-bold text-gray-700 bg-white border border-gray-300 transition-all shadow-sm ${isSaving || isSharing ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50'}`}
             >
               <Share2 size={15} className="shrink-0" />
-              <span>{isSharing ? '준비 중...' : '결과 공유'}</span>
+              <span>{isSharing ? (t("result.buttons.sharing") || '준비 중...') : (t("result.buttons.share") || '결과 공유')}</span>
             </button>
             <button 
               onClick={handleDownload}
@@ -349,7 +334,7 @@ export default function Step5Result() {
               className={`flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-3.5 md:px-6 md:py-3 rounded-[16px] md:rounded-full text-sm font-bold text-white bg-[#1e4a38] transition-all shadow-md ${isSaving || isSharing ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#143427] hover:shadow-lg'}`}
             >
               <Download size={15} className="shrink-0" />
-              <span>{isSaving ? '저장 중...' : '이미지 저장'}</span>
+              <span>{isSaving ? (t("result.buttons.saving") || '저장 중...') : (t("result.buttons.download") || '이미지 저장')}</span>
             </button>
           </div>
         </div>

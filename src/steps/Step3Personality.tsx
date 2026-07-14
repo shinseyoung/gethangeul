@@ -1,28 +1,30 @@
 import React from 'react';
 import { useFlowStore } from '../store/useFlowStore';
+import { useTranslation } from '../hooks/useTranslation';
 
-const PERSONALITY_OPTIONS = [
-  { id: 'radiant', label: '밝고 긍정적인', icon: 'icons/Personality/radiant_icon.svg' },
-  { id: 'considerate', label: '따뜻하고 배려하는', icon: 'icons/Personality/considerate_icon.svg' },
-  // 🟢 [수정] 강제 3줄 방지를 위해 "책임감 있고" -> "책임감있고"로 데이터 정제
-  { id: 'dependable', label: '책임감있고 신뢰하는', icon: 'icons/Common/badass_icon.svg' },
-  { id: 'whimsical', label: '창의적이고 독창적인', icon: 'icons/Personality/whimsical_icon.svg' },
-  { id: 'genuine', label: '자연스럽고 솔직한', icon: 'icons/Common/relaxed_icon.svg' },
-  { id: 'inquisitive', label: '지적이고 탐구적인', icon: 'icons/Personality/inquisitive_icon.svg' },
-  { id: 'enterprising', label: '도전적이고 진취적인', icon: 'icons/Personality/enterprising_icon.svg' },
-  { id: 'prudent', label: '차분하고 신중한', icon: 'icons/Common/serene_icon.svg' },
-  { id: 'upright', label: '정직하고 원칙적인', icon: 'icons/Personality/upright_icon.svg' },
-  { id: 'sensitive', label: '감성적이고 섬세한', icon: 'icons/Common/adorable_icon.svg' },
+const PERSONALITY_OPTIONS_META = [
+  { id: 'radiant', icon: 'icons/Personality/radiant_icon.svg' },
+  { id: 'considerate', icon: 'icons/Personality/considerate_icon.svg' },
+  { id: 'dependable', icon: 'icons/Common/badass_icon.svg' },
+  { id: 'whimsical', icon: 'icons/Personality/whimsical_icon.svg' },
+  { id: 'genuine', icon: 'icons/Common/relaxed_icon.svg' },
+  { id: 'inquisitive', icon: 'icons/Personality/inquisitive_icon.svg' },
+  { id: 'enterprising', icon: 'icons/Personality/enterprising_icon.svg' },
+  { id: 'prudent', icon: 'icons/Common/serene_icon.svg' },
+  { id: 'upright', icon: 'icons/Personality/upright_icon.svg' },
+  { id: 'sensitive', icon: 'icons/Common/adorable_icon.svg' },
 ] as const;
 
 export default function Step3Personality() {
   const { personality: selectedPersonality, setPersonality } = useFlowStore();
+  const { t } = useTranslation();
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 w-full">
-      {PERSONALITY_OPTIONS.map((option) => {
+      {PERSONALITY_OPTIONS_META.map((option) => {
         const isSelected = selectedPersonality === option.id;
 
+        // 🟢 [원본 유지] 10가지 성격 컬러셋 100% 동결
         let colorStyle = 'border-gray-200'; 
         if (isSelected) {
           switch (option.id) {
@@ -53,23 +55,22 @@ export default function Step3Personality() {
           >
             <img
               src={option.icon}
-              alt={option.label}
+              alt={t(`options.personality.${option.id}`)}
               draggable={false}
               className={`
-                w-10 h-10 mb-w-12 md:h-12 mb-2 md:mb-2.5 object-contain select-none pointer-events-none transition-transform duration-300
+                w-10 h-10 mb-2 md:w-12 md:h-12 md:mb-2.5 object-contain select-none pointer-events-none transition-transform duration-300
                 ${isSelected ? 'scale-110 opacity-100' : 'scale-100 opacity-80'}
               `}
             />
-            {/* 🟢 [개선] 띄어쓰기 기준으로 무조건 블록(줄바꿈) 처리 */}
+            {/* 🟢 [원본 유지 + 안전장치] 기존 디자인 글자 크기, 행간 100% 동결 */}
             <span
               className={`
                 text-[12px] md:text-[14px] font-bold text-center leading-tight transition-colors duration-300
+                break-keep whitespace-pre-line
                 ${isSelected ? 'text-gray-900' : 'text-gray-700'}
               `}
             >
-              {option.label.split(' ').map((word, index) => (
-                <span key={index} className="block">{word}</span>
-              ))}
+              {t(`options.personality.${option.id}`)}
             </span>
           </button>
         );

@@ -1,25 +1,28 @@
 import React from 'react';
 import { useFlowStore } from '../store/useFlowStore';
+import { useTranslation } from '../hooks/useTranslation';
 
-const VIBE_OPTIONS = [
-  { id: 'bright', label: '밝고 긍정적인', icon: 'icons/Vibe/radiant_icon.svg' },
-  { id: 'calm', label: '차분하고 단아한', icon: 'icons/Common/serene_icon.svg' },
-  { id: 'natural', label: '자연스럽고 편안한', icon: 'icons/Common/relaxed_icon.svg' },
-  { id: 'soft', label: '부드럽고 따뜻한', icon: 'icons/Vibe/warm_icon.svg' },
-  { id: 'mystic', label: '신비롭고 매력적인', icon: 'icons/Vibe/enchanting_icon.svg' },
-  { id: 'trendy', label: '세련되고 트렌디한', icon: 'icons/Common/chic_icon.svg' },
-  { id: 'strong', label: '강인하고 멋진', icon: 'icons/Common/badass_icon.svg' },
-  { id: 'lovely', label: '사랑스럽고 귀여운', icon: 'icons/Common/adorable_icon.svg' },
+const VIBE_OPTIONS_META = [
+  { id: 'bright', icon: 'icons/Vibe/radiant_icon.svg' },
+  { id: 'calm', icon: 'icons/Common/serene_icon.svg' },
+  { id: 'natural', icon: 'icons/Common/relaxed_icon.svg' },
+  { id: 'soft', icon: 'icons/Vibe/warm_icon.svg' },
+  { id: 'mystic', icon: 'icons/Vibe/enchanting_icon.svg' },
+  { id: 'trendy', icon: 'icons/Common/chic_icon.svg' },
+  { id: 'strong', icon: 'icons/Common/badass_icon.svg' },
+  { id: 'lovely', icon: 'icons/Common/adorable_icon.svg' },
 ] as const;
 
 export default function Step2Vibe() {
   const { vibe: selectedVibe, setVibe } = useFlowStore();
+  const { t } = useTranslation();
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full">
-      {VIBE_OPTIONS.map((option) => {
+      {VIBE_OPTIONS_META.map((option) => {
         const isSelected = selectedVibe === option.id;
 
+        // 🟢 [원본 유지] 8가지 분위기 컬러셋 100% 동결
         let colorStyle = 'border-gray-200'; 
         if (isSelected) {
           switch (option.id) {
@@ -48,23 +51,23 @@ export default function Step2Vibe() {
           >
             <img
               src={option.icon}
-              alt={option.label}
+              alt={t(`options.vibe.${option.id}`)}
               draggable={false}
               className={`
-                w-10 h-10 mb-w-12 md:h-12 mb-2 md:mb-2.5 object-contain select-none pointer-events-none transition-transform duration-300
+                w-10 h-10 mb-2 md:w-12 md:h-12 md:mb-2.5 object-contain select-none pointer-events-none transition-transform duration-300
                 ${isSelected ? 'scale-110 opacity-100' : 'scale-100 opacity-80'}
               `}
             />
-            {/* 🟢 [개선] 띄어쓰기 기준으로 무조건 블록(줄바꿈) 처리 */}
+            {/* 🟢 [원본 유지 + 안전장치] 기존 텍스트 스타일 100% 동결. 
+                 다국어에서 .split(' ')을 쓰면 세로로 길게 찢어지므로 break-keep로 박스 크기 완벽 보존 */}
             <span
               className={`
                 text-[12px] md:text-[14px] font-bold text-center leading-tight transition-colors duration-300
+                break-keep whitespace-pre-line
                 ${isSelected ? 'text-gray-900' : 'text-gray-700'}
               `}
             >
-              {option.label.split(' ').map((word, index) => (
-                <span key={index} className="block">{word}</span>
-              ))}
+              {t(`options.vibe.${option.id}`)}
             </span>
           </button>
         );

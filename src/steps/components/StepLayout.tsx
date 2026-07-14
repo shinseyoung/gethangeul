@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sparkles, LayoutGrid, Leaf, UserRound, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+// 🟢 [다국어 연동] 번역 훅 임포트
 import { useTranslation } from "../../hooks/useTranslation";
 
 const STEPS_DATA = [
@@ -30,11 +31,14 @@ export default function StepLayout({
   isNextDisabled = false
 }: StepLayoutProps) {
   const isResultPage = currentStep === 5;
-
-  const { t } = useTranslation();
+  const { t } = useTranslation(); // 🟢 번역 함수 호출
 
   // 🟢 모바일 가로 게이지 바 채우기 비율 계산
   const progressPercentage = isResultPage ? 100 : (currentStep / 4) * 100;
+
+  // 🟢 [다국어 방어 로직] 상위 컴포넌트(App.tsx)에서 한글 타이틀이 넘어와도 언어 변경 시 자동 번역되도록 처리
+  const displayTitle = t(`questions.step${currentStep}.title`) || title;
+  const displayDescription = t(`questions.step${currentStep}.description`) || description;
 
   return (
     // 🟢 변경 포인트 1: 모바일 전체 상하 패딩을 py-4로 콤팩트하게 줄여 요소들이 화면 위로 쫙 붙게 조절
@@ -46,13 +50,19 @@ export default function StepLayout({
         <div className="pb-4 border-b border-gray-100 shrink-0">
           <div className="flex items-center gap-2 text-[#1e4a38]">
             <span className="text-[11px] font-extrabold tracking-widest uppercase bg-[#1e4a38]/10 px-2.5 py-1 rounded-md">
-              진행 단계
+              {t("layout.progress_badge") || "진행 단계"}
             </span>
           </div>
           <p className="text-[13px] text-gray-400 mt-2 font-medium break-keep ml-[2.5px]">
-            당신의 고유한 성향을 분석하여 
-            <br />
-            단 하나뿐인 아름다운 우리말 이름을 짓습니다.
+            {t("layout.progress_desc") ? (
+              <span className="whitespace-pre-line">{t("layout.progress_desc")}</span>
+            ) : (
+              <>
+                당신의 고유한 성향을 분석하여 
+                <br />
+                단 하나뿐인 아름다운 우리말 이름을 짓습니다.
+              </>
+            )}
           </p>
         </div>
 
@@ -94,12 +104,12 @@ export default function StepLayout({
                     <span className={`text-[11px] font-extrabold tracking-widest mb-0.5 transition-colors duration-300 ${
                       isActive ? 'text-[#1e4a38]' : isPassed ? 'text-gray-500' : 'text-gray-400'
                     }`}>
-                      STEP {step.num}
+                      {t("layout.step_prefix") || "STEP"} {step.num}
                     </span>
                     <span className={`text-[16px] font-bold transition-colors duration-300 ${
                       isActive ? 'text-gray-900' : isPassed ? 'text-gray-700' : 'text-gray-400'
                     }`}>
-                      {step.title}
+                      {t(`layout.steps.${step.num}`) || step.title}
                     </span>
                   </div>
                 </div>
@@ -117,10 +127,10 @@ export default function StepLayout({
           <div className="flex flex-col w-full md:hidden mb-4 shrink-0">
             <div className="flex justify-between items-center mb-1.5">
               <span className="text-[10px] font-extrabold tracking-widest text-[#1e4a38] bg-[#1e4a38]/10 px-2 py-0.5 rounded">
-                STEP {currentStep} / 4
+                {t("layout.step_prefix") || "STEP"} {currentStep} / 4
               </span>
               <span className="text-[12px] font-bold text-gray-700">
-                {STEPS_DATA[currentStep - 1]?.title}
+                {t(`layout.steps.${currentStep}`) || STEPS_DATA[currentStep - 1]?.title}
               </span>
             </div>
             <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
@@ -136,10 +146,10 @@ export default function StepLayout({
         {!isResultPage && (title || description) && (
           <div className="mb-4 pt-1 md:pt-6 shrink-0">
             <h2 className="text-[22px] md:text-[34px] font-bold text-gray-900 mb-2 md:mb-3 leading-[1.2] md:leading-[1.1] drop-shadow-sm break-keep tracking-tight">
-              {title}
+              {displayTitle}
             </h2>
-            <p className="text-gray-500 md:text-gray-600 text-xs md:text-lg font-medium drop-shadow-sm break-keep">
-              {description}
+            <p className="text-gray-500 md:text-gray-600 text-xs md:text-lg font-medium drop-shadow-sm break-keep whitespace-pre-line">
+              {displayDescription}
             </p>
           </div>
         )}
@@ -167,7 +177,7 @@ export default function StepLayout({
               onClick={onPrev}
               className={`px-6 py-3.5 md:px-8 md:py-4 rounded-full font-bold text-gray-700 bg-white/80 backdrop-blur-sm border border-gray-300 hover:bg-white transition-colors shadow-sm text-sm md:text-base ${currentStep === 1 ? 'invisible' : ''}`}
             >
-              {t("layout.buttons.prev")}
+              {t("layout.buttons.prev") || "이전"}
             </button>
             
             <button 
@@ -177,7 +187,7 @@ export default function StepLayout({
                 isNextDisabled ? 'bg-gray-300 cursor-not-allowed shadow-none' : 'bg-[#1e4a38] hover:bg-[#143427] hover:-translate-y-[1px] hover:shadow-lg'
               }`}
             >
-              {t("layout.buttons.next")}
+              {t("layout.buttons.next") || "다음"}
               <svg width="18" height="18" className="md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m9 18 6-6-6-6"/>
               </svg>
