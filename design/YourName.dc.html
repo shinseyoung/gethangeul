@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Nanum+Brush+Script&display=swap">
+  <style>
+    body { margin: 0; background: #FCFCFB; }
+    a { color: #1F63E8; text-decoration: none; }
+    a:hover { color: #1546A8; }
+    .rt {
+      --paper: #FCFCFB; --paper-hi: #FFFFFF; --paper-lo: #F1F2F1;
+      --rule: #E4E5E3; --rule-2: #CDCFCC;
+      --ink: #17181A; --ink-2: #43464A; --ink-3: #7E8286; --ink-4: #ABAFB3;
+      --seal: #1F63E8;
+      --disp: 'Instrument Serif', 'Times New Roman', serif;
+      --body: 'Newsreader', Georgia, serif;
+      --brush: 'Nanum Brush Script', 'Gowun Batang', serif;
+    }
+    .grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    }
+    .eyebrow {
+      font-family: var(--body); font-size: 10px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3);
+    }
+    @keyframes blink { 0%, 45% { opacity: 1; } 55%, 100% { opacity: 0; } }
+    .caret { animation: blink 1.1s steps(1) infinite; }
+    @keyframes settle { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    .settle { animation: settle .5s ease-out backwards; }
+  </style>
+</helmet>
+
+<div class="rt" style="width: 390px; height: 844px; position: relative; background: var(--paper); font-family: var(--body); color: var(--ink-2); overflow: hidden; display: flex; flex-direction: column;">
+  <div class="grain"></div>
+
+  <div style="position: relative; z-index: 2; height: 58px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; flex-shrink: 0;">
+    <div style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#43464A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M12 5.5 5.5 12 12 18.5"></path></svg>
+      <span class="eyebrow" style="color: var(--ink-2);">BACK</span>
+    </div>
+    <span class="eyebrow" style="font-size: 8px; letter-spacing: 0.26em;">GETHANGEUL</span>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 34px 24px 0; flex-shrink: 0;">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 18px;">
+      <span style="width: 14px; height: 1px; background: var(--seal); display: block;"></span>
+      <span class="eyebrow" style="color: var(--seal);">BEFORE THE QUESTIONS</span>
+    </div>
+
+    <h1 style="font-family: var(--disp); font-size: 37px; line-height: 1.06; letter-spacing: -0.015em; color: var(--ink); margin: 0 0 14px; text-wrap: pretty;">Start with the name you already have.</h1>
+
+    <p style="font-size: 15px; line-height: 1.6; color: var(--ink-3); margin: 0 0 34px; text-wrap: pretty;">We look for a Korean name that sounds like it. Your four answers then decide which one of those is yours.</p>
+
+    <span class="eyebrow" style="font-size: 9px; color: var(--ink-4);">YOUR NAME</span>
+    <div style="display: flex; align-items: baseline; gap: 3px; border-bottom: 1.5px solid var(--ink); padding: 10px 2px 12px; margin-top: 9px;">
+      <span style="font-family: var(--disp); font-size: 36px; line-height: 1.1; color: var(--ink);">Sarah</span>
+      <span class="caret" style="width: 2px; height: 30px; background: var(--seal); display: block; align-self: center;"></span>
+    </div>
+
+    <div class="settle" style="margin-top: 22px; border: 1px solid var(--rule); border-left: 3px solid var(--seal); border-radius: 2px; background: var(--paper-hi); padding: 17px 17px 18px; animation-delay: .3s;">
+      <div style="display: flex; align-items: center; gap: 9px;">
+        <span class="eyebrow" style="font-size: 8.5px;">THE SOUND</span>
+        <span style="flex-grow: 1; height: 1px; background: var(--rule); display: block;"></span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 11px; margin-top: 13px; flex-wrap: wrap;">
+        <span style="font-family: var(--disp); font-size: 21px; color: var(--ink-3);">Sarah</span>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1F63E8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5.5 18.5 12 12 18.5"></path></svg>
+        <span style="font-family: var(--brush); font-size: 30px; line-height: 1; color: var(--ink);">서 · 세 · 소 · 수 · 시 · 설</span>
+      </div>
+      <p style="font-size: 13px; line-height: 1.6; color: var(--ink-3); margin: 13px 0 0;">Twenty‑three Korean names begin with that sound. Your answers narrow them to one.</p>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 9px; margin-top: 18px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ABAFB3" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><path d="M6 11V8a6 6 0 0 1 12 0v3"></path><rect x="4.5" y="11" width="15" height="9.5" rx="1.6"></rect></svg>
+      <span style="font-size: 12px; line-height: 1.55; color: var(--ink-4);">Used in your browser to find the sound, then dropped. It never reaches us.</span>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1;"></div>
+
+  <div style="position: relative; z-index: 2; border-top: 1px solid var(--rule); background: var(--paper); padding: 15px 24px 22px; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-shrink: 0;">
+    <span style="font-size: 13px; line-height: 1.45; color: var(--ink-3); max-width: 140px;">Rather not? <a href="#">Skip this</a></span>
+    <div style="display: flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 2px; background: var(--ink); box-shadow: 0 8px 20px -12px rgba(23,24,26,0.6); cursor: pointer;">
+      <span style="font-family: var(--disp); font-size: 19px; color: var(--paper);">Begin</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FCFCFB" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5.5 18.5 12 12 18.5"></path></svg>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

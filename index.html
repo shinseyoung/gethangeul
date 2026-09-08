@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <link 
       rel="preload" 
       href="/fonts/ChungjuKimSaengTTF.woff2" 
@@ -8,12 +9,23 @@
       type="font/woff2" 
       crossorigin="anonymous"
     >
-    <meta charset="UTF-8" />
+    <!-- the hero painting used to start downloading only once React had
+         mounted; this puts it in flight while the bundle is still parsing -->
+    <link rel="preload" href="/bg-mountain.webp" as="image" type="image/webp" fetchpriority="high" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&amp;family=Gowun+Batang:wght@400;700&amp;family=Noto+Sans+Thai:wght@400;600&amp;display=swap"
+    />
+    <meta name="theme-color" content="#EDF1F9" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>gethangeul</title>
   </head>
-  <body>
+  <!-- the ground colour is on the document itself so the very first frame,
+       before any stylesheet lands, is already the colour the app will be -->
+  <body style="background:#EDF1F9">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

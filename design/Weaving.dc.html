@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Nanum+Brush+Script&display=swap">
+  <style>
+    body { margin: 0; background: #FCFCFB; }
+    a { color: #1F63E8; text-decoration: none; }
+    a:hover { color: #1546A8; }
+    .rt {
+      --paper: #FCFCFB; --paper-hi: #FFFFFF; --paper-lo: #F1F2F1;
+      --rule: #E4E5E3; --rule-2: #CDCFCC;
+      --ink: #17181A; --ink-2: #43464A; --ink-3: #7E8286; --ink-4: #ABAFB3;
+      --seal: #1F63E8;
+      --disp: 'Instrument Serif', 'Times New Roman', serif;
+      --body: 'Newsreader', Georgia, serif;
+      --brush: 'Nanum Brush Script', 'Gowun Batang', serif;
+    }
+    .grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    }
+    .eyebrow {
+      font-family: var(--body); font-size: 10px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3);
+    }
+    @keyframes draw { from { stroke-dashoffset: 620; } to { stroke-dashoffset: 0; } }
+    @keyframes bleed { 0%, 100% { opacity: .1; transform: scale(1); } 50% { opacity: .2; transform: scale(1.06); } }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .stroke { stroke-dasharray: 620; animation: draw 2.6s cubic-bezier(.5,0,.25,1) infinite; }
+    .halo { transform-origin: center; animation: bleed 2.6s ease-in-out infinite; }
+    .row { animation: riseIn .6s ease-out backwards; }
+  </style>
+</helmet>
+
+<div class="rt" style="width: 390px; height: 844px; position: relative; background: var(--paper); font-family: var(--body); color: var(--ink-2); overflow: hidden; display: flex; flex-direction: column;">
+  <div class="grain"></div>
+
+  <div style="position: relative; z-index: 2; height: 58px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+    <span class="eyebrow" style="font-size: 8px; letter-spacing: 0.26em;">GETHANGEUL</span>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 30px 24px 0; display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+    <div style="position: relative; width: 118px; height: 118px; display: flex; align-items: center; justify-content: center;">
+      <svg viewBox="0 0 150 150" width="118" height="118" fill="none">
+        <circle class="halo" cx="75" cy="75" r="52" fill="#1F63E8" fill-opacity="0.14"></circle>
+        <path class="stroke" d="M30 44 C60 34 96 40 118 56 C104 72 92 96 90 122 M46 84 C64 78 84 80 100 88" stroke="#17181A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.88"></path>
+      </svg>
+    </div>
+
+    <h2 style="font-family: var(--disp); font-size: 32px; line-height: 1.12; color: var(--ink); margin: 18px 0 8px; text-align: center;">Writing your name.</h2>
+    <p style="font-size: 14.5px; line-height: 1.55; color: var(--ink-3); margin: 0; text-align: center; max-width: 250px;">Reading your four answers against 114 names.</p>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 18px 24px 0; flex-shrink: 0;">
+    <div class="row" style="display: flex; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--rule); animation-delay: .1s;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F63E8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>
+      <span style="font-size: 14px; color: var(--ink-2); flex-grow: 1;">Gender range</span>
+      <span class="eyebrow" style="font-size: 9.5px; color: var(--ink-4);">NEUTRAL</span>
+    </div>
+    <div class="row" style="display: flex; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--rule); animation-delay: .45s;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F63E8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>
+      <span style="font-size: 14px; color: var(--ink-2); flex-grow: 1;">Vibe</span>
+      <span class="eyebrow" style="font-size: 9.5px; color: var(--ink-4);">CALM</span>
+    </div>
+    <div class="row" style="display: flex; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--rule); animation-delay: .8s;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F63E8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>
+      <span style="font-size: 14px; color: var(--ink-2); flex-grow: 1;">Character</span>
+      <span class="eyebrow" style="font-size: 9.5px; color: var(--ink-4);">THOUGHTFUL</span>
+    </div>
+    <div class="row" style="display: flex; align-items: center; gap: 12px; padding: 9px 0; animation-delay: 1.15s;">
+      <span style="width: 14px; height: 14px; border: 1.5px solid var(--rule-2); border-top-color: var(--seal); border-radius: 50%; display: block;"></span>
+      <span style="font-size: 14px; color: var(--ink-3); flex-grow: 1;">Season &amp; nature</span>
+      <span class="eyebrow" style="font-size: 9.5px; color: var(--ink-4);">WINTER</span>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1;"></div>
+
+  <div style="position: relative; z-index: 2; padding: 0 24px 20px; flex-shrink: 0;">
+    <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 9px;">
+      <span class="eyebrow" style="font-size: 8.5px; color: var(--ink-4); letter-spacing: 0.24em;">ADVERTISEMENT</span>
+      <span style="flex-grow: 1; height: 1px; background: var(--rule); display: block;"></span>
+    </div>
+    <div style="width: 100%; height: 280px; background: var(--paper-lo); border: 1px dashed var(--rule-2); border-radius: 2px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;">
+      <span style="font-family: var(--disp); font-size: 19px; color: var(--ink-4);">336 × 280</span>
+      <span class="eyebrow" style="font-size: 9px; color: var(--ink-4);">IN&#8209;FLOW NATIVE UNIT</span>
+    </div>
+      </div>
+</div>
+</x-dc>
+</body>
+</html>

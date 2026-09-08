@@ -1,0 +1,312 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Nanum+Brush+Script&display=swap">
+  <style>
+    body { margin: 0; background: #FCFCFB; }
+    a { color: #1F63E8; text-decoration: none; }
+    a:hover { color: #1546A8; }
+    .rt {
+      --paper: #FCFCFB; --paper-hi: #FFFFFF; --paper-lo: #F1F2F1;
+      --rule: #E4E5E3; --rule-2: #CDCFCC;
+      --ink: #17181A; --ink-2: #43464A; --ink-3: #7E8286; --ink-4: #ABAFB3;
+      --seal: #1F63E8;
+      --disp: 'Instrument Serif', 'Times New Roman', serif;
+      --body: 'Newsreader', Georgia, serif;
+      --brush: 'Nanum Brush Script', 'Gowun Batang', serif;
+    }
+    .grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    }
+    .eyebrow { font-family: var(--body); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); }
+    .sw { display: flex; flex-direction: column; gap: 7px; }
+    .chip { height: 62px; border-radius: 2px; border: 1px solid rgba(23,24,26,0.09); }
+    .hx { font-family: var(--body); font-size: 11px; letter-spacing: 0.06em; color: var(--ink-3); }
+    .nm { font-family: var(--body); font-size: 11.5px; font-weight: 600; color: var(--ink-2); }
+    .sect { font-family: var(--disp); font-size: 26px; line-height: 1.1; color: var(--ink); margin: 0; }
+    .note { font-size: 13px; line-height: 1.6; color: var(--ink-3); margin: 0; }
+  </style>
+</helmet>
+
+<div class="rt" style="width: 1280px; min-height: 1620px; position: relative; background: var(--paper); font-family: var(--body); color: var(--ink-2); overflow: hidden; padding: 0 0 56px;">
+  <div class="grain"></div>
+
+  <div style="position: relative; z-index: 2; padding: 48px 56px 0;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 22px; border-bottom: 1.5px solid var(--ink);">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span class="eyebrow" style="color: var(--seal);">GETHANGEUL · VISUAL SYSTEM</span>
+        <h1 style="font-family: var(--disp); font-size: 54px; line-height: 1; color: var(--ink); margin: 0; letter-spacing: -0.015em;">Ink &amp; Hanji</h1>
+      </div>
+      <p class="note" style="max-width: 440px; text-align: right;">White paper, one neutral ink, one blue. Colour enters three times and no more — the eight option glyphs, the keyword tags, and the season wash on the name card. Structure is hairlines and space, not cards, shadows or rounded corners.</p>
+    </div>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 34px 56px 0;">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px;">
+      <h2 class="sect">Palette</h2>
+      <span style="flex-grow: 1; height: 1px; background: var(--rule); display: block;"></span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 34px;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <span class="eyebrow" style="font-size: 9px;">PAPER</span>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+          <div class="sw"><span class="chip" style="background: #FFFFFF;"></span><span class="nm">paper-hi</span><span class="hx">#FFFFFF</span></div>
+          <div class="sw"><span class="chip" style="background: #FCFCFB;"></span><span class="nm">paper</span><span class="hx">#FCFCFB</span></div>
+          <div class="sw"><span class="chip" style="background: #F1F2F1;"></span><span class="nm">paper-lo</span><span class="hx">#F1F2F1</span></div>
+          <div class="sw"><span class="chip" style="background: #E4E5E3;"></span><span class="nm">rule</span><span class="hx">#E4E5E3</span></div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <span class="eyebrow" style="font-size: 9px;">INK</span>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+          <div class="sw"><span class="chip" style="background: #17181A;"></span><span class="nm">ink</span><span class="hx">#17181A</span></div>
+          <div class="sw"><span class="chip" style="background: #43464A;"></span><span class="nm">ink-2</span><span class="hx">#43464A</span></div>
+          <div class="sw"><span class="chip" style="background: #7E8286;"></span><span class="nm">ink-3</span><span class="hx">#7E8286</span></div>
+          <div class="sw"><span class="chip" style="background: #ABAFB3;"></span><span class="nm">ink-4</span><span class="hx">#ABAFB3</span></div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <span class="eyebrow" style="font-size: 9px;">ACCENT — ONE BLUE</span>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+          <div class="sw"><span class="chip" style="background: #1F63E8;"></span><span class="nm">accent</span><span class="hx">#1F63E8</span></div>
+          <div class="sw"><span class="chip" style="background: #1546A8;"></span><span class="nm">accent-deep</span><span class="hx">#1546A8</span></div>
+          <div class="sw" style="grid-column: span 2;"><span class="chip" style="background: rgba(31,99,232,0.08); border: 1px solid rgba(31,99,232,0.3);"></span><span class="nm">accent-wash</span><span class="hx">rgba(31,99,232,.08)</span></div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <span class="eyebrow" style="font-size: 9px;">단청 PIGMENTS — GLYPHS AND TAGS</span>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+          <div class="sw"><span class="chip" style="background: #4F7A8A;"></span><span class="nm">청 water</span><span class="hx">#4F7A8A</span></div>
+          <div class="sw"><span class="chip" style="background: #5B7A5C;"></span><span class="nm">녹 growth</span><span class="hx">#5B7A5C</span></div>
+          <div class="sw"><span class="chip" style="background: #B8901F;"></span><span class="nm">황 warmth</span><span class="hx">#B8901F</span></div>
+          <div class="sw"><span class="chip" style="background: #6E5A7A;"></span><span class="nm">자 mystery</span><span class="hx">#6E5A7A</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="note" style="margin-top: 16px; max-width: 900px;">Pigments carry meaning; the blue carries state. Each of the eight option glyphs keeps its own pigment even at rest, so no screen is ever fully grey — and tags use the same pigment at 12% fill with a 30% border. The blue is reserved for the current step, the chosen thing and the stamp.</p>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 40px 56px 0; display: flex; gap: 56px; align-items: flex-start;">
+
+    <div style="width: 640px; flex-shrink: 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px;">
+        <h2 class="sect">Type</h2>
+        <span style="flex-grow: 1; height: 1px; background: var(--rule); display: block;"></span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: flex; gap: 22px; align-items: baseline; padding-bottom: 20px; border-bottom: 1px solid var(--rule);">
+          <span class="eyebrow" style="font-size: 9px; width: 118px; flex-shrink: 0;">INSTRUMENT SERIF</span>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-family: var(--disp); font-size: 42px; line-height: 1; color: var(--ink);">Headlines &amp; names</span>
+            <span class="note">Every headline, button label, quote and section head. 82 / 46 / 33 / 21 / 19 px.</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 22px; align-items: baseline; padding-bottom: 20px; border-bottom: 1px solid var(--rule);">
+          <span class="eyebrow" style="font-size: 9px; width: 118px; flex-shrink: 0;">NEWSREADER</span>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-size: 22px; line-height: 1.4; color: var(--ink-2);">Body copy, meta labels and every number.</span>
+            <span class="note">Body 15.5 / 13.5 px at 1.6. Meta label 10 px, 600 weight, 0.2 em tracking, uppercase.</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 22px; align-items: baseline; padding-bottom: 20px; border-bottom: 1px solid var(--rule);">
+          <span class="eyebrow" style="font-size: 9px; width: 118px; flex-shrink: 0;">CHUNGJU KIMSAENG</span>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-family: var(--brush); font-size: 44px; line-height: 1; color: var(--ink);">규현 하준 서연</span>
+            <span class="note">Hangul only — the name itself, the wordmark, and the 又 友 冊 markers. Never for Latin text.</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 22px; align-items: flex-start;">
+          <span class="eyebrow" style="font-size: 9px; width: 118px; flex-shrink: 0;">HANJA</span>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-size: 40px; line-height: 1; color: var(--ink-4);">夏俊 圭賢</span>
+            <span class="note">System CJK serif at ink-4, 0.14 em tracking. Always subordinate to the Hangul — never the same size.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px;">
+        <h2 class="sect">Parts</h2>
+        <span style="flex-grow: 1; height: 1px; background: var(--rule); display: block;"></span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <span class="eyebrow" style="font-size: 9px;">ACTIONS — 2 px RADIUS, NEVER PILLS</span>
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <div style="display: flex; align-items: stretch; background: var(--ink); border-radius: 2px;">
+              <div style="display: flex; flex-direction: column; justify-content: center; padding: 12px 18px 13px;">
+                <span style="font-family: var(--disp); font-size: 18px; line-height: 1.1; color: var(--paper);">Primary</span>
+                <span class="eyebrow" style="color: #9AA0A5; font-size: 8.5px; margin-top: 2px;">WITH A SUB-LABEL</span>
+              </div>
+              <div style="width: 42px; border-left: 1px solid rgba(252,252,251,0.18); display: flex; align-items: center; justify-content: center;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FCFCFB" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5.5 18.5 12 12 18.5"></path></svg>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center; border: 1px solid var(--rule-2); border-radius: 2px; padding: 13px 20px; background: var(--paper-hi);">
+              <span style="font-family: var(--disp); font-size: 17px; color: var(--ink-2);">Secondary</span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center; border-radius: 2px; padding: 13px 20px; background: #E8E9E7;">
+              <span style="font-family: var(--disp); font-size: 17px; color: var(--ink-4);">Disabled</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <span class="eyebrow" style="font-size: 9px;">OPTION TILE — REST / CHOSEN</span>
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+            <div style="position: relative; background: #FFFFFF; border: 1px solid #E4E5E3; border-radius: 2px; padding: 15px 14px 16px; min-height: 66px;">
+              <span style="font-family: var(--disp); font-size: 19px; line-height: 1.1; color: var(--ink-2);">Calm</span>
+              <span style="font-size: 11.5px; line-height: 1.4; color: var(--ink-3); display: block; margin-top: 5px;">still water, unhurried</span>
+            </div>
+            <div style="position: relative; background: rgba(31,99,232,0.055); border: 1.5px solid #1F63E8; border-radius: 2px; padding: 15px 14px 16px; min-height: 66px;">
+              <span style="position: absolute; top: 9px; right: 9px; width: 7px; height: 7px; background: #1F63E8; transform: rotate(45deg);"></span>
+              <span style="font-family: var(--disp); font-size: 19px; line-height: 1.1; color: var(--ink);">Mystic</span>
+              <span style="font-size: 11.5px; line-height: 1.4; color: var(--ink-3); display: block; margin-top: 5px;">a little hard to read</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <span class="eyebrow" style="font-size: 9px;">KEYWORD TAGS</span>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 10.5px; letter-spacing: 0.07em; padding: 5px 10px; border-radius: 2px; color: #3C5F6C; background: rgba(79,122,138,0.12); border: 1px solid rgba(79,122,138,0.3);">WINTER</span>
+            <span style="font-size: 10.5px; letter-spacing: 0.07em; padding: 5px 10px; border-radius: 2px; color: #4A5C4B; background: rgba(91,122,92,0.12); border: 1px solid rgba(91,122,92,0.3);">CALM</span>
+            <span style="font-size: 10.5px; letter-spacing: 0.07em; padding: 5px 10px; border-radius: 2px; color: #7A4C1E; background: rgba(184,144,31,0.14); border: 1px solid rgba(184,144,31,0.35);">WARM</span>
+            <span style="font-size: 10.5px; letter-spacing: 0.07em; padding: 5px 10px; border-radius: 2px; color: #5A4A66; background: rgba(110,90,122,0.12); border: 1px solid rgba(110,90,122,0.3);">MYSTIC</span>
+            <span style="font-size: 10.5px; letter-spacing: 0.07em; padding: 5px 10px; border-radius: 2px; color: #A83B27; background: rgba(196,74,48,0.12); border: 1px solid rgba(196,74,48,0.32);">BOLD</span>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <span class="eyebrow" style="font-size: 9px;">AD WELL — LABEL OUTSIDE, DASHED EDGE, SUNKEN</span>
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 8px;">
+              <span class="eyebrow" style="font-size: 8.5px; color: var(--ink-4); letter-spacing: 0.24em;">ADVERTISEMENT</span>
+              <span style="flex-grow: 1; height: 1px; background: var(--rule); display: block;"></span>
+            </div>
+            <div style="width: 100%; height: 92px; background: var(--paper-lo); border: 1px dashed var(--rule-2); border-radius: 2px; display: flex; align-items: center; justify-content: center;">
+              <span class="eyebrow" style="font-size: 9px; color: var(--ink-4);">UNIT</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 44px 56px 0;">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+      <h2 class="sect">The name card's season wash</h2>
+      <span style="flex-grow: 1; height: 1px; background: var(--rule); display: block;"></span>
+    </div>
+    <p class="note" style="max-width: 900px; margin-bottom: 20px;">This replaces the ornamental border that keyed off gender. Two reasons: line-art ornament is the hardest thing to keep clean at four sizes, and decorating by gender quietly contradicts the app's own gender-neutral option. The season answer is the most visually expressive of the four, and nobody is offended by winter. One mechanism — a watercolour wash bleeding in from the card edges, a matching mountain at its foot, a matching keyword tag — four moods, no ornament to get wrong.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="position: relative; background: #FFFFFF; border: 1px solid var(--rule-2); border-radius: 2px; height: 156px; overflow: hidden;">
+          <div style="position: absolute; inset: 0; background: radial-gradient(126% 58% at 50% 0%, rgba(201,136,146,0.17) 0%, rgba(201,136,146,0) 64%), radial-gradient(78% 46% at 0% 34%, rgba(201,136,146,0.13) 0%, rgba(201,136,146,0) 60%);"></div>
+          <svg viewBox="0 0 252 70" width="100%" height="70" fill="none" preserveAspectRatio="none" style="position: absolute; left: 0; bottom: 0;">
+            <path d="M0 40 L44 14 L84 32 L128 8 L172 30 L214 12 L252 30 L252 70 L0 70 Z" fill="#D5A8AE" fill-opacity="0.4"></path>
+            <path d="M0 56 L52 40 L108 54 L164 38 L216 52 L252 44 L252 70 L0 70 Z" fill="#9C666F" fill-opacity="0.34"></path>
+          </svg>
+          <div style="position: relative; padding: 16px 16px 0; display: flex; flex-direction: column; gap: 6px;">
+            <span class="eyebrow" style="font-size: 8.5px; color: #8A4C55;">SPRING</span>
+            <span style="font-family: var(--brush); font-size: 34px; line-height: 1; color: var(--ink);">나겸</span>
+          </div>
+        </div>
+        <span class="hx">wash rgb 201,136,146</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="position: relative; background: #FFFFFF; border: 1px solid var(--rule-2); border-radius: 2px; height: 156px; overflow: hidden;">
+          <div style="position: absolute; inset: 0; background: radial-gradient(126% 58% at 50% 0%, rgba(184,144,31,0.17) 0%, rgba(184,144,31,0) 64%), radial-gradient(78% 46% at 0% 34%, rgba(184,144,31,0.13) 0%, rgba(184,144,31,0) 60%);"></div>
+          <svg viewBox="0 0 252 70" width="100%" height="70" fill="none" preserveAspectRatio="none" style="position: absolute; left: 0; bottom: 0;">
+            <path d="M0 40 L44 14 L84 32 L128 8 L172 30 L214 12 L252 30 L252 70 L0 70 Z" fill="#D9BE72" fill-opacity="0.4"></path>
+            <path d="M0 56 L52 40 L108 54 L164 38 L216 52 L252 44 L252 70 L0 70 Z" fill="#977A26" fill-opacity="0.34"></path>
+          </svg>
+          <div style="position: relative; padding: 16px 16px 0; display: flex; flex-direction: column; gap: 6px;">
+            <span class="eyebrow" style="font-size: 8.5px; color: #7A4C1E;">SUMMER</span>
+            <span style="font-family: var(--brush); font-size: 34px; line-height: 1; color: var(--ink);">하준</span>
+          </div>
+        </div>
+        <span class="hx">wash rgb 184,144,31</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="position: relative; background: #FFFFFF; border: 1px solid var(--rule-2); border-radius: 2px; height: 156px; overflow: hidden;">
+          <div style="position: absolute; inset: 0; background: radial-gradient(126% 58% at 50% 0%, rgba(174,98,54,0.17) 0%, rgba(174,98,54,0) 64%), radial-gradient(78% 46% at 0% 34%, rgba(174,98,54,0.13) 0%, rgba(174,98,54,0) 60%);"></div>
+          <svg viewBox="0 0 252 70" width="100%" height="70" fill="none" preserveAspectRatio="none" style="position: absolute; left: 0; bottom: 0;">
+            <path d="M0 40 L44 14 L84 32 L128 8 L172 30 L214 12 L252 30 L252 70 L0 70 Z" fill="#CE9670" fill-opacity="0.4"></path>
+            <path d="M0 56 L52 40 L108 54 L164 38 L216 52 L252 44 L252 70 L0 70 Z" fill="#8C5330" fill-opacity="0.34"></path>
+          </svg>
+          <div style="position: relative; padding: 16px 16px 0; display: flex; flex-direction: column; gap: 6px;">
+            <span class="eyebrow" style="font-size: 8.5px; color: #8A4A26;">AUTUMN</span>
+            <span style="font-family: var(--brush); font-size: 34px; line-height: 1; color: var(--ink);">건율</span>
+          </div>
+        </div>
+        <span class="hx">wash rgb 174,98,54</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="position: relative; background: #FFFFFF; border: 1px solid var(--rule-2); border-radius: 2px; height: 156px; overflow: hidden;">
+          <div style="position: absolute; inset: 0; background: radial-gradient(126% 58% at 50% 0%, rgba(79,122,138,0.17) 0%, rgba(79,122,138,0) 64%), radial-gradient(78% 46% at 0% 34%, rgba(79,122,138,0.13) 0%, rgba(79,122,138,0) 60%);"></div>
+          <svg viewBox="0 0 252 70" width="100%" height="70" fill="none" preserveAspectRatio="none" style="position: absolute; left: 0; bottom: 0;">
+            <path d="M0 40 L44 14 L84 32 L128 8 L172 30 L214 12 L252 30 L252 70 L0 70 Z" fill="#9AB4C0" fill-opacity="0.4"></path>
+            <path d="M0 56 L52 40 L108 54 L164 38 L216 52 L252 44 L252 70 L0 70 Z" fill="#48697A" fill-opacity="0.34"></path>
+          </svg>
+          <div style="position: relative; padding: 16px 16px 0; display: flex; flex-direction: column; gap: 6px;">
+            <span class="eyebrow" style="font-size: 8.5px; color: #3C5F6C;">WINTER</span>
+            <span style="font-family: var(--brush); font-size: 34px; line-height: 1; color: var(--ink);">규현</span>
+          </div>
+        </div>
+        <span class="hx">wash rgb 79,122,138</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 44px 56px 0;">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px;">
+      <h2 class="sect">Rules that keep it honest</h2>
+      <span style="flex-grow: 1; height: 1px; background: var(--rule); display: block;"></span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-family: var(--disp); font-size: 20px; line-height: 1.15; color: var(--ink);">Hairlines, not cards</span>
+        <span class="note">1 px #E4E5E3 separates things. Shadows only under the name card and the primary button — nowhere else.</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-family: var(--disp); font-size: 20px; line-height: 1.15; color: var(--ink);">One accent, used rarely</span>
+        <span class="note">One blue marks the current step, the chosen thing, and the stamp. Colour that means something else — a season, a mood — is a pigment, never the blue. If the accent is everywhere it stops meaning anything.</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-family: var(--disp); font-size: 20px; line-height: 1.15; color: var(--ink);">Ads sit in wells</span>
+        <span class="note">Sunken paper, dashed edge, label outside the frame, never within 24 px of a button. Nothing about an ad may look tappable as content.</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-family: var(--disp); font-size: 20px; line-height: 1.15; color: var(--ink);">44 px minimum</span>
+        <span class="note">Every tap target on mobile. Option tiles run 78 px tall, buttons 48 px, gutters 24 px.</span>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

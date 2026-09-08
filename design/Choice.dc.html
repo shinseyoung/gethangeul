@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Nanum+Brush+Script&display=swap">
+  <style>
+    body { margin: 0; background: #FCFCFB; }
+    a { color: #1F63E8; text-decoration: none; }
+    a:hover { color: #1546A8; }
+    .rt {
+      --paper: #FCFCFB; --paper-hi: #FFFFFF; --paper-lo: #F1F2F1;
+      --rule: #E4E5E3; --rule-2: #CDCFCC;
+      --ink: #17181A; --ink-2: #43464A; --ink-3: #7E8286; --ink-4: #ABAFB3;
+      --seal: #1F63E8;
+      --disp: 'Instrument Serif', 'Times New Roman', serif;
+      --body: 'Newsreader', Georgia, serif;
+      --brush: 'Nanum Brush Script', 'Gowun Batang', serif;
+    }
+    .grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    }
+    .eyebrow {
+      font-family: var(--body); font-size: 10px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3);
+    }
+    .card { transition: transform .2s ease, box-shadow .2s ease; cursor: pointer; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -28px rgba(23,24,26,0.55); }
+  </style>
+</helmet>
+
+<div class="rt" style="width: 390px; min-height: 1000px; position: relative; background: var(--paper); font-family: var(--body); color: var(--ink-2); overflow: hidden;">
+  <div class="grain"></div>
+
+  <div style="position: relative; z-index: 2; height: 58px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0 24px;">
+    <div style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#43464A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M12 5.5 5.5 12 12 18.5"></path></svg>
+      <span class="eyebrow" style="color: var(--ink-2);">ANSWERS</span>
+    </div>
+    <span class="eyebrow" style="font-size: 8px; letter-spacing: 0.26em;">GETHANGEUL</span>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 32px 24px 22px;">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+      <span style="width: 14px; height: 1px; background: var(--seal); display: block;"></span>
+      <span class="eyebrow" style="color: var(--seal);">SARAH · CALM · THOUGHTFUL · WINTER</span>
+    </div>
+    <h2 style="font-family: var(--disp); font-size: 33px; line-height: 1.08; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 10px; text-wrap: pretty;">Three names carry what you said. One of them is yours.</h2>
+    <p style="font-size: 14px; line-height: 1.55; color: var(--ink-3); margin: 0;">Read them out loud — the right one usually announces itself. Ranked, not shuffled: the same answers always give you these same three, in this order.</p>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 0 24px; display: flex; flex-direction: column; gap: 14px;">
+
+    <div class="card" style="position: relative; background: var(--paper-hi); border: 1.5px solid var(--seal); border-radius: 2px; padding: 20px 20px 18px; box-shadow: 0 14px 32px -26px rgba(23,24,26,0.5);">
+      <span style="position: absolute; top: -1px; right: 16px; background: var(--seal); color: var(--paper); font-family: var(--body); font-size: 8.5px; font-weight: 600; letter-spacing: 0.2em; padding: 4px 8px 3px; border-radius: 0 0 2px 2px;">CLOSEST</span>
+      <div style="display: flex; align-items: flex-end; gap: 14px;">
+        <span style="font-family: var(--brush); font-size: 52px; line-height: 0.9; color: var(--ink); letter-spacing: 0.06em;">규현</span>
+        <div style="display: flex; flex-direction: column; gap: 3px; padding-bottom: 4px;">
+          <span style="font-family: var(--disp); font-size: 22px; line-height: 1; color: var(--ink-2);">Gyuhyun</span>
+          <span style="font-size: 13px; color: var(--ink-4); letter-spacing: 0.12em;">圭賢</span>
+        </div>
+      </div>
+      <div style="height: 1px; background: var(--rule); margin: 15px 0 13px;"></div>
+      <p style="font-family: var(--disp); font-size: 18px; line-height: 1.4; color: var(--ink); margin: 0 0 12px;">“Clear and wise like jade.”</p>
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+        <div style="display: flex; gap: 5px;">
+          <span style="font-size: 10px; letter-spacing: 0.07em; padding: 4px 8px; border-radius: 2px; color: #3C5F6C; background: rgba(79,122,138,0.12); border: 1px solid rgba(79,122,138,0.3);">WINTER</span>
+          <span style="font-size: 10px; letter-spacing: 0.07em; padding: 4px 8px; border-radius: 2px; color: #4A5C4B; background: rgba(91,122,92,0.12); border: 1px solid rgba(91,122,92,0.3);">CALM</span>
+          <span style="font-size: 10px; letter-spacing: 0.07em; padding: 4px 8px; border-radius: 2px; color: #5A4A66; background: rgba(110,90,122,0.12); border: 1px solid rgba(110,90,122,0.3);">WISE</span>
+        </div>
+        <div style="display: flex; gap: 3px; flex-shrink: 0;">
+          <span style="width: 6px; height: 6px; background: var(--seal); transform: rotate(45deg); display: block;"></span>
+          <span style="width: 6px; height: 6px; background: var(--seal); transform: rotate(45deg); display: block;"></span>
+          <span style="width: 6px; height: 6px; background: var(--seal); transform: rotate(45deg); display: block;"></span>
+          <span style="width: 6px; height: 6px; background: var(--seal); transform: rotate(45deg); display: block;"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="position: relative; background: var(--paper-hi); border: 1px solid var(--rule); border-radius: 2px; padding: 20px 20px 18px;">
+      <div style="display: flex; align-items: flex-end; gap: 14px;">
+        <span style="font-family: var(--brush); font-size: 52px; line-height: 0.9; color: var(--ink); letter-spacing: 0.06em;">도운</span>
+        <div style="display: flex; flex-direction: column; gap: 3px; padding-bottom: 4px;">
+          <span style="font-family: var(--disp); font-size: 22px; line-height: 1; color: var(--ink-2);">Doun</span>
+          <span style="font-size: 13px; color: var(--ink-4); letter-spacing: 0.12em;">道雲</span>
+        </div>
+      </div>
+      <div style="height: 1px; background: var(--rule); margin: 15px 0 13px;"></div>
+      <p style="font-family: var(--disp); font-size: 18px; line-height: 1.4; color: var(--ink); margin: 0 0 12px;">“Clouds resting on the path.”</p>
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+        <div style="display: flex; gap: 5px;">
+          <span style="font-size: 10px; letter-spacing: 0.07em; padding: 4px 8px; border-radius: 2px; color: #3C5F6C; background: rgba(79,122,138,0.12); border: 1px solid rgba(79,122,138,0.3);">WINTER</span>
+          <span style="font-size: 10px; letter-spacing: 0.07em; padding: 4px 8px; border-radius: 2px; color: #5A4A66; background: rgba(110,90,122,0.12); border: 1px solid rgba(110,90,122,0.3);">MYSTIC</span>
+        </div>
+        <div style="display: flex; gap: 3px; flex-shrink: 0;">
+          <span style="width: 6px; height: 6px; background: var(--seal); transform: rotate(45deg); display: block;"></span>
+          <span style="width: 6px; height: 6px; background: var(--seal); transform: rotate(45deg); display: block;"></span>
+          <span style="width: 6px; height: 6px; background: var(--seal); transform: rotate(45deg); display: block;"></span>
+          <span style="width: 6px; height: 6px; border: 1px solid var(--rule-2); transform: rotate(45deg); display: block;"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="position: relative; background: var(--paper-hi); border: 1px solid var(--rule); border-radius: 2px; padding: 20px 20px 18px;">
+      <div style="display: flex; align-items: flex-end; gap: 14px;">
+        <span style="font-family: var(--brush); font-size: 52px; line-height: 0.9; color: var(--ink); letter-spacing: 0.06em;">은호</span>
+        <div style="display: flex; flex-direction: column; gap: 3px; padding-bottom: 4px;">
+          <span style="font-family: var(--disp); font-size: 22px; line-height: 1; color: var(--ink-2);">Eunho</span>
+          <span style="font-size: 13px; color: var(--ink-4); letter-spacing: 0.12em;">恩浩</span>
+        </div>
+      </div>
+      <div style="height: 1px; background: var(--rule); margin: 15px 0 13px;"></div>
+      <p style="font-family: var(--disp); font-size: 18px; line-height: 1.4; color: var(--ink); margin: 0 0 12px;">“Gracious, and wide as a winter river.”</p>
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+        <div style="display: flex; gap: 5px;">
+          <span style="font-size: 10px; letter-spacing: 0.07em; padding: 4px 8px; border-radius: 2px; color: #3C5F6C; background: rgba(79,122,138,0.12); border: 1px solid rgba(79,122,138,0.3);">WINTER</span>
+          <span style="font-size: 10px; letter-spacing: 0.07em; padding: 4px 8px; border-radius: 2px; color: #7A4C1E; background: rgba(184,144,31,0.14); border: 1px solid rgba(184,144,31,0.34);">WARM</span>
+        </div>
+        <div style="display: flex; gap: 3px; flex-shrink: 0;">
+          <span style="width: 6px; height: 6px; background: var(--seal); transform: rotate(45deg); display: block;"></span>
+          <span style="width: 6px; height: 6px; background: var(--seal); transform: rotate(45deg); display: block;"></span>
+          <span style="width: 6px; height: 6px; background: var(--seal); transform: rotate(45deg); display: block;"></span>
+          <span style="width: 6px; height: 6px; border: 1px solid var(--rule-2); transform: rotate(45deg); display: block;"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 26px 24px 34px; display: flex; flex-direction: column; align-items: center; gap: 14px;">
+    <span style="width: 100%; height: 1px; background: var(--rule); display: block;"></span>
+    <span style="font-size: 13.5px; color: var(--ink-3);">None of these? <a href="#">Change an answer</a></span>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

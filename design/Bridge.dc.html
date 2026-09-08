@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Nanum+Brush+Script&display=swap">
+  <style>
+    body { margin: 0; background: #FCFCFB; }
+    a { color: #1F63E8; text-decoration: none; }
+    a:hover { color: #1546A8; }
+    .rt {
+      --paper: #FCFCFB; --paper-hi: #FFFFFF; --paper-lo: #F1F2F1;
+      --rule: #E4E5E3; --rule-2: #CDCFCC;
+      --ink: #17181A; --ink-2: #43464A; --ink-3: #7E8286; --ink-4: #ABAFB3;
+      --seal: #1F63E8;
+      --disp: 'Instrument Serif', 'Times New Roman', serif;
+      --body: 'Newsreader', Georgia, serif;
+      --brush: 'Nanum Brush Script', 'Gowun Batang', serif;
+    }
+    .grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    }
+    .eyebrow { font-family: var(--body); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); }
+    .cap { font-family: var(--body); font-size: 12.5px; line-height: 1.58; color: var(--ink-3); margin: 0; }
+    .stage { background: var(--paper-hi); border: 1px solid var(--rule); border-radius: 2px; padding: 20px 20px 22px; min-height: 258px; box-sizing: border-box; display: flex; flex-direction: column; }
+    .arrow { display: flex; align-items: center; justify-content: center; width: 34px; flex-shrink: 0; align-self: center; }
+    .chip { cursor: pointer; transition: border-color .16s ease, background-color .16s ease; }
+    .bar { height: 9px; border-radius: 1px; }
+  </style>
+</helmet>
+
+<div class="rt" style="width: 1400px; min-height: 1180px; position: relative; background: var(--paper); font-family: var(--body); color: var(--ink-2); overflow: hidden; padding: 0 0 48px;">
+  <div class="grain"></div>
+
+  <div style="position: relative; z-index: 2; padding: 44px 52px 0;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 20px; border-bottom: 1.5px solid var(--ink);">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span class="eyebrow" style="color: var(--seal);">GETHANGEUL · THE MECHANISM</span>
+        <h1 style="font-family: var(--disp); font-size: 46px; line-height: 1; color: var(--ink); margin: 0; letter-spacing: -0.015em;">From the name you have to the one you are given</h1>
+      </div>
+      <p class="cap" style="max-width: 430px; text-align: right;">Today the quiz filters 114 rows and returns the top scorer. This puts your own name in front of that filter, so the result sounds like you before it means anything.</p>
+    </div>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 26px 52px 0; display: flex; align-items: center; gap: 14px;">
+    <span class="eyebrow" style="font-size: 9px;">TRY A NAME</span>
+    <sc-for list="{{ chips }}" as="c" hint-placeholder-count="3">
+      <span class="chip" onClick="{{ c.pick }}" style="{{ c.style }}">{{ c.label }}</span>
+    </sc-for>
+    <span class="cap" style="margin-left: 8px;">— a strong match, a partial one, and one the database cannot serve.</span>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 22px 52px 0; display: flex; align-items: stretch;">
+
+    <div class="stage" style="width: 218px; flex-shrink: 0;">
+      <span class="eyebrow" style="font-size: 8.5px;">01 · YOUR NAME</span>
+      <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 14px;">
+        <span style="font-family: var(--disp); font-size: 44px; line-height: 1; color: var(--ink);">{{ s.name }}</span>
+        <div style="display: flex; align-items: baseline; gap: 9px;">
+          <span class="eyebrow" style="font-size: 8px; color: var(--ink-4);">IN HANGUL</span>
+          <span style="font-family: var(--brush); font-size: 27px; line-height: 1; color: var(--ink-2);">{{ s.translit }}</span>
+        </div>
+      </div>
+      <p class="cap" style="font-size: 11.5px;">The transliteration is an answer on its own — and it is what people search for.</p>
+    </div>
+
+    <div class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ABAFB3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M12.5 5.5 19 12l-6.5 6.5"></path></svg></div>
+
+    <div class="stage" style="width: 272px; flex-shrink: 0;">
+      <span class="eyebrow" style="font-size: 8.5px;">02 · THE SOUND</span>
+      <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; gap: 15px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-family: var(--disp); font-size: 19px; color: var(--ink-3);">{{ s.latin }}</span>
+          <span style="width: 18px; height: 1px; background: var(--rule-2); display: block;"></span>
+          <span style="{{ s.choStyle }}">{{ s.cho }}</span>
+        </div>
+        <span style="{{ s.syllStyle }}">{{ s.syllables }}</span>
+      </div>
+      <p class="cap" style="font-size: 11.5px;">{{ s.soundNote }}</p>
+    </div>
+
+    <div class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ABAFB3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M12.5 5.5 19 12l-6.5 6.5"></path></svg></div>
+
+    <div class="stage" style="width: 330px; flex-shrink: 0;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between;">
+        <span class="eyebrow" style="font-size: 8.5px;">03 · NAMES THAT SHARE IT</span>
+        <span style="{{ s.countStyle }}">{{ s.count }}</span>
+      </div>
+      <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; gap: 0; margin: 6px 0;">
+        <sc-for list="{{ s.candidates }}" as="c" hint-placeholder-count="4">
+          <div style="display: flex; align-items: baseline; gap: 11px; padding: 8px 0; border-bottom: 1px solid var(--rule);">
+            <span style="font-family: var(--brush); font-size: 23px; line-height: 1; color: var(--ink); width: 52px; flex-shrink: 0;">{{ c.han }}</span>
+            <span style="font-size: 12.5px; color: var(--ink-4); width: 42px; flex-shrink: 0;">{{ c.hanja }}</span>
+            <span class="cap" style="font-size: 11.5px; flex-grow: 1;">{{ c.tags }}</span>
+          </div>
+        </sc-for>
+        <span style="{{ s.emptyStyle }}">{{ s.emptyLine }}</span>
+      </div>
+      <p class="cap" style="font-size: 11.5px;">{{ s.poolNote }}</p>
+    </div>
+
+    <div class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ABAFB3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M12.5 5.5 19 12l-6.5 6.5"></path></svg></div>
+
+    <div class="stage" style="flex-grow: 1; border: 1.5px solid var(--seal); background: rgba(31,99,232,0.03);">
+      <div style="display: flex; align-items: baseline; justify-content: space-between;">
+        <span class="eyebrow" style="font-size: 8.5px;">04 · YOUR ANSWERS PICK ONE</span>
+        <span class="eyebrow" style="{{ s.verdictStyle }}">{{ s.verdict }}</span>
+      </div>
+      <span class="cap" style="font-size: 11.5px; margin-top: 8px; display: block;">{{ s.answers }}</span>
+      <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
+        <div style="display: flex; align-items: flex-end; gap: 13px;">
+          <span style="font-family: var(--brush); font-size: 54px; line-height: 0.9; color: var(--ink);">{{ s.winHan }}</span>
+          <div style="display: flex; flex-direction: column; gap: 3px; padding-bottom: 4px;">
+            <span style="font-family: var(--disp); font-size: 22px; line-height: 1; color: var(--ink-2);">{{ s.winRoman }}</span>
+            <span style="font-size: 12.5px; color: var(--ink-4); letter-spacing: 0.12em;">{{ s.winHanja }}</span>
+          </div>
+        </div>
+        <span style="font-family: var(--disp); font-size: 17px; line-height: 1.3; color: var(--ink);">{{ s.winMeaning }}</span>
+      </div>
+      <p class="cap" style="font-size: 11.5px;">{{ s.winNote }}</p>
+    </div>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 42px 52px 0; display: flex; gap: 56px; align-items: flex-start;">
+
+    <div style="width: 700px; flex-shrink: 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+        <h2 style="font-family: var(--disp); font-size: 26px; line-height: 1.1; color: var(--ink); margin: 0;">What the 114 names can and cannot reach</h2>
+        <span style="flex-grow: 1; height: 1px; background: var(--rule); display: block;"></span>
+      </div>
+      <p class="cap" style="margin-bottom: 18px;">Every name in nameDatabase.ts, counted by the initial consonant of its first syllable. This is the honest limit of the idea.</p>
+
+      <sc-for list="{{ coverage }}" as="r" hint-placeholder-count="14">
+        <div style="display: flex; align-items: center; gap: 14px; padding: 5px 0;">
+          <span style="{{ r.choStyle }}">{{ r.cho }}</span>
+          <span style="{{ r.barStyle }}"></span>
+          <span style="{{ r.numStyle }}">{{ r.n }}</span>
+          <span style="{{ r.letterStyle }}">{{ r.letters }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 26px;">
+      <div style="border: 1px solid var(--rule-2); border-radius: 2px; padding: 20px 20px 22px; background: var(--paper-hi);">
+        <span class="eyebrow" style="font-size: 9px; color: var(--seal);">THE FIX IS CHEAP</span>
+        <p class="cap" style="margin-top: 11px;">Korean has plenty of given names starting with ㅂ — <span style="font-family: var(--brush); font-size: 17px; color: var(--ink);">보람 · 보윤 · 별 · 봄 · 빛나</span> — and none of them are in the file. Adding a dozen closes the B and P gap, which is roughly one English name in eight.</p>
+        <p class="cap" style="margin-top: 11px;">ㅋ and ㅍ are different: Korean given names almost never begin with them. That is a fact about the language, not a hole in the data. Route K to ㄱ and P/F to ㅂ, and say so on screen rather than pretending the match is exact.</p>
+      </div>
+
+      <div style="border: 1px solid var(--rule-2); border-radius: 2px; padding: 20px 20px 22px; background: var(--paper-hi);">
+        <span class="eyebrow" style="font-size: 9px; color: var(--seal);">AND DELETE ONE LINE</span>
+        <p class="cap" style="margin-top: 11px;">nameMatcher.ts adds <span style="color: var(--ink-2);">Math.random() * 0.1</span> as a tiebreak. Same four answers, different name every reload. A friend who answers exactly as you did gets someone else's name — which is the one conversation that would have spread this site.</p>
+        <p class="cap" style="margin-top: 11px;">Take it out. Same name plus same answers gives the same result, forever. Retry becomes an explicit walk down the ranking — second, third — which is the Choose screen you already have, and it is better than a reroll because the visitor knows what they are trading.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":1400,"height":1180}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const CASES = {
+      sarah: {
+        name: 'Sarah', translit: '세라', latin: 'S', cho: 'ㅅ', hit: true,
+        syllables: '서 · 세 · 소 · 수 · 시 · 설 · 신 · 선 · 새',
+        soundNote: 'Nine first syllables in the set carry an initial ㅅ.',
+        count: '23',
+        candidates: [
+          { han: '설아', hanja: '雪兒', tags: 'calm · winter · female' },
+          { han: '소담', hanja: '소담', tags: 'soft · winter · female' },
+          { han: '소윤', hanja: '昭潤', tags: 'calm · winter · neutral' },
+          { han: '시은', hanja: '詩恩', tags: 'mystic · autumn · female' },
+        ],
+        poolNote: 'Filtered by gender first, then ranked by the other three answers.',
+        answers: 'Female · Calm · Thoughtful · Winter',
+        verdict: 'STRONG MATCH',
+        winHan: '설아', winRoman: 'Seora', winHanja: '雪兒',
+        winMeaning: '“Snow child.”',
+        winNote: '설아 is read seo-ra — the ㄹ carries into the next syllable. It lands almost exactly on Sarah, and it is a real Korean name, not a spelling of a foreign one.',
+      },
+      michael: {
+        name: 'Michael', translit: '마이클', latin: 'M', cho: 'ㅁ', hit: true,
+        syllables: '민',
+        soundNote: 'Only one ㅁ syllable appears in the whole file: 민.',
+        count: '5',
+        candidates: [
+          { han: '민건', hanja: '旻建', tags: 'strong · summer · male' },
+          { han: '민규', hanja: '珉奎', tags: 'bright · spring · male' },
+          { han: '민재', hanja: '敏才', tags: 'trendy · summer · male' },
+          { han: '민찬', hanja: '珉燦', tags: 'bright · spring · male' },
+        ],
+        poolNote: 'A narrow pool. Five names, and four of them survive the gender filter.',
+        answers: 'Male · Strong · Ambitious · Summer',
+        verdict: 'PARTIAL MATCH',
+        winHan: '민건', winRoman: 'Mingeon', winHanja: '旻建',
+        winMeaning: '“Bright sky, well built.”',
+        winNote: 'Only the opening M carries across. Mingeon does not sound like Michael the way Seora sounds like Sarah, and the screen should say so instead of overselling it.',
+      },
+      ben: {
+        name: 'Ben', translit: '벤', latin: 'B', cho: 'ㅂ', hit: false,
+        syllables: 'nothing in the set',
+        soundNote: 'No name in nameDatabase.ts begins with ㅂ. Not one.',
+        count: '0',
+        candidates: [],
+        poolNote: 'Nothing to filter. The sound stage is skipped entirely.',
+        answers: 'Male · Calm · Thoughtful · Autumn',
+        verdict: 'NO SOUND MATCH',
+        winHan: '건율', winRoman: 'Geonyul', winHanja: '建律',
+        winMeaning: '“Establishing a righteous path.”',
+        winNote: 'Chosen on meaning alone, and the result screen says exactly that: your name is written 벤 in Hangul, and this is the Korean name your answers point to. Honest beats clever.',
+      },
+    };
+
+    const COV = [
+      { cho: 'ㅇ', n: 31, letters: 'A E I O U Y' },
+      { cho: 'ㅅ', n: 23, letters: 'S, soft C, Z, Sh' },
+      { cho: 'ㄷ', n: 12, letters: 'D' },
+      { cho: 'ㅎ', n: 11, letters: 'H' },
+      { cho: 'ㅈ', n: 10, letters: 'J, soft G' },
+      { cho: 'ㄱ', n: 8, letters: 'G, hard C' },
+      { cho: 'ㅁ', n: 5, letters: 'M' },
+      { cho: 'ㄹ', n: 4, letters: 'L, R' },
+      { cho: 'ㅌ', n: 4, letters: 'T' },
+      { cho: 'ㄴ', n: 3, letters: 'N' },
+      { cho: 'ㅊ', n: 3, letters: 'Ch' },
+      { cho: 'ㅂ', n: 0, letters: 'B, P, V, F' },
+      { cho: 'ㅋ', n: 0, letters: 'K' },
+      { cho: 'ㅍ', n: 0, letters: 'P, F' },
+    ];
+
+    const cur = (this.state && this.state.pick) || 'sarah';
+    const c = CASES[cur];
+
+    const chip = (id, label) => {
+      const on = id === cur;
+      return {
+        label: label,
+        pick: () => this.setState({ pick: id }),
+        style: 'font-family: ' + "'Instrument Serif', serif" + '; font-size: 18px; padding: 8px 16px; border-radius: 2px; '
+          + (on
+            ? 'border: 1.5px solid #1F63E8; background: rgba(31,99,232,0.055); color: #17181A;'
+            : 'border: 1px solid #CDCFCC; background: #FFFFFF; color: #43464A;'),
+      };
+    };
+
+    const strong = c.hit && c.count !== '5';
+    const accent = c.hit ? (strong ? '#1F63E8' : '#B8901F') : '#7E8286';
+
+    return {
+      chips: [chip('sarah', 'Sarah'), chip('michael', 'Michael'), chip('ben', 'Ben')],
+      s: {
+        name: c.name, translit: c.translit, latin: c.latin, cho: c.cho,
+        syllables: c.syllables, soundNote: c.soundNote, count: c.count,
+        candidates: c.candidates,
+        poolNote: c.poolNote, answers: c.answers, verdict: c.verdict,
+        winHan: c.winHan, winRoman: c.winRoman, winHanja: c.winHanja,
+        winMeaning: c.winMeaning, winNote: c.winNote,
+        emptyLine: c.hit ? '' : 'No candidates.',
+        emptyStyle: c.hit
+          ? 'display: none;'
+          : 'font-family: ' + "'Instrument Serif', serif" + '; font-size: 20px; color: #ABAFB3; padding: 10px 0;',
+        choStyle: 'font-family: ' + "'Gowun Batang', serif" + '; font-size: 34px; line-height: 1; color: '
+          + (c.hit ? '#17181A' : '#ABAFB3') + ';',
+        syllStyle: c.hit
+          ? "font-family: 'Nanum Brush Script', 'Gowun Batang', serif; font-size: 26px; line-height: 1.5; color: #17181A;"
+          : "font-family: 'Newsreader', Georgia, serif; font-size: 15px; line-height: 1.5; color: #ABAFB3; font-style: italic;",
+        countStyle: "font-family: 'Instrument Serif', serif; font-size: 30px; line-height: 1; color: " + accent + ';',
+        verdictStyle: 'font-size: 8.5px; color: ' + accent + ';',
+      },
+      coverage: COV.map((r) => {
+        const zero = r.n === 0;
+        return {
+          cho: r.cho, n: String(r.n), letters: r.letters,
+          choStyle: "font-family: 'Gowun Batang', serif; font-size: 19px; line-height: 1; width: 26px; flex-shrink: 0; color: "
+            + (zero ? '#A83B27' : '#17181A') + ';',
+          barStyle: 'height: 9px; border-radius: 1px; flex-shrink: 0; width: '
+            + Math.max(3, Math.round((r.n / 31) * 300)) + 'px; background: '
+            + (zero ? 'repeating-linear-gradient(45deg, rgba(168,59,39,0.4) 0 4px, rgba(168,59,39,0.12) 4px 8px)' : '#17181A') + ';',
+          numStyle: "font-family: 'Instrument Serif', serif; font-size: 15px; width: 24px; flex-shrink: 0; color: "
+            + (zero ? '#A83B27' : '#43464A') + ';',
+          letterStyle: 'font-size: 12.5px; color: ' + (zero ? '#A83B27' : '#7E8286') + ';',
+        };
+      }),
+    };
+  }
+}
+</script>
+</body>
+</html>

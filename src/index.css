@@ -1,11 +1,146 @@
+/* The webfonts are loaded from a <link> in index.html. An @import here put a
+   blocking round trip in front of the first paint, which is what made the page
+   sit white and then snap into place. */
+
 @font-face {
   font-family: 'Chungju';
   src: url('/fonts/ChungjuKimSaengTTF.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
-  font-display: block;
+  font-display: swap;
+}
+
+/* Metric-matched stand-ins for the four webfonts.
+   Until the Google faces land the page is laid out in Times/Georgia/Malgun,
+   and those are wider — Instrument Serif is 16% narrower than Times, Newsreader
+   3.5% narrower than Georgia, Gowun Batang 3.5% narrower than the system
+   Korean face. That is the "글씨가 작아지면서 로딩되는" reflow. The percentages
+   below were measured with canvas measureText, not guessed. */
+@font-face {
+  font-family: 'Disp Fallback';
+  src: local('Times New Roman'), local('Liberation Serif'), local('Georgia');
+  size-adjust: 84%;
+  unicode-range: U+0000-00FF, U+0100-024F, U+2000-206F;
+}
+@font-face {
+  font-family: 'Disp Fallback';
+  src: local('Malgun Gothic'), local('Apple SD Gothic Neo'), local('Noto Sans KR');
+  /* calibrated on Windows/Malgun; the Korean system face differs per OS, so
+     this one is a knob — remeasure if it drifts on mac */
+  size-adjust: 94%;
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7A3;
+}
+@font-face {
+  font-family: 'Body Fallback';
+  src: local('Georgia'), local('Times New Roman'), local('Liberation Serif');
+  size-adjust: 96.5%;
+  unicode-range: U+0000-00FF, U+0100-024F, U+2000-206F;
+}
+@font-face {
+  font-family: 'Body Fallback';
+  src: local('Malgun Gothic'), local('Apple SD Gothic Neo'), local('Noto Sans KR');
+  /* calibrated on Windows/Malgun; the Korean system face differs per OS, so
+     this one is a knob — remeasure if it drifts on mac */
+  size-adjust: 94%;
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7A3;
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* the OS default tap flash is orange on several Android browsers, which
+       fought the blue everything else is built on */
+    -webkit-tap-highlight-color: rgba(31, 99, 232, 0.14);
+    /* The first paint has no content and so no scrollbar; the second has both,
+       and the 15px it takes narrows the page. Everything centred — the hero
+       picture most visibly — slid left by half of that on every load.
+       scrollbar-gutter: stable is the tidy way to say this and Chrome ignores
+       it on the root, so the track is simply always there. */
+    overflow-y: scroll;
+  }
+  body {
+    /* the ground, not paper: the app's outermost surface is bg-ground, and a
+       near-white body meant the first painted frame was the wrong colour */
+    @apply bg-ground text-ink-2 font-body antialiased;
+  }
+  /* Korean and Thai need more leading than Latin; Korean must break on word boundaries. */
+  :lang(ko) { word-break: keep-all; }
+  :lang(th) { line-height: 1.75; word-break: break-word; }
+  :lang(vi) { line-height: 1.55; }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-body text-[10px] font-semibold uppercase text-ink-3;
+    letter-spacing: 0.2em;
+  }
+  .hairline { @apply h-px flex-1 bg-rule; }
+  /* paper tooth — barely there, and never behind body copy */
+  .grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.16;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .focus-ring {
+    @apply outline-none ring-offset-2 ring-offset-paper focus-visible:ring-2 focus-visible:ring-accent;
+  }
+}
+
+/* --- motion --------------------------------------------------------------- */
+
+@keyframes ink-draw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+@keyframes rise-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes caret-blink { 0%, 45% { opacity: 1; } 55%, 100% { opacity: 0; } }
+@keyframes write-in {
+  0%, 3%    { clip-path: inset(0 100% 0 0); }
+  15%, 20%  { clip-path: inset(0 50% 0 0); }
+  32%, 100% { clip-path: inset(0 0 0 0); }
+}
+@keyframes check-pop {
+  0%   { transform: scale(0.4); opacity: 0; }
+  60%  { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes check-draw { from { stroke-dashoffset: 30; } to { stroke-dashoffset: 0; } }
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes row-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes brush-loop { 0% { stroke-dashoffset: 620; } 45%, 100% { stroke-dashoffset: 0; } }
+
+.animate-rise { animation: rise-in 0.5s ease-out backwards; }
+.animate-caret { animation: caret-blink 1.1s steps(1) infinite; }
+.animate-write { animation: write-in 6.5s cubic-bezier(0.55, 0, 0.35, 1) infinite; }
+.animate-check { animation: check-pop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.animate-check-draw { stroke-dasharray: 30; animation: check-draw 0.24s ease-out 0.08s backwards; }
+.animate-card { animation: card-in 0.34s cubic-bezier(0.22, 1, 0.36, 1); }
+.animate-row { animation: row-in 0.34s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
+
+.ink-glyph [data-stroke] { stroke-dasharray: 100; }
+.ink-glyph.is-on [data-stroke] { animation: ink-draw 0.5s cubic-bezier(0.55, 0, 0.35, 1) backwards; }
+.ink-glyph.is-on [data-stroke]:nth-of-type(2) { animation-delay: 0.09s; }
+.ink-glyph.is-on [data-stroke]:nth-of-type(3) { animation-delay: 0.18s; }
+.ink-glyph.is-on [data-stroke]:nth-of-type(4) { animation-delay: 0.27s; }
+.ink-glyph.is-on [data-stroke]:nth-of-type(5) { animation-delay: 0.36s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

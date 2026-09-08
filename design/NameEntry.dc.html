@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Nanum+Brush+Script&display=swap">
+  <style>
+    body { margin: 0; background: #FCFCFB; }
+    a { color: #1F63E8; text-decoration: none; }
+    a:hover { color: #1546A8; }
+    .rt {
+      --paper: #FCFCFB; --paper-hi: #FFFFFF; --paper-lo: #F1F2F1;
+      --rule: #E4E5E3; --rule-2: #CDCFCC;
+      --ink: #17181A; --ink-2: #43464A; --ink-3: #7E8286; --ink-4: #ABAFB3;
+      --seal: #1F63E8;
+      --disp: 'Instrument Serif', 'Times New Roman', serif;
+      --body: 'Newsreader', Georgia, serif;
+      --brush: 'Nanum Brush Script', 'Gowun Batang', serif;
+    }
+    .grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    }
+    .eyebrow {
+      font-family: var(--body); font-size: 10px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3);
+    }
+    .frow { display: flex; align-items: baseline; gap: 20px; padding: 11px 0; border-bottom: 1px solid var(--rule); }
+    .fkey { width: 132px; flex-shrink: 0; font-family: var(--body); font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-4); }
+    .fval { font-size: 15.5px; color: var(--ink-2); }
+    h2.sec { font-family: var(--disp); font-size: 30px; line-height: 1.15; color: var(--ink); margin: 0 0 14px; letter-spacing: -0.01em; }
+    p.bod { font-size: 15.5px; line-height: 1.68; color: var(--ink-2); margin: 0 0 14px; text-wrap: pretty; }
+  </style>
+</helmet>
+
+<div class="rt" style="width: 1080px; min-height: 2440px; position: relative; background: var(--paper); font-family: var(--body); color: var(--ink-2); overflow: hidden;">
+  <div class="grain"></div>
+
+  <div style="position: relative; z-index: 3; height: 78px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: center;">
+    <div style="width: 1000px; display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="font-family: var(--brush); font-size: 26px; line-height: 1; color: var(--ink); letter-spacing: 0.06em;">한글 이름</span>
+        <span class="eyebrow" style="font-size: 8.5px; letter-spacing: 0.28em;">GETHANGEUL</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 28px;">
+        <span class="eyebrow" style="font-size: 10.5px; color: var(--seal);">NAME DICTIONARY</span>
+        <span class="eyebrow" style="font-size: 10.5px; color: var(--ink-2);">HOW IT WORKS</span>
+        <div style="display: flex; align-items: center; gap: 9px; background: var(--ink); border-radius: 2px; padding: 10px 16px;">
+          <span style="font-family: var(--disp); font-size: 16px; color: var(--paper);">Find my name</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; z-index: 3; height: 46px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; background: rgba(241,242,241,0.6);">
+    <div style="width: 1000px; display: flex; align-items: center; gap: 9px;">
+      <span class="eyebrow" style="font-size: 9.5px; color: var(--ink-4);">DICTIONARY</span>
+      <span style="color: var(--ink-4); font-size: 11px;">/</span>
+      <span class="eyebrow" style="font-size: 9.5px; color: var(--ink-4);">SUMMER NAMES</span>
+      <span style="color: var(--ink-4); font-size: 11px;">/</span>
+      <span class="eyebrow" style="font-size: 9.5px; color: var(--ink-2);">HAJUN 하준</span>
+    </div>
+  </div>
+
+  <div style="position: relative; z-index: 3; display: flex; justify-content: center; padding-top: 46px;">
+    <div style="width: 1000px; display: flex; gap: 60px; align-items: flex-start;">
+
+      <div style="width: 640px; flex-shrink: 0;">
+
+        <div style="display: flex; align-items: flex-end; gap: 26px; padding-bottom: 26px; border-bottom: 1px solid var(--rule-2);">
+          <span style="font-family: var(--brush); font-size: 92px; line-height: 0.9; color: var(--ink); letter-spacing: 0.06em;">하준</span>
+          <div style="display: flex; flex-direction: column; gap: 8px; padding-bottom: 8px;">
+            <h1 style="font-family: var(--disp); font-size: 46px; line-height: 1; color: var(--ink); margin: 0; letter-spacing: -0.01em;">Hajun</h1>
+            <span style="font-size: 17px; color: var(--ink-4); letter-spacing: 0.14em;">夏俊</span>
+          </div>
+          <div style="flex-grow: 1;"></div>
+          <div style="display: flex; align-items: center; gap: 10px; border: 1px solid var(--rule-2); border-radius: 999px; padding: 7px 8px 7px 15px; margin-bottom: 10px;">
+            <span style="font-size: 13.5px; color: var(--ink-3); letter-spacing: 0.05em;">hah · joon</span>
+            <span style="width: 30px; height: 30px; border-radius: 50%; background: var(--seal); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>
+            </span>
+          </div>
+        </div>
+
+        <p class="bod" style="font-size: 17.5px; line-height: 1.65; margin: 24px 0 30px;">Hajun (하준) is a Korean given name written with the hanja 夏俊 — “summer” and “outstanding.” It reads as a person whose talent shows the way full summer shows: without effort, and impossible to miss. It is one of the most common boys' names registered in Korea over the last decade, and it works comfortably as a gender&#8209;neutral choice.</p>
+
+        <div style="margin-bottom: 34px;">
+          <div class="frow" style="border-top: 1px solid var(--rule);">
+            <span class="fkey">Hangul</span><span class="fval">하준</span>
+          </div>
+          <div class="frow"><span class="fkey">Hanja</span><span class="fval">夏俊 &nbsp;<span style="color: var(--ink-4); font-size: 13.5px;">(other spellings exist)</span></span></div>
+          <div class="frow"><span class="fkey">Romanization</span><span class="fval">Hajun &nbsp;<span style="color: var(--ink-4); font-size: 13.5px;">(Revised) · Hajoon, Hajoun in passports</span></span></div>
+          <div class="frow"><span class="fkey">Usually given to</span><span class="fval">Boys · also used gender&#8209;neutral</span></div>
+          <div class="frow"><span class="fkey">Season</span><span class="fval">Summer</span></div>
+          <div class="frow"><span class="fkey">Reads as</span><span class="fval">Bold · radiant · warm</span></div>
+        </div>
+
+        <div style="margin-bottom: 38px;">
+          <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 9px;">
+            <span class="eyebrow" style="font-size: 8.5px; color: var(--ink-4); letter-spacing: 0.24em;">ADVERTISEMENT</span>
+            <span style="flex-grow: 1; height: 1px; background: var(--rule); display: block;"></span>
+          </div>
+          <div style="width: 100%; height: 250px; background: var(--paper-lo); border: 1px dashed var(--rule-2); border-radius: 2px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;">
+            <span style="font-family: var(--disp); font-size: 20px; color: var(--ink-4);">640 × 250</span>
+            <span class="eyebrow" style="font-size: 9px; color: var(--ink-4);">IN&#8209;ARTICLE UNIT</span>
+          </div>
+        </div>
+
+        <h2 class="sec">What 하준 means</h2>
+        <div style="display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); align-items: flex-start;">
+          <div style="width: 62px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 4px;">
+            <span style="font-size: 44px; line-height: 1; color: var(--ink);">夏</span>
+            <span style="font-family: var(--brush); font-size: 20px; line-height: 1; color: var(--seal);">하</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-family: var(--disp); font-size: 22px; line-height: 1.15; color: var(--ink);">Summer</span>
+            <span style="font-size: 14.5px; line-height: 1.6; color: var(--ink-3);">The season everything is already grown into. In names it carries heat, abundance and confidence rather than beginnings.</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--rule); align-items: flex-start; margin-bottom: 20px;">
+          <div style="width: 62px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 4px;">
+            <span style="font-size: 44px; line-height: 1; color: var(--ink);">俊</span>
+            <span style="font-family: var(--brush); font-size: 20px; line-height: 1; color: var(--seal);">준</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-family: var(--disp); font-size: 22px; line-height: 1.15; color: var(--ink);">Outstanding, talented</span>
+            <span style="font-size: 14.5px; line-height: 1.6; color: var(--ink-3);">One of the most-used characters in modern Korean names. It means a person who stands out — by ability, not by volume.</span>
+          </div>
+        </div>
+        <p class="bod" style="margin-bottom: 34px;">Together: <em style="font-style: italic;">a passionate soul, burning as brightly as the summer sun.</em></p>
+
+        <h2 class="sec">How to say it</h2>
+        <p class="bod">Two beats, even stress — Koreans do not stress one syllable over the other. <strong style="font-weight: 600;">하</strong> is “hah,” the vowel in <em style="font-style: italic;">father</em>, cut short. <strong style="font-weight: 600;">준</strong> is “joon,” close to the month <em style="font-style: italic;">June</em> but shorter and with the tongue further forward.</p>
+        <p class="bod" style="margin-bottom: 34px;">The common mistake is stretching it to “HAH‑joooon.” Keep both halves the same length and you will sound right.</p>
+
+        <h2 class="sec">Names that share a character</h2>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 40px;">
+          <div style="display: flex; align-items: center; gap: 16px; border: 1px solid var(--rule); border-radius: 2px; padding: 16px 18px; background: var(--paper-hi);">
+            <span style="font-family: var(--brush); font-size: 34px; line-height: 1; color: var(--ink);">재하</span>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: var(--disp); font-size: 18px; line-height: 1.1; color: var(--ink-2);">Jaeha 載夏</span>
+              <span style="font-size: 12.5px; color: var(--ink-3);">shares 夏 — carrying summer</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px; border: 1px solid var(--rule); border-radius: 2px; padding: 16px 18px; background: var(--paper-hi);">
+            <span style="font-family: var(--brush); font-size: 34px; line-height: 1; color: var(--ink);">세준</span>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: var(--disp); font-size: 18px; line-height: 1.1; color: var(--ink-2);">Sejun 世俊</span>
+              <span style="font-size: 12.5px; color: var(--ink-3);">shares 俊 — outstanding in the world</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px; border: 1px solid var(--rule); border-radius: 2px; padding: 16px 18px; background: var(--paper-hi);">
+            <span style="font-family: var(--brush); font-size: 34px; line-height: 1; color: var(--ink);">지호</span>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: var(--disp); font-size: 18px; line-height: 1.1; color: var(--ink-2);">Jiho 智浩</span>
+              <span style="font-size: 12.5px; color: var(--ink-3);">same season — wise and vast</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px; border: 1px solid var(--rule); border-radius: 2px; padding: 16px 18px; background: var(--paper-hi);">
+            <span style="font-family: var(--brush); font-size: 34px; line-height: 1; color: var(--ink);">강현</span>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: var(--disp); font-size: 18px; line-height: 1.1; color: var(--ink-2);">Ganghyun 强炫</span>
+              <span style="font-size: 12.5px; color: var(--ink-3);">same season — strong and radiant</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="position: relative; background: var(--ink); border-radius: 2px; padding: 34px 34px 32px; overflow: hidden;">
+          <div style="position: absolute; right: 26px; top: -14px; font-size: 118px; line-height: 1; color: #FCFCFB; opacity: 0.07;">名</div>
+          <div style="position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 14px;">
+            <span class="eyebrow" style="color: #9AA0A5; font-size: 9.5px;">HAJUN ISN'T YOURS?</span>
+            <h2 style="font-family: var(--disp); font-size: 34px; line-height: 1.1; color: var(--paper); margin: 0; max-width: 400px;">Four questions, and we'll find the one that is.</h2>
+            <div style="display: flex; align-items: center; gap: 11px; background: var(--paper); border-radius: 2px; padding: 13px 22px; margin-top: 6px;">
+              <span style="font-family: var(--disp); font-size: 19px; color: var(--ink);">Find my name</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#17181A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5.5 18.5 12 12 18.5"></path></svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 26px;">
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <span class="eyebrow" style="font-size: 8.5px; color: var(--ink-4); letter-spacing: 0.24em;">ADVERTISEMENT</span>
+          <div style="width: 300px; height: 250px; background: var(--paper-lo); border: 1px dashed var(--rule-2); border-radius: 2px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;">
+            <span style="font-family: var(--disp); font-size: 20px; color: var(--ink-4);">300 × 250</span>
+            <span class="eyebrow" style="font-size: 9px; color: var(--ink-4);">RAIL UNIT</span>
+          </div>
+        </div>
+
+        <div style="border: 1px solid var(--rule); border-radius: 2px; padding: 20px 18px; background: var(--paper-hi);">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+            <span class="eyebrow" style="font-size: 9px;">READ THIS WEEK</span>
+            <span style="flex-grow: 1; height: 1px; background: var(--rule); display: block;"></span>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: baseline; gap: 11px; padding: 9px 0; border-bottom: 1px solid var(--rule);">
+              <span style="font-family: var(--brush); font-size: 21px; line-height: 1; color: var(--ink);">서연</span>
+              <span style="font-size: 13.5px; color: var(--ink-3); flex-grow: 1;">Seoyeon</span>
+              <span style="font-size: 11.5px; color: var(--ink-4);">徐姸</span>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 11px; padding: 9px 0; border-bottom: 1px solid var(--rule);">
+              <span style="font-family: var(--brush); font-size: 21px; line-height: 1; color: var(--ink);">시우</span>
+              <span style="font-size: 13.5px; color: var(--ink-3); flex-grow: 1;">Siwoo</span>
+              <span style="font-size: 11.5px; color: var(--ink-4);">始宇</span>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 11px; padding: 9px 0; border-bottom: 1px solid var(--rule);">
+              <span style="font-family: var(--brush); font-size: 21px; line-height: 1; color: var(--ink);">규현</span>
+              <span style="font-size: 13.5px; color: var(--ink-3); flex-grow: 1;">Gyuhyun</span>
+              <span style="font-size: 11.5px; color: var(--ink-4);">圭賢</span>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 11px; padding: 9px 0; border-bottom: 1px solid var(--rule);">
+              <span style="font-family: var(--brush); font-size: 21px; line-height: 1; color: var(--ink);">도운</span>
+              <span style="font-size: 13.5px; color: var(--ink-3); flex-grow: 1;">Doun</span>
+              <span style="font-size: 11.5px; color: var(--ink-4);">道雲</span>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 11px; padding: 9px 0;">
+              <span style="font-family: var(--brush); font-size: 21px; line-height: 1; color: var(--ink);">은호</span>
+              <span style="font-size: 13.5px; color: var(--ink-3); flex-grow: 1;">Eunho</span>
+              <span style="font-size: 11.5px; color: var(--ink-4);">恩浩</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <span class="eyebrow" style="font-size: 8.5px; color: var(--ink-4); letter-spacing: 0.24em;">ADVERTISEMENT</span>
+          <div style="width: 300px; height: 600px; background: var(--paper-lo); border: 1px dashed var(--rule-2); border-radius: 2px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;">
+            <span style="font-family: var(--disp); font-size: 22px; color: var(--ink-4);">300 × 600</span>
+            <span class="eyebrow" style="font-size: 9px; color: var(--ink-4);">STICKY RAIL UNIT</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="height: 60px;"></div>
+</div>
+</x-dc>
+</body>
+</html>

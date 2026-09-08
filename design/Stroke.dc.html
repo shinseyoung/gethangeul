@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Nanum+Brush+Script&family=Gowun+Batang:wght@400;700&display=swap">
+  <style>
+    body { margin: 0; background: #FCFCFB; }
+    a { color: #1F63E8; text-decoration: none; }
+    a:hover { color: #1546A8; }
+    .rt {
+      --paper: #FCFCFB; --paper-hi: #FFFFFF; --paper-lo: #F1F2F1;
+      --rule: #E4E5E3; --rule-2: #CDCFCC;
+      --ink: #17181A; --ink-2: #43464A; --ink-3: #7E8286; --ink-4: #ABAFB3;
+      --seal: #1F63E8;
+      --disp: 'Instrument Serif', 'Times New Roman', serif;
+      --body: 'Newsreader', Georgia, serif;
+      --brush: 'Nanum Brush Script', 'Gowun Batang', serif;
+    }
+    .grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    }
+    .eyebrow { font-family: var(--body); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); }
+    .cap { font-family: var(--body); font-size: 13px; line-height: 1.62; color: var(--ink-3); margin: 0; }
+    .mono { font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace; font-size: 12.5px; letter-spacing: -0.01em; }
+
+    @keyframes st { 0% { stroke-dashoffset: 100; } 5.5% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 0; } }
+    .w path { stroke-dasharray: 100; animation: st 6s linear infinite backwards; }
+    .w path:nth-child(1) { animation-delay: 0s; }
+    .w path:nth-child(2) { animation-delay: .3s; }
+    .w path:nth-child(3) { animation-delay: .6s; }
+    .w path:nth-child(4) { animation-delay: .9s; }
+    .w path:nth-child(5) { animation-delay: 1.2s; }
+    .w2 path:nth-child(1) { animation-delay: 1.6s; }
+    .w2 path:nth-child(2) { animation-delay: 1.9s; }
+    .w2 path:nth-child(3) { animation-delay: 2.2s; }
+    .w2 path:nth-child(4) { animation-delay: 2.5s; }
+    .w2 path:nth-child(5) { animation-delay: 2.8s; }
+  </style>
+</helmet>
+
+<div class="rt" style="width: 860px; min-height: 640px; position: relative; background: var(--paper); font-family: var(--body); color: var(--ink-2); overflow: hidden; padding: 0 0 40px;">
+  <div class="grain"></div>
+
+  <div style="position: relative; z-index: 2; padding: 40px 44px 0;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 18px; border-bottom: 1.5px solid var(--ink);">
+      <div style="display: flex; flex-direction: column; gap: 7px;">
+        <span class="eyebrow" style="color: var(--seal);">GETHANGEUL · STROKE ORDER</span>
+        <h1 style="font-family: var(--disp); font-size: 38px; line-height: 1; color: var(--ink); margin: 0; letter-spacing: -0.015em;">The name writes itself</h1>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 30px 44px 0; display: flex; gap: 40px; align-items: flex-start;">
+
+    <div style="width: 392px; flex-shrink: 0; display: flex; flex-direction: column; gap: 14px;">
+      <div style="position: relative; background: var(--paper-hi); border: 1px solid var(--rule-2); border-radius: 2px; padding: 26px 24px 22px;">
+        <div style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(110% 60% at 50% 0%, rgba(79,122,138,0.1) 0%, rgba(79,122,138,0) 66%);"></div>
+
+        <div style="position: relative; display: flex; justify-content: center;">
+          <svg viewBox="0 0 230 112" width="344" height="168" fill="none" stroke="#17181A" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+            <g stroke="#E4E5E3" stroke-width="1" stroke-dasharray="3 5">
+              <path d="M5 58H105"></path><path d="M55 8V108"></path>
+              <path d="M125 58H225"></path><path d="M175 8V108"></path>
+            </g>
+            <g class="w" transform="translate(5,6)">
+              <path pathLength="100" d="M34 26 16 78"></path>
+              <path pathLength="100" d="M35 34 54 78"></path>
+              <path pathLength="100" d="M56 52H70"></path>
+              <path pathLength="100" d="M70 20V82"></path>
+              <path pathLength="100" d="M86 20V82"></path>
+            </g>
+            <g class="w w2" transform="translate(125,6)">
+              <path pathLength="100" d="M17 24H47L21 45"></path>
+              <path pathLength="100" d="M21 45H47"></path>
+              <path pathLength="100" d="M47 45V66H17"></path>
+              <path pathLength="100" d="M72 18V84"></path>
+              <path pathLength="100" d="M72 50H88"></path>
+            </g>
+          </svg>
+        </div>
+
+        <div style="position: relative; display: flex; align-items: baseline; justify-content: center; gap: 14px; margin-top: 14px; padding-top: 16px; border-top: 1px solid var(--rule);">
+          <span style="font-family: var(--disp); font-size: 22px; color: var(--ink-2);">Seora</span>
+          <span style="font-size: 13px; color: var(--ink-4); letter-spacing: 0.14em;">雪兒</span>
+          <span class="eyebrow" style="font-size: 8.5px; color: var(--ink-4);">10 STROKES</span>
+        </div>
+      </div>
+      <p class="cap" style="font-size: 12px;">Ten strokes, in the order a Korean child is taught to write them: consonant before vowel, top before bottom, left before right.</p>
+    </div>
+
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 22px;">
+
+      <div>
+        <span class="eyebrow" style="font-size: 9px;">WHY THIS IS CHEAP</span>
+        <h2 style="font-family: var(--disp); font-size: 27px; line-height: 1.12; color: var(--ink); margin: 9px 0 11px;">Hangul is arithmetic, not calligraphy</h2>
+        <p class="cap">Every syllable block decomposes with one formula — there is no lookup table and no per-name artwork:</p>
+        <div style="background: var(--paper-lo); border: 1px solid var(--rule); border-radius: 2px; padding: 13px 15px; margin: 12px 0 12px;">
+          <span class="mono" style="color: var(--ink-2);">code − 0xAC00 → initial × 588 + medial × 28 + final</span>
+        </div>
+        <div style="display: flex; gap: 26px;">
+          <div style="display: flex; align-items: baseline; gap: 9px;">
+            <span style="font-family: 'Gowun Batang', serif; font-size: 24px; color: var(--ink);">세</span>
+            <span style="color: var(--ink-4); font-size: 14px;">=</span>
+            <span style="font-family: 'Gowun Batang', serif; font-size: 20px; color: var(--seal);">ㅅ</span>
+            <span style="color: var(--ink-4); font-size: 14px;">+</span>
+            <span style="font-family: 'Gowun Batang', serif; font-size: 20px; color: var(--seal);">ㅔ</span>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 9px;">
+            <span style="font-family: 'Gowun Batang', serif; font-size: 24px; color: var(--ink);">라</span>
+            <span style="color: var(--ink-4); font-size: 14px;">=</span>
+            <span style="font-family: 'Gowun Batang', serif; font-size: 20px; color: var(--seal);">ㄹ</span>
+            <span style="color: var(--ink-4); font-size: 14px;">+</span>
+            <span style="font-family: 'Gowun Batang', serif; font-size: 20px; color: var(--seal);">ㅏ</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="height: 1px; background: var(--rule);"></div>
+
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div style="display: flex; gap: 13px;">
+          <span style="font-family: var(--disp); font-size: 12px; color: var(--seal); padding-top: 3px;">01</span>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-family: var(--disp); font-size: 18px; line-height: 1.15; color: var(--ink);">One asset set covers all 114 names</span>
+            <span class="cap" style="font-size: 12.5px;">Draw the strokes for the 24 jamo once — roughly 60 short paths — and position them by the block's shape. Nothing has to be authored per name, and a name added to the database next year animates without anyone touching it.</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 13px;">
+          <span style="font-family: var(--disp); font-size: 12px; color: var(--seal); padding-top: 3px;">02</span>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-family: var(--disp); font-size: 18px; line-height: 1.15; color: var(--ink);">It answers the real question</span>
+            <span class="cap" style="font-size: 12.5px;">Someone who has just been handed a Korean name wants to know how to write it. Watching it drawn once teaches more than a static picture of it ever will, and there is a Practise button underneath it waiting to be built.</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 13px;">
+          <span style="font-family: var(--disp); font-size: 12px; color: var(--seal); padding-top: 3px;">03</span>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-family: var(--disp); font-size: 18px; line-height: 1.15; color: var(--ink);">The share card can move</span>
+            <span class="cap" style="font-size: 12.5px;">The same paths record to a short loop. A name writing itself is worth posting in a way a still card is not — and every repost is an impression that costs nothing to serve.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

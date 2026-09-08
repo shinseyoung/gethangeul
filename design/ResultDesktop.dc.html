@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Nanum+Brush+Script&display=swap">
+  <style>
+    body { margin: 0; background: #FCFCFB; }
+    a { color: #1F63E8; text-decoration: none; }
+    a:hover { color: #1546A8; }
+    .rt {
+      --paper: #FCFCFB; --paper-hi: #FFFFFF; --paper-lo: #F1F2F1;
+      --rule: #E4E5E3; --rule-2: #CDCFCC;
+      --ink: #17181A; --ink-2: #43464A; --ink-3: #7E8286; --ink-4: #ABAFB3;
+      --seal: #1F63E8;
+      --disp: 'Instrument Serif', 'Times New Roman', serif;
+      --body: 'Newsreader', Georgia, serif;
+      --brush: 'Nanum Brush Script', 'Gowun Batang', serif;
+    }
+    .grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    }
+    .eyebrow {
+      font-family: var(--body); font-size: 10px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3);
+    }
+  </style>
+</helmet>
+
+<div class="rt" style="width: 1440px; min-height: 1020px; position: relative; background: var(--paper); font-family: var(--body); color: var(--ink-2); overflow: hidden;">
+  <div class="grain"></div>
+
+  <div style="position: relative; z-index: 3; height: 78px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: center;">
+    <div style="width: 1200px; display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="font-family: var(--brush); font-size: 26px; line-height: 1; color: var(--ink); letter-spacing: 0.06em;">한글 이름</span>
+        <span class="eyebrow" style="font-size: 8.5px; letter-spacing: 0.28em;">GETHANGEUL</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 34px;">
+        <span class="eyebrow" style="font-size: 10.5px; color: var(--ink-2);">NAME DICTIONARY</span>
+        <span class="eyebrow" style="font-size: 10.5px; color: var(--ink-2);">START OVER</span>
+        <div style="display: flex; align-items: center; gap: 7px; border: 1px solid var(--rule); padding: 7px 12px; border-radius: 2px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7E8286" stroke-width="1.6"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"></path></svg>
+          <span class="eyebrow" style="font-size: 9.5px;">ENGLISH</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; z-index: 3; display: flex; justify-content: center; padding-top: 46px;">
+    <div style="width: 1200px; display: flex; gap: 100px; align-items: flex-start;">
+
+      <div style="width: 800px; flex-shrink: 0; display: flex; flex-direction: column; gap: 30px;">
+
+        <div style="position: relative; background: var(--paper-hi); border: 1px solid var(--rule-2); border-radius: 2px; box-shadow: 0 30px 66px -42px rgba(23,24,26,0.6); overflow: hidden;">
+          <div style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(112% 56% at 34% 0%, rgba(79,122,138,0.17) 0%, rgba(79,122,138,0) 64%), radial-gradient(60% 48% at 0% 40%, rgba(79,122,138,0.13) 0%, rgba(79,122,138,0) 60%), radial-gradient(60% 48% at 100% 76%, rgba(79,122,138,0.11) 0%, rgba(79,122,138,0) 58%);"></div>
+          <div style="position: absolute; inset: 9px; border: 1px solid var(--rule); pointer-events: none; z-index: 2;"></div>
+          <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 230px; pointer-events: none;">
+            <svg viewBox="0 0 800 230" width="800" height="230" fill="none" preserveAspectRatio="none">
+              <defs>
+                <filter id="wcD" x="-16%" y="-22%" width="132%" height="144%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.007 0.017" numOctaves="4" seed="33" result="t"></feTurbulence>
+                  <feDisplacementMap in="SourceGraphic" in2="t" scale="20" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+                  <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+                </filter>
+              </defs>
+              <g filter="url(#wcD)">
+                <path d="M0 158 L106 92 L192 136 L292 68 L398 130 L494 88 L602 148 L700 100 L800 140 L800 230 L0 230 Z" fill="#9AB4C0" fill-opacity="0.17"></path>
+                <path d="M0 188 L120 146 L230 176 L342 132 L452 172 L570 138 L682 180 L800 150 L800 230 L0 230 Z" fill="#6E93A2" fill-opacity="0.2"></path>
+                <path d="M0 212 L132 190 L256 208 L378 184 L500 206 L628 186 L748 210 L800 196 L800 230 L0 230 Z" fill="#48697A" fill-opacity="0.2"></path>
+              </g>
+            </svg>
+          </div>
+
+          <div style="position: relative; z-index: 3; display: flex; align-items: stretch;">
+            <div style="width: 430px; flex-shrink: 0; padding: 46px 34px 44px 42px; display: flex; flex-direction: column; align-items: center; border-right: 1px solid var(--rule);">
+              <span class="eyebrow" style="font-size: 8.5px; color: var(--ink-4); letter-spacing: 0.26em;">YOUR HANGEUL NAME</span>
+              <div style="display: flex; align-items: flex-start; gap: 14px; margin-top: 22px;">
+                <span style="font-family: var(--brush); font-size: 118px; line-height: 0.9; color: var(--ink); letter-spacing: 0.07em;">규현</span>
+                <span style="font-size: 20px; color: var(--ink-4); letter-spacing: 0.14em; padding-top: 12px;">圭賢</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 11px; margin-top: 22px; border: 1px solid var(--rule); border-radius: 999px; padding: 8px 9px 8px 18px;">
+                <span style="font-family: var(--disp); font-size: 21px; color: var(--ink-2);">Gyuhyun</span>
+                <span style="width: 1px; height: 16px; background: var(--rule); display: block;"></span>
+                <span style="font-size: 13px; color: var(--ink-3); letter-spacing: 0.05em;">gyu · hyeon</span>
+                <span style="width: 32px; height: 32px; border-radius: 50%; background: var(--seal); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>
+                </span>
+              </div>
+              <div style="width: 46px; height: 1px; background: var(--seal); margin: 28px 0 16px;"></div>
+              <p style="font-family: var(--disp); font-size: 23px; line-height: 1.4; color: var(--ink); text-align: center; margin: 0; max-width: 320px; text-wrap: pretty;">“A wise and benevolent heart, shining as clearly as a guiding star in the winter night sky.”</p>
+              <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 26px;">
+                <span style="font-size: 10.5px; letter-spacing: 0.07em; padding: 5px 10px; border-radius: 2px; color: #3C5F6C; background: rgba(79,122,138,0.12); border: 1px solid rgba(79,122,138,0.3);">WINTER</span>
+                <span style="font-size: 10.5px; letter-spacing: 0.07em; padding: 5px 10px; border-radius: 2px; color: #4A5C4B; background: rgba(91,122,92,0.12); border: 1px solid rgba(91,122,92,0.3);">CALM</span>
+                <span style="font-size: 10.5px; letter-spacing: 0.07em; padding: 5px 10px; border-radius: 2px; color: #5A4A66; background: rgba(110,90,122,0.12); border: 1px solid rgba(110,90,122,0.3);">THOUGHTFUL</span>
+                <span style="font-size: 10.5px; letter-spacing: 0.07em; padding: 5px 10px; border-radius: 2px; color: #8A8175; background: rgba(126,130,134,0.12); border: 1px solid rgba(126,130,134,0.34);">NEUTRAL</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; margin-top: 30px;">
+                <span style="width: 30px; height: 30px; border: 1.5px solid var(--seal); border-radius: 2px; display: flex; align-items: center; justify-content: center;">
+                  <span style="font-family: var(--brush); font-size: 17px; line-height: 1; color: var(--seal);">名</span>
+                </span>
+                <span class="eyebrow" style="font-size: 8px; color: var(--ink-4); letter-spacing: 0.22em;">GETHANGEUL.COM</span>
+              </div>
+            </div>
+
+            <div style="flex-grow: 1; padding: 46px 42px 44px 38px; display: flex; flex-direction: column;">
+              <span class="eyebrow" style="font-size: 9px;">CHARACTER BY CHARACTER</span>
+              <div style="display: flex; gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--rule); align-items: flex-start;">
+                <div style="width: 56px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                  <span style="font-size: 40px; line-height: 1; color: var(--ink);">圭</span>
+                  <span style="font-family: var(--brush); font-size: 19px; line-height: 1; color: var(--seal);">규</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-family: var(--disp); font-size: 21px; line-height: 1.15; color: var(--ink);">Jade tablet</span>
+                  <span style="font-size: 14px; line-height: 1.55; color: var(--ink-3);">The polished jade held at court — a mark of rank, and of a character worth trusting in public.</span>
+                </div>
+              </div>
+              <div style="display: flex; gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--rule); align-items: flex-start;">
+                <div style="width: 56px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                  <span style="font-size: 40px; line-height: 1; color: var(--ink);">賢</span>
+                  <span style="font-family: var(--brush); font-size: 19px; line-height: 1; color: var(--seal);">현</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                  <span style="font-family: var(--disp); font-size: 21px; line-height: 1.15; color: var(--ink);">Wise, worthy</span>
+                  <span style="font-size: 14px; line-height: 1.55; color: var(--ink-3);">Not clever — wise. The kind of judgment other people quietly rely on.</span>
+                </div>
+              </div>
+              <div style="flex-grow: 1;"></div>
+              <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 26px;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 11px; background: var(--ink); border-radius: 2px; padding: 15px 22px; box-shadow: 0 12px 26px -16px rgba(23,24,26,0.7);">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FCFCFB" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 10.5 12 15l4.5-4.5M4 19h16"></path></svg>
+                  <span style="font-family: var(--disp); font-size: 21px; color: var(--paper);">Save my name card</span>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+                  <div style="display: flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid var(--rule-2); border-radius: 2px; padding: 13px 12px; background: var(--paper-hi);">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#43464A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5.5" r="2.5"></circle><circle cx="6" cy="12" r="2.5"></circle><circle cx="18" cy="18.5" r="2.5"></circle><path d="M8.2 10.8 15.8 6.8M8.2 13.2l7.6 4"></path></svg>
+                    <span style="font-family: var(--disp); font-size: 18px; color: var(--ink-2);">Share</span>
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid var(--rule-2); border-radius: 2px; padding: 13px 12px; background: var(--paper-hi);">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#43464A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v16l-6-4.5L6 20z"></path></svg>
+                    <span style="font-family: var(--disp); font-size: 18px; color: var(--ink-2);">Keep</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <span class="eyebrow">BEFORE YOU GO</span>
+            <span style="flex-grow: 1; height: 1px; background: var(--rule); display: block;"></span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
+            <div style="display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--rule); border-radius: 2px; padding: 20px 18px; background: var(--paper-hi);">
+              <span style="font-family: var(--brush); font-size: 26px; line-height: 1; color: var(--seal);">又</span>
+              <span style="font-family: var(--disp); font-size: 19px; line-height: 1.15; color: var(--ink); margin-top: 4px;">Show me another</span>
+              <span style="font-size: 12.5px; line-height: 1.5; color: var(--ink-3);">Two more names matched your answers.</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--rule); border-radius: 2px; padding: 20px 18px; background: var(--paper-hi);">
+              <span style="font-family: var(--brush); font-size: 26px; line-height: 1; color: var(--seal);">友</span>
+              <span style="font-family: var(--disp); font-size: 19px; line-height: 1.15; color: var(--ink); margin-top: 4px;">Name a friend</span>
+              <span style="font-size: 12.5px; line-height: 1.5; color: var(--ink-3);">Answer for someone else — send them the card.</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--rule); border-radius: 2px; padding: 20px 18px; background: var(--paper-hi);">
+              <span style="font-family: var(--brush); font-size: 26px; line-height: 1; color: var(--seal);">冊</span>
+              <span style="font-family: var(--disp); font-size: 19px; line-height: 1.15; color: var(--ink); margin-top: 4px;">Name dictionary</span>
+              <span style="font-size: 12.5px; line-height: 1.5; color: var(--ink-3);">All 114 names, their hanja and their stories.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 9px;">
+        <span class="eyebrow" style="font-size: 8.5px; color: var(--ink-4); letter-spacing: 0.24em;">ADVERTISEMENT</span>
+        <div style="width: 300px; height: 600px; background: var(--paper-lo); border: 1px dashed var(--rule-2); border-radius: 2px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px;">
+          <span style="font-family: var(--disp); font-size: 22px; color: var(--ink-4);">300 × 600</span>
+          <span class="eyebrow" style="font-size: 9px; color: var(--ink-4);">STICKY RAIL UNIT</span>
+        </div>
+        <div style="border: 1px solid var(--rule); border-radius: 2px; padding: 16px 16px; background: var(--paper-hi); margin-top: 10px;">
+          <span class="eyebrow" style="font-size: 8.5px; color: var(--ink-4);">DID YOU KNOW</span>
+          <p style="font-size: 13.5px; line-height: 1.6; color: var(--ink-3); margin: 9px 0 0;">Korean given names are almost always two syllables, and each syllable is usually one hanja with its own meaning. That is why your name reads like a short line rather than a single word.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; top: 900px; z-index: 8; border-top: 1px dashed rgba(31,99,232,0.45); display: flex; justify-content: flex-end;">
+    <span class="eyebrow" style="color: var(--seal); font-size: 8px; background: var(--paper); padding: 2px 8px; transform: translateY(-50%);">DESKTOP FOLD · 900px</span>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

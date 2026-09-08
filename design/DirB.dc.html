@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Sans:wght@400;500;600;700&family=Nanum+Brush+Script&display=swap">
+  <style>
+    body { margin: 0; background: #EDF3F8; }
+    a { color: #1F63E8; text-decoration: none; }
+    a:hover { color: #1848B0; }
+    .B {
+      --bg: #EDF3F8; --card: #FFFFFF; --sunk: #E2EBF3;
+      --tx: #0E1B2E; --tx2: #5C7086; --tx3: #97A6B8;
+      --co: #1F63E8; --coral: #FF6B4A; --jade: #12A594; --amber: #F5A524; --violet: #7C5CFF;
+      --d: 'Bricolage Grotesque', system-ui, sans-serif;
+      --b: 'Instrument Sans', system-ui, sans-serif;
+      --k: 'Nanum Brush Script', 'Gowun Batang', serif;
+      --sh: 0 18px 40px -22px rgba(14,27,46,0.28);
+    }
+    @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-9px) rotate(2deg); } }
+    .fl { animation: float 6s ease-in-out infinite; }
+    .lab { font-family: var(--b); font-size: 10.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--tx3); }
+  </style>
+</helmet>
+
+<div class="B" style="width: 390px; min-height: 1200px; position: relative; background: var(--bg); font-family: var(--b); color: var(--tx); overflow: hidden;">
+
+  <div style="position: absolute; width: 300px; height: 300px; right: -110px; top: 20px; border-radius: 50%; background: radial-gradient(circle, rgba(31,99,232,0.14) 0%, rgba(31,99,232,0) 70%); pointer-events: none;"></div>
+  <div style="position: absolute; width: 260px; height: 260px; left: -100px; top: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(255,107,74,0.12) 0%, rgba(255,107,74,0) 70%); pointer-events: none;"></div>
+
+  <div style="position: relative; z-index: 2; height: 62px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px;">
+    <span style="font-family: var(--k); font-size: 24px; line-height: 1; color: var(--tx);">한글 이름</span>
+    <div style="display: flex; align-items: center; gap: 7px; background: var(--card); border-radius: 999px; padding: 8px 14px; box-shadow: 0 4px 12px -6px rgba(14,27,46,0.3);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F63E8" stroke-width="1.9"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"></path></svg>
+      <span style="font-weight: 600; font-size: 12.5px; color: var(--tx);">EN</span>
+    </div>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 26px 20px 0;">
+    <div style="display: inline-flex; align-items: center; gap: 7px; background: rgba(31,99,232,0.1); border-radius: 999px; padding: 7px 14px; margin-bottom: 20px;">
+      <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--jade); display: block;"></span>
+      <span style="font-weight: 600; font-size: 12px; color: var(--co); letter-spacing: 0.01em;">[ COUNT ] names given</span>
+    </div>
+
+    <h1 style="font-family: var(--d); font-weight: 800; font-size: 40px; line-height: 1.04; letter-spacing: -0.035em; color: var(--tx); margin: 0 0 14px; text-wrap: pretty;">Every Hangeul name is a two-syllable poem.</h1>
+
+    <p style="font-size: 15.5px; line-height: 1.6; color: var(--tx2); margin: 0 0 26px;">Tell us your name and answer four questions. We find the Korean name that already sounds like you.</p>
+
+    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 58px; border-radius: 20px; background: var(--co); box-shadow: 0 16px 34px -14px rgba(31,99,232,0.75);">
+      <span style="font-family: var(--d); font-weight: 700; font-size: 18px; letter-spacing: -0.015em; color: #FFFFFF;">Get my Korean name</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5.5 18.5 12 12 18.5"></path></svg>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 7px; margin-top: 13px;">
+      <span style="font-size: 11.5px; font-weight: 600; color: var(--jade); background: rgba(18,165,148,0.12); padding: 5px 11px; border-radius: 999px;">Free</span>
+      <span style="font-size: 11.5px; font-weight: 600; color: var(--amber); background: rgba(245,165,36,0.15); padding: 5px 11px; border-radius: 999px;">40 seconds</span>
+      <span style="font-size: 11.5px; font-weight: 600; color: var(--violet); background: rgba(124,92,255,0.12); padding: 5px 11px; border-radius: 999px;">No sign-up</span>
+    </div>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 40px 20px 0;">
+    <span class="lab" style="display: block; margin-bottom: 12px;">Step 02 — pick a vibe</span>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px;">
+
+      <div style="background: var(--card); border: 2px solid var(--co); border-radius: 22px; padding: 15px 15px 17px; box-shadow: 0 14px 30px -18px rgba(31,99,232,0.6);">
+        <span style="width: 38px; height: 38px; border-radius: 13px; background: rgba(245,165,36,0.16); display: flex; align-items: center; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5A524" stroke-width="2.1" stroke-linecap="round"><circle cx="12" cy="12" r="4.2" fill="rgba(245,165,36,0.28)"></circle><path d="M12 2.6V5.4M12 18.6v2.8M2.6 12h2.8M18.6 12h2.8M5.4 5.4l2 2M16.6 16.6l2 2M18.6 5.4l-2 2M5.4 18.6l2-2"></path></svg>
+        </span>
+        <span style="display: block; font-family: var(--d); font-weight: 700; font-size: 18px; margin-top: 12px; letter-spacing: -0.02em;">Bright</span>
+        <span style="display: block; font-size: 12.5px; color: var(--tx2); margin-top: 2px;">sunlit, open</span>
+      </div>
+
+      <div style="background: var(--card); border: 2px solid transparent; border-radius: 22px; padding: 15px 15px 17px; box-shadow: var(--sh);">
+        <span style="width: 38px; height: 38px; border-radius: 13px; background: rgba(31,99,232,0.12); display: flex; align-items: center; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F63E8" stroke-width="2.1" stroke-linecap="round"><path d="M3 9.5Q7.5 7.6 12 9.5T21 9.5M3 15Q7.5 13.1 12 15t9 0"></path></svg>
+        </span>
+        <span style="display: block; font-family: var(--d); font-weight: 700; font-size: 18px; margin-top: 12px; letter-spacing: -0.02em;">Calm</span>
+        <span style="display: block; font-size: 12.5px; color: var(--tx2); margin-top: 2px;">still water</span>
+      </div>
+
+      <div style="background: var(--card); border: 2px solid transparent; border-radius: 22px; padding: 15px 15px 17px; box-shadow: var(--sh);">
+        <span style="width: 38px; height: 38px; border-radius: 13px; background: rgba(18,165,148,0.14); display: flex; align-items: center; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#12A594" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20C6.5 11 12.5 4.6 20 3.8 19 11 13.4 18.6 4 20Z" fill="rgba(18,165,148,0.16)"></path><path d="M4 20C9.4 15 15.6 9.2 20 3.8"></path></svg>
+        </span>
+        <span style="display: block; font-family: var(--d); font-weight: 700; font-size: 18px; margin-top: 12px; letter-spacing: -0.02em;">Natural</span>
+        <span style="display: block; font-size: 12.5px; color: var(--tx2); margin-top: 2px;">unforced</span>
+      </div>
+
+      <div style="background: var(--card); border: 2px solid transparent; border-radius: 22px; padding: 15px 15px 17px; box-shadow: var(--sh);">
+        <span style="width: 38px; height: 38px; border-radius: 13px; background: rgba(255,107,74,0.14); display: flex; align-items: center; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B4A" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 17.5a9 9 0 0 1 17 0"></path><path d="M8 20.5a4.5 4.5 0 0 1 8 0"></path><path d="M12 3.2v3.6"></path></svg>
+        </span>
+        <span style="display: block; font-family: var(--d); font-weight: 700; font-size: 18px; margin-top: 12px; letter-spacing: -0.02em;">Warm</span>
+        <span style="display: block; font-size: 12.5px; color: var(--tx2); margin-top: 2px;">soft-edged</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 40px 20px 46px;">
+    <span class="lab" style="display: block; margin-bottom: 12px;">The result</span>
+    <div class="fl" style="position: relative; background: var(--card); border-radius: 30px; padding: 30px 22px 28px; box-shadow: 0 30px 60px -30px rgba(14,27,46,0.42); overflow: hidden;">
+      <div style="position: absolute; width: 240px; height: 240px; left: 50%; top: -120px; margin-left: -120px; border-radius: 50%; background: radial-gradient(circle, rgba(31,99,232,0.16) 0%, rgba(31,99,232,0) 70%);"></div>
+      <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
+        <span style="font-size: 12px; font-weight: 600; color: var(--co); background: rgba(31,99,232,0.1); padding: 6px 13px; border-radius: 999px;">Sarah → your Hangeul name</span>
+        <div style="display: flex; align-items: flex-start; gap: 11px; margin-top: 20px;">
+          <span style="font-family: var(--k); font-size: 84px; line-height: 0.88; color: var(--tx);">설아</span>
+          <span style="font-size: 15px; color: var(--tx3); letter-spacing: 0.1em; padding-top: 10px;">雪兒</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-top: 18px; background: var(--sunk); border-radius: 999px; padding: 6px 6px 6px 16px;">
+          <span style="font-family: var(--d); font-weight: 700; font-size: 16px; color: var(--tx);">Seora</span>
+          <span style="width: 1px; height: 13px; background: #C6D3E0; display: block;"></span>
+          <span style="font-size: 12.5px; color: var(--tx2);">seo · ra</span>
+          <span style="width: 30px; height: 30px; border-radius: 50%; background: var(--co); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>
+          </span>
+        </div>
+        <p style="font-family: var(--d); font-weight: 500; font-size: 18px; line-height: 1.44; text-align: center; margin: 22px 0 0; color: var(--tx); max-width: 275px; letter-spacing: -0.015em;">“Snow child — the quiet that falls over everything.”</p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; margin-top: 20px;">
+          <span style="font-size: 12px; font-weight: 600; padding: 6px 13px; border-radius: 999px; color: #FFFFFF; background: var(--co);">WINTER</span>
+          <span style="font-size: 12px; font-weight: 600; padding: 6px 13px; border-radius: 999px; color: #0B6B60; background: rgba(18,165,148,0.16);">CALM</span>
+          <span style="font-size: 12px; font-weight: 600; padding: 6px 13px; border-radius: 999px; color: #5B3FD6; background: rgba(124,92,255,0.14);">THOUGHTFUL</span>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 9px; margin-top: 13px;">
+      <div style="flex-grow: 1; height: 52px; border-radius: 18px; background: var(--tx); display: flex; align-items: center; justify-content: center; gap: 8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 10.5 12 15l4.5-4.5M4 19h16"></path></svg>
+        <span style="font-family: var(--d); font-weight: 700; font-size: 15.5px; color: #FFFFFF;">Save</span>
+      </div>
+      <div style="width: 52px; height: 52px; border-radius: 18px; background: var(--card); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: var(--sh);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F63E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5.5" r="2.5"></circle><circle cx="6" cy="12" r="2.5"></circle><circle cx="18" cy="18.5" r="2.5"></circle><path d="M8.2 10.8 15.8 6.8M8.2 13.2l7.6 4"></path></svg>
+      </div>
+      <div style="width: 52px; height: 52px; border-radius: 18px; background: var(--card); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: var(--sh);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v16l-6-4.5L6 20z"></path></svg>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

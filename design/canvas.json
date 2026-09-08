@@ -1,0 +1,302 @@
+{
+  "pages": [
+    {
+      "id": "page-1",
+      "name": "Mobile flow"
+    },
+    {
+      "id": "page-2",
+      "name": "Desktop & revenue"
+    },
+    {
+      "id": "page-3",
+      "name": "System & language"
+    },
+    {
+      "id": "page-4",
+      "name": "Mechanism"
+    }
+  ],
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "page": "page-1",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 1400,
+      "title": "01 · Landing"
+    },
+    {
+      "file": "Quiz.dc.html",
+      "page": "page-1",
+      "x": 980,
+      "y": 0,
+      "w": 390,
+      "h": 844,
+      "title": "03 · Quiz (live)",
+      "is_interactive": true
+    },
+    {
+      "file": "Weaving.dc.html",
+      "page": "page-1",
+      "x": 1470,
+      "y": 0,
+      "w": 390,
+      "h": 844,
+      "title": "04 · Writing your name"
+    },
+    {
+      "file": "Choice.dc.html",
+      "page": "page-1",
+      "x": 1960,
+      "y": 0,
+      "w": 390,
+      "h": 1000,
+      "title": "05 · Three candidates"
+    },
+    {
+      "file": "Result.dc.html",
+      "page": "page-1",
+      "x": 2450,
+      "y": 0,
+      "w": 390,
+      "h": 1720,
+      "title": "06 · Result (season chip)"
+    },
+    {
+      "file": "LandingDesktop.dc.html",
+      "page": "page-2",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 900,
+      "title": "Landing · desktop"
+    },
+    {
+      "file": "ResultDesktop.dc.html",
+      "page": "page-2",
+      "x": 1560,
+      "y": 0,
+      "w": 1440,
+      "h": 1020,
+      "title": "Result · desktop"
+    },
+    {
+      "file": "ShareCard.dc.html",
+      "page": "page-2",
+      "x": 3200,
+      "y": 0,
+      "w": 540,
+      "h": 960,
+      "title": "Share card · 9:16"
+    },
+    {
+      "file": "NameEntry.dc.html",
+      "page": "page-2",
+      "x": 3900,
+      "y": 0,
+      "w": 1080,
+      "h": 2440,
+      "title": "Name dictionary · SEO"
+    },
+    {
+      "file": "System.dc.html",
+      "page": "page-3",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 1620,
+      "title": "Ink & Hanji · system"
+    },
+    {
+      "file": "AdMap.dc.html",
+      "page": "page-2",
+      "x": 5150,
+      "y": 0,
+      "w": 1440,
+      "h": 1120,
+      "title": "Ad map · where every unit sits"
+    },
+    {
+      "file": "Language.dc.html",
+      "page": "page-3",
+      "x": 2020,
+      "y": 0,
+      "w": 1360,
+      "h": 940,
+      "title": "Language switch (live)",
+      "is_interactive": true
+    },
+    {
+      "file": "YourName.dc.html",
+      "page": "page-1",
+      "x": 490,
+      "y": 0,
+      "w": 390,
+      "h": 844,
+      "title": "02 · Your name"
+    },
+    {
+      "file": "Bridge.dc.html",
+      "page": "page-4",
+      "x": 0,
+      "y": 0,
+      "w": 1400,
+      "h": 1180,
+      "title": "The sound bridge (live)",
+      "is_interactive": true
+    },
+    {
+      "file": "Stroke.dc.html",
+      "page": "page-4",
+      "x": 1520,
+      "y": 0,
+      "w": 860,
+      "h": 640,
+      "title": "Stroke order"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "p1-intro",
+      "page": "page-1",
+      "x": 0,
+      "y": -400,
+      "w": 620,
+      "text": "MOBILE FLOW — the order a real visitor moves through.\nLanding → Your name → Quiz (×4) → Writing → Choose → Result.\n\nThe dashed red line marks the 844px fold: everything above it is what a phone shows without scrolling.\n\nThree boards move. Board 03 draws its ink mark when you pick an option, board 06 has a season chip that swaps the whole card, and the name on 06 writes itself on a loop."
+    },
+    {
+      "id": "f-weaving",
+      "page": "page-1",
+      "x": 1470,
+      "y": 940,
+      "w": 430,
+      "text": "NEW SCREEN — \"Writing your name\"\n\nWhy: the old flow jumps straight from question 4 to the answer, so there is no moment of anticipation and nowhere honest to put an ad. A 2.5-second beat buys both.\n\nBuild: a timed state between step 4 and the result, plus one in-flow unit. One new component."
+    },
+    {
+      "id": "f-choice",
+      "page": "page-1",
+      "x": 1960,
+      "y": 1100,
+      "w": 430,
+      "text": "NEW SCREEN — three candidates\n\nWhy: nameMatcher.ts already scores and sorts all 114 names, then throws away everything but the top one. Returning the top three costs a slice(0,3) and buys a page view, a real sense of choice, and a better share rate.\n\nIt also fixes a smaller thing: today \"Try again\" is the only way to see a second name, and it wipes all four answers."
+    },
+    {
+      "id": "f-seasonwash",
+      "page": "page-1",
+      "x": 2940,
+      "y": 0,
+      "w": 470,
+      "text": "THE CARD'S BORDER — answering your note about the old one\n\nThe old TraditionalGenderBorder keyed its ornament to gender: bamboo, blossoms, clouds. You were right that it was shaky, and there is a second problem — decorating by gender quietly contradicts the app's own gender-neutral option.\n\nSo the card is now keyed to the SEASON answer instead: a watercolour wash bleeding in from the edges, a matching mountain at its foot, a matching keyword tag. Four moods, one mechanism, and no line-art ornament that has to survive four sizes.\n\nUse the season chip above this board to flip between spring, summer, autumn and winter — the name, hanja, quote and colour all change together. All four are real entries from nameDatabase.ts."
+    },
+    {
+      "id": "f-breakdown",
+      "page": "page-1",
+      "x": 2450,
+      "y": 1820,
+      "w": 430,
+      "text": "NEW SECTION — character by character\n\nWhy: this is the question this audience actually asks, and the hanja is already sitting in nameDatabase.ts. It turns the result from a pretty card into something worth reading.\n\nNeeds: a short gloss for each hanja character. Written once, reused across every name that shares it."
+    },
+    {
+      "id": "f-audio",
+      "page": "page-1",
+      "x": 2450,
+      "y": 2140,
+      "w": 430,
+      "text": "PROPOSED — pronunciation audio (drawn as a button, not built)\n\nThe speaker button on the result and dictionary boards. Web Speech API with ko-KR is free and works today; recorded audio for 114 names sounds far better and is a one-afternoon recording session.\n\nFor foreigners this is the most useful thing the site could add. Say the word and I will design it properly."
+    },
+    {
+      "id": "p2-intro",
+      "page": "page-2",
+      "x": 0,
+      "y": -400,
+      "w": 620,
+      "text": "DESKTOP & REVENUE — the desktop landing and result, the story-ratio share card, and the SEO dictionary page.\n\nEvery ad position on the site is drawn here at real pixel size, so nothing has to be guessed later."
+    },
+    {
+      "id": "ad-policy",
+      "page": "page-2",
+      "x": 1560,
+      "y": 1120,
+      "w": 560,
+      "text": "AD PLACEMENT\n\nThe full map is the board at the end of this page — every unit drawn where it sits, at the size it runs, plus what each screen deliberately carries none.\n\nShort version: six units, and the landing, the four quiz steps and the choose screen have zero between them."
+    },
+    {
+      "id": "share-note",
+      "page": "page-2",
+      "x": 3200,
+      "y": 1060,
+      "w": 480,
+      "text": "SHARE CARD — drawn at 540×960, exports at 1080×1920 (2×)\n\nThe watermark is the whole point: every screenshot posted to a story is a free impression that costs nothing to serve.\n\nhtml-to-image is already a dependency, so this is a second capture target on the existing useImageShare hook, not new machinery."
+    },
+    {
+      "id": "seo-note",
+      "page": "page-2",
+      "x": 3900,
+      "y": 2540,
+      "w": 620,
+      "text": "NAME DICTIONARY — 114 static pages at /name/hajun\n\nWhy this is the real revenue: the quiz gives you one session per visitor and then they leave. \"korean name meaning\", \"how to pronounce hajun\" and \"korean names that mean summer\" are searched every day, and they land on a page that carries three units and links back into the quiz.\n\nVite can prerender all 114 from nameDatabase.ts at build time — the data is already there. What has to be written is a two-line gloss per hanja character and a title/description per page."
+    },
+    {
+      "id": "palette-note",
+      "page": "page-3",
+      "x": 1400,
+      "y": 0,
+      "w": 520,
+      "text": "THE PAPER IS WHITE, THE ACCENT IS BLUE\n\nFirst pass had a warm hanji ground, and the yellow was not only in the paper — the rule and ink ramps were warm too, so the whole screen read amber. That needed the entire neutral ramp replaced, not just the background.\n\nThe accent went next. #BE3A2B read as orange, which it is, so it is now #1F63E8. One blue, and it only ever marks state: the current step, the chosen thing, the stamp.\n\nColour that means something is a pigment instead, and there are now three places it lives — the eight option glyphs keep their own pigment even unselected, the keyword tags use the same set, and the name card carries its season wash. That is what fixes \"everything is grey\" without adding a single glow or gradient.\n\nWhat replaced the photographic mountain: the same silhouette as SVG, run through a turbulence-displacement filter so its edges bleed like pigment into wet paper. Costs nothing to load, recolours per season, sharp at any size — bg_mountain.png was 1.7 MB and could do none of that."
+    },
+    {
+      "id": "sys-note",
+      "page": "page-3",
+      "x": 0,
+      "y": 1720,
+      "w": 620,
+      "text": "Hand this sheet to whoever writes the CSS. The values are literal: the four ramps go into tailwind.config.js as theme colors, the three families as fontFamily entries.\n\nOne substitution to know about — Chungju KimSaeng is the real brush face and stays in the product. These boards fall back to Nanum Brush Script because the licensed file is 568 KB, too large to embed in a shared canvas."
+    },
+    {
+      "id": "lang-note",
+      "page": "page-3",
+      "x": 2020,
+      "y": 1040,
+      "w": 620,
+      "text": "LANGUAGE — refining what is already there\n\nThe board is live: pick a language on the left and the trigger, the menu and the sample all follow. Every string in the sample is the real one from src/data/locales, so Thai and Vietnamese show their actual typographic problems rather than lorem.\n\nTwo real defects in the current code. Header.tsx computes currentLangName and never renders it, so the trigger is a globe and an arrow — you cannot tell what language you are in without opening the menu. And useFlowStore starts at lang: 'ko' with no persistence, so a visitor lands in Korean, switches to English, reloads, and is back in Korean. On a site whose entire audience is foreign that is the most expensive line in the file."
+    },
+    {
+      "id": "f-name",
+      "page": "page-1",
+      "x": 490,
+      "y": 940,
+      "w": 430,
+      "text": "NEW SCREEN — your own name, first\n\nWhy: the app never asks who you are. A Korean-name site that ignores your name is guessing, and a visitor can feel the difference between a result and a draw.\n\nThe name is read in the browser to find the sound and then dropped, so the \"nothing stored\" line on the landing page stays true.\n\nHow the matching actually works — including the names it cannot serve — is the Mechanism page."
+    },
+    {
+      "id": "bridge-note",
+      "page": "page-4",
+      "x": 0,
+      "y": 1280,
+      "w": 660,
+      "text": "THE MECHANISM — the part that is actually different\n\nEverything before this page was paint. This changes what the product does: your own name goes in front of the filter, so the result sounds like you before it means anything.\n\nPick Sarah, Michael and Ben on the board. A strong match, a partial one, and one the 114 names cannot serve at all. The third case is the one that matters — designing for it honestly is the difference between a naming site and a slot machine.\n\nTwo code changes carry the whole idea: a Latin-onset to Hangul-initial table, about twenty rows, sitting in front of the existing scorer — and the deletion of Math.random() from nameMatcher.ts."
+    },
+    {
+      "id": "stroke-note",
+      "page": "page-4",
+      "x": 1520,
+      "y": 740,
+      "w": 620,
+      "text": "WATCHING IT WRITTEN\n\nThe loop on this board is real stroke order, not a left-to-right wipe: consonant before vowel, top before bottom, left before right.\n\nIt costs about sixty short SVG paths — the 24 jamo, drawn once. Every name in the database animates from that one set, including names added next year. Nothing is authored per name.\n\nOn the result board it sits behind \"Watch it written\"; the name there uses a quieter two-beat reveal so the card does not perform until you ask it to."
+    },
+    {
+      "id": "f-script",
+      "page": "page-1",
+      "x": 490,
+      "y": 1300,
+      "w": 470,
+      "text": "THE NAME FIELD IS NOT LATIN-ONLY\n\nYou were right to flag this, and the board only shows the easy case. The site ships Korean, English, Vietnamese and Thai, so people will type ไทย, Tiếng Việt, Japanese or Cyrillic into that field.\n\nThe bridge does not actually need Latin — it needs a phoneme. What still has to be designed: a helper line under the field for non-Latin scripts, the romanisation guessed back for the visitor to confirm, and an honest fallback when a script cannot be read. Thai and Vietnamese also need their own face in this field, which the Language board already covers.\n\nWorth doing properly once the visual direction is settled — the input is the first thing anyone touches."
+    }
+  ],
+  "launch": {
+    "view": "canvas",
+    "page": "page-1"
+  }
+}

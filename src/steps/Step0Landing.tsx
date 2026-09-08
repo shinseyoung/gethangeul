@@ -1,139 +1,134 @@
-import { useState, useEffect } from "react";
-import { useTranslation } from "../hooks/useTranslation";
+import { useFlowStore } from '../store/useFlowStore';
+import { useTranslation } from '../hooks/useTranslation';
+import Button, { ArrowRight } from '../components/Button';
+import ChromaticImage from '../components/ChromaticImage';
 
-interface Step0Props {
-  onNext: () => void;
-}
-
-// 🟢 1. 언어에 따라 변하지 않는 정적 아이콘 에셋만 별도 배열로 깔끔하게 분리합니다.
-const FEATURE_ICONS = [
-  "/icons/Landing/user_icon.svg",
-  "/icons/Landing/book_icon.svg",
-  "/icons/Landing/share_icon.svg",
-  "/icons/Landing/shield_icon.svg",
+/** One brush drawing per promise: a tied knot, a scroll, a bell, a seal. */
+const FEATURE_MARKS = [
+  { id: 'feature-bond', color: '#3E6BA8' },
+  { id: 'feature-meaning', color: '#6E5A7A' },
+  { id: 'feature-sound', color: '#4F7A8A' },
+  { id: 'feature-keep', color: '#A83B27' },
 ];
 
-export default function Step0Landing({ onNext }: Step0Props) {
-  const [visible, setVisible] = useState(false);
-  const [btnHover, setBtnHover] = useState(false);
-  
-  // 🟢 2. 커스텀 다국어 훅에서 번역 함수(t)를 가져옵니다.
+function tint(hex: string, alpha: number) {
+  const n = parseInt(hex.slice(1), 16);
+  return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${alpha})`;
+}
+
+export default function Step0Landing() {
+  const { givenName, setGivenName, next } = useFlowStore();
   const { t } = useTranslation();
-
-  useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 50);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // 🟢 3. common.json의 landing.features 배열을 가져옵니다. (안전성 방어 코드 포함)
-  const featureTexts: Array<{ title: string; desc: string }> = t("landing.features") || [];
+  const features: { title: string; desc: string }[] = t('landing.features') || [];
 
   return (
-    <div
-      className="relative h-full w-full flex flex-col overflow-y-hidden overflow-x-hidden font-serif bg-[#ffffff]"
-      style={{ fontFamily: "'Gowun Batang', serif" }}
-    >
-      <div
-        className={`relative z-10 flex flex-col min-h-full w-full mx-auto transition-[opacity,transform] duration-700 ease-out ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
-        }`}
-      >
-        <main className="relative flex-1 flex flex-col shrink-0">
-          <div
-            className="absolute inset-0 z-0 bg-cover bg-bottom bg-no-repeat"
-            style={{ backgroundImage: "url('/bg_mountain.png')" }}
-          />
-          <div
-            className="absolute inset-0 z-0"
-            style={{
-              background:
-                "linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%)",
-            }}
-          />
-
-          <div className="relative z-10 w-full lg:w-[1024px] xl:w-[1200px] mx-auto px-6 lg:px-4 py-8 md:py-12 flex flex-col flex-1 justify-center gap-10 md:gap-14 transform-gpu will-change-transform backface-hidden">
-            
-            {/* 메인 텍스트 영역 */}
-            <div className="flex flex-col max-w-[800px] shrink-0 items-start text-left min-h-[150px] sm:min-h-0">
-              {/* 🟢 개선: whitespace-pre-line을 적용해 JSON 내부의 \n 개행이 언어별로 자연스럽게 작동하도록 유도 */}
-              <h1 className="text-[32px] sm:text-[42px] md:text-[52px] font-bold text-gray-900 leading-[1.3] mb-4 md:mb-6 tracking-tight break-keep whitespace-pre-line">
-                {t("landing.title_main")}
-              </h1>
-
-              <p className="text-[16px] md:text-[20px] text-gray-500 mb-8 md:mb-10 leading-relaxed break-keep whitespace-pre-line">
-                {t("landing.subtitle")}
-              </p>
-
-              <div>
-                <button
-                  onClick={onNext}
-                  onMouseEnter={() => setBtnHover(true)}
-                  onMouseLeave={() => setBtnHover(false)}
-                  className={`relative inline-flex items-center gap-3 bg-[#1e4a38] text-white rounded-full text-[16px] md:text-[17px] font-bold shadow-lg overflow-hidden px-8 py-3.5 md:px-10 md:py-4 transition-[opacity,transform] duration-200 ${
-                    btnHover ? "bg-[#2a6350] -translate-y-[1px] shadow-xl" : ""
-                  }`}
-                >
-                  {t("landing.cta_button")}
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className={`transition-transform duration-200 ${
-                      btnHover ? "translate-x-1" : "translate-x-0"
-                    }`}
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            {/* 4단 피처 블록 */}
-            <div className="border border-gray-200/80 rounded-2xl bg-white/40 backdrop-blur-sm overflow-hidden shadow-sm shrink-0">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:gap-y-0 lg:divide-x divide-gray-200/70">
-                {featureTexts.map((f, i) => {
-                  return (
-                    <div
-                      key={i}
-                      className={`transform-gpu will-change-transform backface-hidden flex items-center gap-3.5 px-5 py-5 transition-[opacity,transform] duration-700 ease-out sm:border-t-0 ${
-                        i === 1 || i === 3 ? "sm:border-l border-gray-200/70 lg:border-l-0" : ""
-                      } ${
-                        i > 1 ? "sm:border-t border-gray-200/70 lg:border-t-0" : ""
-                      } ${
-                        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-                      }`}
-                      style={{ transitionDelay: `${200 + i * 80}ms` }}
-                    >
-                      <img
-                        src={FEATURE_ICONS[i]}
-                        alt={f.title}
-                        width={40}
-                        height={40}
-                        draggable={false}
-                        className="block w-10 h-10 object-contain shrink-0 select-none pointer-events-none border-0 outline-none"
-                      />
-                      <div>
-                        <p className="text-left text-[13px] md:text-[14px] font-bold text-gray-800 mb-1 leading-snug">
-                          {f.title}
-                        </p>
-                        <p className="text-left text-[11px] md:text-[12px] text-gray-500 leading-relaxed font-sans break-keep whitespace-pre-line">
-                          {f.desc}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-          </div>
-        </main>
+    <div className="relative w-full">
+      {/* The original painting, at 32 KB instead of 1.7 MB. It is masked rather
+          than covered: two flat gradients over it washed it out entirely and
+          left a hard seam where the block ended. */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[92vh] overflow-hidden">
+        <ChromaticImage
+          src="/bg-mountain.webp"
+          alt=""
+          backgroundColor="#EDF1F9"
+          /* far below the reference values: on a misty ink painting the effect
+             should read as the air moving, not as a glitch */
+          zoom={0.05}
+          displacement={0.014}
+          chromaticShift={0.0035}
+          tilt={0}
+          className="absolute inset-0 opacity-70"
+          style={{
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 4%, #000 34%, #000 62%, transparent 96%)',
+            maskImage: 'linear-gradient(to bottom, transparent 4%, #000 34%, #000 62%, transparent 96%)',
+          }}
+        />
+        {/* a soft scrim only where the type sits, so the headline stays legible
+            without flattening the whole picture */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(58% 34% at 50% 40%, rgba(237,241,249,0.92) 0%, rgba(237,241,249,0.55) 55%, rgba(237,241,249,0) 100%)',
+          }}
+        />
       </div>
+      <div className="grain" />
+
+      <section className="relative z-10 flex min-h-[calc(100dvh-150px)] flex-col items-center justify-center px-6 py-14 text-center">
+        <h1 className="max-w-[740px] whitespace-pre-line font-disp text-[38px] leading-[1.06] tracking-tight text-ink md:text-[58px]">
+          {t('landing.title_main')}
+        </h1>
+
+        <p className="mt-4 max-w-[460px] text-pretty text-[15.5px] leading-relaxed text-ink-3 md:text-[17px]">
+          {t('landing.subtitle')}
+        </p>
+
+        <div className="mt-10 w-full max-w-[560px]">
+          <label htmlFor="given-name" className="sr-only">{t('name.label')}</label>
+          <div className="flex flex-col gap-2.5 sm:flex-row">
+            <input
+              id="given-name"
+              type="text"
+              value={givenName}
+              onChange={(e) => setGivenName(e.target.value)}
+              onKeyDown={(e) => { if (e.key === 'Enter') next(); }}
+              placeholder={t('name.placeholder_long')}
+              /* the browser's saved-name dropdown covered the field on every
+                 focus, which is not a suggestion anyone asked this site for */
+              autoComplete="off"
+              autoCorrect="off"
+              spellCheck={false}
+              enterKeyHint="go"
+              className="h-[60px] flex-1 rounded-2xl border-[1.5px] border-rule-strong bg-paper-hi px-6 text-center font-disp text-[22px] text-ink caret-accent shadow-[0_8px_24px_-18px_rgba(23,24,26,0.35)] outline-none transition-colors duration-150 placeholder:font-body placeholder:text-[16px] placeholder:text-ink-4 focus:border-accent sm:text-left"
+            />
+            <Button shape="box" onClick={next} className="h-[60px] shrink-0 px-7">
+              {t('landing.cta_button')}
+              <ArrowRight />
+            </Button>
+          </div>
+
+          <p className="mt-5 text-[12.5px] leading-relaxed text-ink-4">{t('landing.trust')}</p>
+        </div>
+      </section>
+
+      <section className="relative z-10 px-6 pb-14 pt-4 lg:mx-auto lg:w-[1024px] lg:px-4 xl:w-[1200px]">
+        <div className="mb-5 flex items-center gap-2.5">
+          <span className="eyebrow">{t('landing.features_label')}</span>
+          <span className="hairline" />
+        </div>
+        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {features.map((f, i) => {
+            const mark = FEATURE_MARKS[i] ?? FEATURE_MARKS[0];
+            return (
+              <li
+                key={i}
+                className="flex flex-col gap-3 rounded-2xl border border-rule bg-paper-hi p-5 transition-colors duration-150 hover:border-rule-strong"
+              >
+                <span
+                  className="block h-11 w-11 overflow-hidden rounded-xl"
+                  style={{
+                    boxSizing: 'border-box',
+                    backgroundColor: tint(mark.color, 0.1),
+                    border: `1px solid ${tint(mark.color, 0.22)}`,
+                  }}
+                  aria-hidden="true"
+                >
+                  <img
+                    src={`/marks/${mark.id}.webp`}
+                    alt=""
+                    width={44}
+                    height={44}
+                    className="block h-full w-full object-contain mix-blend-multiply"
+                  />
+                </span>
+                <span className="font-disp text-[20px] leading-tight text-ink">{f.title}</span>
+                <span className="text-pretty text-[13.5px] leading-relaxed text-ink-3">{f.desc}</span>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
     </div>
   );
 }

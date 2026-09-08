@@ -8,7 +8,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '降雨', 
     gender: ['male', 'neutral'], 
     vibes: ['calm', 'mystic'], 
-    personalities: ['sensitive', 'considerate'], 
+    personalities: ['sensitive', 'considerate', 'graceful'], 
     nature: ['summer', 'river']
   },
   { 
@@ -17,7 +17,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '强炫', 
     gender: ['male'], 
     vibes: ['strong', 'trendy'], 
-    personalities: ['enterprising', 'radiant'], 
+    personalities: ['enterprising', 'radiant', 'resilient'], 
     nature: ['summer', 'sun']
   },
   { 
@@ -26,7 +26,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '建律', 
     gender: ['male', 'neutral'], 
     vibes: ['soft', 'calm'], 
-    personalities: ['prudent', 'reliable'], 
+    personalities: ['prudent', 'dependable', 'upright'], 
     nature: ['autumn', 'forest']
   },
   { 
@@ -35,7 +35,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '圭賢', 
     gender: ['male'], 
     vibes: ['calm', 'soft'], 
-    personalities: ['prudent', 'genuine'], 
+    personalities: ['prudent', 'genuine', 'inquisitive'], 
     nature: ['winter', 'sky']
   },
   { 
@@ -44,7 +44,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '娜謙', 
     gender: ['neutral', 'male'], 
     vibes: ['lovely', 'soft'], 
-    personalities: ['considerate', 'sensitive'], 
+    personalities: ['considerate', 'sensitive', 'graceful'], 
     nature: ['spring', 'flower']
   },
   { 
@@ -62,7 +62,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '道建', 
     gender: ['male'], 
     vibes: ['strong', 'calm'], 
-    personalities: ['reliable', 'enterprising'], 
+    personalities: ['dependable', 'enterprising', 'upright'], 
     nature: ['autumn', 'mountain']
   },
   { 
@@ -71,7 +71,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '道雲', 
     gender: ['male', 'neutral'], 
     vibes: ['mystic', 'soft'], 
-    personalities: ['whimsical', 'sensitive'], 
+    personalities: ['whimsical', 'sensitive', 'upright'], 
     nature: ['winter', 'sky']
   },
   { 
@@ -80,7 +80,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '桃源', 
     gender: ['male', 'neutral'], 
     vibes: ['lovely', 'calm'], 
-    personalities: ['genuine', 'considerate'], 
+    personalities: ['genuine', 'considerate', 'graceful'], 
     nature: ['spring', 'forest']
   },
   { 
@@ -89,7 +89,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '道璡', 
     gender: ['male'], 
     vibes: ['trendy', 'strong'], 
-    personalities: ['radiant', 'enterprising'], 
+    personalities: ['radiant', 'enterprising', 'upright'], 
     nature: ['summer', 'sea']
   },
   { 
@@ -98,7 +98,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '東柱', 
     gender: ['male', 'neutral'], 
     vibes: ['calm', 'mystic'], 
-    personalities: ['prudent', 'sensitive'], 
+    personalities: ['prudent', 'sensitive', 'resilient'], 
     nature: ['autumn', 'forest']
   },
   { 
@@ -107,7 +107,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '旻建', 
     gender: ['male'], 
     vibes: ['strong', 'bright'], 
-    personalities: ['reliable', 'enterprising'], 
+    personalities: ['dependable', 'enterprising', 'upright'], 
     nature: ['summer', 'mountain']
   },
   { 
@@ -116,7 +116,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '珉奎', 
     gender: ['male'], 
     vibes: ['bright', 'trendy'], 
-    personalities: ['radiant', 'genuine'], 
+    personalities: ['radiant', 'genuine', 'inquisitive'], 
     nature: ['spring', 'sky']
   },
   { 
@@ -125,7 +125,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '敏才', 
     gender: ['male', 'neutral'], 
     vibes: ['trendy', 'bright'], 
-    personalities: ['whimsical', 'enterprising'], 
+    personalities: ['whimsical', 'enterprising', 'inquisitive'], 
     nature: ['summer', 'river']
   },
   { 
@@ -134,7 +134,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '珉燦', 
     gender: ['male'], 
     vibes: ['bright', 'lovely'], 
-    personalities: ['radiant', 'considerate'], 
+    personalities: ['radiant', 'considerate', 'graceful'], 
     nature: ['spring', 'sea']
   },
   { 
@@ -143,7 +143,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '瑞湖', 
     gender: ['male', 'neutral'], 
     vibes: ['soft', 'calm'], 
-    personalities: ['considerate', 'sensitive'], 
+    personalities: ['considerate', 'sensitive', 'graceful'], 
     nature: ['autumn', 'river']
   },
   { 
@@ -152,7 +152,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '瑞厚', 
     gender: ['male', 'neutral'], 
     vibes: ['calm', 'strong'], 
-    personalities: ['prudent', 'reliable'], 
+    personalities: ['prudent', 'dependable', 'upright'], 
     nature: ['winter', 'mountain']
   },
   { 
@@ -161,7 +161,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '世俊', 
     gender: ['male'], 
     vibes: ['trendy', 'bright'], 
-    personalities: ['enterprising', 'radiant'], 
+    personalities: ['enterprising', 'radiant', 'upright'], 
     nature: ['summer', 'sky']
   },
   { 
@@ -170,7 +170,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '秀赫', 
     gender: ['male'], 
     vibes: ['strong', 'trendy'], 
-    personalities: ['reliable', 'enterprising'], 
+    personalities: ['dependable', 'enterprising', 'resilient'], 
     nature: ['autumn', 'mountain']
   },
   { 
@@ -179,7 +179,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '秀煥', 
     gender: ['male'], 
     vibes: ['bright', 'soft'], 
-    personalities: ['genuine', 'radiant'], 
+    personalities: ['genuine', 'radiant', 'graceful'], 
     nature: ['spring', 'sun']
   },
   { 
@@ -188,7 +188,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '始宇', 
     gender: ['male', 'neutral'], 
     vibes: ['soft', 'calm'], 
-    personalities: ['sensitive', 'considerate'], 
+    personalities: ['sensitive', 'considerate', 'inquisitive'], 
     nature: ['winter', 'sky']
   },
   { 
@@ -197,7 +197,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '延俊', 
     gender: ['male'], 
     vibes: ['trendy', 'bright'], 
-    personalities: ['radiant', 'whimsical'], 
+    personalities: ['radiant', 'whimsical', 'upright'], 
     nature: ['spring', 'forest']
   },
   { 
@@ -206,7 +206,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '恩宇', 
     gender: ['male', 'neutral'], 
     vibes: ['lovely', 'soft'], 
-    personalities: ['considerate', 'genuine'], 
+    personalities: ['considerate', 'genuine', 'inquisitive'], 
     nature: ['spring', 'flower']
   },
   { 
@@ -215,7 +215,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '伊俊', 
     gender: ['male'], 
     vibes: ['strong', 'trendy'], 
-    personalities: ['enterprising', 'reliable'], 
+    personalities: ['enterprising', 'dependable', 'upright'], 
     nature: ['autumn', 'mountain']
   },
   { 
@@ -233,7 +233,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '伊賢', 
     gender: ['male', 'neutral'], 
     vibes: ['bright', 'soft'], 
-    personalities: ['radiant', 'genuine'], 
+    personalities: ['radiant', 'genuine', 'inquisitive'], 
     nature: ['summer', 'sky']
   },
   { 
@@ -251,7 +251,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '智浩', 
     gender: ['male'], 
     vibes: ['strong', 'bright'], 
-    personalities: ['reliable', 'enterprising'], 
+    personalities: ['dependable', 'enterprising', 'inquisitive'], 
     nature: ['summer', 'sea']
   },
   { 
@@ -260,7 +260,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '智瀚', 
     gender: ['male'], 
     vibes: ['calm', 'strong'], 
-    personalities: ['prudent', 'genuine'], 
+    personalities: ['prudent', 'genuine', 'inquisitive'], 
     nature: ['autumn', 'forest']
   },
   { 
@@ -269,7 +269,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '夏俊', 
     gender: ['male'], 
     vibes: ['trendy', 'bright'], 
-    personalities: ['radiant', 'whimsical'], 
+    personalities: ['radiant', 'whimsical', 'upright'], 
     nature: ['summer', 'sun']
   },
   { 
@@ -278,7 +278,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '泰河', 
     gender: ['male'], 
     vibes: ['strong', 'calm'], 
-    personalities: ['reliable', 'enterprising'], 
+    personalities: ['dependable', 'enterprising', 'resilient'], 
     nature: ['autumn', 'river']
   },
   { 
@@ -287,7 +287,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '宇璡', 
     gender: ['male'], 
     vibes: ['trendy', 'mystic'], 
-    personalities: ['genuine', 'sensitive'], 
+    personalities: ['genuine', 'sensitive', 'graceful'], 
     nature: ['winter', 'forest']
   },
   { 
@@ -296,7 +296,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '信宇', 
     gender: ['male', 'neutral'], 
     vibes: ['soft', 'calm'], 
-    personalities: ['considerate', 'reliable'], 
+    personalities: ['considerate', 'dependable', 'inquisitive'], 
     nature: ['spring', 'forest']
   },
   { 
@@ -305,7 +305,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '雅俊', 
     gender: ['male', 'neutral'], 
     vibes: ['lovely', 'bright'], 
-    personalities: ['radiant', 'sensitive'], 
+    personalities: ['radiant', 'sensitive', 'upright'], 
     nature: ['spring', 'sea']
   },
   { 
@@ -314,7 +314,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '潤宇', 
     gender: ['male', 'neutral'], 
     vibes: ['soft', 'mystic'], 
-    personalities: ['considerate', 'prudent'], 
+    personalities: ['considerate', 'prudent', 'graceful'], 
     nature: ['autumn', 'river']
   },
   { 
@@ -323,7 +323,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '裕燦', 
     gender: ['male'], 
     vibes: ['bright', 'trendy'], 
-    personalities: ['radiant', 'enterprising'], 
+    personalities: ['radiant', 'enterprising', 'resilient'], 
     nature: ['summer', 'sun']
   },
   { 
@@ -332,7 +332,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '恩浩', 
     gender: ['male', 'neutral'], 
     vibes: ['soft', 'calm'], 
-    personalities: ['considerate', 'genuine'], 
+    personalities: ['considerate', 'genuine', 'resilient'], 
     nature: ['winter', 'river']
   },
   { 
@@ -341,7 +341,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '載夏', 
     gender: ['male'], 
     vibes: ['strong', 'trendy'], 
-    personalities: ['reliable', 'enterprising'], 
+    personalities: ['dependable', 'enterprising', 'resilient'], 
     nature: ['summer', 'mountain']
   },
   { 
@@ -350,7 +350,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '泰俊', 
     gender: ['male'], 
     vibes: ['strong', 'bright'], 
-    personalities: ['enterprising', 'reliable'], 
+    personalities: ['enterprising', 'dependable', 'upright'], 
     nature: ['autumn', 'sky']
   },
   { 
@@ -359,7 +359,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '熙燦', 
     gender: ['male'], 
     vibes: ['bright', 'trendy'], 
-    personalities: ['radiant', 'whimsical'], 
+    personalities: ['radiant', 'whimsical', 'resilient'], 
     nature: ['spring', 'sun']
   },
   { 
@@ -368,7 +368,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '建熙', 
     gender: ['male'], 
     vibes: ['strong', 'bright'], 
-    personalities: ['enterprising', 'radiant'], 
+    personalities: ['enterprising', 'radiant', 'upright'], 
     nature: ['summer', 'sun']
   },
   { 
@@ -377,7 +377,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '道璟', 
     gender: ['male', 'neutral'], 
     vibes: ['calm', 'trendy'], 
-    personalities: ['prudent', 'genuine'], 
+    personalities: ['prudent', 'genuine', 'upright'], 
     nature: ['autumn', 'forest']
   },
   { 
@@ -386,7 +386,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '善宇', 
     gender: ['male'], 
     vibes: ['soft', 'calm'], 
-    personalities: ['considerate', 'reliable'], 
+    personalities: ['considerate', 'dependable', 'inquisitive'], 
     nature: ['spring', 'sky']
   },
   { 
@@ -395,7 +395,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '燦律', 
     gender: ['male', 'neutral'], 
     vibes: ['bright', 'trendy'], 
-    personalities: ['radiant', 'enterprising'], 
+    personalities: ['radiant', 'enterprising', 'upright'], 
     nature: ['summer', 'sea']
   },
   { 
@@ -404,7 +404,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '泰璟', 
     gender: ['male'], 
     vibes: ['strong', 'calm'], 
-    personalities: ['reliable', 'prudent'], 
+    personalities: ['dependable', 'prudent', 'resilient'], 
     nature: ['winter', 'mountain']
   },
   // 여자 이름
@@ -414,7 +414,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '瑞妸', 
     gender: ['female'], 
     vibes: ['lovely', 'bright'], 
-    personalities: ['radiant', 'genuine'], 
+    personalities: ['radiant', 'genuine', 'graceful'], 
     nature: ['spring', 'flower']
   },
   { 
@@ -423,7 +423,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '丹雅', 
     gender: ['female'], 
     vibes: ['calm', 'soft'], 
-    personalities: ['prudent', 'considerate'], 
+    personalities: ['prudent', 'considerate', 'graceful'], 
     nature: ['autumn', 'forest']
   },
   { 
@@ -432,7 +432,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '露雅', 
     gender: ['female'], 
     vibes: ['mystic', 'soft'], 
-    personalities: ['sensitive', 'whimsical'], 
+    personalities: ['sensitive', 'whimsical', 'graceful'], 
     nature: ['summer', 'river']
   },
   { 
@@ -441,7 +441,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '雪兒', 
     gender: ['female'], 
     vibes: ['soft', 'calm'], 
-    personalities: ['genuine', 'sensitive'], 
+    personalities: ['genuine', 'sensitive', 'graceful'], 
     nature: ['winter', 'sky']
   },
   { 
@@ -450,7 +450,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '婁雅', 
     gender: ['female'], 
     vibes: ['trendy', 'bright'], 
-    personalities: ['radiant', 'enterprising'], 
+    personalities: ['radiant', 'enterprising', 'graceful'], 
     nature: ['spring', 'sun']
   },
   { 
@@ -459,7 +459,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '世潾', 
     gender: ['female'], 
     vibes: ['trendy', 'mystic'], 
-    personalities: ['sensitive', 'genuine'], 
+    personalities: ['sensitive', 'genuine', 'graceful'], 
     nature: ['summer', 'river']
   },
   { 
@@ -468,7 +468,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '昭珉', 
     gender: ['female'], 
     vibes: ['bright', 'soft'], 
-    personalities: ['considerate', 'radiant'], 
+    personalities: ['considerate', 'radiant', 'upright'], 
     nature: ['spring', 'sky']
   },
   { 
@@ -477,7 +477,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '娜潾', 
     gender: ['female'], 
     vibes: ['lovely', 'calm'], 
-    personalities: ['genuine', 'prudent'], 
+    personalities: ['genuine', 'prudent', 'graceful'], 
     nature: ['winter', 'river']
   },
   { 
@@ -486,7 +486,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '多恩', 
     gender: ['female'], 
     vibes: ['soft', 'lovely'], 
-    personalities: ['considerate', 'reliable'], 
+    personalities: ['considerate', 'dependable'], 
     nature: ['autumn', 'forest']
   },
   { 
@@ -495,7 +495,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '叡娜', 
     gender: ['female'], 
     vibes: ['bright', 'trendy'], 
-    personalities: ['whimsical', 'radiant'], 
+    personalities: ['whimsical', 'radiant', 'inquisitive'], 
     nature: ['spring', 'flower']
   },
   { 
@@ -522,7 +522,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '소담', // 소담하다(생김새가 탐스럽다)의 어근
     gender: ['female'], 
     vibes: ['soft', 'lovely'], 
-    personalities: ['genuine', 'considerate'], 
+    personalities: ['genuine', 'considerate', 'graceful'], 
     nature: ['winter', 'mountain']
   },
   { 
@@ -531,7 +531,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '다솜', // 사랑의 옛말
     gender: ['female'], 
     vibes: ['lovely', 'soft'], 
-    personalities: ['considerate', 'genuine'], 
+    personalities: ['considerate', 'genuine', 'graceful'], 
     nature: ['spring', 'flower'] 
   },
   { 
@@ -540,7 +540,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '아름', // 두 팔을 둥글게 모아서 만든 둘레 (넉넉함)
     gender: ['female', 'neutral'], 
     vibes: ['strong', 'calm'], 
-    personalities: ['reliable', 'prudent'], 
+    personalities: ['dependable', 'prudent'], 
     nature: ['summer', 'forest'] 
   },
   { 
@@ -558,7 +558,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '昭潤', 
     gender: ['female', 'neutral'], 
     vibes: ['trendy', 'calm'], 
-    personalities: ['prudent', 'sensitive'], 
+    personalities: ['prudent', 'sensitive', 'graceful'], 
     nature: ['winter', 'sky']
   },
   { 
@@ -567,7 +567,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '珉彩', 
     gender: ['female'], 
     vibes: ['bright', 'trendy'], 
-    personalities: ['radiant', 'enterprising'], 
+    personalities: ['radiant', 'enterprising', 'graceful'], 
     nature: ['spring', 'sky']
   },
   { 
@@ -576,7 +576,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '詩恩', 
     gender: ['female'], 
     vibes: ['mystic', 'soft'], 
-    personalities: ['sensitive', 'genuine'], 
+    personalities: ['sensitive', 'genuine', 'inquisitive'], 
     nature: ['autumn', 'river']
   },
   { 
@@ -585,7 +585,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '雅賢', 
     gender: ['female'], 
     vibes: ['calm', 'strong'], 
-    personalities: ['prudent', 'reliable'], 
+    personalities: ['prudent', 'dependable', 'inquisitive'], 
     nature: ['summer', 'mountain']
   },
   { 
@@ -594,7 +594,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '윤슬', // 순우리말
     gender: ['female', 'neutral'], 
     vibes: ['bright', 'lovely'], 
-    personalities: ['radiant', 'whimsical'], 
+    personalities: ['radiant', 'whimsical', 'graceful'], 
     nature: ['summer', 'river']
   },
   { 
@@ -603,7 +603,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '智安', 
     gender: ['female', 'neutral'], 
     vibes: ['calm', 'soft'], 
-    personalities: ['prudent', 'considerate'], 
+    personalities: ['prudent', 'considerate', 'inquisitive'], 
     nature: ['autumn', 'forest'], 
   },
   { 
@@ -612,7 +612,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '彩元', 
     gender: ['female'], 
     vibes: ['bright', 'trendy'], 
-    personalities: ['radiant', 'enterprising'], 
+    personalities: ['radiant', 'enterprising', 'graceful'], 
     nature: ['spring', 'flower']
   },
   { 
@@ -621,7 +621,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '夏恩', 
     gender: ['female'], 
     vibes: ['soft', 'lovely'], 
-    personalities: ['considerate', 'genuine'], 
+    personalities: ['considerate', 'genuine', 'resilient'], 
     nature: ['summer', 'sky'] 
   },
   { 
@@ -630,7 +630,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '柔娜', 
     gender: ['female'], 
     vibes: ['lovely', 'trendy'], 
-    personalities: ['whimsical', 'radiant'], 
+    personalities: ['whimsical', 'radiant', 'graceful'], 
     nature: ['spring', 'sun']
   },
   { 
@@ -639,7 +639,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '恩柔', 
     gender: ['female', 'neutral'], 
     vibes: ['mystic', 'soft'], 
-    personalities: ['sensitive', 'genuine'], 
+    personalities: ['sensitive', 'genuine', 'graceful'], 
     nature: ['winter', 'river']
   },
   { 
@@ -648,7 +648,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '潤娥', 
     gender: ['female'], 
     vibes: ['calm', 'bright'], 
-    personalities: ['prudent', 'radiant'], 
+    personalities: ['prudent', 'radiant', 'upright'], 
     nature: ['autumn', 'sky']
   },
   { 
@@ -657,7 +657,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '叡瑞', 
     gender: ['female'], 
     vibes: ['trendy', 'calm'], 
-    personalities: ['genuine', 'considerate'], 
+    personalities: ['genuine', 'considerate', 'inquisitive'], 
     nature: ['spring', 'forest']
   },
   { 
@@ -666,7 +666,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '智曉', 
     gender: ['female', 'neutral'], 
     vibes: ['bright', 'strong'], 
-    personalities: ['enterprising', 'reliable'], 
+    personalities: ['enterprising', 'dependable', 'inquisitive'], 
     nature: ['summer', 'sun']
   },
   { 
@@ -675,7 +675,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '彩娥', 
     gender: ['female'], 
     vibes: ['lovely', 'trendy'], 
-    personalities: ['radiant', 'whimsical'], 
+    personalities: ['radiant', 'whimsical', 'graceful'], 
     nature: ['spring', 'flower']
   },
   { 
@@ -684,7 +684,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '河悧', 
     gender: ['female'], 
     vibes: ['bright', 'lovely'], 
-    personalities: ['whimsical', 'enterprising'], 
+    personalities: ['whimsical', 'enterprising', 'inquisitive'], 
     nature: ['summer', 'river']
   },
   { 
@@ -693,7 +693,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '潤彩', 
     gender: ['female'], 
     vibes: ['trendy', 'bright'], 
-    personalities: ['radiant', 'genuine'], 
+    personalities: ['radiant', 'genuine', 'graceful'], 
     nature: ['autumn', 'sea']
   },
   { 
@@ -702,7 +702,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '恩律', 
     gender: ['female', 'neutral'], 
     vibes: ['calm', 'mystic'], 
-    personalities: ['prudent', 'sensitive'], 
+    personalities: ['prudent', 'sensitive', 'upright'], 
     nature: ['winter', 'forest']
   },
   { 
@@ -711,7 +711,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '賢瑞', 
     gender: ['female', 'neutral'], 
     vibes: ['strong', 'calm'], 
-    personalities: ['reliable', 'prudent'], 
+    personalities: ['dependable', 'prudent', 'inquisitive'], 
     nature: ['autumn', 'mountain']
   },
   { 
@@ -720,7 +720,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '夏潾', 
     gender: ['female'], 
     vibes: ['bright', 'lovely'], 
-    personalities: ['radiant', 'genuine'], 
+    personalities: ['radiant', 'genuine', 'graceful'], 
     nature: ['summer', 'sea'] 
   },
   { 
@@ -729,7 +729,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '潤雪', 
     gender: ['female'], 
     vibes: ['calm', 'mystic'], 
-    personalities: ['sensitive', 'genuine'], 
+    personalities: ['sensitive', 'genuine', 'graceful'], 
     nature: ['winter', 'sky']
   },
   { 
@@ -738,7 +738,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '珠雅', 
     gender: ['female'], 
     vibes: ['lovely', 'soft'], 
-    personalities: ['considerate', 'radiant'], 
+    personalities: ['considerate', 'radiant', 'graceful'], 
     nature: ['spring', 'river']
   },
   { 
@@ -747,7 +747,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '恩彩', 
     gender: ['female'], 
     vibes: ['trendy', 'bright'], 
-    personalities: ['radiant', 'whimsical'], 
+    personalities: ['radiant', 'whimsical', 'graceful'], 
     nature: ['spring', 'sky']
   },
   { 
@@ -756,7 +756,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '慧園', 
     gender: ['female'], 
     vibes: ['calm', 'soft'], 
-    personalities: ['prudent', 'considerate'], 
+    personalities: ['prudent', 'considerate', 'inquisitive'], 
     nature: ['autumn', 'forest']
   },
   { 
@@ -765,7 +765,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '智雅', 
     gender: ['female'], 
     vibes: ['calm', 'lovely'], 
-    personalities: ['genuine', 'prudent'], 
+    personalities: ['genuine', 'prudent', 'inquisitive'], 
     nature: ['spring', 'flower']
   },
   { 
@@ -774,7 +774,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '佳潤', 
     gender: ['female'], 
     vibes: ['calm', 'soft'], 
-    personalities: ['prudent', 'considerate'], 
+    personalities: ['prudent', 'considerate', 'graceful'], 
     nature: ['autumn', 'river']
   },
   { 
@@ -783,7 +783,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '娜律', 
     gender: ['female'], 
     vibes: ['lovely', 'trendy'], 
-    personalities: ['whimsical', 'radiant'], 
+    personalities: ['whimsical', 'radiant', 'upright'], 
     nature: ['spring', 'flower']
   },
   { 
@@ -801,7 +801,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '소원', 
     gender: ['female'], 
     vibes: ['mystic', 'lovely'], 
-    personalities: ['sensitive', 'genuine'], 
+    personalities: ['sensitive', 'genuine', 'inquisitive'], 
     nature: ['winter', 'sky']
   },
   { 
@@ -810,7 +810,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '昭裕', 
     gender: ['female'], 
     vibes: ['soft', 'bright'], 
-    personalities: ['radiant', 'considerate'], 
+    personalities: ['radiant', 'considerate', 'graceful'], 
     nature: ['summer', 'sky']
   },
   { 
@@ -819,7 +819,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '雅栗', 
     gender: ['female'], 
     vibes: ['trendy', 'lovely'], 
-    personalities: ['radiant', 'whimsical'], 
+    personalities: ['radiant', 'whimsical', 'graceful'], 
     nature: ['autumn', 'mountain']
   },
   { 
@@ -828,7 +828,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '叡彬', 
     gender: ['female'], 
     vibes: ['bright', 'trendy'], 
-    personalities: ['radiant', 'enterprising'], 
+    personalities: ['radiant', 'enterprising', 'inquisitive'], 
     nature: ['spring', 'sun']
   },
   { 
@@ -846,7 +846,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '泰妍', 
     gender: ['female'], 
     vibes: ['calm', 'strong'], 
-    personalities: ['reliable', 'prudent'], 
+    personalities: ['dependable', 'prudent', 'graceful'], 
     nature: ['winter', 'sea']
   },
   // 성별 무관 이름
@@ -874,7 +874,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '가온', // 순우리말 (가운데)
     gender: ['neutral'], 
     vibes: ['strong', 'calm'], 
-    personalities: ['reliable', 'prudent'], 
+    personalities: ['dependable', 'prudent', 'resilient'], 
     nature: ['winter', 'mountain']
   },
   { 
@@ -883,7 +883,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '다온', // 순우리말
     gender: ['neutral', 'female'], 
     vibes: ['lovely', 'bright'], 
-    personalities: ['considerate', 'radiant'], 
+    personalities: ['considerate', 'radiant', 'graceful'], 
     nature: ['spring', 'flower']
   },
   { 
@@ -892,7 +892,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '瑞宇', 
     gender: ['neutral', 'female'], 
     vibes: ['soft', 'mystic'], 
-    personalities: ['sensitive', 'genuine'], 
+    personalities: ['sensitive', 'genuine', 'inquisitive'], 
     nature: ['summer', 'sky']
   },
   { 
@@ -919,7 +919,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '智友', 
     gender: ['neutral', 'female', 'male'], 
     vibes: ['soft', 'lovely'], 
-    personalities: ['considerate', 'genuine'], 
+    personalities: ['considerate', 'genuine', 'inquisitive'], 
     nature: ['summer', 'forest']
   },
   { 
@@ -928,7 +928,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '해솔', // 순우리말 (해와 소나무)
     gender: ['neutral', 'male'], 
     vibes: ['bright', 'strong'], 
-    personalities: ['enterprising', 'reliable'], 
+    personalities: ['enterprising', 'dependable'], 
     nature: ['summer', 'sun']
   },
   { 
@@ -937,7 +937,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '하늘', // 순우리말
     gender: ['neutral'], 
     vibes: ['calm', 'mystic'], 
-    personalities: ['sensitive', 'genuine'], 
+    personalities: ['sensitive', 'genuine', 'resilient'], 
     nature: ['autumn', 'sky']
   },
   { 
@@ -946,7 +946,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '한결', // 순우리말
     gender: ['neutral', 'male'], 
     vibes: ['strong', 'calm'], 
-    personalities: ['reliable', 'prudent'], 
+    personalities: ['dependable', 'prudent', 'upright'], 
     nature: ['winter', 'mountain']
   },
   { 
@@ -955,7 +955,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '하람', // 순우리말 (하늘이 내린 소중한 사람)
     gender: ['neutral'], 
     vibes: ['lovely', 'soft'], 
-    personalities: ['radiant', 'considerate'], 
+    personalities: ['radiant', 'considerate', 'graceful'], 
     nature: ['spring', 'flower']
   },
   { 
@@ -964,7 +964,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '瑞律', 
     gender: ['neutral', 'male'], 
     vibes: ['calm', 'trendy'], 
-    personalities: ['prudent', 'sensitive'], 
+    personalities: ['prudent', 'sensitive', 'upright'], 
     nature: ['winter', 'forest']
   },
   { 
@@ -973,7 +973,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '始溫', 
     gender: ['neutral', 'male'], 
     vibes: ['soft', 'mystic'], 
-    personalities: ['considerate', 'genuine'], 
+    personalities: ['considerate', 'genuine', 'graceful'], 
     nature: ['spring', 'river'], 
   },
   { 
@@ -982,7 +982,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '娟雨', 
     gender: ['neutral', 'female'], 
     vibes: ['mystic', 'calm'], 
-    personalities: ['sensitive', 'prudent'], 
+    personalities: ['sensitive', 'prudent', 'graceful'], 
     nature: ['summer', 'river']
   },
   { 
@@ -1000,7 +1000,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '有安', 
     gender: ['neutral'], 
     vibes: ['calm', 'soft'], 
-    personalities: ['prudent', 'reliable'], 
+    personalities: ['prudent', 'dependable', 'graceful'], 
     nature: ['winter', 'sea']
   },
   { 
@@ -1027,7 +1027,7 @@ export const NAME_DATABASE: NameItem[] = [
     hanja: '雅仁', 
     gender: ['neutral', 'female'], 
     vibes: ['calm', 'soft'], 
-    personalities: ['genuine', 'considerate'], 
+    personalities: ['genuine', 'considerate', 'graceful'], 
     nature: ['autumn', 'river']
   }
 ]

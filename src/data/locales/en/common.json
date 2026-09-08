@@ -7,14 +7,16 @@
       "en": "English",
       "th": "ไทย",
       "vi": "Tiếng Việt"
-    }
+    },
+    "detected": "Your browser is set to {lang}. Not right?",
+    "dismiss": "DISMISS"
   },
   "footer": {
     "copyright": "© 2026 gethangeul.com All rights reserved."
   },
   "layout": {
     "progress_badge": "Progress",
-    "progress_desc": "We analyze your unique traits to create \na beautiful, one-of-a-kind Korean name.",
+    "progress_desc": "We analyze your unique traits to create a beautiful, one-of-a-kind Korean name.",
     "step_prefix": "STEP",
     "steps": {
       "1": "Gender",
@@ -28,27 +30,32 @@
     }
   },
   "landing": {
-    "title_main": "Every Korean name holds \na beautiful story.",
+    "title_main": "Every Korean name\nholds a beautiful story.",
     "subtitle": "Find a special name that is uniquely yours.",
     "cta_button": "Find My Name",
     "features": [
       {
         "title": "Customized Just for You",
-        "desc": "A special Korean name that reflects\nyour unique personality and values."
+        "desc": "A special Korean name that reflects your unique personality and values."
       },
       {
         "title": "Deep Meaning Inside",
-        "desc": "Discover the beautiful story and meaning\nbehind each character."
+        "desc": "Discover the beautiful story and meaning behind each character."
       },
       {
         "title": "Share & Keep Your Name",
-        "desc": "Download your name card as an image\nto save and share with others."
+        "desc": "Download your name card as an image to save and share with others."
       },
       {
         "title": "Safe & Secure",
-        "desc": "Your information is completely protected\nand is never stored."
+        "desc": "Your information is completely protected and is never stored."
       }
-    ]
+    ],
+    "eyebrow": "A real Korean name, and the story inside it",
+    "cta_sub": "4 questions · about 40 seconds",
+    "trust": "Free · no sign-up · nothing stored",
+    "specimen_label": "Someone just received",
+    "features_label": "What you walk away with"
   },
   "questions": {
     "step1": {
@@ -75,10 +82,10 @@
       "neutral": "Gender Neutral"
     },
     "vibe": {
-      "bright": "Bright & Positive",
-      "calm": "Calm & Graceful",
-      "natural": "Natural & Relaxed",
-      "soft": "Soft & Warm",
+      "bright": "Light & Airy",
+      "calm": "Serene & Poised",
+      "natural": "Understated & Easy",
+      "soft": "Gentle & Tender",
       "mystic": "Mystic & Charming",
       "trendy": "Chic & Trendy",
       "strong": "Strong & Cool",
@@ -94,7 +101,9 @@
       "enterprising": "Bold & Ambitious",
       "prudent": "Calm & Thoughtful",
       "upright": "Honest & Principled",
-      "sensitive": "Expressive & Delicate"
+      "sensitive": "Expressive & Delicate",
+      "graceful": "Graceful & Refined",
+      "resilient": "Steady & Resilient"
     },
     "nature": {
       "spring": "Spring",
@@ -121,7 +130,8 @@
       "share": "Share Result",
       "sharing": "Sharing...",
       "download": "Save Image",
-      "downloading": "Saving..."
+      "downloading": "Saving...",
+      "listen": "Listen to the pronunciation"
     },
     "ads": {
       "sponsor_badge": "ADVERTISEMENT",
@@ -130,7 +140,51 @@
       "banner_title": "Advertisement",
       "banner_desc": "[ 300 × 250 Display Banner Area ]",
       "mobile_badge": "AD",
-      "mobile_desc": "Mobile Anchor Banner Area"
-    }
+      "mobile_desc": "Mobile Anchor Banner Area",
+      "label": "Advertisement"
+    },
+    "before_you_go": "Before you go",
+    "again": "See the other names",
+    "again_desc": "Your answers found three. Go back and read the rest.",
+    "start_over": "Start over",
+    "start_over_desc": "A different name, answered from the beginning."
+  },
+  "name": {
+    "eyebrow": "Before the questions",
+    "title": "Start with the name you already have.",
+    "sub": "We look for a Korean name that sounds like it. Your four answers then decide which one is yours.",
+    "label": "Your name",
+    "placeholder": "Sarah",
+    "skip": "Skip this",
+    "begin": "Begin",
+    "sound_title": "The sound",
+    "sound_count": "{count} Korean names begin with that sound. Your answers narrow them to one.",
+    "sound_none_title": "No match by sound",
+    "sound_none": "No Korean given name begins with that sound, so yours will be chosen on meaning alone — and the result will say so.",
+    "sound_script_title": "We can't read that script yet",
+    "sound_script": "Try writing it the way it sounds in Latin letters, or skip this step and we will go by meaning.",
+    "placeholder_long": "Enter your name",
+    "privacy": "Read in your browser to find the sound, then dropped."
+  },
+  "weaving": {
+    "title": "Writing your name.",
+    "sub": "Reading your four answers against every name we have.",
+    "working": "Writing…",
+    "reveal": "See my names"
+  },
+  "choice": {
+    "title": "One of the names below\nis your name.",
+    "sub": "Ordered by how closely each one fits your answers.",
+    "closest": "Closest",
+    "change": "None of these? Change an answer",
+    "no_sound": "No Korean given name begins with your name’s sound, so these three were chosen on meaning alone.",
+    "eyebrow": "Matched to your answers"
+  },
+  "loading": {
+    "stage1": "Reading your answers",
+    "stage2": "Matching the sound",
+    "stage3": "Weighing the meanings",
+    "stage4": "Writing your name",
+    "ready": "Ready"
   }
 }

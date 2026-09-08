@@ -14,7 +14,7 @@
   },
   "layout": {
     "progress_badge": "Tiến trình",
-    "progress_desc": "Phân tích tính cách đặc trưng của bạn để \ntạo nên một tên tiếng Hàn độc nhất và ý nghĩa.",
+    "progress_desc": "Phân tích tính cách đặc trưng của bạn để tạo nên một tên tiếng Hàn độc nhất và ý nghĩa.",
     "step_prefix": "BƯỚC",
     "steps": {
       "1": "Chọn giới tính",
@@ -28,25 +28,25 @@
     }
   },
   "landing": {
-    "title_main": "Mỗi tên tiếng Hàn đều ẩn chứa \nmột câu chuyện đẹp.",
+    "title_main": "Mỗi tên tiếng Hàn\nđều ẩn chứa một câu chuyện đẹp.",
     "subtitle": "Hãy tìm một cái tên đặc biệt dành riêng cho bạn.",
     "cta_button": "Bắt đầu tìm tên",
     "features": [
       {
         "title": "Tên thiết kế riêng cho bạn",
-        "desc": "Một tên tiếng Hàn đặc biệt phản ánh\ntính cách và giá trị của riêng bạn."
+        "desc": "Một tên tiếng Hàn đặc biệt phản ánh tính cách và giá trị của riêng bạn."
       },
       {
         "title": "Ý nghĩa ẩn sau mỗi cái tên",
-        "desc": "Khám phá câu chuyện và ý nghĩa\ntuyệt đẹp của từng chữ cái."
+        "desc": "Khám phá câu chuyện và ý nghĩa tuyệt đẹp của từng chữ cái."
       },
       {
         "title": "Chia sẻ và lưu giữ kỷ niệm",
-        "desc": "Tải thẻ tên dưới dạng hình ảnh\nđể lưu lại và chia sẻ với mọi người."
+        "desc": "Tải thẻ tên dưới dạng hình ảnh để lưu lại và chia sẻ với mọi người."
       },
       {
         "title": "An tâm sử dụng",
-        "desc": "Thông tin của bạn được bảo mật tuyệt đối\nvà không lưu trữ trên hệ thống."
+        "desc": "Thông tin của bạn được bảo mật tuyệt đối và không lưu trữ trên hệ thống."
       }
     ]
   },
@@ -75,10 +75,10 @@
       "neutral": "Mọi giới tính"
     },
     "vibe": {
-      "bright": "Tươi sáng & Tích cực",
-      "calm": "Điềm đạm & Thanh lịch",
-      "natural": "Tự nhiên & Thoải mái",
-      "soft": "Nhẹ nhàng & Ấm áp",
+      "bright": "Tươi sáng & Thoáng đãng",
+      "calm": "Tĩnh lặng & Trang nhã",
+      "natural": "Mộc mạc & Giản dị",
+      "soft": "Dịu dàng & Êm ái",
       "mystic": "Huyền bí & Cuốn hút",
       "trendy": "Sành điệu & Hợp mốt",
       "strong": "Mạnh mẽ & Bản lĩnh",
@@ -94,7 +94,9 @@
       "enterprising": "Bản lĩnh & Tiến thủ",
       "prudent": "Điềm tĩnh & Thận trọng",
       "upright": "Chính trực & Nguyên tắc",
-      "sensitive": "Tinh tế & Giàu cảm xúc"
+      "sensitive": "Tinh tế & Giàu cảm xúc",
+      "graceful": "Thanh lịch & Tinh tế",
+      "resilient": "Vững vàng & Kiên cường"
     },
     "nature": {
       "spring": "Mùa xuân",
@@ -131,6 +133,15 @@
       "banner_desc": "[ Khu vực banner hiển thị 300 × 250 ]",
       "mobile_badge": "QC",
       "mobile_desc": "Khu vực banner thanh ngang di động"
-    }
+    },
+    "again": "Xem những tên khác",
+    "again_desc": "Câu trả lời của bạn tìm được ba tên. Quay lại xem phần còn lại.",
+    "start_over": "Bắt đầu lại",
+    "start_over_desc": "Trả lời lại từ đầu để nhận một cái tên khác."
+  },
+  "choice": {
+    "eyebrow": "Khớp với câu trả lời của bạn",
+    "title": "Một trong những cái tên dưới đây\nlà tên của bạn.",
+    "sub": "Xếp theo mức độ phù hợp với câu trả lời của bạn."
   }
 }

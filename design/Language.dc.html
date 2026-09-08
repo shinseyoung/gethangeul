@@ -1,0 +1,314 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Nanum+Brush+Script&family=Gowun+Batang:wght@400;700&family=Noto+Sans+Thai:wght@400;600&display=swap">
+  <style>
+    body { margin: 0; background: #FCFCFB; }
+    a { color: #1F63E8; text-decoration: none; }
+    a:hover { color: #1546A8; }
+    .rt {
+      --paper: #FCFCFB; --paper-hi: #FFFFFF; --paper-lo: #F1F2F1;
+      --rule: #E4E5E3; --rule-2: #CDCFCC;
+      --ink: #17181A; --ink-2: #43464A; --ink-3: #7E8286; --ink-4: #ABAFB3;
+      --seal: #1F63E8;
+      --disp: 'Instrument Serif', 'Times New Roman', serif;
+      --body: 'Newsreader', Georgia, serif;
+      --brush: 'Nanum Brush Script', 'Gowun Batang', serif;
+    }
+    .grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.16; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    }
+    .eyebrow { font-family: var(--body); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); }
+    .cap { font-family: var(--body); font-size: 12.5px; line-height: 1.55; color: var(--ink-3); margin: 0; }
+    .row { cursor: pointer; transition: background-color .16s ease; }
+    .row:hover { background: #F7F8F7; }
+  </style>
+</helmet>
+
+<div class="rt" style="width: 1360px; min-height: 940px; position: relative; background: var(--paper); font-family: var(--body); color: var(--ink-2); overflow: hidden; padding: 0 0 48px;">
+  <div class="grain"></div>
+
+  <div style="position: relative; z-index: 2; padding: 44px 48px 0;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 20px; border-bottom: 1.5px solid var(--ink);">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span class="eyebrow" style="color: var(--seal);">GETHANGEUL · LANGUAGE</span>
+        <h1 style="font-family: var(--disp); font-size: 46px; line-height: 1; color: var(--ink); margin: 0; letter-spacing: -0.015em;">Four languages, one switch</h1>
+      </div>
+      <p class="cap" style="max-width: 430px; text-align: right;">Pick a language on the left — the trigger, the menu and the live sample on the right all change with it. Every string shown is the real one from <span style="color: var(--ink-2);">src/data/locales</span>.</p>
+    </div>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 34px 48px 0; display: flex; gap: 40px; align-items: flex-start;">
+
+    <!-- MOBILE -->
+    <div style="width: 390px; flex-shrink: 0; display: flex; flex-direction: column; gap: 14px;">
+      <span class="eyebrow" style="font-size: 9px;">MOBILE · TRIGGER, DETECT BAR, SHEET</span>
+
+      <div style="background: var(--paper-hi); border: 1px solid var(--rule); border-radius: 2px; overflow: hidden;">
+        <div style="height: 58px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0 20px;">
+          <div style="display: flex; flex-direction: column; gap: 1px;">
+            <span style="font-family: var(--brush); font-size: 20px; line-height: 1; color: var(--ink); letter-spacing: 0.06em;">한글 이름</span>
+            <span class="eyebrow" style="font-size: 7.5px; letter-spacing: 0.26em;">GETHANGEUL</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 7px; border: 1px solid var(--rule-2); padding: 8px 11px; border-radius: 2px; min-height: 44px; box-sizing: border-box;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7E8286" stroke-width="1.6"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"></path></svg>
+            <span style="{{ trigger.style }}">{{ trigger.endo }}</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ABAFB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 11px; padding: 13px 20px; background: rgba(31,99,232,0.045); border-bottom: 1px solid var(--rule);">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1F63E8" stroke-width="1.7" stroke-linecap="round" style="flex-shrink: 0; margin-top: 1px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5.5M12 7.6v.1"></path></svg>
+          <div style="display: flex; flex-direction: column; gap: 5px; flex-grow: 1;">
+            <span style="font-size: 12.5px; line-height: 1.5; color: var(--ink-2);">{{ detect.line }}</span>
+            <div style="display: flex; gap: 7px; flex-wrap: wrap;">
+              <sc-for list="{{ detect.others }}" as="o" hint-placeholder-count="3">
+                <span onClick="{{ o.pick }}" style="font-size: 12px; padding: 5px 10px; border: 1px solid var(--rule-2); border-radius: 2px; background: var(--paper-hi); cursor: pointer; color: var(--ink-2); font-family: {{ o.font }};">{{ o.endo }}</span>
+              </sc-for>
+            </div>
+          </div>
+          <span class="eyebrow" style="font-size: 8px; color: var(--ink-4); cursor: pointer; flex-shrink: 0;">DISMISS</span>
+        </div>
+
+        <div style="padding: 130px 0 0; background: rgba(23,24,26,0.28);">
+          <div style="background: var(--paper-hi); border-top: 1px solid var(--rule-2); border-radius: 10px 10px 0 0; padding: 10px 0 14px;">
+            <div style="width: 38px; height: 4px; border-radius: 999px; background: var(--rule-2); margin: 0 auto 12px;"></div>
+            <div style="padding: 0 20px 10px; display: flex; align-items: center; gap: 10px;">
+              <span class="eyebrow" style="font-size: 9px;">LANGUAGE</span>
+              <span style="flex-grow: 1; height: 1px; background: var(--rule); display: block;"></span>
+            </div>
+            <sc-for list="{{ langs }}" as="l" hint-placeholder-count="4">
+              <div class="row" onClick="{{ l.pick }}" style="{{ l.sheetStyle }}">
+                <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1;">
+                  <span style="{{ l.endoStyle }}">{{ l.endo }}</span>
+                  <span class="eyebrow" style="font-size: 8.5px; color: var(--ink-4);">{{ l.eng }}</span>
+                </div>
+                <span style="width: 8px; height: 8px; background: #1F63E8; transform: rotate(45deg); display: block; flex-shrink: 0; opacity: {{ l.mark }};"></span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      <p class="cap">A 56px row in a bottom sheet, not a 128px dropdown pinned to the corner. Thumbs reach the bottom of a phone; the top-right is the worst place on the screen for a control everyone needs on arrival.</p>
+    </div>
+
+    <!-- DESKTOP -->
+    <div style="width: 420px; flex-shrink: 0; display: flex; flex-direction: column; gap: 14px;">
+      <span class="eyebrow" style="font-size: 9px;">DESKTOP · TRIGGER AND MENU</span>
+
+      <div style="background: var(--paper-hi); border: 1px solid var(--rule); border-radius: 2px; padding-bottom: 22px;">
+        <div style="height: 66px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0 22px;">
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-family: var(--brush); font-size: 21px; line-height: 1; color: var(--ink); letter-spacing: 0.06em;">한글 이름</span>
+            <span class="eyebrow" style="font-size: 7.5px; letter-spacing: 0.28em;">GETHANGEUL</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; border: 1px solid var(--rule-2); padding: 9px 13px; border-radius: 2px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7E8286" stroke-width="1.6"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"></path></svg>
+            <span style="{{ trigger.style }}">{{ trigger.endo }}</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ABAFB3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; padding: 10px 22px 0;">
+          <div style="width: 232px; background: var(--paper-hi); border: 1px solid var(--rule-2); border-radius: 2px; box-shadow: 0 20px 44px -26px rgba(23,24,26,0.45); overflow: hidden;">
+            <sc-for list="{{ langs }}" as="l" hint-placeholder-count="4">
+              <div class="row" onClick="{{ l.pick }}" style="{{ l.menuStyle }}">
+                <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1;">
+                  <span style="{{ l.menuEndoStyle }}">{{ l.endo }}</span>
+                  <span class="eyebrow" style="font-size: 8px; color: var(--ink-4);">{{ l.eng }}</span>
+                </div>
+                <span style="width: 7px; height: 7px; background: #1F63E8; transform: rotate(45deg); display: block; flex-shrink: 0; opacity: {{ l.mark }};"></span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      <p class="cap">The trigger now says what language you are in. The old header computed <span style="color: var(--ink-2);">currentLangName</span> and never rendered it, so the button was a globe and an arrow — you had to open the menu to find out where you were.</p>
+
+      <div style="border: 1px solid var(--rule); border-radius: 2px; padding: 18px 18px; background: var(--paper-hi); margin-top: 6px;">
+        <span class="eyebrow" style="font-size: 9px;">URL PER LANGUAGE</span>
+        <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 11px;">
+          <span style="font-size: 13px; color: var(--ink-3);">gethangeul.com<span style="color: var(--seal);">/en</span>/name/hajun</span>
+          <span style="font-size: 13px; color: var(--ink-3);">gethangeul.com<span style="color: var(--seal);">/vi</span>/name/hajun</span>
+        </div>
+        <p class="cap" style="margin-top: 12px;">Language has to live in the path, not only in state. Otherwise all four translations of all 114 dictionary pages share one URL and Google indexes exactly one of them — which throws away most of the search traffic the dictionary exists to catch.</p>
+      </div>
+    </div>
+
+    <!-- LIVE SAMPLE -->
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 14px;">
+      <span class="eyebrow" style="font-size: 9px;">LIVE SAMPLE · REAL STRINGS</span>
+
+      <div style="border: 1px solid var(--rule-2); border-radius: 2px; background: var(--paper-hi); padding: 26px 24px 24px;">
+        <span class="eyebrow" style="font-size: 8.5px; color: var(--ink-4);">{{ p.tag }}</span>
+        <p style="{{ p.heroStyle }}">{{ p.hero }}</p>
+        <p style="{{ p.subStyle }}">{{ p.sub }}</p>
+        <div style="display: flex; align-items: center; gap: 10px; margin-top: 22px; flex-wrap: wrap;">
+          <span style="{{ p.ctaStyle }}">{{ p.cta }}</span>
+          <span style="{{ p.nextStyle }}">{{ p.next }}</span>
+        </div>
+        <div style="height: 1px; background: var(--rule); margin: 22px 0 16px;"></div>
+        <div style="display: flex; align-items: baseline; gap: 12px;">
+          <span class="eyebrow" style="font-size: 8.5px; color: var(--ink-4); width: 74px; flex-shrink: 0;">CARD TITLE</span>
+          <span style="{{ p.resultStyle }}">{{ p.result }}</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 12px; margin-top: 12px;">
+          <span class="eyebrow" style="font-size: 8.5px; color: var(--ink-4); width: 74px; flex-shrink: 0;">TYPEFACE</span>
+          <span style="font-size: 13px; color: var(--ink-2);">{{ p.face }}</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 12px; margin-top: 10px;">
+          <span class="eyebrow" style="font-size: 8.5px; color: var(--ink-4); width: 74px; flex-shrink: 0;">LINE HEIGHT</span>
+          <span style="font-size: 13px; color: var(--ink-2);">{{ p.lh }}</span>
+        </div>
+      </div>
+      <p class="cap">{{ p.note }}</p>
+    </div>
+  </div>
+
+  <div style="position: relative; z-index: 2; padding: 40px 48px 0;">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px;">
+      <h2 style="font-family: var(--disp); font-size: 26px; line-height: 1.1; color: var(--ink); margin: 0;">What has to change in the code</h2>
+      <span style="flex-grow: 1; height: 1px; background: var(--rule); display: block;"></span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px;">
+      <div style="display: flex; gap: 13px;">
+        <span style="font-family: var(--disp); font-size: 12px; color: var(--seal); padding-top: 3px;">01</span>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <span style="font-family: var(--disp); font-size: 19px; line-height: 1.15; color: var(--ink);">Render the name</span>
+          <span class="cap">Header.tsx already has currentLangName. Put it in the button. One line.</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 13px;">
+        <span style="font-family: var(--disp); font-size: 12px; color: var(--seal); padding-top: 3px;">02</span>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <span style="font-family: var(--disp); font-size: 19px; line-height: 1.15; color: var(--ink);">Detect, then remember</span>
+          <span class="cap">Seed lang from navigator.language on first visit and persist it. Today it starts at 'ko' and forgets on every reload — on a site whose visitors are all foreign.</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 13px;">
+        <span style="font-family: var(--disp); font-size: 12px; color: var(--seal); padding-top: 3px;">03</span>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <span style="font-family: var(--disp); font-size: 19px; line-height: 1.15; color: var(--ink);">Load a face per script</span>
+          <span class="cap">Thai and Vietnamese currently fall back to whatever the device has. Noto Sans Thai and a Vietnamese-covering body face, loaded only for those locales.</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 13px;">
+        <span style="font-family: var(--disp); font-size: 12px; color: var(--seal); padding-top: 3px;">04</span>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <span style="font-family: var(--disp); font-size: 19px; line-height: 1.15; color: var(--ink);">Language in the URL</span>
+          <span class="cap">/en, /ko, /vi, /th plus a matching html lang and hreflang tags. Without it the dictionary's four translations collapse into one indexed page.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":1360,"height":940}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const KO = "'Gowun Batang', 'Nanum Brush Script', serif";
+    const TH = "'Noto Sans Thai', 'Newsreader', sans-serif";
+    const LAT = "'Newsreader', Georgia, serif";
+
+    const DATA = [
+      {
+        code: 'en', endo: 'English', eng: 'English', font: LAT, lh: '1.42',
+        face: 'Newsreader · Instrument Serif',
+        hero: 'Every Korean name holds a beautiful story.',
+        sub: 'Find a special name that is uniquely yours.',
+        cta: 'Find My Name', next: 'Next', result: 'My Korean Name',
+        note: 'The reference setting. Everything else is measured against this one.',
+      },
+      {
+        code: 'ko', endo: '한국어', eng: 'Korean', font: KO, lh: '1.55',
+        face: 'Gowun Batang',
+        hero: '모든 한글 이름에는 예쁜 이야기가 담겨 있습니다.',
+        sub: '당신만의 특별한 이름을 찾아보세요.',
+        cta: '내 이름 찾기', next: '다음', result: '나의 한글 이름',
+        note: 'Korean needs more leading than Latin and must break on word boundaries — word-break: keep-all, which the current code already gets right.',
+      },
+      {
+        code: 'vi', endo: 'Tiếng Việt', eng: 'Vietnamese', font: LAT, lh: '1.5',
+        face: 'Newsreader · Vietnamese subset',
+        hero: 'Mỗi tên tiếng Hàn đều ẩn chứa một câu chuyện đẹp.',
+        sub: 'Hãy tìm một cái tên đặc biệt dành riêng cho bạn.',
+        cta: 'Bắt đầu tìm tên', next: 'Tiếp theo', result: 'Tên Tiếng Hàn Của Bạn',
+        note: 'Vietnamese stacks two diacritics on one vowel. Latin line-height clips the top marks, and the Google Fonts request needs the vietnamese subset explicitly.',
+      },
+      {
+        code: 'th', endo: 'ไทย', eng: 'Thai', font: TH, lh: '1.75',
+        face: 'Noto Sans Thai',
+        hero: 'ชื่อภาษาเกาหลีทุกชื่อ ล้วนมีเรื่องราวที่งดงามซ่อนอยู่',
+        sub: 'ค้นหาชื่อที่พิเศษและเป็นเอกลักษณ์เฉพาะคุณ',
+        cta: 'ค้นหาชื่อของฉัน', next: 'ถัดไป', result: 'ชื่อภาษาเกาหลีของฉัน',
+        note: 'Thai is the one that breaks. Marks sit above and below the line, so it needs 1.75 leading and its own face — no Thai font is loaded today, and it has no spaces between words, so it cannot be hyphenated.',
+      },
+    ];
+
+    const cur = (this.state && this.state.lang) || 'en';
+    const sel = DATA.find((d) => d.code === cur) || DATA[0];
+
+    const langs = DATA.map((d) => {
+      const on = d.code === cur;
+      return {
+        endo: d.endo, eng: d.eng, font: d.font,
+        pick: () => this.setState({ lang: d.code }),
+        mark: on ? '1' : '0',
+        endoStyle: 'font-family: ' + d.font + '; font-size: 17px; line-height: 1.25; color: '
+          + (on ? '#17181A' : '#43464A') + ';',
+        menuEndoStyle: 'font-family: ' + d.font + '; font-size: 15px; line-height: 1.25; color: '
+          + (on ? '#17181A' : '#43464A') + ';',
+        sheetStyle: 'display: flex; align-items: center; gap: 12px; padding: 13px 20px; min-height: 56px; box-sizing: border-box; border-left: 3px solid '
+          + (on ? '#1F63E8' : 'transparent') + '; background: ' + (on ? 'rgba(31,99,232,0.045)' : 'transparent') + ';',
+        menuStyle: 'display: flex; align-items: center; gap: 12px; padding: 11px 15px; min-height: 48px; box-sizing: border-box; border-left: 3px solid '
+          + (on ? '#1F63E8' : 'transparent') + '; background: ' + (on ? 'rgba(31,99,232,0.045)' : 'transparent') + ';',
+      };
+    });
+
+    const btn = 'display: inline-flex; align-items: center; border-radius: 2px; padding: 11px 18px; font-family: '
+      + sel.font + '; font-size: 15px; line-height: ' + sel.lh + ';';
+
+    return {
+      langs: langs,
+      trigger: {
+        endo: sel.endo,
+        style: 'font-family: ' + sel.font + '; font-size: 13.5px; line-height: 1.2; color: #43464A;',
+      },
+      detect: {
+        line: 'Your browser is set to ' + sel.eng + '. Not right?',
+        others: DATA.filter((d) => d.code !== cur).map((d) => ({
+          endo: d.endo, font: d.font, pick: () => this.setState({ lang: d.code }),
+        })),
+      },
+      p: {
+        tag: sel.eng.toUpperCase() + ' · ' + sel.code.toUpperCase(),
+        hero: sel.hero,
+        sub: sel.sub,
+        cta: sel.cta,
+        next: sel.next,
+        result: sel.result,
+        face: sel.face,
+        lh: sel.lh + ' — Latin sits at 1.42',
+        note: sel.note,
+        heroStyle: 'font-family: ' + (sel.code === 'th' ? sel.font : "'Instrument Serif', serif")
+          + '; font-size: 30px; line-height: ' + (sel.code === 'th' ? '1.6' : '1.14')
+          + '; color: #17181A; margin: 14px 0 12px; word-break: keep-all;',
+        subStyle: 'font-family: ' + sel.font + '; font-size: 14.5px; line-height: ' + sel.lh
+          + '; color: #7E8286; margin: 0; word-break: keep-all;',
+        ctaStyle: btn + ' background: #17181A; color: #FCFCFB;',
+        nextStyle: btn + ' background: #FFFFFF; color: #43464A; border: 1px solid #CDCFCC;',
+        resultStyle: 'font-family: ' + sel.font + '; font-size: 15px; line-height: ' + sel.lh + '; color: #17181A;',
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

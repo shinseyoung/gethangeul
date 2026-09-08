@@ -1,50 +1,179 @@
-// src/utils/nameMatcher.ts (최종 수정안)
 import { NAME_DATABASE } from '../data/nameDatabase';
 import type { NameItem } from '../types/name';
+import { choseongOf, readOnset } from './soundBridge';
 
-export const getRecommendedName = (
-  gender: 'male' | 'female' | 'neutral' | null,
-  vibe: string | null,
-  personality: string | null,
-  seasonNature: string | null
-): NameItem => {
-  let candidates = NAME_DATABASE;
+export type Gender = 'male' | 'female' | 'neutral' | null;
 
-  // 1. 성별 조건부 하드 필터링 및 보너스 가중치 설계
-  if (gender === 'male' || gender === 'female') {
-    // 선택한 성별이 배열에 존재하는 이름만 남김 (하드 필터링)
-    candidates = candidates.filter((name) => name.gender.includes(gender));
+export interface MatchAnswers {
+  givenName?: string;
+  gender: Gender;
+  vibe: string | null;
+  personality: string | null;
+  seasonNature: string | null;
+}
+
+export interface Match {
+  name: NameItem;
+  score: number;
+  /** which answers this name actually matched, for the "why" line */
+  reasons: ('vibe' | 'personality' | 'nature' | 'sound')[];
+}
+
+export interface SoundReport {
+  /** a name was given and could be read */
+  tried: boolean;
+  /** the database actually held names with that initial */
+  matched: boolean;
+  cho: string | null;
+  /** the distinct first syllables the visitor's sound maps onto */
+  syllables: string[];
+  poolSize: number;
+  unreadable: boolean;
+}
+
+export interface MatchResult {
+  matches: Match[];
+  sound: SoundReport;
+}
+
+/**
+ * FNV-1a → [0, 1). Replaces the old Math.random() tiebreak: the same answers
+ * must always produce the same name, or a shared result cannot be reproduced by
+ * the person it was shared with.
+ */
+function hash01(input: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < input.length; i += 1) {
+    h ^= input.charCodeAt(i);
+    h = Math.imul(h, 16777619);
   }
-  // gender가 'neutral'인 경우는 필터링을 하지 않고 전체 후보군을 유지함 (선택 폭 극대화)
+  return (h >>> 0) / 4294967296;
+}
 
-  // 예외 처리: 만약 데이터가 없어 후보군이 0명이면 전체 데이터로 폴백
-  if (candidates.length === 0) candidates = NAME_DATABASE;
+/** Distinct first syllables in the database that begin with any of `initials`. */
+export function syllablesFor(initials: string[]): string[] {
+  const seen = new Set<string>();
+  for (const item of NAME_DATABASE) {
+    const cho = choseongOf(item.hangul);
+    if (cho && initials.includes(cho)) seen.add(item.hangul[0]);
+  }
+  return [...seen];
+}
 
-  // 2. 가중치 기반 스코어링 (Soft Matching)
-  const scoredCandidates = candidates.map((name) => {
-    let score = 0;
+const EMPTY_SOUND: SoundReport = {
+  tried: false, matched: false, cho: null, syllables: [], poolSize: 0, unreadable: false,
+};
 
-    // 유저가 '성별 무관'을 선택했을 때, 실제로 중성 태그를 가진 이름에 보너스 점수 부여
-    if (gender === 'neutral' && name.gender.includes('neutral')) {
-      score += 0.5;
-    }
+export interface SoundPreview {
+  /** empty: nothing typed · unreadable: a script we cannot romanise ·
+   *  none: readable, but no Korean name starts with that sound · ok: a pool exists */
+  state: 'empty' | 'unreadable' | 'none' | 'ok';
+  cho: string | null;
+  syllables: string[];
+  count: number;
+}
 
-    // 나머지 성향 태그 매칭 (각 1점씩 가산)
-    if (vibe && name.vibes.includes(vibe)) score += 1;
-    if (personality && name.personalities.includes(personality)) score += 1;
-    if (seasonNature && name.nature.includes(seasonNature)) score += 1;
+/** What the name field shows back while someone is typing. */
+export function soundPreview(raw: string): SoundPreview {
+  const read = readOnset(raw);
+  if (!read.ok) {
+    return { state: read.reason === 'empty' ? 'empty' : 'unreadable', cho: null, syllables: [], count: 0 };
+  }
+  const initials = [read.cho, ...read.alts];
+  const syllables = syllablesFor(initials);
+  const count = NAME_DATABASE.filter((item) => {
+    const cho = choseongOf(item.hangul);
+    return cho !== null && initials.includes(cho);
+  }).length;
+  return { state: count > 0 ? 'ok' : 'none', cho: read.cho, syllables, count };
+}
 
-    // 동점자 발생 시 다시하기 리텐션을 위한 미세 랜덤 가중치 (0 ~ 0.1)
-    const randomWeight = Math.random() * 0.1;
+function narrowBySound(givenName: string | undefined): { pool: NameItem[]; sound: SoundReport } {
+  if (!givenName || !givenName.trim()) return { pool: NAME_DATABASE, sound: EMPTY_SOUND };
 
+  const read = readOnset(givenName);
+  if (!read.ok) {
     return {
-      ...name,
-      finalScore: score + randomWeight,
+      pool: NAME_DATABASE,
+      sound: { ...EMPTY_SOUND, tried: true, unreadable: read.reason === 'unreadable' },
     };
+  }
+
+  const initials = [read.cho, ...read.alts];
+  const pool = NAME_DATABASE.filter((item) => {
+    const cho = choseongOf(item.hangul);
+    return cho !== null && initials.includes(cho);
   });
 
-  // 3. 점수 기준 내림차순 정렬 후 최상위 1위 반환
-  scoredCandidates.sort((a, b) => b.finalScore - a.finalScore);
+  const sound: SoundReport = {
+    tried: true,
+    matched: pool.length > 0,
+    cho: read.cho,
+    syllables: syllablesFor(initials),
+    poolSize: pool.length,
+    unreadable: false,
+  };
 
-  return scoredCandidates[0];
-};
+  // No Korean given name starts with this sound. Say so; do not fake a match.
+  return { pool: pool.length > 0 ? pool : NAME_DATABASE, sound };
+}
+
+export function matchNames(answers: MatchAnswers, limit = 3): MatchResult {
+  const { pool, sound } = narrowBySound(answers.givenName);
+  const { gender, vibe, personality, seasonNature } = answers;
+
+  // Gender is a hard filter for male/female; 'neutral' keeps the whole pool and
+  // only rewards names actually tagged neutral.
+  let candidates = pool;
+  if (gender === 'male' || gender === 'female') {
+    const filtered = pool.filter((item) => item.gender.includes(gender));
+    if (filtered.length > 0) candidates = filtered;
+  }
+
+  // "Mina" narrows to names starting with ㅁ, and after the gender filter that
+  // can be a single name — under a heading promising three. Keep the sound pool
+  // on top by scoring it, and fill the remaining slots from the rest.
+  const bySound = new Set(candidates.map((item) => item.id));
+  if (candidates.length < limit) {
+    const wider = gender === 'male' || gender === 'female'
+      ? NAME_DATABASE.filter((item) => item.gender.includes(gender))
+      : NAME_DATABASE;
+    candidates = [...candidates, ...wider.filter((item) => !bySound.has(item.id))];
+  }
+
+  const seed = [answers.givenName ?? '', gender ?? '', vibe ?? '', personality ?? '', seasonNature ?? ''].join('|');
+
+  const scored: Match[] = candidates.map((name) => {
+    const reasons: Match['reasons'] = [];
+    let score = 0;
+
+    if (gender === 'neutral' && name.gender.includes('neutral')) score += 0.5;
+    // above the three traits put together: the sound pool was a hard filter
+    // before the top-up existed, and it stays one wherever it can fill a slot
+    if (sound.matched && bySound.has(name.id)) score += 4;
+    if (vibe && name.vibes.includes(vibe)) { score += 1; reasons.push('vibe'); }
+    if (personality && name.personalities.includes(personality)) { score += 1; reasons.push('personality'); }
+    if (seasonNature && name.nature.includes(seasonNature)) { score += 1; reasons.push('nature'); }
+    if (sound.matched && bySound.has(name.id)) reasons.unshift('sound');
+
+    return { name, score, reasons };
+  });
+
+  scored.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    return hash01(a.name.id + seed) - hash01(b.name.id + seed);
+  });
+
+  return { matches: scored.slice(0, limit), sound };
+}
+
+/** Back-compat helper for anything still expecting a single name. */
+export function getRecommendedName(
+  gender: Gender,
+  vibe: string | null,
+  personality: string | null,
+  seasonNature: string | null,
+  givenName?: string,
+): NameItem {
+  return matchNames({ gender, vibe, personality, seasonNature, givenName }, 1).matches[0].name;
+}
