@@ -10,7 +10,7 @@ export const LANGUAGES: { code: Language; endonym: string; english: string }[] =
 ];
 
 export const STEPS = [
-  'landing', 'gender', 'vibe', 'personality', 'nature', 'loading', 'choice', 'result',
+  'landing', 'gender', 'vibe', 'personality', 'nature', 'loading', 'result',
 ] as const;
 export type StepId = (typeof STEPS)[number];
 
@@ -77,8 +77,6 @@ interface FlowState {
   vibe: string | null;
   personality: string | null;
   seasonNature: string | null;
-  /** which of the three candidates the visitor kept */
-  chosenId: string | null;
 
   setStep: (step: StepId) => void;
   next: () => void;
@@ -96,8 +94,6 @@ interface FlowState {
   setAnswer: (step: QuestionStep, value: string | null) => void;
   answerFor: (step: QuestionStep) => string | null;
 
-  choose: (id: string) => void;
-  reset: () => void;
   restart: () => void;
 }
 
@@ -116,7 +112,6 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   vibe: null,
   personality: null,
   seasonNature: null,
-  chosenId: null,
 
   setStep: (step) => set({ step }),
   next: () => set((s) => ({ step: shift(s.step, 1) })),
@@ -156,14 +151,9 @@ export const useFlowStore = create<FlowState>((set, get) => ({
     return s.seasonNature;
   },
 
-  choose: (chosenId) => set({ chosenId, step: 'result' }),
-
-/** Back to the three candidates, answers intact — "show me another" */
-  reset: () => set({ step: 'choice', chosenId: null }),
-
-  /** Back to the very start, name included */
+  /** The only way back: answer again and get another name. */
   restart: () => set({
     step: 'landing', givenName: '', gender: null, vibe: null,
-    personality: null, seasonNature: null, chosenId: null,
+    personality: null, seasonNature: null,
   }),
 }));

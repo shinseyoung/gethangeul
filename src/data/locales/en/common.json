@@ -144,10 +144,9 @@
       "label": "Advertisement"
     },
     "before_you_go": "Before you go",
-    "again": "See the other names",
-    "again_desc": "Your answers found three. Go back and read the rest.",
     "start_over": "Start over",
-    "start_over_desc": "A different name, answered from the beginning."
+    "start_over_desc": "A different name, answered from the beginning.",
+    "no_sound": "No Korean given name begins with your name’s sound, so this one was chosen on meaning alone."
   },
   "name": {
     "eyebrow": "Before the questions",
@@ -171,14 +170,6 @@
     "sub": "Reading your four answers against every name we have.",
     "working": "Writing…",
     "reveal": "See my names"
-  },
-  "choice": {
-    "title": "One of the names below\nis your name.",
-    "sub": "Ordered by how closely each one fits your answers.",
-    "closest": "Closest",
-    "change": "None of these? Change an answer",
-    "no_sound": "No Korean given name begins with your name’s sound, so these three were chosen on meaning alone.",
-    "eyebrow": "Matched to your answers"
   },
   "loading": {
     "stage1": "Reading your answers",

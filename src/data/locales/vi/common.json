@@ -134,14 +134,7 @@
       "mobile_badge": "QC",
       "mobile_desc": "Khu vực banner thanh ngang di động"
     },
-    "again": "Xem những tên khác",
-    "again_desc": "Câu trả lời của bạn tìm được ba tên. Quay lại xem phần còn lại.",
     "start_over": "Bắt đầu lại",
     "start_over_desc": "Trả lời lại từ đầu để nhận một cái tên khác."
-  },
-  "choice": {
-    "eyebrow": "Khớp với câu trả lời của bạn",
-    "title": "Một trong những cái tên dưới đây\nlà tên của bạn.",
-    "sub": "Xếp theo mức độ phù hợp với câu trả lời của bạn."
   }
 }

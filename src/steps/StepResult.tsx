@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
 import { useMatches } from '../hooks/useMatches';
@@ -68,14 +68,11 @@ function useSpeech(text: string) {
 }
 
 export default function StepResult() {
-  const { chosenId, seasonNature, gender, vibe, personality, reset, restart } = useFlowStore();
+  const { seasonNature, gender, vibe, personality, restart } = useFlowStore();
   const { t } = useTranslation();
-  const { matches } = useMatches();
+  const { matches, sound } = useMatches();
 
-  const match = useMemo(
-    () => matches.find((m) => m.name.id === chosenId) ?? matches[0],
-    [matches, chosenId],
-  );
+  const match = matches[0];
 
   const name = match?.name;
   const { captureRef, isSaving, isSharing, handleDownload, handleShare } = useImageShare(
@@ -192,6 +189,12 @@ export default function StepResult() {
         </div>
       </div>
 
+      {sound.tried && !sound.matched && (
+        <p className="mt-4 rounded-sm border border-l-[3px] border-rule border-l-pig-jeok bg-paper-hi p-3.5 text-[13px] leading-relaxed text-ink-3">
+          {t('result.no_sound')}
+        </p>
+      )}
+
       {/* --- actions --- */}
       <div className="mt-4 flex flex-col gap-2.5">
         <Button full onClick={handleDownload} disabled={isSaving || isSharing}>
@@ -220,7 +223,6 @@ export default function StepResult() {
         </div>
         <div className="flex flex-col gap-2.5">
           {[
-            { mark: 'again', title: t('result.again'), desc: t('result.again_desc'), action: reset },
             { mark: 'start', title: t('result.start_over'), desc: t('result.start_over_desc'), action: restart },
           ].map((row) => (
             <button

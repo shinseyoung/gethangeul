@@ -4,7 +4,6 @@ import { Footer } from './components/layout/Footer';
 import Step0Landing from './steps/Step0Landing';
 import StepOptions from './steps/StepOptions';
 import StepLoading from './steps/StepLoading';
-import StepChoice from './steps/StepChoice';
 import StepResult from './steps/StepResult';
 import AdSlot from './components/AdSlot';
 import { QUESTION_STEPS, useFlowStore, type QuestionStep } from './store/useFlowStore';
@@ -47,7 +46,6 @@ export default function App() {
         {step === 'landing' && <Step0Landing />}
         {isQuestion(step) && <StepOptions step={step} />}
         {step === 'loading' && <StepLoading />}
-        {step === 'choice' && <StepChoice />}
         {step === 'result' && <StepResult />}
       </main>
       <Footer />

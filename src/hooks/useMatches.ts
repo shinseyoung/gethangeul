@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useFlowStore } from '../store/useFlowStore';
 import { matchNames, type MatchResult } from '../utils/nameMatcher';
 
-/** The same three candidates on the Choose screen and the Result screen. */
+/** The scored names for the current answers; the result screen takes the top one. */
 export function useMatches(): MatchResult {
   const givenName = useFlowStore((s) => s.givenName);
   const gender = useFlowStore((s) => s.gender);
