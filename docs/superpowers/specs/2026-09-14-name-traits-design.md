@@ -44,7 +44,9 @@ All five marks already exist in `public/marks/`. No new artwork.
 
 ## Component 1 — `src/utils/nameTraits.ts`
 
-`Freq` and `Era` are imported from `src/data/syllableDatabase.ts` (Component 2).
+`Freq`, `Era` and `SyllableItem` are imported from `src/data/syllableDatabase.ts`
+(Component 2). `known` carries whole `SyllableItem`s rather than a trimmed shape
+because the card needs `roman` to look the copy line up.
 
 ```ts
 export interface Traits {
@@ -64,7 +66,7 @@ export interface Reading {
   /** the two highest axes, highest first; ties break in Traits key order */
   top: [keyof Traits, keyof Traits];
   /** dictionary hits for the given name's syllables, in order */
-  known: { syllable: string; freq: Freq; era: Era }[];
+  known: SyllableItem[];
 }
 
 export function readName(hangul: string): Reading | null;  // null if no Hangul
@@ -76,11 +78,21 @@ export function readName(hangul: string): Reading | null;  // null if no Hangul
 chosen — it says nothing about the impression the given name makes, and 김 (hard
 coda, plain plosive) would drag every 김 name's score down for no reason.
 
-Reuse what exists: if the first syllable matches a `surnameDatabase` entry **and
-at least one syllable remains**, split it off. Otherwise the whole string is the
-given name. A visitor who types just `하준` gets the same reading as one who
+Reuse what exists: if the input is **three or more syllables** and the first
+matches a `surnameDatabase` entry, split it off. Otherwise the whole string is
+the given name. A visitor who types just `하준` gets the same reading as one who
 types `김하준`, which is the correct behaviour — the card names the surname
 separately.
+
+The three-syllable floor is doing real work, not padding. 하, 서, 강, 문, 민, 도
+and 나 are all family names *and* ordinary given-name syllables, so a rule that
+only asked "is the first syllable a surname" would read 하준 as 하 씨 준, 서연 as
+서 씨 연, and 민서 as 민 씨 서 — three of the commonest names on the site,
+mangled. A Korean name is a one-syllable family name and a two-syllable given
+name often enough that "two syllables means no family name" is right far more
+than it is wrong. Two-syllable family names (남궁, 선우) are not in the forty-name
+database and are not handled; that is the same coarse-rule trade `familyToken`
+already makes in `surnameMatcher.ts`.
 
 ### Jamo classes
 
@@ -298,6 +310,9 @@ Assertions, in the plain-`assert` style the three existing check scripts use:
 
 - every axis of every name in a fixed sample is an integer within 0–100
 - `readName('김하준').surnameId === 'kim'` and `.given === '하준'`
+- `readName('하준').surnameId === null` and `.given === '하준'` — 하 is a family
+  name in the database, and two syllables is below the split floor
+- the same for 서연, 민서, 도윤, 강민 and 문수: `surnameId === null`
 - `readName('하준')` and `readName('김하준')` produce identical `traits`
 - `readName('하준')` called twice is deep-equal — no randomness anywhere
 - 서연 scores `refined` ≥ 60; 뚜껑 scores `refined` below 서연's
