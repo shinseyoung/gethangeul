@@ -23,15 +23,28 @@ const JONG = [
 const BASE = 0xac00;
 const LAST = 0xd7a3;
 
-/** Strokes in one Hangul syllable block, or null if it is not one. */
-export function strokesOfSyllable(char: string): number | null {
+/**
+ * The three jamo of a Hangul syllable block, as indices into CHO / JUNG / JONG.
+ *
+ * Indices rather than characters, because every table that reads them — stroke
+ * counts here, sound classes in nameTraits — is a flat array in the same order.
+ */
+export function decompose(char: string): { cho: number; jung: number; jong: number } | null {
   const code = char.codePointAt(0);
   if (code === undefined || code < BASE || code > LAST) return null;
   const offset = code - BASE;
-  const jong = offset % 28;
-  const jung = Math.floor(offset / 28) % 21;
-  const cho = Math.floor(offset / 588);
-  return CHO[cho] + JUNG[jung] + JONG[jong];
+  return {
+    cho: Math.floor(offset / 588),
+    jung: Math.floor(offset / 28) % 21,
+    jong: offset % 28,
+  };
+}
+
+/** Strokes in one Hangul syllable block, or null if it is not one. */
+export function strokesOfSyllable(char: string): number | null {
+  const jamo = decompose(char);
+  if (jamo === null) return null;
+  return CHO[jamo.cho] + JUNG[jamo.jung] + JONG[jamo.jong];
 }
 
 /** Every syllable of a Hangul name, with its stroke count. Non-Hangul is dropped. */

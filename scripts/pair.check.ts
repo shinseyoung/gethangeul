@@ -1,7 +1,7 @@
 // Runnable check for the name-compatibility room: stroke counts, the fold, and
 // the Latin-to-Hangul reading that lets a foreign name play at all.
 // Run with: npm run check
-import { strokesOf, strokesOfSyllable } from '../src/utils/strokes';
+import { decompose, strokesOf, strokesOfSyllable } from '../src/utils/strokes';
 import { compatibility } from '../src/utils/nameCompat';
 import { hangulFor, romanToHangul } from '../src/utils/romanToHangul';
 import en from '../src/data/locales/en/common.json';
@@ -29,6 +29,17 @@ ok('혜 is 7 strokes', strokesOfSyllable('혜') === 7, strokesOfSyllable('혜'))
 ok('아 is 3 strokes', strokesOfSyllable('아') === 3, strokesOfSyllable('아'));
 ok('a Latin letter has no stroke count', strokesOfSyllable('A') === null);
 ok('non-Hangul is dropped, not counted', strokesOf('Anna 안나').length === 2, strokesOf('Anna 안나').length);
+
+// --- jamo decomposition, shared with the traits scorer ---------------------
+// nameTraits.ts reads the same indices these tables are indexed by, so this is
+// the one place the arithmetic is allowed to live.
+
+ok('김 decomposes to ㄱ / ㅣ / ㅁ', JSON.stringify(decompose('김')) === JSON.stringify({ cho: 0, jung: 20, jong: 16 }), decompose('김'));
+ok('하 has no final consonant', decompose('하')?.jong === 0, decompose('하'));
+ok('뷁 is still a syllable block', decompose('뷁') !== null);
+ok('a Latin letter does not decompose', decompose('A') === null);
+ok('a bare jamo does not decompose', decompose('ㄱ') === null);
+ok('an empty string does not decompose', decompose('') === null);
 
 // --- the fold --------------------------------------------------------------
 // The worked example everyone knows: 김민서 × 박다혜 is 34%.
