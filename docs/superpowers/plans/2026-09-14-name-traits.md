@@ -26,7 +26,7 @@
 | File | Responsibility |
 |---|---|
 | `src/utils/strokes.ts` *(modify)* | Gains an exported `decompose()`. Keeps its stroke tables and now calls it. |
-| `src/data/syllableDatabase.ts` *(new)* | 60 syllables, each with a frequency band and an era. No scores, no copy. |
+| `src/data/syllableDatabase.ts` *(new)* | 61 syllables, each with a frequency band and an era. No scores, no copy. |
 | `src/data/locales/{ko,en,vi,th}/syllables.json` *(new)* | One sentence per syllable, keyed by roman. |
 | `src/hooks/useTranslation.ts` *(modify)* | Loads `syllables` alongside `names` and `surnames`. |
 | `src/utils/nameTraits.ts` *(new)* | Jamo class tables, the five formulas, the surname split. Exports `readName`. |
@@ -154,7 +154,7 @@ git commit -m "Extract jamo decomposition from the stroke counter"
   - `export type Freq = 'very-common' | 'common' | 'uncommon'`
   - `export type Era = 'modern' | 'timeless' | 'classic'`
   - `export interface SyllableItem { syllable: string; roman: string; freq: Freq; era: Era }`
-  - `export const SYLLABLE_DATABASE: SyllableItem[]` — 60 entries
+  - `export const SYLLABLE_DATABASE: SyllableItem[]` — 61 entries
   - `export function syllableInfo(char: string): SyllableItem | null` — exact match on `syllable`
   - `t('syllables.<roman>')` resolves to one sentence.
 
@@ -182,9 +182,10 @@ function ok(label: string, condition: boolean, detail?: unknown) {
 
 // --- the dictionary -------------------------------------------------------
 
-ok('sixty syllables', SYLLABLE_DATABASE.length === 60, SYLLABLE_DATABASE.length);
-ok('roman keys are unique', new Set(SYLLABLE_DATABASE.map((s) => s.roman)).size === 60);
-ok('syllables are unique', new Set(SYLLABLE_DATABASE.map((s) => s.syllable)).size === 60);
+const COUNT = 61;
+ok('sixty-one syllables', SYLLABLE_DATABASE.length === COUNT, SYLLABLE_DATABASE.length);
+ok('roman keys are unique', new Set(SYLLABLE_DATABASE.map((s) => s.roman)).size === COUNT);
+ok('syllables are unique', new Set(SYLLABLE_DATABASE.map((s) => s.syllable)).size === COUNT);
 ok('every entry is one Hangul block',
   SYLLABLE_DATABASE.every((s) => [...s.syllable].length === 1 && decompose(s.syllable) !== null));
 ok('every freq is a known band',
@@ -347,7 +348,7 @@ export function syllableInfo(char: string): SyllableItem | null {
 
 - [ ] **Step 5: Write the English copy**
 
-Create `src/data/locales/en/syllables.json` with **one entry per `roman` key above — all sixty, none skipped.** The check in Step 1 fails on any missing key, so this is enumerable and verifiable, not open-ended.
+Create `src/data/locales/en/syllables.json` with **one entry per `roman` key above — all 61, none skipped.** The check in Step 1 fails on any missing key, so this is enumerable and verifiable, not open-ended.
 
 Voice: one sentence, present tense, addressed to someone who does not read Korean. Say what a Korean hearer notices — where the syllable sits in a name, what generation it suggests, what it evokes. Never state the hanja meaning as *the* meaning; the same sound carries many characters, and the site does not know which one a stranger's name uses.
 
@@ -364,7 +365,7 @@ Four lines, as the pattern to follow:
 
 - [ ] **Step 6: Write the Korean copy**
 
-Create `src/data/locales/ko/syllables.json`, same sixty keys. Written for a Korean reader, so it can be shorter and more direct than the English — do not translate the English word for word.
+Create `src/data/locales/ko/syllables.json`, same 61 keys. Written for a Korean reader, so it can be shorter and more direct than the English — do not translate the English word for word.
 
 ```json
 {
@@ -1347,7 +1348,7 @@ git push origin main
 
 ## Handoff notes
 
-- **vi/th copy is English placeholder** in `syllables.json` (60 lines), `impression.*` and `pair.blend.*`. The check asserts presence, not translation. Native review needed before this counts as shipped in four languages.
+- **vi/th copy is English placeholder** in `syllables.json` (61 lines), `impression.*` and `pair.blend.*`. The check asserts presence, not translation. Native review needed before this counts as shipped in four languages.
 - **Frequency and era bands are judgement, not census data.** One word per row in `syllableDatabase.ts`; a wrong call is a one-word fix and the check will not object.
 - **Header nav is now at three tabs, its ceiling.** The K-Drama test and the fortune reading would make five. Whoever adds the fourth room converts the nav to a menu first.
 - **The weights in `nameTraits.ts` are a first tuning.** The check asserts orderings, not values, so they can be moved freely; if a move breaks an ordering, the ordering is what the spec promised the axis means.

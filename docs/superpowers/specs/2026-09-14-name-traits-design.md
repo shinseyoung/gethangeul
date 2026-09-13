@@ -201,7 +201,7 @@ tells you whether a move broke something.
 Two files, mirroring how `nameDatabase` / `surnameDatabase` already split
 language-free data from per-language copy.
 
-`src/data/syllableDatabase.ts` — about 60 entries, the syllables that actually
+`src/data/syllableDatabase.ts` — 61 entries, the syllables that actually
 turn up in contemporary Korean given names:
 
 ```ts
@@ -223,7 +223,7 @@ export interface SyllableItem {
 { "jun": "Sits at the end of a boy's name more often than any other syllable — solid, unfussy." }
 ```
 
-**Scores are not in the dictionary.** Sixty syllables times five axes is three
+**Scores are not in the dictionary.** Sixty-one syllables times five axes is three
 hundred hand-tuned numbers that would not agree with each other by the fiftieth
 row. The dictionary carries one band, one era and one sentence; the formulas do
 the rest. That also means a syllable nobody has written a line for still gets a
