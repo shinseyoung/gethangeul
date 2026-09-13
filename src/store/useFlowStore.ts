@@ -10,7 +10,7 @@ export const LANGUAGES: { code: Language; endonym: string; english: string }[] =
 ];
 
 export const STEPS = [
-  'landing', 'gender', 'vibe', 'personality', 'nature', 'loading', 'result',
+  'landing', 'gender', 'vibe', 'personality', 'nature', 'surname', 'loading', 'result',
 ] as const;
 export type StepId = (typeof STEPS)[number];
 
@@ -18,9 +18,13 @@ export type StepId = (typeof STEPS)[number];
 export const QUESTION_STEPS = ['gender', 'vibe', 'personality', 'nature'] as const;
 export type QuestionStep = (typeof QUESTION_STEPS)[number];
 
+/** The site has two rooms. The address says which one you are in. */
+export type Tool = 'name' | 'pair';
+
 const LANG_KEY = 'gethangeul.lang';
 const SUPPORTED = LANGUAGES.map((l) => l.code);
 const PATH_LANG = /^\/(ko|en|vi|th)(?=\/|$)/;
+const PATH_PAIR = /^\/(?:ko|en|vi|th)\/pair(?=\/|$)/;
 
 /** The URL wins: a shared link must open in the language it was shared in. */
 export function langFromPath(): Language | null {
@@ -29,9 +33,13 @@ export function langFromPath(): Language | null {
   return m ? (m[1] as Language) : null;
 }
 
-export function pathForLang(lang: Language): string {
-  const rest = typeof location === 'undefined' ? '' : location.pathname.replace(PATH_LANG, '');
-  return `/${lang}${rest}`;
+export function toolFromPath(): Tool {
+  if (typeof location === 'undefined') return 'name';
+  return PATH_PAIR.test(location.pathname) ? 'pair' : 'name';
+}
+
+export function pathFor(lang: Language, tool: Tool): string {
+  return tool === 'pair' ? `/${lang}/pair` : `/${lang}`;
 }
 
 function readStoredLang(): Language | null {
@@ -62,12 +70,14 @@ const detected = detectLang();
 const initialLang = fromPath ?? stored ?? detected.lang;
 
 // land every visit on a language URL, so the address bar always says which one
+const initialTool = toolFromPath();
 if (typeof history !== 'undefined' && !fromPath) {
-  history.replaceState({}, '', pathForLang(initialLang) + location.search);
+  history.replaceState({}, '', pathFor(initialLang, initialTool) + location.search);
 }
 
 interface FlowState {
   step: StepId;
+  tool: Tool;
   lang: Language;
   /** true until the visitor picks a language themselves — gates the detect bar */
   langAutoPicked: boolean;
@@ -77,13 +87,20 @@ interface FlowState {
   vibe: string | null;
   personality: string | null;
   seasonNature: string | null;
+  /** null until the surname screen resolves one; never null past it */
+  surnameId: string | null;
+
+  /** the two names on the compatibility screen, kept across navigation */
+  pairA: string;
+  pairB: string;
 
   setStep: (step: StepId) => void;
   next: () => void;
   prev: () => void;
 
+  setTool: (tool: Tool) => void;
   setLang: (lang: Language) => void;
-  syncLangFromPath: () => void;
+  syncFromPath: () => void;
   dismissLangHint: () => void;
 
   setGivenName: (name: string) => void;
@@ -91,6 +108,9 @@ interface FlowState {
   setVibe: (v: string | null) => void;
   setPersonality: (v: string | null) => void;
   setSeasonNature: (v: string | null) => void;
+  /** null clears the choice and hands the screen back to its suggestion */
+  setSurname: (id: string | null) => void;
+  setPair: (which: 'a' | 'b', value: string) => void;
   setAnswer: (step: QuestionStep, value: string | null) => void;
   answerFor: (step: QuestionStep) => string | null;
 
@@ -104,6 +124,7 @@ const shift = (step: StepId, by: number): StepId => {
 
 export const useFlowStore = create<FlowState>((set, get) => ({
   step: 'landing',
+  tool: initialTool,
   lang: initialLang,
   langAutoPicked: fromPath === null && stored === null,
 
@@ -112,22 +133,34 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   vibe: null,
   personality: null,
   seasonNature: null,
+  surnameId: null,
+  pairA: '',
+  pairB: '',
 
   setStep: (step) => set({ step }),
   next: () => set((s) => ({ step: shift(s.step, 1) })),
   prev: () => set((s) => ({ step: shift(s.step, -1) })),
 
+  setTool: (tool) => {
+    if (typeof history !== 'undefined') {
+      history.pushState({}, '', pathFor(get().lang, tool) + location.search);
+    }
+    set({ tool });
+  },
   setLang: (lang) => {
     try { localStorage.setItem(LANG_KEY, lang); } catch { /* private mode */ }
     if (typeof history !== 'undefined') {
-      history.pushState({}, '', pathForLang(lang) + location.search);
+      history.pushState({}, '', pathFor(lang, get().tool) + location.search);
     }
     set({ lang, langAutoPicked: false });
   },
-  /** the browser's back button moving between /en and /ko */
-  syncLangFromPath: () => {
+  /** the browser's back button moving between /en, /ko and /en/pair */
+  syncFromPath: () => {
     const fromUrl = langFromPath();
-    if (fromUrl) set({ lang: fromUrl, langAutoPicked: false });
+    set({
+      tool: toolFromPath(),
+      ...(fromUrl ? { lang: fromUrl, langAutoPicked: false } : {}),
+    });
   },
   dismissLangHint: () => set({ langAutoPicked: false }),
 
@@ -136,6 +169,8 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   setVibe: (vibe) => set({ vibe }),
   setPersonality: (personality) => set({ personality }),
   setSeasonNature: (seasonNature) => set({ seasonNature }),
+  setSurname: (surnameId) => set({ surnameId }),
+  setPair: (which, value) => set(which === 'a' ? { pairA: value } : { pairB: value }),
 
   setAnswer: (step, value) => {
     if (step === 'gender') set({ gender: value as FlowState['gender'] });
@@ -154,6 +189,6 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   /** The only way back: answer again and get another name. */
   restart: () => set({
     step: 'landing', givenName: '', gender: null, vibe: null,
-    personality: null, seasonNature: null,
+    personality: null, seasonNature: null, surnameId: null,
   }),
 }));

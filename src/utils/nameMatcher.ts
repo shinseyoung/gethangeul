@@ -41,7 +41,7 @@ export interface MatchResult {
  * must always produce the same name, or a shared result cannot be reproduced by
  * the person it was shared with.
  */
-function hash01(input: string): number {
+export function hash01(input: string): number {
   let h = 2166136261;
   for (let i = 0; i < input.length; i += 1) {
     h ^= input.charCodeAt(i);

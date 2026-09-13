@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { LANGUAGES, useFlowStore } from '../../store/useFlowStore';
+import { LANGUAGES, useFlowStore, type Tool } from '../../store/useFlowStore';
 import { useTranslation } from '../../hooks/useTranslation';
 import OpticalText from '../OpticalText';
 
@@ -45,7 +45,7 @@ function LanguageRow({
 }
 
 export function Header() {
-  const { lang, setLang, langAutoPicked, dismissLangHint } = useFlowStore();
+  const { lang, setLang, langAutoPicked, dismissLangHint, tool, setTool } = useFlowStore();
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
@@ -78,8 +78,31 @@ export function Header() {
           <span className="font-disp text-[21px] leading-none tracking-tight text-ink md:text-[24px]">
             gethangeul
           </span>
-          <span className="eyebrow text-[7.5px] tracking-[0.22em] text-ink-4">YOUR KOREAN NAME</span>
+          <span className="eyebrow hidden text-[7.5px] tracking-[0.22em] text-ink-4 sm:block">YOUR KOREAN NAME</span>
         </button>
+
+        {/* the two rooms. Discovery lives here; the result screen does the
+            actual handing over, which is where anyone is already thinking
+            about a second name. */}
+        <nav className="flex items-center gap-1">
+          {(['name', 'pair'] as Tool[]).map((item) => (
+            <button
+              key={item}
+              type="button"
+              aria-current={tool === item ? 'page' : undefined}
+              onClick={() => { if (item !== tool) setTool(item); }}
+              className={`focus-ring flex min-h-[38px] items-center whitespace-nowrap rounded-full px-2.5 transition-colors md:px-3.5 ${
+                tool === item
+                  ? 'bg-accent/[0.09] text-accent'
+                  : 'text-ink-3 hover:bg-accent/[0.05] hover:text-ink'
+              }`}
+            >
+              <OpticalText className="block font-body text-[12.5px] leading-none md:text-[13.5px]">
+                {String(t(`nav.${item}`))}
+              </OpticalText>
+            </button>
+          ))}
+        </nav>
 
         <div className="relative" ref={boxRef}>
           <button

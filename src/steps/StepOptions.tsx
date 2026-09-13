@@ -1,6 +1,7 @@
 import { QUESTION_STEPS, useFlowStore, type QuestionStep } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
 import OptionMark from '../components/OptionMark';
+import ProgressRail from '../components/ProgressRail';
 import CheckMark from '../components/CheckMark';
 import Button, { ArrowLeft, ArrowRight } from '../components/Button';
 
@@ -36,32 +37,7 @@ export default function StepOptions({ step }: { step: QuestionStep }) {
 
   return (
     <div className="mx-auto flex w-full max-w-[900px] flex-1 flex-col px-6 pb-8 pt-5 lg:px-4">
-      {/* progress */}
-      <div>
-        <div className="flex items-center gap-2">
-          {QUESTION_STEPS.map((s, i) => (
-            <span key={s} className="contents">
-              <span
-                className={`block h-[9px] w-[9px] rotate-45 border ${
-                  i < index ? 'border-accent bg-accent'
-                    : i === index ? 'border-[1.5px] border-accent bg-paper'
-                    : 'border-rule-strong bg-paper'
-                }`}
-              />
-              {i < QUESTION_STEPS.length - 1 && (
-                <span className={`h-px flex-1 ${i < index ? 'bg-accent' : 'bg-rule'}`} />
-              )}
-            </span>
-          ))}
-        </div>
-        <div className="mt-2.5 flex justify-between">
-          {QUESTION_STEPS.map((s, i) => (
-            <span key={s} className={`eyebrow text-[8.5px] ${i === index ? 'text-accent' : 'text-ink-4'}`}>
-              {t(`layout.steps.${i + 1}`)}
-            </span>
-          ))}
-        </div>
-      </div>
+      <ProgressRail current={step} />
 
       <div className="pb-5 pt-7">
         <h2 className="mb-2.5 -ml-[0.035em] text-pretty font-disp text-[29px] leading-[1.1] tracking-tight text-ink md:text-[38px]">

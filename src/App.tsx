@@ -3,8 +3,10 @@ import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import Step0Landing from './steps/Step0Landing';
 import StepOptions from './steps/StepOptions';
+import StepSurname from './steps/StepSurname';
 import StepLoading from './steps/StepLoading';
 import StepResult from './steps/StepResult';
+import PairScreen from './steps/PairScreen';
 import AdSlot from './components/AdSlot';
 import { QUESTION_STEPS, useFlowStore, type QuestionStep } from './store/useFlowStore';
 import { useTranslation } from './hooks/useTranslation';
@@ -25,6 +27,7 @@ function AnchorAd() {
 
 export default function App() {
   const step = useFlowStore((s) => s.step);
+  const tool = useFlowStore((s) => s.tool);
   const lang = useFlowStore((s) => s.lang);
 
   // Announce the page language: assistive tech, hyphenation and our own
@@ -33,7 +36,7 @@ export default function App() {
 
   // /en, /ko, /vi, /th are real addresses now, so back and forward have to work
   useEffect(() => {
-    const sync = () => useFlowStore.getState().syncLangFromPath();
+    const sync = () => useFlowStore.getState().syncFromPath();
     window.addEventListener('popstate', sync);
     return () => window.removeEventListener('popstate', sync);
   }, []);
@@ -43,13 +46,20 @@ export default function App() {
     <div className="flex min-h-[100dvh] w-full flex-col bg-ground">
       <Header />
       <main className="flex w-full flex-1 flex-col">
-        {step === 'landing' && <Step0Landing />}
-        {isQuestion(step) && <StepOptions step={step} />}
-        {step === 'loading' && <StepLoading />}
-        {step === 'result' && <StepResult />}
+        {tool === 'pair' ? (
+          <PairScreen />
+        ) : (
+          <>
+            {step === 'landing' && <Step0Landing />}
+            {isQuestion(step) && <StepOptions step={step} />}
+            {step === 'surname' && <StepSurname />}
+            {step === 'loading' && <StepLoading />}
+            {step === 'result' && <StepResult />}
+          </>
+        )}
       </main>
       <Footer />
-      {step === 'result' && <AnchorAd />}
+      {tool === 'name' && step === 'result' && <AnchorAd />}
     </div>
   );
 }

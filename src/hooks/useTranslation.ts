@@ -10,13 +10,21 @@ import enNames from '../data/locales/en/names.json';
 import viNames from '../data/locales/vi/names.json';
 import thNames from '../data/locales/th/names.json';
 
-type TranslationData = typeof koCommon & { names: typeof koNames };
+import koSurnames from '../data/locales/ko/surnames.json';
+import enSurnames from '../data/locales/en/surnames.json';
+import viSurnames from '../data/locales/vi/surnames.json';
+import thSurnames from '../data/locales/th/surnames.json';
+
+type TranslationData = typeof koCommon & {
+  names: typeof koNames;
+  surnames: typeof koSurnames;
+};
 
 const translations: Record<Language, TranslationData> = {
-  ko: { ...koCommon, names: koNames } as TranslationData,
-  en: { ...enCommon, names: enNames } as unknown as TranslationData,
-  vi: { ...viCommon, names: viNames } as unknown as TranslationData,
-  th: { ...thCommon, names: thNames } as unknown as TranslationData,
+  ko: { ...koCommon, names: koNames, surnames: koSurnames } as TranslationData,
+  en: { ...enCommon, names: enNames, surnames: enSurnames } as unknown as TranslationData,
+  vi: { ...viCommon, names: viNames, surnames: viSurnames } as unknown as TranslationData,
+  th: { ...thCommon, names: thNames, surnames: thSurnames } as unknown as TranslationData,
 };
 
 function lookup(dict: unknown, path: string): unknown {

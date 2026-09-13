@@ -20,7 +20,8 @@
       "1": "Chọn giới tính",
       "2": "Phong cách tên",
       "3": "Tính cách & Giá trị",
-      "4": "Mùa & Tự nhiên"
+      "4": "Mùa & Tự nhiên",
+      "5": "Họ"
     },
     "buttons": {
       "prev": "Quay lại",
@@ -67,6 +68,19 @@
       "title": "Bạn muốn mang sắc màu của mùa hay vẻ đẹp tự nhiên nào vào tên mình?",
       "description": "Điều này giúp tăng thêm tầng ý nghĩa và biểu tượng cho cái tên."
     }
+  },
+  "surname": {
+    "eyebrow": "Dòng họ của bạn",
+    "title": "Tên Hàn Quốc bắt đầu từ họ.",
+    "sub": "Họ ở Hàn Quốc không chọn theo tính cách — họ được truyền lại. Hãy chọn dòng họ bạn muốn thuộc về.",
+    "sounds_like": "Những họ nghe giống {name}",
+    "sounds_none": "Không có họ Hàn Quốc nào mở đầu bằng âm đó, nên bạn cứ chọn tùy ý.",
+    "no_family_name": "Viết cả họ của bạn, chúng tôi sẽ tìm những họ nghe giống.",
+    "browse_all": "Xem cả 40 họ",
+    "browse_fewer": "Thu gọn",
+    "share": "{share}% người Hàn",
+    "share_rare": "Hiếm",
+    "suggested": "Gợi ý"
   },
   "options": {
     "gender": {
@@ -135,6 +149,30 @@
       "mobile_desc": "Khu vực banner thanh ngang di động"
     },
     "start_over": "Bắt đầu lại",
-    "start_over_desc": "Trả lời lại từ đầu để nhận một cái tên khác."
+    "start_over_desc": "Trả lời lại từ đầu để nhận một cái tên khác.",
+    "change_surname": "Đổi họ",
+    "change_surname_desc": "Giữ nguyên tên, chọn dòng họ khác.",
+    "see_match": "Xem hợp tên",
+    "see_match_desc": "Hai cái tên, số nét, một con số."
+  },
+  "nav": {
+    "name": "Đặt tên",
+    "pair": "Hợp tên"
+  },
+  "pair": {
+    "eyebrow": "Hợp tên kiểu Hàn Quốc",
+    "title": "Hợp tên",
+    "sub": "Nhập hai cái tên để xem mức độ hợp nhau. Kết quả được tính từ số nét của chữ Hangul, theo phương pháp truyền thống Hàn Quốc.",
+    "you": "Tên của bạn",
+    "them": "Tên người ấy",
+    "you_placeholder": "김민서",
+    "them_placeholder": "박다혜",
+    "hint": "Tên viết bằng chữ Latinh sẽ được đọc sang Hangul. Bạn có thể tự nhập Hangul để sửa.",
+    "waiting": "Nhập cả hai tên để xem kết quả.",
+    "card_label": "Hợp tên",
+    "disclaimer": "Đây là một trò chơi truyền thống, không phải chuyện xem vận. Nó chỉ đếm số nét Hangul.\nNhập hai tên theo thứ tự ngược lại sẽ cho kết quả khác.",
+    "no_name_label": "Phòng bên",
+    "no_name": "Chưa có tên Hàn Quốc?",
+    "no_name_desc": "Trả lời bốn câu hỏi để nhận một cái tên, rồi quay lại đây."
   }
 }

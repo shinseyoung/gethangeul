@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
 import { useMatches } from '../hooks/useMatches';
+import { useSurname } from '../hooks/useSurname';
 import { useImageShare } from '../hooks/useImageShare';
 import { markColor } from '../components/OptionMark';
 import MountainWash, { SEASON_WASH } from '../components/MountainWash';
 import AdSlot from '../components/AdSlot';
 import Button from '../components/Button';
-import OpticalText from '../components/OpticalText';
 
 const SEASONS = ['spring', 'summer', 'autumn', 'winter'] as const;
 
@@ -68,23 +68,27 @@ function useSpeech(text: string) {
 }
 
 export default function StepResult() {
-  const { seasonNature, gender, vibe, personality, restart } = useFlowStore();
+  const { seasonNature, gender, vibe, personality, restart, setStep, setPair, setTool } = useFlowStore();
   const { t } = useTranslation();
   const { matches, sound } = useMatches();
+  const { surname } = useSurname();
 
   const match = matches[0];
 
   const name = match?.name;
+  // Family name first, the way a Korean name is actually written and said.
+  const fullHangul = name ? surname.hangul + name.hangul : '';
+  const fullHanja = name ? surname.hanja + name.hanja : '';
   const { captureRef, isSaving, isSharing, handleDownload, handleShare } = useImageShare(
-    name ? `hangeul-name-${name.id}` : 'hangeul-name',
+    name ? `hangeul-name-${surname.id}-${name.id}` : 'hangeul-name',
   );
-  const { supported: canSpeak, speak } = useSpeech(name?.hangul ?? '');
+  const { supported: canSpeak, speak } = useSpeech(fullHangul);
 
   if (!name) return null;
 
   const season = (SEASONS as readonly string[]).includes(seasonNature ?? '') ? seasonNature! : 'slate';
   const wash = SEASON_WASH[season] ?? SEASON_WASH.slate;
-  const roman = name.id.charAt(0).toUpperCase() + name.id.slice(1);
+  const roman = `${surname.roman} ${name.id.charAt(0).toUpperCase()}${name.id.slice(1)}`;
   const isPureKorean = name.hangul === name.hanja;
 
   const SPARE = ['#C9971F', '#6E5A7A', '#A83B27', '#5B7A5C', '#C4744A', '#3E6BA8'];
@@ -130,12 +134,12 @@ export default function StepResult() {
           {/* the name sits on the card's centre line; the hanja hangs off its
               lower right without taking part in the centring */}
           <div className="relative mt-4">
-            <span className="block font-brush text-[84px] leading-[0.92] tracking-[0.07em] text-ink md:text-[96px]">
-              {name.hangul}
+            <span className="block font-brush text-[62px] leading-[0.92] tracking-[0.07em] text-ink md:text-[74px]">
+              {fullHangul}
             </span>
             {!isPureKorean && (
               <span className="absolute -bottom-1 left-full ml-2.5 whitespace-nowrap text-[16px] tracking-[0.14em] text-ink-4 md:text-[17px]">
-                {name.hanja}
+                {fullHanja}
               </span>
             )}
           </div>
@@ -223,6 +227,19 @@ export default function StepResult() {
         </div>
         <div className="flex flex-col gap-2.5">
           {[
+            {
+              mark: 'lovely',
+              title: t('result.see_match'),
+              desc: t('result.see_match_desc'),
+              // hands the name straight over, so the second room opens half-filled
+              action: () => { setPair('a', fullHangul); setTool('pair'); },
+            },
+            {
+              mark: 'feature-bond',
+              title: t('result.change_surname'),
+              desc: t('result.change_surname_desc'),
+              action: () => setStep('surname'),
+            },
             { mark: 'start', title: t('result.start_over'), desc: t('result.start_over_desc'), action: restart },
           ].map((row) => (
             <button
@@ -241,9 +258,12 @@ export default function StepResult() {
               {/* both lines ride high in their line boxes, so the block —
                   not only its measured first line — carries the correction */}
               <span className="flex flex-1 translate-y-[3px] flex-col justify-center gap-1.5">
-                <OpticalText className="block font-disp text-[18px] leading-none text-ink">
+                {/* a plain line-height, not OpticalText: inside a two-line block
+                    the correction that matters is the block's, and OpticalText
+                    centring each line in its own box fought it and won by 9px */}
+                <span className="block font-disp text-[18px] leading-[1.25] text-ink">
                   {row.title}
-                </OpticalText>
+                </span>
                 <span className="text-[12.5px] leading-[1.4] text-ink-3">{row.desc}</span>
               </span>
               <svg viewBox="0 0 24 24" fill="none" stroke="#ABAFB3" strokeWidth={1.8} strokeLinecap="round"

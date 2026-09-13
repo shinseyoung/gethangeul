@@ -14,3 +14,11 @@ export interface NameItem {
   personalities: string[];
   nature: string[];
 }
+export interface SurnameItem {
+  id: string;
+  hangul: string;
+  hanja: string;
+  roman: string;
+  /** percentage of the South Korean population, 2015 census, rounded */
+  share: number;
+}

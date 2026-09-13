@@ -22,7 +22,8 @@
       "1": "Gender",
       "2": "Vibe",
       "3": "Personality",
-      "4": "Nature"
+      "4": "Nature",
+      "5": "Family"
     },
     "buttons": {
       "prev": "Previous",
@@ -74,6 +75,19 @@
       "title": "What kind of season or nature vibe would you like to capture?",
       "description": "This adds deeper meaning and symbolism to your name."
     }
+  },
+  "surname": {
+    "eyebrow": "Your house",
+    "title": "Every Korean name begins with a family.",
+    "sub": "A Korean family name is not chosen by temperament — it is inherited. Pick the house you would join.",
+    "sounds_like": "Family names that sound like {name}",
+    "sounds_none": "No Korean family name opens on that sound, so begin anywhere you like.",
+    "no_family_name": "Write your family name too and we will find the ones that sound like it.",
+    "browse_all": "Browse all 40",
+    "browse_fewer": "Show fewer",
+    "share": "{share}% of Koreans",
+    "share_rare": "Rare",
+    "suggested": "Suggested"
   },
   "options": {
     "gender": {
@@ -146,7 +160,11 @@
     "before_you_go": "Before you go",
     "start_over": "Start over",
     "start_over_desc": "A different name, answered from the beginning.",
-    "no_sound": "No Korean given name begins with your name’s sound, so this one was chosen on meaning alone."
+    "no_sound": "No Korean given name begins with your name’s sound, so this one was chosen on meaning alone.",
+    "change_surname": "Change your family name",
+    "change_surname_desc": "Keep this name, join a different house.",
+    "see_match": "See your name match",
+    "see_match_desc": "Two names, stroke counts, and one number."
   },
   "name": {
     "eyebrow": "Before the questions",
@@ -177,5 +195,25 @@
     "stage3": "Weighing the meanings",
     "stage4": "Writing your name",
     "ready": "Ready"
+  },
+  "nav": {
+    "name": "Name",
+    "pair": "Name match"
+  },
+  "pair": {
+    "eyebrow": "Korean name compatibility",
+    "title": "Name compatibility",
+    "sub": "Enter two names to see how well they match. The result is calculated from the stroke counts of their Hangul, the traditional Korean method.",
+    "you": "Your name",
+    "them": "Their name",
+    "you_placeholder": "김민서",
+    "them_placeholder": "박다혜",
+    "hint": "English names are read into Hangul. Type Hangul yourself to correct it.",
+    "waiting": "Enter both names to see the result.",
+    "card_label": "Name compatibility",
+    "disclaimer": "A traditional game, not a fortune. It counts Hangul strokes and nothing else.\nEntering the names in the other order gives a different result.",
+    "no_name_label": "The other room",
+    "no_name": "No Korean name yet?",
+    "no_name_desc": "Answer four questions and get one, then come back."
   }
 }
