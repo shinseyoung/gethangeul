@@ -258,6 +258,39 @@ for (const act of ACTS.slice(0, 3)) {
   ok(`every axis is reachable as ${act}'s dominant`, reached.size === 4, [...reached]);
 }
 
+// --- the acts have to be fully written ------------------------------------
+
+const RECAP_KEYS = ACTS.slice(1).flatMap((act) => AXES.map((axis) => `${act}_${axis}`));
+ok('twelve recap lines', RECAP_KEYS.length === 12, RECAP_KEYS.length);
+
+for (const [lang, dict] of [['en', enK], ['ko', koK], ['vi', viK], ['th', thK]] as const) {
+  const d = dict as Record<string, any>;
+  ok(`${lang}: kdrama.premise`, typeof d.premise === 'string' && d.premise.length > 0);
+  for (const act of ACTS) {
+    ok(`${lang}: kdrama.act.${act}`, typeof d.act?.[act] === 'string' && d.act[act].length > 0);
+  }
+  for (const key of RECAP_KEYS) {
+    ok(`${lang}: kdrama.recap.${key}`, typeof d.recap?.[key] === 'string' && d.recap[key].length > 0);
+  }
+  ok(`${lang}: no orphan recap keys`,
+    Object.keys(d.recap ?? {}).every((k) => RECAP_KEYS.includes(k)),
+    Object.keys(d.recap ?? {}).filter((k) => !RECAP_KEYS.includes(k)));
+}
+
+// A recap describes what happened; it must never predict the result. Naming a
+// role would leak the ending and make the last act pointless.
+for (const [lang, dict] of [['en', enK], ['ko', koK]] as const) {
+  const d = dict as Record<string, any>;
+  const roles = Object.values(d.role ?? {}) as string[];
+  for (const key of RECAP_KEYS) {
+    const line = (d.recap?.[key] ?? '') as string;
+    ok(`${lang}: recap.${key} does not name a role`,
+      !roles.some((r) => r.length > 1 && line.includes(r)), { key, line });
+  }
+  ok(`${lang}: every recap line is distinct`,
+    new Set(RECAP_KEYS.map((k) => d.recap?.[k])).size === RECAP_KEYS.length);
+}
+
 // --- report ---------------------------------------------------------------
 
 if (failures > 0) {
