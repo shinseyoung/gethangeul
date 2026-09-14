@@ -22,6 +22,17 @@ export type Scores = Record<Axis, number>;
 export type Role = 'lead' | 'firstLove' | 'spark' | 'second' | 'rival' | 'bestie';
 export type Temper = 'direct' | 'careful';
 
+export type ActId = 'gi' | 'seung' | 'jeon' | 'gyeol';
+
+/** 기승전결, in order. Three scenes each. */
+export const ACTS = ['gi', 'seung', 'jeon', 'gyeol'] as const;
+
+export const SCENES_PER_ACT = 3;
+
+export function actOf(sceneIndex: number): ActId {
+  return ACTS[Math.floor(sceneIndex / SCENES_PER_ACT)];
+}
+
 export interface Casting {
   scores: Scores;
   /** the two highest axes, highest first; ties break in AXES order */
@@ -40,6 +51,39 @@ const ROLE_BY_PAIR: Record<string, Role> = {
   presence_mischief: 'rival',
   warmth_mischief: 'bestie',
 };
+
+/**
+ * The one value an act hands to the next.
+ *
+ * The story does not branch — this does. Twelve scenes of four options is
+ * sixteen million paths and nobody writes that, so an act passes forward only
+ * which axis its three answers fed most, and that picks the next act's opening
+ * line. Being answered three times is what being answered feels like.
+ *
+ * Ties break in AXES order, the same rule the role ranking uses.
+ */
+export function dominantAxis(answers: (number | null)[], act: ActId): Axis | null {
+  const start = ACTS.indexOf(act) * SCENES_PER_ACT;
+  const slice = answers.slice(start, start + SCENES_PER_ACT);
+  if (slice.length < SCENES_PER_ACT) return null;
+  if (slice.some((a) => a === null || a === undefined)) return null;
+
+  const raw: Scores = { romance: 0, presence: 0, warmth: 0, mischief: 0 };
+  for (let i = 0; i < SCENES_PER_ACT; i += 1) {
+    const option = QUESTIONS[start + i]?.options[slice[i] as number];
+    if (!option) return null;
+    for (const axis of AXES) raw[axis] += option.weights[axis] ?? 0;
+  }
+  return [...AXES].sort((a, b) => raw[b] - raw[a])[0];
+}
+
+/** The copy key for the line that opens `act`, or null for the first act. */
+export function recapKey(act: ActId, answers: (number | null)[]): string | null {
+  const i = ACTS.indexOf(act);
+  if (i <= 0) return null;
+  const previous = dominantAxis(answers, ACTS[i - 1]);
+  return previous ? `${act}_${previous}` : null;
+}
 
 /** The two axes in AXES order, so `warmth + romance` and `romance + warmth` are one key. */
 export function roleKey(a: Axis, b: Axis): string {

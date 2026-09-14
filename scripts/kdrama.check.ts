@@ -2,7 +2,7 @@
 // axis pairs name, and the twelve types they make with the temper.
 // Run with: npm run check
 import { QUESTIONS } from '../src/data/kdramaQuestions';
-import { AXES, cast, roleKey, type Casting, type Role } from '../src/utils/kdramaCasting';
+import { ACTS, AXES, SCENES_PER_ACT, actOf, cast, dominantAxis, recapKey, roleKey, type Casting, type Role } from '../src/utils/kdramaCasting';
 import { nameFor, namePool } from '../src/utils/kdramaName';
 import enK from '../src/data/locales/en/kdrama.json';
 import koK from '../src/data/locales/ko/kdrama.json';
@@ -18,10 +18,11 @@ function ok(label: string, condition: boolean, detail?: unknown) {
 
 // --- the questions --------------------------------------------------------
 
-ok('six questions', QUESTIONS.length === 6, QUESTIONS.length);
-ok('question ids are unique', new Set(QUESTIONS.map((q) => q.id)).size === 6);
-ok('every question has four options', QUESTIONS.every((q) => q.options.length === 4));
-ok('option ids are unique within their question',
+ok('scene ids are unique',
+  new Set(QUESTIONS.map((q) => q.id)).size === QUESTIONS.length,
+  QUESTIONS.length - new Set(QUESTIONS.map((q) => q.id)).size);
+ok('every scene has four options', QUESTIONS.every((q) => q.options.length === 4));
+ok('option ids are unique within their scene',
   QUESTIONS.every((q) => new Set(q.options.map((o) => o.id)).size === q.options.length));
 ok('every option moves at least one axis',
   QUESTIONS.every((q) => q.options.every((o) => Object.values(o.weights).some((w) => (w ?? 0) > 0))));
@@ -31,22 +32,22 @@ ok('every option leans one way or the other',
 ok('the temper can never tie',
   QUESTIONS.reduce((n, q) => n + (Math.abs(q.options[0].temper) % 2 === 0 ? 1 : 0), 0) === 1);
 
-// --- every combination of answers -----------------------------------------
-// 4^6 = 4096. Small enough to walk exhaustively, which is the only way to know
-// the test does not funnel everyone into one answer.
+// --- every combination of answers, sampled ---------------------------------
+// 4^12 is sixteen million and this suite finishes in about four seconds, so the
+// exhaustive walk the six-question version used is gone. The stride is 997
+// because it is coprime with 4^12 = 2^24 and therefore visits every residue
+// class; a round 1000 would leave index % 4 fixed and pick the same option in
+// the last scene every single time. A fixed sequence, so a failure reproduces.
 
+const TOTAL = 4 ** QUESTIONS.length;
+const STRIDE = 997;
 const every: Casting[] = [];
-const walk = (i: number, acc: number[]) => {
-  if (i === QUESTIONS.length) {
-    const c = cast(acc);
-    if (c) every.push(c);
-    return;
-  }
-  for (let o = 0; o < QUESTIONS[i].options.length; o += 1) walk(i + 1, [...acc, o]);
-};
-walk(0, []);
-
-ok('every combination casts', every.length === 4096, every.length);
+for (let i = 0; i < TOTAL; i += STRIDE) {
+  const answers = Array.from({ length: QUESTIONS.length }, (_, k) => (i >> (2 * k)) & 3);
+  const c = cast(answers);
+  if (c) every.push(c);
+}
+ok('the sample is big enough to bound twelve types', every.length > 10000, every.length);
 ok('every score is an integer 0–100',
   every.every((c) => AXES.every((a) => Number.isInteger(c.scores[a]) && c.scores[a] >= 0 && c.scores[a] <= 100)));
 ok('the two top axes are distinct', every.every((c) => c.top[0] !== c.top[1]));
@@ -78,10 +79,11 @@ ok('neither temper takes less than 40% of answer sets',
 
 // --- determinism ----------------------------------------------------------
 
-ok('an incomplete answer set does not cast', cast([0, 1, 2, null, 0, 1]) === null);
+ok('an incomplete answer set does not cast',
+  cast([0, 1, 2, null, ...Array(8).fill(0)]) === null);
 ok('a short answer set does not cast', cast([0, 1]) === null);
 ok('the same answers always cast the same',
-  JSON.stringify(cast([0, 1, 2, 3, 0, 1])) === JSON.stringify(cast([0, 1, 2, 3, 0, 1])));
+  JSON.stringify(cast(Array(12).fill(2))) === JSON.stringify(cast(Array(12).fill(2))));
 
 // --- role keys ------------------------------------------------------------
 
@@ -182,6 +184,78 @@ for (const [lang, dict] of [['en', enK], ['ko', koK], ['vi', viK], ['th', thK]] 
 for (const [lang, dict] of [['en', enK], ['ko', koK]] as const) {
   const lines = TYPE_KEYS.map((k) => (dict as Record<string, any>).type?.[k]).filter(Boolean);
   ok(`${lang}: every type sentence is distinct`, new Set(lines).size === lines.length);
+}
+
+// --- four acts of three scenes --------------------------------------------
+
+ok('twelve scenes', QUESTIONS.length === 12, QUESTIONS.length);
+ok('three scenes to an act', SCENES_PER_ACT === 3, SCENES_PER_ACT);
+ok('four acts in 기승전결 order',
+  JSON.stringify(ACTS) === JSON.stringify(['gi', 'seung', 'jeon', 'gyeol']), ACTS);
+for (const act of ACTS) {
+  ok(`${act} holds three scenes`, QUESTIONS.filter((q) => q.act === act).length === 3,
+    QUESTIONS.filter((q) => q.act === act).length);
+}
+ok('scenes are in act order',
+  QUESTIONS.map((q) => ACTS.indexOf(q.act)).every((a, i, xs) => i === 0 || a >= xs[i - 1]),
+  QUESTIONS.map((q) => q.act));
+ok('actOf agrees with the data', QUESTIONS.every((q, i) => actOf(i) === q.act));
+
+// --- the option rule ------------------------------------------------------
+// Balance has to hold inside a scene, not only across the set. Dealing the six
+// pairs in order gave one scene three romance-primary options out of four, and
+// that single skew pushed a type to 26% of all answer sets against a 20% bound.
+
+type Opt = (typeof QUESTIONS)[number]['options'][number];
+const primaryOf = (o: Opt) => AXES.find((a) => (o.weights[a] ?? 0) === 10);
+const secondaryOf = (o: Opt) => AXES.find((a) => (o.weights[a] ?? 0) === 6);
+
+ok('every option has one primary at 10 and one secondary at 6',
+  QUESTIONS.every((q) => q.options.every((o) =>
+    primaryOf(o) !== undefined && secondaryOf(o) !== undefined
+    && Object.keys(o.weights).length === 2)));
+ok('every scene offers one option per axis',
+  QUESTIONS.every((q) => new Set(q.options.map(primaryOf)).size === 4),
+  QUESTIONS.filter((q) => new Set(q.options.map(primaryOf)).size !== 4).map((q) => q.id));
+
+const ordered = new Map<string, number>();
+const unordered = new Map<string, number>();
+for (const q of QUESTIONS) {
+  for (const o of q.options) {
+    const p = primaryOf(o)!; const sec = secondaryOf(o)!;
+    ordered.set(`${p}>${sec}`, (ordered.get(`${p}>${sec}`) ?? 0) + 1);
+    unordered.set(roleKey(p, sec), (unordered.get(roleKey(p, sec)) ?? 0) + 1);
+  }
+}
+ok('twelve ordered combinations, four each',
+  ordered.size === 12 && [...ordered.values()].every((n) => n === 4), [...ordered]);
+ok('six pairs, eight each',
+  unordered.size === 6 && [...unordered.values()].every((n) => n === 8), [...unordered]);
+
+ok('exactly one scene carries a doubled temper',
+  QUESTIONS.filter((q) => q.options.every((o) => Math.abs(o.temper) === 2)).length === 1,
+  QUESTIONS.filter((q) => q.options.some((o) => Math.abs(o.temper) === 2)).map((q) => q.id));
+
+// --- the one value an act hands forward -----------------------------------
+
+ok('an unfinished act has no dominant axis',
+  dominantAxis([0, 1, null, ...Array(9).fill(0)], 'gi') === null);
+ok('a finished act has one', AXES.includes(dominantAxis(Array(12).fill(0), 'gi')!));
+ok('the dominant axis reads only its own act',
+  dominantAxis([0, 0, 0, ...Array(9).fill(1)], 'gi')
+  === dominantAxis([0, 0, 0, ...Array(9).fill(2)], 'gi'));
+ok('gi has no recap of its own', recapKey('gi', Array(12).fill(0)) === null);
+ok('seung recaps gi', (recapKey('seung', Array(12).fill(0)) ?? '').startsWith('seung_'));
+// a recap line nobody can reach is a line nobody should write
+for (const act of ACTS.slice(0, 3)) {
+  const reached = new Set<string>();
+  for (let a = 0; a < 4; a += 1) for (let b = 0; b < 4; b += 1) for (let c = 0; c < 4; c += 1) {
+    const ans = Array(12).fill(0);
+    const start = ACTS.indexOf(act) * SCENES_PER_ACT;
+    ans[start] = a; ans[start + 1] = b; ans[start + 2] = c;
+    reached.add(dominantAxis(ans, act)!);
+  }
+  ok(`every axis is reachable as ${act}'s dominant`, reached.size === 4, [...reached]);
 }
 
 // --- report ---------------------------------------------------------------
