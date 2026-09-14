@@ -8,6 +8,7 @@ import koSyl from '../src/data/locales/ko/syllables.json';
 import viSyl from '../src/data/locales/vi/syllables.json';
 import thSyl from '../src/data/locales/th/syllables.json';
 import { AXES, blendKey, readName } from '../src/utils/nameTraits';
+import { NAME_DATABASE } from '../src/data/nameDatabase';
 
 let failures = 0;
 function ok(label: string, condition: boolean, detail?: unknown) {
@@ -107,6 +108,54 @@ ok('a blend key is canonical whichever way round it is given',
 ok('a blend key uses AXES order', blendKey('cute', 'friendly') === 'friendly_cute', blendKey('cute', 'friendly'));
 ok('there are ten distinct pairs',
   new Set(AXES.flatMap((a) => AXES.filter((b) => b !== a).map((b) => blendKey(a, b)))).size === 10);
+
+// --- the meters discriminate ------------------------------------------------
+// A five-dot meter that always shows 4 or 5 dots is not a meter, it is
+// decoration — Task 4 renders `filled = floor(score / 20) + 1` per axis, and
+// Task 4/5's headline sentence is picked from `top`, the two highest axes. A
+// weight stack can pass every ordering check above and still collapse here:
+// nothing above asserts that scores actually spread out over the 114 names
+// real visitors will read, only that they point the right direction for a
+// handful of hand-picked ones. This block runs the whole database through
+// the scorer and checks the bucket and blend-pair spread directly, so a
+// future weight change that quietly re-collapses an axis fails loudly here
+// instead of shipping a card that always says the same thing.
+
+const bucketOf = (score: number) => Math.min(5, Math.floor(score / 20) + 1);
+
+const buckets = Object.fromEntries(AXES.map((axis) => [axis, [0, 0, 0, 0, 0]])) as Record<
+  (typeof AXES)[number],
+  number[]
+>;
+const blendCounts = new Map<string, number>();
+let sampled = 0;
+
+for (const item of NAME_DATABASE) {
+  const reading = readName(item.hangul);
+  if (!reading) continue;
+  sampled += 1;
+  for (const axis of AXES) buckets[axis][bucketOf(reading.traits[axis]) - 1] += 1;
+  const key = blendKey(reading.top[0], reading.top[1]);
+  blendCounts.set(key, (blendCounts.get(key) ?? 0) + 1);
+}
+
+for (const axis of AXES) {
+  const b = buckets[axis];
+  const bucketsUsed = b.filter((count) => count > 0).length;
+  const maxShare = Math.max(...b) / sampled;
+  ok(`${axis} uses at least 4 of 5 buckets over the name database`, bucketsUsed >= 4, b);
+  ok(`${axis} has no bucket holding more than 60% of names`, maxShare <= 0.6,
+    b.map((count) => `${((count / sampled) * 100).toFixed(1)}%`));
+}
+
+const blendEntries = [...blendCounts.entries()];
+const maxBlendShare = Math.max(...blendEntries.map(([, count]) => count)) / sampled;
+ok('no single blend pair exceeds 30% of the sample',
+  maxBlendShare <= 0.3,
+  blendEntries.map(([key, count]) => `${key}: ${((count / sampled) * 100).toFixed(1)}%`));
+ok('at least 7 of the 10 blend pairs appear across the name database',
+  blendEntries.length >= 7,
+  blendEntries.map(([key]) => key));
 
 // --- report ---------------------------------------------------------------
 

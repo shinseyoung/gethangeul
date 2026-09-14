@@ -100,47 +100,70 @@ function cute(cells: Cell[]): number {
   return clamp(mean(per) + (oneVowel ? 15 : 0));
 }
 
+function refined(cells: Cell[]): number {
+  const per = cells.map((c) => {
+    // Base sits low on purpose. An open or soft coda and a two-syllable shape
+    // (below) are true of almost every contemporary given name in the
+    // dictionary — 99%+ of real syllables land on one or the other — so
+    // giving that near-universal a big weight was what pinned the floor at
+    // 60: the base plus those two constants alone summed past 60 before a
+    // single letter had said anything distinctive.
+    let n = 8;
+    if (SIBILANT.has(c.cho) || c.cho === H) n += 34;
+    if (TENSE.has(c.cho)) n -= 34;
+    if (ASPIRATE.has(c.cho)) n -= 20;
+    if (c.jong === 0 || SOFT_CODA.has(c.jong)) n += 4;
+    else n -= 12;
+    const era = c.info?.era ?? DEFAULT_ERA;
+    if (era === 'modern') n += 30;
+    if (era === 'classic') n -= 24;
+    return n;
+  });
+  // Two syllables still reads as the contemporary shape, but the bonus is
+  // small now: every name in the built-in database is two syllables, so a
+  // large constant here did nothing but raise every score by the same
+  // amount — it never separated one name from another.
+  const shape = cells.length === 2 ? 6 : -8;
+  return clamp(mean(per) + shape);
+}
+
+function friendly(cells: Cell[]): number {
+  return clamp(mean(cells.map((c) => {
+    // Base is low for the same reason as `refined`'s: a plain/sonorant onset
+    // and a common-or-better syllable cover the large majority of real given
+    // names, so the old +16/+20 bonuses for them acted like a second base
+    // rather than a signal. Splitting freq into three tiers instead of a
+    // very-common/common cliff, and giving the vowel a matching dark-side
+    // penalty, does the differentiating work those flat bonuses didn't.
+    let n = 12;
+    const freq = c.info?.freq;
+    if (freq === 'very-common') n += 16;
+    else if (freq === 'common') n += 6;
+    else if (freq === 'uncommon') n -= 8;
+    if (c.info === null) n -= 20;
+    if (SONORANT.has(c.cho) || PLAIN.has(c.cho)) n += 6;
+    if (ASPIRATE.has(c.cho)) n -= 14;
+    if (BRIGHT.has(c.jung)) n += 26;
+    else if (DARK.has(c.jung)) n -= 10;
+    if (SOFT_CODA.has(c.jong)) n += 18;
+    return n;
+  })));
+}
+
 function calm(cells: Cell[]): number {
   return clamp(mean(cells.map((c) => {
-    let n = 35;
+    // Lower than the original 35: once `friendly` and `refined` no longer sit
+    // in the 60s-90s for nearly every real name, this axis's old base left it
+    // the highest-scoring axis on the sheet by default, so it started
+    // crowding every other axis out of the top two — the exact failure mode
+    // this round of tuning was fixing elsewhere.
+    let n = 24;
     if (SONORANT.has(c.cho)) n += 22;
     if (ASPIRATE.has(c.cho)) n -= 20;
     if (TENSE.has(c.cho)) n -= 12;
     if (DARK.has(c.jung) || MID.has(c.jung)) n += 18;
     if (BRIGHT.has(c.jung)) n -= 8;
     if (SOFT_CODA.has(c.jong)) n += 15;
-    return n;
-  })));
-}
-
-function refined(cells: Cell[]): number {
-  const per = cells.map((c) => {
-    let n = 40;
-    if (SIBILANT.has(c.cho) || c.cho === H) n += 18;
-    if (TENSE.has(c.cho)) n -= 22;
-    if (ASPIRATE.has(c.cho)) n -= 15;
-    if (c.jong === 0 || SOFT_CODA.has(c.jong)) n += 15;
-    else n -= 10;
-    const era = c.info?.era ?? DEFAULT_ERA;
-    if (era === 'modern') n += 14;
-    if (era === 'classic') n -= 10;
-    return n;
-  });
-  // two syllables is what a contemporary given name looks like
-  const shape = cells.length === 2 ? 12 : -10;
-  return clamp(mean(per) + shape);
-}
-
-function friendly(cells: Cell[]): number {
-  return clamp(mean(cells.map((c) => {
-    let n = 35;
-    const freq = c.info?.freq;
-    if (freq === 'very-common' || freq === 'common') n += 20;
-    if (c.info === null) n -= 15;
-    if (SONORANT.has(c.cho) || PLAIN.has(c.cho)) n += 16;
-    if (ASPIRATE.has(c.cho)) n -= 10;
-    if (BRIGHT.has(c.jung)) n += 12;
-    if (SOFT_CODA.has(c.jong)) n += 8;
     return n;
   })));
 }
