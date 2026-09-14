@@ -109,13 +109,20 @@ function refined(cells: Cell[]): number {
     // 60: the base plus those two constants alone summed past 60 before a
     // single letter had said anything distinctive.
     let n = 8;
-    if (SIBILANT.has(c.cho) || c.cho === H) n += 34;
+    // Widened from 34/30: with the base this low, the single best real
+    // syllable (a sibilant/ㅎ onset, open coda, modern era — 서 is exactly
+    // this) topped out at 68, so no name could ever light the fifth dot no
+    // matter how "refined" it read. Sibilant and modern era are the two
+    // terms that actually split the syllable set close to evenly — widening
+    // them raises the ceiling without touching the near-universal open-coda
+    // term that would just lift every score by the same amount again.
+    if (SIBILANT.has(c.cho) || c.cho === H) n += 42;
     if (TENSE.has(c.cho)) n -= 34;
     if (ASPIRATE.has(c.cho)) n -= 20;
     if (c.jong === 0 || SOFT_CODA.has(c.jong)) n += 4;
     else n -= 12;
     const era = c.info?.era ?? DEFAULT_ERA;
-    if (era === 'modern') n += 30;
+    if (era === 'modern') n += 38;
     if (era === 'classic') n -= 24;
     return n;
   });
@@ -143,21 +150,29 @@ function friendly(cells: Cell[]): number {
     if (c.info === null) n -= 20;
     if (SONORANT.has(c.cho) || PLAIN.has(c.cho)) n += 6;
     if (ASPIRATE.has(c.cho)) n -= 14;
-    if (BRIGHT.has(c.jung)) n += 26;
+    // Widened from 26/18: no syllable in the dictionary happens to pair a
+    // very-common reading with both a bright vowel and a soft coda, so the
+    // best real combination (a common-band syllable with the rest) only
+    // reached 68 — bucket five was as unreachable here as it was for
+    // `refined`. Bright/dark and soft-coda-or-not are close to even splits
+    // of the syllable set, which is what makes them worth widening instead
+    // of the freq or onset terms above.
+    if (BRIGHT.has(c.jung)) n += 38;
     else if (DARK.has(c.jung)) n -= 10;
-    if (SOFT_CODA.has(c.jong)) n += 18;
+    if (SOFT_CODA.has(c.jong)) n += 30;
     return n;
   })));
 }
 
 function calm(cells: Cell[]): number {
   return clamp(mean(cells.map((c) => {
-    // Lower than the original 35: once `friendly` and `refined` no longer sit
-    // in the 60s-90s for nearly every real name, this axis's old base left it
-    // the highest-scoring axis on the sheet by default, so it started
-    // crowding every other axis out of the top two — the exact failure mode
-    // this round of tuning was fixing elsewhere.
-    let n = 24;
+    // 24 (one round of tuning ago) undershot: the best real syllable — a
+    // sonorant onset, dark/mid vowel, soft coda, no other axis's bonus
+    // firing — only reached 79, one point short of the fifth dot, for every
+    // syllable that exists. 27 clears that with a couple of points to
+    // spare without pushing this axis back into dominating `top` the way
+    // the original 35 did.
+    let n = 27;
     if (SONORANT.has(c.cho)) n += 22;
     if (ASPIRATE.has(c.cho)) n -= 20;
     if (TENSE.has(c.cho)) n -= 12;

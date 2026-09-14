@@ -157,6 +157,43 @@ ok('at least 7 of the 10 blend pairs appear across the name database',
   blendEntries.length >= 7,
   blendEntries.map(([key]) => key));
 
+// --- every meter can reach both of its own ends -----------------------------
+// The 114-name checks above catch an axis that collapses across the names the
+// site actually ships, but they say nothing about the syllables it doesn't
+// ship yet. A weight change can pass every check above and still leave a
+// bucket structurally out of reach for ANY Korean name — round 1 of this fix
+// widened `refined` and `friendly` enough to spread the 114-name sample, but
+// as a side effect (and an unrelated `calm` base cut) capped what the top
+// bucket could ever score at 68/68/79, all below the 80 a fifth dot needs.
+// That is not a rare case the sample missed, it is a meter whose top dot can
+// never light for a name that exists — as dead as the meter this file's
+// first check block was written to catch, just at the other end. Brute-forcing
+// all 11,172 precomposed Hangul syllables through the real scorer is cheap
+// arithmetic, so there's no reason not to assert the true range directly.
+
+const structural = Object.fromEntries(AXES.map((axis) => [axis, { min: 100, max: 0 }])) as Record<
+  (typeof AXES)[number],
+  { min: number; max: number }
+>;
+for (let cp = 0xac00; cp <= 0xd7a3; cp++) {
+  const reading = readName(String.fromCodePoint(cp));
+  if (!reading) continue;
+  for (const axis of AXES) {
+    const score = reading.traits[axis];
+    const s = structural[axis];
+    if (score > s.max) s.max = score;
+    if (score < s.min) s.min = score;
+  }
+}
+
+for (const axis of AXES) {
+  const s = structural[axis];
+  ok(`${axis} can reach bucket 5 (structural max >= 80) over every Hangul syllable`,
+    s.max >= 80, s);
+  ok(`${axis} can reach bucket 1 (structural min <= 19) over every Hangul syllable`,
+    s.min <= 19, s);
+}
+
 // --- report ---------------------------------------------------------------
 
 if (failures > 0) {
