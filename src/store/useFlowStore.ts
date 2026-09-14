@@ -154,7 +154,7 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   impressionName: '',
   setImpressionName: (impressionName) => set({ impressionName }),
 
-  kdramaAnswers: Array(6).fill(null),
+  kdramaAnswers: Array(12).fill(null),
   kdramaStep: 0,
   kdramaReroll: 0,
   setKdramaAnswer: (index, option) => set((s) => {
@@ -166,7 +166,7 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   bumpKdramaReroll: () => set((s) => ({ kdramaReroll: s.kdramaReroll + 1 })),
   /* the casting is the result; only the name may be re-rolled, so this clears
      everything and sends the visitor back to the first question */
-  resetKdrama: () => set({ kdramaAnswers: Array(6).fill(null), kdramaStep: 0, kdramaReroll: 0 }),
+  resetKdrama: () => set({ kdramaAnswers: Array(12).fill(null), kdramaStep: 0, kdramaReroll: 0 }),
 
   setStep: (step) => set({ step }),
   next: () => set((s) => ({ step: shift(s.step, 1) })),

@@ -45,57 +45,132 @@
     "arrival": {
       "title": "You walk into a room where you know one person.",
       "options": {
+        "catch": "Go over to whoever just caught your eye.",
         "centre": "Head straight for the middle of it.",
         "edge": "Find the one person you know.",
-        "joke": "Say something daft before anyone else speaks.",
-        "observe": "Take a seat and watch for a minute."
+        "joke": "Say something daft before anyone else speaks."
+      }
+    },
+    "notice": {
+      "title": "Across the room, someone recognises you.",
+      "options": {
+        "hold": "Hold the look and don't glance away.",
+        "greet": "Say their name first, loudly.",
+        "smile": "Give them a small smile and leave it there.",
+        "quip": "Mouth something ridiculous at them."
+      }
+    },
+    "rumour": {
+      "title": "A rumour about you is going round, and it is half true.",
+      "options": {
+        "guess": "Work out who started it, and why they would.",
+        "deny": "Say flatly that it is not true.",
+        "shield": "Let it run rather than drop anyone in it.",
+        "feed": "Add a detail that makes it much better."
+      }
+    },
+    "microphone": {
+      "title": "The microphone has been handed to you.",
+      "options": {
+        "dedicate": "Dedicate it to someone in the room.",
+        "sing": "Sing it properly, all the way through.",
+        "pass": "Pass it to whoever wants it more.",
+        "comedy": "Do it badly on purpose."
       }
     },
     "jealousy": {
       "title": "Someone you like is laughing with someone else.",
       "options": {
         "walkover": "Walk over and join in.",
+        "cut": "Cut into the conversation and take it over.",
         "wait": "Wait for them to look up.",
-        "tease": "Say something that makes them turn around.",
-        "leave": "Step outside and get some air."
-      }
-    },
-    "microphone": {
-      "title": "The microphone has been handed to you.",
-      "options": {
-        "sing": "Sing it properly, all the way through.",
-        "dedicate": "Dedicate it to someone in the room.",
-        "pass": "Pass it to the person who wants it more.",
-        "comedy": "Do it badly on purpose."
-      }
-    },
-    "late": {
-      "title": "Your friend is an hour late and hasn't texted.",
-      "options": {
-        "scold": "Tell them exactly that when they arrive.",
-        "order": "Order for both of you and wait.",
-        "worry": "Start wondering if something happened.",
-        "prank": "Plan something ridiculous for when they walk in."
+        "tease": "Say something that makes them turn around."
       }
     },
     "umbrella": {
       "title": "It's raining and there's one umbrella.",
       "options": {
         "share": "Share it, badly, getting half wet.",
+        "shelter": "Wait it out under the awning.",
         "give": "Hand it over and turn your collar up.",
-        "run": "Run for it and let the rain happen.",
-        "wait": "Wait it out under the awning."
+        "run": "Run for it and let the rain happen."
+      }
+    },
+    "late": {
+      "title": "Your friend is an hour late and hasn't texted.",
+      "options": {
+        "text": "Send the message you have rewritten four times.",
+        "scold": "Tell them exactly that when they arrive.",
+        "worry": "Start wondering if something happened.",
+        "prank": "Plan something ridiculous for when they walk in."
+      }
+    },
+    "secret": {
+      "title": "You are holding something that is not yours to hold.",
+      "options": {
+        "tell": "Tell the one person it would change things with.",
+        "own": "Say it out loud, to the room, now.",
+        "keep": "Keep it, because telling it helps nobody.",
+        "deflect": "Bury it under a joke and change the subject."
+      }
+    },
+    "crossroads": {
+      "title": "Two doors, and the episode ends whichever you take.",
+      "options": {
+        "chase": "Go after the person, not the plan.",
+        "stand": "Take the one that puts you in charge.",
+        "stay": "Stay where you're needed.",
+        "gamble": "Take the one nobody expects."
+      }
+    },
+    "apology": {
+      "title": "Someone is owed an apology and it is yours to give.",
+      "options": {
+        "first": "Say it first, before they can ask.",
+        "face": "Say it to their face, in front of everyone.",
+        "gift": "Turn up with the thing they mentioned once.",
+        "joke2": "Make them laugh, then say it quietly."
+      }
+    },
+    "station": {
+      "title": "They are leaving in eleven minutes.",
+      "options": {
+        "run2": "Run. Work out the words on the way.",
+        "call": "Call, and say it where anyone can hear.",
+        "write": "Write it down and get it to them somehow.",
+        "watch": "Watch the train go and mean it."
       }
     },
     "finale": {
       "title": "Last episode. What's your scene?",
       "options": {
         "reunion": "Running through a station to catch someone.",
+        "stare": "One long look across a room, then the credits.",
         "letter": "A letter that arrives after you've gone.",
-        "toast": "Everyone round one table, too loud, glasses up.",
-        "stare": "One long look across a room, then the credits."
+        "toast": "Everyone round one table, too loud, glasses up."
       }
     }
   },
-  "headline": "The {temper} {role}"
+  "headline": "The {temper} {role}",
+  "premise": "Sixteen episodes. A city, a season about to turn, and a handful of people who keep ending up in the same rooms. Nobody has told you which one you are yet. That is what the next twelve scenes are for.",
+  "act": {
+    "gi": "Act One · The Setup",
+    "seung": "Act Two · It Grows",
+    "jeon": "Act Three · The Turn",
+    "gyeol": "Act Four · The Close"
+  },
+  "recap": {
+    "seung_romance": "Three scenes in and you have been looking at one person a beat longer than the shot needed. The show has noticed.",
+    "seung_presence": "You have taken up room in every scene so far. People move around you now, and the camera has started doing it too.",
+    "seung_warmth": "You keep being the one who checks. Nobody has thanked you for it yet, which is usually the sign it mattered.",
+    "seung_mischief": "Three scenes and you have already derailed two of them. The script is visibly getting nervous.",
+    "jeon_romance": "It has stopped being subtext. Whatever you do next, somebody is going to read it as an answer.",
+    "jeon_presence": "The room reorganises when you speak now. That is useful right up until the moment it is not.",
+    "jeon_warmth": "You have become the one people bring things to. It is a quiet kind of power and it is about to be tested.",
+    "jeon_mischief": "Nothing you touch has stayed where it was. The story has stopped planning around you and started planning with you.",
+    "gyeol_romance": "Everyone watching knows. The only question left is whether you say it out loud or let the rain do it.",
+    "gyeol_presence": "You are in the last act because you walked yourself here. Nobody handed you this scene.",
+    "gyeol_warmth": "You carried most of these people to the final episode. Whether anyone noticed is the thing still hanging.",
+    "gyeol_mischief": "You broke the shape of this drama three times and it is a better one for it. One scene left to ruin."
+  }
 }
