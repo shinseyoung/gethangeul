@@ -15,7 +15,12 @@ export interface Question {
 }
 
 /**
- * Twelve scenes in four acts, told in 기승전결.
+ * Twelve scenes in four acts, told in 기승전결 — and they are one story, not
+ * twelve situations. The first version was twelve unrelated prompts dropped into
+ * four buckets, and it read that way: a friend running an hour late is not a
+ * turning point, whatever act you file it under. Now 기 puts two people in the
+ * same room, 승 closes the distance and complicates it, 전 breaks it, 결 decides
+ * it. Each scene only makes sense after the one before.
  *
  * The questions ask what someone would *do*, never which part they would like
  * to play. Picking 라이벌 and being told you are the rival is a form, not a
@@ -48,9 +53,9 @@ export const QUESTIONS: Question[] = [
     id: 'arrival',
     act: 'gi',
     options: [
-      { id: 'catch', weights: { romance: 10, presence: 6 }, temper: 1 },
+      { id: 'spot', weights: { romance: 10, presence: 6 }, temper: 1 },
       { id: 'centre', weights: { presence: 10, warmth: 6 }, temper: -1 },
-      { id: 'edge', weights: { warmth: 10, mischief: 6 }, temper: 1 },
+      { id: 'known', weights: { warmth: 10, mischief: 6 }, temper: 1 },
       { id: 'joke', weights: { mischief: 10, romance: 6 }, temper: -1 },
     ],
   },
@@ -75,53 +80,53 @@ export const QUESTIONS: Question[] = [
     ],
   },
   {
-    id: 'microphone',
+    id: 'alone',
     act: 'seung',
     options: [
-      { id: 'dedicate', weights: { romance: 10, presence: 6 }, temper: -1 },
-      { id: 'sing', weights: { presence: 10, warmth: 6 }, temper: 1 },
-      { id: 'pass', weights: { warmth: 10, mischief: 6 }, temper: -1 },
-      { id: 'comedy', weights: { mischief: 10, romance: 6 }, temper: 1 },
+      { id: 'stay', weights: { romance: 10, presence: 6 }, temper: -1 },
+      { id: 'lead', weights: { presence: 10, warmth: 6 }, temper: 1 },
+      { id: 'cover', weights: { warmth: 10, mischief: 6 }, temper: -1 },
+      { id: 'derail', weights: { mischief: 10, romance: 6 }, temper: 1 },
     ],
   },
   {
-    id: 'jealousy',
+    id: 'rival',
     act: 'seung',
     options: [
-      { id: 'walkover', weights: { romance: 10, warmth: 6 }, temper: 1 },
-      { id: 'cut', weights: { presence: 10, mischief: 6 }, temper: -1 },
-      { id: 'wait', weights: { warmth: 10, romance: 6 }, temper: 1 },
-      { id: 'tease', weights: { mischief: 10, presence: 6 }, temper: -1 },
+      { id: 'claim', weights: { romance: 10, warmth: 6 }, temper: 1 },
+      { id: 'measure', weights: { presence: 10, mischief: 6 }, temper: -1 },
+      { id: 'yield', weights: { warmth: 10, romance: 6 }, temper: 1 },
+      { id: 'needle', weights: { mischief: 10, presence: 6 }, temper: -1 },
     ],
   },
   {
-    id: 'umbrella',
+    id: 'public',
     act: 'seung',
     options: [
-      { id: 'share', weights: { romance: 10, mischief: 6 }, temper: -1 },
-      { id: 'shelter', weights: { presence: 10, romance: 6 }, temper: 1 },
-      { id: 'give', weights: { warmth: 10, presence: 6 }, temper: -1 },
-      { id: 'run', weights: { mischief: 10, warmth: 6 }, temper: 1 },
-    ],
-  },
-  {
-    id: 'late',
-    act: 'jeon',
-    options: [
-      { id: 'text', weights: { romance: 10, presence: 6 }, temper: 1 },
-      { id: 'scold', weights: { presence: 10, warmth: 6 }, temper: -1 },
-      { id: 'worry', weights: { warmth: 10, mischief: 6 }, temper: 1 },
-      { id: 'prank', weights: { mischief: 10, romance: 6 }, temper: -1 },
+      { id: 'dedicate', weights: { romance: 10, mischief: 6 }, temper: -1 },
+      { id: 'sing', weights: { presence: 10, romance: 6 }, temper: 1 },
+      { id: 'pass', weights: { warmth: 10, presence: 6 }, temper: -1 },
+      { id: 'clown', weights: { mischief: 10, warmth: 6 }, temper: 1 },
     ],
   },
   {
     id: 'secret',
     act: 'jeon',
     options: [
-      { id: 'tell', weights: { romance: 10, warmth: 6 }, temper: -1 },
-      { id: 'own', weights: { presence: 10, mischief: 6 }, temper: 1 },
-      { id: 'keep', weights: { warmth: 10, romance: 6 }, temper: -1 },
-      { id: 'deflect', weights: { mischief: 10, presence: 6 }, temper: 1 },
+      { id: 'tell', weights: { romance: 10, presence: 6 }, temper: 1 },
+      { id: 'own', weights: { presence: 10, warmth: 6 }, temper: -1 },
+      { id: 'keep', weights: { warmth: 10, mischief: 6 }, temper: 1 },
+      { id: 'deflect', weights: { mischief: 10, romance: 6 }, temper: -1 },
+    ],
+  },
+  {
+    id: 'hurt',
+    act: 'jeon',
+    options: [
+      { id: 'reach', weights: { romance: 10, warmth: 6 }, temper: -1 },
+      { id: 'stand', weights: { presence: 10, mischief: 6 }, temper: 1 },
+      { id: 'wait', weights: { warmth: 10, romance: 6 }, temper: -1 },
+      { id: 'lighten', weights: { mischief: 10, presence: 6 }, temper: 1 },
     ],
   },
   {
@@ -129,8 +134,8 @@ export const QUESTIONS: Question[] = [
     act: 'jeon',
     options: [
       { id: 'chase', weights: { romance: 10, mischief: 6 }, temper: 1 },
-      { id: 'stand', weights: { presence: 10, romance: 6 }, temper: -1 },
-      { id: 'stay', weights: { warmth: 10, presence: 6 }, temper: 1 },
+      { id: 'take', weights: { presence: 10, romance: 6 }, temper: -1 },
+      { id: 'stay2', weights: { warmth: 10, presence: 6 }, temper: 1 },
       { id: 'gamble', weights: { mischief: 10, warmth: 6 }, temper: -1 },
     ],
   },
@@ -141,14 +146,14 @@ export const QUESTIONS: Question[] = [
       { id: 'first', weights: { romance: 10, presence: 6 }, temper: -1 },
       { id: 'face', weights: { presence: 10, warmth: 6 }, temper: 1 },
       { id: 'gift', weights: { warmth: 10, mischief: 6 }, temper: -1 },
-      { id: 'joke2', weights: { mischief: 10, romance: 6 }, temper: 1 },
+      { id: 'laugh', weights: { mischief: 10, romance: 6 }, temper: 1 },
     ],
   },
   {
     id: 'station',
     act: 'gyeol',
     options: [
-      { id: 'run2', weights: { romance: 10, warmth: 6 }, temper: 1 },
+      { id: 'run', weights: { romance: 10, warmth: 6 }, temper: 1 },
       { id: 'call', weights: { presence: 10, mischief: 6 }, temper: -1 },
       { id: 'write', weights: { warmth: 10, romance: 6 }, temper: 1 },
       { id: 'watch', weights: { mischief: 10, presence: 6 }, temper: -1 },
