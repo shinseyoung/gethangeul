@@ -264,6 +264,17 @@ export function hangulFor(name: string): { hangul: string; converted: boolean } 
  * plus family name rather than a Korean one. A single word skips that second
  * check: there is no family name to verify, so "Sarah" and "Hajun" are judged
  * on syllable count alone, same as any other given name typed here.
+ *
+ * A first word that is already Hangul passes that same check without going
+ * through knownSurname at all. knownSurname's job is telling a Korean family
+ * name apart from a foreign given name when both are spelled in Latin letters
+ * — "Anna" vs "Kim" look alike until you check the forty-row table. A Hangul
+ * word carries no such ambiguity: writing 김 or 하 already says "this is
+ * Korean script," table or no table, so a rare or two-syllable family name
+ * the table doesn't carry (하 준, 남궁 서연) must not be refused for failing a
+ * lookup whose only purpose was to resolve a Latin spelling. readName applies
+ * its own three-syllable floor and its own surname lookup on the Hangul this
+ * guard passes through, so this check's job stops at "is this Korean script."
  */
 export function looksKorean(name: string): boolean {
   const read = hangulFor(name);
@@ -272,5 +283,5 @@ export function looksKorean(name: string): boolean {
   if (syllables > 4) return false;
 
   const words = name.trim().split(/\s+/);
-  return words.length < 2 || knownSurname(words[0]) !== null;
+  return words.length < 2 || HANGUL.test(words[0]) || knownSurname(words[0]) !== null;
 }

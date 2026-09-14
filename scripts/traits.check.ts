@@ -282,6 +282,12 @@ const SHAPE_CASES: [string, boolean][] = [
   ['Kang Seoyeon', true], ['Jeong Doyun', true], ['Hajun', true], ['Seoyeon', true],
   ['Minseo', true], ['김하준', true], ['하준', true], ['Sarah', true], ['Elena', true],
   ['Anna Miller', false], ['David Smith', false], ['Christopher', false], ['Alexandra', false],
+  // Round 3: a Hangul family name typed with the normal space before the given
+  // name — the first thing a Korean visitor would actually type — was refused
+  // because the multi-word rule checked knownSurname (a Latin-only lookup)
+  // against a Hangul first word, which can never match. '하 준' has no listed
+  // surname at all and still has to score, same as 'Park Seoyeon' Latin-side.
+  ['김 하준', true], ['박 서연', true], ['이 지호', true], ['하 준', true],
 ];
 for (const [name, expected] of SHAPE_CASES) {
   const got = looksKorean(name);
