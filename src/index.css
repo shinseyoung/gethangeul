@@ -73,6 +73,22 @@
   unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7A3;
 }
 
+/* On a Korean page the Korean face leads every stack.
+   A line box is sized by the first font in the stack, but each glyph is drawn
+   by the first font that actually covers it — so with a Latin face in front,
+   Hangul was being drawn by Gowun Batang inside a box measured by Instrument
+   Serif. Their centres sit 0.34em and 0.45em above the baseline, and that 0.11em
+   is exactly the ~2px every Korean label was riding high by. It also explains
+   the other half: the K and the hyphen in "K-드라마" were the only characters
+   Newsreader did cover, so they alone sat at the Latin height.
+   Leading with Gowun Batang means one font measures the box and draws the text. */
+html[lang='ko'] .font-disp {
+  font-family: 'Gowun Batang', 'Instrument Serif', 'Disp Fallback', 'Times New Roman', serif;
+}
+html[lang='ko'] .font-body {
+  font-family: 'Gowun Batang', 'Newsreader', 'Body Fallback', Georgia, serif;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

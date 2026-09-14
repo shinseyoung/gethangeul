@@ -36,6 +36,26 @@ export default function App() {
   // per-script line-height rules all key off it.
   useEffect(() => { document.documentElement.lang = lang; }, [lang]);
 
+  /**
+   * Fetch the Korean face before anyone asks for it.
+   *
+   * Google splits Gowun Batang into unicode-range subsets and the browser only
+   * downloads the ones a page actually paints — so an English visitor holds none
+   * of them, and the moment they switch to Korean every label swaps from the
+   * system font to ours in front of them. Asking for the syllables the UI is
+   * built from pulls those subsets down while the first screen is still being
+   * read, so the switch has nothing left to wait for.
+   *
+   * Deliberately fire-and-forget: if it fails the site is exactly as it was.
+   */
+  useEffect(() => {
+    if (typeof document === 'undefined' || !document.fonts?.load) return;
+    const sample = '가나다라마바사아자차카타파하이름궁합첫인상드라마';
+    for (const spec of ['400 1em "Gowun Batang"', '700 1em "Gowun Batang"']) {
+      document.fonts.load(spec, sample).catch(() => { /* offline, or blocked */ });
+    }
+  }, []);
+
   // /en, /ko, /vi, /th are real addresses now, so back and forward have to work
   useEffect(() => {
     const sync = () => useFlowStore.getState().syncFromPath();
