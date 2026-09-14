@@ -15,16 +15,22 @@ import enSurnames from '../data/locales/en/surnames.json';
 import viSurnames from '../data/locales/vi/surnames.json';
 import thSurnames from '../data/locales/th/surnames.json';
 
+import koSyllables from '../data/locales/ko/syllables.json';
+import enSyllables from '../data/locales/en/syllables.json';
+import viSyllables from '../data/locales/vi/syllables.json';
+import thSyllables from '../data/locales/th/syllables.json';
+
 type TranslationData = typeof koCommon & {
   names: typeof koNames;
   surnames: typeof koSurnames;
+  syllables: typeof koSyllables;
 };
 
 const translations: Record<Language, TranslationData> = {
-  ko: { ...koCommon, names: koNames, surnames: koSurnames } as TranslationData,
-  en: { ...enCommon, names: enNames, surnames: enSurnames } as unknown as TranslationData,
-  vi: { ...viCommon, names: viNames, surnames: viSurnames } as unknown as TranslationData,
-  th: { ...thCommon, names: thNames, surnames: thSurnames } as unknown as TranslationData,
+  ko: { ...koCommon, names: koNames, surnames: koSurnames, syllables: koSyllables } as TranslationData,
+  en: { ...enCommon, names: enNames, surnames: enSurnames, syllables: enSyllables } as unknown as TranslationData,
+  vi: { ...viCommon, names: viNames, surnames: viSurnames, syllables: viSyllables } as unknown as TranslationData,
+  th: { ...thCommon, names: thNames, surnames: thSurnames, syllables: thSyllables } as unknown as TranslationData,
 };
 
 function lookup(dict: unknown, path: string): unknown {

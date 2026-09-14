@@ -18,13 +18,13 @@ export type StepId = (typeof STEPS)[number];
 export const QUESTION_STEPS = ['gender', 'vibe', 'personality', 'nature'] as const;
 export type QuestionStep = (typeof QUESTION_STEPS)[number];
 
-/** The site has two rooms. The address says which one you are in. */
-export type Tool = 'name' | 'pair';
+/** The site has three rooms. The address says which one you are in. */
+export type Tool = 'name' | 'pair' | 'impression';
 
 const LANG_KEY = 'gethangeul.lang';
 const SUPPORTED = LANGUAGES.map((l) => l.code);
 const PATH_LANG = /^\/(ko|en|vi|th)(?=\/|$)/;
-const PATH_PAIR = /^\/(?:ko|en|vi|th)\/pair(?=\/|$)/;
+const PATH_TOOL = /^\/(?:ko|en|vi|th)\/(pair|impression)(?=\/|$)/;
 
 /** The URL wins: a shared link must open in the language it was shared in. */
 export function langFromPath(): Language | null {
@@ -35,11 +35,11 @@ export function langFromPath(): Language | null {
 
 export function toolFromPath(): Tool {
   if (typeof location === 'undefined') return 'name';
-  return PATH_PAIR.test(location.pathname) ? 'pair' : 'name';
+  return (PATH_TOOL.exec(location.pathname)?.[1] as Tool) ?? 'name';
 }
 
 export function pathFor(lang: Language, tool: Tool): string {
-  return tool === 'pair' ? `/${lang}/pair` : `/${lang}`;
+  return tool === 'name' ? `/${lang}` : `/${lang}/${tool}`;
 }
 
 function readStoredLang(): Language | null {
@@ -94,6 +94,10 @@ interface FlowState {
   pairA: string;
   pairB: string;
 
+  /** the name on the first-impression screen, kept across navigation */
+  impressionName: string;
+  setImpressionName: (value: string) => void;
+
   setStep: (step: StepId) => void;
   next: () => void;
   prev: () => void;
@@ -136,6 +140,8 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   surnameId: null,
   pairA: '',
   pairB: '',
+  impressionName: '',
+  setImpressionName: (impressionName) => set({ impressionName }),
 
   setStep: (step) => set({ step }),
   next: () => set((s) => ({ step: shift(s.step, 1) })),

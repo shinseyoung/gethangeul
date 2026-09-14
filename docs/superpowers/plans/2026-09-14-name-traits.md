@@ -26,7 +26,7 @@
 | File | Responsibility |
 |---|---|
 | `src/utils/strokes.ts` *(modify)* | Gains an exported `decompose()`. Keeps its stroke tables and now calls it. |
-| `src/data/syllableDatabase.ts` *(new)* | 60 syllables, each with a frequency band and an era. No scores, no copy. |
+| `src/data/syllableDatabase.ts` *(new)* | 61 syllables, each with a frequency band and an era. No scores, no copy. |
 | `src/data/locales/{ko,en,vi,th}/syllables.json` *(new)* | One sentence per syllable, keyed by roman. |
 | `src/hooks/useTranslation.ts` *(modify)* | Loads `syllables` alongside `names` and `surnames`. |
 | `src/utils/nameTraits.ts` *(new)* | Jamo class tables, the five formulas, the surname split. Exports `readName`. |
@@ -154,7 +154,7 @@ git commit -m "Extract jamo decomposition from the stroke counter"
   - `export type Freq = 'very-common' | 'common' | 'uncommon'`
   - `export type Era = 'modern' | 'timeless' | 'classic'`
   - `export interface SyllableItem { syllable: string; roman: string; freq: Freq; era: Era }`
-  - `export const SYLLABLE_DATABASE: SyllableItem[]` — 60 entries
+  - `export const SYLLABLE_DATABASE: SyllableItem[]` — 61 entries
   - `export function syllableInfo(char: string): SyllableItem | null` — exact match on `syllable`
   - `t('syllables.<roman>')` resolves to one sentence.
 
@@ -182,9 +182,10 @@ function ok(label: string, condition: boolean, detail?: unknown) {
 
 // --- the dictionary -------------------------------------------------------
 
-ok('sixty syllables', SYLLABLE_DATABASE.length === 60, SYLLABLE_DATABASE.length);
-ok('roman keys are unique', new Set(SYLLABLE_DATABASE.map((s) => s.roman)).size === 60);
-ok('syllables are unique', new Set(SYLLABLE_DATABASE.map((s) => s.syllable)).size === 60);
+const COUNT = 61;
+ok('sixty-one syllables', SYLLABLE_DATABASE.length === COUNT, SYLLABLE_DATABASE.length);
+ok('roman keys are unique', new Set(SYLLABLE_DATABASE.map((s) => s.roman)).size === COUNT);
+ok('syllables are unique', new Set(SYLLABLE_DATABASE.map((s) => s.syllable)).size === COUNT);
 ok('every entry is one Hangul block',
   SYLLABLE_DATABASE.every((s) => [...s.syllable].length === 1 && decompose(s.syllable) !== null));
 ok('every freq is a known band',
@@ -347,7 +348,7 @@ export function syllableInfo(char: string): SyllableItem | null {
 
 - [ ] **Step 5: Write the English copy**
 
-Create `src/data/locales/en/syllables.json` with **one entry per `roman` key above — all sixty, none skipped.** The check in Step 1 fails on any missing key, so this is enumerable and verifiable, not open-ended.
+Create `src/data/locales/en/syllables.json` with **one entry per `roman` key above — all 61, none skipped.** The check in Step 1 fails on any missing key, so this is enumerable and verifiable, not open-ended.
 
 Voice: one sentence, present tense, addressed to someone who does not read Korean. Say what a Korean hearer notices — where the syllable sits in a name, what generation it suggests, what it evokes. Never state the hanja meaning as *the* meaning; the same sound carries many characters, and the site does not know which one a stranger's name uses.
 
@@ -364,7 +365,7 @@ Four lines, as the pattern to follow:
 
 - [ ] **Step 6: Write the Korean copy**
 
-Create `src/data/locales/ko/syllables.json`, same sixty keys. Written for a Korean reader, so it can be shorter and more direct than the English — do not translate the English word for word.
+Create `src/data/locales/ko/syllables.json`, same 61 keys. Written for a Korean reader, so it can be shorter and more direct than the English — do not translate the English word for word.
 
 ```json
 {
@@ -1347,7 +1348,53 @@ git push origin main
 
 ## Handoff notes
 
-- **vi/th copy is English placeholder** in `syllables.json` (60 lines), `impression.*` and `pair.blend.*`. The check asserts presence, not translation. Native review needed before this counts as shipped in four languages.
+- **vi/th copy is English placeholder** in `syllables.json` (61 lines), `impression.*` and `pair.blend.*`. The check asserts presence, not translation. Native review needed before this counts as shipped in four languages.
 - **Frequency and era bands are judgement, not census data.** One word per row in `syllableDatabase.ts`; a wrong call is a one-word fix and the check will not object.
 - **Header nav is now at three tabs, its ceiling.** The K-Drama test and the fortune reading would make five. Whoever adds the fourth room converts the nav to a menu first.
 - **The weights in `nameTraits.ts` are a first tuning.** The check asserts orderings, not values, so they can be moved freely; if a move breaks an ordering, the ordering is what the spec promised the axis means.
+
+## What shipped, and what was left open
+
+Implemented across 19 commits on `feat/name-traits`. Both `npm run check` (four
+scripts) and `npm run build` pass. Every task was reviewed, and the browser
+verification steps were run against the live dev server.
+
+### Known limits, deliberately shipped
+
+- **vi and th copy is English placeholder** — all 61 syllable lines, the whole
+  `impression.*` block, and the ten `pair.blend.*` sentences. The checks assert
+  presence, not translation, so coverage stays monitored and a translator has a
+  real file to work in. Only `nav.impression` was translated (`Ấn tượng`,
+  `ภาพลักษณ์`); the Thai leans "image / how you come across" rather than
+  "first impression", which reads correctly for this feature but wants a native
+  eye.
+- **Frequency and era bands are judgement, not census data.** One word per row
+  in `syllableDatabase.ts`; a wrong call is a one-word fix and no check objects.
+- **The trait weights are a tuning.** The checks assert orderings, a bucket
+  spread over the 114 names in `nameDatabase.ts`, and structural reachability
+  over all 11,172 Hangul syllables — so the weights can move freely, and if a
+  move collapses an axis the check says so.
+- **철수 scores `friendly` = 14**, one dot, though it is one of Korea's stock
+  everyman names. 철 is banded uncommon/classic and the axis means
+  "bright, contemporary, common", not "culturally iconic". 철수 tells one
+  coherent story across all five axes rather than three conflicting ones.
+- **Mixed-script input is read loosely.** `Kim하준` scores 하준 and
+  `김 서연 Smith` scores 서연 — `readName` silently drops the Latin. Reaching it
+  needs a deliberately odd input. The root cause is that `romanToHangul.ts`
+  treats *contains* a Hangul character as *is* Hangul input.
+- **`황보라` is ambiguous** — 황 + 보라, or 황보 + 라. Longest match picks 황보.
+  Same class as the 하 / 서 / 민 / 도 / 강 / 문 ambiguity the three-syllable
+  floor already documents. 보라 is not in `nameDatabase.ts`, so no curated name
+  misfires.
+- **The 궁합 label is gated, the room is not.** The stroke fold and the
+  percentage work for any pair of names, including two foreign ones. The blend
+  label renders only when both names pass `looksKorean`, silently: run over 380
+  foreign pairs it collapsed to "unusual × unusual" 96% of the time, which is
+  one more line saying nothing to the site's core audience.
+
+### Pre-existing, not this branch's doing
+
+- At 375px the document scrolls horizontally on **all three** rooms, including
+  the two that predate this work. Same node each time: the language picker's
+  `div.relative > button.focus-ring` in `components/layout/Header.tsx`. Worth
+  its own fix.

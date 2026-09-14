@@ -58,3 +58,22 @@ export const SURNAME_DATABASE: SurnameItem[] = [
   { id: 'pyo',   hangul: '표', hanja: '表', roman: 'Pyo',   share: 0.06 },
   { id: 'tae',   hangul: '태', hanja: '太', roman: 'Tae',   share: 0.02 },
 ];
+
+/**
+ * Korean's handful of genuine two-syllable family names. A spaced Korean name
+ * otherwise always writes its family name as one Hangul syllable — 김 하준,
+ * 박 서연 — but 남궁, 선우 and the rest of these nine are real surnames that
+ * happen to break that shape, so both `looksKorean` (romanToHangul.ts, which
+ * decides whether typed input is shaped like a Korean name at all) and
+ * `splitSurname` (nameTraits.ts, which decides where a given name starts)
+ * need the same nine names.
+ *
+ * This is a separate export, not nine more rows in SURNAME_DATABASE above:
+ * that table is the forty-name *picker* list — it carries population `share`
+ * for the UI, and scripts/surname.check.ts asserts it holds exactly forty
+ * single-syllable entries. These nine are guard/split data (does this shape
+ * read as Korean, where does the family name end), not picker data, and
+ * folding them into the database would both change the picker UI and break
+ * that count.
+ */
+export const TWO_SYLLABLE_SURNAMES = new Set(['남궁', '선우', '황보', '제갈', '사공', '서문', '독고', '동방', '망절']);

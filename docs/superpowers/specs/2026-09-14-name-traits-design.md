@@ -90,9 +90,18 @@ only asked "is the first syllable a surname" would read 하준 as 하 씨 준, �
 서 씨 연, and 민서 as 민 씨 서 — three of the commonest names on the site,
 mangled. A Korean name is a one-syllable family name and a two-syllable given
 name often enough that "two syllables means no family name" is right far more
-than it is wrong. Two-syllable family names (남궁, 선우) are not in the forty-name
-database and are not handled; that is the same coarse-rule trade `familyToken`
-already makes in `surnameMatcher.ts`.
+than it is wrong for the forty-name table above.
+
+Two-syllable family names — 남궁, 선우, 황보, 제갈, 사공, 서문, 독고, 동방, 망절 — are
+handled too, but as a second export, `TWO_SYLLABLE_SURNAMES` in
+`surnameDatabase.ts`, not nine more rows in the forty-name table: that table
+doubles as the picker UI's list and carries a population `share` nothing else
+needs, so folding these nine in would both change the picker and break the
+count the rest of the site assumes. `splitSurname` tries the two-syllable set
+first, before the single-syllable table — three of the nine open with a
+syllable that is itself one of the forty (남궁 with 남, 황보 with 황, 서문 with 서), so
+checking the shorter table first would read 남궁서연 as 남 씨 궁서연. Longest match
+wins.
 
 ### Jamo classes
 
@@ -201,7 +210,7 @@ tells you whether a move broke something.
 Two files, mirroring how `nameDatabase` / `surnameDatabase` already split
 language-free data from per-language copy.
 
-`src/data/syllableDatabase.ts` — about 60 entries, the syllables that actually
+`src/data/syllableDatabase.ts` — 61 entries, the syllables that actually
 turn up in contemporary Korean given names:
 
 ```ts
@@ -223,7 +232,7 @@ export interface SyllableItem {
 { "jun": "Sits at the end of a boy's name more often than any other syllable — solid, unfussy." }
 ```
 
-**Scores are not in the dictionary.** Sixty syllables times five axes is three
+**Scores are not in the dictionary.** Sixty-one syllables times five axes is three
 hundred hand-tuned numbers that would not agree with each other by the fiftieth
 row. The dictionary carries one band, one era and one sentence; the formulas do
 the rest. That also means a syllable nobody has written a line for still gets a

@@ -2,8 +2,9 @@ import { useMemo } from 'react';
 import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
 import { useImageShare } from '../hooks/useImageShare';
-import { hangulFor } from '../utils/romanToHangul';
+import { hangulFor, looksKorean } from '../utils/romanToHangul';
 import { compatibility } from '../utils/nameCompat';
+import { pairLabel } from '../utils/pairLabel';
 import MountainWash from '../components/MountainWash';
 import AdSlot from '../components/AdSlot';
 import Button from '../components/Button';
@@ -58,6 +59,20 @@ export default function PairScreen() {
   const result = useMemo(
     () => (readA && readB ? compatibility(readA.hangul, readB.hangul) : null),
     [readA, readB],
+  );
+  // The fold above is arithmetic — stroke counts on whatever was typed — so it
+  // works for any pair, foreign name included, and has to keep working for one.
+  // The blend label is read off nameTraits' Korean-name scorer instead: fed a
+  // transliterated foreign name, every syllable comes back off-dictionary and
+  // `uncommon` wins every time, so the label would collapse to the same
+  // "unusual" verdict for the great majority of foreign×foreign pairs. Gating
+  // the label alone on looksKorean keeps the fold and percentage untouched for
+  // every input this room has always handled, and just omits the label when it
+  // would have nothing real to say.
+  const label = useMemo(
+    () => (readA && readB && looksKorean(pairA) && looksKorean(pairB)
+      ? pairLabel(readA.hangul, readB.hangul) : null),
+    [readA, readB, pairA, pairB],
   );
 
   const { captureRef, isSaving, isSharing, handleDownload, handleShare } = useImageShare(
@@ -148,6 +163,13 @@ export default function PairScreen() {
                   </div>
                 ))}
               </div>
+
+              {label && (
+                <span className="mt-7 max-w-[300px] text-center text-[13px] leading-relaxed text-ink-2">
+                  {label.emojiA} {readA!.hangul} <span className="text-ink-4">×</span> {label.emojiB} {readB!.hangul}
+                  <span className="mt-1.5 block text-ink-3">{t(`pair.blend.${label.key}`)}</span>
+                </span>
+              )}
 
               <span className="eyebrow mt-7 text-[9px] tracking-[0.28em] text-ink-4">GETHANGEUL.COM</span>
             </div>

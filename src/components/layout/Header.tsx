@@ -85,7 +85,7 @@ export function Header() {
             actual handing over, which is where anyone is already thinking
             about a second name. */}
         <nav className="flex items-center gap-1">
-          {(['name', 'pair'] as Tool[]).map((item) => (
+          {(['name', 'pair', 'impression'] as Tool[]).map((item) => (
             <button
               key={item}
               type="button"

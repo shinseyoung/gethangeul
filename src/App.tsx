@@ -7,6 +7,7 @@ import StepSurname from './steps/StepSurname';
 import StepLoading from './steps/StepLoading';
 import StepResult from './steps/StepResult';
 import PairScreen from './steps/PairScreen';
+import ImpressionScreen from './steps/ImpressionScreen';
 import AdSlot from './components/AdSlot';
 import { QUESTION_STEPS, useFlowStore, type QuestionStep } from './store/useFlowStore';
 import { useTranslation } from './hooks/useTranslation';
@@ -46,9 +47,9 @@ export default function App() {
     <div className="flex min-h-[100dvh] w-full flex-col bg-ground">
       <Header />
       <main className="flex w-full flex-1 flex-col">
-        {tool === 'pair' ? (
-          <PairScreen />
-        ) : (
+        {tool === 'pair' && <PairScreen />}
+        {tool === 'impression' && <ImpressionScreen />}
+        {tool === 'name' && (
           <>
             {step === 'landing' && <Step0Landing />}
             {isQuestion(step) && <StepOptions step={step} />}

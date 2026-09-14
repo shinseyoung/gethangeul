@@ -12,6 +12,8 @@
  * on the same names; reach for a real 외래어 표기법 engine only if they don't.
  */
 
+import { SURNAME_DATABASE, TWO_SYLLABLE_SURNAMES } from '../data/surnameDatabase';
+
 const CHO = ['ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
 const JUNG = ['ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ', 'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ', 'ㅣ'];
 const JONG = ['', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ', 'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅀ', 'ㅁ', 'ㅂ', 'ㅄ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
@@ -218,6 +220,21 @@ export function romanToHangul(name: string): string {
 const HANGUL = /[가-힣]/;
 
 /**
+ * A romanized Korean surname is a lookup, not a sound to sound out: the whole
+ * reason letter-by-letter transliteration is right for Miller and Nguyễn is
+ * that Korean has no settled spelling for them, but every one of the forty
+ * names in SURNAME_DATABASE already has one. Only the first word is ever
+ * checked, and only when there is a second word to be the given name — a bare
+ * "Kim" is left to transliterate as a foreign given name (킴), the same way a
+ * single token already reaches the impression room as a given name and
+ * nothing else.
+ */
+function knownSurname(word: string): string | null {
+  const lower = word.toLowerCase();
+  return SURNAME_DATABASE.find((s) => s.roman.toLowerCase() === lower)?.hangul ?? null;
+}
+
+/**
  * The Hangul to play the game with. Hangul input is taken as written; anything
  * else is transliterated. Returns null when there is nothing readable.
  */
@@ -225,6 +242,68 @@ export function hangulFor(name: string): { hangul: string; converted: boolean } 
   const trimmed = name.trim();
   if (!trimmed) return null;
   if (HANGUL.test(trimmed)) return { hangul: trimmed, converted: false };
+
+  const words = trimmed.split(/\s+/);
+  const surname = words.length >= 2 ? knownSurname(words[0]) : null;
+  if (surname) {
+    const given = romanToHangul(words.slice(1).join(' '));
+    return { hangul: given ? `${surname} ${given}` : surname, converted: true };
+  }
+
   const hangul = romanToHangul(trimmed);
   return hangul ? { hangul, converted: true } : null;
+}
+
+/**
+ * Whether typed input is shaped like a Korean name, not merely readable as
+ * Hangul. A Korean full name is one surname syllable plus a one-to-three-
+ * syllable given name, so four syllables is a generous ceiling — but "Anna
+ * Miller" sounds out to exactly four (안나밀러) and would slip under a ceiling
+ * alone, so a second word also has to open with a real family name, or the
+ * input is a foreign given name plus family name rather than a Korean one.
+ * A single word skips that check: there is no family name to verify, so
+ * "Sarah" and "Hajun" are judged on syllable count alone, same as any other
+ * given name typed here.
+ *
+ * "Real family name" means two different things depending on the script,
+ * because the two scripts carry different amounts of ambiguity. A Latin
+ * first word is checked against knownSurname: "Anna" and "Kim" are otherwise
+ * indistinguishable Latin words, so the only way to tell a family name from
+ * a foreign given name is the forty-row lookup. A Hangul first word carries
+ * none of that ambiguity, but it carries a different, structural one: a
+ * spaced Korean name almost always writes its family name as a single
+ * syllable — 김 하준, 박 서연, 하 준 — never two, so 안나 (two syllables) in
+ * "안나 밀러" fails this test even though it is Hangul, while a rare or
+ * unlisted one-syllable surname the lookup table doesn't carry (하 준) still
+ * passes. The one exception is TWO_SYLLABLE_SURNAMES (surnameDatabase.ts): 남궁 서연 and
+ * 선우 지호 are real Korean names whose family name is genuinely two
+ * syllables, so a Hangul first word also passes when it is one of those
+ * nine — but only those nine, since an arbitrary two-syllable first word
+ * (밀러, 스미스) is exactly the "안나 밀러" shape this guard exists to catch.
+ * This is a coarser test than knownSurname's, but a table lookup would be
+ * the wrong tool here: readName applies its own surname split on the Hangul
+ * this guard passes through, so this guard only has to rule out shapes that
+ * can't be a Korean name at all, not agree syllable-for-syllable with
+ * readName's forty-row table.
+ *
+ * Either way, a Korean name is never half Latin: whichever script the family
+ * name lands in, the rest of the words have to agree, or "family name" and
+ * "given name" are really two separate names glued together by a space
+ * (김 Smith, Smith 하준) rather than one Korean name.
+ */
+export function looksKorean(name: string): boolean {
+  const read = hangulFor(name);
+  if (!read) return false;
+  const syllables = [...read.hangul].filter((ch) => HANGUL.test(ch)).length;
+  if (syllables > 4) return false;
+
+  const words = name.trim().split(/\s+/);
+  if (words.length < 2) return true;
+
+  const first = words[0];
+  const rest = words.slice(1).join('');
+  const firstIsFamilyName = HANGUL.test(first)
+    ? [...first].length === 1 || TWO_SYLLABLE_SURNAMES.has(first)
+    : knownSurname(first) !== null;
+  return firstIsFamilyName && HANGUL.test(first) === HANGUL.test(rest);
 }
