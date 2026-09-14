@@ -12,6 +12,8 @@
  * on the same names; reach for a real 외래어 표기법 engine only if they don't.
  */
 
+import { SURNAME_DATABASE } from '../data/surnameDatabase';
+
 const CHO = ['ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
 const JUNG = ['ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ', 'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ', 'ㅣ'];
 const JONG = ['', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ', 'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅀ', 'ㅁ', 'ㅂ', 'ㅄ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
@@ -218,6 +220,21 @@ export function romanToHangul(name: string): string {
 const HANGUL = /[가-힣]/;
 
 /**
+ * A romanized Korean surname is a lookup, not a sound to sound out: the whole
+ * reason letter-by-letter transliteration is right for Miller and Nguyễn is
+ * that Korean has no settled spelling for them, but every one of the forty
+ * names in SURNAME_DATABASE already has one. Only the first word is ever
+ * checked, and only when there is a second word to be the given name — a bare
+ * "Kim" is left to transliterate as a foreign given name (킴), the same way a
+ * single token already reaches the impression room as a given name and
+ * nothing else.
+ */
+function knownSurname(word: string): string | null {
+  const lower = word.toLowerCase();
+  return SURNAME_DATABASE.find((s) => s.roman.toLowerCase() === lower)?.hangul ?? null;
+}
+
+/**
  * The Hangul to play the game with. Hangul input is taken as written; anything
  * else is transliterated. Returns null when there is nothing readable.
  */
@@ -225,6 +242,14 @@ export function hangulFor(name: string): { hangul: string; converted: boolean } 
   const trimmed = name.trim();
   if (!trimmed) return null;
   if (HANGUL.test(trimmed)) return { hangul: trimmed, converted: false };
+
+  const words = trimmed.split(/\s+/);
+  const surname = words.length >= 2 ? knownSurname(words[0]) : null;
+  if (surname) {
+    const given = romanToHangul(words.slice(1).join(' '));
+    return { hangul: given ? `${surname} ${given}` : surname, converted: true };
+  }
+
   const hangul = romanToHangul(trimmed);
   return hangul ? { hangul, converted: true } : null;
 }

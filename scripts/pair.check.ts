@@ -90,6 +90,40 @@ ok('Latin input is marked converted', hangulFor('Anna')?.converted === true);
 ok('blank input reads as nothing', hangulFor('   ') === null);
 ok('a script we cannot read returns nothing', hangulFor('さくら') === null, hangulFor('さくら'));
 
+// --- a romanized Korean surname is a lookup, not a sound ------------------
+// hangulFor is the one entry point both the pair room and the impression room
+// read typed text through, so this is where a two-word "Kim Hajun" has to stop
+// being sounded out letter by letter (김 -> 킴) and start being looked up
+// (김) — fixing it here fixes both rooms at once, and leaves romanToHangul
+// itself, asserted above, untouched.
+
+const surnamed: [string, string][] = [
+  ['Kim Hajun', '김 하준'], ['Park Seoyeon', '박 서연'], ['Lee Jiho', '이 지호'],
+  ['Choi Minseo', '최 민서'], ['Kang Seoyeon', '강 서연'], ['Jeong Doyun', '정 도윤'],
+];
+for (const [typed, expected] of surnamed) {
+  ok(`${typed} reads as ${expected}`, hangulFor(typed)?.hangul === expected, hangulFor(typed)?.hangul);
+}
+
+ok('a single "Kim" is still a foreign given name, sounded out',
+  hangulFor('Kim')?.hangul === '킴', hangulFor('Kim')?.hangul);
+
+// The surname lookup only ever changes what the FIRST word of a two-word
+// name becomes; it must never reach into romanToHangul's own foreign-name
+// table above and change any of those results.
+for (const [latin, expected] of roman) {
+  ok(`${latin} still round-trips through hangulFor unchanged`,
+    hangulFor(latin)?.hangul === expected, hangulFor(latin)?.hangul);
+}
+
+// converted still means "this was not typed as Hangul": a surname pulled from
+// the lookup table is still Latin input that had to be turned into Hangul, so
+// it is converted exactly like any other transliteration, not a new third
+// state. hangulFor('민서') above already pins converted === false for real
+// Hangul input; this pins the Latin side of the same boolean.
+ok('a surname substitution is still marked converted',
+  hangulFor('Kim Hajun')?.converted === true, hangulFor('Kim Hajun')?.converted);
+
 // Everything the transliterator produces has to be countable, or the fold
 // silently drops syllables and the percentage changes.
 for (const [latin] of roman) {

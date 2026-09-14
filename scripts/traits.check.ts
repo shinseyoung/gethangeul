@@ -8,6 +8,7 @@ import koSyl from '../src/data/locales/ko/syllables.json';
 import viSyl from '../src/data/locales/vi/syllables.json';
 import thSyl from '../src/data/locales/th/syllables.json';
 import { AXES, blendKey, readName } from '../src/utils/nameTraits';
+import { hangulFor } from '../src/utils/romanToHangul';
 import { NAME_DATABASE } from '../src/data/nameDatabase';
 import en from '../src/data/locales/en/common.json';
 import ko from '../src/data/locales/ko/common.json';
@@ -241,6 +242,23 @@ for (const [lang, bundle] of [['en', en], ['ko', ko], ['vi', vi], ['th', th]] as
     ok(`${lang}: impression.blend.${key}`, typeof room?.blend?.[key] === 'string' && room.blend[key].length > 0);
   }
   ok(`${lang}: nav.impression`, typeof (bundle as Record<string, any>).nav?.impression === 'string');
+}
+
+// --- a typed Roman surname has to reach the split at all --------------------
+// This is the behaviour that actually failed in the impression room: typing
+// "Kim Hajun" read as 킴 하준 (a foreign given name sounded out) rather than
+// 김 하준 (a Korean surname), so splitSurname below never saw three syllables
+// starting with a real family name and the family note never appeared.
+// hangulFor is where that got fixed; this checks the two functions together,
+// the way the impression room actually calls them.
+
+const romanSurnamed: [string, string, string][] = [
+  ['Kim Hajun', 'kim', '하준'], ['Park Seoyeon', 'park', '서연'], ['Lee Jiho', 'lee', '지호'],
+];
+for (const [typed, surnameId, given] of romanSurnamed) {
+  const read = hangulFor(typed);
+  ok(`${typed}: surname splits to ${surnameId}`, readName(read!.hangul)?.surnameId === surnameId, readName(read!.hangul)?.surnameId);
+  ok(`${typed}: given name scored is ${given}`, readName(read!.hangul)?.given === given, readName(read!.hangul)?.given);
 }
 
 // --- report ---------------------------------------------------------------
