@@ -209,6 +209,7 @@
     "placeholder": "Hajun",
     "hint": "Write it in Latin letters or in Hangul. A family name is optional; we read the given name.",
     "waiting": "Write a name above and we will read it back to you.",
+    "not_korean": "That reads as a foreign name rather than a Korean one, so there is nothing here for a Korean ear to pick up. Try a Korean name — Hajun, Seoyeon, or Kim Minseo.",
     "card_label": "FIRST IMPRESSION",
     "disclaimer": "This reads sound, not fortune. It counts the consonants and vowels your name is built from and how often Koreans use them — nothing about the person carrying it.",
     "family_note": "Read as the family name — family names are inherited, so this one sits out of the scoring.",

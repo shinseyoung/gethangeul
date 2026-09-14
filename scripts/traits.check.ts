@@ -8,7 +8,7 @@ import koSyl from '../src/data/locales/ko/syllables.json';
 import viSyl from '../src/data/locales/vi/syllables.json';
 import thSyl from '../src/data/locales/th/syllables.json';
 import { AXES, blendKey, readName } from '../src/utils/nameTraits';
-import { hangulFor } from '../src/utils/romanToHangul';
+import { hangulFor, looksKorean } from '../src/utils/romanToHangul';
 import { NAME_DATABASE } from '../src/data/nameDatabase';
 import en from '../src/data/locales/en/common.json';
 import ko from '../src/data/locales/ko/common.json';
@@ -259,6 +259,39 @@ for (const [typed, surnameId, given] of romanSurnamed) {
   const read = hangulFor(typed);
   ok(`${typed}: surname splits to ${surnameId}`, readName(read!.hangul)?.surnameId === surnameId, readName(read!.hangul)?.surnameId);
   ok(`${typed}: given name scored is ${given}`, readName(read!.hangul)?.given === given, readName(read!.hangul)?.given);
+}
+
+// --- a confident wrong reading is worse than no reading ---------------------
+// This site's whole audience is non-Korean, so a visitor typing their own
+// name is not an edge case, it is the single most likely wrong input — and
+// before this fix nothing caught it. "Anna Miller" took 안 as a real surname
+// and printed a syllable note for 나 as though it were a chosen given-name
+// syllable; "David Smith" scored eight syllables of two English names as one
+// Korean given name. Both produced a shareable card stating all that with a
+// straight face, which is worse than the room saying nothing. looksKorean
+// (romanToHangul.ts) gates the card on two things measured off the Hangul
+// hangulFor actually returns: at most four syllables — a family name plus a
+// one-to-three-syllable given name — and, only when the raw input had a
+// second word, that the first word matched a real surname, the same lookup
+// hangulFor itself uses to decide whether to substitute one. "Anna Miller"
+// sounds out to exactly four syllables (안나밀러) and would slip under the
+// syllable ceiling alone, which is why the second rule exists.
+
+const SHAPE_CASES: [string, boolean][] = [
+  ['Kim Hajun', true], ['Park Seoyeon', true], ['Lee Jiho', true], ['Choi Minseo', true],
+  ['Kang Seoyeon', true], ['Jeong Doyun', true], ['Hajun', true], ['Seoyeon', true],
+  ['Minseo', true], ['김하준', true], ['하준', true], ['Sarah', true], ['Elena', true],
+  ['Anna Miller', false], ['David Smith', false], ['Christopher', false], ['Alexandra', false],
+];
+for (const [name, expected] of SHAPE_CASES) {
+  const got = looksKorean(name);
+  ok(`${name} ${expected ? 'reads as a Korean name shape' : 'is refused as a foreign name shape'}`,
+    got === expected, { hangul: hangulFor(name)?.hangul, looksKorean: got });
+}
+
+for (const [lang, bundle] of [['en', en], ['ko', ko], ['vi', vi], ['th', th]] as const) {
+  const note = (bundle as Record<string, any>).impression?.not_korean;
+  ok(`${lang}: impression.not_korean`, typeof note === 'string' && note.length > 0, note);
 }
 
 // --- report ---------------------------------------------------------------

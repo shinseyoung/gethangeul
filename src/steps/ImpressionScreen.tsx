@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
 import { useImageShare } from '../hooks/useImageShare';
-import { hangulFor } from '../utils/romanToHangul';
+import { hangulFor, looksKorean } from '../utils/romanToHangul';
 import { AXES, blendKey, readName } from '../utils/nameTraits';
 import { surnameById } from '../utils/surnameMatcher';
 import MountainWash from '../components/MountainWash';
@@ -33,7 +33,8 @@ export default function ImpressionScreen() {
   const { t } = useTranslation();
 
   const read = useMemo(() => hangulFor(impressionName), [impressionName]);
-  const reading = useMemo(() => (read ? readName(read.hangul) : null), [read]);
+  const shapeOk = useMemo(() => looksKorean(impressionName), [impressionName]);
+  const reading = useMemo(() => (read && shapeOk ? readName(read.hangul) : null), [read, shapeOk]);
 
   const { captureRef, isSaving, isSharing, handleDownload, handleShare } =
     useImageShare(reading ? `hangeul-impression-${reading.given}` : 'hangeul-impression');
@@ -72,7 +73,7 @@ export default function ImpressionScreen() {
 
       {reading === null ? (
         <p className="mt-7 rounded-sm border border-l-[3px] border-rule border-l-pig-jeok bg-paper-hi p-3.5 text-[13px] leading-relaxed text-ink-3">
-          {t('impression.waiting')}
+          {t(read && !shapeOk ? 'impression.not_korean' : 'impression.waiting')}
         </p>
       ) : (
         <>

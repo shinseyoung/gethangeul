@@ -253,3 +253,24 @@ export function hangulFor(name: string): { hangul: string; converted: boolean } 
   const hangul = romanToHangul(trimmed);
   return hangul ? { hangul, converted: true } : null;
 }
+
+/**
+ * Whether typed input is shaped like a Korean name, not merely readable as
+ * Hangul. A Korean full name is one surname syllable plus a one-to-three-
+ * syllable given name, so four syllables is a generous ceiling — but "Anna
+ * Miller" sounds out to exactly four (안나밀러) and would slip under a ceiling
+ * alone, so a second word also has to open with a real surname, the very
+ * lookup hangulFor itself just used, or the input is a foreign given name
+ * plus family name rather than a Korean one. A single word skips that second
+ * check: there is no family name to verify, so "Sarah" and "Hajun" are judged
+ * on syllable count alone, same as any other given name typed here.
+ */
+export function looksKorean(name: string): boolean {
+  const read = hangulFor(name);
+  if (!read) return false;
+  const syllables = [...read.hangul].filter((ch) => HANGUL.test(ch)).length;
+  if (syllables > 4) return false;
+
+  const words = name.trim().split(/\s+/);
+  return words.length < 2 || knownSurname(words[0]) !== null;
+}
