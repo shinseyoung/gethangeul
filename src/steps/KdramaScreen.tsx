@@ -1,9 +1,9 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
 import { useImageShare } from '../hooks/useImageShare';
 import { QUESTIONS } from '../data/kdramaQuestions';
-import { AXES, cast } from '../utils/kdramaCasting';
+import { ACTS, AXES, SCENES_PER_ACT, actOf, cast, recapKey, type ActId } from '../utils/kdramaCasting';
 import { nameFor } from '../utils/kdramaName';
 import { sentences } from '../utils/sentences';
 import MountainWash from '../components/MountainWash';
@@ -35,6 +35,10 @@ export default function KdramaScreen() {
     setKdramaAnswer, setKdramaStep, bumpKdramaReroll, resetKdrama,
   } = useFlowStore();
   const { t } = useTranslation();
+  /* which act's opening card has already been read. Held here rather than in the
+     store because it is about this sitting, not about the answers — going back
+     into the previous act and forward again must not replay the beat. */
+  const [actSeen, setActSeen] = useState<ActId | null>(null);
 
   const casting = useMemo(() => cast(kdramaAnswers), [kdramaAnswers]);
 
@@ -61,6 +65,11 @@ export default function KdramaScreen() {
           {t('kdrama.title')}
         </h1>
         <p className="text-[14px] leading-relaxed text-ink-3 md:text-[15px]">{t('kdrama.sub')}</p>
+        <span className="mt-7 flex flex-col gap-1.5 border-l-[3px] border-rule pl-4 text-[14px] leading-relaxed text-ink-2">
+          {sentences(String(t('kdrama.premise'))).map((line) => (
+            <span key={line} className="block">{line}</span>
+          ))}
+        </span>
         <Button full className="mt-8" onClick={() => setKdramaStep(1)}>
           {t('kdrama.start')}
           <ArrowRight />
@@ -78,21 +87,50 @@ export default function KdramaScreen() {
     const index = kdramaStep - 1;
     const question = QUESTIONS[index];
     const selected = kdramaAnswers[index];
+    const act = actOf(index);
+    const recap = recapKey(act, kdramaAnswers);
+
+    /* the beat between acts. It does not advance the step, so Back from the
+       scene after it returns to the previous act's last scene rather than here. */
+    if (index % SCENES_PER_ACT === 0 && recap !== null && actSeen !== act) {
+      return (
+        <div className="mx-auto flex w-full max-w-[620px] flex-1 flex-col justify-center px-6 pb-8 pt-5 lg:px-4">
+          <span className="eyebrow text-[8.5px] tracking-[0.26em] text-accent">
+            {t(`kdrama.act.${act}`)}
+          </span>
+          <span className="mt-5 flex flex-col gap-1.5 font-disp text-[22px] leading-snug text-ink md:text-[26px]">
+            {sentences(String(t(`kdrama.recap.${recap}`))).map((line) => (
+              <span key={line} className="block">{line}</span>
+            ))}
+          </span>
+          <Button full className="mt-9" onClick={() => setActSeen(act)}>
+            {t('kdrama.next')}
+            <ArrowRight />
+          </Button>
+        </div>
+      );
+    }
 
     return (
       <div className="mx-auto flex w-full max-w-[900px] flex-1 flex-col px-6 pb-8 pt-5 lg:px-4">
+        {/* four act marks over three scene marks. Twelve dots in a line reads as
+            "ten more to go", which is the feeling four acts exist to avoid. */}
         <div className="flex items-center gap-1.5 pt-2" aria-hidden="true">
-          {QUESTIONS.map((q, i) => (
-            <span
-              key={q.id}
-              className={`h-[3px] flex-1 rounded-full transition-colors ${
-                i <= index ? 'bg-accent' : 'bg-rule'
-              }`}
-            />
+          {ACTS.map((a) => (
+            <span key={a} className={`h-[3px] flex-1 rounded-full transition-colors ${
+              ACTS.indexOf(a) <= ACTS.indexOf(act) ? 'bg-accent' : 'bg-rule'
+            }`} />
+          ))}
+        </div>
+        <div className="mt-1.5 flex items-center gap-1.5" aria-hidden="true">
+          {Array.from({ length: SCENES_PER_ACT }, (_, i) => (
+            <span key={i} className={`h-[2px] w-4 rounded-full transition-colors ${
+              i <= index % SCENES_PER_ACT ? 'bg-accent/50' : 'bg-rule'
+            }`} />
           ))}
         </div>
         <span className="eyebrow mt-4 text-[8.5px] tracking-[0.26em] text-ink-4">
-          {index + 1} / {QUESTIONS.length}
+          {t(`kdrama.act.${act}`)} · {index % SCENES_PER_ACT + 1} / {SCENES_PER_ACT}
         </span>
 
         <h2 className="mb-2.5 mt-3 -ml-[0.035em] text-pretty font-disp text-[29px] leading-[1.1] tracking-tight text-ink md:text-[38px]">
