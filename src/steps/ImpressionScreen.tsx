@@ -4,7 +4,6 @@ import { useTranslation } from '../hooks/useTranslation';
 import { useImageShare } from '../hooks/useImageShare';
 import { hangulFor, looksKorean } from '../utils/romanToHangul';
 import { AXES, blendKey, readName } from '../utils/nameTraits';
-import { surnameById } from '../utils/surnameMatcher';
 import MountainWash from '../components/MountainWash';
 import TraitMeter from '../components/TraitMeter';
 import OptionMark from '../components/OptionMark';
@@ -38,8 +37,6 @@ export default function ImpressionScreen() {
 
   const { captureRef, isSaving, isSharing, handleDownload, handleShare } =
     useImageShare(reading ? `hangeul-impression-${reading.given}` : 'hangeul-impression');
-
-  const surname = surnameById(reading?.surnameId ?? null);
 
   return (
     <div className="mx-auto w-full max-w-[620px] px-5 pb-24 pt-6 lg:px-4">
@@ -89,7 +86,7 @@ export default function ImpressionScreen() {
               <span className="eyebrow text-[8.5px] tracking-[0.26em] text-ink-4">{t('impression.card_label')}</span>
 
               <span className="mt-4 font-brush text-[40px] leading-none text-ink">
-                {surname && <span className="text-[28px] text-ink-4">{surname.hangul}</span>}
+                {reading.surname && <span className="text-[28px] text-ink-4">{reading.surname}</span>}
                 {reading.given}
               </span>
 
@@ -129,7 +126,7 @@ export default function ImpressionScreen() {
             </div>
           </div>
 
-          {surname && (
+          {reading.surname && (
             <p className="mt-3 text-[12px] leading-relaxed text-ink-4">{t('impression.family_note')}</p>
           )}
 

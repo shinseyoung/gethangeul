@@ -67,6 +67,37 @@ ok('a surname alone is a given name', readName('김')?.given === '김', readName
 ok('the family name does not change the reading',
   JSON.stringify(readName('김하준')?.traits) === JSON.stringify(readName('하준')?.traits));
 
+// --- two-syllable surnames split too ---------------------------------------
+// Three of Korea's nine two-syllable family names open with a syllable that
+// is itself one of the forty single-syllable surnames in SURNAME_DATABASE —
+// 남궁 starts with 남, 황보 with 황, 서문 with 서 — so splitSurname has to try
+// the two-syllable table before the single-syllable one, or "남궁서연" would
+// read as 남 씨 궁서연 (see nameTraits.ts's splitSurname doc comment: longest
+// match wins). None of the nine is itself in SURNAME_DATABASE, so surnameId
+// stays null for all of them even though the split fires — `surname` is the
+// field that names what actually got split off.
+
+const TWO_SYLLABLE_CASES: [string, string, string][] = [
+  ['남궁서연', '남궁', '서연'],
+  ['황보민서', '황보', '민서'],
+  ['서문하늘', '서문', '하늘'],
+  ['선우지호', '선우', '지호'],
+  ['제갈민준', '제갈', '민준'],
+  ['사공하은', '사공', '하은'],
+  ['독고태양', '독고', '태양'],
+  ['동방서준', '동방', '서준'],
+  ['망절하윤', '망절', '하윤'],
+];
+for (const [typed, surname, given] of TWO_SYLLABLE_CASES) {
+  const reading = readName(typed);
+  ok(`${typed} splits off ${surname}`, reading?.surname === surname, reading?.surname);
+  ok(`${typed} is scored on ${given}`, reading?.given === given, reading?.given);
+  ok(`${typed} has no forty-list surnameId`, reading?.surnameId === null, reading?.surnameId);
+}
+
+ok('a bare 남궁 does not split', readName('남궁')?.surname === null, readName('남궁')?.surname);
+ok('a bare 남궁 is scored whole', readName('남궁')?.given === '남궁', readName('남궁')?.given);
+
 // --- shape ----------------------------------------------------------------
 
 const sample = ['하준', '서연', '민서', '도윤', '김철수', '박순자', '뚜껑', 'Anna'];

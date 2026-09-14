@@ -1,5 +1,5 @@
 import { decompose } from './strokes';
-import { SURNAME_DATABASE } from '../data/surnameDatabase';
+import { SURNAME_DATABASE, TWO_SYLLABLE_SURNAMES } from '../data/surnameDatabase';
 import { syllableInfo, type Era, type Freq, type SyllableItem } from '../data/syllableDatabase';
 
 /**
@@ -26,6 +26,14 @@ export type Traits = Record<Axis, number>;
 export interface Reading {
   /** the family name split off the front, if there was one */
   surnameId: string | null;
+  /**
+   * the Hangul actually split off, if there was one. Nine real Korean family
+   * names are two syllables (남궁, 선우, ...) and are not in the forty-row
+   * SURNAME_DATABASE, so surnameId is null for them even though a split
+   * happened — this is the field the card renders, since surnameId alone
+   * cannot name what was split off.
+   */
+  surname: string | null;
   /** the syllables actually scored */
   given: string;
   traits: Traits;
@@ -201,26 +209,44 @@ function uncommon(cells: Cell[]): number {
 /**
  * Where the family name ends.
  *
- * Three syllables, not two. 하, 서, 민, 도, 강 and 문 are all family names and
- * ordinary given-name syllables at once, so a rule that only asked whether the
- * first syllable is a surname would read 하준 as 하 씨 준 and 서연 as 서 씨 연 —
- * three of the commonest names on the site, mangled. Two-syllable family names
- * (남궁, 선우) are not in the forty-name database and are not handled, the same
- * coarse trade familyToken already makes.
+ * Three syllables, not two, for a single-syllable surname. 하, 서, 민, 도, 강
+ * and 문 are all family names and ordinary given-name syllables at once, so a
+ * rule that only asked whether the first syllable is a surname would read
+ * 하준 as 하 씨 준 and 서연 as 서 씨 연 — three of the commonest names on the
+ * site, mangled. Requiring three syllables means the split only fires when at
+ * least two syllables of given name remain, which is enough to clear every
+ * two-syllable given name in the database.
+ *
+ * The two-syllable surnames (남궁, 선우, ...) are checked first, before the
+ * single-syllable table, and that order is the whole fix for three of the
+ * nine: 남궁 opens with 남, 황보 with 황, and 서문 with 서 — all three also rows
+ * in SURNAME_DATABASE — so checking the shorter table first would read 남궁
+ * 서연 as 남 씨 궁서연. Longest match wins.
+ *
+ * The floor for the two-syllable case is three syllables too, not four: it
+ * only has to leave one syllable of given name, not two. The single-syllable
+ * floor needs two remaining syllables because 하/서/민/도/강/문 double as real
+ * two-syllable given-name openings (하준, 서연); none of the nine two-syllable
+ * surnames is also the opening pair of a real given name in the database, so
+ * there's no equivalent name a one-syllable-remainder floor would mangle.
  */
-function splitSurname(syllables: string[]): { surnameId: string | null; given: string[] } {
+function splitSurname(syllables: string[]): { surnameId: string | null; surname: string | null; given: string[] } {
   if (syllables.length >= 3) {
+    const twoSyllable = syllables[0] + syllables[1];
+    if (TWO_SYLLABLE_SURNAMES.has(twoSyllable)) {
+      return { surnameId: null, surname: twoSyllable, given: syllables.slice(2) };
+    }
     const hit = SURNAME_DATABASE.find((s) => s.hangul === syllables[0]);
-    if (hit) return { surnameId: hit.id, given: syllables.slice(1) };
+    if (hit) return { surnameId: hit.id, surname: hit.hangul, given: syllables.slice(1) };
   }
-  return { surnameId: null, given: syllables };
+  return { surnameId: null, surname: null, given: syllables };
 }
 
 export function readName(hangul: string): Reading | null {
   const syllables = [...hangul.trim()].filter((c) => decompose(c) !== null);
   if (syllables.length === 0) return null;
 
-  const { surnameId, given } = splitSurname(syllables);
+  const { surnameId, surname, given } = splitSurname(syllables);
   const cells = cellsOf(given.join(''));
 
   const traits: Traits = {
@@ -236,6 +262,7 @@ export function readName(hangul: string): Reading | null {
 
   return {
     surnameId,
+    surname,
     given: given.join(''),
     traits,
     top: [ranked[0], ranked[1]],

@@ -12,7 +12,7 @@
  * on the same names; reach for a real 외래어 표기법 engine only if they don't.
  */
 
-import { SURNAME_DATABASE } from '../data/surnameDatabase';
+import { SURNAME_DATABASE, TWO_SYLLABLE_SURNAMES } from '../data/surnameDatabase';
 
 const CHO = ['ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
 const JUNG = ['ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ', 'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ', 'ㅣ'];
@@ -255,23 +255,6 @@ export function hangulFor(name: string): { hangul: string; converted: boolean } 
 }
 
 /**
- * Korean's handful of genuine two-syllable family names. A spaced Korean name
- * otherwise always writes its family name as one Hangul syllable (see
- * firstIsFamilyName below), which is exactly what tells 김 하준 apart from
- * 안나 밀러 — but 남궁, 선우 and the rest of these nine are real surnames that
- * happen to break that shape, and refusing them as foreign would be wrong,
- * not careful.
- *
- * These live here, next to the guard that needs them, rather than in
- * SURNAME_DATABASE: that table is the forty-name *picker* list — it carries
- * population `share` for the UI, and scripts/surname.check.ts asserts it
- * holds exactly forty single-syllable entries. These nine are guard data
- * (does this shape read as Korean at all), not picker data, and folding them
- * into the database would both change the picker UI and break that count.
- */
-const TWO_SYLLABLE_SURNAMES = new Set(['남궁', '선우', '황보', '제갈', '사공', '서문', '독고', '동방', '망절']);
-
-/**
  * Whether typed input is shaped like a Korean name, not merely readable as
  * Hangul. A Korean full name is one surname syllable plus a one-to-three-
  * syllable given name, so four syllables is a generous ceiling — but "Anna
@@ -292,7 +275,7 @@ const TWO_SYLLABLE_SURNAMES = new Set(['남궁', '선우', '황보', '제갈', '
  * syllable — 김 하준, 박 서연, 하 준 — never two, so 안나 (two syllables) in
  * "안나 밀러" fails this test even though it is Hangul, while a rare or
  * unlisted one-syllable surname the lookup table doesn't carry (하 준) still
- * passes. The one exception is TWO_SYLLABLE_SURNAMES above: 남궁 서연 and
+ * passes. The one exception is TWO_SYLLABLE_SURNAMES (surnameDatabase.ts): 남궁 서연 and
  * 선우 지호 are real Korean names whose family name is genuinely two
  * syllables, so a Hangul first word also passes when it is one of those
  * nine — but only those nine, since an arbitrary two-syllable first word
