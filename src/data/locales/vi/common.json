@@ -206,6 +206,18 @@
     "disclaimer": "Đây là một trò chơi truyền thống, không phải chuyện xem vận. Nó chỉ đếm số nét Hangul.\nNhập hai tên theo thứ tự ngược lại sẽ cho kết quả khác.",
     "no_name_label": "Phòng bên",
     "no_name": "Chưa có tên Hàn Quốc?",
-    "no_name_desc": "Trả lời bốn câu hỏi để nhận một cái tên, rồi quay lại đây."
+    "no_name_desc": "Trả lời bốn câu hỏi để nhận một cái tên, rồi quay lại đây.",
+    "blend": {
+      "friendly_refined": "The pair everyone assumes has known each other for years.",
+      "friendly_cute": "The best-friends-to-something-else pair.",
+      "friendly_calm": "The pair that never has a dramatic scene and never needs one.",
+      "friendly_uncommon": "The pair nobody saw coming and everybody roots for.",
+      "refined_cute": "The first-love pair, filmed in spring.",
+      "refined_calm": "The slow-burn pair, twelve episodes and one held glance.",
+      "refined_uncommon": "The pair the whole drama is secretly about.",
+      "cute_calm": "The comfortable pair — one talks, one listens, both stay.",
+      "cute_uncommon": "The chaotic pair the fandom makes edits of.",
+      "calm_uncommon": "The quiet, fated pair with a backstory nobody has heard yet."
+    }
   }
 }

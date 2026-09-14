@@ -132,8 +132,12 @@ for (const [latin] of roman) {
 }
 
 // --- the second room has to be fully translated ---------------------------
+// `blend` (added alongside the match-card label) is a nested object, not a
+// flat string like every other key here — it gets its own per-key coverage
+// check in traits.check.ts, so this loop only walks the keys that are
+// actually strings in en.pair rather than mistaking blend for a missing one.
 
-const keys = Object.keys(en.pair);
+const keys = Object.keys(en.pair).filter((k) => typeof (en.pair as Record<string, unknown>)[k] === 'string');
 for (const [lang, bundle] of Object.entries({ ko, vi, th })) {
   for (const key of keys) {
     const value = (bundle.pair as Record<string, string>)[key];

@@ -4,6 +4,7 @@ import { useTranslation } from '../hooks/useTranslation';
 import { useImageShare } from '../hooks/useImageShare';
 import { hangulFor } from '../utils/romanToHangul';
 import { compatibility } from '../utils/nameCompat';
+import { pairLabel } from '../utils/pairLabel';
 import MountainWash from '../components/MountainWash';
 import AdSlot from '../components/AdSlot';
 import Button from '../components/Button';
@@ -57,6 +58,10 @@ export default function PairScreen() {
   const readB = useMemo(() => hangulFor(pairB), [pairB]);
   const result = useMemo(
     () => (readA && readB ? compatibility(readA.hangul, readB.hangul) : null),
+    [readA, readB],
+  );
+  const label = useMemo(
+    () => (readA && readB ? pairLabel(readA.hangul, readB.hangul) : null),
     [readA, readB],
   );
 
@@ -148,6 +153,13 @@ export default function PairScreen() {
                   </div>
                 ))}
               </div>
+
+              {label && (
+                <span className="mt-7 max-w-[300px] text-center text-[13px] leading-relaxed text-ink-2">
+                  {label.emojiA} {readA!.hangul} <span className="text-ink-4">×</span> {label.emojiB} {readB!.hangul}
+                  <span className="mt-1.5 block text-ink-3">{t(`pair.blend.${label.key}`)}</span>
+                </span>
+              )}
 
               <span className="eyebrow mt-7 text-[9px] tracking-[0.28em] text-ink-4">GETHANGEUL.COM</span>
             </div>

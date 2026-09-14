@@ -8,6 +8,7 @@ import koSyl from '../src/data/locales/ko/syllables.json';
 import viSyl from '../src/data/locales/vi/syllables.json';
 import thSyl from '../src/data/locales/th/syllables.json';
 import { AXES, blendKey, readName } from '../src/utils/nameTraits';
+import { pairLabel } from '../src/utils/pairLabel';
 import { hangulFor, looksKorean } from '../src/utils/romanToHangul';
 import { NAME_DATABASE } from '../src/data/nameDatabase';
 import en from '../src/data/locales/en/common.json';
@@ -351,6 +352,28 @@ for (const [name, expected] of SHAPE_CASES) {
 for (const [lang, bundle] of [['en', en], ['ko', ko], ['vi', vi], ['th', th]] as const) {
   const note = (bundle as Record<string, any>).impression?.not_korean;
   ok(`${lang}: impression.not_korean`, typeof note === 'string' && note.length > 0, note);
+}
+
+// --- the label on the match card ------------------------------------------
+// The percentage is not symmetric — that is the notebook game and the card
+// draws the fold that proves it. The label is, because an average does not care
+// about order. Asserted so it stays a decision.
+
+const label = pairLabel('하린', '도윤');
+ok('a pair gets a label', label !== null);
+ok('each side gets an emoji', (label?.emojiA.length ?? 0) > 0 && (label?.emojiB.length ?? 0) > 0, label);
+ok('the label does not depend on order',
+  pairLabel('하린', '도윤')?.key === pairLabel('도윤', '하린')?.key,
+  [pairLabel('하린', '도윤')?.key, pairLabel('도윤', '하린')?.key]);
+ok('an unreadable side gives no label', pairLabel('하린', 'Anna') === null);
+ok('a blank side gives no label', pairLabel('', '도윤') === null);
+ok('the key is one of the ten', PAIRS.includes(label?.key ?? ''), label?.key);
+
+for (const [lang, bundle] of [['en', en], ['ko', ko], ['vi', vi], ['th', th]] as const) {
+  for (const key of PAIRS) {
+    const line = (bundle as Record<string, any>).pair?.blend?.[key];
+    ok(`${lang}: pair.blend.${key}`, typeof line === 'string' && line.length > 0);
+  }
 }
 
 // --- report ---------------------------------------------------------------

@@ -247,6 +247,18 @@
     "disclaimer": "A traditional game, not a fortune. It counts Hangul strokes and nothing else.\nEntering the names in the other order gives a different result.",
     "no_name_label": "The other room",
     "no_name": "No Korean name yet?",
-    "no_name_desc": "Answer four questions and get one, then come back."
+    "no_name_desc": "Answer four questions and get one, then come back.",
+    "blend": {
+      "friendly_refined": "The pair everyone assumes has known each other for years.",
+      "friendly_cute": "The best-friends-to-something-else pair.",
+      "friendly_calm": "The pair that never has a dramatic scene and never needs one.",
+      "friendly_uncommon": "The pair nobody saw coming and everybody roots for.",
+      "refined_cute": "The first-love pair, filmed in spring.",
+      "refined_calm": "The slow-burn pair, twelve episodes and one held glance.",
+      "refined_uncommon": "The pair the whole drama is secretly about.",
+      "cute_calm": "The comfortable pair — one talks, one listens, both stay.",
+      "cute_uncommon": "The chaotic pair the fandom makes edits of.",
+      "calm_uncommon": "The quiet, fated pair with a backstory nobody has heard yet."
+    }
   }
 }
