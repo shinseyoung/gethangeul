@@ -45,7 +45,7 @@ function LanguageRow({
 }
 
 /** Every room, in the order the menu lists them. */
-const TOOLS: Tool[] = ['name', 'pair', 'impression'];
+const TOOLS: Tool[] = ['name', 'pair', 'impression', 'kdrama'];
 
 export function Header() {
   const { lang, setLang, langAutoPicked, dismissLangHint, tool, setTool } = useFlowStore();

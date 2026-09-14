@@ -132,7 +132,7 @@ for (const role of ROLES) {
 // --- the room has to be fully translated ----------------------------------
 // vi and th may still carry the English string; they must not be missing.
 
-const SHELL = ['eyebrow', 'title', 'sub', 'start', 'next', 'prev', 'again', 'reroll', 'card_label', 'disclaimer'];
+const SHELL = ['eyebrow', 'title', 'sub', 'start', 'next', 'prev', 'again', 'reroll', 'card_label', 'disclaimer', 'headline'];
 const TEMPERS = ['direct', 'careful'];
 const TYPE_KEYS = ROLES.flatMap((role) => TEMPERS.map((t) => `${role}_${t}`));
 
@@ -168,6 +168,14 @@ for (const [lang, dict] of [['en', enK], ['ko', koK], ['vi', viK], ['th', thK]] 
   ok(`${lang}: no orphan type keys`,
     Object.keys(d.type ?? {}).every((k) => TYPE_KEYS.includes(k)),
     Object.keys(d.type ?? {}).filter((k) => !TYPE_KEYS.includes(k)));
+}
+
+// word order differs per language, so the headline is a pattern the locale owns
+// rather than two strings the component glues together
+for (const [lang, dict] of [['en', enK], ['ko', koK], ['vi', viK], ['th', thK]] as const) {
+  const pattern = (dict as Record<string, any>).headline as string;
+  ok(`${lang}: headline names both slots`,
+    pattern.includes('{temper}') && pattern.includes('{role}'), pattern);
 }
 
 // the twelve must read as twelve people, not one with an adjective swapped

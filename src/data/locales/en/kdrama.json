@@ -16,12 +16,12 @@
     "mischief": "Mischief"
   },
   "role": {
-    "lead": "The Lead",
-    "firstLove": "The First Love",
-    "spark": "The Almost",
-    "second": "The Second Lead",
-    "rival": "The Rival",
-    "bestie": "The Best Friend"
+    "lead": "Lead",
+    "firstLove": "First Love",
+    "spark": "Almost",
+    "second": "Second Lead",
+    "rival": "Rival",
+    "bestie": "Best Friend"
   },
   "temper": {
     "direct": "Headlong",
@@ -96,5 +96,6 @@
         "stare": "One long look across a room, then the credits."
       }
     }
-  }
+  },
+  "headline": "The {temper} {role}"
 }

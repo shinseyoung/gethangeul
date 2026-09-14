@@ -19,12 +19,12 @@ export const QUESTION_STEPS = ['gender', 'vibe', 'personality', 'nature'] as con
 export type QuestionStep = (typeof QUESTION_STEPS)[number];
 
 /** The site has three rooms. The address says which one you are in. */
-export type Tool = 'name' | 'pair' | 'impression';
+export type Tool = 'name' | 'pair' | 'impression' | 'kdrama';
 
 const LANG_KEY = 'gethangeul.lang';
 const SUPPORTED = LANGUAGES.map((l) => l.code);
 const PATH_LANG = /^\/(ko|en|vi|th)(?=\/|$)/;
-const PATH_TOOL = /^\/(?:ko|en|vi|th)\/(pair|impression)(?=\/|$)/;
+const PATH_TOOL = /^\/(?:ko|en|vi|th)\/(pair|impression|kdrama)(?=\/|$)/;
 
 /** The URL wins: a shared link must open in the language it was shared in. */
 export function langFromPath(): Language | null {
@@ -98,6 +98,17 @@ interface FlowState {
   impressionName: string;
   setImpressionName: (value: string) => void;
 
+  /** one option index per question, null until answered */
+  kdramaAnswers: (number | null)[];
+  /** 0 is the intro, 1..6 are the questions, 7 is the card */
+  kdramaStep: number;
+  /** how many times "다른 이름으로" has been pressed */
+  kdramaReroll: number;
+  setKdramaAnswer: (index: number, option: number) => void;
+  setKdramaStep: (step: number) => void;
+  bumpKdramaReroll: () => void;
+  resetKdrama: () => void;
+
   setStep: (step: StepId) => void;
   next: () => void;
   prev: () => void;
@@ -142,6 +153,20 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   pairB: '',
   impressionName: '',
   setImpressionName: (impressionName) => set({ impressionName }),
+
+  kdramaAnswers: Array(6).fill(null),
+  kdramaStep: 0,
+  kdramaReroll: 0,
+  setKdramaAnswer: (index, option) => set((s) => {
+    const next = [...s.kdramaAnswers];
+    next[index] = option;
+    return { kdramaAnswers: next };
+  }),
+  setKdramaStep: (kdramaStep) => set({ kdramaStep }),
+  bumpKdramaReroll: () => set((s) => ({ kdramaReroll: s.kdramaReroll + 1 })),
+  /* the casting is the result; only the name may be re-rolled, so this clears
+     everything and sends the visitor back to the first question */
+  resetKdrama: () => set({ kdramaAnswers: Array(6).fill(null), kdramaStep: 0, kdramaReroll: 0 }),
 
   setStep: (step) => set({ step }),
   next: () => set((s) => ({ step: shift(s.step, 1) })),

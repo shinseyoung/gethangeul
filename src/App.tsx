@@ -8,6 +8,7 @@ import StepLoading from './steps/StepLoading';
 import StepResult from './steps/StepResult';
 import PairScreen from './steps/PairScreen';
 import ImpressionScreen from './steps/ImpressionScreen';
+import KdramaScreen from './steps/KdramaScreen';
 import AdSlot from './components/AdSlot';
 import { QUESTION_STEPS, useFlowStore, type QuestionStep } from './store/useFlowStore';
 import { useTranslation } from './hooks/useTranslation';
@@ -49,6 +50,7 @@ export default function App() {
       <main className="flex w-full flex-1 flex-col">
         {tool === 'pair' && <PairScreen />}
         {tool === 'impression' && <ImpressionScreen />}
+        {tool === 'kdrama' && <KdramaScreen />}
         {tool === 'name' && (
           <>
             {step === 'landing' && <Step0Landing />}
