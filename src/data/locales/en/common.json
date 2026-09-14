@@ -199,7 +199,9 @@
   "nav": {
     "name": "Name",
     "pair": "Name match",
-    "impression": "Impression"
+    "impression": "Impression",
+    "menu": "Rooms",
+    "kdrama": "K-Drama"
   },
   "impression": {
     "eyebrow": "How it lands",

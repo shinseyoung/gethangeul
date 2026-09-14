@@ -44,14 +44,35 @@ function LanguageRow({
   );
 }
 
+/** Every room, in the order the menu lists them. */
+const TOOLS: Tool[] = ['name', 'pair', 'impression', 'kdrama'];
+
 export function Header() {
   const { lang, setLang, langAutoPicked, dismissLangHint, tool, setTool } = useFlowStore();
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
+  /* the rooms menu gets its own state and ref: sharing `open` with the language
+     picker below would open both popovers on either click */
+  const [roomsOpen, setRoomsOpen] = useState(false);
+  const roomsRef = useRef<HTMLDivElement>(null);
 
   const current = LANGUAGES.find((l) => l.code === lang) ?? LANGUAGES[0];
   const others = LANGUAGES.filter((l) => l.code !== lang);
+
+  useEffect(() => {
+    if (!roomsOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setRoomsOpen(false); };
+    const onClick = (e: MouseEvent) => {
+      if (roomsRef.current && !roomsRef.current.contains(e.target as Node)) setRoomsOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('mousedown', onClick);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onClick);
+    };
+  }, [roomsOpen]);
 
   useEffect(() => {
     if (!open) return;
@@ -81,28 +102,53 @@ export function Header() {
           <span className="eyebrow hidden text-[7.5px] tracking-[0.22em] text-ink-4 sm:block">YOUR KOREAN NAME</span>
         </button>
 
-        {/* the two rooms. Discovery lives here; the result screen does the
-            actual handing over, which is where anyone is already thinking
-            about a second name. */}
-        <nav className="flex items-center gap-1">
-          {(['name', 'pair', 'impression'] as Tool[]).map((item) => (
-            <button
-              key={item}
-              type="button"
-              aria-current={tool === item ? 'page' : undefined}
-              onClick={() => { if (item !== tool) setTool(item); }}
-              className={`focus-ring flex min-h-[38px] items-center whitespace-nowrap rounded-full px-2.5 transition-colors md:px-3.5 ${
-                tool === item
-                  ? 'bg-accent/[0.09] text-accent'
-                  : 'text-ink-3 hover:bg-accent/[0.05] hover:text-ink'
-              }`}
-            >
-              <OpticalText className="block font-body text-[12.5px] leading-none md:text-[13.5px]">
-                {String(t(`nav.${item}`))}
-              </OpticalText>
-            </button>
-          ))}
-        </nav>
+        {/* The rooms used to be a tab row. Three fitted at 375px and the
+            fourth did not, so discovery moved into a menu that has room for
+            the ones still to come. */}
+        <div className="relative" ref={roomsRef}>
+          <button
+            type="button"
+            onClick={() => setRoomsOpen((v) => !v)}
+            aria-expanded={roomsOpen}
+            aria-haspopup="menu"
+            className={`focus-ring flex min-h-[38px] items-center gap-2 rounded-full px-3 transition-colors md:px-3.5 ${
+              roomsOpen ? 'bg-accent/[0.09] text-accent' : 'text-ink-2 hover:bg-accent/[0.05] hover:text-ink'
+            }`}
+          >
+            <OpticalText className="block font-body text-[12.5px] leading-none md:text-[13.5px]">
+              {String(t(`nav.${tool}`))}
+            </OpticalText>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"
+              className={`h-3 w-3 shrink-0 text-ink-4 transition-transform ${roomsOpen ? 'rotate-180' : ''}`} aria-hidden="true">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+
+          <div
+            role="menu"
+            aria-label={String(t('nav.menu'))}
+            className={`absolute left-1/2 top-full z-50 mt-2 w-[200px] -translate-x-1/2 overflow-hidden rounded-2xl border border-rule-strong bg-paper-hi shadow-[0_20px_44px_-26px_rgba(23,24,26,0.45)] transition-[opacity,transform] duration-150 ease-out ${
+              roomsOpen ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-1 opacity-0'
+            }`}
+          >
+            {TOOLS.map((item) => (
+              <button
+                key={item}
+                type="button"
+                role="menuitem"
+                aria-current={tool === item ? 'page' : undefined}
+                onClick={() => { if (item !== tool) setTool(item); setRoomsOpen(false); }}
+                className={`flex min-h-[48px] w-full items-center border-l-[3px] px-4 text-left transition-colors hover:bg-paper-lo ${
+                  tool === item ? 'border-accent bg-accent/5' : 'border-transparent'
+                }`}
+              >
+                <OpticalText className={`block font-body text-[14px] leading-none ${tool === item ? 'text-ink' : 'text-ink-2'}`}>
+                  {String(t(`nav.${item}`))}
+                </OpticalText>
+              </button>
+            ))}
+          </div>
+        </div>
 
         <div className="relative" ref={boxRef}>
           <button

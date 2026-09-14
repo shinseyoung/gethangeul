@@ -158,7 +158,9 @@
   "nav": {
     "name": "ตั้งชื่อ",
     "pair": "จับคู่ชื่อ",
-    "impression": "ภาพลักษณ์"
+    "impression": "ภาพลักษณ์",
+    "menu": "Rooms",
+    "kdrama": "K-Drama"
   },
   "impression": {
     "eyebrow": "How it lands",
