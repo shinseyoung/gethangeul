@@ -2,7 +2,8 @@
 // axis pairs name, and the twelve types they make with the temper.
 // Run with: npm run check
 import { QUESTIONS } from '../src/data/kdramaQuestions';
-import { AXES, cast, roleKey, type Casting } from '../src/utils/kdramaCasting';
+import { AXES, cast, roleKey, type Casting, type Role } from '../src/utils/kdramaCasting';
+import { nameFor, namePool } from '../src/utils/kdramaName';
 
 let failures = 0;
 function ok(label: string, condition: boolean, detail?: unknown) {
@@ -86,6 +87,43 @@ ok('a role key uses AXES order', roleKey('warmth', 'romance') === 'romance_warmt
   roleKey('warmth', 'romance'));
 ok('there are six distinct pairs',
   new Set(AXES.flatMap((a) => AXES.filter((b) => b !== a).map((b) => roleKey(a, b)))).size === 6);
+
+// --- the name that comes with the casting ---------------------------------
+// The pool floor is five because the redraw has to have somewhere to go. The
+// sizes were measured against the live database, not assumed: `natural` is on
+// none of the 51 gender-neutral names, so a tag set using it would quietly
+// shrink the pool while looking like it widened it.
+
+const ROLES: Role[] = ['lead', 'firstLove', 'spark', 'second', 'rival', 'bestie'];
+
+for (const role of ROLES) {
+  const pool = namePool(role);
+  ok(`${role} has at least five names`, pool.length >= 5, pool.length);
+  ok(`${role} draws only gender-neutral names`,
+    pool.every((n) => n.gender.includes('neutral')), role);
+  ok(`${role} has no duplicate names`, new Set(pool.map((n) => n.id)).size === pool.length);
+}
+
+ok('the same role and seed always give the same name',
+  nameFor('lead', 7, 0).id === nameFor('lead', 7, 0).id);
+ok('a different seed can give a different name',
+  ROLES.some((r) => new Set([0, 1, 2, 3, 4].map((s) => nameFor(r, s, 0).id)).size > 1));
+
+// walking a pool of N must return all N before repeating any
+for (const role of ROLES) {
+  const pool = namePool(role);
+  const walked = pool.map((_, step) => nameFor(role, 3, step).id);
+  ok(`${role} redraws through its whole pool before repeating`,
+    new Set(walked).size === pool.length, { pool: pool.length, distinct: new Set(walked).size });
+  ok(`${role} wraps back to the start after a full lap`,
+    nameFor(role, 3, pool.length).id === nameFor(role, 3, 0).id);
+}
+
+// a negative or oversized seed must still land inside the pool
+for (const role of ROLES) {
+  ok(`${role} keeps a wild seed inside the pool`,
+    [-99, -1, 0, 9999].every((seed) => namePool(role).some((n) => n.id === nameFor(role, seed, 0).id)), role);
+}
 
 // --- report ---------------------------------------------------------------
 
