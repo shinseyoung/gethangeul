@@ -1,0 +1,100 @@
+{
+  "eyebrow": "Six questions",
+  "title": "Which part would you play?",
+  "sub": "Six situations, and we'll tell you where you'd land in the cast. Not the name you'd be given — the person you'd be.",
+  "start": "Start",
+  "next": "Next",
+  "prev": "Back",
+  "again": "Answer again",
+  "reroll": "Another name",
+  "card_label": "YOUR CASTING",
+  "disclaimer": "For fun. Six questions cannot know you, and the name at the bottom is one we liked for the part — not a reading of anything.",
+  "axis": {
+    "romance": "Romance",
+    "presence": "Presence",
+    "warmth": "Warmth",
+    "mischief": "Mischief"
+  },
+  "role": {
+    "lead": "The Lead",
+    "firstLove": "The First Love",
+    "spark": "The Almost",
+    "second": "The Second Lead",
+    "rival": "The Rival",
+    "bestie": "The Best Friend"
+  },
+  "temper": {
+    "direct": "Headlong",
+    "careful": "Measured"
+  },
+  "type": {
+    "lead_direct": "The camera finds you because you walked into the shot like it was yours. You say the line in episode two that anyone else would have saved for the finale.",
+    "lead_careful": "You carry the story without ever raising your voice. Twelve episodes are spent waiting for the moment you finally do, and it lands because you made them wait.",
+    "firstLove_direct": "You're the one who said it first, on a staircase, before either of you were ready. Whatever happens after, that scene is the one the show reruns.",
+    "firstLove_careful": "You never quite said it, and that's why you're remembered in soft focus. Somebody is still holding the thing you handed them without explaining.",
+    "spark_direct": "Two episodes of impossible timing and you'd just ask. The audience would scream. The writers would hate you for making it easy.",
+    "spark_careful": "You and the other one keep arriving at the same door a minute apart. Nothing has been said, everyone can see it, and that is the entire genre.",
+    "second_direct": "You tell them how you feel in episode eight and back off cleanly when they choose someone else. Half the audience switches to your side that night.",
+    "second_careful": "You're the one who noticed they hadn't eaten. You'll never say the thing, and the forums will argue about you until the finale airs.",
+    "rival_direct": "You arrive late, better dressed, and say the true thing nobody wanted said out loud. You are not wrong, which is the problem.",
+    "rival_careful": "You don't compete; you simply keep turning out to have been right. By the time anyone notices you've been three scenes ahead all along.",
+    "bestie_direct": "You carry every scene you're in and you weren't even supposed to be in half of them. Somebody has to shout the obvious thing, and it's you.",
+    "bestie_careful": "You're the one who drives them home, remembers what they said in episode one, and never once makes it about you. They'd be lost, and they know it."
+  },
+  "q": {
+    "arrival": {
+      "title": "You walk into a room where you know one person.",
+      "options": {
+        "centre": "Head straight for the middle of it.",
+        "edge": "Find the one person you know.",
+        "joke": "Say something daft before anyone else speaks.",
+        "observe": "Take a seat and watch for a minute."
+      }
+    },
+    "jealousy": {
+      "title": "Someone you like is laughing with someone else.",
+      "options": {
+        "walkover": "Walk over and join in.",
+        "wait": "Wait for them to look up.",
+        "tease": "Say something that makes them turn around.",
+        "leave": "Step outside and get some air."
+      }
+    },
+    "microphone": {
+      "title": "The microphone has been handed to you.",
+      "options": {
+        "sing": "Sing it properly, all the way through.",
+        "dedicate": "Dedicate it to someone in the room.",
+        "pass": "Pass it to the person who wants it more.",
+        "comedy": "Do it badly on purpose."
+      }
+    },
+    "late": {
+      "title": "Your friend is an hour late and hasn't texted.",
+      "options": {
+        "scold": "Tell them exactly that when they arrive.",
+        "order": "Order for both of you and wait.",
+        "worry": "Start wondering if something happened.",
+        "prank": "Plan something ridiculous for when they walk in."
+      }
+    },
+    "umbrella": {
+      "title": "It's raining and there's one umbrella.",
+      "options": {
+        "share": "Share it, badly, getting half wet.",
+        "give": "Hand it over and turn your collar up.",
+        "run": "Run for it and let the rain happen.",
+        "wait": "Wait it out under the awning."
+      }
+    },
+    "finale": {
+      "title": "Last episode. What's your scene?",
+      "options": {
+        "reunion": "Running through a station to catch someone.",
+        "letter": "A letter that arrives after you've gone.",
+        "toast": "Everyone round one table, too loud, glasses up.",
+        "stare": "One long look across a room, then the credits."
+      }
+    }
+  }
+}

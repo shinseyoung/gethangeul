@@ -4,6 +4,10 @@
 import { QUESTIONS } from '../src/data/kdramaQuestions';
 import { AXES, cast, roleKey, type Casting, type Role } from '../src/utils/kdramaCasting';
 import { nameFor, namePool } from '../src/utils/kdramaName';
+import enK from '../src/data/locales/en/kdrama.json';
+import koK from '../src/data/locales/ko/kdrama.json';
+import viK from '../src/data/locales/vi/kdrama.json';
+import thK from '../src/data/locales/th/kdrama.json';
 
 let failures = 0;
 function ok(label: string, condition: boolean, detail?: unknown) {
@@ -123,6 +127,53 @@ for (const role of ROLES) {
 for (const role of ROLES) {
   ok(`${role} keeps a wild seed inside the pool`,
     [-99, -1, 0, 9999].every((seed) => namePool(role).some((n) => n.id === nameFor(role, seed, 0).id)), role);
+}
+
+// --- the room has to be fully translated ----------------------------------
+// vi and th may still carry the English string; they must not be missing.
+
+const SHELL = ['eyebrow', 'title', 'sub', 'start', 'next', 'prev', 'again', 'reroll', 'card_label', 'disclaimer'];
+const TEMPERS = ['direct', 'careful'];
+const TYPE_KEYS = ROLES.flatMap((role) => TEMPERS.map((t) => `${role}_${t}`));
+
+ok('twelve type keys', TYPE_KEYS.length === 12, TYPE_KEYS.length);
+
+for (const [lang, dict] of [['en', enK], ['ko', koK], ['vi', viK], ['th', thK]] as const) {
+  const d = dict as Record<string, any>;
+  for (const key of SHELL) {
+    ok(`${lang}: kdrama.${key}`, typeof d[key] === 'string' && d[key].length > 0);
+  }
+  for (const axis of AXES) {
+    ok(`${lang}: kdrama.axis.${axis}`, typeof d.axis?.[axis] === 'string' && d.axis[axis].length > 0);
+  }
+  for (const role of ROLES) {
+    ok(`${lang}: kdrama.role.${role}`, typeof d.role?.[role] === 'string' && d.role[role].length > 0);
+  }
+  for (const temper of TEMPERS) {
+    ok(`${lang}: kdrama.temper.${temper}`, typeof d.temper?.[temper] === 'string' && d.temper[temper].length > 0);
+  }
+  for (const key of TYPE_KEYS) {
+    ok(`${lang}: kdrama.type.${key}`, typeof d.type?.[key] === 'string' && d.type[key].length > 0);
+  }
+  for (const q of QUESTIONS) {
+    ok(`${lang}: kdrama.q.${q.id}.title`, typeof d.q?.[q.id]?.title === 'string' && d.q[q.id].title.length > 0);
+    for (const o of q.options) {
+      ok(`${lang}: kdrama.q.${q.id}.options.${o.id}`,
+        typeof d.q?.[q.id]?.options?.[o.id] === 'string' && d.q[q.id].options[o.id].length > 0);
+    }
+  }
+  ok(`${lang}: no orphan question keys`,
+    Object.keys(d.q ?? {}).every((k) => QUESTIONS.some((q) => q.id === k)),
+    Object.keys(d.q ?? {}).filter((k) => !QUESTIONS.some((q) => q.id === k)));
+  ok(`${lang}: no orphan type keys`,
+    Object.keys(d.type ?? {}).every((k) => TYPE_KEYS.includes(k)),
+    Object.keys(d.type ?? {}).filter((k) => !TYPE_KEYS.includes(k)));
+}
+
+// the twelve must read as twelve people, not one with an adjective swapped
+for (const [lang, dict] of [['en', enK], ['ko', koK]] as const) {
+  const lines = TYPE_KEYS.map((k) => (dict as Record<string, any>).type?.[k]).filter(Boolean);
+  ok(`${lang}: every type sentence is distinct`, new Set(lines).size === lines.length);
 }
 
 // --- report ---------------------------------------------------------------
