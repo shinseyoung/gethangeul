@@ -144,22 +144,30 @@ function friendly(cells: Cell[]): number {
     // penalty, does the differentiating work those flat bonuses didn't.
     let n = 12;
     const freq = c.info?.freq;
-    if (freq === 'very-common') n += 16;
-    else if (freq === 'common') n += 6;
+    // Widened hard, in the opposite direction from bright/soft-coda below:
+    // round 2 widened the phonetic terms until they swamped these entirely —
+    // a name built from syllables the dictionary has never seen (걍먕) outscored
+    // 철수, 영희 and 민수 on 친근함, because a bright vowel and a soft coda were
+    // worth more than the dictionary knowing the syllable at all. The spec
+    // makes syllable frequency this axis's headline signal, so frequency now
+    // carries most of the swing: even the best possible onset+vowel+coda on an
+    // absent syllable (+6+14+14 below) can't climb back past the −45 penalty
+    // into positive territory, let alone past a syllable the dictionary knows.
+    if (freq === 'very-common') n += 50;
+    else if (freq === 'common') n += 18;
     else if (freq === 'uncommon') n -= 8;
-    if (c.info === null) n -= 20;
+    if (c.info === null) n -= 45;
     if (SONORANT.has(c.cho) || PLAIN.has(c.cho)) n += 6;
     if (ASPIRATE.has(c.cho)) n -= 14;
-    // Widened from 26/18: no syllable in the dictionary happens to pair a
-    // very-common reading with both a bright vowel and a soft coda, so the
-    // best real combination (a common-band syllable with the rest) only
-    // reached 68 — bucket five was as unreachable here as it was for
-    // `refined`. Bright/dark and soft-coda-or-not are close to even splits
-    // of the syllable set, which is what makes them worth widening instead
-    // of the freq or onset terms above.
-    if (BRIGHT.has(c.jung)) n += 38;
-    else if (DARK.has(c.jung)) n -= 10;
-    if (SOFT_CODA.has(c.jong)) n += 30;
+    // Narrowed from 38/-10/30: still real signals — bright/dark splits the
+    // vowel set close to evenly and soft-coda-or-not likewise — but now sized
+    // as support, not the headline. The fifth dot is reached through a
+    // very-common syllable with a bright vowel (아, 도, 재, 다), not through
+    // phonetics alone on a rarer one, which is what "frequency leads" means
+    // in practice for the structural ceiling.
+    if (BRIGHT.has(c.jung)) n += 14;
+    else if (DARK.has(c.jung)) n -= 6;
+    if (SOFT_CODA.has(c.jong)) n += 14;
     return n;
   })));
 }

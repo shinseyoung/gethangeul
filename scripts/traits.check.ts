@@ -157,6 +157,28 @@ ok('at least 7 of the 10 blend pairs appear across the name database',
   blendEntries.length >= 7,
   blendEntries.map(([key]) => key));
 
+// --- friendly hears frequency first ------------------------------------------
+// The spec for 친근함 (`friendly`) reads "common syllables, nasal and plain
+// onsets, bright short sounds" — syllable frequency is supposed to be this
+// axis's headline signal, phonetics a supporting one. Round 2 widened the
+// bright-vowel and soft-coda terms far enough to hit the structural ceiling
+// and, in doing so, swamped the frequency terms they were never meant to
+// outrank: a name built entirely of syllables the dictionary has never seen
+// scored HIGHER than 철수 and 영희, Korea's own textbook stand-ins for "any
+// person," and higher than an ordinary name like 민수. A 친근함 meter that
+// rates a nonsense string above 철수 is measuring something other than
+// familiarity — this asserts the ordering directly, with a real gap, not a
+// one-point win.
+
+const invented = readName('걍먕')?.traits.friendly ?? 100;
+const everyday = { 철수: readName('철수'), 영희: readName('영희'), 민수: readName('민수'), 하준: readName('하준'), 서연: readName('서연') };
+const everydayFriendly = Object.fromEntries(
+  Object.entries(everyday).map(([name, reading]) => [name, reading?.traits.friendly ?? -1]),
+);
+ok('an all-invented name is clearly less friendly than every everyday name',
+  Object.values(everydayFriendly).every((score) => invented < score - 5),
+  { invented, ...everydayFriendly });
+
 // --- every meter can reach both of its own ends -----------------------------
 // The 114-name checks above catch an axis that collapses across the names the
 // site actually ships, but they say nothing about the syllables it doesn't
