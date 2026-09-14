@@ -66,6 +66,9 @@ export default function Step0Landing() {
 
         <div className="mt-10 w-full max-w-[560px]">
           <label htmlFor="given-name" className="sr-only">{t('name.label')}</label>
+          {/* flex-1 governs the main axis, and stacked that axis is the height —
+              so h-[60px] was being overridden and the field collapsed to its
+              line box. It only wants to grow when the row is a row. */}
           <div className="flex flex-col gap-2.5 sm:flex-row">
             <input
               id="given-name"
@@ -80,7 +83,7 @@ export default function Step0Landing() {
               autoCorrect="off"
               spellCheck={false}
               enterKeyHint="go"
-              className="h-[60px] flex-1 rounded-2xl border-[1.5px] border-rule-strong bg-paper-hi px-6 text-center font-disp text-[22px] text-ink caret-accent shadow-[0_8px_24px_-18px_rgba(23,24,26,0.35)] outline-none transition-colors duration-150 placeholder:font-body placeholder:text-[16px] placeholder:text-ink-4 focus:border-accent sm:text-left"
+              className="h-[60px] w-full sm:flex-1 rounded-2xl border-[1.5px] border-rule-strong bg-paper-hi px-6 text-center font-disp text-[22px] text-ink caret-accent shadow-[0_8px_24px_-18px_rgba(23,24,26,0.35)] outline-none transition-colors duration-150 placeholder:font-body placeholder:text-[16px] placeholder:text-ink-4 focus:border-accent sm:text-left"
             />
             <Button shape="box" onClick={next} className="h-[60px] shrink-0 px-7">
               {t('landing.cta_button')}

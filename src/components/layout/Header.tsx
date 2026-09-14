@@ -127,8 +127,11 @@ export function Header() {
           <div
             role="menu"
             aria-label={String(t('nav.menu'))}
-            className={`absolute left-1/2 top-full z-50 mt-2 w-[200px] -translate-x-1/2 overflow-hidden rounded-2xl border border-rule-strong bg-paper-hi shadow-[0_20px_44px_-26px_rgba(23,24,26,0.45)] transition-[opacity,transform] duration-150 ease-out ${
-              roomsOpen ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-1 opacity-0'
+            /* fades only. The panel used to slide down four pixels as it
+               appeared, which dragged every label with it and read as the text
+               settling into place rather than the panel arriving. */
+            className={`absolute left-1/2 top-full z-50 mt-2 w-[200px] -translate-x-1/2 overflow-hidden rounded-2xl border border-rule-strong bg-paper-hi shadow-[0_20px_44px_-26px_rgba(23,24,26,0.45)] transition-opacity duration-150 ease-out ${
+              roomsOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
             }`}
           >
             {TOOLS.map((item) => (
