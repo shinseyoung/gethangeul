@@ -9,6 +9,10 @@ import viSyl from '../src/data/locales/vi/syllables.json';
 import thSyl from '../src/data/locales/th/syllables.json';
 import { AXES, blendKey, readName } from '../src/utils/nameTraits';
 import { NAME_DATABASE } from '../src/data/nameDatabase';
+import en from '../src/data/locales/en/common.json';
+import ko from '../src/data/locales/ko/common.json';
+import vi from '../src/data/locales/vi/common.json';
+import th from '../src/data/locales/th/common.json';
 
 let failures = 0;
 function ok(label: string, condition: boolean, detail?: unknown) {
@@ -214,6 +218,29 @@ for (const axis of AXES) {
     s.max >= 80, s);
   ok(`${axis} can reach bucket 1 (structural min <= 19) over every Hangul syllable`,
     s.min <= 19, s);
+}
+
+// --- the new room has to be fully translated ------------------------------
+
+const PAIRS = AXES.flatMap((a, i) => AXES.slice(i + 1).map((b) => blendKey(a, b)));
+ok('ten blends', PAIRS.length === 10, PAIRS.length);
+
+const SHELL = ['eyebrow', 'title', 'sub', 'label', 'placeholder', 'hint', 'waiting',
+  'card_label', 'disclaimer', 'family_note'];
+
+for (const [lang, bundle] of [['en', en], ['ko', ko], ['vi', vi], ['th', th]] as const) {
+  const room = (bundle as Record<string, any>).impression;
+  ok(`${lang}: impression exists`, room !== undefined);
+  for (const key of SHELL) {
+    ok(`${lang}: impression.${key}`, typeof room?.[key] === 'string' && room[key].length > 0);
+  }
+  for (const axis of AXES) {
+    ok(`${lang}: impression.axis.${axis}`, typeof room?.axis?.[axis] === 'string' && room.axis[axis].length > 0);
+  }
+  for (const key of PAIRS) {
+    ok(`${lang}: impression.blend.${key}`, typeof room?.blend?.[key] === 'string' && room.blend[key].length > 0);
+  }
+  ok(`${lang}: nav.impression`, typeof (bundle as Record<string, any>).nav?.impression === 'string');
 }
 
 // --- report ---------------------------------------------------------------

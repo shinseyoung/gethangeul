@@ -157,7 +157,39 @@
   },
   "nav": {
     "name": "ตั้งชื่อ",
-    "pair": "จับคู่ชื่อ"
+    "pair": "จับคู่ชื่อ",
+    "impression": "Impression"
+  },
+  "impression": {
+    "eyebrow": "How it lands",
+    "title": "What a Korean hears in your name.",
+    "sub": "Not what it means — what it sounds like. Five things a Korean ear picks up before it thinks about anything else.",
+    "label": "A Korean name",
+    "placeholder": "Hajun",
+    "hint": "Write it in Latin letters or in Hangul. A family name is optional; we read the given name.",
+    "waiting": "Write a name above and we will read it back to you.",
+    "card_label": "FIRST IMPRESSION",
+    "disclaimer": "This reads sound, not fortune. It counts the consonants and vowels your name is built from and how often Koreans use them — nothing about the person carrying it.",
+    "family_note": "Read as the family name — family names are inherited, so this one sits out of the scoring.",
+    "axis": {
+      "friendly": "Approachable",
+      "refined": "Polished",
+      "cute": "Sweet",
+      "calm": "Composed",
+      "uncommon": "Unusual"
+    },
+    "blend": {
+      "friendly_refined": "Easy to say and easy to trust — the name of someone who gets introduced to everyone and remembered by all of them.",
+      "friendly_cute": "Warm and light. This is a name people shorten into a nickname within a week of meeting you.",
+      "friendly_calm": "Unhurried and open. It sounds like the person everyone ends up telling things to.",
+      "friendly_uncommon": "Familiar sounds in an arrangement nobody expects — approachable, but not one of a crowd.",
+      "refined_cute": "Polished with something soft underneath. It reads younger than it sounds serious.",
+      "refined_calm": "The quiet, well-made kind of name. Nothing about it is trying.",
+      "refined_uncommon": "Elegant and rare at once — the sort of name people ask you to repeat, then compliment.",
+      "cute_calm": "Gentle all the way through. Soft sounds, no sharp edges, nothing raised.",
+      "cute_uncommon": "Playful and unplaceable. Koreans will smile at it before they work out where it is from.",
+      "calm_uncommon": "Still and slightly out of time — a name that sounds like it has been somewhere."
+    }
   },
   "pair": {
     "eyebrow": "การจับคู่ชื่อแบบเกาหลี",
