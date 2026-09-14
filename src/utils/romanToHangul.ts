@@ -255,6 +255,23 @@ export function hangulFor(name: string): { hangul: string; converted: boolean } 
 }
 
 /**
+ * Korean's handful of genuine two-syllable family names. A spaced Korean name
+ * otherwise always writes its family name as one Hangul syllable (see
+ * firstIsFamilyName below), which is exactly what tells 김 하준 apart from
+ * 안나 밀러 — but 남궁, 선우 and the rest of these nine are real surnames that
+ * happen to break that shape, and refusing them as foreign would be wrong,
+ * not careful.
+ *
+ * These live here, next to the guard that needs them, rather than in
+ * SURNAME_DATABASE: that table is the forty-name *picker* list — it carries
+ * population `share` for the UI, and scripts/surname.check.ts asserts it
+ * holds exactly forty single-syllable entries. These nine are guard data
+ * (does this shape read as Korean at all), not picker data, and folding them
+ * into the database would both change the picker UI and break that count.
+ */
+const TWO_SYLLABLE_SURNAMES = new Set(['남궁', '선우', '황보', '제갈', '사공', '서문', '독고', '동방', '망절']);
+
+/**
  * Whether typed input is shaped like a Korean name, not merely readable as
  * Hangul. A Korean full name is one surname syllable plus a one-to-three-
  * syllable given name, so four syllables is a generous ceiling — but "Anna
@@ -271,11 +288,16 @@ export function hangulFor(name: string): { hangul: string; converted: boolean } 
  * indistinguishable Latin words, so the only way to tell a family name from
  * a foreign given name is the forty-row lookup. A Hangul first word carries
  * none of that ambiguity, but it carries a different, structural one: a
- * spaced Korean name always writes its family name as a single syllable —
- * 김 하준, 박 서연, 하 준 — never two, so 안나 (two syllables) in "안나 밀러"
- * fails this test even though it is Hangul, while a rare or unlisted
- * one-syllable surname the lookup table doesn't carry (하 준) still passes.
- * That is a coarser test than knownSurname's, but a table lookup would be
+ * spaced Korean name almost always writes its family name as a single
+ * syllable — 김 하준, 박 서연, 하 준 — never two, so 안나 (two syllables) in
+ * "안나 밀러" fails this test even though it is Hangul, while a rare or
+ * unlisted one-syllable surname the lookup table doesn't carry (하 준) still
+ * passes. The one exception is TWO_SYLLABLE_SURNAMES above: 남궁 서연 and
+ * 선우 지호 are real Korean names whose family name is genuinely two
+ * syllables, so a Hangul first word also passes when it is one of those
+ * nine — but only those nine, since an arbitrary two-syllable first word
+ * (밀러, 스미스) is exactly the "안나 밀러" shape this guard exists to catch.
+ * This is a coarser test than knownSurname's, but a table lookup would be
  * the wrong tool here: readName applies its own surname split on the Hangul
  * this guard passes through, so this guard only has to rule out shapes that
  * can't be a Korean name at all, not agree syllable-for-syllable with
@@ -297,6 +319,8 @@ export function looksKorean(name: string): boolean {
 
   const first = words[0];
   const rest = words.slice(1).join('');
-  const firstIsFamilyName = HANGUL.test(first) ? [...first].length === 1 : knownSurname(first) !== null;
+  const firstIsFamilyName = HANGUL.test(first)
+    ? [...first].length === 1 || TWO_SYLLABLE_SURNAMES.has(first)
+    : knownSurname(first) !== null;
   return firstIsFamilyName && HANGUL.test(first) === HANGUL.test(rest);
 }

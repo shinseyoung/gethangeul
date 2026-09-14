@@ -301,6 +301,15 @@ const SHAPE_CASES: [string, boolean][] = [
   ['서연', true], ['민서', true], ['김', true],
   ['안나 밀러', false], ['김 Smith', false], ['Smith 하준', false],
   ['사라 스미스', false], ['데이빗 스미스', false], ['ㄱㄴ 하준', false], ['ㅁ 하준', false],
+  // Round 5: round 4's single-syllable rule over-corrected the other way and
+  // refused Korea's own two-syllable family names — 남궁, 선우, 황보 and the
+  // rest of TWO_SYLLABLE_SURNAMES are real surnames, not given names that
+  // happen to be Hangul. '밀러 서연' and '스미스 지호' pin the other edge: a
+  // two-syllable first word that is *not* one of the nine still refuses,
+  // which is what proves the nine-name list is an allowlist and not just a
+  // syllable-count check in disguise.
+  ['남궁 서연', true], ['선우 지호', true], ['황보 민서', true],
+  ['밀러 서연', false], ['스미스 지호', false],
 ];
 for (const [name, expected] of SHAPE_CASES) {
   const got = looksKorean(name);
