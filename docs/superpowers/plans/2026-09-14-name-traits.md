@@ -1352,3 +1352,49 @@ git push origin main
 - **Frequency and era bands are judgement, not census data.** One word per row in `syllableDatabase.ts`; a wrong call is a one-word fix and the check will not object.
 - **Header nav is now at three tabs, its ceiling.** The K-Drama test and the fortune reading would make five. Whoever adds the fourth room converts the nav to a menu first.
 - **The weights in `nameTraits.ts` are a first tuning.** The check asserts orderings, not values, so they can be moved freely; if a move breaks an ordering, the ordering is what the spec promised the axis means.
+
+## What shipped, and what was left open
+
+Implemented across 19 commits on `feat/name-traits`. Both `npm run check` (four
+scripts) and `npm run build` pass. Every task was reviewed, and the browser
+verification steps were run against the live dev server.
+
+### Known limits, deliberately shipped
+
+- **vi and th copy is English placeholder** — all 61 syllable lines, the whole
+  `impression.*` block, and the ten `pair.blend.*` sentences. The checks assert
+  presence, not translation, so coverage stays monitored and a translator has a
+  real file to work in. Only `nav.impression` was translated (`Ấn tượng`,
+  `ภาพลักษณ์`); the Thai leans "image / how you come across" rather than
+  "first impression", which reads correctly for this feature but wants a native
+  eye.
+- **Frequency and era bands are judgement, not census data.** One word per row
+  in `syllableDatabase.ts`; a wrong call is a one-word fix and no check objects.
+- **The trait weights are a tuning.** The checks assert orderings, a bucket
+  spread over the 114 names in `nameDatabase.ts`, and structural reachability
+  over all 11,172 Hangul syllables — so the weights can move freely, and if a
+  move collapses an axis the check says so.
+- **철수 scores `friendly` = 14**, one dot, though it is one of Korea's stock
+  everyman names. 철 is banded uncommon/classic and the axis means
+  "bright, contemporary, common", not "culturally iconic". 철수 tells one
+  coherent story across all five axes rather than three conflicting ones.
+- **Mixed-script input is read loosely.** `Kim하준` scores 하준 and
+  `김 서연 Smith` scores 서연 — `readName` silently drops the Latin. Reaching it
+  needs a deliberately odd input. The root cause is that `romanToHangul.ts`
+  treats *contains* a Hangul character as *is* Hangul input.
+- **`황보라` is ambiguous** — 황 + 보라, or 황보 + 라. Longest match picks 황보.
+  Same class as the 하 / 서 / 민 / 도 / 강 / 문 ambiguity the three-syllable
+  floor already documents. 보라 is not in `nameDatabase.ts`, so no curated name
+  misfires.
+- **The 궁합 label is gated, the room is not.** The stroke fold and the
+  percentage work for any pair of names, including two foreign ones. The blend
+  label renders only when both names pass `looksKorean`, silently: run over 380
+  foreign pairs it collapsed to "unusual × unusual" 96% of the time, which is
+  one more line saying nothing to the site's core audience.
+
+### Pre-existing, not this branch's doing
+
+- At 375px the document scrolls horizontally on **all three** rooms, including
+  the two that predate this work. Same node each time: the language picker's
+  `div.relative > button.focus-ring` in `components/layout/Header.tsx`. Worth
+  its own fix.
