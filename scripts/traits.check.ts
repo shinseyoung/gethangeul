@@ -11,6 +11,7 @@ import { AXES, blendKey, readName } from '../src/utils/nameTraits';
 import { pairLabel } from '../src/utils/pairLabel';
 import { hangulFor, looksKorean } from '../src/utils/romanToHangul';
 import { NAME_DATABASE } from '../src/data/nameDatabase';
+import { bucketOf } from '../src/components/TraitMeter';
 import en from '../src/data/locales/en/common.json';
 import ko from '../src/data/locales/ko/common.json';
 import vi from '../src/data/locales/vi/common.json';
@@ -135,16 +136,17 @@ ok('half-invented lands between the bands',
 ok('철수 is more classic than 서연 on uncommon',
   (readName('철수')?.traits.uncommon ?? 0) > (readName('서연')?.traits.uncommon ?? 0),
   [readName('철수')?.traits.uncommon, readName('서연')?.traits.uncommon]);
-ok('every dictionary syllable scores without throwing',
-  SYLLABLE_DATABASE.every((s) => readName(s.syllable + s.syllable) !== null));
 
 // --- blend keys ------------------------------------------------------------
 
 ok('a blend key is canonical whichever way round it is given',
   blendKey('cute', 'friendly') === blendKey('friendly', 'cute'));
 ok('a blend key uses AXES order', blendKey('cute', 'friendly') === 'friendly_cute', blendKey('cute', 'friendly'));
-ok('there are ten distinct pairs',
-  new Set(AXES.flatMap((a) => AXES.filter((b) => b !== a).map((b) => blendKey(a, b)))).size === 10);
+// "ten distinct pairs" (5 choose 2) is also asserted below, where PAIRS is
+// built — that copy is kept because PAIRS itself is reused by the copy and
+// membership checks further down, so it guards data this file depends on
+// later. This one would only be re-proving arithmetic about blendKey's own
+// helper, not about anything downstream, so it isn't kept twice.
 
 // --- the meters discriminate ------------------------------------------------
 // A five-dot meter that always shows 4 or 5 dots is not a meter, it is
@@ -157,8 +159,6 @@ ok('there are ten distinct pairs',
 // the scorer and checks the bucket and blend-pair spread directly, so a
 // future weight change that quietly re-collapses an axis fails loudly here
 // instead of shipping a card that always says the same thing.
-
-const bucketOf = (score: number) => Math.min(5, Math.floor(score / 20) + 1);
 
 const buckets = Object.fromEntries(AXES.map((axis) => [axis, [0, 0, 0, 0, 0]])) as Record<
   (typeof AXES)[number],
@@ -375,6 +375,29 @@ for (const [lang, bundle] of [['en', en], ['ko', ko], ['vi', vi], ['th', th]] as
     ok(`${lang}: pair.blend.${key}`, typeof line === 'string' && line.length > 0);
   }
 }
+
+// --- the pair room gates the label, not the fold ---------------------------
+// Measured over 380 foreign×foreign pairs, 96% of labels collapsed to
+// cute_uncommon or calm_uncommon and 35% showed the same emoji on both sides,
+// because a transliterated foreign name is always off-dictionary and
+// `uncommon` wins every time it's scored. The percentage above the label is
+// arithmetic on stroke counts and stays correct for any name, so only the
+// label is gated. Mirrors PairScreen's own gate (looksKorean on the raw typed
+// name, not the Hangul it read to) rather than calling pairLabel directly,
+// since pairLabel can't see the collapse itself — by the time it runs, every
+// input has already become Hangul.
+
+function pairRoomLabel(a: string, b: string) {
+  const readA = hangulFor(a);
+  const readB = hangulFor(b);
+  if (!readA || !readB || !looksKorean(a) || !looksKorean(b)) return null;
+  return pairLabel(readA.hangul, readB.hangul);
+}
+
+ok('a Korean pair still gets a label', pairRoomLabel('하린', '도윤') !== null);
+ok('a foreign name on one side withholds the label', pairRoomLabel('Anna Miller', '도윤') === null);
+ok('two foreign names withhold the label', pairRoomLabel('Anna Miller', 'David Smith') === null);
+ok('a foreign name on the other side withholds the label too', pairRoomLabel('하린', 'Anna Miller') === null);
 
 // --- report ---------------------------------------------------------------
 

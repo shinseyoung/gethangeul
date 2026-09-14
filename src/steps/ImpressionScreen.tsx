@@ -3,7 +3,7 @@ import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
 import { useImageShare } from '../hooks/useImageShare';
 import { hangulFor, looksKorean } from '../utils/romanToHangul';
-import { AXES, blendKey, readName } from '../utils/nameTraits';
+import { AXES, blendKey, readName, type Axis } from '../utils/nameTraits';
 import MountainWash from '../components/MountainWash';
 import TraitMeter from '../components/TraitMeter';
 import OptionMark from '../components/OptionMark';
@@ -19,7 +19,7 @@ import Button from '../components/Button';
  */
 
 /** The five axes borrow marks the quiz already uses, so nothing new was drawn. */
-const MARK: Record<string, string> = {
+const MARK: Record<Axis, string> = {
   friendly: 'considerate',
   refined: 'trendy',
   cute: 'lovely',
