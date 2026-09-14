@@ -259,22 +259,32 @@ export function hangulFor(name: string): { hangul: string; converted: boolean } 
  * Hangul. A Korean full name is one surname syllable plus a one-to-three-
  * syllable given name, so four syllables is a generous ceiling — but "Anna
  * Miller" sounds out to exactly four (안나밀러) and would slip under a ceiling
- * alone, so a second word also has to open with a real surname, the very
- * lookup hangulFor itself just used, or the input is a foreign given name
- * plus family name rather than a Korean one. A single word skips that second
- * check: there is no family name to verify, so "Sarah" and "Hajun" are judged
- * on syllable count alone, same as any other given name typed here.
+ * alone, so a second word also has to open with a real family name, or the
+ * input is a foreign given name plus family name rather than a Korean one.
+ * A single word skips that check: there is no family name to verify, so
+ * "Sarah" and "Hajun" are judged on syllable count alone, same as any other
+ * given name typed here.
  *
- * A first word that is already Hangul passes that same check without going
- * through knownSurname at all. knownSurname's job is telling a Korean family
- * name apart from a foreign given name when both are spelled in Latin letters
- * — "Anna" vs "Kim" look alike until you check the forty-row table. A Hangul
- * word carries no such ambiguity: writing 김 or 하 already says "this is
- * Korean script," table or no table, so a rare or two-syllable family name
- * the table doesn't carry (하 준, 남궁 서연) must not be refused for failing a
- * lookup whose only purpose was to resolve a Latin spelling. readName applies
- * its own three-syllable floor and its own surname lookup on the Hangul this
- * guard passes through, so this check's job stops at "is this Korean script."
+ * "Real family name" means two different things depending on the script,
+ * because the two scripts carry different amounts of ambiguity. A Latin
+ * first word is checked against knownSurname: "Anna" and "Kim" are otherwise
+ * indistinguishable Latin words, so the only way to tell a family name from
+ * a foreign given name is the forty-row lookup. A Hangul first word carries
+ * none of that ambiguity, but it carries a different, structural one: a
+ * spaced Korean name always writes its family name as a single syllable —
+ * 김 하준, 박 서연, 하 준 — never two, so 안나 (two syllables) in "안나 밀러"
+ * fails this test even though it is Hangul, while a rare or unlisted
+ * one-syllable surname the lookup table doesn't carry (하 준) still passes.
+ * That is a coarser test than knownSurname's, but a table lookup would be
+ * the wrong tool here: readName applies its own surname split on the Hangul
+ * this guard passes through, so this guard only has to rule out shapes that
+ * can't be a Korean name at all, not agree syllable-for-syllable with
+ * readName's forty-row table.
+ *
+ * Either way, a Korean name is never half Latin: whichever script the family
+ * name lands in, the rest of the words have to agree, or "family name" and
+ * "given name" are really two separate names glued together by a space
+ * (김 Smith, Smith 하준) rather than one Korean name.
  */
 export function looksKorean(name: string): boolean {
   const read = hangulFor(name);
@@ -283,5 +293,10 @@ export function looksKorean(name: string): boolean {
   if (syllables > 4) return false;
 
   const words = name.trim().split(/\s+/);
-  return words.length < 2 || HANGUL.test(words[0]) || knownSurname(words[0]) !== null;
+  if (words.length < 2) return true;
+
+  const first = words[0];
+  const rest = words.slice(1).join('');
+  const firstIsFamilyName = HANGUL.test(first) ? [...first].length === 1 : knownSurname(first) !== null;
+  return firstIsFamilyName && HANGUL.test(first) === HANGUL.test(rest);
 }

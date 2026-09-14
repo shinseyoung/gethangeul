@@ -288,6 +288,19 @@ const SHAPE_CASES: [string, boolean][] = [
   // against a Hangul first word, which can never match. '하 준' has no listed
   // surname at all and still has to score, same as 'Park Seoyeon' Latin-side.
   ['김 하준', true], ['박 서연', true], ['이 지호', true], ['하 준', true],
+  // Round 4: round 3's fix waved through *any* Hangul first word, which let
+  // '안나 밀러' back in through the Hangul door — the exact bug round 2 was
+  // built to stop, just no longer typed in Latin. A single Hangul family-name
+  // syllable is the shape a spaced Korean name actually has (하 준 has none of
+  // it listed and still passes); two syllables ('안나', '사라', '데이빗') is a
+  // given name, not a surname, however it's spelled. And a name is never half
+  // Latin: '김 Smith' and 'Smith 하준' fail because the two words disagree on
+  // script, not because either word is individually wrong. '서연'/'민서'/'김'
+  // are single words, already covered by the syllable ceiling above, added
+  // here so every literal name in the brief has its own asserted row.
+  ['서연', true], ['민서', true], ['김', true],
+  ['안나 밀러', false], ['김 Smith', false], ['Smith 하준', false],
+  ['사라 스미스', false], ['데이빗 스미스', false], ['ㄱㄴ 하준', false], ['ㅁ 하준', false],
 ];
 for (const [name, expected] of SHAPE_CASES) {
   const got = looksKorean(name);
