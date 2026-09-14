@@ -199,7 +199,8 @@
   "nav": {
     "name": "Name",
     "pair": "Name match",
-    "impression": "Impression"
+    "impression": "Impression",
+    "menu": "Rooms"
   },
   "impression": {
     "eyebrow": "How it lands",
