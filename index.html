@@ -14,6 +14,16 @@
     <link rel="preload" href="/bg-mountain.webp" as="image" type="image/webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <!-- Nothing can fetch a font file until this stylesheet has landed and been
+         parsed, so it sits behind two chained round trips. The preload starts it
+         at the highest priority alongside the preconnects instead of waiting for
+         the parser to reach the stylesheet link below. Same URL on purpose —
+         the second request is served from the preload cache. -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&amp;family=Gowun+Batang:wght@400;700&amp;family=Noto+Sans+Thai:wght@400;600&amp;display=swap"
+    />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&amp;family=Gowun+Batang:wght@400;700&amp;family=Noto+Sans+Thai:wght@400;600&amp;display=swap"

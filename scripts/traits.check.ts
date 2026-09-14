@@ -3,6 +3,7 @@
 // Run with: npm run check
 import { SYLLABLE_DATABASE, syllableInfo } from '../src/data/syllableDatabase';
 import { decompose } from '../src/utils/strokes';
+import { sentences } from '../src/utils/sentences';
 import enSyl from '../src/data/locales/en/syllables.json';
 import koSyl from '../src/data/locales/ko/syllables.json';
 import viSyl from '../src/data/locales/vi/syllables.json';
@@ -398,6 +399,46 @@ ok('a Korean pair still gets a label', pairRoomLabel('하린', '도윤') !== nul
 ok('a foreign name on one side withholds the label', pairRoomLabel('Anna Miller', '도윤') === null);
 ok('two foreign names withhold the label', pairRoomLabel('Anna Miller', 'David Smith') === null);
 ok('a foreign name on the other side withholds the label too', pairRoomLabel('하린', 'Anna Miller') === null);
+
+// --- card copy breaks at full stops -----------------------------------------
+// The descriptions used to wrap wherever the card ran out, which put breaks in
+// the middle of clauses. Each sentence is its own block now, so the only thing
+// that can change is where the sentences are — which is what these pin down.
+
+ok('two English sentences split, keeping their stops',
+  JSON.stringify(sentences('Easy to say. Easy to trust.')) === JSON.stringify(['Easy to say.', 'Easy to trust.']),
+  sentences('Easy to say. Easy to trust.'));
+ok('two Korean sentences split',
+  sentences('부르기 쉽습니다. 믿음이 갑니다.').length === 2,
+  sentences('부르기 쉽습니다. 믿음이 갑니다.'));
+ok('one sentence stays one', sentences('Just the one.').length === 1, sentences('Just the one.'));
+ok('no terminal punctuation still returns the text',
+  JSON.stringify(sentences('no stop here')) === JSON.stringify(['no stop here']),
+  sentences('no stop here'));
+ok('a decimal is not a sentence end',
+  sentences('It scores 4.5 out of five.').length === 1,
+  sentences('It scores 4.5 out of five.'));
+ok('an empty string renders nothing', sentences('   ').length === 0, sentences('   '));
+ok('a question mark ends a sentence', sentences('Really? Yes.').length === 2, sentences('Really? Yes.'));
+ok('no sentence comes back empty or untrimmed',
+  sentences('One.  Two.   Three.').every((x) => x === x.trim() && x.length > 0),
+  sentences('One.  Two.   Three.'));
+// Thai has no terminal punctuation and separates clauses with spaces; splitting
+// on those would break it mid-phrase, which is the fault this exists to fix.
+ok('Thai comes back whole', sentences('ชื่อนี้ฟังดูอ่อนโยน').length === 1, sentences('ชื่อนี้ฟังดูอ่อนโยน'));
+
+// every shipped description must survive the split without losing text
+for (const [lang, bundle] of [['en', en], ['ko', ko], ['vi', vi], ['th', th]] as const) {
+  for (const key of PAIRS) {
+    for (const path of ['impression', 'pair'] as const) {
+      const line = (bundle as Record<string, any>)[path]?.blend?.[key];
+      if (typeof line !== 'string') continue;
+      const rejoined = sentences(line).join(' ').replace(/\s+/g, ' ');
+      ok(`${lang}: ${path}.blend.${key} keeps every word when split`,
+        rejoined === line.trim().replace(/\s+/g, ' '), { line, rejoined });
+    }
+  }
+}
 
 // --- report ---------------------------------------------------------------
 

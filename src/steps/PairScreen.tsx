@@ -5,9 +5,11 @@ import { useImageShare } from '../hooks/useImageShare';
 import { hangulFor, looksKorean } from '../utils/romanToHangul';
 import { compatibility } from '../utils/nameCompat';
 import { pairLabel } from '../utils/pairLabel';
+import { sentences } from '../utils/sentences';
 import MountainWash from '../components/MountainWash';
 import AdSlot from '../components/AdSlot';
 import Button from '../components/Button';
+import Note from '../components/Note';
 
 /**
  * 이름궁합 — the second room.
@@ -111,9 +113,7 @@ export default function PairScreen() {
       <p className="mt-1 text-[12px] leading-relaxed text-ink-4">{t('pair.hint')}</p>
 
       {percent === null ? (
-        <p className="mt-7 rounded-sm border border-l-[3px] border-rule border-l-pig-jeok bg-paper-hi p-3.5 text-[13px] leading-relaxed text-ink-3">
-          {t('pair.waiting')}
-        </p>
+        <Note>{t('pair.waiting')}</Note>
       ) : (
         <>
           {/* the card: this is what gets screenshotted, so no ad goes inside it */}
@@ -167,7 +167,10 @@ export default function PairScreen() {
               {label && (
                 <span className="mt-7 max-w-[300px] text-center text-[13px] leading-relaxed text-ink-2">
                   {label.emojiA} {readA!.hangul} <span className="text-ink-4">×</span> {label.emojiB} {readB!.hangul}
-                  <span className="mt-1.5 block text-ink-3">{t(`pair.blend.${label.key}`)}</span>
+                  {/* one block per sentence, so a break never lands mid-clause */}
+                  {sentences(String(t(`pair.blend.${label.key}`))).map((line, i) => (
+                    <span key={line} className={`block text-ink-3 ${i === 0 ? 'mt-1.5' : ''}`}>{line}</span>
+                  ))}
                 </span>
               )}
 

@@ -15,11 +15,27 @@
    and those are wider — Instrument Serif is 16% narrower than Times, Newsreader
    3.5% narrower than Georgia, Gowun Batang 3.5% narrower than the system
    Korean face. That is the "글씨가 작아지면서 로딩되는" reflow. The percentages
-   below were measured with canvas measureText, not guessed. */
+   below were measured with canvas measureText, not guessed.
+
+   size-adjust alone only matched the *width*. The line box still changed height
+   the moment a real face landed — Times' line box is 12% shorter than Instrument
+   Serif's, Georgia's 14% taller than Newsreader's, Malgun's 8% shorter than
+   Gowun Batang's — so every line on the page moved and the swap was plainly
+   visible. The three overrides below pin the line box as well.
+
+   Their values are divided by size-adjust because size-adjust scales the
+   overrides too: that is measured behaviour, not a reading of the spec, and
+   without the division every one of these lands short. Each pair was checked
+   against its real face at 100px and matches line height and baseline to
+   0.00px. If you retune size-adjust, retune these with it. */
 @font-face {
   font-family: 'Disp Fallback';
   src: local('Times New Roman'), local('Liberation Serif'), local('Georgia');
   size-adjust: 84%;
+  /* Instrument Serif: ascent 99.2, descent 31.2, no line gap */
+  ascent-override: 118.10%;
+  descent-override: 37.14%;
+  line-gap-override: 0%;
   unicode-range: U+0000-00FF, U+0100-024F, U+2000-206F;
 }
 @font-face {
@@ -28,12 +44,20 @@
   /* calibrated on Windows/Malgun; the Korean system face differs per OS, so
      this one is a knob — remeasure if it drifts on mac */
   size-adjust: 94%;
+  /* Gowun Batang: ascent 116.0, descent 28.8, no line gap */
+  ascent-override: 123.40%;
+  descent-override: 30.64%;
+  line-gap-override: 0%;
   unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7A3;
 }
 @font-face {
   font-family: 'Body Fallback';
   src: local('Georgia'), local('Times New Roman'), local('Liberation Serif');
   size-adjust: 96.5%;
+  /* Newsreader: ascent 73.6, descent 26.4, no line gap */
+  ascent-override: 76.27%;
+  descent-override: 27.36%;
+  line-gap-override: 0%;
   unicode-range: U+0000-00FF, U+0100-024F, U+2000-206F;
 }
 @font-face {
@@ -42,6 +66,10 @@
   /* calibrated on Windows/Malgun; the Korean system face differs per OS, so
      this one is a knob — remeasure if it drifts on mac */
   size-adjust: 94%;
+  /* Gowun Batang, same as the display face above */
+  ascent-override: 123.40%;
+  descent-override: 30.64%;
+  line-gap-override: 0%;
   unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7A3;
 }
 

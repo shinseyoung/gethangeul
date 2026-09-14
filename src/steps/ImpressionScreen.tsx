@@ -9,6 +9,9 @@ import TraitMeter from '../components/TraitMeter';
 import OptionMark from '../components/OptionMark';
 import AdSlot from '../components/AdSlot';
 import Button from '../components/Button';
+import Note from '../components/Note';
+import OpticalText from '../components/OpticalText';
+import { sentences } from '../utils/sentences';
 
 /**
  * 첫인상 판독기 — the third room.
@@ -69,9 +72,7 @@ export default function ImpressionScreen() {
       <p className="mt-1 text-[12px] leading-relaxed text-ink-4">{t('impression.hint')}</p>
 
       {reading === null ? (
-        <p className="mt-7 rounded-sm border border-l-[3px] border-rule border-l-pig-jeok bg-paper-hi p-3.5 text-[13px] leading-relaxed text-ink-3">
-          {t(read && !shapeOk ? 'impression.not_korean' : 'impression.waiting')}
-        </p>
+        <Note>{t(read && !shapeOk ? 'impression.not_korean' : 'impression.waiting')}</Note>
       ) : (
         <>
           {/* the card: this is what gets screenshotted, so no ad goes inside it */}
@@ -96,9 +97,12 @@ export default function ImpressionScreen() {
                 {AXES.map((axis) => (
                   <span key={axis} className="flex items-center gap-3">
                     <OptionMark id={MARK[axis]} active size={26} />
-                    <span className="flex-1 font-disp text-[15px] leading-none text-ink-2">
-                      {t(`impression.axis.${axis}`)}
-                    </span>
+                    {/* the label's ink rides ~2px above its line box in Gowun
+                        Batang, so it read as misaligned against the mark beside
+                        it; OpticalText measures the glyphs and centres them */}
+                    <OpticalText className="block flex-1 font-disp text-[15px] leading-none text-ink-2">
+                      {String(t(`impression.axis.${axis}`))}
+                    </OpticalText>
                     <TraitMeter score={reading.traits[axis]} label={t(`impression.axis.${axis}`)} />
                   </span>
                 ))}
@@ -106,17 +110,25 @@ export default function ImpressionScreen() {
 
               <span className="my-6 block h-px w-11 bg-rule-strong" />
 
-              <span className="max-w-[320px] text-center text-[13px] leading-relaxed text-ink-2">
-                {t(`impression.blend.${blendKey(reading.top[0], reading.top[1])}`)}
+              {/* one block per sentence, so a break never lands mid-clause */}
+              <span className="flex max-w-[320px] flex-col text-center text-[13px] leading-relaxed text-ink-2">
+                {sentences(String(t(`impression.blend.${blendKey(reading.top[0], reading.top[1])}`))).map((line) => (
+                  <span key={line} className="block">{line}</span>
+                ))}
               </span>
 
               {reading.known.length > 0 && (
                 <span className="mt-4 flex max-w-[320px] flex-col gap-2">
                   {reading.known.map((item) => (
-                    <span key={item.roman} className="text-center text-[12px] leading-relaxed text-ink-3">
-                      <span className="font-brush text-[15px] text-ink-2">{item.syllable}</span>
-                      {' — '}
-                      {t(`syllables.${item.roman}`)}
+                    <span key={item.roman} className="flex flex-col text-center text-[12px] leading-relaxed text-ink-3">
+                      <span className="block">
+                        <span className="font-brush text-[15px] text-ink-2">{item.syllable}</span>
+                        {' — '}
+                        {sentences(String(t(`syllables.${item.roman}`)))[0]}
+                      </span>
+                      {sentences(String(t(`syllables.${item.roman}`))).slice(1).map((line) => (
+                        <span key={line} className="block">{line}</span>
+                      ))}
                     </span>
                   ))}
                 </span>
