@@ -1,14 +1,14 @@
 {
-  "eyebrow": "Six questions",
+  "eyebrow": "Twelve scenes",
   "title": "Which part would you play?",
-  "sub": "Six situations, and we'll tell you where you'd land in the cast. Not the name you'd be given — the person you'd be.",
+  "sub": "Pick your way through twelve scenes and we'll tell you who you are in this. Not your name — you.",
   "start": "Start",
   "next": "Next",
   "prev": "Back",
   "again": "Answer again",
   "reroll": "Another name",
   "card_label": "YOUR CASTING",
-  "disclaimer": "For fun. Six questions cannot know you, and the name at the bottom is one we liked for the part — not a reading of anything.",
+  "disclaimer": "Just for fun. Twelve scenes can't know you, and the name at the bottom is one that suited the part — nothing more.",
   "axis": {
     "romance": "Romance",
     "presence": "Presence",
@@ -28,149 +28,149 @@
     "careful": "Measured"
   },
   "type": {
-    "lead_direct": "The camera finds you because you walked into the shot like it was yours. You say the line in episode two that anyone else would have saved for the finale.",
-    "lead_careful": "You carry the story without ever raising your voice. Twelve episodes are spent waiting for the moment you finally do, and it lands because you made them wait.",
-    "firstLove_direct": "You're the one who said it first, on a staircase, before either of you were ready. Whatever happens after, that scene is the one the show reruns.",
-    "firstLove_careful": "You never quite said it, and that's why you're remembered in soft focus. Somebody is still holding the thing you handed them without explaining.",
-    "spark_direct": "Two episodes of impossible timing and you'd just ask. The audience would scream. The writers would hate you for making it easy.",
-    "spark_careful": "You and the other one keep arriving at the same door a minute apart. Nothing has been said, everyone can see it, and that is the entire genre.",
-    "second_direct": "You tell them how you feel in episode eight and back off cleanly when they choose someone else. Half the audience switches to your side that night.",
-    "second_careful": "You're the one who noticed they hadn't eaten. You'll never say the thing, and the forums will argue about you until the finale airs.",
-    "rival_direct": "You arrive late, better dressed, and say the true thing nobody wanted said out loud. You are not wrong, which is the problem.",
-    "rival_careful": "You don't compete; you simply keep turning out to have been right. By the time anyone notices you've been three scenes ahead all along.",
-    "bestie_direct": "You carry every scene you're in and you weren't even supposed to be in half of them. Somebody has to shout the obvious thing, and it's you.",
-    "bestie_careful": "You're the one who drives them home, remembers what they said in episode one, and never once makes it about you. They'd be lost, and they know it."
+    "lead_direct": "The camera finds you the second you walk in. You say the line in episode two that everyone else was saving for the finale.",
+    "lead_careful": "You carry the whole thing without ever raising your voice. Twelve episodes of waiting, and it lands because you made them wait.",
+    "firstLove_direct": "You said it first, before either of you were ready. Whatever happened after, that's the scene people rewatch.",
+    "firstLove_careful": "You never actually said it, which is why you're still in their head. Somebody still has the thing you gave them.",
+    "spark_direct": "Two episodes of bad timing and you'd just ask. Great for the audience, a nightmare for the writers.",
+    "spark_careful": "You two keep reaching the same door a minute apart. Nothing's been said, everyone can see it, and that's the whole genre.",
+    "second_direct": "You say it in episode eight and step back cleanly when they pick someone else. Half the audience switches sides that night.",
+    "second_careful": "You're the one who noticed they hadn't eaten. You'll never say it, and people will argue about you until the finale.",
+    "rival_direct": "You turn up late, better dressed, and say the thing nobody wanted said. You're right, which is the annoying part.",
+    "rival_careful": "You don't compete. You just keep turning out to have been right. By the time anyone notices, you're three scenes ahead.",
+    "bestie_direct": "You take every scene you're in, and you weren't even meant to be in half of them.",
+    "bestie_careful": "You drive them home, you remember what they said in episode one, and you never make it about you. They'd be lost."
   },
   "q": {
     "arrival": {
-      "title": "You walk into a room where you know one person.",
+      "title": "First gathering. You know exactly one person here.",
       "options": {
-        "catch": "Go over to whoever just caught your eye.",
-        "centre": "Head straight for the middle of it.",
-        "edge": "Find the one person you know.",
-        "joke": "Say something daft before anyone else speaks."
+        "spot": "Go straight to whoever just caught your eye",
+        "centre": "Head for the middle of the room",
+        "known": "Find the one person you know",
+        "joke": "Say something stupid before anyone else talks"
       }
     },
     "notice": {
-      "title": "Across the room, someone recognises you.",
+      "title": "They've spotted you from across the room.",
       "options": {
-        "hold": "Hold the look and don't glance away.",
-        "greet": "Say their name first, loudly.",
-        "smile": "Give them a small smile and leave it there.",
-        "quip": "Mouth something ridiculous at them."
+        "hold": "Don't look away",
+        "greet": "Say their name first, loudly",
+        "smile": "Small smile, leave it there",
+        "quip": "Mouth something ridiculous at them"
       }
     },
     "rumour": {
-      "title": "A rumour about you is going round, and it is half true.",
+      "title": "Word is going round that something's going on with you two.",
       "options": {
-        "guess": "Work out who started it, and why they would.",
-        "deny": "Say flatly that it is not true.",
-        "shield": "Let it run rather than drop anyone in it.",
-        "feed": "Add a detail that makes it much better."
+        "guess": "Work out who started it",
+        "deny": "Say flat out that it's nothing",
+        "shield": "Let it run rather than name anyone",
+        "feed": "Add a detail that makes it better"
       }
     },
-    "microphone": {
-      "title": "The microphone has been handed to you.",
+    "alone": {
+      "title": "Somehow it's just the two of you.",
       "options": {
-        "dedicate": "Dedicate it to someone in the room.",
-        "sing": "Sing it properly, all the way through.",
-        "pass": "Pass it to whoever wants it more.",
-        "comedy": "Do it badly on purpose."
+        "stay": "Don't leave",
+        "lead": "Say the thing first",
+        "cover": "Ask if they're okay",
+        "derail": "Change the subject entirely"
       }
     },
-    "jealousy": {
-      "title": "Someone you like is laughing with someone else.",
+    "rival": {
+      "title": "Someone else is looking at them too.",
       "options": {
-        "walkover": "Walk over and join in.",
-        "cut": "Cut into the conversation and take it over.",
-        "wait": "Wait for them to look up.",
-        "tease": "Say something that makes them turn around."
+        "claim": "Take the seat next to them first",
+        "measure": "Work out what you're dealing with",
+        "yield": "Step back and let them talk",
+        "needle": "Say something just to get a reaction"
       }
     },
-    "umbrella": {
-      "title": "It's raining and there's one umbrella.",
+    "public": {
+      "title": "Everyone's watching. The mic's come to you.",
       "options": {
-        "share": "Share it, badly, getting half wet.",
-        "shelter": "Wait it out under the awning.",
-        "give": "Hand it over and turn your collar up.",
-        "run": "Run for it and let the rain happen."
-      }
-    },
-    "late": {
-      "title": "Your friend is an hour late and hasn't texted.",
-      "options": {
-        "text": "Send the message you have rewritten four times.",
-        "scold": "Tell them exactly that when they arrive.",
-        "worry": "Start wondering if something happened.",
-        "prank": "Plan something ridiculous for when they walk in."
+        "dedicate": "Say who it's for",
+        "sing": "Sing it properly, all the way",
+        "pass": "Give it to someone who wants it more",
+        "clown": "Ruin it on purpose"
       }
     },
     "secret": {
-      "title": "You are holding something that is not yours to hold.",
+      "title": "You've found out something you weren't meant to.",
       "options": {
-        "tell": "Tell the one person it would change things with.",
-        "own": "Say it out loud, to the room, now.",
-        "keep": "Keep it, because telling it helps nobody.",
-        "deflect": "Bury it under a joke and change the subject."
+        "tell": "Tell them before anyone else does",
+        "own": "Say it out loud, right now, to the room",
+        "keep": "Sit on it — telling helps nobody",
+        "deflect": "Bury it under a joke"
+      }
+    },
+    "hurt": {
+      "title": "It came out wrong and now neither of you is texting.",
+      "options": {
+        "reach": "Message first",
+        "stand": "You said what you meant. Wait.",
+        "wait": "Leave it until they come to you",
+        "lighten": "Send something funny like nothing happened"
       }
     },
     "crossroads": {
-      "title": "Two doors, and the episode ends whichever you take.",
+      "title": "Two options, and the episode ends either way.",
       "options": {
-        "chase": "Go after the person, not the plan.",
-        "stand": "Take the one that puts you in charge.",
-        "stay": "Stay where you're needed.",
-        "gamble": "Take the one nobody expects."
+        "chase": "Go after the person, not the plan",
+        "take": "Take the one where you're driving",
+        "stay2": "Stay where you're needed",
+        "gamble": "Take the one nobody saw coming"
       }
     },
     "apology": {
-      "title": "Someone is owed an apology and it is yours to give.",
+      "title": "Somebody has to speak first.",
       "options": {
-        "first": "Say it first, before they can ask.",
-        "face": "Say it to their face, in front of everyone.",
-        "gift": "Turn up with the thing they mentioned once.",
-        "joke2": "Make them laugh, then say it quietly."
+        "first": "Say it before they can ask",
+        "face": "Say it to their face, in front of everyone",
+        "gift": "Turn up with the thing they mentioned once",
+        "laugh": "Make them laugh, then say it quietly"
       }
     },
     "station": {
-      "title": "They are leaving in eleven minutes.",
+      "title": "They leave in eleven minutes.",
       "options": {
-        "run2": "Run. Work out the words on the way.",
-        "call": "Call, and say it where anyone can hear.",
-        "write": "Write it down and get it to them somehow.",
-        "watch": "Watch the train go and mean it."
+        "run": "Run. Figure out the words on the way.",
+        "call": "Call, and say it where people can hear",
+        "write": "Write it down and get it to them",
+        "watch": "Watch them go, and mean it"
       }
     },
     "finale": {
       "title": "Last episode. What's your scene?",
       "options": {
-        "reunion": "Running through a station to catch someone.",
-        "stare": "One long look across a room, then the credits.",
-        "letter": "A letter that arrives after you've gone.",
-        "toast": "Everyone round one table, too loud, glasses up."
+        "reunion": "Running through a station to catch them",
+        "stare": "One long look across a room, then credits",
+        "letter": "A letter that lands after you've gone",
+        "toast": "Everyone at one table, far too loud"
       }
     }
   },
   "headline": "The {temper} {role}",
-  "premise": "Sixteen episodes. A city, a season about to turn, and a handful of people who keep ending up in the same rooms. Nobody has told you which one you are yet. That is what the next twelve scenes are for.",
+  "premise": "Sixteen episodes. New term, new neighbourhood, new job — take your pick. There's one person you keep running into, and nothing has happened yet. Episode one starts here.",
   "act": {
-    "gi": "Act One · The Setup",
-    "seung": "Act Two · It Grows",
-    "jeon": "Act Three · The Turn",
-    "gyeol": "Act Four · The Close"
+    "gi": "Act One · Setup",
+    "seung": "Act Two · Closer",
+    "jeon": "Act Three · It Breaks",
+    "gyeol": "Act Four · Last Call"
   },
   "recap": {
-    "seung_romance": "Three scenes in and you have been looking at one person a beat longer than the shot needed. The show has noticed.",
-    "seung_presence": "You have taken up room in every scene so far. People move around you now, and the camera has started doing it too.",
-    "seung_warmth": "You keep being the one who checks. Nobody has thanked you for it yet, which is usually the sign it mattered.",
-    "seung_mischief": "Three scenes and you have already derailed two of them. The script is visibly getting nervous.",
-    "jeon_romance": "It has stopped being subtext. Whatever you do next, somebody is going to read it as an answer.",
-    "jeon_presence": "The room reorganises when you speak now. That is useful right up until the moment it is not.",
-    "jeon_warmth": "You have become the one people bring things to. It is a quiet kind of power and it is about to be tested.",
-    "jeon_mischief": "Nothing you touch has stayed where it was. The story has stopped planning around you and started planning with you.",
-    "gyeol_romance": "Everyone watching knows. The only question left is whether you say it out loud or let the rain do it.",
-    "gyeol_presence": "You are in the last act because you walked yourself here. Nobody handed you this scene.",
-    "gyeol_warmth": "You carried most of these people to the final episode. Whether anyone noticed is the thing still hanging.",
-    "gyeol_mischief": "You broke the shape of this drama three times and it is a better one for it. One scene left to ruin."
+    "seung_romance": "Three scenes and you've been looking at one person the whole time. It shows.",
+    "seung_presence": "You've ended up at the centre of every room so far. People are watching you now.",
+    "seung_warmth": "You keep checking on everyone. Nobody's said thanks yet.",
+    "seung_mischief": "You've derailed two of the last three scenes. The script looks worried.",
+    "jeon_romance": "You can't play it off any more. Whatever you do next, everyone reads it as an answer.",
+    "jeon_presence": "The room changes when you talk. That's great until it isn't.",
+    "jeon_warmth": "People come to you first now. That's about to get heavy.",
+    "jeon_mischief": "Nothing you touched stayed where it was. The story's given up on stopping you.",
+    "gyeol_romance": "Everyone knows. The only question is whether you say it or let the rain handle it.",
+    "gyeol_presence": "You're in the last act because you walked here. Nobody gave you the seat.",
+    "gyeol_warmth": "Most of these people made it this far because of you. They don't know that.",
+    "gyeol_mischief": "You broke this drama three times and it got better each time. One scene left."
   }
 }
