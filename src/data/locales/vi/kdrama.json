@@ -777,243 +777,243 @@
   "idol": {
     "q": {
       "trainee": {
-        "title": "In front of the practice room mirror. Same team from today. “{name}'s the youngest.”",
+        "title": "Trước gương phòng tập. Từ hôm nay chung một nhóm. “{name} là em út.”",
         "options": {
-          "eyes": "In the mirror you keep looking at one of them",
-          "center2": "You take the middle of the room",
-          "names": "You ask each name and learn it",
-          "mirror2": "You pull a face at the mirror"
+          "eyes": "Trong gương, bạn cứ nhìn về một người",
+          "center2": "Bạn đứng vào giữa phòng",
+          "names": "Bạn hỏi tên từng người và nhớ hết",
+          "mirror2": "Bạn nhăn mặt trêu cái gương"
         }
       },
       "monthly": {
-        "title": "Monthly assessment. The rankings go up on the wall.",
+        "title": "Kỳ đánh giá hằng tháng. Bảng xếp hạng dán lên tường.",
         "options": {
-          "theirs2": "You look for their place before your own",
-          "topline": "You say out loud you'll be on the top line",
-          "bottom": "You go and sit next to whoever came last",
-          "photo3": "You photograph the list and set it as your wallpaper"
+          "theirs2": "Bạn tìm thứ hạng của người đó trước hạng mình",
+          "topline": "Bạn nói to rằng mình sẽ đứng dòng đầu",
+          "bottom": "Bạn đến ngồi cạnh người đứng cuối",
+          "photo3": "Bạn chụp bảng đó rồi đặt làm hình nền"
         }
       },
       "bunk": {
-        "title": "Bunk beds, three in the morning, and neither {name} nor they are asleep.",
+        "title": "Giường tầng, ba giờ sáng, {name} không ngủ mà người đó cũng không.",
         "options": {
-          "ceiling": "You look at the ceiling and say nothing",
-          "plan": "You start it. What you'll do once you debut",
-          "tea": "You go down and make two hot drinks",
-          "light": "You make shadow puppets with your phone"
+          "ceiling": "Bạn nhìn trần nhà, không nói gì",
+          "plan": "Bạn mở lời: debut rồi sẽ làm gì",
+          "tea": "Bạn trèo xuống pha hai ly nóng",
+          "light": "Bạn lấy điện thoại soi làm bóng trên tường"
         }
       },
       "practice": {
-        "title": "Two in the morning in the practice room. Only {name} and them left.",
+        "title": "Hai giờ sáng ở phòng tập. Chỉ còn {name} và người đó.",
         "options": {
-          "again4": "You ask for one more run",
-          "count": "You stand at the mirror and count the beat",
-          "stretch": "You check their ankle first",
-          "music": "You put something else on and dance badly"
+          "again4": "Bạn rủ chạy thêm một lần nữa",
+          "count": "Bạn đứng trước gương đếm nhịp",
+          "stretch": "Bạn xem cổ chân người đó trước đã",
+          "music": "Bạn bật bài khác rồi nhảy cho xấu chơi"
         }
       },
       "center": {
-        "title": "The centre position is open. The leader looks at {name}.",
+        "title": "Vị trí trung tâm đang trống. Trưởng nhóm nhìn {name}.",
         "options": {
-          "step": "You take one step forward",
-          "claim2": "“I'll do it,” hand up",
-          "give": "You give it to whoever prepared longest",
-          "coin": "You get a coin out and offer to flip"
+          "step": "Bạn bước lên một bước",
+          "claim2": "“Để tôi,” bạn giơ tay",
+          "give": "Bạn nhường cho người chuẩn bị lâu nhất",
+          "coin": "Bạn móc đồng xu ra, đề nghị tung"
         }
       },
       "cover2": {
-        "title": "They got the choreography wrong, and the teacher calls {name}.",
+        "title": "Người đó nhảy sai, mà thầy lại gọi {name}.",
         "options": {
-          "mine3": "You say it was you",
-          "facts": "You say exactly who did what",
-          "together": "You ask to run it again, both of you",
-          "blame": "“I think the mirror's bent”"
+          "mine3": "Bạn nhận là mình sai",
+          "facts": "Bạn nói rõ ai đã làm gì",
+          "together": "Bạn xin chạy lại, cả hai cùng",
+          "blame": "“Chắc cái gương nó cong”"
         }
       },
       "vlive": {
-        "title": "Nobody knew the live was still on. Everything {name} just said went out.",
+        "title": "Không ai biết là live vẫn đang bật. Mọi câu {name} vừa nói đã phát hết ra ngoài.",
         "options": {
-          "own4": "You look at the camera and own it",
-          "shut": "You cut it and tell the company first",
-          "cover3": "You make out it wasn't about them",
-          "encore2": "You leave it running another hour"
+          "own4": "Bạn nhìn thẳng máy quay và nhận hết",
+          "shut": "Bạn tắt live rồi báo công ty trước",
+          "cover3": "Bạn nói lảng đi, không phải nói về người đó",
+          "encore2": "Bạn để live chạy thêm một tiếng nữa"
         }
       },
       "debut": {
-        "title": "The debut line-up is posted on the wall.",
+        "title": "Đội hình debut được dán lên tường.",
         "options": {
-          "search": "You read down the list looking for one name",
-          "front2": "You stand at the front and read it out",
-          "hug": "You go to whoever didn't make it first",
-          "tear": "You take the list down and pocket it"
+          "search": "Bạn dò từ trên xuống, tìm đúng một cái tên",
+          "front2": "Bạn đứng lên trước, đọc to cả danh sách",
+          "hug": "Bạn đến chỗ người bị rớt trước tiên",
+          "tear": "Bạn gỡ tờ giấy xuống, nhét vào túi"
         }
       },
       "sunbae": {
-        "title": "Word goes round that a senior group has been watching you.",
+        "title": "Có tin đồn một nhóm tiền bối vẫn đang để mắt tới bạn.",
         "options": {
-          "keepon": "You say nothing and practise more",
-          "meet": "You go and introduce yourself",
-          "share3": "You tell the team before anyone else",
-          "post": "You post one of their songs"
+          "keepon": "Bạn không nói gì, tập nhiều hơn",
+          "meet": "Bạn tìm đến chào hỏi trước",
+          "share3": "Bạn kể cho cả nhóm trước tiên",
+          "post": "Bạn đăng một bài của họ"
         }
       },
       "dating": {
-        "title": "A dating story breaks. The backs in the photo are {name} and them.",
+        "title": "Tin hẹn hò nổ ra. Hai tấm lưng trong ảnh là {name} và người đó.",
         "options": {
-          "truth": "You say you'll confirm it",
-          "company": "You sort the company's statement first",
-          "protect2": "You make sure their name never appears",
-          "meme": "You make the photo your profile picture"
+          "truth": "Bạn nói sẽ xác nhận là thật",
+          "company": "Bạn lo bản thông báo của công ty trước",
+          "protect2": "Bạn lo sao cho tên người đó không lộ ra",
+          "meme": "Bạn lấy luôn tấm ảnh đó làm ảnh đại diện"
         }
       },
       "first": {
-        "title": "Number one on the music show. The encore mic is in {name}'s hand.",
+        "title": "Quán quân trên show âm nhạc. Mic hát lại đang ở trong tay {name}.",
         "options": {
-          "onlyone": "You sing it looking at one person",
-          "speech2": "You say everything you want to say to the fans",
-          "credit2": "You name the crew, one by one",
-          "drop": "You dance instead of singing"
+          "onlyone": "Bạn hát mà mắt chỉ nhìn một người",
+          "speech2": "Bạn nói hết những gì muốn nói với người hâm mộ",
+          "credit2": "Bạn gọi tên từng người trong ê-kíp",
+          "drop": "Bạn không hát, bạn nhảy"
         }
       },
       "injury": {
-        "title": "They've done their ankle. Three weeks to comeback, and their part comes to {name}.",
+        "title": "Người đó chấn thương cổ chân. Còn ba tuần nữa comeback, phần của họ rơi vào tay {name}.",
         "options": {
-          "wait5": "You say you'll wait and do it together",
-          "rework": "You rewrite the choreography and take it to the company",
-          "carry": "You carry them up the dorm stairs",
-          "cast": "You write every member's name on the cast"
+          "wait5": "Bạn nói sẽ đợi, rồi cùng làm",
+          "rework": "Bạn sửa lại bài nhảy rồi mang lên công ty",
+          "carry": "Bạn cõng người đó lên cầu thang ký túc",
+          "cast": "Bạn viết tên từng thành viên lên bó bột"
         }
       },
       "edit": {
-        "title": "A clip is going round. Three seconds of {name} messing about at the back.",
+        "title": "Một đoạn clip đang lan đi. Ba giây {name} nghịch ở phía sau.",
         "options": {
-          "quiet3": "You don't respond at all",
-          "context": "You post the whole video yourself",
-          "sorry": "You apologise to whoever it made awkward",
-          "more3": "You film something funnier and post that"
+          "quiet3": "Bạn không phản ứng gì cả",
+          "context": "Bạn tự đăng nguyên đoạn video đầy đủ",
+          "sorry": "Bạn xin lỗi người bị khó xử vì chuyện đó",
+          "more3": "Bạn quay cái buồn cười hơn rồi đăng lên"
         }
       },
       "hiatus": {
-        "title": "A hiatus notice goes up. No reason given.",
+        "title": "Thông báo tạm dừng hoạt động được đưa ra. Không nói lý do.",
         "options": {
-          "letter5": "You write a long post to the fan café",
-          "ask3": "You ask the company for the reason, in writing",
-          "call2": "You ring each member",
-          "vlog": "You film something for yourself and keep it"
+          "letter5": "Bạn viết một bài dài gửi fan café",
+          "ask3": "Bạn yêu cầu công ty trả lời lý do bằng văn bản",
+          "call2": "Bạn gọi cho từng thành viên",
+          "vlog": "Bạn quay lại cho riêng mình rồi cất đi"
         }
       },
       "renew": {
-        "title": "The renewal is on {name}'s desk. Another seven years.",
+        "title": "Bản gia hạn nằm trên bàn {name}. Thêm bảy năm nữa.",
         "options": {
-          "sign": "You ask them before you read it",
-          "terms2": "You go through it clause by clause",
-          "team": "You say it's all of you or none",
-          "pen": "You ask to borrow a pen rather than use your own"
+          "sign": "Bạn chưa đọc, hỏi người đó trước đã",
+          "terms2": "Bạn đọc kỹ từng điều khoản một",
+          "team": "Bạn nói cả nhóm cùng ký, không thì thôi",
+          "pen": "Bạn không dùng bút mình, bạn mượn bút"
         }
       },
       "fansign": {
-        "title": "Fan signing. The person in front of you starts crying.",
+        "title": "Buổi ký tặng. Người ngồi trước mặt bạn bật khóc.",
         "options": {
-          "hold5": "You take their hand and say nothing",
-          "mic2": "You stand up and say it into the mic",
-          "tissue2": "You hand them a tissue and make the queue wait",
-          "selfie": "You pull a face and take a photo together"
+          "hold5": "Bạn nắm tay họ, không nói gì",
+          "mic2": "Bạn đứng dậy, nói vào mic",
+          "tissue2": "Bạn đưa khăn giấy, để cả hàng đợi",
+          "selfie": "Bạn làm mặt hài rồi chụp chung một tấm"
         }
       },
       "award": {
-        "title": "Year-end awards. It's your turn to speak.",
+        "title": "Lễ trao giải cuối năm. Đến lượt bạn phát biểu.",
         "options": {
-          "onename": "You say one name and step back",
-          "long": "You say the whole thing you prepared",
-          "thankall": "You name about twenty people",
-          "song": "You sing a line instead of speaking"
+          "onename": "Bạn gọi một cái tên rồi lùi lại",
+          "long": "Bạn nói hết bài đã chuẩn bị",
+          "thankall": "Bạn kể ra chừng hai mươi cái tên",
+          "song": "Bạn không nói, bạn hát một câu"
         }
       },
       "letter4": {
-        "title": "One fan letter arrives very late. It's dated three years ago.",
+        "title": "Một lá thư của người hâm mộ đến rất trễ. Ngày ghi trên thư là ba năm trước.",
         "options": {
-          "read2": "You read it alone and fold it back up",
-          "reply": "You write back and leave it with the company",
-          "keep3": "You carry it in your wallet",
-          "read3": "You read it out on a live"
+          "read2": "Bạn đọc một mình rồi gấp lại như cũ",
+          "reply": "Bạn viết thư hồi âm, gửi lại qua công ty",
+          "keep3": "Bạn mang nó theo trong ví",
+          "read3": "Bạn đọc to lá thư trong một buổi live"
         }
       },
       "leak2": {
-        "title": "An unreleased track has leaked. Nobody outside the room had heard it.",
+        "title": "Một bài chưa phát hành bị rò rỉ. Ngoài căn phòng đó chưa ai từng nghe.",
         "options": {
-          "nothing5": "You say nothing and let the fans take it down",
-          "official": "You push the company to release it properly",
-          "sorryteam": "You apologise to the writer first",
-          "live2": "You just sing it on a live"
+          "nothing5": "Bạn không nói gì, để người hâm mộ tự gỡ xuống",
+          "official": "Bạn thúc công ty phát hành cho đàng hoàng",
+          "sorryteam": "Bạn xin lỗi người viết bài đó trước",
+          "live2": "Bạn hát luôn bài đó trong một buổi live"
         }
       },
       "comeback": {
-        "title": "Comeback showcase. The first line is yours.",
+        "title": "Showcase comeback. Câu mở đầu là của bạn.",
         "options": {
-          "breathe": "You breathe, and look at one person",
-          "louder": "You go in at full volume from the first word",
-          "handoff": "You hand the first line to them",
-          "adlib": "You put in an ad lib that wasn't there"
+          "breathe": "Bạn hít một hơi, rồi nhìn về một người",
+          "louder": "Ngay chữ đầu bạn đã hát hết cỡ",
+          "handoff": "Bạn nhường câu mở đầu cho người đó",
+          "adlib": "Bạn chêm một đoạn ad lib không có trong bài"
         }
       },
       "encore": {
-        "title": "Encore stage, and it might be the last one. “{name}, take the mic.”",
+        "title": "Sân khấu encore, mà có thể là lần cuối. “{name}, cầm mic đi.”",
         "options": {
-          "nosing": "You don't sing. You just look at the crowd",
-          "lead2": "You go to the front and start it",
-          "sideby": "You take each member's hand",
-          "throw": "You hold the mic out to the audience"
+          "nosing": "Bạn không hát. Bạn chỉ nhìn khán giả",
+          "lead2": "Bạn bước lên trước và bắt nhịp",
+          "sideby": "Bạn nắm tay từng thành viên",
+          "throw": "Bạn chìa mic về phía khán giả"
         }
       }
     },
     "poster": {
       "lead_direct": {
-        "title": "{name} Makes the Debut Line-up",
-        "logline": "{name} says as a trainee what most groups save for year three. The company's least manageable member."
+        "title": "{name} vào đội hình debut",
+        "logline": "Điều phải ba năm sau người ta mới dám nói, {name} nói ngay từ hồi thực tập sinh. Thành viên khó bảo nhất công ty."
       },
       "lead_careful": {
-        "title": "Seven Years of {name}",
-        "logline": "{name} never raises their voice once. The team moves at {name}'s pace regardless."
+        "title": "Bảy năm của {name}",
+        "logline": "{name} chưa một lần lớn tiếng. Vậy mà cả nhóm vẫn đi theo nhịp của {name}."
       },
       "firstLove_direct": {
-        "title": "{name}, Two in the Morning",
-        "logline": "In a practice room with the lights off, {name} finally says it. It made the documentary and the fans still rewatch it."
+        "title": "{name}, hai giờ sáng",
+        "logline": "Trong phòng tập đã tắt đèn, cuối cùng {name} cũng nói ra. Đoạn đó vào phim tài liệu, và người hâm mộ vẫn xem lại tới giờ."
       },
       "firstLove_careful": {
-        "title": "{name} and a Letter Three Years Late",
-        "logline": "{name} never wrote back. The letter is still in {name}'s wallet."
+        "title": "{name} và lá thư trễ ba năm",
+        "logline": "{name} chưa bao giờ hồi âm. Lá thư vẫn nằm trong ví của {name}."
       },
       "spark_direct": {
-        "title": "{name}, the Dating Story",
-        "logline": "The day it breaks, {name} simply says it's true. The company couldn't stop it and the fans loved it more."
+        "title": "{name} và tin hẹn hò",
+        "logline": "Ngay hôm tin nổ ra, {name} chỉ nói gọn: là thật. Công ty không cản kịp, còn người hâm mộ lại càng thương."
       },
       "spark_careful": {
-        "title": "{name} and Them, Bunk Beds",
-        "logline": "{name} and that person spend three years one bunk apart. Nothing is ever said and the fans get there first."
+        "title": "{name} và người đó, giường tầng",
+        "logline": "{name} và người đó nằm cách nhau một tầng giường suốt ba năm. Không ai nói ra câu nào, mà người hâm mộ nhận ra trước."
       },
       "second_direct": {
-        "title": "{name} and the Encore Mic",
-        "logline": "First place, encore, and {name} says all of it. The trends are {name}'s name by midnight."
+        "title": "{name} và chiếc mic encore",
+        "logline": "Hạng nhất, hát lại, và {name} nói ra hết. Đến nửa đêm, trên bảng xu hướng chỉ toàn tên {name}."
       },
       "second_careful": {
-        "title": "{name} Carries Them Up the Stairs",
-        "logline": "{name} carries the injured member up to the dorm every night. Never mentions it. It all comes out in the last episode."
+        "title": "{name} cõng người đó lên cầu thang",
+        "logline": "Đêm nào {name} cũng cõng thành viên bị thương lên ký túc. Không hề kể với ai. Đến tập cuối mọi chuyện mới vỡ ra."
       },
       "rival_direct": {
-        "title": "{name} Takes the Centre",
-        "logline": "{name} steps forward into the empty centre. It's the right call, which makes the team more uncomfortable."
+        "title": "{name} đứng vào vị trí trung tâm",
+        "logline": "{name} bước lên chỗ trung tâm đang bỏ trống. Chọn vậy là đúng, và chính vì đúng nên cả nhóm càng khó xử."
       },
       "rival_careful": {
-        "title": "{name}, Quietly Number One",
-        "logline": "{name} asks for nothing. Centre stage keeps drifting {name}'s way anyway."
+        "title": "{name}, hạng nhất trong im lặng",
+        "logline": "{name} chẳng đòi hỏi gì cả. Vậy mà vị trí trung tâm cứ tự trôi về phía {name}."
       },
       "bestie_direct": {
-        "title": "{name} Is the Noise in This Group",
-        "logline": "The practice room flips when {name} walks in. Half the behind-the-scenes views are {name}."
+        "title": "{name} là cái ồn ào của nhóm này",
+        "logline": "{name} bước vào là phòng tập lật tung lên. Nửa lượt xem hậu trường là nhờ {name}."
       },
       "bestie_careful": {
-        "title": "The Two Cups {name} Made",
-        "logline": "{name} makes something hot at 3am, remembers what you said as trainees, and never brings it up."
+        "title": "Hai ly nước {name} pha",
+        "logline": "Ba giờ sáng {name} pha hai ly nóng, nhớ hết những gì bạn nói hồi còn thực tập sinh, mà chẳng bao giờ nhắc lại."
       }
     }
   }
