@@ -1,290 +1,290 @@
 {
-  "eyebrow": "Twelve scenes",
-  "title": "The drama you'd star in",
-  "sub": "Pick a genre, give a name. Twelve scenes later, a poster.",
-  "start": "Start",
-  "next": "Next",
-  "prev": "Back",
-  "again": "Answer again",
-  "disclaimer": "Just for fun. Twelve scenes can't tell you who someone is.",
-  "name_label": "Your name",
+  "eyebrow": "สิบสองฉาก",
+  "title": "ละครที่คุณจะได้เป็นตัวเอก",
+  "sub": "เลือกแนว ใส่ชื่อ อีกสิบสองฉากได้โปสเตอร์หนึ่งใบ",
+  "start": "เริ่ม",
+  "next": "ถัดไป",
+  "prev": "ย้อนกลับ",
+  "again": "ตอบใหม่",
+  "disclaimer": "ดูสนุก ๆ เท่านั้น สิบสองฉากบอกไม่ได้หรอกว่าใครเป็นใคร",
+  "name_label": "ชื่อคุณ",
   "name_placeholder": "Sarah",
-  "name_hint": "A few of the scenes call you by it, and it goes in the title.",
-  "premise": "Pick a genre and you're in that world. Over twelve scenes people will say your name, and how you answer decides how the next act opens.",
+  "name_hint": "บางฉากจะเรียกคุณด้วยชื่อนี้ และมันจะอยู่ในชื่อเรื่องด้วย",
+  "premise": "เลือกแนวแล้วคุณก็อยู่ในโลกนั้น ตลอดสิบสองฉากจะมีคนเรียกชื่อคุณ และคำตอบของคุณจะกำหนดว่าองก์ถัดไปเปิดมาอย่างไร",
   "axis": {
-    "romance": "Romance",
-    "presence": "Tension",
-    "warmth": "Warmth",
-    "mischief": "Comedy"
+    "romance": "โรแมนซ์",
+    "presence": "ความตึงเครียด",
+    "warmth": "ความอบอุ่น",
+    "mischief": "ตลก"
   },
   "act": {
-    "gi": "Act One · Setup",
-    "seung": "Act Two · Closer",
-    "jeon": "Act Three · It Breaks",
-    "gyeol": "Act Four · Last Call"
+    "gi": "องก์หนึ่ง · เปิดเรื่อง",
+    "seung": "องก์สอง · ใกล้กันขึ้น",
+    "jeon": "องก์สาม · พังทลาย",
+    "gyeol": "องก์สี่ · ฉากสุดท้าย"
   },
   "genre": {
     "chaebol": {
-      "label": "Chaebol Romance",
-      "tagline": "The chairman, the office, the envelope",
-      "slot": "16 episodes · Wed–Thu primetime"
+      "label": "โรแมนซ์แชโบล",
+      "tagline": "ท่านประธาน ออฟฟิศ และซองเงิน",
+      "slot": "16 ตอน · พุธ–พฤหัส ไพรม์ไทม์"
     },
     "makjang": {
-      "label": "Makjang",
-      "tagline": "Secret births, amnesia, a slap with kimchi",
-      "slot": "100 episodes · daily morning serial"
+      "label": "มักจัง",
+      "tagline": "ชาติกำเนิดลับ ความจำเสื่อม และกิมจิฟาดหน้า",
+      "slot": "100 ตอน · ละครเช้าทุกวัน"
     },
     "highteen": {
-      "label": "Highteen",
-      "tagline": "Uniforms, study hall, the roof, first snow",
-      "slot": "12 episodes · Fri–Sat"
+      "label": "วัยเรียน",
+      "tagline": "ชุดนักเรียน ติวดึก ดาดฟ้า หิมะแรก",
+      "slot": "12 ตอน · ศุกร์–เสาร์"
     },
     "idol": {
-      "label": "Idol",
-      "tagline": "Trainees, the debut line-up, a dating story",
-      "slot": "16 episodes · Mon–Tue"
+      "label": "ไอดอล",
+      "tagline": "เด็กฝึก ทีมเดบิวต์ และข่าวคบหา",
+      "slot": "16 ตอน · จันทร์–อังคาร"
     }
   },
   "chaebol": {
     "q": {
       "intern": {
-        "title": "First day. Your 사수 walks you round the team. “This is {name}, starting with us today.”",
+        "title": "วันแรกของงาน 사수 พาคุณไปทักทายทั้งทีม “นี่คือ {name} เริ่มงานกับเราวันนี้”",
         "options": {
-          "stare": "You're being introduced, and you're looking at the one from the corridor",
-          "brief": "A short bow. You answer what you're asked and nothing more",
-          "learn": "You meet each pair of eyes and say the name back",
-          "mutter": "“Looking forward to it.” And under your breath, “help.”"
+          "stare": "กำลังถูกแนะนำอยู่ แต่สายตาคุณจับอยู่ที่คนที่เจอในทางเดินเมื่อกี้",
+          "brief": "โค้งสั้น ๆ ถามอะไรตอบอย่างนั้น ไม่มีมากกว่านั้น",
+          "learn": "คุณสบตาทีละคนแล้วทวนชื่อเขากลับไป",
+          "mutter": "“ฝากเนื้อฝากตัวด้วยครับ” แล้วพึมพำในลำคอว่า “ช่วยผมด้วย”"
         }
       },
       "elevator": {
-        "title": "Of all the lifts, this one — with the person you've been avoiding. Twelve floors to go.",
+        "title": "ลิฟต์ตั้งหลายตัว ดันเป็นตัวนี้ — กับคนที่คุณหลบมาตลอด อีกสิบสองชั้น",
         "options": {
-          "mirror": "You watch the floor numbers. In the mirror, they're watching you",
-          "ask": "“Which floor?” You ask first",
-          "hold": "Their hands are full, so you hold the door without saying anything",
-          "joke": "“If this thing stops, we're on the news, right?”"
+          "mirror": "คุณมองเลขชั้น ในกระจก เขากำลังมองคุณ",
+          "ask": "“ชั้นไหนครับ” คุณถามก่อน",
+          "hold": "มือเขาถือของเต็ม คุณกดค้างประตูไว้โดยไม่พูดอะไร",
+          "joke": "“ถ้าลิฟต์ค้าง เราได้ขึ้นข่าวแน่เลยนะ”"
         }
       },
       "rumour": {
-        "title": "The office group chat has already decided. “{name} and them — there's something going on, right?”",
+        "title": "แชทกลุ่มออฟฟิศสรุปกันไปแล้ว “{name} กับคนนั้น มีอะไรกันแน่ ๆ ใช่ไหม”",
         "options": {
-          "sowhat": "“And if there is?” Sent.",
-          "silence": "You read it and don't reply. Next day nobody brings it up",
-          "offer": "You go to them first. “If this bothers you, I'll put a stop to it”",
-          "rename": "You say nothing and quietly rename the chat"
+          "sowhat": "“แล้วถ้ามีล่ะ” ส่ง",
+          "silence": "คุณอ่านแล้วไม่ตอบ วันรุ่งขึ้นไม่มีใครพูดถึงอีก",
+          "offer": "คุณไปหาเขาก่อน “ถ้าเรื่องนี้ทำให้อึดอัด เดี๋ยวผมจัดการให้จบ”",
+          "rename": "คุณไม่พูดอะไรและเปลี่ยนชื่อกลุ่มแชทเงียบ ๆ"
         }
       },
       "overnight": {
-        "title": "Ten at night, and it's just the two of you left. “{name}, still here?”",
+        "title": "สี่ทุ่ม เหลือกันอยู่สองคน “{name} ยังไม่กลับอีกเหรอ”",
         "options": {
-          "stay2": "You keep your eyes on the monitor and say you've got a while yet",
-          "coffee2": "You make two coffees. You don't ask first",
-          "blanket": "The aircon's brutal, so you drape your jacket over them",
-          "playlist": "You put the speaker on. You have a playlist for this"
+          "stay2": "คุณจ้องจอไว้แล้วบอกว่ายังอีกนาน",
+          "coffee2": "คุณชงกาแฟสองแก้ว ไม่ได้ถามก่อน",
+          "blanket": "แอร์หนาวเกิน คุณเอาเสื้อคลุมให้เขา",
+          "playlist": "คุณเปิดลำโพง คุณมีเพลย์ลิสต์สำหรับเรื่องนี้"
         }
       },
       "hoesik": {
-        "title": "Round two of the 회식. The 부장 puts a microphone in your hand. “{name}, one song.”",
+        "title": "รอบสองของ 회식 부장 ยัดไมค์ใส่มือคุณ “{name} ร้องสักเพลง”",
         "options": {
-          "ballad": "You queue a ballad and don't look at one particular person",
-          "stand": "You stand up and take the mic. The singing is a separate problem",
-          "swap": "You put the 부장's own favourite in instead",
-          "tambourine": "You pick up the tambourine. You do not sing"
+          "ballad": "คุณกดเพลงบัลลาดแล้วไม่มองไปทางคนคนหนึ่ง",
+          "stand": "คุณลุกขึ้นรับไมค์ ร้องได้หรือไม่ได้เป็นอีกเรื่อง",
+          "swap": "คุณกดเพลงประจำของ 부장 ให้แทน",
+          "tambourine": "คุณหยิบแทมบูรีน คุณไม่ร้อง"
         }
       },
       "sickday": {
-        "title": "They're off sick. In the group chat: “{name}, could you look in on them if you've got time?”",
+        "title": "เขาลาป่วย ในแชทกลุ่ม: “{name} ถ้าว่างช่วยแวะดูหน่อยได้ไหม”",
         "options": {
-          "porridge2": "You leave the porridge at the door. You don't ring the bell",
-          "doctor": "You take them to the clinic and sign them in yourself",
-          "text2": "“Have you taken it?” Every two hours",
-          "soup": "You turn up with a whole pot of chicken soup"
+          "porridge2": "คุณวางโจ๊กไว้หน้าประตู ไม่กดกริ่ง",
+          "doctor": "คุณพาเขาไปคลินิกและยื่นเรื่องให้เอง",
+          "text2": "“กินยาหรือยัง” ทุกสองชั่วโมง",
+          "soup": "คุณโผล่ไปพร้อมไก่ตุ๋นทั้งหม้อ"
         }
       },
       "talent": {
-        "title": "The company workshop talent show. Of course {name} and them are in the same group.",
+        "title": "งานเวิร์กช็อปบริษัทมีโชว์ความสามารถ แน่นอนว่า {name} กับเขาอยู่กลุ่มเดียวกัน",
         "options": {
-          "duet": "You pick a duet. You don't explain",
-          "mc": "You volunteer to host. The stage is entirely yours",
-          "backup": "You stand behind them and hold the whole thing up",
-          "costume": "You turn up with matching costumes nobody asked for"
+          "duet": "คุณเลือกเพลงคู่ ไม่อธิบายอะไร",
+          "mc": "คุณอาสาเป็นพิธีกร เวทีเป็นของคุณทั้งหมด",
+          "backup": "คุณยืนข้างหลังเขาและแบกทั้งโชว์ไว้",
+          "costume": "คุณเอาชุดคู่มาเองโดยไม่มีใครขอ"
         }
       },
       "rooftop": {
-        "title": "The roof. They're up there alone, and they've clearly been crying.",
+        "title": "ดาดฟ้า เขาอยู่คนเดียว และเห็นชัดว่าเพิ่งร้องไห้มา",
         "options": {
-          "beside": "You go and stand next to them, in a way that says you're not leaving",
-          "coffee": "You go back down, then come up again and leave a coffee",
-          "tissue": "You hand them a tissue. “Take your time”",
-          "weather": "“Windy up here.” You start somewhere else"
+          "beside": "คุณไปยืนข้าง ๆ ในแบบที่บอกว่าคุณจะไม่ไปไหน",
+          "coffee": "คุณลงไปแล้วขึ้นมาใหม่ วางกาแฟกระป๋องไว้",
+          "tissue": "คุณยื่นกระดาษทิชชู่ให้ “ค่อย ๆ ก็ได้”",
+          "weather": "“ข้างบนนี้ลมแรงนะ” คุณเริ่มจากเรื่องอื่น"
         }
       },
       "rival": {
-        "title": "The building owner's son has noticed them. Neither the car nor the man is from around here.",
+        "title": "ลูกชายเจ้าของตึกเริ่มสนใจเขา ทั้งรถทั้งคนดูไม่เหมือนคนแถวนี้",
         "options": {
-          "overtime": "You say nothing. You stay late with them instead",
-          "between": "“And you are?” You end up standing between them",
-          "defer": "If they're happy, you decide that's the right answer",
-          "photo": "You photograph the car and post it to the group chat"
+          "overtime": "คุณไม่พูดอะไร คุณอยู่โอทีเป็นเพื่อนเขาแทน",
+          "between": "“คุณเป็นใครครับ” คุณลงเอยด้วยการยืนขวางกลาง",
+          "defer": "ถ้าเขามีความสุข คุณก็ถือว่านั่นคือคำตอบที่ถูก",
+          "photo": "คุณถ่ายรูปรถแล้วโยนลงแชทกลุ่ม"
         }
       },
       "mother": {
-        "title": "Their mother asks to meet. She sits down and slides an envelope across. “So you're {name}.”",
+        "title": "แม่ของเขาขอนัดเจอ เธอนั่งลงแล้วเลื่อนซองหนึ่งมา “งั้นเธอคือ {name} สินะ”",
         "options": {
-          "refuse": "You leave the envelope where it is. “I'm not taking that”",
-          "return": "You push it back and hear her out, politely, to the end",
-          "listen": "You start with “I know you're worried”",
-          "open": "You open it and ask what exactly it's for"
+          "refuse": "คุณปล่อยซองไว้ตรงนั้น “ผมไม่รับครับ”",
+          "return": "คุณดันซองกลับไปแล้วฟังเธอจนจบ อย่างสุภาพ",
+          "listen": "คุณเริ่มด้วย “ผมเข้าใจว่าคุณแม่เป็นห่วง”",
+          "open": "คุณเปิดซองแล้วถามว่าจะให้ทำอะไรกันแน่"
         }
       },
       "chairman": {
-        "title": "You're called to the chairman's office. “So you're this {name} I keep hearing about.”",
+        "title": "คุณถูกเรียกขึ้นห้องท่านประธาน “งั้นนายก็คือ {name} ที่ฉันได้ยินชื่อตลอดสินะ”",
         "options": {
-          "state": "“I am. And anything about them, you can say to me.”",
-          "bow": "You bow and wait for him to speak first",
-          "praise": "When their name comes up, you only say good things",
-          "deal": "You ask what the terms are before he does"
+          "state": "“ใช่ครับ และเรื่องของเขา ท่านพูดกับผมได้เลย”",
+          "bow": "คุณโค้งแล้วรอให้ท่านพูดก่อน",
+          "praise": "พอชื่อเขาถูกเอ่ยขึ้นมา คุณพูดแต่เรื่องดี ๆ",
+          "deal": "คุณถามเงื่อนไขก่อนที่ท่านจะทันเอ่ย"
         }
       },
       "quitting": {
-        "title": "They've handed in their notice. “I wanted {name} to hear it from me.”",
+        "title": "เขายื่นใบลาออกแล้ว “อยากให้ {name} ได้ยินจากปากผมเอง”",
         "options": {
-          "follow2": "“Where to? Should I hand mine in as well.”",
-          "reason": "You hear the whole reason out before you say anything",
-          "hold2": "You take the letter and put it back in the drawer",
-          "joke2": "“I'll organise the leaving do,” you say, laughing"
+          "follow2": "“ไปไหน หรือผมยื่นด้วยดี”",
+          "reason": "คุณฟังเหตุผลจนจบก่อนจะพูดอะไร",
+          "hold2": "คุณรับใบลาออกมาแล้วเก็บกลับเข้าลิ้นชัก",
+          "joke2": "“งานเลี้ยงส่งเดี๋ยวผมจัดเอง” คุณพูดพร้อมหัวเราะ"
         }
       },
       "leak": {
-        "title": "The company messenger has been leaked. Every message between {name} and them.",
+        "title": "แชทภายในบริษัทหลุด ทุกข้อความระหว่าง {name} กับเขา",
         "options": {
-          "own": "“Yes, I sent that,” you say, on the record",
-          "delete": "You go straight to IT and get hold of the original",
-          "check": "You go to them first. “Are you okay?”",
-          "screenshot": "You screenshot the funniest bit and post it yourself"
+          "own": "“ใช่ ผมส่งเอง” คุณพูดออกไปตรง ๆ",
+          "delete": "คุณลงไปหาฝ่ายไอทีทันทีและคุมไฟล์ต้นฉบับไว้",
+          "check": "คุณไปหาเขาก่อน “โอเคไหม”",
+          "screenshot": "คุณแคปตอนที่ตลกที่สุดแล้วโพสต์เอง"
         }
       },
       "hospital": {
-        "title": "Two in the morning, a hospital corridor. Nobody has told you anything.",
+        "title": "ตีสอง ทางเดินโรงพยาบาล ไม่มีใครบอกอะไรคุณเลย",
         "options": {
-          "wait": "You sit at the end of the corridor and wait for morning",
-          "family": "You go to the nurses' station and say you're family",
-          "porridge": "You go down to the shop for porridge and a blanket",
-          "talk": "You've been talking to the person in the next chair for an hour"
+          "wait": "คุณนั่งที่ปลายทางเดินและรอจนเช้า",
+          "family": "คุณไปเคาน์เตอร์พยาบาลแล้วบอกว่าเป็นญาติ",
+          "porridge": "คุณลงไปร้านสะดวกซื้อซื้อโจ๊กกับผ้าห่ม",
+          "talk": "คุณคุยกับคนที่นั่งเก้าอี้ข้าง ๆ มาชั่วโมงหนึ่งแล้ว"
         }
       },
       "contract": {
-        "title": "“{name}. Three months. Could you pretend we're together?”",
+        "title": "“{name} นะ แค่สามเดือน ช่วยแกล้งเป็นแฟนกันได้ไหม”",
         "options": {
-          "real": "“And if it's real by then?”",
-          "terms": "You ask to write it down. Term, scope, how it ends",
-          "why": "You ask why first. How bad is it",
-          "rings": "“Sure.” Next day you turn up with matching rings"
+          "real": "“แล้วถ้าครบสามเดือนมันเป็นของจริงล่ะ”",
+          "terms": "คุณขอให้เขียนลงกระดาษ ระยะเวลา ขอบเขต วิธีจบ",
+          "why": "คุณถามเหตุผลก่อน มันหนักแค่ไหน",
+          "rings": "“ได้” วันรุ่งขึ้นคุณโผล่มาพร้อมแหวนคู่"
         }
       },
       "snow": {
-        "title": "First snow. You both remember saying you'd meet when it came.",
+        "title": "หิมะแรก ทั้งคู่จำได้ว่าเคยนัดกันว่าจะเจอกันตอนหิมะตก",
         "options": {
-          "go": "You just go to the place. You don't message",
-          "call": "You call. “Come outside”",
-          "text3": "One line. “it's snowing”",
-          "snowman": "You build the snowman first and send the photo"
+          "go": "คุณไปที่นัดเลย ไม่ทักไปก่อน",
+          "call": "คุณโทรไป “ออกมาสิ”",
+          "text3": "บรรทัดเดียว “หิมะตกแล้ว”",
+          "snowman": "คุณปั้นตุ๊กตาหิมะก่อนแล้วค่อยส่งรูปไป"
         }
       },
       "board": {
-        "title": "The board meeting. Your name is on the last line of the agenda.",
+        "title": "ประชุมบอร์ด ชื่อคุณอยู่บรรทัดสุดท้ายของวาระ",
         "options": {
-          "omit": "Your turn comes and you still don't bring them into it",
-          "speak": "You put your hand up and go first",
-          "credit": "You put all of it down to the team",
-          "walk": "You close the folder and leave"
+          "omit": "ถึงตาคุณแล้วคุณก็ยังไม่ลากเขาเข้ามาในเรื่องนี้",
+          "speak": "คุณยกมือแล้วพูดเป็นคนแรก",
+          "credit": "คุณยกความดีความชอบให้ทีมทั้งหมด",
+          "walk": "คุณปิดแฟ้มแล้วเดินออกไป"
         }
       },
       "airport": {
-        "title": "Word comes that they're at the airport. Two hours.",
+        "title": "มีข่าวว่าเขาอยู่ที่สนามบิน เหลืออีกสองชั่วโมง",
         "options": {
-          "drive": "You drive. You don't call until you're there",
-          "ring": "You call first. “Stay exactly where you are.”",
-          "letter": "You write a letter and leave it at the desk",
-          "gate": "You get to the gate before them and wait"
+          "drive": "คุณขับรถไป ถึงที่แล้วค่อยโทร",
+          "ring": "คุณโทรก่อน “อยู่ตรงนั้นแหละ อย่าไปไหน”",
+          "letter": "คุณเขียนจดหมายแล้วฝากไว้ที่เคาน์เตอร์",
+          "gate": "คุณไปถึงเกตก่อนเขาแล้วยืนรอ"
         }
       },
       "press": {
-        "title": "A story runs saying the two of you are getting married. With photos.",
+        "title": "ข่าวออกว่าสองคนนี้กำลังจะแต่งงานกัน พร้อมรูป",
         "options": {
-          "quiet": "You say nothing. You don't deny it either",
-          "deny": "You put out an official denial",
-          "shield": "You get in front of whatever lands on them",
-          "frame": "You frame the article and put it on your desk"
+          "quiet": "คุณไม่พูดอะไร และก็ไม่ปฏิเสธ",
+          "deny": "คุณออกแถลงการณ์ปฏิเสธอย่างเป็นทางการ",
+          "shield": "คุณยืนรับทุกอย่างที่จะตกไปถึงเขา",
+          "frame": "คุณใส่กรอบข่าวนั้นแล้ววางไว้บนโต๊ะทำงาน"
         }
       },
       "wrist": {
-        "title": "In front of everyone, they take you by the wrist.",
+        "title": "ต่อหน้าทุกคน เขาคว้าข้อมือคุณ",
         "options": {
-          "follow": "You don't pull away. You go with them",
-          "greet": "You free your hand and say hello to the room first",
-          "regrip": "You change the grip. Hand, not wrist",
-          "laugh": "“Here?” you laugh"
+          "follow": "คุณไม่สะบัดมือออก คุณเดินไปกับเขา",
+          "greet": "คุณคลายมือออกแล้วทักทายคนทั้งห้องก่อน",
+          "regrip": "คุณเปลี่ยนวิธีจับ จับมือ ไม่ใช่ข้อมือ",
+          "laugh": "“ตรงนี้เหรอ” คุณหัวเราะ"
         }
       },
       "ramyeon": {
-        "title": "Late, outside their building. “{name}, want to come up for ramyeon?”",
+        "title": "ดึกแล้ว หน้าตึกเขา “{name} อยากขึ้นไปกินรามยอนไหม”",
         "options": {
-          "stay": "“Forget the ramyeon.” You stay exactly where you are",
-          "up": "“Okay.” You go up first",
-          "tomorrow": "“I'll head off. See you tomorrow”",
-          "two": "“Put the water on. I'm having two”"
+          "stay": "“รามยอนไม่ต้องหรอก” คุณยืนอยู่ตรงนั้น",
+          "up": "“โอเค” คุณขึ้นไปก่อน",
+          "tomorrow": "“ผมกลับก่อนนะ พรุ่งนี้เจอกัน”",
+          "two": "“ตั้งน้ำเลย ผมกินสองห่อ”"
         }
       }
     },
     "poster": {
       "lead_direct": {
-        "title": "{name} and the Chairman's Blind Spot",
-        "logline": "{name} says in episode two what everyone else is saving for the finale. The chairman's plan did not have a variable like this in it."
+        "title": "{name} กับจุดบอดของท่านประธาน",
+        "logline": "{name} พูดตั้งแต่ตอนสองในสิ่งที่คนอื่นเก็บไว้ถึงตอนจบ แผนของท่านประธานไม่มีตัวแปรแบบนี้อยู่ในนั้น"
       },
       "lead_careful": {
-        "title": "The Quiet Takeover of {name}",
-        "logline": "{name} carries twelve episodes without once raising their voice, makes everybody wait, and lands the whole thing at the end."
+        "title": "การเทกโอเวอร์เงียบ ๆ ของ {name}",
+        "logline": "{name} แบกสิบสองตอนไว้โดยไม่เคยขึ้นเสียงสักครั้ง ทำให้ทุกคนต้องรอ แล้วปิดทั้งเรื่องในตอนท้าย"
       },
       "firstLove_direct": {
-        "title": "{name}, Three Months by Contract",
-        "logline": "It was only supposed to last three months on paper. {name} starts doing things that were never in the contract."
+        "title": "{name} สามเดือนตามสัญญา",
+        "logline": "บนกระดาษมีแค่สามเดือน แล้ว {name} ก็เริ่มทำสิ่งที่ไม่เคยอยู่ในสัญญา"
       },
       "firstLove_careful": {
-        "title": "{name}, the Three Months Unsaid",
-        "logline": "{name} never said it. Which is why somebody still can't throw away the umbrella they were lent."
+        "title": "{name} สามเดือนที่ไม่ได้พูด",
+        "logline": "{name} ไม่เคยพูดออกมา เพราะอย่างนั้นถึงยังมีคนทิ้งร่มที่เคยยืมไปไม่ลง"
       },
       "spark_direct": {
-        "title": "{name} vs. the Office Dating Policy",
-        "logline": "Two episodes of bad timing, and then {name} just asks. Great for the audience, a nightmare for the writers."
+        "title": "{name} ปะทะกฎห้ามคบในบริษัท",
+        "logline": "สองตอนที่จังหวะไม่ตรงกัน แล้ว {name} ก็ถามไปตรง ๆ คนดูสะใจ คนเขียนบทปวดหัว"
       },
       "spark_careful": {
-        "title": "One Minute Between {name} and Them",
-        "logline": "{name} and that person keep reaching the same door a minute apart. Nothing has been said and the whole floor knows."
+        "title": "หนึ่งนาทีระหว่าง {name} กับเขา",
+        "logline": "{name} กับคนคนนั้นไปถึงประตูเดียวกันห่างกันหนึ่งนาทีเสมอ ยังไม่มีใครพูดอะไร และทั้งชั้นรู้กันหมด"
       },
       "second_direct": {
-        "title": "{name}, the Episode Eight Confession",
-        "logline": "{name} says it in episode eight and steps back cleanly. Half the audience changes sides that night."
+        "title": "{name} คำสารภาพตอนแปด",
+        "logline": "{name} พูดออกไปในตอนแปดแล้วถอยออกมาอย่างสวยงาม คืนนั้นคนดูครึ่งหนึ่งเปลี่ยนข้าง"
       },
       "second_careful": {
-        "title": "{name} Is Making Sure They Ate",
-        "logline": "{name} is the one who noticed they'd skipped lunch. It never gets said, and people argue about it until the finale."
+        "title": "{name} คอยดูว่าเขากินข้าวหรือยัง",
+        "logline": "{name} คือคนที่สังเกตว่าเขาข้ามมื้อ เรื่องนี้ไม่เคยถูกพูดออกมา และคนเถียงกันเรื่องนี้จนถึงตอนจบ"
       },
       "rival_direct": {
-        "title": "{name}, the One in the Meeting Room",
-        "logline": "{name} arrives late, better dressed, and says the thing nobody wanted said. Being right is the annoying part."
+        "title": "{name} คนในห้องประชุม",
+        "logline": "{name} มาสาย แต่งตัวดีกว่า และพูดสิ่งที่ไม่มีใครอยากให้พูด การที่พูดถูกนั่นแหละคือส่วนที่น่าหมั่นไส้"
       },
       "rival_careful": {
-        "title": "{name} Already Knew",
-        "logline": "{name} doesn't fight anyone. It just keeps turning out that {name} was right, and by the time anyone notices it's late."
+        "title": "{name} รู้มาก่อนแล้ว",
+        "logline": "{name} ไม่ทะเลาะกับใคร แค่กลายเป็นว่า {name} ถูกเสมอ และกว่าใครจะรู้ตัวก็สายไปแล้ว"
       },
       "bestie_direct": {
-        "title": "{name} Is the Mood of This Company",
-        "logline": "{name} takes every scene they're in, and half of those scenes were not in the script."
+        "title": "{name} คือบรรยากาศของบริษัทนี้",
+        "logline": "{name} กินทุกฉากที่ตัวเองอยู่ และครึ่งหนึ่งของฉากพวกนั้นไม่ได้อยู่ในบท"
       },
       "bestie_careful": {
-        "title": "The Company Doesn't Work Without {name}",
-        "logline": "{name} drives them home, remembers what was said in episode one, and never makes it about themselves."
+        "title": "บริษัทนี้ไม่เดินถ้าไม่มี {name}",
+        "logline": "{name} ขับรถไปส่งเขา จำสิ่งที่พูดกันไว้ตั้งแต่ตอนหนึ่ง และไม่เคยทวงบุญคุณ"
       }
     }
   },

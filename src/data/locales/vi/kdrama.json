@@ -1,290 +1,290 @@
 {
-  "eyebrow": "Twelve scenes",
-  "title": "The drama you'd star in",
-  "sub": "Pick a genre, give a name. Twelve scenes later, a poster.",
-  "start": "Start",
-  "next": "Next",
-  "prev": "Back",
-  "again": "Answer again",
-  "disclaimer": "Just for fun. Twelve scenes can't tell you who someone is.",
-  "name_label": "Your name",
+  "eyebrow": "Mười hai cảnh",
+  "title": "Bộ phim bạn sẽ đóng chính",
+  "sub": "Chọn một thể loại, cho một cái tên. Mười hai cảnh sau là một tấm poster.",
+  "start": "Bắt đầu",
+  "next": "Tiếp",
+  "prev": "Quay lại",
+  "again": "Trả lời lại",
+  "disclaimer": "Chỉ để cho vui. Mười hai cảnh không nói được ai là ai.",
+  "name_label": "Tên bạn",
   "name_placeholder": "Sarah",
-  "name_hint": "A few of the scenes call you by it, and it goes in the title.",
-  "premise": "Pick a genre and you're in that world. Over twelve scenes people will say your name, and how you answer decides how the next act opens.",
+  "name_hint": "Vài cảnh sẽ gọi bạn bằng tên đó, và nó sẽ nằm trong tựa phim.",
+  "premise": "Chọn thể loại là bạn bước vào thế giới đó. Qua mười hai cảnh, người ta sẽ gọi tên bạn, và cách bạn trả lời quyết định hồi tiếp theo mở ra thế nào.",
   "axis": {
-    "romance": "Romance",
-    "presence": "Tension",
-    "warmth": "Warmth",
-    "mischief": "Comedy"
+    "romance": "Lãng mạn",
+    "presence": "Căng thẳng",
+    "warmth": "Ấm áp",
+    "mischief": "Hài"
   },
   "act": {
-    "gi": "Act One · Setup",
-    "seung": "Act Two · Closer",
-    "jeon": "Act Three · It Breaks",
-    "gyeol": "Act Four · Last Call"
+    "gi": "Hồi Một · Mở màn",
+    "seung": "Hồi Hai · Xích lại",
+    "jeon": "Hồi Ba · Đổ vỡ",
+    "gyeol": "Hồi Bốn · Hồi kết"
   },
   "genre": {
     "chaebol": {
-      "label": "Chaebol Romance",
-      "tagline": "The chairman, the office, the envelope",
-      "slot": "16 episodes · Wed–Thu primetime"
+      "label": "Lãng mạn tài phiệt",
+      "tagline": "Chủ tịch, văn phòng, và chiếc phong bì",
+      "slot": "16 tập · khung Tư–Năm giờ vàng"
     },
     "makjang": {
       "label": "Makjang",
-      "tagline": "Secret births, amnesia, a slap with kimchi",
-      "slot": "100 episodes · daily morning serial"
+      "tagline": "Thân thế bí mật, mất trí nhớ, một cái tát bằng kimchi",
+      "slot": "100 tập · phim buổi sáng hằng ngày"
     },
     "highteen": {
-      "label": "Highteen",
-      "tagline": "Uniforms, study hall, the roof, first snow",
-      "slot": "12 episodes · Fri–Sat"
+      "label": "Học đường",
+      "tagline": "Đồng phục, tự học tối, sân thượng, tuyết đầu mùa",
+      "slot": "12 tập · khung Sáu–Bảy"
     },
     "idol": {
-      "label": "Idol",
-      "tagline": "Trainees, the debut line-up, a dating story",
-      "slot": "16 episodes · Mon–Tue"
+      "label": "Thần tượng",
+      "tagline": "Thực tập sinh, đội hình debut, một tin hẹn hò",
+      "slot": "16 tập · khung Hai–Ba"
     }
   },
   "chaebol": {
     "q": {
       "intern": {
-        "title": "First day. Your 사수 walks you round the team. “This is {name}, starting with us today.”",
+        "title": "Ngày đầu đi làm. 사수 dẫn bạn đi chào cả nhóm. “Đây là {name}, hôm nay bắt đầu với chúng ta.”",
         "options": {
-          "stare": "You're being introduced, and you're looking at the one from the corridor",
-          "brief": "A short bow. You answer what you're asked and nothing more",
-          "learn": "You meet each pair of eyes and say the name back",
-          "mutter": "“Looking forward to it.” And under your breath, “help.”"
+          "stare": "Đang được giới thiệu mà mắt bạn dán vào người gặp ngoài hành lang lúc nãy",
+          "brief": "Cúi đầu chào ngắn. Hỏi gì đáp nấy, không hơn",
+          "learn": "Bạn nhìn vào mắt từng người và nhắc lại tên họ",
+          "mutter": "“Rất mong được giúp đỡ.” Rồi lẩm bẩm: “cứu tôi với.”"
         }
       },
       "elevator": {
-        "title": "Of all the lifts, this one — with the person you've been avoiding. Twelve floors to go.",
+        "title": "Bao nhiêu thang máy, lại đúng cái này — với người bạn vẫn né. Còn mười hai tầng.",
         "options": {
-          "mirror": "You watch the floor numbers. In the mirror, they're watching you",
-          "ask": "“Which floor?” You ask first",
-          "hold": "Their hands are full, so you hold the door without saying anything",
-          "joke": "“If this thing stops, we're on the news, right?”"
+          "mirror": "Bạn nhìn số tầng. Trong gương, họ đang nhìn bạn",
+          "ask": "“Tầng mấy?” Bạn hỏi trước",
+          "hold": "Tay họ đầy đồ, bạn giữ cửa mà không nói gì",
+          "joke": "“Nếu cái này kẹt thì mình lên thời sự nhỉ?”"
         }
       },
       "rumour": {
-        "title": "The office group chat has already decided. “{name} and them — there's something going on, right?”",
+        "title": "Nhóm chat công ty đã chốt xong. “{name} với người kia — có gì đó thật mà nhỉ?”",
         "options": {
-          "sowhat": "“And if there is?” Sent.",
-          "silence": "You read it and don't reply. Next day nobody brings it up",
-          "offer": "You go to them first. “If this bothers you, I'll put a stop to it”",
-          "rename": "You say nothing and quietly rename the chat"
+          "sowhat": "“Thì có thì sao?” Gửi.",
+          "silence": "Bạn đọc và không trả lời. Hôm sau không ai nhắc lại",
+          "offer": "Bạn tìm họ trước. “Nếu chuyện này làm bạn khó chịu, tôi sẽ dẹp”",
+          "rename": "Bạn không nói gì và lặng lẽ đổi tên nhóm chat"
         }
       },
       "overnight": {
-        "title": "Ten at night, and it's just the two of you left. “{name}, still here?”",
+        "title": "Mười giờ tối, chỉ còn hai người. “{name} vẫn chưa về à?”",
         "options": {
-          "stay2": "You keep your eyes on the monitor and say you've got a while yet",
-          "coffee2": "You make two coffees. You don't ask first",
-          "blanket": "The aircon's brutal, so you drape your jacket over them",
-          "playlist": "You put the speaker on. You have a playlist for this"
+          "stay2": "Bạn dán mắt vào màn hình và bảo còn lâu mới xong",
+          "coffee2": "Bạn pha hai ly cà phê. Không hỏi trước",
+          "blanket": "Điều hòa lạnh quá, bạn khoác áo mình lên vai họ",
+          "playlist": "Bạn bật loa. Bạn có sẵn một playlist cho việc này"
         }
       },
       "hoesik": {
-        "title": "Round two of the 회식. The 부장 puts a microphone in your hand. “{name}, one song.”",
+        "title": "Tăng hai của 회식. 부장 dúi micro vào tay bạn. “{name}, một bài đi.”",
         "options": {
-          "ballad": "You queue a ballad and don't look at one particular person",
-          "stand": "You stand up and take the mic. The singing is a separate problem",
-          "swap": "You put the 부장's own favourite in instead",
-          "tambourine": "You pick up the tambourine. You do not sing"
+          "ballad": "Bạn chọn một bản ballad và không nhìn về phía một người nào đó",
+          "stand": "Bạn đứng dậy cầm micro. Hát được hay không là chuyện sau",
+          "swap": "Bạn bấm bài tủ của 부장 thay vào",
+          "tambourine": "Bạn cầm trống lắc. Bạn không hát"
         }
       },
       "sickday": {
-        "title": "They're off sick. In the group chat: “{name}, could you look in on them if you've got time?”",
+        "title": "Họ nghỉ ốm. Trong nhóm chat: “{name} rảnh thì ghé xem sao được không?”",
         "options": {
-          "porridge2": "You leave the porridge at the door. You don't ring the bell",
-          "doctor": "You take them to the clinic and sign them in yourself",
-          "text2": "“Have you taken it?” Every two hours",
-          "soup": "You turn up with a whole pot of chicken soup"
+          "porridge2": "Bạn để cháo trước cửa. Không bấm chuông",
+          "doctor": "Bạn đưa họ đi khám và tự đi làm thủ tục",
+          "text2": "“Uống thuốc chưa?” Cứ hai tiếng một lần",
+          "soup": "Bạn xuất hiện với nguyên nồi gà hầm"
         }
       },
       "talent": {
-        "title": "The company workshop talent show. Of course {name} and them are in the same group.",
+        "title": "Hội thao công ty có màn văn nghệ. Dĩ nhiên {name} và họ cùng một nhóm.",
         "options": {
-          "duet": "You pick a duet. You don't explain",
-          "mc": "You volunteer to host. The stage is entirely yours",
-          "backup": "You stand behind them and hold the whole thing up",
-          "costume": "You turn up with matching costumes nobody asked for"
+          "duet": "Bạn chọn bài song ca. Không giải thích gì",
+          "mc": "Bạn xung phong dẫn chương trình. Sân khấu là của bạn",
+          "backup": "Bạn đứng sau họ và gánh cả tiết mục",
+          "costume": "Bạn mang đến hai bộ đồ đôi không ai yêu cầu"
         }
       },
       "rooftop": {
-        "title": "The roof. They're up there alone, and they've clearly been crying.",
+        "title": "Sân thượng. Họ đứng một mình, và rõ ràng vừa khóc.",
         "options": {
-          "beside": "You go and stand next to them, in a way that says you're not leaving",
-          "coffee": "You go back down, then come up again and leave a coffee",
-          "tissue": "You hand them a tissue. “Take your time”",
-          "weather": "“Windy up here.” You start somewhere else"
+          "beside": "Bạn tới đứng cạnh, theo kiểu cho biết mình không đi đâu cả",
+          "coffee": "Bạn xuống rồi lên lại, để một lon cà phê",
+          "tissue": "Bạn đưa khăn giấy. “Cứ từ từ”",
+          "weather": "“Trên này gió nhỉ.” Bạn bắt đầu từ chỗ khác"
         }
       },
       "rival": {
-        "title": "The building owner's son has noticed them. Neither the car nor the man is from around here.",
+        "title": "Con trai chủ tòa nhà để ý tới họ. Cả chiếc xe lẫn người đều không giống dân ở đây.",
         "options": {
-          "overtime": "You say nothing. You stay late with them instead",
-          "between": "“And you are?” You end up standing between them",
-          "defer": "If they're happy, you decide that's the right answer",
-          "photo": "You photograph the car and post it to the group chat"
+          "overtime": "Bạn không nói gì. Bạn ở lại tăng ca cùng họ",
+          "between": "“Anh là ai nhỉ?” Bạn đứng chen vào giữa",
+          "defer": "Nếu họ vui thì bạn coi đó là câu trả lời đúng",
+          "photo": "Bạn chụp cái xe và ném vào nhóm chat"
         }
       },
       "mother": {
-        "title": "Their mother asks to meet. She sits down and slides an envelope across. “So you're {name}.”",
+        "title": "Mẹ họ hẹn gặp bạn. Bà ngồi xuống và đẩy một chiếc phong bì qua. “Vậy cháu là {name}.”",
         "options": {
-          "refuse": "You leave the envelope where it is. “I'm not taking that”",
-          "return": "You push it back and hear her out, politely, to the end",
-          "listen": "You start with “I know you're worried”",
-          "open": "You open it and ask what exactly it's for"
+          "refuse": "Bạn để nguyên chiếc phong bì. “Cháu không nhận cái đó”",
+          "return": "Bạn đẩy lại và nghe bà nói hết, lễ phép, tới cùng",
+          "listen": "Bạn mở lời bằng “Cháu hiểu bác đang lo”",
+          "open": "Bạn mở ra và hỏi chính xác là để làm gì"
         }
       },
       "chairman": {
-        "title": "You're called to the chairman's office. “So you're this {name} I keep hearing about.”",
+        "title": "Bạn được gọi lên phòng chủ tịch. “Vậy cậu là cái cậu {name} mà tôi cứ nghe suốt.”",
         "options": {
-          "state": "“I am. And anything about them, you can say to me.”",
-          "bow": "You bow and wait for him to speak first",
-          "praise": "When their name comes up, you only say good things",
-          "deal": "You ask what the terms are before he does"
+          "state": "“Vâng. Và chuyện gì liên quan tới người đó thì bác nói với cháu.”",
+          "bow": "Bạn cúi chào và chờ ông lên tiếng trước",
+          "praise": "Khi tên họ được nhắc tới, bạn chỉ nói điều tốt",
+          "deal": "Bạn hỏi điều kiện là gì trước khi ông kịp nói"
         }
       },
       "quitting": {
-        "title": "They've handed in their notice. “I wanted {name} to hear it from me.”",
+        "title": "Họ đã nộp đơn nghỉ. “Tôi muốn {name} nghe từ chính miệng tôi.”",
         "options": {
-          "follow2": "“Where to? Should I hand mine in as well.”",
-          "reason": "You hear the whole reason out before you say anything",
-          "hold2": "You take the letter and put it back in the drawer",
-          "joke2": "“I'll organise the leaving do,” you say, laughing"
+          "follow2": "“Đi đâu? Hay tôi cũng nộp luôn.”",
+          "reason": "Bạn nghe hết lý do rồi mới nói gì",
+          "hold2": "Bạn cầm lá đơn và cất lại vào ngăn kéo",
+          "joke2": "“Tiệc chia tay để tôi lo,” bạn cười"
         }
       },
       "leak": {
-        "title": "The company messenger has been leaked. Every message between {name} and them.",
+        "title": "Tin nhắn nội bộ bị lộ. Toàn bộ đoạn chat giữa {name} và họ.",
         "options": {
-          "own": "“Yes, I sent that,” you say, on the record",
-          "delete": "You go straight to IT and get hold of the original",
-          "check": "You go to them first. “Are you okay?”",
-          "screenshot": "You screenshot the funniest bit and post it yourself"
+          "own": "“Vâng, tôi gửi đấy,” bạn nói, công khai",
+          "delete": "Bạn xuống thẳng phòng IT và giữ lấy bản gốc",
+          "check": "Bạn tìm họ trước. “Bạn ổn không?”",
+          "screenshot": "Bạn chụp đoạn buồn cười nhất và tự đăng lên"
         }
       },
       "hospital": {
-        "title": "Two in the morning, a hospital corridor. Nobody has told you anything.",
+        "title": "Hai giờ sáng, hành lang bệnh viện. Không ai nói cho bạn biết gì cả.",
         "options": {
-          "wait": "You sit at the end of the corridor and wait for morning",
-          "family": "You go to the nurses' station and say you're family",
-          "porridge": "You go down to the shop for porridge and a blanket",
-          "talk": "You've been talking to the person in the next chair for an hour"
+          "wait": "Bạn ngồi ở cuối hành lang và chờ tới sáng",
+          "family": "Bạn ra quầy điều dưỡng và nói mình là người nhà",
+          "porridge": "Bạn xuống cửa hàng mua cháo và một cái chăn",
+          "talk": "Bạn đã nói chuyện với người ngồi ghế bên cạnh cả tiếng rồi"
         }
       },
       "contract": {
-        "title": "“{name}. Three months. Could you pretend we're together?”",
+        "title": "“{name} này. Ba tháng thôi. Giả vờ mình đang yêu nhau được không?”",
         "options": {
-          "real": "“And if it's real by then?”",
-          "terms": "You ask to write it down. Term, scope, how it ends",
-          "why": "You ask why first. How bad is it",
-          "rings": "“Sure.” Next day you turn up with matching rings"
+          "real": "“Thế nếu tới lúc đó là thật thì sao?”",
+          "terms": "Bạn đòi viết ra giấy. Thời hạn, phạm vi, cách kết thúc",
+          "why": "Bạn hỏi lý do trước. Chuyện nghiêm trọng đến đâu",
+          "rings": "“Ừ.” Hôm sau bạn xuất hiện với đôi nhẫn giống nhau"
         }
       },
       "snow": {
-        "title": "First snow. You both remember saying you'd meet when it came.",
+        "title": "Tuyết đầu mùa. Cả hai đều nhớ đã hẹn gặp nhau khi tuyết rơi.",
         "options": {
-          "go": "You just go to the place. You don't message",
-          "call": "You call. “Come outside”",
-          "text3": "One line. “it's snowing”",
-          "snowman": "You build the snowman first and send the photo"
+          "go": "Bạn cứ tới chỗ đó. Không nhắn gì",
+          "call": "Bạn gọi. “Ra ngoài đi”",
+          "text3": "Đúng một dòng. “tuyết rơi rồi”",
+          "snowman": "Bạn đắp người tuyết trước rồi mới gửi ảnh"
         }
       },
       "board": {
-        "title": "The board meeting. Your name is on the last line of the agenda.",
+        "title": "Cuộc họp hội đồng. Tên bạn nằm ở dòng cuối của chương trình nghị sự.",
         "options": {
-          "omit": "Your turn comes and you still don't bring them into it",
-          "speak": "You put your hand up and go first",
-          "credit": "You put all of it down to the team",
-          "walk": "You close the folder and leave"
+          "omit": "Tới lượt bạn mà bạn vẫn không kéo họ vào chuyện này",
+          "speak": "Bạn giơ tay và nói trước",
+          "credit": "Bạn quy hết công cho cả nhóm",
+          "walk": "Bạn gập hồ sơ lại và đi ra"
         }
       },
       "airport": {
-        "title": "Word comes that they're at the airport. Two hours.",
+        "title": "Có tin họ đang ở sân bay. Còn hai tiếng.",
         "options": {
-          "drive": "You drive. You don't call until you're there",
-          "ring": "You call first. “Stay exactly where you are.”",
-          "letter": "You write a letter and leave it at the desk",
-          "gate": "You get to the gate before them and wait"
+          "drive": "Bạn lái xe đi. Tới nơi mới gọi",
+          "ring": "Bạn gọi trước. “Đứng yên đó.”",
+          "letter": "Bạn viết một lá thư và gửi lại quầy",
+          "gate": "Bạn tới cổng trước họ và đứng chờ"
         }
       },
       "press": {
-        "title": "A story runs saying the two of you are getting married. With photos.",
+        "title": "Một bài báo chạy tin hai người sắp cưới. Kèm ảnh.",
         "options": {
-          "quiet": "You say nothing. You don't deny it either",
-          "deny": "You put out an official denial",
-          "shield": "You get in front of whatever lands on them",
-          "frame": "You frame the article and put it on your desk"
+          "quiet": "Bạn không nói gì. Cũng không phủ nhận",
+          "deny": "Bạn ra thông cáo phủ nhận chính thức",
+          "shield": "Bạn đứng chắn trước mọi thứ rơi về phía họ",
+          "frame": "Bạn lồng bài báo vào khung và đặt lên bàn làm việc"
         }
       },
       "wrist": {
-        "title": "In front of everyone, they take you by the wrist.",
+        "title": "Trước mặt tất cả mọi người, họ nắm lấy cổ tay bạn.",
         "options": {
-          "follow": "You don't pull away. You go with them",
-          "greet": "You free your hand and say hello to the room first",
-          "regrip": "You change the grip. Hand, not wrist",
-          "laugh": "“Here?” you laugh"
+          "follow": "Bạn không rút tay. Bạn đi theo",
+          "greet": "Bạn gỡ tay ra và chào cả phòng trước đã",
+          "regrip": "Bạn đổi cách nắm. Nắm tay, không phải cổ tay",
+          "laugh": "“Ở đây á?” bạn cười"
         }
       },
       "ramyeon": {
-        "title": "Late, outside their building. “{name}, want to come up for ramyeon?”",
+        "title": "Khuya, trước cửa nhà họ. “{name} có muốn lên ăn mì không?”",
         "options": {
-          "stay": "“Forget the ramyeon.” You stay exactly where you are",
-          "up": "“Okay.” You go up first",
-          "tomorrow": "“I'll head off. See you tomorrow”",
-          "two": "“Put the water on. I'm having two”"
+          "stay": "“Thôi khỏi mì.” Bạn đứng nguyên chỗ đó",
+          "up": "“Ừ.” Bạn lên trước",
+          "tomorrow": "“Thôi tôi về. Mai gặp”",
+          "two": "“Bắc nước đi. Tôi ăn hai gói”"
         }
       }
     },
     "poster": {
       "lead_direct": {
-        "title": "{name} and the Chairman's Blind Spot",
-        "logline": "{name} says in episode two what everyone else is saving for the finale. The chairman's plan did not have a variable like this in it."
+        "title": "{name} và Điểm Mù Của Chủ Tịch",
+        "logline": "{name} nói ở tập hai điều mà ai cũng để dành tới tập cuối. Kế hoạch của chủ tịch không có biến số nào như thế này."
       },
       "lead_careful": {
-        "title": "The Quiet Takeover of {name}",
-        "logline": "{name} carries twelve episodes without once raising their voice, makes everybody wait, and lands the whole thing at the end."
+        "title": "Cuộc Tiếp Quản Lặng Lẽ Của {name}",
+        "logline": "{name} gánh mười hai tập mà chưa một lần lên giọng, bắt tất cả phải chờ, rồi hạ màn ở đúng cuối."
       },
       "firstLove_direct": {
-        "title": "{name}, Three Months by Contract",
-        "logline": "It was only supposed to last three months on paper. {name} starts doing things that were never in the contract."
+        "title": "{name}, Ba Tháng Theo Hợp Đồng",
+        "logline": "Trên giấy chỉ có ba tháng. {name} bắt đầu làm những việc chẳng có trong hợp đồng."
       },
       "firstLove_careful": {
-        "title": "{name}, the Three Months Unsaid",
-        "logline": "{name} never said it. Which is why somebody still can't throw away the umbrella they were lent."
+        "title": "{name}, Ba Tháng Không Nói",
+        "logline": "{name} chưa bao giờ nói ra. Nên tới giờ vẫn có người không bỏ được chiếc ô từng được cho mượn."
       },
       "spark_direct": {
-        "title": "{name} vs. the Office Dating Policy",
-        "logline": "Two episodes of bad timing, and then {name} just asks. Great for the audience, a nightmare for the writers."
+        "title": "{name} Đấu Với Nội Quy Công Ty",
+        "logline": "Hai tập lệch nhịp, rồi {name} hỏi thẳng. Khán giả sướng, biên kịch khổ."
       },
       "spark_careful": {
-        "title": "One Minute Between {name} and Them",
-        "logline": "{name} and that person keep reaching the same door a minute apart. Nothing has been said and the whole floor knows."
+        "title": "Một Phút Giữa {name} Và Người Ấy",
+        "logline": "{name} và người ấy cứ tới cùng một cánh cửa cách nhau một phút. Chưa ai nói gì và cả tầng đều biết."
       },
       "second_direct": {
-        "title": "{name}, the Episode Eight Confession",
-        "logline": "{name} says it in episode eight and steps back cleanly. Half the audience changes sides that night."
+        "title": "{name}, Lời Tỏ Tình Tập Tám",
+        "logline": "{name} nói ở tập tám rồi lùi lại gọn gàng. Đêm đó nửa khán giả đổi phe."
       },
       "second_careful": {
-        "title": "{name} Is Making Sure They Ate",
-        "logline": "{name} is the one who noticed they'd skipped lunch. It never gets said, and people argue about it until the finale."
+        "title": "{name} Lo Xem Họ Đã Ăn Chưa",
+        "logline": "{name} là người để ý thấy họ bỏ bữa. Chuyện đó không bao giờ được nói ra, và người ta cãi nhau về nó tới tập cuối."
       },
       "rival_direct": {
-        "title": "{name}, the One in the Meeting Room",
-        "logline": "{name} arrives late, better dressed, and says the thing nobody wanted said. Being right is the annoying part."
+        "title": "{name}, Người Trong Phòng Họp",
+        "logline": "{name} tới muộn, ăn mặc chỉn chu hơn, và nói ra điều không ai muốn nói. Đúng mới là chỗ khó chịu."
       },
       "rival_careful": {
-        "title": "{name} Already Knew",
-        "logline": "{name} doesn't fight anyone. It just keeps turning out that {name} was right, and by the time anyone notices it's late."
+        "title": "{name} Đã Biết Từ Trước",
+        "logline": "{name} không gây sự với ai. Chỉ là rốt cuộc {name} luôn đúng, và khi người ta nhận ra thì đã muộn."
       },
       "bestie_direct": {
-        "title": "{name} Is the Mood of This Company",
-        "logline": "{name} takes every scene they're in, and half of those scenes were not in the script."
+        "title": "{name} Là Bầu Không Khí Của Công Ty Này",
+        "logline": "{name} chiếm trọn mọi cảnh mình có mặt, mà một nửa số cảnh đó vốn không có trong kịch bản."
       },
       "bestie_careful": {
-        "title": "The Company Doesn't Work Without {name}",
-        "logline": "{name} drives them home, remembers what was said in episode one, and never makes it about themselves."
+        "title": "Công Ty Này Không Chạy Nếu Thiếu {name}",
+        "logline": "{name} chở họ về, nhớ điều đã nói ở tập một, và không bao giờ kể công."
       }
     }
   },
