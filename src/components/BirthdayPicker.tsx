@@ -13,7 +13,12 @@ import Dropdown from './Dropdown';
  */
 
 const FIRST = 1920;
-const LAST = 2044;
+/* Nobody has a birthday in the future, so the list starts at this year. It ran
+   to 2044 because that is where the Seollal table ends, which is the range the
+   zodiac reader can answer for — not the range a person can be born in. That
+   put eighteen dead years above the newest real one, every one of them in the
+   way. */
+const LAST = new Date().getUTCFullYear();
 const YEARS = Array.from({ length: LAST - FIRST + 1 }, (_, i) => LAST - i);
 const MONTHS = Array.from({ length: 12 }, (_, i) => i + 1);
 

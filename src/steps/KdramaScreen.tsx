@@ -176,8 +176,13 @@ export default function KdramaScreen() {
           {t(`kdrama.act.${act}`)} · {index % SCENES_PER_ACT + 1} / {SCENES_PER_ACT}
         </span>
 
-        <h2 className="mb-2.5 mt-3 -ml-[0.035em] text-pretty font-disp text-[29px] leading-[1.1] tracking-tight text-ink md:text-[38px]">
-          {named(t(`kdrama.q.${question.id}.title`))}
+        {/* one block per sentence, the way the premise and the recaps are set.
+            A scene is a slug line and then what happens — "회식 2차." wrapping
+            into the middle of the next clause read as one long run-on. */}
+        <h2 className="mb-2.5 mt-3 -ml-[0.035em] flex flex-col text-pretty font-disp text-[29px] leading-[1.1] tracking-tight text-ink md:text-[38px]">
+          {sentences(named(t(`kdrama.q.${question.id}.title`))).map((line) => (
+            <span key={line} className="block">{line}</span>
+          ))}
         </h2>
 
         <div className="mt-6 grid gap-2.5">
