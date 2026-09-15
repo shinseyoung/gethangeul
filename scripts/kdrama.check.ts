@@ -226,7 +226,7 @@ for (const [lang, dict] of [['en', enK], ['ko', koK], ['vi', viK], ['th', thK]] 
 // written straight after {name} is right for half of all visitors — the poster
 // read 《사라과 그 사람 사이》 until this was caught. The copy writes the pair.
 
-const BARE_PARTICLE = /\{name\}[은는이가과와을를]/;
+const BARE_PARTICLE = /\{name\}[은는이가과와을를랑아야으]/;
 const PAIR = /\{[가-힣]{1,2}\/[가-힣]{1,2}\}/;
 for (const genre of GENRES) {
   const g = (koK as Record<string, any>)[genre] ?? {};

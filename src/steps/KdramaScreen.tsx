@@ -33,6 +33,7 @@ import Button, { ArrowLeft, ArrowRight } from '../components/Button';
 const GENRE_MARK: Record<Genre, string> = {
   chaebol: 'trendy',
   makjang: 'strong',
+  highteen: 'bright',
 };
 
 /** The four axes borrow marks the quiz already uses, so nothing new was drawn. */

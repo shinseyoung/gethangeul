@@ -17,7 +17,7 @@ import { BRANCH_AT, SLOTS } from './kdramaSlots';
 
 /** Widened by one as each genre is finished, so a genre reaches the picker on
  *  exactly the commit that completes it and never as a stub. */
-export const GENRES = ['chaebol', 'makjang'] as const;
+export const GENRES = ['chaebol', 'makjang', 'highteen'] as const;
 
 /** How many scenes a playthrough walks. The same for every genre: the engine
  *  decides it, not the story. */
@@ -127,6 +127,41 @@ export const STORIES: Record<Genre, Story> = {
       }),
       fixed('confront', 'callthem', 'papers', 'neither', 'playit'),
       fixed('forgive', 'sitdown', 'takeit', 'later', 'eat'),
+    ],
+  },
+
+  /* 하이틴 — 교복, 야자, 급식, 옥상, 수능, 졸업식. A world with none of
+     the office in it, which is the point of having it next to 재벌. */
+  highteen: {
+    name: [0, 2, 3, 6, 8, 11],
+    tellings: [
+      fixed('roll', 'window', 'front', 'empty', 'backrow'),
+      fixed('seat', 'keepit', 'swapask', 'hello', 'line'),
+      fixed('lunch', 'turn', 'hold4', 'share', 'pretend'),
+      branch({
+        romance: scene('latenight', 'walk2', 'first2', 'share2', 'race'),
+        presence: scene('sports', 'lookfor', 'anchor', 'swap3', 'shoes'),
+        warmth: scene('notes', 'deliver', 'copy3', 'rewrite', 'doodle'),
+        mischief: scene('caught', 'mine', 'stand2', 'split', 'again3'),
+      }),
+      fixed('rooftop3', 'quiet2', 'mine2', 'promise', 'change'),
+      fixed('transfer', 'askthem', 'wait3', 'normal', 'bet'),
+      branch({
+        romance: scene('trip', 'outside', 'sitthere', 'blanket2', 'wake'),
+        presence: scene('classvote', 'decline', 'speech', 'helper', 'campaign'),
+        warmth: scene('sick2', 'stay3', 'teacher', 'water', 'joke3'),
+        mischief: scene('letter3', 'keepit2', 'findout', 'answer', 'readout'),
+      }),
+      fixed('exam', 'keepseat', 'move2', 'message', 'snack'),
+      fixed('fight', 'text4', 'face2', 'waitit', 'prank2'),
+      branch({
+        romance: scene('snow2', 'alone3', 'callout', 'wait4', 'snowball'),
+        presence: scene('result', 'hide', 'both', 'lift', 'swap4'),
+        warmth: scene('bench', 'nothing4', 'say', 'thanks2', 'carve'),
+        mischief: scene('prank', 'initials', 'name3', 'thanks3', 'nonsense'),
+      }),
+      fixed('graduation', 'sleeve', 'backside', 'message2', 'upside'),
+      fixed('after', 'same', 'number', 'later2', 'run2'),
     ],
   },
 };

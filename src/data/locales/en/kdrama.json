@@ -33,6 +33,11 @@
       "label": "Makjang",
       "tagline": "Secret births, amnesia, a slap with kimchi",
       "slot": "100 episodes · daily morning serial"
+    },
+    "highteen": {
+      "label": "Highteen",
+      "tagline": "Uniforms, study hall, the roof, first snow",
+      "slot": "12 episodes · Fri–Sat"
     }
   },
   "chaebol": {
@@ -518,6 +523,249 @@
       "bestie_careful": {
         "title": "{name} Takes Nobody's Side",
         "logline": "{name} won't take sides, which is why {name} is the only one anyone tells the truth to."
+      }
+    }
+  },
+  "highteen": {
+    "q": {
+      "roll": {
+        "title": "First day as the new kid. The teacher calls the register. “{name}, where do you want to sit?”",
+        "options": {
+          "window": "You go for the window seat. Whoever's there looks up",
+          "front": "Front row, where everyone can see you",
+          "empty": "You sit next to the one sitting alone",
+          "backrow": "Back row. You throw your bag down"
+        }
+      },
+      "seat": {
+        "title": "New seating plan, drawn by lots. Of course it puts you next to them.",
+        "options": {
+          "keepit": "You sit down without saying anything",
+          "swapask": "You ask the teacher if you can swap",
+          "hello": "You say hello and ask their name",
+          "line": "You draw a line down the middle of the desk"
+        }
+      },
+      "lunch": {
+        "title": "The lunch queue. Someone behind you says {name}.",
+        "options": {
+          "turn": "You turn round. They're closer than you thought",
+          "hold4": "You keep your place in the queue and just look back",
+          "share": "You take your tray and sit next to them",
+          "pretend": "You pretend not to hear and get a second soup"
+        }
+      },
+      "latenight": {
+        "title": "Study hall is over. {name} is the last one at the gate, and they haven't gone either.",
+        "options": {
+          "walk2": "You walk with them to the bus stop, saying nothing",
+          "first2": "“Want to walk together?” You ask first",
+          "share2": "You hold out one earphone",
+          "race": "“Race you to the stop,” and you go"
+        }
+      },
+      "sports": {
+        "title": "Sports day relay. {name} has been put down as the anchor leg.",
+        "options": {
+          "lookfor": "On the line, you're looking for one face in the stand",
+          "anchor": "You raise a hand so the class knows it's you",
+          "swap3": "You offer it to whoever runs faster",
+          "shoes": "You take your shoes off. Barefoot, then"
+        }
+      },
+      "notes": {
+        "title": "They've been off for a week. {name} has the only notes.",
+        "options": {
+          "deliver": "You take them to their house and ring the bell",
+          "copy3": "You copy them and leave them in their locker",
+          "rewrite": "You rewrite everything they missed and hand it over",
+          "doodle": "You draw something in the margin first"
+        }
+      },
+      "caught": {
+        "title": "Sneaking to the shop, and only {name} and them get caught.",
+        "options": {
+          "mine": "“It was my idea,” you say",
+          "stand2": "You don't look away from the teacher",
+          "split": "You ask to take half the punishment each",
+          "again3": "You go again the next week"
+        }
+      },
+      "rooftop3": {
+        "title": "The roof. They tell you something they've told nobody.",
+        "options": {
+          "quiet2": "You hear it all and say nothing",
+          "mine2": "You tell them one of yours",
+          "promise": "You promise you won't tell anyone",
+          "change": "“Aren't you hungry though?” You change the subject"
+        }
+      },
+      "transfer": {
+        "title": "Word goes round the class that they're leaving to study abroad.",
+        "options": {
+          "askthem": "You go and ask them straight out",
+          "wait3": "You wait for them to say it themselves",
+          "normal": "You treat them exactly as before",
+          "bet": "You go to whoever started it"
+        }
+      },
+      "trip": {
+        "title": "School trip, late. Everyone's pretending to sleep, and they say {name}.",
+        "options": {
+          "outside": "You go out to the corridor. Just the two of you",
+          "sitthere": "You stay where you are and listen",
+          "blanket2": "You pull the blanket over them first — it's cold",
+          "wake": "You wake everybody else up"
+        }
+      },
+      "classvote": {
+        "title": "Class president vote. Someone writes {name} on the board.",
+        "options": {
+          "decline": "You say they'd be better at it",
+          "speech": "You go up and say something",
+          "helper": "You offer to be deputy instead",
+          "campaign": "You turn up with about ten campaign promises"
+        }
+      },
+      "sick2": {
+        "title": "The nurse's room. {name} walked them there and they still haven't let go.",
+        "options": {
+          "stay3": "You sit with them and skip the lesson",
+          "teacher": "You go and fetch a teacher",
+          "water": "You bring water and a blanket",
+          "joke3": "“This is just to get out of class, isn't it”"
+        }
+      },
+      "letter3": {
+        "title": "There's a letter in your locker. Addressed to {name}, unsigned.",
+        "options": {
+          "keepit2": "You put it in your bag and tell nobody",
+          "findout": "You try to work out the handwriting",
+          "answer": "You write back and put it in the same place",
+          "readout": "You read it out loud at break"
+        }
+      },
+      "exam": {
+        "title": "Thirty days to the exam. The seat next to you in the study room is empty.",
+        "options": {
+          "keepseat": "You leave it empty",
+          "move2": "You move yourself further forward",
+          "message": "One line: “where are you”",
+          "snack": "You leave a chocolate bar on the desk"
+        }
+      },
+      "fight": {
+        "title": "It built up. Neither they nor {name} apologised first.",
+        "options": {
+          "text4": "There's a message you wrote at 3am and didn't send",
+          "face2": "You stop them in the corridor to talk",
+          "waitit": "You wait for them to speak first",
+          "prank2": "You leave a note in their pencil case"
+        }
+      },
+      "snow2": {
+        "title": "First snow. There's nobody on the field.",
+        "options": {
+          "alone3": "You walk one lap on your own",
+          "callout": "You shout their name up at the window",
+          "wait4": "You stand there until they come out",
+          "snowball": "You pack a snowball and throw it at the window"
+        }
+      },
+      "result": {
+        "title": "Results are out. They show you theirs first.",
+        "options": {
+          "hide": "You don't show yours",
+          "both": "You put both down and read them together",
+          "lift": "You start with what's good in theirs",
+          "swap4": "You swap and read each other's out"
+        }
+      },
+      "bench": {
+        "title": "The bench by the field. Three years end today.",
+        "options": {
+          "nothing4": "You sit there and say nothing",
+          "say": "You say the thing you've been meaning to",
+          "thanks2": "You thank them first",
+          "carve": "You carve a name into the bench"
+        }
+      },
+      "prank": {
+        "title": "One last prank. All that's left is what goes on the board.",
+        "options": {
+          "initials": "Two sets of initials",
+          "name3": "Every name in the class",
+          "thanks3": "A line for the teacher",
+          "nonsense": "Something nobody will understand"
+        }
+      },
+      "graduation": {
+        "title": "Graduation. They ask you to write your name on their uniform.",
+        "options": {
+          "sleeve": "Inside the cuff, where it won't show",
+          "backside": "Across the back, large",
+          "message2": "Not your name — a line instead",
+          "upside": "Upside down"
+        }
+      },
+      "after": {
+        "title": "Outside the gate. Part here and there's no next time. “{name}, which way are you going?”",
+        "options": {
+          "same": "“Same way,” and you fall in beside them",
+          "number": "You save their number again, properly",
+          "later2": "“Next week, then,” and you fix a day",
+          "run2": "“See you,” and you run for it"
+        }
+      }
+    },
+    "poster": {
+      "lead_direct": {
+        "title": "{name}, Class 3-1",
+        "logline": "The room changes on the day {name} transfers in. What everyone else saves for graduation, {name} says in March."
+      },
+      "lead_careful": {
+        "title": "{name}'s Last Term",
+        "logline": "{name} never raises their voice once. Class 3-1 turns around {name} anyway."
+      },
+      "firstLove_direct": {
+        "title": "{name} and That First Snow",
+        "logline": "On the field, in the first snow, {name} finally says it. That one scene is what the whole thing is remembered for."
+      },
+      "firstLove_careful": {
+        "title": "{name} and the Letter in the Locker",
+        "logline": "{name} never wrote back. The letter is still in the inside pocket of somebody's bag."
+      },
+      "spark_direct": {
+        "title": "{name}, After Study Hall",
+        "logline": "{name} walks two stops out of the way and then just asks. The audience is more nervous than either of them."
+      },
+      "spark_careful": {
+        "title": "{name}, One Minute Down the Corridor",
+        "logline": "{name} and that person always pass a minute apart. Nothing has been said and the whole class knows."
+      },
+      "second_direct": {
+        "title": "{name} Runs the Anchor Leg",
+        "logline": "{name} says everything worth saying on the last lap. Win or lose, the class chat is about {name} that night."
+      },
+      "second_careful": {
+        "title": "{name} Lends You the Notes",
+        "logline": "{name} rewrites the part you missed and hands it over. Never mentions it, and everyone works it out at graduation."
+      },
+      "rival_direct": {
+        "title": "{name}, Next to the Top of the Year",
+        "logline": "{name} says in the middle of the classroom what everyone else is avoiding. Being right makes it worse."
+      },
+      "rival_careful": {
+        "title": "{name} Already Knew",
+        "logline": "{name} doesn't argue with anyone. When the results come out, it turns out {name} was right."
+      },
+      "bestie_direct": {
+        "title": "{name} Is the Noise in 3-1",
+        "logline": "A quiet classroom gets loud when {name} walks in. Half the yearbook is photos of {name}."
+      },
+      "bestie_careful": {
+        "title": "The Chocolate Bar {name} Left",
+        "logline": "{name} walks you home, remembers what you said in March, and never brings it up. The class doesn't work without {name}."
       }
     }
   }
