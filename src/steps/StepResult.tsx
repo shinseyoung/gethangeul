@@ -228,14 +228,17 @@ export default function StepResult() {
         <div className="flex flex-col gap-2.5">
           {[
             {
-              mark: 'lovely',
+              /* feature-bond is the mark drawn for two names together; `lovely`
+                 was a quiz-option mark, painted to sit inside a tinted tile, and
+                 on plain paper its wash read as a background left behind */
+              mark: 'feature-bond',
               title: t('result.see_match'),
               desc: t('result.see_match_desc'),
               // hands the name straight over, so the second room opens half-filled
               action: () => { setPair('a', fullHangul); setTool('pair'); },
             },
             {
-              mark: 'feature-bond',
+              mark: 'feature-keep',
               title: t('result.change_surname'),
               desc: t('result.change_surname_desc'),
               action: () => setStep('surname'),

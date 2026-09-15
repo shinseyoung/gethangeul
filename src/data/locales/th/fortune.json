@@ -3,7 +3,7 @@
   "title": "Your Korean zodiac, and how this year looks",
   "sub": "Name and birthday, that's it. This is the thing Koreans ask within a month of meeting you, and almost no foreigner knows the answer.",
   "name_label": "Name",
-  "name_placeholder": "Hajun",
+  "name_placeholder": "Kim Hajun",
   "birthday_label": "Birthday",
   "waiting": "Put in a name and a birthday and it'll come up.",
   "out_of_range": "This only covers 1920 to 2044. Outside that we don't have the lunar new year dates, so we'd just be guessing.",
@@ -93,5 +93,8 @@
       "name": "만둣국 Dumpling soup",
       "line": "Eaten on new year's morning. Finish a bowl and you've aged a year, is the saying."
     }
-  }
+  },
+  "year": "Year",
+  "month": "Month",
+  "day": "Day"
 }

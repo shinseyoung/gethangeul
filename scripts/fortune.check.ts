@@ -136,7 +136,8 @@ ok('the dish follows the season', all.every((f) => f.dish === f.reading.season))
 
 const SHELL = ['eyebrow', 'title', 'sub', 'name_label', 'name_placeholder',
   'birthday_label', 'waiting', 'out_of_range', 'card_label', 'you_are',
-  'lucky_colour', 'lucky_number', 'lucky_dish', 'disclaimer'];
+  'lucky_colour', 'lucky_number', 'lucky_dish', 'disclaimer',
+  'year', 'month', 'day'];
 const COLOURS = ['blue', 'red', 'yellow', 'white', 'black'];
 const SEASONS = ['spring', 'summer', 'autumn', 'winter'];
 
