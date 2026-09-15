@@ -38,13 +38,14 @@ export default function ProgressRail({ current }: { current: Slot }) {
                   : 'border-rule-strong bg-paper'
               }`}
             />
+            {/* every label centred on its own diamond, the ends included. The
+                first and last were clamped to the rail's edges so they could
+                not overhang it, which put them off their marks by half their
+                own width — the one place the eye checks the alignment. The few
+                pixels they hang into belong to the screen's own padding. */}
             <span
-              className={`eyebrow absolute top-[15px] whitespace-nowrap text-[8.5px] ${
+              className={`eyebrow absolute left-1/2 top-[15px] -translate-x-1/2 whitespace-nowrap text-[8.5px] ${
                 i === index ? 'text-accent' : 'text-ink-4 max-sm:hidden'
-              } ${
-                i === 0 ? 'left-0'
-                  : i === last ? 'right-0'
-                  : 'left-1/2 -translate-x-1/2'
               }`}
             >
               {t(`layout.steps.${i + 1}`)}
