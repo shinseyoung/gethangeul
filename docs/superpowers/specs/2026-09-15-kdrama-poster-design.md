@@ -100,12 +100,63 @@ export const SCENES: Record<Genre, Scene[]>;      // { id, name, options: string
 `cast()` reads `SLOTS` and never looks at the genre, so **the distribution is
 identical in all four genres by construction** rather than by four checks.
 
+## The story branches three times
+
+The room already works out where a visitor is leaning and already tells them —
+`dominantAxis()` reads the three answers of the act just finished, and the
+recap card between acts prints a line chosen by it. **The branch is computed and
+then spent on a sentence.** The card has one button on it.
+
+So the recap card goes, and the act it was introducing opens on a scene chosen
+the same way:
+
+```
+기 (3 scenes) → dominant axis → 승 opens on one of four scenes
+승 (3 scenes) → dominant axis → 전 opens on one of four scenes
+전 (3 scenes) → dominant axis → 결 opens on one of four scenes
+```
+
+Three forks, four ways each. A visitor who played 기 as warmth walks into a
+different 승 than one who played it as mischief, and the room stops asking
+anyone to tap through a card that only told them something.
+
+**The engine is untouched, again.** The weights and temper belong to the
+*position*, not to the scene sitting in it, so the four variants at position 3
+carry identical numbers. `cast()` cannot tell which branch was taken and the
+distribution is unchanged.
+
+```ts
+/** a position's story: one scene, or four and the act before picks */
+export type Telling =
+  | { branch: false; scene: Scene }
+  | { branch: true; scenes: Record<Axis, Scene> };
+
+export const SCENES: Record<Genre, Telling[]>;   // twelve positions
+export const BRANCH_AT = [3, 6, 9];              // the first scene of 승, 전, 결
+```
+
+Twenty-one written scenes per genre, twelve walked.
+
+### What this replaces
+
+The twelve `recap` lines per genre are deleted. They were the site telling you
+what you had been doing; a scene that exists *because* of what you had been
+doing says it better and asks you to keep going.
+
+The act label does not disappear with the card — it is already on every scene's
+eyebrow as `1막 · 기 · 1 / 3`.
+
 ## The name still goes in six scenes
 
 Unchanged from the last spec: six of the twelve speak to the visitor by name,
 where a Korean would actually use one. Which six is each genre's own business —
 아이돌 calls your name at a 팬사인회, 하이틴 at 출석 — but it is six in every
 genre and the same six in all four languages.
+
+**Name-bearing is a property of the position, not of the scene.** At a branch
+position either all four variants carry the name or none does, so every path
+through the twelve hears it exactly six times — otherwise the count would
+depend on which branch a visitor happened to take.
 
 Korean uses the Hangul the site already produces (`사라 씨`); the other three use
 the visitor's own spelling.
@@ -128,7 +179,7 @@ this card is about a drama now.
 
 1. pick a genre (four cards, the marks borrowed from the quiz set)
 2. type a name — the room still refuses to start without one
-3. twelve scenes, four acts, the recap beat between acts
+3. twelve scenes in four acts, three of them chosen by how the act before went
 4. the poster
 
 Genre and name sit on the same screen. The room lost its gender question for a
@@ -136,21 +187,23 @@ reason; it is not gaining two new steps.
 
 ## The copy
 
+Per genre: nine fixed positions and three that branch four ways, so twenty-one
+scenes written and twelve walked.
+
 |  | now | after |
 |---|---|---|
-| scene titles | 12 | 48 |
-| options | 48 | 192 |
-| recap lines | 12 | 48 |
+| scene titles | 12 | 84 (21 × 4 genres) |
+| options | 48 | 336 |
+| recap lines | 12 | — |
 | poster titles | — | 48 |
 | loglines | — | 48 |
 | genre labels + taglines + slots | — | 12 |
 | type sentences, roles, tempers, headline | 20 | — |
 | shell, acts, axes, name field | 23 | 23 |
-| **per language** | **115** | **419** |
+| **per language** | **115** | **551** |
 
-**Recaps are per genre.** A recap that works for all four is a recap with no
-room and no object in it, which is the abstraction this room keeps being
-rescued from.
+Of that, the branching adds 132 — about a third more than the unbranched
+version, for three real forks and three fewer dead taps.
 
 This is roughly four times the room, because it is four rooms. **It is built one
 genre at a time**, each landing complete — scenes, recaps, posters — so that a
@@ -164,9 +217,15 @@ its own before the next is written.
 Everything `scripts/kdrama.check.ts` asserts today, plus:
 
 - `SLOTS` still follows the position rule — the one place the numbers live
-- every genre has twelve scenes, ids unique within the genre, four options each
-- exactly six name-bearing scenes per genre, and each genre's six carry `{name}`
-  in all four languages and in no other scene
+- every genre has twelve positions; the three at `BRANCH_AT` hold one scene per
+  axis and the other nine hold one each; scene ids unique within the genre;
+  four options each
+- **every branch position offers all four axes** — a branch the dominant axis
+  can select but that nobody wrote is a crash, not a missing line
+- name-bearing is per position, and at a branch position all four variants
+  agree, so every one of the 4³ paths hears the name exactly six times
+- each genre's six name positions carry `{name}` in all four languages, and no
+  other scene does
 - every `genre × typeKey` has a title and a logline in all four languages
 - **every poster title contains `{name}`** — a title without the visitor in it
   is the old result wearing a new word
@@ -178,6 +237,13 @@ Everything `scripts/kdrama.check.ts` asserts today, plus:
 - **Per-genre engines.** Four genres, one arithmetic. A genre that scored
   differently would need its own distribution measured, and there is no reason
   for 막장 to have different maths than 하이틴.
+- **Branching that compounds.** The fork reads only the act just finished, so
+  the three forks are independent and the writing is 3 × 4, not 4³. A tree
+  where scene seven depends on scene two is sixteen million scenes and nobody
+  writes that.
+- **Branching on the poster.** Which fork you took does not change the title or
+  the logline — those are the genre and the twelve-type key. Adding the branch
+  as a third axis would be 192 posters per language.
 - **A fifth genre.** 액션 is hard to write choices for — action is watched, not
   chosen — and 사극 fights the modern name the room puts in every sixth scene.
   Both stay on the shelf until the four are done.
