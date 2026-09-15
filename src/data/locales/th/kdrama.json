@@ -534,243 +534,243 @@
   "highteen": {
     "q": {
       "roll": {
-        "title": "First day as the new kid. The teacher calls the register. “{name}, where do you want to sit?”",
+        "title": "วันแรกในฐานะเด็กย้ายมาใหม่ ครูเรียกชื่อ “{name} อยากนั่งตรงไหน”",
         "options": {
-          "window": "You go for the window seat. Whoever's there looks up",
-          "front": "Front row, where everyone can see you",
-          "empty": "You sit next to the one sitting alone",
-          "backrow": "Back row. You throw your bag down"
+          "window": "คุณเลือกที่ริมหน้าต่าง คนที่นั่งอยู่ตรงนั้นเงยหน้าขึ้น",
+          "front": "แถวหน้าสุด ที่ที่ทุกคนเห็นคุณ",
+          "empty": "คุณไปนั่งข้างคนที่นั่งอยู่คนเดียว",
+          "backrow": "แถวหลังสุด คุณโยนกระเป๋าลง"
         }
       },
       "seat": {
-        "title": "New seating plan, drawn by lots. Of course it puts you next to them.",
+        "title": "เปลี่ยนผังที่นั่ง จับฉลาก แน่นอนว่าคุณได้นั่งข้างเขา",
         "options": {
-          "keepit": "You sit down without saying anything",
-          "swapask": "You ask the teacher if you can swap",
-          "hello": "You say hello and ask their name",
-          "line": "You draw a line down the middle of the desk"
+          "keepit": "คุณนั่งลงโดยไม่พูดอะไร",
+          "swapask": "คุณถามครูว่าขอเปลี่ยนได้ไหม",
+          "hello": "คุณทักทายและถามชื่อเขา",
+          "line": "คุณขีดเส้นแบ่งกลางโต๊ะ"
         }
       },
       "lunch": {
-        "title": "The lunch queue. Someone behind you says {name}.",
+        "title": "แถวรับอาหารกลางวัน มีคนข้างหลังเรียก {name}",
         "options": {
-          "turn": "You turn round. They're closer than you thought",
-          "hold4": "You keep your place in the queue and just look back",
-          "share": "You take your tray and sit next to them",
-          "pretend": "You pretend not to hear and get a second soup"
+          "turn": "คุณหันกลับไป เขาอยู่ใกล้กว่าที่คิด",
+          "hold4": "คุณยืนรักษาคิวไว้แล้วแค่ชำเลืองกลับไป",
+          "share": "คุณยกถาดไปนั่งข้างเขา",
+          "pretend": "คุณแกล้งไม่ได้ยินแล้วขอซุปเพิ่มอีกถ้วย"
         }
       },
       "latenight": {
-        "title": "Study hall is over. {name} is the last one at the gate, and they haven't gone either.",
+        "title": "หมดเวลาติวดึกแล้ว {name} เป็นคนสุดท้ายที่ประตู และเขาก็ยังไม่กลับ",
         "options": {
-          "walk2": "You walk with them to the bus stop, saying nothing",
-          "first2": "“Want to walk together?” You ask first",
-          "share2": "You hold out one earphone",
-          "race": "“Race you to the stop,” and you go"
+          "walk2": "คุณเดินไปป้ายรถเมล์กับเขาโดยไม่พูดอะไร",
+          "first2": "“เดินไปด้วยกันไหม” คุณถามก่อน",
+          "share2": "คุณยื่นหูฟังให้ข้างหนึ่ง",
+          "race": "“แข่งวิ่งไปป้ายกัน” แล้วคุณก็ออกตัว"
         }
       },
       "sports": {
-        "title": "Sports day relay. {name} has been put down as the anchor leg.",
+        "title": "กีฬาสี วิ่งผลัด {name} ถูกจัดให้วิ่งไม้สุดท้าย",
         "options": {
-          "lookfor": "On the line, you're looking for one face in the stand",
-          "anchor": "You raise a hand so the class knows it's you",
-          "swap3": "You offer it to whoever runs faster",
-          "shoes": "You take your shoes off. Barefoot, then"
+          "lookfor": "ที่เส้นสตาร์ต คุณกำลังหาหน้าคนหนึ่งบนอัฒจันทร์",
+          "anchor": "คุณยกมือขึ้นให้ทั้งห้องรู้ว่าเป็นคุณ",
+          "swap3": "คุณยกให้คนที่วิ่งเร็วกว่า",
+          "shoes": "คุณถอดรองเท้าออก วิ่งเท้าเปล่าก็ได้"
         }
       },
       "notes": {
-        "title": "They've been off for a week. {name} has the only notes.",
+        "title": "เขาหายไปทั้งสัปดาห์ มีแต่ {name} ที่จดไว้",
         "options": {
-          "deliver": "You take them to their house and ring the bell",
-          "copy3": "You copy them and leave them in their locker",
-          "rewrite": "You rewrite everything they missed and hand it over",
-          "doodle": "You draw something in the margin first"
+          "deliver": "คุณเอาไปส่งถึงบ้านแล้วกดกริ่ง",
+          "copy3": "คุณถ่ายเอกสารแล้วใส่ไว้ในล็อกเกอร์เขา",
+          "rewrite": "คุณเขียนส่วนที่เขาพลาดใหม่ทั้งหมดแล้วยื่นให้",
+          "doodle": "คุณวาดอะไรไว้ตรงขอบก่อน"
         }
       },
       "caught": {
-        "title": "Sneaking to the shop, and only {name} and them get caught.",
+        "title": "แอบไปร้านค้า แล้วมีแค่ {name} กับเขาที่โดนจับได้",
         "options": {
-          "mine": "“It was my idea,” you say",
-          "stand2": "You don't look away from the teacher",
-          "split": "You ask to take half the punishment each",
-          "again3": "You go again the next week"
+          "mine": "“หนูชวนเองค่ะ” คุณพูด",
+          "stand2": "คุณไม่หลบสายตาครู",
+          "split": "คุณขอรับโทษคนละครึ่ง",
+          "again3": "สัปดาห์ถัดมาคุณก็ไปอีก"
         }
       },
       "rooftop3": {
-        "title": "The roof. They tell you something they've told nobody.",
+        "title": "ดาดฟ้า เขาเล่าเรื่องที่ไม่เคยเล่าให้ใครฟัง",
         "options": {
-          "quiet2": "You hear it all and say nothing",
-          "mine2": "You tell them one of yours",
-          "promise": "You promise you won't tell anyone",
-          "change": "“Aren't you hungry though?” You change the subject"
+          "quiet2": "คุณฟังจนจบแล้วไม่พูดอะไร",
+          "mine2": "คุณเล่าเรื่องของตัวเองให้ฟังบ้าง",
+          "promise": "คุณสัญญาว่าจะไม่บอกใคร",
+          "change": "“แต่หิวไหมล่ะ” คุณเปลี่ยนเรื่อง"
         }
       },
       "transfer": {
-        "title": "Word goes round the class that they're leaving to study abroad.",
+        "title": "ข่าวลือไปทั่วห้องว่าเขาจะย้ายไปเรียนต่อต่างประเทศ",
         "options": {
-          "askthem": "You go and ask them straight out",
-          "wait3": "You wait for them to say it themselves",
-          "normal": "You treat them exactly as before",
-          "bet": "You go to whoever started it"
+          "askthem": "คุณไปถามเขาตรง ๆ",
+          "wait3": "คุณรอให้เขาบอกเอง",
+          "normal": "คุณทำกับเขาเหมือนเดิมทุกอย่าง",
+          "bet": "คุณไปหาคนที่ปล่อยข่าว"
         }
       },
       "trip": {
-        "title": "School trip, late. Everyone's pretending to sleep, and they say {name}.",
+        "title": "ทัศนศึกษา ดึกแล้ว ทุกคนแกล้งหลับ แล้วเขาก็เรียก {name}",
         "options": {
-          "outside": "You go out to the corridor. Just the two of you",
-          "sitthere": "You stay where you are and listen",
-          "blanket2": "You pull the blanket over them first — it's cold",
-          "wake": "You wake everybody else up"
+          "outside": "คุณออกไปที่ทางเดิน แค่สองคน",
+          "sitthere": "คุณอยู่ตรงนั้นแล้วฟัง",
+          "blanket2": "คุณดึงผ้าห่มมาห่มให้เขาก่อน — อากาศหนาว",
+          "wake": "คุณปลุกคนที่เหลือขึ้นมาหมด"
         }
       },
       "classvote": {
-        "title": "Class president vote. Someone writes {name} on the board.",
+        "title": "เลือกหัวหน้าห้อง มีคนเขียนชื่อ {name} ขึ้นกระดาน",
         "options": {
-          "decline": "You say they'd be better at it",
-          "speech": "You go up and say something",
-          "helper": "You offer to be deputy instead",
-          "campaign": "You turn up with about ten campaign promises"
+          "decline": "คุณบอกว่าเขาทำน่าจะดีกว่า",
+          "speech": "คุณขึ้นไปพูดสักหน่อย",
+          "helper": "คุณขอเป็นรองหัวหน้าห้องแทน",
+          "campaign": "คุณมาพร้อมนโยบายสักสิบข้อ"
         }
       },
       "sick2": {
-        "title": "The nurse's room. {name} walked them there and they still haven't let go.",
+        "title": "ห้องพยาบาล {name} พาเขามาส่ง และเขายังไม่ปล่อยมือ",
         "options": {
-          "stay3": "You sit with them and skip the lesson",
-          "teacher": "You go and fetch a teacher",
-          "water": "You bring water and a blanket",
-          "joke3": "“This is just to get out of class, isn't it”"
+          "stay3": "คุณนั่งอยู่กับเขาและโดดเรียน",
+          "teacher": "คุณไปตามครูมา",
+          "water": "คุณเอาน้ำกับผ้าห่มมาให้",
+          "joke3": "“นี่แค่จะโดดเรียนใช่ไหมเนี่ย”"
         }
       },
       "letter3": {
-        "title": "There's a letter in your locker. Addressed to {name}, unsigned.",
+        "title": "ในล็อกเกอร์มีจดหมายฉบับหนึ่ง จ่าหน้าถึง {name} ไม่มีชื่อคนส่ง",
         "options": {
-          "keepit2": "You put it in your bag and tell nobody",
-          "findout": "You try to work out the handwriting",
-          "answer": "You write back and put it in the same place",
-          "readout": "You read it out loud at break"
+          "keepit2": "คุณเก็บใส่กระเป๋าและไม่บอกใคร",
+          "findout": "คุณพยายามเดาจากลายมือว่าเป็นของใคร",
+          "answer": "คุณเขียนตอบแล้ววางไว้ที่เดิม",
+          "readout": "คุณอ่านออกเสียงตอนพักกลางวัน"
         }
       },
       "exam": {
-        "title": "Thirty days to the exam. The seat next to you in the study room is empty.",
+        "title": "เหลือสามสิบวันก่อนสอบ ที่นั่งข้างคุณในห้องติวว่างอยู่",
         "options": {
-          "keepseat": "You leave it empty",
-          "move2": "You move yourself further forward",
-          "message": "One line: “where are you”",
-          "snack": "You leave a chocolate bar on the desk"
+          "keepseat": "คุณปล่อยให้มันว่างไว้อย่างนั้น",
+          "move2": "คุณย้ายตัวเองไปนั่งข้างหน้า",
+          "message": "บรรทัดเดียว: “อยู่ไหน”",
+          "snack": "คุณวางช็อกโกแลตแท่งหนึ่งไว้บนโต๊ะ"
         }
       },
       "fight": {
-        "title": "It built up. Neither they nor {name} apologised first.",
+        "title": "มันสะสมมาเรื่อย ๆ ทั้งเขาและ {name} ต่างไม่ขอโทษก่อน",
         "options": {
-          "text4": "There's a message you wrote at 3am and didn't send",
-          "face2": "You stop them in the corridor to talk",
-          "waitit": "You wait for them to speak first",
-          "prank2": "You leave a note in their pencil case"
+          "text4": "มีข้อความที่คุณพิมพ์ไว้ตอนตีสามแล้วไม่ได้ส่ง",
+          "face2": "คุณดักเขาที่ทางเดินเพื่อจะคุย",
+          "waitit": "คุณรอให้เขาพูดก่อน",
+          "prank2": "คุณสอดกระดาษโน้ตไว้ในกล่องดินสอเขา"
         }
       },
       "snow2": {
-        "title": "First snow. There's nobody on the field.",
+        "title": "หิมะแรก ในสนามไม่มีใครเลย",
         "options": {
-          "alone3": "You walk one lap on your own",
-          "callout": "You shout their name up at the window",
-          "wait4": "You stand there until they come out",
-          "snowball": "You pack a snowball and throw it at the window"
+          "alone3": "คุณเดินรอบสนามหนึ่งรอบคนเดียว",
+          "callout": "คุณตะโกนเรียกชื่อเขาขึ้นไปทางหน้าต่าง",
+          "wait4": "คุณยืนอยู่ตรงนั้นจนกว่าเขาจะลงมา",
+          "snowball": "คุณปั้นก้อนหิมะแล้วขว้างใส่หน้าต่าง"
         }
       },
       "result": {
-        "title": "Results are out. They show you theirs first.",
+        "title": "ผลสอบออกแล้ว เขาเอาของตัวเองให้ดูก่อน",
         "options": {
-          "hide": "You don't show yours",
-          "both": "You put both down and read them together",
-          "lift": "You start with what's good in theirs",
-          "swap4": "You swap and read each other's out"
+          "hide": "คุณไม่เอาของตัวเองให้ดู",
+          "both": "คุณวางทั้งสองใบลงแล้วอ่านด้วยกัน",
+          "lift": "คุณเริ่มจากส่วนที่ดีในของเขา",
+          "swap4": "คุณสลับกันถือแล้วอ่านออกเสียงให้กันฟัง"
         }
       },
       "bench": {
-        "title": "The bench by the field. Three years end today.",
+        "title": "ม้านั่งข้างสนาม สามปีจบลงวันนี้",
         "options": {
-          "nothing4": "You sit there and say nothing",
-          "say": "You say the thing you've been meaning to",
-          "thanks2": "You thank them first",
-          "carve": "You carve a name into the bench"
+          "nothing4": "คุณนั่งอยู่ตรงนั้นและไม่พูดอะไร",
+          "say": "คุณพูดสิ่งที่ตั้งใจจะพูดมานาน",
+          "thanks2": "คุณขอบคุณเขาก่อน",
+          "carve": "คุณสลักชื่อหนึ่งลงบนม้านั่ง"
         }
       },
       "prank": {
-        "title": "One last prank. All that's left is what goes on the board.",
+        "title": "แกล้งกันครั้งสุดท้าย เหลือแค่ว่าจะเขียนอะไรบนกระดาน",
         "options": {
-          "initials": "Two sets of initials",
-          "name3": "Every name in the class",
-          "thanks3": "A line for the teacher",
-          "nonsense": "Something nobody will understand"
+          "initials": "อักษรย่อสองชุด",
+          "name3": "ชื่อทุกคนในห้อง",
+          "thanks3": "ข้อความสักบรรทัดถึงครู",
+          "nonsense": "อะไรที่ไม่มีใครเข้าใจ"
         }
       },
       "graduation": {
-        "title": "Graduation. They ask you to write your name on their uniform.",
+        "title": "วันรับปริญญาจบ ม.ปลาย เขาขอให้คุณเขียนชื่อลงบนชุดนักเรียนของเขา",
         "options": {
-          "sleeve": "Inside the cuff, where it won't show",
-          "backside": "Across the back, large",
-          "message2": "Not your name — a line instead",
-          "upside": "Upside down"
+          "sleeve": "ด้านในข้อมือเสื้อ ตรงที่ไม่มีใครเห็น",
+          "backside": "เขียนตัวใหญ่พาดกลางหลัง",
+          "message2": "ไม่ใช่ชื่อ — แต่เป็นข้อความหนึ่งบรรทัด",
+          "upside": "เขียนกลับหัว"
         }
       },
       "after": {
-        "title": "Outside the gate. Part here and there's no next time. “{name}, which way are you going?”",
+        "title": "หน้าประตูโรงเรียน แยกกันตรงนี้แล้วจะไม่มีครั้งหน้า “{name} ไปทางไหน”",
         "options": {
-          "same": "“Same way,” and you fall in beside them",
-          "number": "You save their number again, properly",
-          "later2": "“Next week, then,” and you fix a day",
-          "run2": "“See you,” and you run for it"
+          "same": "“ทางเดียวกัน” แล้วคุณก็เดินเคียงไป",
+          "number": "คุณบันทึกเบอร์เขาใหม่ ให้เรียบร้อยกว่าเดิม",
+          "later2": "“งั้นอาทิตย์หน้านะ” แล้วคุณก็นัดวันเลย",
+          "run2": "“ไว้เจอกัน” แล้วคุณก็วิ่งไป"
         }
       }
     },
     "poster": {
       "lead_direct": {
-        "title": "{name}, Class 3-1",
-        "logline": "The room changes on the day {name} transfers in. What everyone else saves for graduation, {name} says in March."
+        "title": "{name} ห้อง 3-1",
+        "logline": "ทั้งห้องเปลี่ยนไปตั้งแต่วันที่ {name} ย้ายเข้ามา สิ่งที่คนอื่นเก็บไว้พูดตอนจบการศึกษา {name} พูดตั้งแต่เดือนมีนาคม"
       },
       "lead_careful": {
-        "title": "{name}'s Last Term",
-        "logline": "{name} never raises their voice once. Class 3-1 turns around {name} anyway."
+        "title": "เทอมสุดท้ายของ {name}",
+        "logline": "{name} ไม่เคยขึ้นเสียงสักครั้ง แต่ห้อง 3-1 ก็หมุนรอบ {name} อยู่ดี"
       },
       "firstLove_direct": {
-        "title": "{name} and That First Snow",
-        "logline": "On the field, in the first snow, {name} finally says it. That one scene is what the whole thing is remembered for."
+        "title": "{name} กับหิมะแรกของปีนั้น",
+        "logline": "กลางสนาม ในหิมะแรก {name} ก็พูดออกมาเสียที ทั้งเรื่องถูกจดจำเพราะฉากเดียวนั้น"
       },
       "firstLove_careful": {
-        "title": "{name} and the Letter in the Locker",
-        "logline": "{name} never wrote back. The letter is still in the inside pocket of somebody's bag."
+        "title": "{name} กับจดหมายในล็อกเกอร์",
+        "logline": "{name} ไม่เคยเขียนตอบ จดหมายฉบับนั้นยังอยู่ในช่องด้านในกระเป๋าของใครบางคน"
       },
       "spark_direct": {
-        "title": "{name}, After Study Hall",
-        "logline": "{name} walks two stops out of the way and then just asks. The audience is more nervous than either of them."
+        "title": "{name} หลังเลิกติวดึก",
+        "logline": "{name} เดินอ้อมไปอีกสองป้ายแล้วค่อยถาม คนดูตื่นเต้นกว่าทั้งสองคนเสียอีก"
       },
       "spark_careful": {
-        "title": "{name}, One Minute Down the Corridor",
-        "logline": "{name} and that person always pass a minute apart. Nothing has been said and the whole class knows."
+        "title": "{name} หนึ่งนาทีบนทางเดิน",
+        "logline": "{name} กับคนคนนั้นเดินสวนกันห่างกันหนึ่งนาทีเสมอ ยังไม่มีใครพูดอะไร และทั้งห้องรู้กันหมด"
       },
       "second_direct": {
-        "title": "{name} Runs the Anchor Leg",
-        "logline": "{name} says everything worth saying on the last lap. Win or lose, the class chat is about {name} that night."
+        "title": "{name} วิ่งไม้สุดท้าย",
+        "logline": "{name} พูดทุกอย่างที่ควรพูดในรอบสุดท้าย ชนะหรือแพ้ คืนนั้นแชทห้องก็มีแต่เรื่อง {name}"
       },
       "second_careful": {
-        "title": "{name} Lends You the Notes",
-        "logline": "{name} rewrites the part you missed and hands it over. Never mentions it, and everyone works it out at graduation."
+        "title": "{name} ให้คุณยืมสมุด",
+        "logline": "{name} เขียนส่วนที่คุณพลาดใหม่แล้วยื่นให้ ไม่เคยเอ่ยถึงเลย และทุกคนมาเข้าใจเอาตอนจบการศึกษา"
       },
       "rival_direct": {
-        "title": "{name}, Next to the Top of the Year",
-        "logline": "{name} says in the middle of the classroom what everyone else is avoiding. Being right makes it worse."
+        "title": "{name} ที่นั่งข้างที่หนึ่งของรุ่น",
+        "logline": "{name} พูดกลางห้องในสิ่งที่คนอื่นกำลังเลี่ยง การที่พูดถูกยิ่งทำให้แย่เข้าไปใหญ่"
       },
       "rival_careful": {
-        "title": "{name} Already Knew",
-        "logline": "{name} doesn't argue with anyone. When the results come out, it turns out {name} was right."
+        "title": "{name} รู้มาก่อนแล้ว",
+        "logline": "{name} ไม่เถียงกับใคร พอผลสอบออกมาก็กลายเป็นว่า {name} ถูก"
       },
       "bestie_direct": {
-        "title": "{name} Is the Noise in 3-1",
-        "logline": "A quiet classroom gets loud when {name} walks in. Half the yearbook is photos of {name}."
+        "title": "{name} คือเสียงดังของห้อง 3-1",
+        "logline": "ห้องเรียนที่เงียบจะดังขึ้นทันทีที่ {name} เดินเข้ามา ครึ่งหนึ่งของหนังสือรุ่นคือรูป {name}"
       },
       "bestie_careful": {
-        "title": "The Chocolate Bar {name} Left",
-        "logline": "{name} walks you home, remembers what you said in March, and never brings it up. The class doesn't work without {name}."
+        "title": "ช็อกโกแลตแท่งที่ {name} วางไว้",
+        "logline": "{name} เดินไปส่งคุณถึงบ้าน จำสิ่งที่คุณพูดไว้ตั้งแต่เดือนมีนาคม และไม่เคยเอามาพูดอีก ห้องนี้ไม่เดินถ้าไม่มี {name}"
       }
     }
   },

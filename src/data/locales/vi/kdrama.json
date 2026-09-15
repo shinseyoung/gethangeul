@@ -534,243 +534,243 @@
   "highteen": {
     "q": {
       "roll": {
-        "title": "First day as the new kid. The teacher calls the register. “{name}, where do you want to sit?”",
+        "title": "Ngày đầu làm học sinh chuyển trường. Cô giáo điểm danh. “{name}, em muốn ngồi đâu?”",
         "options": {
-          "window": "You go for the window seat. Whoever's there looks up",
-          "front": "Front row, where everyone can see you",
-          "empty": "You sit next to the one sitting alone",
-          "backrow": "Back row. You throw your bag down"
+          "window": "Bạn chọn chỗ cạnh cửa sổ. Người ngồi đó ngẩng lên",
+          "front": "Bàn đầu, chỗ ai cũng nhìn thấy bạn",
+          "empty": "Bạn ngồi cạnh người đang ngồi một mình",
+          "backrow": "Bàn cuối. Bạn quăng cặp xuống"
         }
       },
       "seat": {
-        "title": "New seating plan, drawn by lots. Of course it puts you next to them.",
+        "title": "Đổi chỗ ngồi, bốc thăm. Dĩ nhiên là bạn trúng ngay cạnh họ.",
         "options": {
-          "keepit": "You sit down without saying anything",
-          "swapask": "You ask the teacher if you can swap",
-          "hello": "You say hello and ask their name",
-          "line": "You draw a line down the middle of the desk"
+          "keepit": "Bạn ngồi xuống không nói gì",
+          "swapask": "Bạn hỏi cô cho đổi chỗ được không",
+          "hello": "Bạn chào và hỏi tên họ",
+          "line": "Bạn kẻ một đường giữa bàn"
         }
       },
       "lunch": {
-        "title": "The lunch queue. Someone behind you says {name}.",
+        "title": "Hàng chờ lấy cơm. Có ai đó phía sau gọi {name}.",
         "options": {
-          "turn": "You turn round. They're closer than you thought",
-          "hold4": "You keep your place in the queue and just look back",
-          "share": "You take your tray and sit next to them",
-          "pretend": "You pretend not to hear and get a second soup"
+          "turn": "Bạn quay lại. Họ gần hơn bạn tưởng",
+          "hold4": "Bạn giữ chỗ trong hàng và chỉ ngoái đầu lại",
+          "share": "Bạn bưng khay tới ngồi cạnh họ",
+          "pretend": "Bạn giả vờ không nghe và xin thêm một bát canh"
         }
       },
       "latenight": {
-        "title": "Study hall is over. {name} is the last one at the gate, and they haven't gone either.",
+        "title": "Hết giờ tự học. {name} là người cuối cùng ở cổng, và họ cũng chưa về.",
         "options": {
-          "walk2": "You walk with them to the bus stop, saying nothing",
-          "first2": "“Want to walk together?” You ask first",
-          "share2": "You hold out one earphone",
-          "race": "“Race you to the stop,” and you go"
+          "walk2": "Bạn đi cùng họ tới bến xe buýt, không nói gì",
+          "first2": "“Đi chung không?” Bạn hỏi trước",
+          "share2": "Bạn chìa ra một bên tai nghe",
+          "race": "“Chạy thi tới bến nhé,” rồi bạn phóng đi"
         }
       },
       "sports": {
-        "title": "Sports day relay. {name} has been put down as the anchor leg.",
+        "title": "Hội thao, chạy tiếp sức. {name} được xếp chạy chặng cuối.",
         "options": {
-          "lookfor": "On the line, you're looking for one face in the stand",
-          "anchor": "You raise a hand so the class knows it's you",
-          "swap3": "You offer it to whoever runs faster",
-          "shoes": "You take your shoes off. Barefoot, then"
+          "lookfor": "Đứng ở vạch, bạn tìm một gương mặt trên khán đài",
+          "anchor": "Bạn giơ tay lên cho cả lớp biết là mình",
+          "swap3": "Bạn nhường cho đứa chạy nhanh hơn",
+          "shoes": "Bạn cởi giày ra. Chạy chân không vậy"
         }
       },
       "notes": {
-        "title": "They've been off for a week. {name} has the only notes.",
+        "title": "Họ nghỉ cả tuần. Chỉ {name} có vở ghi.",
         "options": {
-          "deliver": "You take them to their house and ring the bell",
-          "copy3": "You copy them and leave them in their locker",
-          "rewrite": "You rewrite everything they missed and hand it over",
-          "doodle": "You draw something in the margin first"
+          "deliver": "Bạn mang tới tận nhà và bấm chuông",
+          "copy3": "Bạn photo ra rồi bỏ vào tủ đồ của họ",
+          "rewrite": "Bạn chép lại hết phần họ bỏ lỡ rồi đưa",
+          "doodle": "Bạn vẽ thêm cái gì đó ở lề trước đã"
         }
       },
       "caught": {
-        "title": "Sneaking to the shop, and only {name} and them get caught.",
+        "title": "Trốn ra căng tin, và chỉ {name} với họ bị bắt.",
         "options": {
-          "mine": "“It was my idea,” you say",
-          "stand2": "You don't look away from the teacher",
-          "split": "You ask to take half the punishment each",
-          "again3": "You go again the next week"
+          "mine": "“Là ý của em ạ,” bạn nói",
+          "stand2": "Bạn không né ánh mắt cô giáo",
+          "split": "Bạn xin chia đôi hình phạt",
+          "again3": "Tuần sau bạn lại đi tiếp"
         }
       },
       "rooftop3": {
-        "title": "The roof. They tell you something they've told nobody.",
+        "title": "Sân thượng. Họ kể cho bạn điều chưa kể với ai.",
         "options": {
-          "quiet2": "You hear it all and say nothing",
-          "mine2": "You tell them one of yours",
-          "promise": "You promise you won't tell anyone",
-          "change": "“Aren't you hungry though?” You change the subject"
+          "quiet2": "Bạn nghe hết và không nói gì",
+          "mine2": "Bạn kể lại một chuyện của mình",
+          "promise": "Bạn hứa sẽ không nói với ai",
+          "change": "“Nhưng mà đói chưa?” Bạn lái sang chuyện khác"
         }
       },
       "transfer": {
-        "title": "Word goes round the class that they're leaving to study abroad.",
+        "title": "Cả lớp đồn nhau là họ sắp đi du học.",
         "options": {
-          "askthem": "You go and ask them straight out",
-          "wait3": "You wait for them to say it themselves",
-          "normal": "You treat them exactly as before",
-          "bet": "You go to whoever started it"
+          "askthem": "Bạn tới hỏi thẳng họ",
+          "wait3": "Bạn chờ họ tự nói ra",
+          "normal": "Bạn đối xử y như trước",
+          "bet": "Bạn tìm đứa tung tin ra"
         }
       },
       "trip": {
-        "title": "School trip, late. Everyone's pretending to sleep, and they say {name}.",
+        "title": "Chuyến dã ngoại, đêm muộn. Ai cũng giả vờ ngủ, rồi họ gọi {name}.",
         "options": {
-          "outside": "You go out to the corridor. Just the two of you",
-          "sitthere": "You stay where you are and listen",
-          "blanket2": "You pull the blanket over them first — it's cold",
-          "wake": "You wake everybody else up"
+          "outside": "Bạn ra hành lang. Chỉ hai người",
+          "sitthere": "Bạn ngồi yên chỗ cũ và lắng nghe",
+          "blanket2": "Bạn kéo chăn đắp cho họ trước — lạnh mà",
+          "wake": "Bạn đánh thức hết cả phòng"
         }
       },
       "classvote": {
-        "title": "Class president vote. Someone writes {name} on the board.",
+        "title": "Bầu lớp trưởng. Có người viết tên {name} lên bảng.",
         "options": {
-          "decline": "You say they'd be better at it",
-          "speech": "You go up and say something",
-          "helper": "You offer to be deputy instead",
-          "campaign": "You turn up with about ten campaign promises"
+          "decline": "Bạn nói họ làm sẽ tốt hơn",
+          "speech": "Bạn lên bảng và nói vài câu",
+          "helper": "Bạn xin làm lớp phó thôi",
+          "campaign": "Bạn mang tới chừng mười lời hứa tranh cử"
         }
       },
       "sick2": {
-        "title": "The nurse's room. {name} walked them there and they still haven't let go.",
+        "title": "Phòng y tế. {name} dìu họ tới và họ vẫn chưa buông tay.",
         "options": {
-          "stay3": "You sit with them and skip the lesson",
-          "teacher": "You go and fetch a teacher",
-          "water": "You bring water and a blanket",
-          "joke3": "“This is just to get out of class, isn't it”"
+          "stay3": "Bạn ngồi lại với họ và trốn tiết",
+          "teacher": "Bạn đi gọi thầy cô",
+          "water": "Bạn lấy nước và một cái chăn",
+          "joke3": "“Cái này là để trốn tiết đúng không”"
         }
       },
       "letter3": {
-        "title": "There's a letter in your locker. Addressed to {name}, unsigned.",
+        "title": "Trong tủ đồ có một lá thư. Gửi cho {name}, không ký tên.",
         "options": {
-          "keepit2": "You put it in your bag and tell nobody",
-          "findout": "You try to work out the handwriting",
-          "answer": "You write back and put it in the same place",
-          "readout": "You read it out loud at break"
+          "keepit2": "Bạn bỏ vào cặp và không nói với ai",
+          "findout": "Bạn thử đoán nét chữ là của ai",
+          "answer": "Bạn viết thư trả lời rồi để lại đúng chỗ cũ",
+          "readout": "Bạn đọc to lên trong giờ ra chơi"
         }
       },
       "exam": {
-        "title": "Thirty days to the exam. The seat next to you in the study room is empty.",
+        "title": "Còn ba mươi ngày là thi. Chỗ bên cạnh bạn trong phòng tự học trống.",
         "options": {
-          "keepseat": "You leave it empty",
-          "move2": "You move yourself further forward",
-          "message": "One line: “where are you”",
-          "snack": "You leave a chocolate bar on the desk"
+          "keepseat": "Bạn cứ để trống chỗ đó",
+          "move2": "Bạn tự dời lên phía trên",
+          "message": "Đúng một dòng: “đang ở đâu”",
+          "snack": "Bạn để lại một thanh sô cô la trên bàn"
         }
       },
       "fight": {
-        "title": "It built up. Neither they nor {name} apologised first.",
+        "title": "Chuyện dồn lại. Cả họ lẫn {name} đều không xin lỗi trước.",
         "options": {
-          "text4": "There's a message you wrote at 3am and didn't send",
-          "face2": "You stop them in the corridor to talk",
-          "waitit": "You wait for them to speak first",
-          "prank2": "You leave a note in their pencil case"
+          "text4": "Có một tin nhắn bạn viết lúc ba giờ sáng và không gửi",
+          "face2": "Bạn chặn họ ở hành lang để nói chuyện",
+          "waitit": "Bạn chờ họ mở lời trước",
+          "prank2": "Bạn nhét một mẩu giấy vào hộp bút của họ"
         }
       },
       "snow2": {
-        "title": "First snow. There's nobody on the field.",
+        "title": "Tuyết đầu mùa. Sân trường không có ai.",
         "options": {
-          "alone3": "You walk one lap on your own",
-          "callout": "You shout their name up at the window",
-          "wait4": "You stand there until they come out",
-          "snowball": "You pack a snowball and throw it at the window"
+          "alone3": "Bạn đi một vòng một mình",
+          "callout": "Bạn ngẩng lên gọi tên họ về phía cửa sổ",
+          "wait4": "Bạn đứng đó cho tới khi họ ra",
+          "snowball": "Bạn nắm một quả tuyết và ném vào cửa sổ"
         }
       },
       "result": {
-        "title": "Results are out. They show you theirs first.",
+        "title": "Có bảng điểm rồi. Họ đưa bạn xem của họ trước.",
         "options": {
-          "hide": "You don't show yours",
-          "both": "You put both down and read them together",
-          "lift": "You start with what's good in theirs",
-          "swap4": "You swap and read each other's out"
+          "hide": "Bạn không đưa của mình ra",
+          "both": "Bạn đặt cả hai xuống và cùng đọc",
+          "lift": "Bạn bắt đầu từ chỗ tốt trong bảng của họ",
+          "swap4": "Bạn đổi cho nhau và đọc to lên"
         }
       },
       "bench": {
-        "title": "The bench by the field. Three years end today.",
+        "title": "Băng ghế cạnh sân. Ba năm kết thúc hôm nay.",
         "options": {
-          "nothing4": "You sit there and say nothing",
-          "say": "You say the thing you've been meaning to",
-          "thanks2": "You thank them first",
-          "carve": "You carve a name into the bench"
+          "nothing4": "Bạn ngồi đó và không nói gì",
+          "say": "Bạn nói ra điều vẫn định nói",
+          "thanks2": "Bạn cảm ơn họ trước",
+          "carve": "Bạn khắc một cái tên lên băng ghế"
         }
       },
       "prank": {
-        "title": "One last prank. All that's left is what goes on the board.",
+        "title": "Trò nghịch cuối cùng. Chỉ còn viết gì lên bảng nữa thôi.",
         "options": {
-          "initials": "Two sets of initials",
-          "name3": "Every name in the class",
-          "thanks3": "A line for the teacher",
-          "nonsense": "Something nobody will understand"
+          "initials": "Hai bộ chữ cái đầu tên",
+          "name3": "Tên của cả lớp",
+          "thanks3": "Một dòng cho thầy cô",
+          "nonsense": "Một câu không ai hiểu nổi"
         }
       },
       "graduation": {
-        "title": "Graduation. They ask you to write your name on their uniform.",
+        "title": "Lễ tốt nghiệp. Họ nhờ bạn viết tên mình lên đồng phục.",
         "options": {
-          "sleeve": "Inside the cuff, where it won't show",
-          "backside": "Across the back, large",
-          "message2": "Not your name — a line instead",
-          "upside": "Upside down"
+          "sleeve": "Mặt trong cổ tay áo, chỗ không ai thấy",
+          "backside": "Viết to ngang lưng áo",
+          "message2": "Không phải tên — mà là một câu",
+          "upside": "Viết ngược"
         }
       },
       "after": {
-        "title": "Outside the gate. Part here and there's no next time. “{name}, which way are you going?”",
+        "title": "Ngoài cổng trường. Chia tay ở đây là không có lần sau. “{name} đi đường nào?”",
         "options": {
-          "same": "“Same way,” and you fall in beside them",
-          "number": "You save their number again, properly",
-          "later2": "“Next week, then,” and you fix a day",
-          "run2": "“See you,” and you run for it"
+          "same": "“Cùng đường,” rồi bạn bước theo",
+          "number": "Bạn lưu lại số họ, lần này cho tử tế",
+          "later2": "“Tuần sau nhé,” rồi bạn hẹn hẳn một ngày",
+          "run2": "“Gặp lại nhé,” rồi bạn chạy đi"
         }
       }
     },
     "poster": {
       "lead_direct": {
-        "title": "{name}, Class 3-1",
-        "logline": "The room changes on the day {name} transfers in. What everyone else saves for graduation, {name} says in March."
+        "title": "{name}, Lớp 3-1",
+        "logline": "Cả lớp đổi khác từ ngày {name} chuyển tới. Điều người khác để dành tới lễ tốt nghiệp thì {name} nói ngay từ tháng Ba."
       },
       "lead_careful": {
-        "title": "{name}'s Last Term",
-        "logline": "{name} never raises their voice once. Class 3-1 turns around {name} anyway."
+        "title": "Học Kỳ Cuối Của {name}",
+        "logline": "{name} chưa một lần lên giọng. Vậy mà lớp 3-1 vẫn xoay quanh {name}."
       },
       "firstLove_direct": {
-        "title": "{name} and That First Snow",
-        "logline": "On the field, in the first snow, {name} finally says it. That one scene is what the whole thing is remembered for."
+        "title": "{name} Và Trận Tuyết Đầu Mùa Năm Ấy",
+        "logline": "Giữa sân trường, trong tuyết đầu mùa, {name} cuối cùng cũng nói ra. Cả bộ phim được nhớ tới vì đúng một cảnh đó."
       },
       "firstLove_careful": {
-        "title": "{name} and the Letter in the Locker",
-        "logline": "{name} never wrote back. The letter is still in the inside pocket of somebody's bag."
+        "title": "{name} Và Lá Thư Trong Tủ Đồ",
+        "logline": "{name} không bao giờ viết trả lời. Lá thư ấy vẫn nằm trong ngăn trong cặp của một người nào đó."
       },
       "spark_direct": {
-        "title": "{name}, After Study Hall",
-        "logline": "{name} walks two stops out of the way and then just asks. The audience is more nervous than either of them."
+        "title": "{name}, Sau Giờ Tự Học",
+        "logline": "{name} đi vòng thêm hai bến rồi mới hỏi. Khán giả còn hồi hộp hơn cả hai đứa."
       },
       "spark_careful": {
-        "title": "{name}, One Minute Down the Corridor",
-        "logline": "{name} and that person always pass a minute apart. Nothing has been said and the whole class knows."
+        "title": "{name}, Một Phút Ngoài Hành Lang",
+        "logline": "{name} và người ấy lúc nào cũng đi qua nhau cách một phút. Chưa ai nói gì và cả lớp đều biết."
       },
       "second_direct": {
-        "title": "{name} Runs the Anchor Leg",
-        "logline": "{name} says everything worth saying on the last lap. Win or lose, the class chat is about {name} that night."
+        "title": "{name} Chạy Chặng Cuối",
+        "logline": "{name} nói hết những gì đáng nói trong vòng chạy cuối. Thắng hay thua thì tối đó nhóm chat lớp cũng chỉ nói về {name}."
       },
       "second_careful": {
-        "title": "{name} Lends You the Notes",
-        "logline": "{name} rewrites the part you missed and hands it over. Never mentions it, and everyone works it out at graduation."
+        "title": "{name} Cho Bạn Mượn Vở",
+        "logline": "{name} chép lại phần bạn bỏ lỡ rồi đưa cho. Không bao giờ nhắc tới, và tới lễ tốt nghiệp thì ai cũng hiểu ra."
       },
       "rival_direct": {
-        "title": "{name}, Next to the Top of the Year",
-        "logline": "{name} says in the middle of the classroom what everyone else is avoiding. Being right makes it worse."
+        "title": "{name}, Ngồi Cạnh Đứa Nhất Khối",
+        "logline": "{name} nói giữa lớp điều mọi người đang né. Nói đúng lại càng khó chịu."
       },
       "rival_careful": {
-        "title": "{name} Already Knew",
-        "logline": "{name} doesn't argue with anyone. When the results come out, it turns out {name} was right."
+        "title": "{name} Đã Biết Từ Trước",
+        "logline": "{name} không cãi nhau với ai. Tới lúc có bảng điểm thì hóa ra {name} đúng."
       },
       "bestie_direct": {
-        "title": "{name} Is the Noise in 3-1",
-        "logline": "A quiet classroom gets loud when {name} walks in. Half the yearbook is photos of {name}."
+        "title": "{name} Là Tiếng Ồn Của Lớp 3-1",
+        "logline": "Một lớp học yên ắng ồn hẳn lên khi {name} bước vào. Nửa cuốn kỷ yếu là ảnh của {name}."
       },
       "bestie_careful": {
-        "title": "The Chocolate Bar {name} Left",
-        "logline": "{name} walks you home, remembers what you said in March, and never brings it up. The class doesn't work without {name}."
+        "title": "Thanh Sô Cô La {name} Để Lại",
+        "logline": "{name} đưa bạn về, nhớ điều bạn nói hồi tháng Ba, và không bao giờ nhắc lại. Lớp này không chạy nếu thiếu {name}."
       }
     }
   },
