@@ -32,7 +32,7 @@ const MARK: Record<string, string> = {
 export default function KdramaScreen() {
   const {
     kdramaAnswers, kdramaStep, kdramaReroll,
-    setKdramaAnswer, setKdramaStep, bumpKdramaReroll, resetKdrama,
+    setKdramaAnswer, setKdramaStep, resetKdrama,
   } = useFlowStore();
   const { t } = useTranslation();
   /* which act's opening card has already been read. Held here rather than in the
@@ -247,14 +247,12 @@ export default function KdramaScreen() {
         <Button full variant="secondary" onClick={handleShare} disabled={isSaving || isSharing}>
           {isSharing ? t('result.buttons.sharing') : t('result.buttons.share')}
         </Button>
-        <div className="mt-1 flex gap-2.5">
-          <Button variant="ghost" className="flex-1" onClick={bumpKdramaReroll}>
-            {t('kdrama.reroll')}
-          </Button>
-          <Button variant="ghost" className="flex-1" onClick={resetKdrama}>
-            {t('kdrama.again')}
-          </Button>
-        </div>
+        {/* no name reroll. The casting is the result and the name is what came
+            with it — a button offering a different one invited the reading that
+            the name was the point, which is the one thing this room is not. */}
+        <Button variant="ghost" full className="mt-1" onClick={resetKdrama}>
+          {t('kdrama.again')}
+        </Button>
       </div>
 
       <p className="mt-7 whitespace-pre-line text-[12.5px] leading-relaxed text-ink-4">

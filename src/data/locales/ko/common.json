@@ -251,16 +251,16 @@
     "no_name": "한국 이름이 없나요?",
     "no_name_desc": "네 가지 질문에 답하고 이름을 받은 뒤 다시 오세요.",
     "blend": {
-      "friendly_refined": "몇 년은 알고 지낸 줄 아는 조합",
-      "friendly_cute": "친구에서 시작하는 조합",
-      "friendly_calm": "싸우는 장면이 한 번도 안 나오는 조합",
-      "friendly_uncommon": "아무도 예상 못 했는데 다들 응원하는 조합",
-      "refined_cute": "봄에 찍는 첫사랑 조합",
-      "refined_calm": "12화 내내 눈빛만 오가는 조합",
-      "refined_uncommon": "사실 이 드라마의 진짜 주인공 조합",
-      "cute_calm": "한 명은 말하고 한 명은 듣는, 편한 조합",
-      "cute_uncommon": "팬들이 편집 영상 만드는 조합",
-      "calm_uncommon": "사연 있어 보이는 조용한 운명 조합"
+      "friendly_refined": "몇 년은 알고 지낸 사이처럼 들립니다.",
+      "friendly_cute": "친구로 시작해서 계속 편한 쪽.",
+      "friendly_calm": "둘 다 목소리 높일 일이 없는 조합.",
+      "friendly_uncommon": "글자로 보면 안 어울리는데 막상 들으면 괜찮습니다.",
+      "refined_cute": "한쪽은 단정하고 한쪽은 말랑합니다. 균형이 맞아요.",
+      "refined_calm": "둘 다 조용해서 말 없어도 안 어색한 쪽.",
+      "refined_uncommon": "둘 다 흔한 이름이 아닙니다. 붙여놓으면 더 그렇고요.",
+      "cute_calm": "한 명은 말하고 한 명은 듣는데, 둘 다 그게 편합니다.",
+      "cute_uncommon": "지어낸 것 같은데 그래서 잘 기억됩니다.",
+      "calm_uncommon": "조용하고 어디 이름인지 잘 모르겠는 조합."
     }
   }
 }
