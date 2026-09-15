@@ -145,7 +145,11 @@ export default function FortuneScreen() {
                 </span>
                 <span className="flex flex-1 flex-col items-center gap-1.5">
                   <span className="eyebrow text-[7.5px] text-ink-4">{t('fortune.lucky_number')}</span>
-                  <span className="block font-disp text-[20px] leading-none text-ink">{fortune.number}</span>
+                  {/* the same size as the colour and the dish beside it. At 20px
+                      against their 11.5 the middle cell shouted, and its taller
+                      box pushed the numeral off the line they share. The three
+                      are peers — one fun fact each. */}
+                  <span className="text-[11.5px] leading-tight text-ink-2">{fortune.number}</span>
                 </span>
                 <span className="flex flex-1 flex-col items-center gap-1.5">
                   <span className="eyebrow text-[7.5px] text-ink-4">{t('fortune.lucky_dish')}</span>
