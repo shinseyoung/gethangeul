@@ -65,7 +65,7 @@ export default function KdramaScreen() {
   const casting = useMemo(() => cast(kdramaAnswers), [kdramaAnswers]);
 
   const { captureRef, isSaving, isSharing, handleDownload, handleShare } = useImageShare(
-    casting ? `hangeul-kdrama-${casting.typeKey}` : 'hangeul-kdrama',
+    casting ? `ganada-kdrama-${casting.typeKey}` : 'ganada-kdrama',
   );
 
   const onCard = kdramaStep > SCENE_COUNT;
@@ -301,7 +301,7 @@ export default function KdramaScreen() {
             ))}
           </span>
 
-          <span className="eyebrow mt-7 text-[9px] tracking-[0.28em] text-ink-4">GETHANGEUL.COM</span>
+          <span className="eyebrow mt-7 text-[9px] tracking-[0.28em] text-ink-4">GANADA.COM</span>
         </div>
       </div>
 

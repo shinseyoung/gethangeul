@@ -79,7 +79,7 @@ export default function PairScreen() {
   );
 
   const { captureRef, isSaving, isSharing, handleDownload, handleShare } = useImageShare(
-    result?.percent !== null && result ? `hangeul-match-${result.percent}` : 'hangeul-match',
+    result?.percent !== null && result ? `ganada-match-${result.percent}` : 'ganada-match',
   );
 
   const percent = result?.percent ?? null;
@@ -175,7 +175,7 @@ export default function PairScreen() {
                 </span>
               )}
 
-              <span className="eyebrow mt-7 text-[9px] tracking-[0.28em] text-ink-4">GETHANGEUL.COM</span>
+              <span className="eyebrow mt-7 text-[9px] tracking-[0.28em] text-ink-4">GANADA.COM</span>
             </div>
           </div>
 

@@ -39,7 +39,7 @@ export default function ImpressionScreen() {
   const reading = useMemo(() => (read && shapeOk ? readName(read.hangul) : null), [read, shapeOk]);
 
   const { captureRef, isSaving, isSharing, handleDownload, handleShare } =
-    useImageShare(reading ? `hangeul-impression-${reading.given}` : 'hangeul-impression');
+    useImageShare(reading ? `ganada-impression-${reading.given}` : 'ganada-impression');
 
   return (
     <div className="mx-auto w-full max-w-[620px] px-5 pb-24 pt-6 lg:px-4">
@@ -134,7 +134,7 @@ export default function ImpressionScreen() {
                 </span>
               )}
 
-              <span className="eyebrow mt-7 text-[9px] tracking-[0.28em] text-ink-4">GETHANGEUL.COM</span>
+              <span className="eyebrow mt-7 text-[9px] tracking-[0.28em] text-ink-4">GANADA.COM</span>
             </div>
           </div>
 

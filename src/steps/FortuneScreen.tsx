@@ -42,7 +42,7 @@ export default function FortuneScreen() {
   );
 
   const { captureRef, isSaving, isSharing, handleDownload, handleShare } = useImageShare(
-    fortune ? `hangeul-fortune-${fortune.reading.animal}` : 'hangeul-fortune',
+    fortune ? `ganada-fortune-${fortune.reading.animal}` : 'ganada-fortune',
   );
 
   const field = 'h-[56px] w-full rounded-2xl border-[1.5px] border-rule-strong bg-paper-hi px-5 font-disp text-[20px] text-ink caret-accent outline-none transition-colors duration-150 placeholder:font-body placeholder:text-[15px] placeholder:text-ink-4 focus:border-accent';
@@ -169,7 +169,7 @@ export default function FortuneScreen() {
                 ))}
               </span>
 
-              <span className="eyebrow mt-7 text-[9px] tracking-[0.28em] text-ink-4">GETHANGEUL.COM</span>
+              <span className="eyebrow mt-7 text-[9px] tracking-[0.28em] text-ink-4">GANADA.COM</span>
             </div>
           </div>
 

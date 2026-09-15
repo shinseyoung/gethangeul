@@ -53,27 +53,40 @@ function LanguageRow({
   );
 }
 
-/** Every room, in the order the menu lists them. */
-const TOOLS: Tool[] = ['name', 'pair', 'impression', 'kdrama', 'fortune'];
+/**
+ * The rooms, in two groups.
+ *
+ * The split is not by subject but by what the room needs from you: the first
+ * three read or make a *name*, the last two want nothing but answers. That axis
+ * is the one that holds as more rooms arrive — a seal carver goes in the first,
+ * a 사주 in the second — which is why the header names the groups rather than
+ * the room you happen to be standing in. A button whose label changes every
+ * time you move tells you where you are and never what else is here.
+ */
+const GROUPS = [
+  { id: 'name', tools: ['name', 'pair', 'impression'] as Tool[] },
+  { id: 'fun', tools: ['kdrama', 'fortune'] as Tool[] },
+] as const;
 
 export function Header() {
   const { lang, setLang, langAutoPicked, dismissLangHint, tool, setTool } = useFlowStore();
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
-  /* the rooms menu gets its own state and ref: sharing `open` with the language
-     picker below would open both popovers on either click */
-  const [roomsOpen, setRoomsOpen] = useState(false);
+  /* the rooms menus get their own state and ref: sharing `open` with the
+     language picker below would open both popovers on either click. One id
+     rather than a flag each, so opening 재미 closes 이름. */
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
   const roomsRef = useRef<HTMLDivElement>(null);
 
   const current = LANGUAGES.find((l) => l.code === lang) ?? LANGUAGES[0];
   const others = LANGUAGES.filter((l) => l.code !== lang);
 
   useEffect(() => {
-    if (!roomsOpen) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setRoomsOpen(false); };
+    if (!openGroup) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpenGroup(null); };
     const onClick = (e: MouseEvent) => {
-      if (roomsRef.current && !roomsRef.current.contains(e.target as Node)) setRoomsOpen(false);
+      if (roomsRef.current && !roomsRef.current.contains(e.target as Node)) setOpenGroup(null);
     };
     document.addEventListener('keydown', onKey);
     document.addEventListener('mousedown', onClick);
@@ -81,7 +94,7 @@ export function Header() {
       document.removeEventListener('keydown', onKey);
       document.removeEventListener('mousedown', onClick);
     };
-  }, [roomsOpen]);
+  }, [openGroup]);
 
   useEffect(() => {
     if (!open) return;
@@ -112,63 +125,74 @@ export function Header() {
           className="focus-ring flex flex-col gap-[5px] text-left transition-opacity hover:opacity-70"
         >
           <span className="font-disp text-[21px] leading-none tracking-tight text-ink md:text-[24px]">
-            gethangeul
+            ganada
           </span>
-          <span className="eyebrow hidden text-[7.5px] tracking-[0.22em] text-ink-4 sm:block">YOUR KOREAN NAME</span>
+          <span className="eyebrow hidden text-[7.5px] tracking-[0.22em] text-ink-4 sm:block">
+            {t('header.tagline')}
+          </span>
         </button>
 
-        {/* The rooms used to be a tab row. Three fitted at 375px and the
-            fourth did not, so discovery moved into a menu that has room for
-            the ones still to come. */}
-        <div className="relative" ref={roomsRef}>
-          <button
-            type="button"
-            onClick={() => setRoomsOpen((v) => !v)}
-            aria-expanded={roomsOpen}
-            aria-haspopup="menu"
-            className={`focus-ring flex min-h-[38px] items-center gap-2 rounded-full px-3 transition-colors md:px-3.5 ${
-              roomsOpen ? 'bg-accent/[0.09] text-accent' : 'text-ink-2 hover:bg-accent/[0.05] hover:text-ink'
-            }`}
-          >
-            <OpticalText className="block font-body text-[12.5px] leading-none md:text-[13.5px]">
-              {String(t(`nav.${tool}`))}
-            </OpticalText>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"
-              className={`h-3 w-3 shrink-0 text-ink-4 transition-transform ${roomsOpen ? 'rotate-180' : ''}`} aria-hidden="true">
-              <path d="m6 9 6 6 6-6" />
-            </svg>
-          </button>
+        {/* Two buttons, not one: the group you are in stays lit while you move
+            inside it, so the header says what kind of thing you are doing and
+            where the rest of it lives. Measured at 375px — logo 94, these two
+            124, language 87 — which leaves 22px of the bar unused, so the two
+            group words have to stay short. */}
+        <div className="flex items-center gap-1" ref={roomsRef}>
+          {GROUPS.map((group) => {
+            const here = group.tools.includes(tool);
+            const open = openGroup === group.id;
+            return (
+              <div key={group.id} className="relative">
+                <button
+                  type="button"
+                  onClick={() => setOpenGroup(open ? null : group.id)}
+                  aria-expanded={open}
+                  aria-haspopup="menu"
+                  className={`focus-ring flex min-h-[38px] items-center gap-1.5 rounded-full px-2.5 transition-colors md:px-3 ${
+                    open ? 'bg-accent/[0.09] text-accent'
+                      : here ? 'text-ink hover:bg-accent/[0.05]'
+                      : 'text-ink-4 hover:bg-accent/[0.05] hover:text-ink-2'
+                  }`}
+                >
+                  <OpticalText className="block font-body text-[12.5px] leading-none md:text-[13.5px]">
+                    {String(t(`nav.group.${group.id}`))}
+                  </OpticalText>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"
+                    className={`h-3 w-3 shrink-0 transition-transform ${open ? 'rotate-180 text-accent' : 'text-ink-4'}`} aria-hidden="true">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
 
-          <div
-            role="menu"
-            aria-label={String(t('nav.menu'))}
-            /* fades only. The panel used to slide down four pixels as it
-               appeared, which dragged every label with it and read as the text
-               settling into place rather than the panel arriving.
-               It fades in and leaves at once: the click that closes it also
-               changes the page underneath, and a panel that hangs about for
-               another 150ms is a panel you watch change its mind. */
-            className={`absolute left-1/2 top-full z-50 mt-2 w-[200px] -translate-x-1/2 overflow-hidden rounded-2xl border border-rule-strong bg-paper-hi shadow-[0_20px_44px_-26px_rgba(23,24,26,0.45)] transition-opacity ease-out ${
-              roomsOpen ? 'opacity-100 duration-150' : 'pointer-events-none opacity-0 duration-0'
-            }`}
-          >
-            {TOOLS.map((item) => (
-              <button
-                key={item}
-                type="button"
-                role="menuitem"
-                aria-current={tool === item ? 'page' : undefined}
-                onClick={() => { if (item !== tool) setTool(item); setRoomsOpen(false); }}
-                className={`flex min-h-[48px] w-full items-center border-l-[3px] px-4 text-left transition-colors hover:bg-paper-lo ${
-                  tool === item ? 'border-accent bg-accent/5' : 'border-transparent'
-                }`}
-              >
-                <OpticalText className={`block font-body text-[14px] leading-none ${tool === item ? 'text-ink' : 'text-ink-2'}`}>
-                  {String(t(`nav.${item}`))}
-                </OpticalText>
-              </button>
-            ))}
-          </div>
+                <div
+                  role="menu"
+                  aria-label={String(t(`nav.group.${group.id}`))}
+                  /* fades only, and leaves at once: the click that closes it also
+                     changes the page underneath, and a panel that hangs about for
+                     another 150ms is a panel you watch change its mind. */
+                  className={`absolute left-1/2 top-full z-50 mt-2 w-[180px] -translate-x-1/2 overflow-hidden rounded-2xl border border-rule-strong bg-paper-hi shadow-[0_20px_44px_-26px_rgba(23,24,26,0.45)] transition-opacity ease-out ${
+                    open ? 'opacity-100 duration-150' : 'pointer-events-none opacity-0 duration-0'
+                  }`}
+                >
+                  {group.tools.map((item) => (
+                    <button
+                      key={item}
+                      type="button"
+                      role="menuitem"
+                      aria-current={tool === item ? 'page' : undefined}
+                      onClick={() => { if (item !== tool) setTool(item); setOpenGroup(null); }}
+                      className={`flex min-h-[48px] w-full items-center border-l-[3px] px-4 text-left transition-colors hover:bg-paper-lo ${
+                        tool === item ? 'border-accent bg-accent/5' : 'border-transparent'
+                      }`}
+                    >
+                      <OpticalText className={`block font-body text-[14px] leading-none ${tool === item ? 'text-ink' : 'text-ink-2'}`}>
+                        {String(t(`nav.${item}`))}
+                      </OpticalText>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         <div className="relative" ref={boxRef}>

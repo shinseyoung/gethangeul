@@ -81,7 +81,7 @@ export default function StepResult() {
   const fullHangul = name ? surname.hangul + name.hangul : '';
   const fullHanja = name ? surname.hanja + name.hanja : '';
   const { captureRef, isSaving, isSharing, handleDownload, handleShare } = useImageShare(
-    name ? `hangeul-name-${surname.id}-${name.id}` : 'hangeul-name',
+    name ? `ganada-name-${surname.id}-${name.id}` : 'ganada-name',
   );
   const { supported: canSpeak, speak } = useSpeech(fullHangul);
 
@@ -226,7 +226,7 @@ export default function StepResult() {
             })}
           </div>
 
-          <span className="eyebrow mt-7 text-[9px] tracking-[0.28em] text-ink-4">GETHANGEUL.COM</span>
+          <span className="eyebrow mt-7 text-[9px] tracking-[0.28em] text-ink-4">GANADA.COM</span>
         </div>
       </div>
 

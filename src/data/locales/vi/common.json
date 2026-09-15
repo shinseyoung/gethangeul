@@ -7,10 +7,11 @@
       "en": "English",
       "th": "ไทย",
       "vi": "Tiếng Việt"
-    }
+    },
+    "tagline": "KOREA, FOR FUN"
   },
   "footer": {
-    "copyright": "© 2026 gethangeul.com All rights reserved."
+    "copyright": "© 2026 ganada.com All rights reserved."
   },
   "layout": {
     "progress_badge": "Tiến trình",
@@ -113,7 +114,11 @@
     "impression": "Ấn tượng",
     "menu": "Rooms",
     "kdrama": "K-Drama",
-    "fortune": "Fortune"
+    "fortune": "Fortune",
+    "group": {
+      "name": "Names",
+      "fun": "Fun"
+    }
   },
   "impression": {
     "eyebrow": "How it lands",

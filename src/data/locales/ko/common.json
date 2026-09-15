@@ -9,10 +9,11 @@
       "vi": "Tiếng Việt"
     },
     "detected": "브라우저 언어에 맞춰 {lang}(으)로 열었어요. 아니라면?",
-    "dismiss": "닫기"
+    "dismiss": "닫기",
+    "tagline": "한국을 재미로"
   },
   "footer": {
-    "copyright": "© 2026 gethangeul.com All rights reserved."
+    "copyright": "© 2026 ganada.com All rights reserved."
   },
   "layout": {
     "progress_badge": "진행 단계",
@@ -154,7 +155,11 @@
     "impression": "첫인상",
     "menu": "메뉴",
     "kdrama": "K-드라마",
-    "fortune": "운세"
+    "fortune": "운세",
+    "group": {
+      "name": "이름",
+      "fun": "재미"
+    }
   },
   "impression": {
     "eyebrow": "들리는 느낌",

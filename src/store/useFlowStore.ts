@@ -23,7 +23,9 @@ export type QuestionStep = (typeof QUESTION_STEPS)[number];
 /** The site has three rooms. The address says which one you are in. */
 export type Tool = 'name' | 'pair' | 'impression' | 'kdrama' | 'fortune';
 
-const LANG_KEY = 'gethangeul.lang';
+/* renamed with the site. An old visitor loses a remembered language once,
+   which the detect bar then offers to set again. */
+const LANG_KEY = 'ganada.lang';
 const SUPPORTED = LANGUAGES.map((l) => l.code);
 const PATH_LANG = /^\/(ko|en|vi|th)(?=\/|$)/;
 const PATH_TOOL = /^\/(?:ko|en|vi|th)\/(pair|impression|kdrama|fortune)(?=\/|$)/;
