@@ -1,0 +1,97 @@
+{
+  "eyebrow": "What's your animal?",
+  "title": "Your Korean zodiac, and how this year looks",
+  "sub": "Name and birthday, that's it. This is the thing Koreans ask within a month of meeting you, and almost no foreigner knows the answer.",
+  "name_label": "Name",
+  "name_placeholder": "Hajun",
+  "birthday_label": "Birthday",
+  "waiting": "Put in a name and a birthday and it'll come up.",
+  "out_of_range": "This only covers 1920 to 2044. Outside that we don't have the lunar new year dates, so we'd just be guessing.",
+  "card_label": "ZODIAC & FORTUNE",
+  "you_are": "Year of the {animal}",
+  "lucky_colour": "Lucky colour",
+  "lucky_number": "Lucky number",
+  "lucky_dish": "Lucky dish",
+  "disclaimer": "Just for fun. The animal and the season are real calculations; the fortunes aren't. The zodiac year turns at Seollal, so if you were born in January or early February you're the year before.",
+  "animal": {
+    "rat": {
+      "name": "Rat",
+      "line": "Read as quick and hard-working, never as the pest it is in English. A 쥐띠 right now is about 29 or 41."
+    },
+    "ox": {
+      "name": "Ox",
+      "line": "Slow, but gets there. Saying you're a 소띠 in Korea is close to saying people can count on you."
+    },
+    "tiger": {
+      "name": "Tiger",
+      "line": "The one that gets called strong-willed most often. Anyone born in 1988 gets the Olympics brought up too."
+    },
+    "rabbit": {
+      "name": "Rabbit",
+      "line": "Gentle and quick to read a room. Tell a Korean you're a 토끼띠 and the first thing they'll say is that you must be easy to get on with."
+    },
+    "dragon": {
+      "name": "Dragon",
+      "line": "The one people actually plan around. Korean birth rates visibly jump in dragon years, so a 용띠 grew up in a bigger class than everyone else."
+    },
+    "snake": {
+      "name": "Snake",
+      "line": "Sharp, and hard to read. Probably the most misunderstood of the twelve — it's not a sinister thing here."
+    },
+    "horse": {
+      "name": "Horse",
+      "line": "Can't sit still, and that's meant well. 말띠 people are said to hate being stuck more than anything."
+    },
+    "goat": {
+      "name": "Goat",
+      "line": "Easy-going, accommodating. There used to be an old superstition about women born in goat years; nobody says it now."
+    },
+    "monkey": {
+      "name": "Monkey",
+      "line": "Clever and good with words. Say you're a 원숭이띠 and people expect you to be funny."
+    },
+    "rooster": {
+      "name": "Rooster",
+      "line": "Early riser, says what they think. The two go together more often than you'd expect."
+    },
+    "dog": {
+      "name": "Dog",
+      "line": "Loyal is the first word out of anyone's mouth. A 개띠 born in 1994 is 31 now."
+    },
+    "pig": {
+      "name": "Pig",
+      "line": "Lucky, straightforwardly. Dreaming of a pig in Korea means money's coming, and the animal carries the same shine."
+    }
+  },
+  "luck": {
+    "love": "Love",
+    "luck": "Luck",
+    "work": "Work",
+    "people": "People"
+  },
+  "colour": {
+    "blue": "청색 · blue",
+    "red": "적색 · red",
+    "yellow": "황색 · yellow",
+    "white": "백색 · white",
+    "black": "흑색 · black"
+  },
+  "dish": {
+    "spring": {
+      "name": "쑥국 Mugwort soup",
+      "line": "Made with the first mugwort of the year. You eat it to shake off the winter."
+    },
+    "summer": {
+      "name": "삼계탕 Ginseng chicken soup",
+      "line": "The hottest food on the hottest days. On 복날 there are queues outside the samgyetang places."
+    },
+    "autumn": {
+      "name": "전 Savoury pancakes",
+      "line": "The whole family sits around frying these at Chuseok. Whoever's frying eats the most."
+    },
+    "winter": {
+      "name": "만둣국 Dumpling soup",
+      "line": "Eaten on new year's morning. Finish a bowl and you've aged a year, is the saying."
+    }
+  }
+}

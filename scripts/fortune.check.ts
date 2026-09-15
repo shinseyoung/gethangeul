@@ -5,6 +5,10 @@ import { SEOLLAL } from '../src/data/seollal';
 import { ANIMALS, readBirthday } from '../src/utils/zodiac';
 import { LUCKS, tell } from '../src/utils/fortune';
 import { strokesOf } from '../src/utils/strokes';
+import enF from '../src/data/locales/en/fortune.json';
+import koF from '../src/data/locales/ko/fortune.json';
+import viF from '../src/data/locales/vi/fortune.json';
+import thF from '../src/data/locales/th/fortune.json';
 
 let failures = 0;
 function ok(label: string, condition: boolean, detail?: unknown) {
@@ -126,6 +130,52 @@ ok('the twelve animals do not all share a colour',
   new Set(ANIMALS.map((_, i) => tell('하준', `${1996 + i}-06-01`)!.colour)).size === 5);
 ok('the dish follows the season', all.every((f) => f.dish === f.reading.season));
 
+
+// --- the room has to be fully written -------------------------------------
+// vi and th may still carry the English string; they must not be missing.
+
+const SHELL = ['eyebrow', 'title', 'sub', 'name_label', 'name_placeholder',
+  'birthday_label', 'waiting', 'out_of_range', 'card_label', 'you_are',
+  'lucky_colour', 'lucky_number', 'lucky_dish', 'disclaimer'];
+const COLOURS = ['blue', 'red', 'yellow', 'white', 'black'];
+const SEASONS = ['spring', 'summer', 'autumn', 'winter'];
+
+for (const [lang, dict] of [['en', enF], ['ko', koF], ['vi', viF], ['th', thF]] as const) {
+  const d = dict as Record<string, any>;
+  for (const key of SHELL) {
+    ok(`${lang}: fortune.${key}`, typeof d[key] === 'string' && d[key].length > 0);
+  }
+  for (const a of ANIMALS) {
+    ok(`${lang}: fortune.animal.${a}.name`,
+      typeof d.animal?.[a]?.name === 'string' && d.animal[a].name.length > 0);
+    ok(`${lang}: fortune.animal.${a}.line`,
+      typeof d.animal?.[a]?.line === 'string' && d.animal[a].line.length > 0);
+  }
+  for (const l of LUCKS) {
+    ok(`${lang}: fortune.luck.${l}`, typeof d.luck?.[l] === 'string' && d.luck[l].length > 0);
+  }
+  for (const c of COLOURS) {
+    ok(`${lang}: fortune.colour.${c}`, typeof d.colour?.[c] === 'string' && d.colour[c].length > 0);
+  }
+  for (const se of SEASONS) {
+    ok(`${lang}: fortune.dish.${se}.name`,
+      typeof d.dish?.[se]?.name === 'string' && d.dish[se].name.length > 0);
+    ok(`${lang}: fortune.dish.${se}.line`,
+      typeof d.dish?.[se]?.line === 'string' && d.dish[se].line.length > 0);
+  }
+  ok(`${lang}: you_are names the animal slot`, (d.you_are as string).includes('{animal}'), d.you_are);
+}
+
+// the twelve are the reason the room exists, so they must read as twelve
+for (const [lang, dict] of [['en', enF], ['ko', koF]] as const) {
+  const d = dict as Record<string, any>;
+  ok(`${lang}: every animal line is distinct`,
+    new Set(ANIMALS.map((a) => d.animal?.[a]?.line)).size === 12);
+  ok(`${lang}: every dish is distinct`,
+    new Set(SEASONS.map((se) => d.dish?.[se]?.name)).size === 4);
+  ok(`${lang}: summer's dish mentions 복날`,
+    (d.dish?.summer?.line as string).includes('복날'), d.dish?.summer?.line);
+}
 
 // --- report ---------------------------------------------------------------
 
