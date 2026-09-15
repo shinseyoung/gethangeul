@@ -1,14 +1,18 @@
 {
   "eyebrow": "Twelve scenes",
   "title": "Which part would you play?",
-  "sub": "Pick your way through twelve scenes and we'll tell you who you are in this. Not your name — you.",
+  "sub": "Twelve scenes, then we tell you where you'd stand in this.",
   "start": "Start",
   "next": "Next",
   "prev": "Back",
   "again": "Answer again",
-  "reroll": "Another name",
   "card_label": "YOUR CASTING",
-  "disclaimer": "Just for fun. Twelve scenes can't know you, and the name at the bottom is one that suited the part — nothing more.",
+  "disclaimer": "Just for fun. Twelve scenes can't know a person.",
+  "name_label": "Your name",
+  "name_placeholder": "Sarah",
+  "name_hint": "A few of the scenes will call you by it.",
+  "headline": "The {temper} {role}",
+  "premise": "Twelve scenes. One office, one season turning, and a few people who keep ending up in the same rooms. Some of the scenes will call you by name. Which part you're playing comes at the end.",
   "axis": {
     "romance": "Romance",
     "presence": "Presence",
@@ -27,11 +31,31 @@
     "direct": "Headlong",
     "careful": "Measured"
   },
+  "act": {
+    "gi": "Act One · Setup",
+    "seung": "Act Two · Closer",
+    "jeon": "Act Three · It Breaks",
+    "gyeol": "Act Four · Last Call"
+  },
+  "recap": {
+    "seung_romance": "Three scenes and you've been looking at one person the whole time. The group chat got there first.",
+    "seung_presence": "You've ended up at the centre of every room so far. People turn your way to talk now.",
+    "seung_warmth": "You keep checking on everyone, and nobody asked you to. Nobody's noticed either.",
+    "seung_mischief": "You've tipped over two of the last three scenes. The office looks slightly worried.",
+    "jeon_romance": "You can't play it off any more. Whatever you do next, everyone reads it as an answer.",
+    "jeon_presence": "The room goes quiet when you talk. It's been like that since the 회식.",
+    "jeon_warmth": "You haven't told anyone what you saw on the roof. They know that you haven't.",
+    "jeon_mischief": "Nothing you touched stayed where it was. The story has given up on stopping you.",
+    "gyeol_romance": "Everyone knows. The only question left is whether you say it or wait for the snow.",
+    "gyeol_presence": "You're in the last act because you walked here. You didn't step back from the envelope either.",
+    "gyeol_warmth": "You were the one still in the corridor at four in the morning. They all remember.",
+    "gyeol_mischief": "Someone asked you for three months of pretending and you laughed and said yes. One scene left."
+  },
   "type": {
     "lead_direct": "The camera finds you the second you walk in. You say the line in episode two that everyone else was saving for the finale.",
     "lead_careful": "You carry the whole thing without ever raising your voice. Twelve episodes of waiting, and it lands because you made them wait.",
     "firstLove_direct": "You said it first, before either of you were ready. Whatever happened after, that's the scene people rewatch.",
-    "firstLove_careful": "You never actually said it, which is why you're still in their head. Somebody still has the thing you gave them.",
+    "firstLove_careful": "You never actually said it, which is why you're still in their head. Somebody still has the umbrella you lent them.",
     "spark_direct": "Two episodes of bad timing and you'd just ask. Great for the audience, a nightmare for the writers.",
     "spark_careful": "You two keep reaching the same door a minute apart. Nothing's been said, everyone can see it, and that's the whole genre.",
     "second_direct": "You say it in episode eight and step back cleanly when they pick someone else. Half the audience switches sides that night.",
@@ -42,135 +66,113 @@
     "bestie_careful": "You drive them home, you remember what they said in episode one, and you never make it about you. They'd be lost."
   },
   "q": {
-    "arrival": {
-      "title": "First gathering. You know exactly one person here.",
+    "intern": {
+      "title": "First day. Your 사수 walks you round the team. “This is {name}, starting with us today.”",
       "options": {
-        "spot": "Go straight to whoever just caught your eye",
-        "centre": "Head for the middle of the room",
-        "known": "Find the one person you know",
-        "joke": "Say something stupid before anyone else talks"
+        "stare": "You're being introduced, and you're looking at the one from the corridor",
+        "brief": "A short bow. You answer what you're asked and nothing more",
+        "learn": "You meet each pair of eyes and say the name back",
+        "mutter": "“Looking forward to it.” And under your breath, “help.”"
       }
     },
-    "notice": {
-      "title": "They've spotted you from across the room.",
+    "elevator": {
+      "title": "Of all the lifts, this one — with the person you've been avoiding. Twelve floors to go.",
       "options": {
-        "hold": "Don't look away",
-        "greet": "Say their name first, loudly",
-        "smile": "Small smile, leave it there",
-        "quip": "Mouth something ridiculous at them"
+        "mirror": "You watch the floor numbers. In the mirror, they're watching you",
+        "ask": "“Which floor?” You ask first",
+        "hold": "Their hands are full, so you hold the door without saying anything",
+        "joke": "“If this thing stops, we're on the news, right?”"
       }
     },
     "rumour": {
-      "title": "Word is going round that something's going on with you two.",
+      "title": "The office group chat has already decided. “{name} and them — there's something going on, right?”",
       "options": {
-        "guess": "Work out who started it",
-        "deny": "Say flat out that it's nothing",
-        "shield": "Let it run rather than name anyone",
-        "feed": "Add a detail that makes it better"
+        "sowhat": "“And if there is?” Sent.",
+        "silence": "You read it and don't reply. Next day nobody brings it up",
+        "offer": "You go to them first. “If this bothers you, I'll put a stop to it”",
+        "rename": "You say nothing and quietly rename the chat"
       }
     },
-    "alone": {
-      "title": "Somehow it's just the two of you.",
+    "hoesik": {
+      "title": "Round two of the 회식. The 부장 puts a microphone in your hand. “{name}, one song.”",
       "options": {
-        "stay": "Don't leave",
-        "lead": "Say the thing first",
-        "cover": "Ask if they're okay",
-        "derail": "Change the subject entirely"
+        "ballad": "You queue a ballad and don't look at one particular person",
+        "stand": "You stand up and take the mic. The singing is a separate problem",
+        "swap": "You put the 부장's own favourite in instead",
+        "tambourine": "You pick up the tambourine. You do not sing"
+      }
+    },
+    "rooftop": {
+      "title": "The roof. They're up there alone, and they've clearly been crying.",
+      "options": {
+        "beside": "You go and stand next to them, in a way that says you're not leaving",
+        "coffee": "You go back down, then come up again and leave a coffee",
+        "tissue": "You hand them a tissue. “Take your time”",
+        "weather": "“Windy up here.” You start somewhere else"
       }
     },
     "rival": {
-      "title": "Someone else is looking at them too.",
+      "title": "The building owner's son has noticed them. Neither the car nor the man is from around here.",
       "options": {
-        "claim": "Take the seat next to them first",
-        "measure": "Work out what you're dealing with",
-        "yield": "Step back and let them talk",
-        "needle": "Say something just to get a reaction"
+        "overtime": "You say nothing. You stay late with them instead",
+        "between": "“And you are?” You end up standing between them",
+        "defer": "If they're happy, you decide that's the right answer",
+        "photo": "You photograph the car and post it to the group chat"
       }
     },
-    "public": {
-      "title": "Everyone's watching. The mic's come to you.",
+    "mother": {
+      "title": "Their mother asks to meet. She sits down and slides an envelope across. “So you're {name}.”",
       "options": {
-        "dedicate": "Say who it's for",
-        "sing": "Sing it properly, all the way",
-        "pass": "Give it to someone who wants it more",
-        "clown": "Ruin it on purpose"
+        "refuse": "You leave the envelope where it is. “I'm not taking that”",
+        "return": "You push it back and hear her out, politely, to the end",
+        "listen": "You start with “I know you're worried”",
+        "open": "You open it and ask what exactly it's for"
       }
     },
-    "secret": {
-      "title": "You've found out something you weren't meant to.",
+    "hospital": {
+      "title": "Two in the morning, a hospital corridor. Nobody has told you anything.",
       "options": {
-        "tell": "Tell them before anyone else does",
-        "own": "Say it out loud, right now, to the room",
-        "keep": "Sit on it — telling helps nobody",
-        "deflect": "Bury it under a joke"
+        "wait": "You sit at the end of the corridor and wait for morning",
+        "family": "You go to the nurses' station and say you're family",
+        "porridge": "You go down to the shop for porridge and a blanket",
+        "talk": "You've been talking to the person in the next chair for an hour"
       }
     },
-    "hurt": {
-      "title": "It came out wrong and now neither of you is texting.",
+    "contract": {
+      "title": "“{name}. Three months. Could you pretend we're together?”",
       "options": {
-        "reach": "Message first",
-        "stand": "You said what you meant. Wait.",
-        "wait": "Leave it until they come to you",
-        "lighten": "Send something funny like nothing happened"
+        "real": "“And if it's real by then?”",
+        "terms": "You ask to write it down. Term, scope, how it ends",
+        "why": "You ask why first. How bad is it",
+        "rings": "“Sure.” Next day you turn up with matching rings"
       }
     },
-    "crossroads": {
-      "title": "Two options, and the episode ends either way.",
+    "snow": {
+      "title": "First snow. You both remember saying you'd meet when it came.",
       "options": {
-        "chase": "Go after the person, not the plan",
-        "take": "Take the one where you're driving",
-        "stay2": "Stay where you're needed",
-        "gamble": "Take the one nobody saw coming"
+        "go": "You just go to the place. You don't message",
+        "call": "You call. “Come outside”",
+        "text": "One line. “it's snowing”",
+        "snowman": "You build the snowman first and send the photo"
       }
     },
-    "apology": {
-      "title": "Somebody has to speak first.",
+    "wrist": {
+      "title": "In front of everyone, they take you by the wrist.",
       "options": {
-        "first": "Say it before they can ask",
-        "face": "Say it to their face, in front of everyone",
-        "gift": "Turn up with the thing they mentioned once",
-        "laugh": "Make them laugh, then say it quietly"
+        "follow": "You don't pull away. You go with them",
+        "greet": "You free your hand and say hello to the room first",
+        "regrip": "You change the grip. Hand, not wrist",
+        "laugh": "“Here?” you laugh"
       }
     },
-    "station": {
-      "title": "They leave in eleven minutes.",
+    "ramyeon": {
+      "title": "Late, outside their building. “{name}, want to come up for ramyeon?”",
       "options": {
-        "run": "Run. Figure out the words on the way.",
-        "call": "Call, and say it where people can hear",
-        "write": "Write it down and get it to them",
-        "watch": "Watch them go, and mean it"
-      }
-    },
-    "finale": {
-      "title": "Last episode. What's your scene?",
-      "options": {
-        "reunion": "Running through a station to catch them",
-        "stare": "One long look across a room, then credits",
-        "letter": "A letter that lands after you've gone",
-        "toast": "Everyone at one table, far too loud"
+        "stay": "“Forget the ramyeon.” You stay exactly where you are",
+        "up": "“Okay.” You go up first",
+        "tomorrow": "“I'll head off. See you tomorrow”",
+        "two": "“Put the water on. I'm having two”"
       }
     }
-  },
-  "headline": "The {temper} {role}",
-  "premise": "Sixteen episodes. New term, new neighbourhood, new job — take your pick. There's one person you keep running into, and nothing has happened yet. Episode one starts here.",
-  "act": {
-    "gi": "Act One · Setup",
-    "seung": "Act Two · Closer",
-    "jeon": "Act Three · It Breaks",
-    "gyeol": "Act Four · Last Call"
-  },
-  "recap": {
-    "seung_romance": "Three scenes and you've been looking at one person the whole time. It shows.",
-    "seung_presence": "You've ended up at the centre of every room so far. People are watching you now.",
-    "seung_warmth": "You keep checking on everyone. Nobody's said thanks yet.",
-    "seung_mischief": "You've derailed two of the last three scenes. The script looks worried.",
-    "jeon_romance": "You can't play it off any more. Whatever you do next, everyone reads it as an answer.",
-    "jeon_presence": "The room changes when you talk. That's great until it isn't.",
-    "jeon_warmth": "People come to you first now. That's about to get heavy.",
-    "jeon_mischief": "Nothing you touched stayed where it was. The story's given up on stopping you.",
-    "gyeol_romance": "Everyone knows. The only question is whether you say it or let the rain handle it.",
-    "gyeol_presence": "You're in the last act because you walked here. Nobody gave you the seat.",
-    "gyeol_warmth": "Most of these people made it this far because of you. They don't know that.",
-    "gyeol_mischief": "You broke this drama three times and it got better each time. One scene left."
   }
 }
