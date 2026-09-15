@@ -106,13 +106,13 @@ interface FlowState {
 
   /** one option index per question, null until answered */
   kdramaAnswers: (number | null)[];
-  /** 0 is the intro, 1..6 are the questions, 7 is the card */
+  /** 0 is the intro, 1..12 are the scenes, 13 is the card */
   kdramaStep: number;
-  /** how many times "다른 이름으로" has been pressed */
-  kdramaReroll: number;
+  /** the visitor's own name, and the only name in the room */
+  kdramaName: string;
   setKdramaAnswer: (index: number, option: number) => void;
   setKdramaStep: (step: number) => void;
-  bumpKdramaReroll: () => void;
+  setKdramaName: (name: string) => void;
   resetKdrama: () => void;
 
   setStep: (step: StepId) => void;
@@ -180,17 +180,18 @@ export const useFlowStore = create<FlowState>((set, get) => ({
 
   kdramaAnswers: Array(12).fill(null),
   kdramaStep: 0,
-  kdramaReroll: 0,
+  /* asked for before the first scene, because six of the twelve speak to it */
+  kdramaName: '',
   setKdramaAnswer: (index, option) => set((s) => {
     const next = [...s.kdramaAnswers];
     next[index] = option;
     return { kdramaAnswers: next };
   }),
   setKdramaStep: (kdramaStep) => set({ kdramaStep }),
-  bumpKdramaReroll: () => set((s) => ({ kdramaReroll: s.kdramaReroll + 1 })),
-  /* the casting is the result; only the name may be re-rolled, so this clears
-     everything and sends the visitor back to the first question */
-  resetKdrama: () => set({ kdramaAnswers: Array(12).fill(null), kdramaStep: 0, kdramaReroll: 0 }),
+  setKdramaName: (kdramaName) => set({ kdramaName }),
+  /* the casting is the result, so this clears the answers and sends the visitor
+     back to the first scene. The name stays: they are still themselves. */
+  resetKdrama: () => set({ kdramaAnswers: Array(12).fill(null), kdramaStep: 0 }),
 
   setStep: (step) => set({ step }),
   next: () => set((s) => ({ step: shift(s.step, 1) })),

@@ -3,7 +3,6 @@
 // Run with: npm run check
 import { QUESTIONS } from '../src/data/kdramaQuestions';
 import { ACTS, AXES, SCENES_PER_ACT, actOf, cast, dominantAxis, recapKey, roleKey, type Casting, type Role } from '../src/utils/kdramaCasting';
-import { nameFor, namePool } from '../src/utils/kdramaName';
 import enK from '../src/data/locales/en/kdrama.json';
 import koK from '../src/data/locales/ko/kdrama.json';
 import viK from '../src/data/locales/vi/kdrama.json';
@@ -94,47 +93,13 @@ ok('a role key uses AXES order', roleKey('warmth', 'romance') === 'romance_warmt
 ok('there are six distinct pairs',
   new Set(AXES.flatMap((a) => AXES.filter((b) => b !== a).map((b) => roleKey(a, b)))).size === 6);
 
-// --- the name that comes with the casting ---------------------------------
-// The pool floor is five because the redraw has to have somewhere to go. The
-// sizes were measured against the live database, not assumed: `natural` is on
-// none of the 51 gender-neutral names, so a tag set using it would quietly
-// shrink the pool while looking like it widened it.
-
+// The six roles, in the order the copy is written against.
 const ROLES: Role[] = ['lead', 'firstLove', 'spark', 'second', 'rival', 'bestie'];
-
-for (const role of ROLES) {
-  const pool = namePool(role);
-  ok(`${role} has at least five names`, pool.length >= 5, pool.length);
-  ok(`${role} draws only gender-neutral names`,
-    pool.every((n) => n.gender.includes('neutral')), role);
-  ok(`${role} has no duplicate names`, new Set(pool.map((n) => n.id)).size === pool.length);
-}
-
-ok('the same role and seed always give the same name',
-  nameFor('lead', 7, 0).id === nameFor('lead', 7, 0).id);
-ok('a different seed can give a different name',
-  ROLES.some((r) => new Set([0, 1, 2, 3, 4].map((s) => nameFor(r, s, 0).id)).size > 1));
-
-// walking a pool of N must return all N before repeating any
-for (const role of ROLES) {
-  const pool = namePool(role);
-  const walked = pool.map((_, step) => nameFor(role, 3, step).id);
-  ok(`${role} redraws through its whole pool before repeating`,
-    new Set(walked).size === pool.length, { pool: pool.length, distinct: new Set(walked).size });
-  ok(`${role} wraps back to the start after a full lap`,
-    nameFor(role, 3, pool.length).id === nameFor(role, 3, 0).id);
-}
-
-// a negative or oversized seed must still land inside the pool
-for (const role of ROLES) {
-  ok(`${role} keeps a wild seed inside the pool`,
-    [-99, -1, 0, 9999].every((seed) => namePool(role).some((n) => n.id === nameFor(role, seed, 0).id)), role);
-}
 
 // --- the room has to be fully translated ----------------------------------
 // vi and th may still carry the English string; they must not be missing.
 
-const SHELL = ['eyebrow', 'title', 'sub', 'start', 'next', 'prev', 'again', 'reroll', 'card_label', 'disclaimer', 'headline'];
+const SHELL = ['eyebrow', 'title', 'sub', 'start', 'next', 'prev', 'again', 'card_label', 'disclaimer', 'headline'];
 const TEMPERS = ['direct', 'careful'];
 const TYPE_KEYS = ROLES.flatMap((role) => TEMPERS.map((t) => `${role}_${t}`));
 
@@ -290,6 +255,58 @@ for (const [lang, dict] of [['en', enK], ['ko', koK]] as const) {
   ok(`${lang}: every recap line is distinct`,
     new Set(RECAP_KEYS.map((k) => d.recap?.[k])).size === RECAP_KEYS.length);
 }
+
+// --- the visitor's name in the scenes --------------------------------------
+// Six of twelve, and the same six everywhere. A scene that reads as
+// name-bearing in English and not in Korean is a scene one language is telling
+// differently, which is worse than a scene with no name in it at all.
+
+const NAMED = QUESTIONS.filter((q) => q.name);
+ok('exactly six scenes carry a name', NAMED.length === 6, NAMED.map((q) => q.id));
+ok('the named scenes are spread across the acts',
+  new Set(NAMED.map((q) => q.act)).size === 4, NAMED.map((q) => q.act));
+
+for (const [lang, dict] of [['en', enK], ['ko', koK], ['vi', viK], ['th', thK]] as const) {
+  const d = dict as Record<string, any>;
+  for (const q of QUESTIONS) {
+    const title = (d.q?.[q.id]?.title ?? '') as string;
+    const options = Object.values(d.q?.[q.id]?.options ?? {}) as string[];
+    const carries = title.includes('{name}') || options.some((o) => o.includes('{name}'));
+    ok(`${lang}: q.${q.id} carries {name} exactly when the scene is marked`,
+      carries === q.name, { id: q.id, marked: q.name, carries });
+  }
+  ok(`${lang}: kdrama.name_label`, typeof d.name_label === 'string' && d.name_label.length > 0);
+  ok(`${lang}: kdrama.name_placeholder`,
+    typeof d.name_placeholder === 'string' && d.name_placeholder.length > 0);
+  ok(`${lang}: kdrama.name_hint`, typeof d.name_hint === 'string' && d.name_hint.length > 0);
+}
+
+// The result is a casting, not a gift. No copy the card renders may carry a
+// name slot, and the module that used to supply one is gone.
+for (const [lang, dict] of [['en', enK], ['ko', koK], ['vi', viK], ['th', thK]] as const) {
+  const d = dict as Record<string, any>;
+  const card = [d.card_label, d.headline, ...Object.values(d.type ?? {})] as string[];
+  ok(`${lang}: no card copy has a name slot`,
+    card.every((s) => !String(s).includes('{name}')),
+    card.filter((s) => String(s).includes('{name}')));
+  ok(`${lang}: the reroll button is gone`, d.reroll === undefined);
+}
+
+// --- the weights did not move ---------------------------------------------
+// The rebuild is a copy job. If a number moved, the distribution measured above
+// is measuring something other than what was signed off.
+
+ok('the weights still follow the position rule',
+  QUESTIONS.every((q, s) => q.options.every((o, i) => {
+    const primary = AXES[i];
+    const secondary = AXES[(i + 1 + (s % 3)) % 4];
+    const sign = (s + i) % 2 === 0 ? 1 : -1;
+    const scale = s === QUESTIONS.length - 1 ? 2 : 1;
+    return o.weights[primary] === 10 && o.weights[secondary] === 6
+      && Object.keys(o.weights).length === 2 && o.temper === sign * scale;
+  })),
+  QUESTIONS.filter((q, s) => q.options.some((o, i) =>
+    o.weights[AXES[i]] !== 10 || o.weights[AXES[(i + 1 + (s % 3)) % 4]] !== 6)).map((q) => q.id));
 
 // --- report ---------------------------------------------------------------
 
