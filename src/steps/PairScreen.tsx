@@ -6,6 +6,7 @@ import { hangulFor, looksKorean } from '../utils/romanToHangul';
 import { compatibility } from '../utils/nameCompat';
 import { pairLabel } from '../utils/pairLabel';
 import { sentences } from '../utils/sentences';
+import OptionMark from '../components/OptionMark';
 import MountainWash from '../components/MountainWash';
 import AdSlot from '../components/AdSlot';
 import Button from '../components/Button';
@@ -204,13 +205,8 @@ export default function PairScreen() {
           onClick={() => { restart(); setTool('name'); }}
           className="focus-ring flex min-h-[64px] w-full items-center gap-3.5 rounded-2xl border border-rule bg-paper-hi p-4 text-left transition-colors hover:border-rule-strong"
         >
-          <img
-            src="/marks/start.webp"
-            alt=""
-            width={34}
-            height={34}
-            className="block h-[34px] w-[34px] shrink-0 object-contain mix-blend-multiply"
-          />
+          {/* tiled, like the rows it matches on the name result */}
+          <OptionMark id="start" size={34} />
           {/* the block carries the correction, measured: this lands the ink of
               both lines on the row's centre line within half a pixel */}
           <span className="flex flex-1 translate-y-[3px] flex-col justify-center gap-1.5">

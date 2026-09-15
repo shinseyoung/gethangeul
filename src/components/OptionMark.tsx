@@ -66,6 +66,17 @@ const MARKS: Record<string, { color: string }> = {
   sea: { color: PIG.ram },
   river: { color: PIG.cheong },
   forest: { color: PIG.nok },
+
+  // the four that are not quiz options: the two feature drawings on the landing
+  // page, the pair mark, and the one on every "start over". They are in here so
+  // that every mark on the site sits in a tile — a wash on bare paper next to a
+  // tiled one reads as a background somebody forgot to remove, which is exactly
+  // what it was mistaken for.
+  'feature-bond': { color: PIG.rose },
+  'feature-keep': { color: PIG.dam },
+  'feature-sound': { color: PIG.cheong },
+  'feature-meaning': { color: PIG.hwangto },
+  start: { color: PIG.hoe },
 };
 
 export function markColor(id: string): string {

@@ -4,7 +4,7 @@ import { useTranslation } from '../hooks/useTranslation';
 import { useMatches } from '../hooks/useMatches';
 import { useSurname } from '../hooks/useSurname';
 import { useImageShare } from '../hooks/useImageShare';
-import { markColor } from '../components/OptionMark';
+import OptionMark, { markColor } from '../components/OptionMark';
 import MountainWash, { SEASON_WASH } from '../components/MountainWash';
 import AdSlot from '../components/AdSlot';
 import Button from '../components/Button';
@@ -228,9 +228,7 @@ export default function StepResult() {
         <div className="flex flex-col gap-2.5">
           {[
             {
-              /* feature-bond is the mark drawn for two names together; `lovely`
-                 was a quiz-option mark, painted to sit inside a tinted tile, and
-                 on plain paper its wash read as a background left behind */
+              /* feature-bond is the mark drawn for two names together */
               mark: 'feature-bond',
               title: t('result.see_match'),
               desc: t('result.see_match_desc'),
@@ -251,13 +249,9 @@ export default function StepResult() {
               onClick={row.action}
               className="focus-ring flex min-h-[64px] items-center gap-3.5 rounded-2xl border border-rule bg-paper-hi p-4 text-left transition-colors hover:border-rule-strong"
             >
-              <img
-                src={`/marks/${row.mark}.webp`}
-                alt=""
-                width={34}
-                height={34}
-                className="block h-[34px] w-[34px] shrink-0 object-contain mix-blend-multiply"
-              />
+              {/* tiled, like every other mark on the site. Bare on paper the
+                  wash read as a background nobody had got round to removing. */}
+              <OptionMark id={row.mark} size={34} />
               {/* both lines ride high in their line boxes, so the block —
                   not only its measured first line — carries the correction */}
               <span className="flex flex-1 translate-y-[3px] flex-col justify-center gap-1.5">

@@ -63,6 +63,12 @@ const CONSONANTS: Record<string, string> = {
 /** Tried before the two-letter table, longest first. */
 const VOWEL_TRIGRAPHS: Record<string, string> = {
   yeo: 'ㅕ', woo: 'ㅜ', yae: 'ㅒ',
+  // 영 is written `young` at least as often as `yeong` — it is the spelling on
+  // most Korean passports issued before 2000 and the one people keep using.
+  // Without this the `yo` digraph wins and 세영 arrives as 세요웅.
+  you: 'ㅕ',
+  // and 윤 is `yoon` as often as `yun`, where the same `yo` digraph gave 요온
+  yoo: 'ㅠ',
 };
 
 const VOWEL_DIGRAPHS: Record<string, string> = {
@@ -143,8 +149,22 @@ function wordToHangul(word: string): string {
     const rhotic = RHOTIC[word.slice(i, i + 2)];
     const vTrigraph = VOWEL_TRIGRAPHS[word.slice(i, i + 3)];
     const vDigraph = VOWEL_DIGRAPHS[word.slice(i, i + 2)];
+    /* The older romanisation half of Korea still writes spells ㅓ and ㅕ with a
+       `u` when the syllable closes: 정 jung, 성 sung, 청 chung, and with the
+       glide 경 kyung, 형 hyung, 현 hyun. A bare `u` is only ㅜ when nothing
+       closes on it — 준 jun keeps its ㅜ because `n` is not `ng`, and 윤 yun and
+       유나 yuna keep theirs because no consonant opened the syllable. */
+    const closedU = word[i] === 'u' && word.slice(i + 1, i + 3) === 'ng';
+    const closedYu = word.slice(i, i + 2) === 'yu' && cho !== 'ㅇ'
+      && word[i + 2] !== undefined && !(word[i + 2] in VOWELS);
     if (rhotic && i + 2 >= word.length) {
       jung = rhotic;
+      i += 2;
+    } else if (closedU) {
+      jung = 'ㅓ';
+      i += 1;
+    } else if (closedYu) {
+      jung = 'ㅕ';
       i += 2;
     } else if (vTrigraph) {
       jung = vTrigraph;

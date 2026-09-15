@@ -1,7 +1,7 @@
 {
   "eyebrow": "What's your animal?",
   "title": "Your Korean zodiac, and how this year looks",
-  "sub": "Name and birthday, that's it. This is the thing Koreans ask within a month of meeting you, and almost no foreigner knows the answer.",
+  "sub": "Name and birthday, that's it. It's the thing that comes up the moment anyone in Korea asks how old you are.",
   "name_label": "Name",
   "name_placeholder": "Kim Hajun",
   "birthday_label": "Birthday",
@@ -12,7 +12,7 @@
   "lucky_colour": "Lucky colour",
   "lucky_number": "Lucky number",
   "lucky_dish": "Lucky dish",
-  "disclaimer": "Just for fun. The animal and the season are real calculations; the fortunes aren't. The zodiac year turns at Seollal, so if you were born in January or early February you're the year before.",
+  "disclaimer": "Just for fun. The animal and the season are really calculated; the fortunes aren't. The zodiac year turns at Seollal, so a January or early-February birthday usually belongs to the year before.",
   "animal": {
     "rat": {
       "name": "Rat",

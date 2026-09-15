@@ -107,11 +107,7 @@ export function Header() {
              which read as the site throwing your place away. */
           onClick={() => {
             const s = useFlowStore.getState();
-            if (s.tool === 'name') s.restart();
-            else if (s.tool === 'kdrama') s.resetKdrama();
-            else if (s.tool === 'impression') s.setImpressionName('');
-            else if (s.tool === 'pair') { s.setPair('a', ''); s.setPair('b', ''); }
-            else if (s.tool === 'fortune') { s.setFortuneName(''); s.setFortuneBirthday(''); }
+            s.resetTool(s.tool);
           }}
           className="focus-ring flex flex-col gap-[5px] text-left transition-opacity hover:opacity-70"
         >

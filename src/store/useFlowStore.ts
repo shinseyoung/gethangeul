@@ -120,6 +120,8 @@ interface FlowState {
   prev: () => void;
 
   setTool: (tool: Tool) => void;
+  /** put one room back to its first screen, wherever you are standing */
+  resetTool: (tool: Tool) => void;
   setLang: (lang: Language) => void;
   syncFromPath: () => void;
   dismissLangHint: () => void;
@@ -201,7 +203,25 @@ export const useFlowStore = create<FlowState>((set, get) => ({
     if (typeof history !== 'undefined') {
       history.pushState({}, '', pathFor(get().lang, tool) + location.search);
     }
+    /* Clear the room being left, not the one being entered. Half-finished
+       answers kept coming back hours later — you looked at one room, came back,
+       and found somebody else's session waiting. Resetting on the way out and
+       not on the way in is also what keeps the hand-offs working: the name
+       result fills the pair room's first field and then switches to it, so the
+       room being entered must be left alone. */
+    const from = get().tool;
+    if (from !== tool) get().resetTool(from);
     set({ tool });
+  },
+  resetTool: (tool) => {
+    const s = get();
+    if (tool === 'name') s.restart();
+    // the name goes too, unlike resetKdrama, which is "다시 하기" on the card and
+    // should not make someone type their own name in again to answer again
+    else if (tool === 'kdrama') { s.resetKdrama(); s.setKdramaName(''); }
+    else if (tool === 'impression') s.setImpressionName('');
+    else if (tool === 'pair') { s.setPair('a', ''); s.setPair('b', ''); }
+    else if (tool === 'fortune') { s.setFortuneName(''); s.setFortuneBirthday(''); }
   },
   setLang: (lang) => {
     try { localStorage.setItem(LANG_KEY, lang); } catch { /* private mode */ }

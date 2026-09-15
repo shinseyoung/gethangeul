@@ -8,6 +8,7 @@ import { hangulFor } from '../utils/romanToHangul';
 import { sentences } from '../utils/sentences';
 import MountainWash from '../components/MountainWash';
 import TraitMeter from '../components/TraitMeter';
+import OptionMark from '../components/OptionMark';
 import OpticalText from '../components/OpticalText';
 import AdSlot from '../components/AdSlot';
 import Button, { ArrowLeft, ArrowRight } from '../components/Button';
@@ -251,13 +252,10 @@ export default function KdramaScreen() {
           <div className="flex w-full max-w-[280px] flex-col gap-3.5">
             {AXES.map((axis) => (
               <span key={axis} className="flex items-center gap-3">
-                <img
-                  src={`/marks/${MARK[axis]}.webp`}
-                  alt=""
-                  width={26}
-                  height={26}
-                  className="block h-[26px] w-[26px] shrink-0 object-contain mix-blend-multiply"
-                />
+                {/* the same tile the quiz options and the impression card use —
+                    a mark on bare paper beside a tiled one reads as a
+                    background that was meant to be taken off */}
+                <OptionMark id={MARK[axis]} active size={26} />
                 <OpticalText className="block flex-1 font-disp text-[15px] leading-none text-ink-2">
                   {String(t(`kdrama.axis.${axis}`))}
                 </OpticalText>

@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useTranslation } from '../hooks/useTranslation';
+import Dropdown from './Dropdown';
 
 /**
- * A birthday as three plain selects.
+ * A birthday as three fields.
  *
  * `<input type="date">` was doing the job correctly and looking nothing like
  * the rest of the site: the calendar it opens is the browser's own, not ours,
- * and there is no way to dress it. Three selects are the site's own controls,
- * they read the same in every locale because each part is labelled, and picking
- * a year in a list beats scrolling a calendar back forty years.
+ * and there is no way to dress it. Splitting it into year, month and day fixed
+ * that halfway — `<select>` drops an operating-system menu, which was the same
+ * complaint one layer down. All three are the site's own panel now.
  */
 
 const FIRST = 1920;
@@ -21,6 +22,9 @@ function daysIn(year: number, month: number): number {
   if (!year || !month) return 31;
   return new Date(Date.UTC(year, month, 0)).getUTCDate();
 }
+
+const DAYS = (year: number, month: number) =>
+  Array.from({ length: daysIn(year, month) }, (_, i) => i + 1);
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
@@ -51,38 +55,32 @@ export default function BirthdayPicker({ value, onChange }: Props) {
     onChange(year && month && clamped ? `${year}-${pad(month)}-${pad(clamped)}` : '');
   };
 
-  const field = 'h-[56px] w-full appearance-none rounded-2xl border-[1.5px] border-rule-strong bg-paper-hi px-4 font-disp text-[17px] text-ink outline-none transition-colors duration-150 focus:border-accent';
-
   return (
     <div className="flex gap-2">
-      <select
-        aria-label={String(t('fortune.year'))}
-        className={`${field} flex-[1.3]`}
-        value={y || ''}
-        onChange={(e) => set(Number(e.target.value), m, d)}
-      >
-        <option value="" disabled>{t('fortune.year')}</option>
-        {YEARS.map((year) => <option key={year} value={year}>{year}</option>)}
-      </select>
-      <select
-        aria-label={String(t('fortune.month'))}
-        className={`${field} flex-1`}
-        value={m || ''}
-        onChange={(e) => set(y, Number(e.target.value), d)}
-      >
-        <option value="" disabled>{t('fortune.month')}</option>
-        {MONTHS.map((month) => <option key={month} value={month}>{month}</option>)}
-      </select>
-      <select
-        aria-label={String(t('fortune.day'))}
-        className={`${field} flex-1`}
-        value={d || ''}
-        onChange={(e) => set(y, m, Number(e.target.value))}
-      >
-        <option value="" disabled>{t('fortune.day')}</option>
-        {Array.from({ length: daysIn(y, m) }, (_, i) => i + 1)
-          .map((day) => <option key={day} value={day}>{day}</option>)}
-      </select>
+      <Dropdown
+        label={String(t('fortune.year'))}
+        placeholder={String(t('fortune.year'))}
+        className="flex-[1.3]"
+        value={y}
+        options={YEARS}
+        onChange={(year) => set(year, m, d)}
+      />
+      <Dropdown
+        label={String(t('fortune.month'))}
+        placeholder={String(t('fortune.month'))}
+        className="flex-1"
+        value={m}
+        options={MONTHS}
+        onChange={(month) => set(y, month, d)}
+      />
+      <Dropdown
+        label={String(t('fortune.day'))}
+        placeholder={String(t('fortune.day'))}
+        className="flex-1"
+        value={d}
+        options={DAYS(y, m)}
+        onChange={(day) => set(y, m, day)}
+      />
     </div>
   );
 }
