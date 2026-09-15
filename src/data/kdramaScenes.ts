@@ -17,7 +17,7 @@ import { BRANCH_AT, SLOTS } from './kdramaSlots';
 
 /** Widened by one as each genre is finished, so a genre reaches the picker on
  *  exactly the commit that completes it and never as a stub. */
-export const GENRES = ['chaebol'] as const;
+export const GENRES = ['chaebol', 'makjang'] as const;
 
 /** How many scenes a playthrough walks. The same for every genre: the engine
  *  decides it, not the story. */
@@ -91,6 +91,42 @@ export const STORIES: Record<Genre, Story> = {
       }),
       fixed('wrist', 'follow', 'greet', 'regrip', 'laugh'),
       fixed('ramyeon', 'stay', 'up', 'tomorrow', 'two'),
+    ],
+  },
+
+  /* 막장 — 출생의 비밀, 기억상실, 친자 확인, 김치 싸대기. The most
+     recognisable thing in the genre and the reason it is in: a foreigner who
+     learns one Korean drama shape should learn this one. */
+  makjang: {
+    name: [0, 2, 3, 6, 8, 11],
+    tellings: [
+      fixed('wedding', 'groom', 'back', 'hands', 'envelope'),
+      fixed('slap', 'toward', 'wrist2', 'towel', 'film'),
+      fixed('photo2', 'ask2', 'drawer', 'careful', 'copy'),
+      branch({
+        romance: scene('hospital2', 'handonly', 'whoareyou', 'tuck', 'chart'),
+        presence: scene('will', 'listen2', 'reread', 'hold3', 'copy2'),
+        warmth: scene('orphan', 'stare2', 'callnow', 'others', 'take2'),
+        mischief: scene('twin', 'keep2', 'gothere', 'hush', 'mimic'),
+      }),
+      fixed('dna', 'openit', 'lawyer', 'showher', 'fridge'),
+      fixed('stepmother', 'nothing3', 'whereis', 'thanks', 'bigger'),
+      branch({
+        romance: scene('amnesia', 'again2', 'doctor2', 'okay', 'photos'),
+        presence: scene('boardroom', 'protect', 'readall', 'staff', 'delay'),
+        warmth: scene('deathbed', 'listenclose', 'family2', 'dontspeak', 'record'),
+        mischief: scene('swap2', 'gohome', 'records', 'theirs', 'alone2'),
+      }),
+      fixed('crash', 'nopick', 'call119', 'umbrella', 'dashcam'),
+      fixed('secret2', 'nowhere', 'quieter', 'dontneed', 'knew'),
+      branch({
+        romance: scene('rain', 'soaked', 'tocar', 'giveit', 'throwit'),
+        presence: scene('funeral', 'sit2', 'greet2', 'beside2', 'swapname'),
+        warmth: scene('reunion2', 'silent3', 'comein', 'meal', 'interest'),
+        mischief: scene('trial', 'onlyasked', 'more2', 'dontlook', 'gallery'),
+      }),
+      fixed('confront', 'callthem', 'papers', 'neither', 'playit'),
+      fixed('forgive', 'sitdown', 'takeit', 'later', 'eat'),
     ],
   },
 };

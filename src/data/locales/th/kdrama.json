@@ -28,6 +28,11 @@
       "label": "Chaebol Romance",
       "tagline": "The chairman, the office, the envelope",
       "slot": "16 episodes · Wed–Thu primetime"
+    },
+    "makjang": {
+      "label": "Makjang",
+      "tagline": "Secret births, amnesia, a slap with kimchi",
+      "slot": "100 episodes · daily morning serial"
     }
   },
   "chaebol": {
@@ -270,6 +275,249 @@
       "bestie_careful": {
         "title": "The Company Doesn't Work Without {name}",
         "logline": "{name} drives them home, remembers what was said in episode one, and never makes it about themselves."
+      }
+    }
+  },
+  "makjang": {
+    "q": {
+      "wedding": {
+        "title": "A wedding. There's a seat for {name} on the bride's side. You're seeing the groom for the first time today.",
+        "options": {
+          "groom": "You don't stop looking at the groom",
+          "back": "You sit at the very back and stay there",
+          "hands": "You go to the bride first and take her hands",
+          "envelope": "You leave your name off the gift envelope"
+        }
+      },
+      "slap": {
+        "title": "A slap, delivered with a handful of kimchi. It didn't land on you.",
+        "options": {
+          "toward": "You walk slowly towards the one who was hit",
+          "wrist2": "You catch the wrist that's holding the kimchi",
+          "towel": "You go and get a wet towel first",
+          "film": "You lift your phone. Recording first"
+        }
+      },
+      "photo2": {
+        "title": "An old photo turns up in a drawer. A woman of about twenty, and she looks far too much like {name}.",
+        "options": {
+          "ask2": "You take the photo straight to your mother",
+          "drawer": "You put it back and lock the drawer",
+          "careful": "You ask who she is, carefully",
+          "copy": "You photograph it and send it to nobody"
+        }
+      },
+      "hospital2": {
+        "title": "A hospital room. Someone you've never met is calling {name} by name.",
+        "options": {
+          "handonly": "You take their hand and ask nothing",
+          "whoareyou": "You ask who they are, straight out",
+          "tuck": "You straighten the blanket first",
+          "chart": "You call a nurse and read the chart"
+        }
+      },
+      "will": {
+        "title": "The will is being read. The lawyer says {name}.",
+        "options": {
+          "listen2": "You just listen. Your face doesn't move",
+          "reread": "You stand and ask him to read it again in full",
+          "hold3": "You take the hand of the person beside you",
+          "copy2": "You ask the lawyer for a copy"
+        }
+      },
+      "orphan": {
+        "title": "{name} is in an orphanage record. 1998.",
+        "options": {
+          "stare2": "You look at the record for a long time",
+          "callnow": "You ring the director straight away",
+          "others": "You look for the others who were there first",
+          "take2": "You copy the record and put it in your bag"
+        }
+      },
+      "twin": {
+        "title": "Someone messages: they've just seen a person on the street who looks exactly like {name}.",
+        "options": {
+          "keep2": "You keep the photo and don't reply",
+          "gothere": "You go straight to where they saw them",
+          "hush": "You decide not to tell the family",
+          "mimic": "You pose as them and send a photo back"
+        }
+      },
+      "dna": {
+        "title": "The paternity result has arrived, still in its envelope. You haven't opened it.",
+        "options": {
+          "openit": "You open it where you stand",
+          "lawyer": "You agree to open it with the lawyer present",
+          "showher": "You show your mother first",
+          "fridge": "You put the whole envelope in the fridge"
+        }
+      },
+      "stepmother": {
+        "title": "Your stepmother has tidied your room. Everything except the photo frame.",
+        "options": {
+          "nothing3": "You don't bring the frame up",
+          "whereis": "You ask where the frame is, immediately",
+          "thanks": "You thank her for tidying",
+          "bigger": "You buy a bigger frame and hang it higher"
+        }
+      },
+      "amnesia": {
+        "title": "Since the accident they don't recognise {name}.",
+        "options": {
+          "again2": "You tell them the same story from the start, every day",
+          "doctor2": "You hear the doctor out to the end first",
+          "okay": "You tell them it's fine not to remember",
+          "photos": "You quietly hang old photos in the room"
+        }
+      },
+      "boardroom": {
+        "title": "The board meeting. Shares come up, and then the name {name}.",
+        "options": {
+          "protect": "You state that their shares are not to be touched",
+          "readall": "You read the papers through before saying anything",
+          "staff": "You start with the people still working there",
+          "delay": "You move to push the vote to next week"
+        }
+      },
+      "deathbed": {
+        "title": "At the very end, your mother takes {name} by the hand and tries to say something.",
+        "options": {
+          "listenclose": "You put your ear close and listen to the end",
+          "family2": "You call the rest of the family in first",
+          "dontspeak": "You tell her it's alright, she doesn't have to",
+          "record": "You press record"
+        }
+      },
+      "swap2": {
+        "title": "The hospital calls. Two babies may have been swapped in 1998. One of them is {name}.",
+        "options": {
+          "gohome": "You go straight to the parents who raised you",
+          "records": "You demand every record the hospital holds",
+          "theirs": "Your first thought is for the other family",
+          "alone2": "You tell nobody and look into it yourself"
+        }
+      },
+      "crash": {
+        "title": "Wet road. Brakes. And a phone that won't stop ringing.",
+        "options": {
+          "nopick": "You don't answer it. You stay where you are",
+          "call119": "You call an ambulance first",
+          "umbrella": "You hold the umbrella over them and get soaked",
+          "dashcam": "You get the dashcam first"
+        }
+      },
+      "secret2": {
+        "title": "There's something your mother hasn't said in twenty years. “I think {name} should hear it from me.”",
+        "options": {
+          "nowhere": "You tell her to say it. Now, here",
+          "quieter": "You ask to move somewhere quieter",
+          "dontneed": "You tell her she doesn't have to if it's hard",
+          "knew": "You tell her you already knew"
+        }
+      },
+      "rain": {
+        "title": "Rain. They're standing in it with no umbrella.",
+        "options": {
+          "soaked": "You stand next to them and get just as wet",
+          "tocar": "You put the umbrella over them and walk them to the car",
+          "giveit": "You hand them the umbrella and go on",
+          "throwit": "You throw it to them and run"
+        }
+      },
+      "funeral": {
+        "title": "The funeral hall. Your name is on the chief mourner's card.",
+        "options": {
+          "sit2": "You take the seat and say nothing",
+          "greet2": "You greet every mourner, one by one",
+          "beside2": "You go and sit next to whoever is crying",
+          "swapname": "You take the card down and put another name on it"
+        }
+      },
+      "reunion2": {
+        "title": "After twenty years, they're standing at the door.",
+        "options": {
+          "silent3": "You open the door and say nothing",
+          "comein": "You tell them to come in, before they speak",
+          "meal": "You start making food",
+          "interest": "“Twenty years. There's interest on that,” you say"
+        }
+      },
+      "trial": {
+        "title": "A courtroom. You're in the witness box.",
+        "options": {
+          "onlyasked": "You answer only what you're asked",
+          "more2": "You say the part nobody asked about",
+          "dontlook": "You don't look their way once",
+          "gallery": "You say something to the public gallery"
+        }
+      },
+      "confront": {
+        "title": "Everyone is in the room. Now you speak.",
+        "options": {
+          "callthem": "You say their name first",
+          "papers": "You put the papers on the table and wait",
+          "neither": "You say up front that you're taking nobody's side",
+          "playit": "You play the recording"
+        }
+      },
+      "forgive": {
+        "title": "“{name}. All you have to do is take my hand.”",
+        "options": {
+          "sitdown": "You don't take it. You sit down beside them",
+          "takeit": "You take it, in front of everyone",
+          "later": "“Give me a little longer.”",
+          "eat": "“Forget the hand. Let's eat first.”"
+        }
+      }
+    },
+    "poster": {
+      "lead_direct": {
+        "title": "{name} and the Real Name in That House",
+        "logline": "{name} opens the envelope where they stand. Nobody in that house goes back to how they were."
+      },
+      "lead_careful": {
+        "title": "{name} Waited Twenty Years",
+        "logline": "{name} let twenty years go by without a word. Then, once, with everyone in the room, {name} speaks."
+      },
+      "firstLove_direct": {
+        "title": "{name} and a Promise in the Rain",
+        "logline": "{name} can't walk past someone standing in the rain with no umbrella. That once carries a hundred episodes."
+      },
+      "firstLove_careful": {
+        "title": "{name} and the Photo in the Drawer",
+        "logline": "{name} put the photo back in the drawer and asked nobody. Which is why nothing was ever finished."
+      },
+      "spark_direct": {
+        "title": "{name}, the Second Time",
+        "logline": "The second time they meet, {name} just asks. One question turns the whole household over."
+      },
+      "spark_careful": {
+        "title": "{name} and Them, 1998",
+        "logline": "{name} and that person passed each other once in 1998. Neither of them knows. Only you do."
+      },
+      "second_direct": {
+        "title": "{name} on the Mourner's Card",
+        "logline": "{name}'s name was on the chief mourner's card. {name} sat down, and half the audience changed sides that night."
+      },
+      "second_careful": {
+        "title": "{name} Stayed to the End",
+        "logline": "Everyone went home and {name} was still in the corridor. Nobody knew until the final episode."
+      },
+      "rival_direct": {
+        "title": "{name}, the Last Line of the Will",
+        "logline": "{name}'s name was on the last line. {name} stands up and asks for it to be read again."
+      },
+      "rival_careful": {
+        "title": "{name}, a Quiet Inheritance",
+        "logline": "{name} asks for nothing. The shares keep moving {name}'s way regardless."
+      },
+      "bestie_direct": {
+        "title": "{name} Is the Noise in This House",
+        "logline": "A quiet house gets loud when {name} walks in. Without that noise it would have fallen down already."
+      },
+      "bestie_careful": {
+        "title": "{name} Takes Nobody's Side",
+        "logline": "{name} won't take sides, which is why {name} is the only one anyone tells the truth to."
       }
     }
   }

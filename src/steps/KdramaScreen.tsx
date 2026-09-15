@@ -32,6 +32,7 @@ import Button, { ArrowLeft, ArrowRight } from '../components/Button';
 /** Borrowed from the quiz set, so a genre needs no new drawing. */
 const GENRE_MARK: Record<Genre, string> = {
   chaebol: 'trendy',
+  makjang: 'strong',
 };
 
 /** The four axes borrow marks the quiz already uses, so nothing new was drawn. */
