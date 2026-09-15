@@ -1,22 +1,22 @@
 import { NAME_DATABASE } from '../data/nameDatabase';
 import type { NameItem } from '../types/name';
 import { choseongOf, readOnset } from './soundBridge';
+import { SITUATIONS, profileOf, type Answers } from '../data/situations';
 
 export type Gender = 'male' | 'female' | 'neutral' | null;
 
 export interface MatchAnswers {
   givenName?: string;
   gender: Gender;
-  vibe: string | null;
-  personality: string | null;
-  seasonNature: string | null;
+  /** one option index per situation — see data/situations.ts */
+  answers: Answers;
 }
 
 export interface Match {
   name: NameItem;
   score: number;
-  /** which answers this name actually matched, for the "why" line */
-  reasons: ('vibe' | 'personality' | 'nature' | 'sound')[];
+  /** the situations this name answered to, plus 'sound' — for the "why" line */
+  reasons: string[];
 }
 
 export interface SoundReport {
@@ -118,9 +118,57 @@ function narrowBySound(givenName: string | undefined): { pool: NameItem[]; sound
   return { pool: pool.length > 0 ? pool : NAME_DATABASE, sound };
 }
 
-export function matchNames(answers: MatchAnswers, limit = 3): MatchResult {
-  const { pool, sound } = narrowBySound(answers.givenName);
-  const { gender, vibe, personality, seasonNature } = answers;
+/**
+ * How much a tag says about a name.
+ *
+ * `calm` is on 47 of the 114 names and `resilient` on 12, so matching the two
+ * is not the same event. Counting them the same handed the room to names built
+ * out of common tags: 윤아 — calm, bright, prudent, radiant, upright, autumn,
+ * sky, all of them frequent — took 14% of all answer sets on its own.
+ * Inverse frequency is the standard fix and the honest one: a rare tag matched
+ * is a stronger statement about the person who picked it.
+ */
+const IDF: Record<string, number> = (() => {
+  const freq: Record<string, number> = {};
+  for (const name of NAME_DATABASE) {
+    for (const tag of [...name.vibes, ...name.personalities, ...name.nature]) {
+      freq[tag] = (freq[tag] ?? 0) + 1;
+    }
+  }
+  return Object.fromEntries(
+    Object.entries(freq).map(([tag, n]) => [tag, Math.log(NAME_DATABASE.length / n)]),
+  );
+})();
+
+/**
+ * The most a name could score, if every situation were answered in its favour.
+ *
+ * Names are not equally easy to satisfy: measured across the six situations the
+ * ceiling ran from 5 to 10, so 태하 could not have won for any of the 4,096
+ * answer sets whatever anyone picked, and 민규 was in the running for nearly all
+ * of them. Dividing by it puts every name on the same scale.
+ *
+ * By its square root, not by itself. Full normalisation over-corrects — a name
+ * with few, common tags reaches its own ceiling far more often than a name with
+ * many — and left 윤아 on 14% again from the other direction. Halfway between
+ * "how much did you match" and "how much of yourself did you match" is the one
+ * that put every name in reach with no name above 7%, measured over all three
+ * gender pools.
+ */
+const CEILING: Record<string, number> = Object.fromEntries(
+  NAME_DATABASE.map((name) => [
+    name.id,
+    Math.sqrt(SITUATIONS.reduce((total, situation) => total + Math.max(
+      ...situation.options.map((o) => o.tags
+        .filter((t) => name[situation.axis].includes(t))
+        .reduce((sum, t) => sum + (IDF[t] ?? 0), 0)),
+    ), 0)) || 1,
+  ]),
+);
+
+export function matchNames(input: MatchAnswers, limit = 3): MatchResult {
+  const { givenName, gender, answers } = input;
+  const { pool, sound } = narrowBySound(givenName);
 
   // Gender is a hard filter for male/female; 'neutral' keeps the whole pool and
   // only rewards names actually tagged neutral.
@@ -141,22 +189,29 @@ export function matchNames(answers: MatchAnswers, limit = 3): MatchResult {
     candidates = [...candidates, ...wider.filter((item) => !bySound.has(item.id))];
   }
 
-  const seed = [answers.givenName ?? '', gender ?? '', vibe ?? '', personality ?? '', seasonNature ?? ''].join('|');
+  /* every tag the six answers put on the table, and a seed that changes with
+     any of them — two names on the same score must not always break the same
+     way, or a whole corner of the database becomes unreachable */
+  const profile = profileOf(answers);
+  const seed = [givenName ?? '', gender ?? '', ...answers.map(String)].join('|');
 
   const scored: Match[] = candidates.map((name) => {
-    const reasons: Match['reasons'] = [];
-    let score = 0;
+    const reasons = new Set<string>();
+    let matched = 0;
 
-    if (gender === 'neutral' && name.gender.includes('neutral')) score += 0.5;
-    // above the three traits put together: the sound pool was a hard filter
-    // before the top-up existed, and it stays one wherever it can fill a slot
-    if (sound.matched && bySound.has(name.id)) score += 4;
-    if (vibe && name.vibes.includes(vibe)) { score += 1; reasons.push('vibe'); }
-    if (personality && name.personalities.includes(personality)) { score += 1; reasons.push('personality'); }
-    if (seasonNature && name.nature.includes(seasonNature)) { score += 1; reasons.push('nature'); }
-    if (sound.matched && bySound.has(name.id)) reasons.unshift('sound');
+    for (const { tag, axis, from } of profile) {
+      if (name[axis].includes(tag)) { matched += IDF[tag] ?? 0; reasons.add(from); }
+    }
 
-    return { name, score, reasons };
+    let score = matched / CEILING[name.id];
+
+    /* 'neutral' keeps the whole database as candidates and leans on this to
+       bring the 51 neutral-tagged names up. Measured: below 0.3 one of them —
+       단우 — could not win for any of the 4,096 answer sets. */
+    if (gender === 'neutral' && name.gender.includes('neutral')) score += 0.3;
+    if (sound.matched && bySound.has(name.id)) { score += 2; reasons.add('sound'); }
+
+    return { name, score, reasons: [...reasons] };
   });
 
   scored.sort((a, b) => {
@@ -167,13 +222,3 @@ export function matchNames(answers: MatchAnswers, limit = 3): MatchResult {
   return { matches: scored.slice(0, limit), sound };
 }
 
-/** Back-compat helper for anything still expecting a single name. */
-export function getRecommendedName(
-  gender: Gender,
-  vibe: string | null,
-  personality: string | null,
-  seasonNature: string | null,
-  givenName?: string,
-): NameItem {
-  return matchNames({ gender, vibe, personality, seasonNature, givenName }, 1).matches[0].name;
-}
