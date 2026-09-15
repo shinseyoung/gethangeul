@@ -143,7 +143,7 @@ for (const [lang, bundle] of Object.entries({ ko, vi, th })) {
     const value = (bundle.pair as Record<string, string>)[key];
     ok(`${lang}: pair.${key} exists`, typeof value === 'string' && value.length > 0);
   }
-  for (const key of ['name', 'pair', 'impression', 'kdrama', 'menu']) {
+  for (const key of ['name', 'pair', 'impression', 'kdrama', 'fortune', 'menu']) {
     ok(`${lang}: nav.${key} exists`, typeof (bundle.nav as Record<string, string>)[key] === 'string');
   }
 }

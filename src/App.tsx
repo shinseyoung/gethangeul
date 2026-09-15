@@ -9,6 +9,7 @@ import StepResult from './steps/StepResult';
 import PairScreen from './steps/PairScreen';
 import ImpressionScreen from './steps/ImpressionScreen';
 import KdramaScreen from './steps/KdramaScreen';
+import FortuneScreen from './steps/FortuneScreen';
 import AdSlot from './components/AdSlot';
 import { QUESTION_STEPS, useFlowStore, type QuestionStep } from './store/useFlowStore';
 import { useTranslation } from './hooks/useTranslation';
@@ -56,6 +57,7 @@ export default function App() {
         {tool === 'pair' && <PairScreen />}
         {tool === 'impression' && <ImpressionScreen />}
         {tool === 'kdrama' && <KdramaScreen />}
+        {tool === 'fortune' && <FortuneScreen />}
         {tool === 'name' && (
           <>
             {step === 'landing' && <Step0Landing />}

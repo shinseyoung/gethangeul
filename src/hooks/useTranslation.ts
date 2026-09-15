@@ -25,18 +25,24 @@ import enKdrama from '../data/locales/en/kdrama.json';
 import viKdrama from '../data/locales/vi/kdrama.json';
 import thKdrama from '../data/locales/th/kdrama.json';
 
+import koFortune from '../data/locales/ko/fortune.json';
+import enFortune from '../data/locales/en/fortune.json';
+import viFortune from '../data/locales/vi/fortune.json';
+import thFortune from '../data/locales/th/fortune.json';
+
 type TranslationData = typeof koCommon & {
   names: typeof koNames;
   surnames: typeof koSurnames;
   syllables: typeof koSyllables;
   kdrama: typeof koKdrama;
+  fortune: typeof koFortune;
 };
 
 const translations: Record<Language, TranslationData> = {
-  ko: { ...koCommon, names: koNames, surnames: koSurnames, syllables: koSyllables, kdrama: koKdrama } as TranslationData,
-  en: { ...enCommon, names: enNames, surnames: enSurnames, syllables: enSyllables, kdrama: enKdrama } as unknown as TranslationData,
-  vi: { ...viCommon, names: viNames, surnames: viSurnames, syllables: viSyllables, kdrama: viKdrama } as unknown as TranslationData,
-  th: { ...thCommon, names: thNames, surnames: thSurnames, syllables: thSyllables, kdrama: thKdrama } as unknown as TranslationData,
+  ko: { ...koCommon, names: koNames, surnames: koSurnames, syllables: koSyllables, kdrama: koKdrama, fortune: koFortune } as TranslationData,
+  en: { ...enCommon, names: enNames, surnames: enSurnames, syllables: enSyllables, kdrama: enKdrama, fortune: enFortune } as unknown as TranslationData,
+  vi: { ...viCommon, names: viNames, surnames: viSurnames, syllables: viSyllables, kdrama: viKdrama, fortune: viFortune } as unknown as TranslationData,
+  th: { ...thCommon, names: thNames, surnames: thSurnames, syllables: thSyllables, kdrama: thKdrama, fortune: thFortune } as unknown as TranslationData,
 };
 
 function lookup(dict: unknown, path: string): unknown {
