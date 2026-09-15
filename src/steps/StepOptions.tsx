@@ -1,71 +1,66 @@
 import { QUESTION_STEPS, useFlowStore, type QuestionStep } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
-import OptionMark from '../components/OptionMark';
+import { SITUATIONS } from '../data/situations';
+import { sentences } from '../utils/sentences';
 import ProgressRail from '../components/ProgressRail';
 import CheckMark from '../components/CheckMark';
 import Button, { ArrowLeft, ArrowRight } from '../components/Button';
 
 /**
- * One screen for all four questions. These used to be four near-identical files
- * whose only real difference was a switch statement of pastel border colours.
+ * One screen per situation.
+ *
+ * This used to be four grids of adjectives, which asked the visitor to judge
+ * how 서연 sounds — a job nobody outside Korea can do. Six moments from a day
+ * here ask what they would *do*, and the site reads the adjectives out of that.
+ *
+ * No marks on these cards. The ink drawings are one per adjective, and there
+ * are no adjectives on this screen any more; a plum branch beside a sentence
+ * about a barista is decoration pretending to be information.
  */
-
-const OPTIONS: Record<QuestionStep, string[]> = {
-  gender: ['male', 'female', 'neutral'],
-  vibe: ['bright', 'calm', 'natural', 'soft', 'mystic', 'trendy', 'strong', 'lovely'],
-  personality: [
-    'radiant', 'considerate', 'dependable', 'whimsical', 'genuine', 'inquisitive',
-    'enterprising', 'prudent', 'upright', 'sensitive', 'graceful', 'resilient',
-  ],
-  nature: ['spring', 'summer', 'autumn', 'winter', 'mountain', 'sea', 'river', 'forest'],
-};
-
-const COLS: Record<QuestionStep, string> = {
-  gender: 'grid-cols-1 sm:grid-cols-3',
-  vibe: 'grid-cols-2 md:grid-cols-4',
-  personality: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
-  nature: 'grid-cols-2 md:grid-cols-4',
-};
-
 export default function StepOptions({ step }: { step: QuestionStep }) {
-  const { setAnswer, answerFor, next, prev } = useFlowStore();
+  const { nameAnswers, setNameAnswer, next, prev } = useFlowStore();
   const { t } = useTranslation();
 
   const index = QUESTION_STEPS.indexOf(step);
-  const selected = answerFor(step);
-  const questionKey = `questions.step${index + 1}`;
+  const situation = SITUATIONS[index];
+  const selected = nameAnswers[index];
 
   return (
     <div className="mx-auto flex w-full max-w-[900px] flex-1 flex-col px-6 pb-8 pt-5 lg:px-4">
       <ProgressRail current={step} />
 
       <div className="pb-5 pt-7">
-        <h2 className="mb-2.5 -ml-[0.035em] text-pretty font-disp text-[29px] leading-[1.1] tracking-tight text-ink md:text-[38px]">
-          {t(`${questionKey}.title`)}
+        {/* one block per sentence: a situation is where you are and then what is
+            happening, and the two wrapping together read as one run-on */}
+        <h2 className="mb-2.5 -ml-[0.035em] flex flex-col text-pretty font-disp text-[29px] leading-[1.1] tracking-tight text-ink md:text-[38px]">
+          {sentences(String(t(`situations.${situation.id}.title`))).map((line) => (
+            <span key={line} className="block">{line}</span>
+          ))}
         </h2>
-        <p className="text-[14px] leading-relaxed text-ink-3 md:text-[15px]">{t(`${questionKey}.description`)}</p>
+        <p className="text-[14px] leading-relaxed text-ink-3 md:text-[15px]">
+          {t(`situations.${situation.id}.description`)}
+        </p>
       </div>
 
-      <div className={`grid gap-2.5 ${COLS[step]}`}>
-        {OPTIONS[step].map((id) => {
-          const on = selected === id;
+      <div className="grid gap-2.5">
+        {situation.options.map((option, o) => {
+          const on = selected === o;
           return (
             <button
-              key={id}
+              key={option.id}
               type="button"
               aria-pressed={on}
-              onClick={() => setAnswer(step, on ? null : id)}
+              onClick={() => setNameAnswer(index, o)}
               /* border width is identical in both states so the box never
                  resizes — that shift is what made these feel like they wobbled */
-              className={`focus-ring flex min-h-[84px] items-center gap-3.5 rounded-2xl border-[1.5px] p-3.5 text-left transition-colors duration-150 ${
+              className={`focus-ring flex min-h-[68px] items-center gap-3 rounded-2xl border-[1.5px] p-4 text-left transition-colors duration-150 ${
                 on
                   ? 'border-accent bg-accent/[0.05]'
                   : 'border-rule bg-paper-hi hover:border-rule-strong hover:bg-paper-lo/60'
               }`}
             >
-              <OptionMark id={id} active={on} size={42} />
-              <span className={`min-w-0 flex-1 text-balance font-disp text-[19px] leading-tight md:text-[20px] ${on ? 'text-ink' : 'text-ink-2'}`}>
-                {t(`options.${step}.${id}`)}
+              <span className={`min-w-0 flex-1 text-balance font-disp text-[17px] leading-snug md:text-[18px] ${on ? 'text-ink' : 'text-ink-2'}`}>
+                {t(`situations.${situation.id}.options.${option.id}`)}
               </span>
               <CheckMark on={on} />
             </button>
@@ -78,7 +73,7 @@ export default function StepOptions({ step }: { step: QuestionStep }) {
           <ArrowLeft />
           {t('layout.buttons.prev')}
         </Button>
-        <Button onClick={next} disabled={!selected}>
+        <Button onClick={next} disabled={selected === null || selected === undefined}>
           {t('layout.buttons.next')}
           <ArrowRight />
         </Button>

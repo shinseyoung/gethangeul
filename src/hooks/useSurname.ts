@@ -21,15 +21,13 @@ export function useSurname(): ResolvedSurname {
   const lang = useFlowStore((s) => s.lang);
   const surnameId = useFlowStore((s) => s.surnameId);
   const gender = useFlowStore((s) => s.gender);
-  const vibe = useFlowStore((s) => s.vibe);
-  const personality = useFlowStore((s) => s.personality);
-  const seasonNature = useFlowStore((s) => s.seasonNature);
+  const answers = useFlowStore((s) => s.nameAnswers);
 
   return useMemo(() => {
     const suggestion = suggestSurnames(givenName, lang);
     const picked = surnameById(surnameId);
     if (picked) return { surname: picked, suggestion, chosen: true };
-    const seed = [givenName, gender ?? '', vibe ?? '', personality ?? '', seasonNature ?? ''].join('|');
+    const seed = [givenName, gender ?? '', ...answers.map(String)].join('|');
     return { surname: defaultSurname(givenName, lang, seed), suggestion, chosen: false };
-  }, [givenName, lang, surnameId, gender, vibe, personality, seasonNature]);
+  }, [givenName, lang, surnameId, gender, answers]);
 }

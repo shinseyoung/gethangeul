@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import type { Genre } from '../data/kdramaScenes';
+import type { Answers } from '../data/situations';
 
 export type Language = 'ko' | 'en' | 'vi' | 'th';
 
@@ -11,12 +12,12 @@ export const LANGUAGES: { code: Language; endonym: string; english: string }[] =
 ];
 
 export const STEPS = [
-  'landing', 'gender', 'vibe', 'personality', 'nature', 'surname', 'loading', 'result',
+  'landing', 'cup', 'train', 'dinner', 'lift', 'market', 'evening', 'surname', 'loading', 'result',
 ] as const;
 export type StepId = (typeof STEPS)[number];
 
-/** The four question screens, in order — used for the progress rail. */
-export const QUESTION_STEPS = ['gender', 'vibe', 'personality', 'nature'] as const;
+/** The six situation screens, in order — used for the progress rail. */
+export const QUESTION_STEPS = ['cup', 'train', 'dinner', 'lift', 'market', 'evening'] as const;
 export type QuestionStep = (typeof QUESTION_STEPS)[number];
 
 /** The site has three rooms. The address says which one you are in. */
@@ -84,10 +85,13 @@ interface FlowState {
   langAutoPicked: boolean;
 
   givenName: string;
+  /* Not a question any more: it is the one genuinely administrative field
+     in the flow, and asking it first set the form tone for everything after.
+     It lives on the surname screen now, where it reads as part of assembling
+     a name rather than as the first thing the site wants to know about you. */
   gender: 'male' | 'female' | 'neutral' | null;
-  vibe: string | null;
-  personality: string | null;
-  seasonNature: string | null;
+  /** one option index per situation, null until answered */
+  nameAnswers: Answers;
   /** null until the surname screen resolves one; never null past it */
   surnameId: string | null;
 
@@ -132,14 +136,10 @@ interface FlowState {
 
   setGivenName: (name: string) => void;
   setGender: (v: FlowState['gender']) => void;
-  setVibe: (v: string | null) => void;
-  setPersonality: (v: string | null) => void;
-  setSeasonNature: (v: string | null) => void;
+  setNameAnswer: (index: number, option: number) => void;
   /** null clears the choice and hands the screen back to its suggestion */
   setSurname: (id: string | null) => void;
   setPair: (which: 'a' | 'b', value: string) => void;
-  setAnswer: (step: QuestionStep, value: string | null) => void;
-  answerFor: (step: QuestionStep) => string | null;
 
   restart: () => void;
 }
@@ -170,9 +170,7 @@ export const useFlowStore = create<FlowState>((set, get) => ({
 
   givenName: '',
   gender: null,
-  vibe: null,
-  personality: null,
-  seasonNature: null,
+  nameAnswers: Array(6).fill(null),
   surnameId: null,
   pairA: '',
   pairB: '',
@@ -251,29 +249,18 @@ export const useFlowStore = create<FlowState>((set, get) => ({
 
   setGivenName: (givenName) => set({ givenName }),
   setGender: (gender) => set({ gender }),
-  setVibe: (vibe) => set({ vibe }),
-  setPersonality: (personality) => set({ personality }),
-  setSeasonNature: (seasonNature) => set({ seasonNature }),
+  setNameAnswer: (index, option) => set((state) => {
+    const next = [...state.nameAnswers];
+    next[index] = option;
+    return { nameAnswers: next };
+  }),
   setSurname: (surnameId) => set({ surnameId }),
   setPair: (which, value) => set(which === 'a' ? { pairA: value } : { pairB: value }),
 
-  setAnswer: (step, value) => {
-    if (step === 'gender') set({ gender: value as FlowState['gender'] });
-    else if (step === 'vibe') set({ vibe: value });
-    else if (step === 'personality') set({ personality: value });
-    else set({ seasonNature: value });
-  },
-  answerFor: (step) => {
-    const s = get();
-    if (step === 'gender') return s.gender;
-    if (step === 'vibe') return s.vibe;
-    if (step === 'personality') return s.personality;
-    return s.seasonNature;
-  },
 
   /** The only way back: answer again and get another name. */
   restart: () => set({
-    step: 'landing', givenName: '', gender: null, vibe: null,
-    personality: null, seasonNature: null, surnameId: null,
+    step: 'landing', givenName: '', gender: null,
+    nameAnswers: Array(6).fill(null), surnameId: null,
   }),
 }));

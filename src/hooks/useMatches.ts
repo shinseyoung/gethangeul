@@ -6,12 +6,10 @@ import { matchNames, type MatchResult } from '../utils/nameMatcher';
 export function useMatches(): MatchResult {
   const givenName = useFlowStore((s) => s.givenName);
   const gender = useFlowStore((s) => s.gender);
-  const vibe = useFlowStore((s) => s.vibe);
-  const personality = useFlowStore((s) => s.personality);
-  const seasonNature = useFlowStore((s) => s.seasonNature);
+  const answers = useFlowStore((s) => s.nameAnswers);
 
   return useMemo(
-    () => matchNames({ givenName, gender, vibe, personality, seasonNature }),
-    [givenName, gender, vibe, personality, seasonNature],
+    () => matchNames({ givenName, gender, answers }),
+    [givenName, gender, answers],
   );
 }

@@ -5,6 +5,7 @@ import { useMatches } from '../hooks/useMatches';
 import { useSurname } from '../hooks/useSurname';
 import { useImageShare } from '../hooks/useImageShare';
 import OptionMark, { markColor } from '../components/OptionMark';
+import { SITUATIONS, profileOf } from '../data/situations';
 import MountainWash, { SEASON_WASH } from '../components/MountainWash';
 import AdSlot from '../components/AdSlot';
 import Button from '../components/Button';
@@ -68,7 +69,7 @@ function useSpeech(text: string) {
 }
 
 export default function StepResult() {
-  const { seasonNature, gender, vibe, personality, restart, setStep, setPair, setTool } = useFlowStore();
+  const { nameAnswers, gender, restart, setStep, setPair, setTool } = useFlowStore();
   const { t } = useTranslation();
   const { matches, sound } = useMatches();
   const { surname } = useSurname();
@@ -86,20 +87,50 @@ export default function StepResult() {
 
   if (!name) return null;
 
-  const season = (SEASONS as readonly string[]).includes(seasonNature ?? '') ? seasonNature! : 'slate';
+  /* the six answers, as tags. The wash takes whichever season the last
+     situation put on the table; the rest label the card. */
+  const profile = profileOf(nameAnswers);
+  const tagsIn = (axis: 'vibes' | 'personalities' | 'nature') =>
+    profile.filter((p) => p.axis === axis).map((p) => p.tag);
+  const season = SEASONS.find((s) => tagsIn('nature').includes(s)) ?? 'slate';
   const wash = SEASON_WASH[season] ?? SEASON_WASH.slate;
   const roman = `${surname.roman} ${name.id.charAt(0).toUpperCase()}${name.id.slice(1)}`;
   const isPureKorean = name.hangul === name.hanja;
 
+  /* Which answers pointed here. The result already showed what the name
+     means; it never showed why this one and not another, and a name that
+     arrives with no visible relationship to anything you said reads as
+     arbitrary — which was half the complaint about the old flow.
+     Two, not all six: a card that lists every answer is a receipt. A name
+     that won on sound alone gets no line rather than half of one. */
+  const why = match.reasons
+    .filter((r) => r !== 'sound')
+    .sort((a, b) => SITUATIONS.findIndex((x) => x.id === a) - SITUATIONS.findIndex((x) => x.id === b))
+    .slice(0, 2)
+    .map((id) => {
+      const i = SITUATIONS.findIndex((x) => x.id === id);
+      const option = SITUATIONS[i].options[nameAnswers[i] ?? -1];
+      return option ? String(t(`reasons.${option.id}`)) : null;
+    })
+    .filter(Boolean) as string[];
+
+  const because = why.length === 2
+    ? String(t('result.because'))
+      .replace('{a}', why[0]).replace('{b}', why[1]).replace('{name}', fullHangul)
+    : null;
+
   const SPARE = ['#C9971F', '#6E5A7A', '#A83B27', '#5B7A5C', '#C4744A', '#3E6BA8'];
   const used = new Set<string>();
-  // The card carries the visitor's four answers, not this name's traits.
-  // Hiding a tag when the name did not happen to hold it meant some cards came
-  // back with one tag and some with none, which reads as a bug.
+  /* The card carries the visitor's answers, not this name's traits. Hiding a
+     tag when the name did not happen to hold it meant some cards came back
+     with one tag and some with none, which reads as a bug.
+     Six situations put thirteen tags on the table and thirteen chips is a
+     word cloud, so it shows one per axis plus the gender — the same four
+     the card has always carried. */
   const tags = ([
-    seasonNature ? { id: seasonNature, group: 'nature' } : null,
-    vibe ? { id: vibe, group: 'vibe' } : null,
-    personality ? { id: personality, group: 'personality' } : null,
+    season !== 'slate' ? { id: season, group: 'nature' } : null,
+    tagsIn('vibes')[0] ? { id: tagsIn('vibes')[0], group: 'vibes' } : null,
+    tagsIn('personalities')[0] ? { id: tagsIn('personalities')[0], group: 'personalities' } : null,
     gender ? { id: gender, group: 'gender' } : null,
   ].filter(Boolean) as { id: string; group: string }[])
     // "winter" and "calm" are both cool by nature, so they resolve to the same
@@ -175,6 +206,12 @@ export default function StepResult() {
             “{t(`names.${name.id}.poeticQuote`)}”
           </p>
 
+          {because && (
+            <span className="mt-4 max-w-[300px] text-balance text-center text-[12.5px] leading-relaxed text-ink-3">
+              {because}
+            </span>
+          )}
+
           <div className="mt-5 flex flex-wrap justify-center gap-1.5">
             {tags.map(({ id, group, color }) => {
               return (
@@ -183,7 +220,7 @@ export default function StepResult() {
                   className="inline-flex h-[26px] items-center rounded-full border px-3 text-[10.5px] uppercase leading-none tracking-wider"
                   style={{ color, backgroundColor: tint(color, 0.1), borderColor: tint(color, 0.3) }}
                 >
-                  {t(`options.${group}.${id}`)}
+                  {t(group === 'gender' ? `options.gender.${id}` : `tags.${group}.${id}`)}
                 </span>
               );
             })}
