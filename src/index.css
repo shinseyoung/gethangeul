@@ -81,19 +81,25 @@
    is exactly the ~2px every Korean label was riding high by. It also explains
    the other half: the K and the hyphen in "K-드라마" were the only characters
    Newsreader did cover, so they alone sat at the Latin height.
-   Leading with Gowun Batang means one font measures the box and draws the text. */
+   Leading with Gowun Batang means one font measures the box and draws the text.
+
+   These override the order of the default stack; they may never drop a face
+   from it. 'Noto Sans Thai' was missing here, so every Thai character on a
+   Korean page fell through to the system serif — 'ไทย' in the language menu
+   grew 20% wider the instant you chose Korean. scripts/typography.check.ts
+   asserts the rule so the next reorder cannot lose one either. */
 html[lang='ko'] .font-disp {
   font-family: 'Gowun Batang', 'Instrument Serif', 'Disp Fallback', 'Times New Roman', serif;
 }
 html[lang='ko'] .font-body {
-  font-family: 'Gowun Batang', 'Newsreader', 'Body Fallback', Georgia, serif;
+  font-family: 'Gowun Batang', 'Newsreader', 'Noto Sans Thai', 'Body Fallback', Georgia, serif;
 }
 /* ::placeholder is its own pseudo-element, so the rule above never reached it.
    The hint was drawn by Newsreader while the value beside it was drawn by Gowun
    Batang, and their ink centres sit 2.5px apart — so the hint appeared to float
    above the line the typed name would land on. */
 html[lang='ko'] input::placeholder {
-  font-family: 'Gowun Batang', 'Newsreader', 'Body Fallback', Georgia, serif;
+  font-family: 'Gowun Batang', 'Newsreader', 'Noto Sans Thai', 'Body Fallback', Georgia, serif;
 }
 
 @tailwind base;

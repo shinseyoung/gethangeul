@@ -29,6 +29,11 @@ export default {
       fontFamily: {
         disp: ["'Instrument Serif'", "'Gowun Batang'", "'Disp Fallback'", "'Times New Roman'", 'serif'],
         body: ["'Newsreader'", "'Gowun Batang'", "'Noto Sans Thai'", "'Body Fallback'", 'Georgia', 'serif'],
+        /* The language list — the same four words in four scripts wherever you
+           are standing. index.css re-orders `body` per html[lang]; this one is
+           never re-ordered, so choosing a language cannot restyle the list you
+           chose it from while it is still on screen. Same faces as `body`. */
+        endonym: ["'Newsreader'", "'Gowun Batang'", "'Noto Sans Thai'", "'Body Fallback'", 'Georgia', 'serif'],
         brush: ['Chungju', "'Nanum Brush Script'", "'Gowun Batang'", 'serif'],
         ko: ["'Gowun Batang'", 'serif'],
         th: ["'Noto Sans Thai'", "'Newsreader'", 'sans-serif'],

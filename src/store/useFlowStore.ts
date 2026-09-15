@@ -138,6 +138,19 @@ interface FlowState {
   restart: () => void;
 }
 
+/**
+ * The attribute every font stack keys off, written the moment the language
+ * changes rather than in an effect afterwards.
+ *
+ * OpticalText measures its centring in a layout effect, and layout effects run
+ * before passive ones — so with the attribute set in App's useEffect, every
+ * label on the page was measured against the font it was *leaving* and painted
+ * one frame up to 1.5px out of place before correcting itself.
+ */
+const applyLang = (lang: Language) => {
+  if (typeof document !== 'undefined') document.documentElement.lang = lang;
+};
+
 const shift = (step: StepId, by: number): StepId => {
   const i = STEPS.indexOf(step);
   return STEPS[Math.min(STEPS.length - 1, Math.max(0, i + by))];
@@ -194,11 +207,13 @@ export const useFlowStore = create<FlowState>((set, get) => ({
     if (typeof history !== 'undefined') {
       history.pushState({}, '', pathFor(lang, get().tool) + location.search);
     }
+    applyLang(lang);
     set({ lang, langAutoPicked: false });
   },
   /** the browser's back button moving between /en, /ko and /en/pair */
   syncFromPath: () => {
     const fromUrl = langFromPath();
+    if (fromUrl) applyLang(fromUrl);
     set({
       tool: toolFromPath(),
       ...(fromUrl ? { lang: fromUrl, langAutoPicked: false } : {}),

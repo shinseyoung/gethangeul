@@ -37,7 +37,9 @@ export default function App() {
   const fontsReady = useFontsReady();
 
   // Announce the page language: assistive tech, hyphenation and our own
-  // per-script line-height rules all key off it.
+  // per-script line-height rules all key off it. Every *change* is written by
+  // the store instead, synchronously — see applyLang there; this is the first
+  // paint, and a no-op after it.
   useEffect(() => { document.documentElement.lang = lang; }, [lang]);
 
   /* Pull the Korean and Thai faces while the first screen is still being read,

@@ -13,7 +13,13 @@ function Globe({ className = '' }: { className?: string }) {
 }
 
 /** One menu row. Each language needs its own optical correction, and a hook
- *  cannot be called in a loop, so the row is its own component. */
+ *  cannot be called in a loop, so the row is its own component.
+ *
+ *  `font-endonym`, not `font-body` — and not `eyebrow`, which @apply pulls the
+ *  html[lang='ko'] variant of `font-body` into. These eight words are the same
+ *  in every language, so they must not be restyled by the language: picking
+ *  Korean used to redraw all eight, 12–20% wider or narrower, while the menu
+ *  was still fading out under the cursor. */
 function LanguageRow({
   endonym, english, selected, onSelect,
 }: { endonym: string; english: string; selected: boolean; onSelect: () => void }) {
@@ -32,11 +38,14 @@ function LanguageRow({
       <span className="flex flex-col justify-center gap-[3px]">
         <OpticalText
           bias={1}
-          className={`block font-body text-[15px] leading-none ${selected ? 'text-ink' : 'text-ink-2'}`}
+          className={`block font-endonym text-[15px] leading-none ${selected ? 'text-ink' : 'text-ink-2'}`}
         >
           {endonym}
         </OpticalText>
-        <OpticalText bias={1} className="eyebrow block text-[8px] leading-none text-ink-4">
+        <OpticalText
+          bias={1}
+          className="block font-endonym text-[8px] font-semibold uppercase leading-none tracking-eyebrow text-ink-4"
+        >
           {english}
         </OpticalText>
       </span>
@@ -139,9 +148,12 @@ export function Header() {
             aria-label={String(t('nav.menu'))}
             /* fades only. The panel used to slide down four pixels as it
                appeared, which dragged every label with it and read as the text
-               settling into place rather than the panel arriving. */
-            className={`absolute left-1/2 top-full z-50 mt-2 w-[200px] -translate-x-1/2 overflow-hidden rounded-2xl border border-rule-strong bg-paper-hi shadow-[0_20px_44px_-26px_rgba(23,24,26,0.45)] transition-opacity duration-150 ease-out ${
-              roomsOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
+               settling into place rather than the panel arriving.
+               It fades in and leaves at once: the click that closes it also
+               changes the page underneath, and a panel that hangs about for
+               another 150ms is a panel you watch change its mind. */
+            className={`absolute left-1/2 top-full z-50 mt-2 w-[200px] -translate-x-1/2 overflow-hidden rounded-2xl border border-rule-strong bg-paper-hi shadow-[0_20px_44px_-26px_rgba(23,24,26,0.45)] transition-opacity ease-out ${
+              roomsOpen ? 'opacity-100 duration-150' : 'pointer-events-none opacity-0 duration-0'
             }`}
           >
             {TOOLS.map((item) => (
@@ -175,7 +187,7 @@ export function Header() {
               open ? 'border-accent bg-accent/[0.07]' : 'border-rule-strong hover:border-accent/40 hover:bg-accent/[0.06]'
             }`}
           >
-            <OpticalText className="block font-body text-[13.5px] leading-none">
+            <OpticalText className="block font-endonym text-[13.5px] leading-none">
               {current.endonym}
             </OpticalText>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"
@@ -186,8 +198,10 @@ export function Header() {
 
           <div
             role="listbox"
-            className={`absolute right-0 top-full z-50 mt-2 w-[230px] overflow-hidden rounded-2xl border border-rule-strong bg-paper-hi shadow-[0_20px_44px_-26px_rgba(23,24,26,0.45)] transition-[opacity,transform] duration-150 ease-out ${
-              open ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-1 opacity-0'
+            /* leaves at once, for the same reason as the rooms panel above —
+               and here the page behind it changes language as it goes */
+            className={`absolute right-0 top-full z-50 mt-2 w-[230px] overflow-hidden rounded-2xl border border-rule-strong bg-paper-hi shadow-[0_20px_44px_-26px_rgba(23,24,26,0.45)] transition-[opacity,transform] ease-out ${
+              open ? 'translate-y-0 opacity-100 duration-150' : 'pointer-events-none -translate-y-1 opacity-0 duration-0'
             }`}
           >
             {LANGUAGES.map((item) => (
@@ -218,7 +232,7 @@ export function Header() {
                     key={item.code}
                     type="button"
                     onClick={() => setLang(item.code)}
-                    className={`focus-ring rounded-full border border-rule-strong bg-paper-hi px-3 py-1.5 text-[12px] text-ink-2 font-body transition-colors hover:border-accent hover:text-accent`}
+                    className={`focus-ring rounded-full border border-rule-strong bg-paper-hi px-3 py-1.5 text-[12px] text-ink-2 font-endonym transition-colors hover:border-accent hover:text-accent`}
                   >
                     {item.endonym}
                   </button>
