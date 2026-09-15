@@ -93,7 +93,17 @@ export function Header() {
       <div className="flex h-[58px] w-full items-center justify-between border-b border-rule px-6 md:h-[70px] lg:mx-auto lg:w-[1024px] lg:px-4 xl:w-[1200px]">
         <button
           type="button"
-          onClick={() => useFlowStore.getState().restart()}
+          /* back to the top of the room you are in, not out of it. The logo
+             used to reset the name flow whichever room you were standing in,
+             which read as the site throwing your place away. */
+          onClick={() => {
+            const s = useFlowStore.getState();
+            if (s.tool === 'name') s.restart();
+            else if (s.tool === 'kdrama') s.resetKdrama();
+            else if (s.tool === 'impression') s.setImpressionName('');
+            else if (s.tool === 'pair') { s.setPair('a', ''); s.setPair('b', ''); }
+            else if (s.tool === 'fortune') { s.setFortuneName(''); s.setFortuneBirthday(''); }
+          }}
           className="focus-ring flex flex-col gap-[5px] text-left transition-opacity hover:opacity-70"
         >
           <span className="font-disp text-[21px] leading-none tracking-tight text-ink md:text-[24px]">

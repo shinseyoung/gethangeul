@@ -14,6 +14,7 @@ import AdSlot from './components/AdSlot';
 import { QUESTION_STEPS, useFlowStore, type QuestionStep } from './store/useFlowStore';
 import { useTranslation } from './hooks/useTranslation';
 import { warmFonts } from './utils/fontWarm';
+import { useFontsReady } from './hooks/useFontsReady';
 
 const isQuestion = (step: string): step is QuestionStep =>
   (QUESTION_STEPS as readonly string[]).includes(step);
@@ -33,6 +34,7 @@ export default function App() {
   const step = useFlowStore((s) => s.step);
   const tool = useFlowStore((s) => s.tool);
   const lang = useFlowStore((s) => s.lang);
+  const fontsReady = useFontsReady();
 
   // Announce the page language: assistive tech, hyphenation and our own
   // per-script line-height rules all key off it.
@@ -49,6 +51,12 @@ export default function App() {
     return () => window.removeEventListener('popstate', sync);
   }, []);
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, [step]);
+
+  /* nothing paints until the faces are in hand. The body already carries the
+     app's ground colour, so the hold reads as the page loading rather than as a
+     blank flash, and what arrives is the finished screen rather than one that
+     changes under the reader. */
+  if (!fontsReady) return <div className="min-h-[100dvh] w-full bg-ground" aria-hidden="true" />;
 
   return (
     <div className="flex min-h-[100dvh] w-full flex-col bg-ground">

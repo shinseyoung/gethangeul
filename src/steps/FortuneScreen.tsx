@@ -11,6 +11,7 @@ import OpticalText from '../components/OpticalText';
 import Note from '../components/Note';
 import AdSlot from '../components/AdSlot';
 import Button from '../components/Button';
+import BirthdayPicker from '../components/BirthdayPicker';
 
 /**
  * 한국 이름 운세 — the fifth room.
@@ -29,9 +30,6 @@ const SWATCH: Record<string, string> = {
   white: '#D8D3C9',
   black: '#3A3D42',
 };
-
-const FIRST_YEAR = '1920-01-01';
-const LAST_YEAR = '2044-12-31';
 
 export default function FortuneScreen() {
   const { fortuneName, fortuneBirthday, setFortuneName, setFortuneBirthday } = useFlowStore();
@@ -85,17 +83,7 @@ export default function FortuneScreen() {
           <label htmlFor="fortune-birthday" className="eyebrow mb-2 block text-[8.5px] text-ink-4">
             {t('fortune.birthday_label')}
           </label>
-          {/* the native control, because it already knows every locale's date
-              order, its own validation and the right mobile keyboard */}
-          <input
-            id="fortune-birthday"
-            type="date"
-            value={fortuneBirthday}
-            min={FIRST_YEAR}
-            max={LAST_YEAR}
-            onChange={(e) => setFortuneBirthday(e.target.value)}
-            className={field}
-          />
+          <BirthdayPicker value={fortuneBirthday} onChange={setFortuneBirthday} />
           <span className="mt-2 block h-[22px]" />
         </div>
       </div>

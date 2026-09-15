@@ -18,15 +18,20 @@
          parsed, so it sits behind two chained round trips. The preload starts it
          at the highest priority alongside the preconnects instead of waiting for
          the parser to reach the stylesheet link below. Same URL on purpose —
-         the second request is served from the preload cache. -->
+         the second request is served from the preload cache.
+
+         display=block, not swap. swap is an instruction to paint the fallback
+         first and change it later, so warming the cache never removed the
+         change — it only moved it earlier. block holds the text instead, and
+         the app holds its own first paint alongside it. -->
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&amp;family=Gowun+Batang:wght@400;700&amp;family=Noto+Sans+Thai:wght@400;600&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&amp;family=Gowun+Batang:wght@400;700&amp;family=Noto+Sans+Thai:wght@400;600&amp;display=block"
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&amp;family=Gowun+Batang:wght@400;700&amp;family=Noto+Sans+Thai:wght@400;600&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&amp;family=Gowun+Batang:wght@400;700&amp;family=Noto+Sans+Thai:wght@400;600&amp;display=block"
     />
     <meta name="theme-color" content="#EDF1F9" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
