@@ -19,12 +19,12 @@ export const QUESTION_STEPS = ['gender', 'vibe', 'personality', 'nature'] as con
 export type QuestionStep = (typeof QUESTION_STEPS)[number];
 
 /** The site has three rooms. The address says which one you are in. */
-export type Tool = 'name' | 'pair' | 'impression' | 'kdrama';
+export type Tool = 'name' | 'pair' | 'impression' | 'kdrama' | 'fortune';
 
 const LANG_KEY = 'gethangeul.lang';
 const SUPPORTED = LANGUAGES.map((l) => l.code);
 const PATH_LANG = /^\/(ko|en|vi|th)(?=\/|$)/;
-const PATH_TOOL = /^\/(?:ko|en|vi|th)\/(pair|impression|kdrama)(?=\/|$)/;
+const PATH_TOOL = /^\/(?:ko|en|vi|th)\/(pair|impression|kdrama|fortune)(?=\/|$)/;
 
 /** The URL wins: a shared link must open in the language it was shared in. */
 export function langFromPath(): Language | null {
@@ -98,6 +98,12 @@ interface FlowState {
   impressionName: string;
   setImpressionName: (value: string) => void;
 
+  /** the fortune room's two fields, kept across navigation */
+  fortuneName: string;
+  fortuneBirthday: string;
+  setFortuneName: (value: string) => void;
+  setFortuneBirthday: (value: string) => void;
+
   /** one option index per question, null until answered */
   kdramaAnswers: (number | null)[];
   /** 0 is the intro, 1..6 are the questions, 7 is the card */
@@ -153,6 +159,11 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   pairB: '',
   impressionName: '',
   setImpressionName: (impressionName) => set({ impressionName }),
+
+  fortuneName: '',
+  fortuneBirthday: '',
+  setFortuneName: (fortuneName) => set({ fortuneName }),
+  setFortuneBirthday: (fortuneBirthday) => set({ fortuneBirthday }),
 
   kdramaAnswers: Array(12).fill(null),
   kdramaStep: 0,
