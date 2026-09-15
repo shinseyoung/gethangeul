@@ -136,12 +136,18 @@ export default function FortuneScreen() {
               <div className="flex w-full max-w-[330px] items-start justify-between gap-3 text-center">
                 <span className="flex flex-1 flex-col items-center gap-1.5">
                   <span className="eyebrow text-[7.5px] text-ink-4">{t('fortune.lucky_colour')}</span>
-                  <span
-                    className="block h-[18px] w-[18px] rounded-full border border-rule-strong"
-                    style={{ background: SWATCH[fortune.colour] }}
-                    aria-hidden="true"
-                  />
-                  <span className="text-[11.5px] leading-tight text-ink-2">{t(`fortune.colour.${fortune.colour}`)}</span>
+                  {/* the swatch sits beside the word, not above it. On its own
+                      row it was a third line this cell had and the other two
+                      did not, so the colour's name hung 24px below the number
+                      and the dish — which read as the number floating high. */}
+                  <span className="flex items-center gap-1.5">
+                    <span
+                      className="block h-[10px] w-[10px] shrink-0 rounded-full border border-rule-strong"
+                      style={{ background: SWATCH[fortune.colour] }}
+                      aria-hidden="true"
+                    />
+                    <span className="text-[11.5px] leading-tight text-ink-2">{t(`fortune.colour.${fortune.colour}`)}</span>
+                  </span>
                 </span>
                 <span className="flex flex-1 flex-col items-center gap-1.5">
                   <span className="eyebrow text-[7.5px] text-ink-4">{t('fortune.lucky_number')}</span>
