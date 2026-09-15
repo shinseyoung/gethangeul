@@ -1,7 +1,8 @@
 // Runnable check for the K-Drama casting test: the questions, the six roles the
 // axis pairs name, and the twelve types they make with the temper.
 // Run with: npm run check
-import { QUESTIONS } from '../src/data/kdramaQuestions';
+import { SLOTS, BRANCH_AT } from '../src/data/kdramaSlots';
+import { GENRES, STORIES, sceneAt } from '../src/data/kdramaScenes';
 import { ACTS, AXES, SCENES_PER_ACT, actOf, cast, dominantAxis, recapKey, roleKey, type Casting, type Role } from '../src/utils/kdramaCasting';
 import enK from '../src/data/locales/en/kdrama.json';
 import koK from '../src/data/locales/ko/kdrama.json';
@@ -15,21 +16,16 @@ function ok(label: string, condition: boolean, detail?: unknown) {
   console.error(`  FAIL  ${label}${detail === undefined ? '' : ` — ${JSON.stringify(detail)}`}`);
 }
 
-// --- the questions --------------------------------------------------------
+// --- the twelve slots --------------------------------------------------------
 
-ok('scene ids are unique',
-  new Set(QUESTIONS.map((q) => q.id)).size === QUESTIONS.length,
-  QUESTIONS.length - new Set(QUESTIONS.map((q) => q.id)).size);
-ok('every scene has four options', QUESTIONS.every((q) => q.options.length === 4));
-ok('option ids are unique within their scene',
-  QUESTIONS.every((q) => new Set(q.options.map((o) => o.id)).size === q.options.length));
+ok('every scene has four options', SLOTS.every((q) => q.options.length === 4));
 ok('every option moves at least one axis',
-  QUESTIONS.every((q) => q.options.every((o) => Object.values(o.weights).some((w) => (w ?? 0) > 0))));
+  SLOTS.every((q) => q.options.every((o) => Object.values(o.weights).some((w) => (w ?? 0) > 0))));
 ok('every option leans one way or the other',
-  QUESTIONS.every((q) => q.options.every((o) => o.temper !== 0)));
+  SLOTS.every((q) => q.options.every((o) => o.temper !== 0)));
 // five answers of +/-1 always sum odd, so one even weight makes a tie impossible
 ok('the temper can never tie',
-  QUESTIONS.reduce((n, q) => n + (Math.abs(q.options[0].temper) % 2 === 0 ? 1 : 0), 0) === 1);
+  SLOTS.reduce((n, q) => n + (Math.abs(q.options[0].temper) % 2 === 0 ? 1 : 0), 0) === 1);
 
 // --- every combination of answers, sampled ---------------------------------
 // 4^12 is sixteen million and this suite finishes in about four seconds, so the
@@ -38,11 +34,11 @@ ok('the temper can never tie',
 // class; a round 1000 would leave index % 4 fixed and pick the same option in
 // the last scene every single time. A fixed sequence, so a failure reproduces.
 
-const TOTAL = 4 ** QUESTIONS.length;
+const TOTAL = 4 ** SLOTS.length;
 const STRIDE = 997;
 const every: Casting[] = [];
 for (let i = 0; i < TOTAL; i += STRIDE) {
-  const answers = Array.from({ length: QUESTIONS.length }, (_, k) => (i >> (2 * k)) & 3);
+  const answers = Array.from({ length: SLOTS.length }, (_, k) => (i >> (2 * k)) & 3);
   const c = cast(answers);
   if (c) every.push(c);
 }
@@ -96,13 +92,66 @@ ok('there are six distinct pairs',
 // The six roles, in the order the copy is written against.
 const ROLES: Role[] = ['lead', 'firstLove', 'spark', 'second', 'rival', 'bestie'];
 
-// --- the room has to be fully translated ----------------------------------
+// --- one arithmetic, four stories ------------------------------------------
+// The weights belong to the slot, not to the scene sitting in it. That is why a
+// genre swap cannot move the distribution measured above, and why the rule is
+// asserted rather than trusted: retyping a number is the only way it moves.
+
+ok('the weights still follow the position rule',
+  SLOTS.every((slot, i) => slot.options.every((o, j) => {
+    const primary = AXES[j];
+    const secondary = AXES[(j + 1 + (i % 3)) % 4];
+    const sign = (i + j) % 2 === 0 ? 1 : -1;
+    const scale = i === SLOTS.length - 1 ? 2 : 1;
+    return o.weights[primary] === 10 && o.weights[secondary] === 6
+      && Object.keys(o.weights).length === 2 && o.temper === sign * scale;
+  })),
+  SLOTS.map((slot, i) => (slot.options.some((o, j) => o.weights[AXES[j]] !== 10
+    || o.weights[AXES[(j + 1 + (i % 3)) % 4]] !== 6) ? i : null)).filter((i) => i !== null));
+
+for (const genre of GENRES) {
+  const story = STORIES[genre];
+  ok(`${genre}: twelve positions`, story.tellings.length === 12, story.tellings.length);
+  ok(`${genre}: branches exactly at ${BRANCH_AT.join(',')}`,
+    story.tellings.every((t, i) => t.branch === BRANCH_AT.includes(i)),
+    story.tellings.map((t, i) => (t.branch ? i : null)).filter((i) => i !== null));
+
+  // a branch the dominant axis can select but that nobody wrote is a crash
+  for (const i of BRANCH_AT) {
+    const telling = story.tellings[i];
+    ok(`${genre}: position ${i} offers all four axes`,
+      telling.branch && AXES.every((a) => (telling.scenes[a]?.id ?? '').length > 0),
+      telling.branch ? Object.keys(telling.scenes) : 'not a branch');
+  }
+
+  const scenes = story.tellings.flatMap((t) => (t.branch ? Object.values(t.scenes) : [t.scene]));
+  ok(`${genre}: twenty-one scenes`, scenes.length === 21, scenes.length);
+  ok(`${genre}: scene ids are unique`,
+    new Set(scenes.map((s) => s.id)).size === scenes.length,
+    scenes.map((s) => s.id).filter((id, i, xs) => xs.indexOf(id) !== i));
+  ok(`${genre}: four options per scene, ids unique within it`,
+    scenes.every((s) => s.options.length === 4 && new Set(s.options).size === 4));
+  ok(`${genre}: option ids are unique across the genre`,
+    new Set(scenes.flatMap((s) => s.options)).size === scenes.length * 4,
+    scenes.flatMap((s) => s.options).filter((id, i, xs) => xs.indexOf(id) !== i));
+  ok(`${genre}: six name positions`, story.name.length === 6, story.name);
+  ok(`${genre}: name positions are in range and sorted`,
+    story.name.every((i, k) => i >= 0 && i < 12 && (k === 0 || i > story.name[k - 1])), story.name);
+
+  // every one of the 4^3 paths has to land on a real scene at all twelve
+  for (let a = 0; a < 4; a += 1) for (let b = 0; b < 4; b += 1) for (let c = 0; c < 4; c += 1) {
+    const answers = [a, a, a, b, b, b, c, c, c, 0, 0, 0];
+    ok(`${genre}: path ${a}${b}${c} resolves every position`,
+      Array.from({ length: 12 }, (_, i) => sceneAt(genre, i, answers)).every((s) => (s?.id ?? '').length > 0));
+  }
+}
+
+// --- the room has to be fully written --------------------------------------
 // vi and th may still carry the English string; they must not be missing.
 
-const SHELL = ['eyebrow', 'title', 'sub', 'start', 'next', 'prev', 'again', 'card_label', 'disclaimer', 'headline'];
-const TEMPERS = ['direct', 'careful'];
-const TYPE_KEYS = ROLES.flatMap((role) => TEMPERS.map((t) => `${role}_${t}`));
-
+const SHELL = ['eyebrow', 'title', 'sub', 'start', 'next', 'prev', 'again', 'disclaimer',
+  'premise', 'name_label', 'name_placeholder', 'name_hint'];
+const TYPE_KEYS = ROLES.flatMap((role) => ['direct', 'careful'].map((t) => `${role}_${t}`));
 ok('twelve type keys', TYPE_KEYS.length === 12, TYPE_KEYS.length);
 
 for (const [lang, dict] of [['en', enK], ['ko', koK], ['vi', viK], ['th', thK]] as const) {
@@ -113,200 +162,92 @@ for (const [lang, dict] of [['en', enK], ['ko', koK], ['vi', viK], ['th', thK]] 
   for (const axis of AXES) {
     ok(`${lang}: kdrama.axis.${axis}`, typeof d.axis?.[axis] === 'string' && d.axis[axis].length > 0);
   }
-  for (const role of ROLES) {
-    ok(`${lang}: kdrama.role.${role}`, typeof d.role?.[role] === 'string' && d.role[role].length > 0);
-  }
-  for (const temper of TEMPERS) {
-    ok(`${lang}: kdrama.temper.${temper}`, typeof d.temper?.[temper] === 'string' && d.temper[temper].length > 0);
-  }
-  for (const key of TYPE_KEYS) {
-    ok(`${lang}: kdrama.type.${key}`, typeof d.type?.[key] === 'string' && d.type[key].length > 0);
-  }
-  for (const q of QUESTIONS) {
-    ok(`${lang}: kdrama.q.${q.id}.title`, typeof d.q?.[q.id]?.title === 'string' && d.q[q.id].title.length > 0);
-    for (const o of q.options) {
-      ok(`${lang}: kdrama.q.${q.id}.options.${o.id}`,
-        typeof d.q?.[q.id]?.options?.[o.id] === 'string' && d.q[q.id].options[o.id].length > 0);
-    }
-  }
-  ok(`${lang}: no orphan question keys`,
-    Object.keys(d.q ?? {}).every((k) => QUESTIONS.some((q) => q.id === k)),
-    Object.keys(d.q ?? {}).filter((k) => !QUESTIONS.some((q) => q.id === k)));
-  ok(`${lang}: no orphan type keys`,
-    Object.keys(d.type ?? {}).every((k) => TYPE_KEYS.includes(k)),
-    Object.keys(d.type ?? {}).filter((k) => !TYPE_KEYS.includes(k)));
-}
-
-// word order differs per language, so the headline is a pattern the locale owns
-// rather than two strings the component glues together
-for (const [lang, dict] of [['en', enK], ['ko', koK], ['vi', viK], ['th', thK]] as const) {
-  const pattern = (dict as Record<string, any>).headline as string;
-  ok(`${lang}: headline names both slots`,
-    pattern.includes('{temper}') && pattern.includes('{role}'), pattern);
-}
-
-// the twelve must read as twelve people, not one with an adjective swapped
-for (const [lang, dict] of [['en', enK], ['ko', koK]] as const) {
-  const lines = TYPE_KEYS.map((k) => (dict as Record<string, any>).type?.[k]).filter(Boolean);
-  ok(`${lang}: every type sentence is distinct`, new Set(lines).size === lines.length);
-}
-
-// --- four acts of three scenes --------------------------------------------
-
-ok('twelve scenes', QUESTIONS.length === 12, QUESTIONS.length);
-ok('three scenes to an act', SCENES_PER_ACT === 3, SCENES_PER_ACT);
-ok('four acts in 기승전결 order',
-  JSON.stringify(ACTS) === JSON.stringify(['gi', 'seung', 'jeon', 'gyeol']), ACTS);
-for (const act of ACTS) {
-  ok(`${act} holds three scenes`, QUESTIONS.filter((q) => q.act === act).length === 3,
-    QUESTIONS.filter((q) => q.act === act).length);
-}
-ok('scenes are in act order',
-  QUESTIONS.map((q) => ACTS.indexOf(q.act)).every((a, i, xs) => i === 0 || a >= xs[i - 1]),
-  QUESTIONS.map((q) => q.act));
-ok('actOf agrees with the data', QUESTIONS.every((q, i) => actOf(i) === q.act));
-
-// --- the option rule ------------------------------------------------------
-// Balance has to hold inside a scene, not only across the set. Dealing the six
-// pairs in order gave one scene three romance-primary options out of four, and
-// that single skew pushed a type to 26% of all answer sets against a 20% bound.
-
-type Opt = (typeof QUESTIONS)[number]['options'][number];
-const primaryOf = (o: Opt) => AXES.find((a) => (o.weights[a] ?? 0) === 10);
-const secondaryOf = (o: Opt) => AXES.find((a) => (o.weights[a] ?? 0) === 6);
-
-ok('every option has one primary at 10 and one secondary at 6',
-  QUESTIONS.every((q) => q.options.every((o) =>
-    primaryOf(o) !== undefined && secondaryOf(o) !== undefined
-    && Object.keys(o.weights).length === 2)));
-ok('every scene offers one option per axis',
-  QUESTIONS.every((q) => new Set(q.options.map(primaryOf)).size === 4),
-  QUESTIONS.filter((q) => new Set(q.options.map(primaryOf)).size !== 4).map((q) => q.id));
-
-const ordered = new Map<string, number>();
-const unordered = new Map<string, number>();
-for (const q of QUESTIONS) {
-  for (const o of q.options) {
-    const p = primaryOf(o)!; const sec = secondaryOf(o)!;
-    ordered.set(`${p}>${sec}`, (ordered.get(`${p}>${sec}`) ?? 0) + 1);
-    unordered.set(roleKey(p, sec), (unordered.get(roleKey(p, sec)) ?? 0) + 1);
-  }
-}
-ok('twelve ordered combinations, four each',
-  ordered.size === 12 && [...ordered.values()].every((n) => n === 4), [...ordered]);
-ok('six pairs, eight each',
-  unordered.size === 6 && [...unordered.values()].every((n) => n === 8), [...unordered]);
-
-ok('exactly one scene carries a doubled temper',
-  QUESTIONS.filter((q) => q.options.every((o) => Math.abs(o.temper) === 2)).length === 1,
-  QUESTIONS.filter((q) => q.options.some((o) => Math.abs(o.temper) === 2)).map((q) => q.id));
-
-// --- the one value an act hands forward -----------------------------------
-
-ok('an unfinished act has no dominant axis',
-  dominantAxis([0, 1, null, ...Array(9).fill(0)], 'gi') === null);
-ok('a finished act has one', AXES.includes(dominantAxis(Array(12).fill(0), 'gi')!));
-ok('the dominant axis reads only its own act',
-  dominantAxis([0, 0, 0, ...Array(9).fill(1)], 'gi')
-  === dominantAxis([0, 0, 0, ...Array(9).fill(2)], 'gi'));
-ok('gi has no recap of its own', recapKey('gi', Array(12).fill(0)) === null);
-ok('seung recaps gi', (recapKey('seung', Array(12).fill(0)) ?? '').startsWith('seung_'));
-// a recap line nobody can reach is a line nobody should write
-for (const act of ACTS.slice(0, 3)) {
-  const reached = new Set<string>();
-  for (let a = 0; a < 4; a += 1) for (let b = 0; b < 4; b += 1) for (let c = 0; c < 4; c += 1) {
-    const ans = Array(12).fill(0);
-    const start = ACTS.indexOf(act) * SCENES_PER_ACT;
-    ans[start] = a; ans[start + 1] = b; ans[start + 2] = c;
-    reached.add(dominantAxis(ans, act)!);
-  }
-  ok(`every axis is reachable as ${act}'s dominant`, reached.size === 4, [...reached]);
-}
-
-// --- the acts have to be fully written ------------------------------------
-
-const RECAP_KEYS = ACTS.slice(1).flatMap((act) => AXES.map((axis) => `${act}_${axis}`));
-ok('twelve recap lines', RECAP_KEYS.length === 12, RECAP_KEYS.length);
-
-for (const [lang, dict] of [['en', enK], ['ko', koK], ['vi', viK], ['th', thK]] as const) {
-  const d = dict as Record<string, any>;
-  ok(`${lang}: kdrama.premise`, typeof d.premise === 'string' && d.premise.length > 0);
   for (const act of ACTS) {
     ok(`${lang}: kdrama.act.${act}`, typeof d.act?.[act] === 'string' && d.act[act].length > 0);
   }
-  for (const key of RECAP_KEYS) {
-    ok(`${lang}: kdrama.recap.${key}`, typeof d.recap?.[key] === 'string' && d.recap[key].length > 0);
+
+  // the vocabulary is gone, not merely unused: 주인공 on a card is a verdict
+  // about a person, and this room hands back a drama instead
+  for (const key of ['role', 'temper', 'type', 'recap', 'headline', 'card_label', 'reroll']) {
+    ok(`${lang}: kdrama.${key} is gone`, d[key] === undefined);
   }
-  ok(`${lang}: no orphan recap keys`,
-    Object.keys(d.recap ?? {}).every((k) => RECAP_KEYS.includes(k)),
-    Object.keys(d.recap ?? {}).filter((k) => !RECAP_KEYS.includes(k)));
-}
 
-// A recap describes what happened; it must never predict the result. Naming a
-// role would leak the ending and make the last act pointless.
-for (const [lang, dict] of [['en', enK], ['ko', koK]] as const) {
-  const d = dict as Record<string, any>;
-  const roles = Object.values(d.role ?? {}) as string[];
-  for (const key of RECAP_KEYS) {
-    const line = (d.recap?.[key] ?? '') as string;
-    ok(`${lang}: recap.${key} does not name a role`,
-      !roles.some((r) => r.length > 1 && line.includes(r)), { key, line });
+  for (const genre of GENRES) {
+    for (const key of ['label', 'tagline', 'slot']) {
+      ok(`${lang}: genre.${genre}.${key}`,
+        typeof d.genre?.[genre]?.[key] === 'string' && d.genre[genre][key].length > 0);
+    }
+    const g = d[genre] ?? {};
+    const story = STORIES[genre];
+    for (let i = 0; i < 12; i += 1) {
+      const telling = story.tellings[i];
+      const variants = telling.branch ? Object.values(telling.scenes) : [telling.scene];
+      for (const scene of variants) {
+        const title = (g.q?.[scene.id]?.title ?? '') as string;
+        ok(`${lang}: ${genre}.q.${scene.id}.title`, title.length > 0);
+        for (const optionId of scene.options) {
+          ok(`${lang}: ${genre}.q.${scene.id}.options.${optionId}`,
+            typeof g.q?.[scene.id]?.options?.[optionId] === 'string'
+            && g.q[scene.id].options[optionId].length > 0);
+        }
+        // name-bearing belongs to the position, so every path hears it six times
+        const carries = title.includes('{name}')
+          || Object.values(g.q?.[scene.id]?.options ?? {}).some((o) => String(o).includes('{name}'));
+        ok(`${lang}: ${genre}.q.${scene.id} carries {name} exactly when its position does`,
+          carries === story.name.includes(i), { scene: scene.id, position: i, carries });
+      }
+    }
+    const written = new Set(story.tellings.flatMap((t) =>
+      (t.branch ? Object.values(t.scenes) : [t.scene]).map((s) => s.id)));
+    ok(`${lang}: ${genre} has no orphan scene keys`,
+      Object.keys(g.q ?? {}).every((key) => written.has(key)),
+      Object.keys(g.q ?? {}).filter((key) => !written.has(key)));
+
+    for (const key of TYPE_KEYS) {
+      const poster = g.poster?.[key] ?? {};
+      // the title is where the visitor is; a poster without them in it is the
+      // old casting card wearing a new word
+      ok(`${lang}: ${genre}.poster.${key}.title names the visitor`,
+        typeof poster.title === 'string' && poster.title.includes('{name}'), poster.title);
+      ok(`${lang}: ${genre}.poster.${key}.logline`,
+        typeof poster.logline === 'string' && poster.logline.length > 0);
+    }
+    ok(`${lang}: ${genre} posters read as twelve dramas`,
+      new Set(TYPE_KEYS.map((key) => g.poster?.[key]?.title)).size === 12);
+    ok(`${lang}: ${genre} has no orphan poster keys`,
+      Object.keys(g.poster ?? {}).every((key) => TYPE_KEYS.includes(key)),
+      Object.keys(g.poster ?? {}).filter((key) => !TYPE_KEYS.includes(key)));
   }
-  ok(`${lang}: every recap line is distinct`,
-    new Set(RECAP_KEYS.map((k) => d.recap?.[k])).size === RECAP_KEYS.length);
 }
 
-// --- the visitor's name in the scenes --------------------------------------
-// Six of twelve, and the same six everywhere. A scene that reads as
-// name-bearing in English and not in Korean is a scene one language is telling
-// differently, which is worse than a scene with no name in it at all.
+// --- the particles after a name --------------------------------------------
+// Korean picks between 은/는 and 과/와 by the syllable in front, and the syllable
+// in front is a name the copy has never seen: 사라는 but 하린은. A bare particle
+// written straight after {name} is right for half of all visitors — the poster
+// read 《사라과 그 사람 사이》 until this was caught. The copy writes the pair.
 
-const NAMED = QUESTIONS.filter((q) => q.name);
-ok('exactly six scenes carry a name', NAMED.length === 6, NAMED.map((q) => q.id));
-ok('the named scenes are spread across the acts',
-  new Set(NAMED.map((q) => q.act)).size === 4, NAMED.map((q) => q.act));
-
-for (const [lang, dict] of [['en', enK], ['ko', koK], ['vi', viK], ['th', thK]] as const) {
-  const d = dict as Record<string, any>;
-  for (const q of QUESTIONS) {
-    const title = (d.q?.[q.id]?.title ?? '') as string;
-    const options = Object.values(d.q?.[q.id]?.options ?? {}) as string[];
-    const carries = title.includes('{name}') || options.some((o) => o.includes('{name}'));
-    ok(`${lang}: q.${q.id} carries {name} exactly when the scene is marked`,
-      carries === q.name, { id: q.id, marked: q.name, carries });
+const BARE_PARTICLE = /\{name\}[은는이가과와을를]/;
+const PAIR = /\{[가-힣]{1,2}\/[가-힣]{1,2}\}/;
+for (const genre of GENRES) {
+  const g = (koK as Record<string, any>)[genre] ?? {};
+  const lines: [string, string][] = [
+    ...Object.entries(g.q ?? {}).flatMap(([id, scene]: [string, any]) =>
+      [[`q.${id}.title`, scene.title] as [string, string],
+        ...Object.entries(scene.options ?? {}).map(([o, v]) => [`q.${id}.${o}`, v] as [string, string])]),
+    ...Object.entries(g.poster ?? {}).flatMap(([key, p]: [string, any]) =>
+      [[`poster.${key}.title`, p.title] as [string, string],
+        [`poster.${key}.logline`, p.logline] as [string, string]]),
+  ];
+  for (const [where, line] of lines) {
+    ok(`ko: ${genre}.${where} writes the particle pair, not a bare one`,
+      !BARE_PARTICLE.test(String(line)), line);
   }
-  ok(`${lang}: kdrama.name_label`, typeof d.name_label === 'string' && d.name_label.length > 0);
-  ok(`${lang}: kdrama.name_placeholder`,
-    typeof d.name_placeholder === 'string' && d.name_placeholder.length > 0);
-  ok(`${lang}: kdrama.name_hint`, typeof d.name_hint === 'string' && d.name_hint.length > 0);
+  // and a pair that nothing resolves is a brace on the screen
+  for (const [where, line] of lines) {
+    ok(`ko: ${genre}.${where} only pairs a particle where a name precedes it`,
+      !PAIR.test(String(line)) || String(line).includes('{name}'), line);
+  }
 }
-
-// The result is a casting, not a gift. No copy the card renders may carry a
-// name slot, and the module that used to supply one is gone.
-for (const [lang, dict] of [['en', enK], ['ko', koK], ['vi', viK], ['th', thK]] as const) {
-  const d = dict as Record<string, any>;
-  const card = [d.card_label, d.headline, ...Object.values(d.type ?? {})] as string[];
-  ok(`${lang}: no card copy has a name slot`,
-    card.every((s) => !String(s).includes('{name}')),
-    card.filter((s) => String(s).includes('{name}')));
-  ok(`${lang}: the reroll button is gone`, d.reroll === undefined);
-}
-
-// --- the weights did not move ---------------------------------------------
-// The rebuild is a copy job. If a number moved, the distribution measured above
-// is measuring something other than what was signed off.
-
-ok('the weights still follow the position rule',
-  QUESTIONS.every((q, s) => q.options.every((o, i) => {
-    const primary = AXES[i];
-    const secondary = AXES[(i + 1 + (s % 3)) % 4];
-    const sign = (s + i) % 2 === 0 ? 1 : -1;
-    const scale = s === QUESTIONS.length - 1 ? 2 : 1;
-    return o.weights[primary] === 10 && o.weights[secondary] === 6
-      && Object.keys(o.weights).length === 2 && o.temper === sign * scale;
-  })),
-  QUESTIONS.filter((q, s) => q.options.some((o, i) =>
-    o.weights[AXES[i]] !== 10 || o.weights[AXES[(i + 1 + (s % 3)) % 4]] !== 6)).map((q) => q.id));
 
 // --- report ---------------------------------------------------------------
 

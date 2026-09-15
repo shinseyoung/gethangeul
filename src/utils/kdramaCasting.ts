@@ -1,4 +1,4 @@
-import { QUESTIONS } from '../data/kdramaQuestions';
+import { SLOTS } from '../data/kdramaSlots';
 
 /**
  * Which part you would play, worked out from six situations.
@@ -7,6 +7,11 @@ import { QUESTIONS } from '../data/kdramaQuestions';
  * needs — so the two highest axes name the role, the same shape blendKey uses in
  * nameTraits.ts. That is structure, not coincidence, and reusing it means one
  * canonical-ordering rule to get right instead of two.
+ *
+ * `cast()` takes answers and nothing else — not the genre, not which branch
+ * was taken. Four genres tell four stories through the same twelve slots, so
+ * one measured distribution covers all of them; a change that needs the genre
+ * in here is a change that broke that.
  *
  * Nothing here reads the name scorer. That one hears what a name *sounds* like;
  * this one reads what a person *chose*. Same card, same meter, different engine,
@@ -70,7 +75,7 @@ export function dominantAxis(answers: (number | null)[], act: ActId): Axis | nul
 
   const raw: Scores = { romance: 0, presence: 0, warmth: 0, mischief: 0 };
   for (let i = 0; i < SCENES_PER_ACT; i += 1) {
-    const option = QUESTIONS[start + i]?.options[slice[i] as number];
+    const option = SLOTS[start + i]?.options[slice[i] as number];
     if (!option) return null;
     for (const axis of AXES) raw[axis] += option.weights[axis] ?? 0;
   }
@@ -98,7 +103,7 @@ export function roleKey(a: Axis, b: Axis): string {
  */
 const CEILING: Scores = (() => {
   const max: Scores = { romance: 0, presence: 0, warmth: 0, mischief: 0 };
-  for (const q of QUESTIONS) {
+  for (const q of SLOTS) {
     for (const axis of AXES) {
       max[axis] += Math.max(...q.options.map((o) => o.weights[axis] ?? 0));
     }
@@ -107,14 +112,14 @@ const CEILING: Scores = (() => {
 })();
 
 export function cast(answers: (number | null)[]): Casting | null {
-  if (answers.length !== QUESTIONS.length) return null;
+  if (answers.length !== SLOTS.length) return null;
   if (answers.some((a) => a === null || a === undefined)) return null;
 
   const raw: Scores = { romance: 0, presence: 0, warmth: 0, mischief: 0 };
   let temperTotal = 0;
 
-  for (let i = 0; i < QUESTIONS.length; i += 1) {
-    const option = QUESTIONS[i].options[answers[i] as number];
+  for (let i = 0; i < SLOTS.length; i += 1) {
+    const option = SLOTS[i].options[answers[i] as number];
     if (!option) return null;
     for (const axis of AXES) raw[axis] += option.weights[axis] ?? 0;
     temperTotal += option.temper;

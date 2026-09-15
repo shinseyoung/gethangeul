@@ -1,11 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
 import { useImageShare } from '../hooks/useImageShare';
-import { QUESTIONS } from '../data/kdramaQuestions';
-import { ACTS, AXES, SCENES_PER_ACT, actOf, cast, recapKey, type ActId } from '../utils/kdramaCasting';
+import { GENRES, SCENE_COUNT, sceneAt, type Genre } from '../data/kdramaScenes';
+import { ACTS, AXES, SCENES_PER_ACT, actOf, cast } from '../utils/kdramaCasting';
 import { hangulFor } from '../utils/romanToHangul';
 import { sentences } from '../utils/sentences';
+import { withParticles } from '../utils/particles';
 import MountainWash from '../components/MountainWash';
 import TraitMeter from '../components/TraitMeter';
 import OptionMark from '../components/OptionMark';
@@ -14,15 +15,24 @@ import AdSlot from '../components/AdSlot';
 import Button, { ArrowLeft, ArrowRight } from '../components/Button';
 
 /**
- * K-Drama 배역 테스트 — the fourth room.
+ * K-드라마 — the fourth room.
  *
  * The other three rooms read something you already have: a name you typed, two
- * names you picked. This one reads what you would *do*. It asks for a name
- * first, and six of the twelve scenes speak to you by it — the name is how you
- * are *in* the story, not what you get out of it. The result is a casting and
- * nothing else; handing out a name at the end is the name generator's job, and
- * having both blurred each.
+ * names you picked. This one reads what you would *do*, and hands back a work
+ * rather than a reading — a poster for the drama you just starred in, with
+ * your name in its title.
+ *
+ * You pick the genre and give a name, then walk twelve scenes that fork three
+ * times. The six roles the engine works out are the index into the title and
+ * the logline; the words 주인공 and 첫사랑 never reach this screen. Telling
+ * someone they are a careful lead is the 첫인상 room's job, and it does it in
+ * one step rather than twelve.
  */
+
+/** Borrowed from the quiz set, so a genre needs no new drawing. */
+const GENRE_MARK: Record<Genre, string> = {
+  chaebol: 'trendy',
+};
 
 /** The four axes borrow marks the quiz already uses, so nothing new was drawn. */
 const MARK: Record<string, string> = {
@@ -45,30 +55,25 @@ function displayName(name: string, lang: string): string {
 
 export default function KdramaScreen() {
   const {
-    kdramaAnswers, kdramaStep, kdramaName, lang,
-    setKdramaAnswer, setKdramaStep, setKdramaName, resetKdrama,
+    kdramaAnswers, kdramaStep, kdramaName, kdramaGenre, lang,
+    setKdramaAnswer, setKdramaStep, setKdramaName, setKdramaGenre, resetKdrama,
   } = useFlowStore();
   const { t } = useTranslation();
-  /* which act's opening card has already been read. Held here rather than in the
-     store because it is about this sitting, not about the answers — going back
-     into the previous act and forward again must not replay the beat. */
-  const [actSeen, setActSeen] = useState<ActId | null>(null);
-
   const casting = useMemo(() => cast(kdramaAnswers), [kdramaAnswers]);
 
   const { captureRef, isSaving, isSharing, handleDownload, handleShare } = useImageShare(
     casting ? `hangeul-kdrama-${casting.typeKey}` : 'hangeul-kdrama',
   );
 
-  const onCard = kdramaStep > QUESTIONS.length;
-
-  /* half the scenes address the visitor, so there is nothing to show without a
-     name — a deep link straight into scene seven would otherwise render lines
-     spoken to nobody */
-  if (kdramaStep > 0 && kdramaName.trim() === '') {
-    setKdramaStep(0);
-    return null;
-  }
+  const onCard = kdramaStep > SCENE_COUNT;
+  /* the placeholder is in the copy rather than around it, so a scene with no
+     name in it needs no special case — replace finds nothing and the line
+     stands as written */
+  const who = displayName(kdramaName, lang);
+  /* the name goes in, and then the particles that depend on it: Korean picks
+     between 은/는 and 과/와 by the syllable in front, and the syllable in front
+     is a name the copy has never seen */
+  const named = (copy: unknown) => withParticles(String(copy).replace(/\{name\}/g, who), who);
 
   // ---- the intro ----------------------------------------------------------
   if (kdramaStep === 0) {
@@ -84,6 +89,33 @@ export default function KdramaScreen() {
             <span key={line} className="block">{line}</span>
           ))}
         </span>
+        <div className="mt-7 grid gap-2.5 sm:grid-cols-2">
+          {GENRES.map((g) => {
+            const on = kdramaGenre === g;
+            return (
+              <button
+                key={g}
+                type="button"
+                aria-pressed={on}
+                onClick={() => setKdramaGenre(g)}
+                className={`focus-ring flex min-h-[72px] items-center gap-3.5 rounded-2xl border-[1.5px] p-3.5 text-left transition-colors duration-150 ${
+                  on ? 'border-accent bg-accent/[0.05]' : 'border-rule bg-paper-hi hover:border-rule-strong hover:bg-paper-lo/60'
+                }`}
+              >
+                <OptionMark id={GENRE_MARK[g]} active={on} size={34} />
+                <span className="flex min-w-0 flex-1 flex-col gap-1">
+                  <span className={`block font-disp text-[17px] leading-tight ${on ? 'text-ink' : 'text-ink-2'}`}>
+                    {t(`kdrama.genre.${g}.label`)}
+                  </span>
+                  <span className="block text-[12px] leading-snug text-ink-4">
+                    {t(`kdrama.genre.${g}.tagline`)}
+                  </span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
         <div className="mt-7">
           <label htmlFor="kdrama-name" className="eyebrow mb-2 block text-[8.5px] text-ink-4">
             {t('kdrama.name_label')}
@@ -107,7 +139,7 @@ export default function KdramaScreen() {
           <p className="mt-1 text-[12px] leading-relaxed text-ink-4">{t('kdrama.name_hint')}</p>
         </div>
 
-        <Button full className="mt-6" disabled={kdramaName.trim() === ''} onClick={() => setKdramaStep(1)}>
+        <Button full className="mt-6" disabled={kdramaGenre === null || kdramaName.trim() === ''} onClick={() => setKdramaStep(1)}>
           {t('kdrama.start')}
           <ArrowRight />
         </Button>
@@ -119,40 +151,23 @@ export default function KdramaScreen() {
     );
   }
 
+  /* Past the intro both are set. A deep link straight into scene seven is the
+     only way to be here without them, and half the scenes speak to the name
+     while the genre decides which twelve they are, so it goes back to the top.
+     Placed here rather than above the intro so the rest of the component can
+     see that kdramaGenre is a Genre. */
+  if (kdramaGenre === null || kdramaName.trim() === '') {
+    setKdramaStep(0);
+    return null;
+  }
+
   // ---- the six questions --------------------------------------------------
   if (!onCard) {
     const index = kdramaStep - 1;
-    const question = QUESTIONS[index];
+    const scene = sceneAt(kdramaGenre, index, kdramaAnswers);
     const selected = kdramaAnswers[index];
     const act = actOf(index);
-    const recap = recapKey(act, kdramaAnswers);
 
-    /* the placeholder is in the copy rather than around it, so a scene with no
-       name in it needs no special case — replace finds nothing and the line
-       stands as written */
-    const who = displayName(kdramaName, lang);
-    const named = (copy: unknown) => String(copy).replace('{name}', who);
-
-    /* the beat between acts. It does not advance the step, so Back from the
-       scene after it returns to the previous act's last scene rather than here. */
-    if (index % SCENES_PER_ACT === 0 && recap !== null && actSeen !== act) {
-      return (
-        <div className="mx-auto flex w-full max-w-[620px] flex-1 flex-col justify-center px-6 pb-8 pt-5 lg:px-4">
-          <span className="eyebrow text-[8.5px] tracking-[0.26em] text-accent">
-            {t(`kdrama.act.${act}`)}
-          </span>
-          <span className="mt-5 flex flex-col gap-1.5 font-disp text-[22px] leading-snug text-ink md:text-[26px]">
-            {sentences(String(t(`kdrama.recap.${recap}`))).map((line) => (
-              <span key={line} className="block">{line}</span>
-            ))}
-          </span>
-          <Button full className="mt-9" onClick={() => setActSeen(act)}>
-            {t('kdrama.next')}
-            <ArrowRight />
-          </Button>
-        </div>
-      );
-    }
 
     return (
       <div className="mx-auto flex w-full max-w-[900px] flex-1 flex-col px-6 pb-8 pt-5 lg:px-4">
@@ -180,17 +195,17 @@ export default function KdramaScreen() {
             A scene is a slug line and then what happens — "회식 2차." wrapping
             into the middle of the next clause read as one long run-on. */}
         <h2 className="mb-2.5 mt-3 -ml-[0.035em] flex flex-col text-pretty font-disp text-[29px] leading-[1.1] tracking-tight text-ink md:text-[38px]">
-          {sentences(named(t(`kdrama.q.${question.id}.title`))).map((line) => (
+          {sentences(named(t(`kdrama.${kdramaGenre}.q.${scene.id}.title`))).map((line) => (
             <span key={line} className="block">{line}</span>
           ))}
         </h2>
 
         <div className="mt-6 grid gap-2.5">
-          {question.options.map((option, o) => {
+          {scene.options.map((optionId, o) => {
             const on = selected === o;
             return (
               <button
-                key={option.id}
+                key={optionId}
                 type="button"
                 aria-pressed={on}
                 onClick={() => setKdramaAnswer(index, o)}
@@ -201,7 +216,7 @@ export default function KdramaScreen() {
                 }`}
               >
                 <span className={`min-w-0 flex-1 text-balance font-disp text-[17px] leading-snug md:text-[18px] ${on ? 'text-ink' : 'text-ink-2'}`}>
-                  {named(t(`kdrama.q.${question.id}.options.${option.id}`))}
+                  {named(t(`kdrama.${kdramaGenre}.q.${scene.id}.options.${optionId}`))}
                 </span>
               </button>
             );
@@ -229,11 +244,10 @@ export default function KdramaScreen() {
     return null;
   }
 
-  /* the locale owns the word order: English wants the article in front of the
-     pair, Korean wants the temper in its adjectival form and no article at all */
-  const headline = String(t('kdrama.headline'))
-    .replace('{temper}', String(t(`kdrama.temper.${casting.temper}`)))
-    .replace('{role}', String(t(`kdrama.role.${casting.role}`)));
+  /* The six roles and the two tempers are the index into the poster, never a
+     word on it. 주인공 on a card is a verdict about a person; a title is a
+     thing that exists because they played it. */
+  const poster = `kdrama.${kdramaGenre}.poster.${casting.typeKey}`;
 
   return (
     <div className="mx-auto w-full max-w-[620px] px-5 pb-24 pt-6 lg:px-4">
@@ -246,11 +260,17 @@ export default function KdramaScreen() {
         <div className="pointer-events-none absolute inset-2 rounded-[20px] border border-rule" />
 
         <div className="relative flex flex-col items-center">
-          <span className="eyebrow text-[8.5px] tracking-[0.26em] text-ink-4">{t('kdrama.card_label')}</span>
+          <span className="eyebrow text-[8.5px] tracking-[0.26em] text-ink-4">
+            {t(`kdrama.genre.${kdramaGenre}.label`)}
+          </span>
 
           <OpticalText className="mt-3 block text-center font-disp text-[27px] leading-tight text-ink md:text-[31px]">
-            {headline}
+            {named(t(`${poster}.title`))}
           </OpticalText>
+
+          <span className="mt-2.5 block text-[11.5px] leading-none text-ink-4">
+            {t(`kdrama.genre.${kdramaGenre}.slot`)}
+          </span>
 
           <span className="my-6 block h-px w-11 bg-accent" />
 
@@ -273,7 +293,7 @@ export default function KdramaScreen() {
 
           {/* one block per sentence, so a break never lands mid-clause */}
           <span className="flex max-w-[320px] flex-col text-center text-[13px] leading-relaxed text-ink-2">
-            {sentences(String(t(`kdrama.type.${casting.typeKey}`))).map((line) => (
+            {sentences(named(t(`${poster}.logline`))).map((line) => (
               <span key={line} className="block">{line}</span>
             ))}
           </span>

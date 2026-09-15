@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import type { Genre } from '../data/kdramaScenes';
 
 export type Language = 'ko' | 'en' | 'vi' | 'th';
 
@@ -110,9 +111,12 @@ interface FlowState {
   kdramaStep: number;
   /** the visitor's own name, and the only name in the room */
   kdramaName: string;
+  /** which drama they are in; null until they pick one */
+  kdramaGenre: Genre | null;
   setKdramaAnswer: (index: number, option: number) => void;
   setKdramaStep: (step: number) => void;
   setKdramaName: (name: string) => void;
+  setKdramaGenre: (genre: Genre | null) => void;
   resetKdrama: () => void;
 
   setStep: (step: StepId) => void;
@@ -182,8 +186,10 @@ export const useFlowStore = create<FlowState>((set, get) => ({
 
   kdramaAnswers: Array(12).fill(null),
   kdramaStep: 0,
-  /* asked for before the first scene, because six of the twelve speak to it */
+  /* both asked for before the first scene: six of the twelve speak to the
+     name, and the genre decides which twelve they are */
   kdramaName: '',
+  kdramaGenre: null,
   setKdramaAnswer: (index, option) => set((s) => {
     const next = [...s.kdramaAnswers];
     next[index] = option;
@@ -191,6 +197,7 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   }),
   setKdramaStep: (kdramaStep) => set({ kdramaStep }),
   setKdramaName: (kdramaName) => set({ kdramaName }),
+  setKdramaGenre: (kdramaGenre) => set({ kdramaGenre }),
   /* the casting is the result, so this clears the answers and sends the visitor
      back to the first scene. The name stays: they are still themselves. */
   resetKdrama: () => set({ kdramaAnswers: Array(12).fill(null), kdramaStep: 0 }),
@@ -218,7 +225,7 @@ export const useFlowStore = create<FlowState>((set, get) => ({
     if (tool === 'name') s.restart();
     // the name goes too, unlike resetKdrama, which is "다시 하기" on the card and
     // should not make someone type their own name in again to answer again
-    else if (tool === 'kdrama') { s.resetKdrama(); s.setKdramaName(''); }
+    else if (tool === 'kdrama') { s.resetKdrama(); s.setKdramaName(''); s.setKdramaGenre(null); }
     else if (tool === 'impression') s.setImpressionName('');
     else if (tool === 'pair') { s.setPair('a', ''); s.setPair('b', ''); }
     else if (tool === 'fortune') { s.setFortuneName(''); s.setFortuneBirthday(''); }
