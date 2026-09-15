@@ -3,6 +3,8 @@
 // Run with: npm run check
 import { SEOLLAL } from '../src/data/seollal';
 import { ANIMALS, readBirthday } from '../src/utils/zodiac';
+import { LUCKS, tell } from '../src/utils/fortune';
+import { strokesOf } from '../src/utils/strokes';
 
 let failures = 0;
 function ok(label: string, condition: boolean, detail?: unknown) {
@@ -80,6 +82,50 @@ ok('April is spring', readBirthday('1996-04-10')?.season === 'spring');
 ok('July is summer', readBirthday('1996-07-10')?.season === 'summer');
 ok('October is autumn', readBirthday('1996-10-10')?.season === 'autumn');
 ok('January is winter', readBirthday('1996-01-10')?.season === 'winter');
+
+// --- the four fortunes ----------------------------------------------------
+// Clamped to 15-90 on purpose. A card that tells someone their love life is nil
+// has stopped being for fun, and the top of the scale should stay somewhere
+// nobody quite reaches.
+
+const NAMES = ['하준', '서연', '민서', '도윤', '지호', '철수'];
+const DATES = ['1996-05-01', '2000-02-05', '1988-11-30', '2011-07-07', '1975-03-15'];
+
+const all = NAMES.flatMap((n) => DATES.map((d) => tell(n, d)!));
+ok('every name and date tells', all.every(Boolean), all.length);
+for (const luck of LUCKS) {
+  ok(`${luck} always lands in 15-90`,
+    all.every((f) => Number.isInteger(f.scores[luck]) && f.scores[luck] >= 15 && f.scores[luck] <= 90),
+    all.map((f) => f.scores[luck]).filter((x) => x < 15 || x > 90));
+}
+ok('the same name and birthday always tell the same',
+  JSON.stringify(tell('하준', '1996-05-01')) === JSON.stringify(tell('하준', '1996-05-01')));
+ok('the same birthday with a different name reads differently',
+  JSON.stringify(tell('하준', '1996-05-01')?.scores) !== JSON.stringify(tell('철수', '1996-05-01')?.scores));
+ok('the same name with a different birthday reads differently',
+  JSON.stringify(tell('하준', '1996-05-01')?.scores) !== JSON.stringify(tell('하준', '1988-11-30')?.scores));
+ok('a name with no Hangul tells nothing', tell('Anna', '1996-05-01') === null);
+ok('a bad birthday tells nothing', tell('하준', '1919-01-01') === null);
+
+// a meter that never moves is a meter nobody reads twice
+for (const luck of LUCKS) {
+  const buckets = new Set(all.map((f) => Math.floor(f.scores[luck] / 20)));
+  ok(`${luck} uses more than one bucket across the sample`, buckets.size >= 3, [...buckets]);
+}
+
+// --- the lucky three ------------------------------------------------------
+
+ok('the lucky number is a single digit',
+  all.every((f) => Number.isInteger(f.number) && f.number >= 0 && f.number <= 9));
+ok('the lucky number is the ones digit of the name\'s strokes',
+  NAMES.every((n) => tell(n, '1996-05-01')!.number
+    === strokesOf(n).reduce((sum, c) => sum + c.strokes, 0) % 10));
+ok('the colour is one of the five',
+  all.every((f) => ['blue', 'red', 'yellow', 'white', 'black'].includes(f.colour)));
+ok('the twelve animals do not all share a colour',
+  new Set(ANIMALS.map((_, i) => tell('하준', `${1996 + i}-06-01`)!.colour)).size === 5);
+ok('the dish follows the season', all.every((f) => f.dish === f.reading.season));
+
 
 // --- report ---------------------------------------------------------------
 
