@@ -5,13 +5,13 @@
   },
   "layout": {
     "steps": {
-      "1": "Café",
-      "2": "Last train",
-      "3": "Dinner",
-      "4": "Lift",
-      "5": "Market",
-      "6": "Last evening",
-      "7": "Family name"
+      "1": "Quán cà phê",
+      "2": "Chuyến cuối",
+      "3": "Tiệc công ty",
+      "4": "Thang máy",
+      "5": "Chợ",
+      "6": "Tối cuối",
+      "7": "Họ"
     },
     "buttons": {
       "prev": "Quay lại",
@@ -53,7 +53,7 @@
     "share": "{share}% người Hàn",
     "share_rare": "Hiếm",
     "suggested": "Gợi ý",
-    "gender_label": "Reads as"
+    "gender_label": "Đọc như"
   },
   "options": {
     "gender": {
@@ -79,7 +79,7 @@
     "change_surname_desc": "Giữ nguyên tên, chọn dòng họ khác.",
     "see_match": "Xem hợp tên",
     "see_match_desc": "Hai cái tên, số nét, một con số.",
-    "because": "You're {a} and {b} — so, {name}."
+    "because": "Bạn là {a} và {b} — nên, {name}."
   },
   "nav": {
     "name": "Đặt tên",
@@ -87,70 +87,70 @@
     "impression": "Ấn tượng",
     "menu": "Rooms",
     "kdrama": "K-Drama",
-    "fortune": "Fortune",
+    "fortune": "Vận",
     "group": {
       "name": "Names",
       "fun": "For fun"
     }
   },
   "impression": {
-    "eyebrow": "How it lands",
-    "title": "What a Korean hears in your name.",
-    "sub": "Not what it means — what it sounds like. Five things a Korean ear picks up before it thinks about anything else.",
-    "label": "A Korean name",
+    "eyebrow": "Nghe ra sao",
+    "title": "Người Hàn nghe thấy gì trong tên bạn.",
+    "sub": "Không phải nghĩa — mà là âm. Năm điều tai người Hàn bắt được trước khi kịp nghĩ gì khác.",
+    "label": "Một cái tên Hàn",
     "placeholder": "Hajun",
-    "hint": "Write it in Latin letters or in Hangul. A family name is optional; we read the given name.",
-    "waiting": "Write a name above and we will read it back to you.",
-    "not_korean": "That reads as a foreign name rather than a Korean one, so there is nothing here for a Korean ear to pick up. Try a Korean name — Hajun, Seoyeon, or Kim Minseo.",
-    "card_label": "FIRST IMPRESSION",
-    "disclaimer": "This reads sound, not fortune. It counts the consonants and vowels your name is built from and how often Koreans use them — nothing about the person carrying it.",
-    "family_note": "Read as the family name — family names are inherited, so this one sits out of the scoring.",
+    "hint": "Viết bằng chữ Latinh hoặc Hangeul. Họ thì không bắt buộc; chúng tôi đọc phần tên.",
+    "waiting": "Viết một cái tên ở trên và chúng tôi sẽ đọc lại cho bạn.",
+    "not_korean": "Cái này đọc ra như tên nước ngoài chứ không phải tên Hàn, nên tai người Hàn không có gì để bắt. Thử một cái tên Hàn xem — Hajun, Seoyeon, hay Kim Minseo.",
+    "card_label": "ẤN TƯỢNG ĐẦU",
+    "disclaimer": "Cái này đọc âm, không phải vận. Nó đếm các phụ âm và nguyên âm dựng nên tên bạn và tần suất người Hàn dùng chúng — không nói gì về người mang cái tên.",
+    "family_note": "Được đọc là họ — họ là thứ thừa hưởng, nên phần này không tính điểm.",
     "axis": {
-      "friendly": "Approachable",
-      "refined": "Polished",
-      "cute": "Sweet",
-      "calm": "Composed",
-      "uncommon": "Unusual"
+      "friendly": "Dễ gần",
+      "refined": "Chỉn chu",
+      "cute": "Ngọt",
+      "calm": "Điềm đạm",
+      "uncommon": "Ít gặp"
     },
     "blend": {
-      "friendly_refined": "Easy to say and easy to trust — the name of someone who gets introduced to everyone and remembered by all of them.",
-      "friendly_cute": "Warm and light. This is a name people shorten into a nickname within a week of meeting you.",
-      "friendly_calm": "Unhurried and open. It sounds like the person everyone ends up telling things to.",
-      "friendly_uncommon": "Familiar sounds in an arrangement nobody expects — approachable, but not one of a crowd.",
-      "refined_cute": "Polished with something soft underneath. It reads younger than it sounds serious.",
-      "refined_calm": "The quiet, well-made kind of name. Nothing about it is trying.",
-      "refined_uncommon": "Elegant and rare at once — the sort of name people ask you to repeat, then compliment.",
-      "cute_calm": "Gentle all the way through. Soft sounds, no sharp edges, nothing raised.",
-      "cute_uncommon": "Playful and unplaceable. Koreans will smile at it before they work out where it is from.",
-      "calm_uncommon": "Still and slightly out of time — a name that sounds like it has been somewhere."
+      "friendly_refined": "Dễ đọc và dễ tin — cái tên của người được giới thiệu với tất cả mọi người và ai cũng nhớ.",
+      "friendly_cute": "Ấm và nhẹ. Đây là cái tên người ta rút thành biệt danh trong vòng một tuần quen nhau.",
+      "friendly_calm": "Thong thả và cởi mở. Nghe như người mà rốt cuộc ai cũng kể chuyện cho.",
+      "friendly_uncommon": "Những âm quen trong một cách xếp không ai ngờ — dễ gần, mà không lẫn vào đám đông.",
+      "refined_cute": "Chỉn chu với một lớp mềm bên dưới. Đọc ra trẻ hơn là nghiêm.",
+      "refined_calm": "Kiểu tên trầm, làm khéo. Không có gì trong đó đang cố gắng.",
+      "refined_uncommon": "Vừa thanh vừa hiếm — kiểu tên người ta bảo bạn nhắc lại, rồi khen.",
+      "cute_calm": "Dịu từ đầu đến cuối. Âm mềm, không góc cạnh, không có gì gắt.",
+      "cute_uncommon": "Tinh nghịch và khó xếp. Người Hàn sẽ cười trước khi kịp đoán nó từ đâu ra.",
+      "calm_uncommon": "Tĩnh và hơi lệch thời — một cái tên nghe như đã đi đâu đó về."
     }
   },
   "pair": {
-    "eyebrow": "Hợp tên kiểu Hàn Quốc",
-    "title": "Hợp tên",
-    "sub": "Nhập hai cái tên để xem mức độ hợp nhau. Kết quả được tính từ số nét của chữ Hangul, theo phương pháp truyền thống Hàn Quốc.",
-    "you": "Tên của bạn",
-    "them": "Tên người ấy",
+    "eyebrow": "Hợp tên kiểu Hàn",
+    "title": "Độ hợp của hai cái tên",
+    "sub": "Nhập hai cái tên để xem hợp đến đâu. Kết quả tính từ số nét của chữ Hangeul, đúng cách truyền thống của người Hàn.",
+    "you": "Tên bạn",
+    "them": "Tên người kia",
     "you_placeholder": "김민서",
     "them_placeholder": "박다혜",
-    "hint": "Tên viết bằng chữ Latinh sẽ được đọc sang Hangul. Bạn có thể tự nhập Hangul để sửa.",
+    "hint": "Tên tiếng Anh sẽ được đọc sang Hangeul. Tự gõ Hangeul nếu muốn sửa.",
     "waiting": "Nhập cả hai tên để xem kết quả.",
-    "card_label": "Hợp tên",
-    "disclaimer": "Đây là một trò chơi truyền thống, không phải chuyện xem vận. Nó chỉ đếm số nét Hangul.\nNhập hai tên theo thứ tự ngược lại sẽ cho kết quả khác.",
-    "no_name_label": "Phòng bên",
-    "no_name": "Chưa có tên Hàn Quốc?",
-    "no_name_desc": "Trả lời bốn câu hỏi để nhận một cái tên, rồi quay lại đây.",
+    "card_label": "Độ hợp của tên",
+    "disclaimer": "Một trò chơi truyền thống, không phải bói. Nó chỉ đếm nét Hangeul, không gì khác.\nĐổi thứ tự hai cái tên thì ra kết quả khác.",
+    "no_name_label": "Phòng bên kia",
+    "no_name": "Chưa có tên Hàn?",
+    "no_name_desc": "Trả lời sáu tình huống để có một cái, rồi quay lại.",
     "blend": {
-      "friendly_refined": "Reads like you've known each other for years.",
-      "friendly_cute": "The kind that starts as friends and stays easy.",
-      "friendly_calm": "Nobody in this pair has ever had to raise their voice.",
-      "friendly_uncommon": "An odd fit on paper. Works anyway.",
-      "refined_cute": "Polished one side, soft the other. It balances.",
-      "refined_calm": "Two quiet people who don't need filling silence.",
-      "refined_uncommon": "Neither of these names is common. Together, less so.",
-      "cute_calm": "One talks, one listens, and both prefer it that way.",
-      "cute_uncommon": "Sounds made up, in a good way. People remember it.",
-      "calm_uncommon": "Quiet and hard to place. Takes a while to read."
+      "friendly_refined": "Đọc lên như hai người đã quen nhau nhiều năm.",
+      "friendly_cute": "Kiểu bắt đầu từ bạn bè và cứ nhẹ nhàng như thế.",
+      "friendly_calm": "Cặp này chưa từng phải to tiếng với nhau.",
+      "friendly_uncommon": "Trên giấy thì lệch. Vậy mà vẫn hợp.",
+      "refined_cute": "Một bên chỉn chu, một bên mềm. Nó cân nhau.",
+      "refined_calm": "Hai người trầm, không cần lấp khoảng lặng.",
+      "refined_uncommon": "Cả hai tên đều không phổ biến. Đi cùng nhau lại càng ít.",
+      "cute_calm": "Một người nói, một người nghe, và cả hai thích thế.",
+      "cute_uncommon": "Nghe như tự bịa ra, theo nghĩa tốt. Người ta nhớ được.",
+      "calm_uncommon": "Trầm và khó xếp vào đâu. Phải một lúc mới đọc ra."
     }
   },
   "situations": {
@@ -423,40 +423,40 @@
   },
   "tags": {
     "vibes": {
-      "bright": "Bright",
-      "calm": "Calm",
-      "soft": "Soft",
-      "mystic": "Mystic",
-      "trendy": "Modern",
-      "strong": "Strong",
-      "lovely": "Lovely"
+      "bright": "Sáng",
+      "calm": "Điềm tĩnh",
+      "soft": "Dịu",
+      "mystic": "Huyền",
+      "trendy": "Hiện đại",
+      "strong": "Mạnh",
+      "lovely": "Đáng yêu"
     },
     "personalities": {
-      "radiant": "Radiant",
-      "considerate": "Considerate",
-      "dependable": "Dependable",
-      "whimsical": "Whimsical",
-      "genuine": "Genuine",
-      "inquisitive": "Curious",
-      "enterprising": "Driven",
-      "prudent": "Prudent",
-      "upright": "Upright",
-      "sensitive": "Sensitive",
-      "graceful": "Graceful",
-      "resilient": "Resilient"
+      "radiant": "Rạng rỡ",
+      "considerate": "Tinh tế",
+      "dependable": "Đáng tin",
+      "whimsical": "Tinh nghịch",
+      "genuine": "Chân thành",
+      "inquisitive": "Tò mò",
+      "enterprising": "Xông xáo",
+      "prudent": "Thận trọng",
+      "upright": "Ngay thẳng",
+      "sensitive": "Nhạy cảm",
+      "graceful": "Duyên dáng",
+      "resilient": "Kiên cường"
     },
     "nature": {
-      "spring": "Spring",
-      "summer": "Summer",
-      "autumn": "Autumn",
-      "winter": "Winter",
-      "mountain": "Mountain",
-      "sea": "Sea",
-      "river": "River",
-      "forest": "Forest",
-      "sky": "Sky",
-      "sun": "Sun",
-      "flower": "Flower"
+      "spring": "Xuân",
+      "summer": "Hạ",
+      "autumn": "Thu",
+      "winter": "Đông",
+      "mountain": "Núi",
+      "sea": "Biển",
+      "river": "Sông",
+      "forest": "Rừng",
+      "sky": "Trời",
+      "sun": "Nắng",
+      "flower": "Hoa"
     }
   }
 }

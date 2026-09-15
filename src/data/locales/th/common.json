@@ -5,13 +5,13 @@
   },
   "layout": {
     "steps": {
-      "1": "Café",
-      "2": "Last train",
-      "3": "Dinner",
-      "4": "Lift",
-      "5": "Market",
-      "6": "Last evening",
-      "7": "Family name"
+      "1": "คาเฟ่",
+      "2": "รถไฟเที่ยวสุดท้าย",
+      "3": "งานเลี้ยงบริษัท",
+      "4": "ลิฟต์",
+      "5": "ตลาด",
+      "6": "เย็นวันสุดท้าย",
+      "7": "นามสกุล"
     },
     "buttons": {
       "prev": "ย้อนกลับ",
@@ -53,7 +53,7 @@
     "share": "{share}% ของคนเกาหลี",
     "share_rare": "พบไม่บ่อย",
     "suggested": "แนะนำ",
-    "gender_label": "Reads as"
+    "gender_label": "อ่านเป็น"
   },
   "options": {
     "gender": {
@@ -79,78 +79,78 @@
     "change_surname_desc": "คงชื่อเดิม แต่เปลี่ยนตระกูล",
     "see_match": "ดูการจับคู่ชื่อ",
     "see_match_desc": "สองชื่อ จำนวนเส้น และหนึ่งตัวเลข",
-    "because": "You're {a} and {b} — so, {name}."
+    "because": "คุณเป็น{a}และ{b} — เพราะงั้น {name}"
   },
   "nav": {
     "name": "ตั้งชื่อ",
-    "pair": "จับคู่ชื่อ",
+    "pair": "ความเข้ากันของชื่อ",
     "impression": "ภาพลักษณ์",
     "menu": "Rooms",
     "kdrama": "K-Drama",
-    "fortune": "Fortune",
+    "fortune": "ดวง",
     "group": {
       "name": "Names",
       "fun": "For fun"
     }
   },
   "impression": {
-    "eyebrow": "How it lands",
-    "title": "What a Korean hears in your name.",
-    "sub": "Not what it means — what it sounds like. Five things a Korean ear picks up before it thinks about anything else.",
-    "label": "A Korean name",
+    "eyebrow": "ฟังแล้วเป็นยังไง",
+    "title": "คนเกาหลีได้ยินอะไรในชื่อคุณ",
+    "sub": "ไม่ใช่ความหมาย แต่เป็นเสียง ห้าอย่างที่หูคนเกาหลีจับได้ก่อนจะทันคิดอย่างอื่น",
+    "label": "ชื่อเกาหลีสักชื่อ",
     "placeholder": "Hajun",
-    "hint": "Write it in Latin letters or in Hangul. A family name is optional; we read the given name.",
-    "waiting": "Write a name above and we will read it back to you.",
-    "not_korean": "That reads as a foreign name rather than a Korean one, so there is nothing here for a Korean ear to pick up. Try a Korean name — Hajun, Seoyeon, or Kim Minseo.",
-    "card_label": "FIRST IMPRESSION",
-    "disclaimer": "This reads sound, not fortune. It counts the consonants and vowels your name is built from and how often Koreans use them — nothing about the person carrying it.",
-    "family_note": "Read as the family name — family names are inherited, so this one sits out of the scoring.",
+    "hint": "เขียนด้วยอักษรละตินหรือฮันกึลก็ได้ นามสกุลใส่หรือไม่ใส่ก็ได้ เราอ่านเฉพาะชื่อตัว",
+    "waiting": "เขียนชื่อไว้ด้านบนแล้วเราจะอ่านกลับให้ฟัง",
+    "not_korean": "อันนี้อ่านออกมาเป็นชื่อต่างชาติ ไม่ใช่ชื่อเกาหลี หูคนเกาหลีจึงไม่มีอะไรให้จับ ลองชื่อเกาหลีดู — Hajun, Seoyeon หรือ Kim Minseo",
+    "card_label": "ภาพลักษณ์แรก",
+    "disclaimer": "อันนี้อ่านเสียง ไม่ใช่ดวง มันนับพยัญชนะและสระที่ประกอบเป็นชื่อคุณ และความถี่ที่คนเกาหลีใช้มัน ไม่ได้บอกอะไรเกี่ยวกับคนที่ถือชื่อนั้น",
+    "family_note": "อ่านเป็นนามสกุล — นามสกุลเป็นสิ่งที่สืบทอดมา ส่วนนี้จึงไม่ถูกนำมาคิดคะแนน",
     "axis": {
-      "friendly": "Approachable",
-      "refined": "Polished",
-      "cute": "Sweet",
-      "calm": "Composed",
-      "uncommon": "Unusual"
+      "friendly": "เข้าถึงง่าย",
+      "refined": "เนี้ยบ",
+      "cute": "หวาน",
+      "calm": "นิ่ง",
+      "uncommon": "ไม่ค่อยพบ"
     },
     "blend": {
-      "friendly_refined": "Easy to say and easy to trust — the name of someone who gets introduced to everyone and remembered by all of them.",
-      "friendly_cute": "Warm and light. This is a name people shorten into a nickname within a week of meeting you.",
-      "friendly_calm": "Unhurried and open. It sounds like the person everyone ends up telling things to.",
-      "friendly_uncommon": "Familiar sounds in an arrangement nobody expects — approachable, but not one of a crowd.",
-      "refined_cute": "Polished with something soft underneath. It reads younger than it sounds serious.",
-      "refined_calm": "The quiet, well-made kind of name. Nothing about it is trying.",
-      "refined_uncommon": "Elegant and rare at once — the sort of name people ask you to repeat, then compliment.",
-      "cute_calm": "Gentle all the way through. Soft sounds, no sharp edges, nothing raised.",
-      "cute_uncommon": "Playful and unplaceable. Koreans will smile at it before they work out where it is from.",
-      "calm_uncommon": "Still and slightly out of time — a name that sounds like it has been somewhere."
+      "friendly_refined": "พูดง่ายและน่าเชื่อถือ ชื่อของคนที่ถูกแนะนำให้ทุกคนรู้จักและทุกคนจำได้",
+      "friendly_cute": "อบอุ่นและเบา เป็นชื่อที่คนย่อเป็นชื่อเล่นภายในหนึ่งสัปดาห์หลังรู้จักกัน",
+      "friendly_calm": "ไม่รีบร้อนและเปิดกว้าง ฟังเหมือนคนที่สุดท้ายใคร ๆ ก็มาเล่าเรื่องให้ฟัง",
+      "friendly_uncommon": "เสียงที่คุ้นในลำดับที่ไม่มีใครคาด เข้าถึงง่าย แต่ไม่กลืนไปกับคนหมู่มาก",
+      "refined_cute": "เนี้ยบโดยมีความนุ่มซ่อนอยู่ข้างใต้ อ่านแล้วดูเด็กกว่าที่เสียงดูจริงจัง",
+      "refined_calm": "ชื่อแบบเงียบ ๆ ที่ทำมาดี ไม่มีอะไรในนั้นที่พยายาม",
+      "refined_uncommon": "งามและหายากในคราวเดียว เป็นชื่อที่คนขอให้พูดซ้ำ แล้วก็ชม",
+      "cute_calm": "อ่อนโยนตลอดทั้งชื่อ เสียงนุ่ม ไม่มีเหลี่ยม ไม่มีอะไรแหลม",
+      "cute_uncommon": "ขี้เล่นและจัดหมวดไม่ถูก คนเกาหลีจะยิ้มก่อนจะคิดออกว่ามันมาจากไหน",
+      "calm_uncommon": "นิ่งและหลุดยุคไปนิด ชื่อที่ฟังเหมือนเคยไปที่ไหนมา"
     }
   },
   "pair": {
-    "eyebrow": "การจับคู่ชื่อแบบเกาหลี",
-    "title": "ความเข้ากันของชื่อ",
-    "sub": "กรอกสองชื่อเพื่อดูว่าเข้ากันเพียงใด ผลลัพธ์คำนวณจากจำนวนเส้นของอักษรฮันกึล ตามวิธีดั้งเดิมของเกาหลี",
-    "you": "ชื่อของคุณ",
-    "them": "ชื่อของเขา",
+    "eyebrow": "ความเข้ากันของชื่อแบบเกาหลี",
+    "title": "ชื่อสองชื่อเข้ากันแค่ไหน",
+    "sub": "ใส่ชื่อสองชื่อแล้วดูว่าเข้ากันแค่ไหน ผลคำนวณจากจำนวนขีดของฮันกึล ซึ่งเป็นวิธีดั้งเดิมของเกาหลี",
+    "you": "ชื่อคุณ",
+    "them": "ชื่ออีกคน",
     "you_placeholder": "김민서",
     "them_placeholder": "박다혜",
-    "hint": "ชื่อภาษาอังกฤษจะถูกอ่านเป็นฮันกึล พิมพ์ฮันกึลเองเพื่อแก้ไขได้",
-    "waiting": "กรอกทั้งสองชื่อเพื่อดูผลลัพธ์",
+    "hint": "ชื่อภาษาอังกฤษจะถูกอ่านเป็นฮันกึล พิมพ์ฮันกึลเองได้ถ้าอยากแก้",
+    "waiting": "ใส่ชื่อทั้งสองเพื่อดูผล",
     "card_label": "ความเข้ากันของชื่อ",
-    "disclaimer": "เป็นการละเล่นดั้งเดิม ไม่ใช่การทำนาย คำนวณจากจำนวนเส้นฮันกึลเท่านั้น\nการกรอกชื่อสลับลำดับจะให้ผลลัพธ์ที่ต่างออกไป",
-    "no_name_label": "อีกห้อง",
-    "no_name": "ยังไม่มีชื่อเกาหลี?",
-    "no_name_desc": "ตอบสี่คำถามเพื่อรับชื่อ แล้วกลับมาที่นี่",
+    "disclaimer": "เป็นเกมดั้งเดิม ไม่ใช่การทำนาย มันนับขีดฮันกึลเท่านั้น\nสลับลำดับสองชื่อแล้วผลจะต่างออกไป",
+    "no_name_label": "อีกห้องหนึ่ง",
+    "no_name": "ยังไม่มีชื่อเกาหลี",
+    "no_name_desc": "ตอบหกสถานการณ์เพื่อรับชื่อ แล้วค่อยกลับมา",
     "blend": {
-      "friendly_refined": "Reads like you've known each other for years.",
-      "friendly_cute": "The kind that starts as friends and stays easy.",
-      "friendly_calm": "Nobody in this pair has ever had to raise their voice.",
-      "friendly_uncommon": "An odd fit on paper. Works anyway.",
-      "refined_cute": "Polished one side, soft the other. It balances.",
-      "refined_calm": "Two quiet people who don't need filling silence.",
-      "refined_uncommon": "Neither of these names is common. Together, less so.",
-      "cute_calm": "One talks, one listens, and both prefer it that way.",
-      "cute_uncommon": "Sounds made up, in a good way. People remember it.",
-      "calm_uncommon": "Quiet and hard to place. Takes a while to read."
+      "friendly_refined": "อ่านแล้วเหมือนสองคนนี้รู้จักกันมาหลายปี",
+      "friendly_cute": "แบบที่เริ่มจากเพื่อนและสบาย ๆ กันไปตลอด",
+      "friendly_calm": "คู่นี้ไม่เคยต้องขึ้นเสียงใส่กัน",
+      "friendly_uncommon": "บนกระดาษดูไม่เข้ากัน แต่ก็เข้ากันอยู่ดี",
+      "refined_cute": "ด้านหนึ่งเนี้ยบ อีกด้านนุ่ม มันถ่วงกันพอดี",
+      "refined_calm": "คนเงียบสองคนที่ไม่ต้องหาอะไรมาเติมความเงียบ",
+      "refined_uncommon": "ทั้งสองชื่อไม่ค่อยพบ อยู่ด้วยกันยิ่งไม่พบเข้าไปใหญ่",
+      "cute_calm": "คนหนึ่งพูด คนหนึ่งฟัง และทั้งคู่ชอบแบบนั้น",
+      "cute_uncommon": "ฟังเหมือนแต่งขึ้นมา ในทางที่ดี คนจำได้",
+      "calm_uncommon": "เงียบและจัดหมวดยาก ต้องใช้เวลาอ่านสักพัก"
     }
   },
   "situations": {
@@ -423,40 +423,40 @@
   },
   "tags": {
     "vibes": {
-      "bright": "Bright",
-      "calm": "Calm",
-      "soft": "Soft",
-      "mystic": "Mystic",
-      "trendy": "Modern",
-      "strong": "Strong",
-      "lovely": "Lovely"
+      "bright": "สดใส",
+      "calm": "สงบ",
+      "soft": "นุ่มนวล",
+      "mystic": "ลึกลับ",
+      "trendy": "ทันสมัย",
+      "strong": "แข็งแกร่ง",
+      "lovely": "น่ารัก"
     },
     "personalities": {
-      "radiant": "Radiant",
-      "considerate": "Considerate",
-      "dependable": "Dependable",
-      "whimsical": "Whimsical",
-      "genuine": "Genuine",
-      "inquisitive": "Curious",
-      "enterprising": "Driven",
-      "prudent": "Prudent",
-      "upright": "Upright",
-      "sensitive": "Sensitive",
-      "graceful": "Graceful",
-      "resilient": "Resilient"
+      "radiant": "เปล่งประกาย",
+      "considerate": "เอาใจใส่",
+      "dependable": "พึ่งพาได้",
+      "whimsical": "เพี้ยนน่ารัก",
+      "genuine": "จริงใจ",
+      "inquisitive": "ช่างสงสัย",
+      "enterprising": "มุ่งมั่น",
+      "prudent": "รอบคอบ",
+      "upright": "ตรงไปตรงมา",
+      "sensitive": "ละเอียดอ่อน",
+      "graceful": "สง่างาม",
+      "resilient": "ไม่ยอมแพ้"
     },
     "nature": {
-      "spring": "Spring",
-      "summer": "Summer",
-      "autumn": "Autumn",
-      "winter": "Winter",
-      "mountain": "Mountain",
-      "sea": "Sea",
-      "river": "River",
-      "forest": "Forest",
-      "sky": "Sky",
-      "sun": "Sun",
-      "flower": "Flower"
+      "spring": "ฤดูใบไม้ผลิ",
+      "summer": "ฤดูร้อน",
+      "autumn": "ฤดูใบไม้ร่วง",
+      "winter": "ฤดูหนาว",
+      "mountain": "ภูเขา",
+      "sea": "ทะเล",
+      "river": "แม่น้ำ",
+      "forest": "ป่า",
+      "sky": "ท้องฟ้า",
+      "sun": "ดวงอาทิตย์",
+      "flower": "ดอกไม้"
     }
   }
 }
