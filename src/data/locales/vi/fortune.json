@@ -1,100 +1,100 @@
 {
-  "eyebrow": "What's your animal?",
-  "title": "Your Korean zodiac, and how this year looks",
-  "sub": "Name and birthday, that's it. It's the thing that comes up the moment anyone in Korea asks how old you are.",
-  "name_label": "Name",
+  "eyebrow": "Bạn tuổi con gì?",
+  "title": "Con giáp Hàn Quốc của bạn, và năm nay thế nào",
+  "sub": "Chỉ cần tên và ngày sinh. Đây là câu bật ra ngay khi có người ở Hàn hỏi tuổi bạn.",
+  "name_label": "Tên",
   "name_placeholder": "Kim Hajun",
-  "birthday_label": "Birthday",
-  "waiting": "Put in a name and a birthday and it'll come up.",
-  "out_of_range": "This only covers 1920 to 2044. Outside that we don't have the lunar new year dates, so we'd just be guessing.",
-  "card_label": "ZODIAC & FORTUNE",
-  "you_are": "Year of the {animal}",
-  "lucky_colour": "Lucky colour",
-  "lucky_number": "Lucky number",
-  "lucky_dish": "Lucky dish",
-  "disclaimer": "Just for fun. The animal and the season are really calculated; the fortunes aren't. The zodiac year turns at Seollal, so a January or early-February birthday usually belongs to the year before.",
+  "birthday_label": "Ngày sinh",
+  "waiting": "Nhập tên và ngày sinh rồi kết quả sẽ hiện ra.",
+  "out_of_range": "Phần này chỉ tính từ 1920 đến 2044. Ngoài khoảng đó chúng tôi không có ngày Tết âm lịch, nên sẽ chỉ là đoán.",
+  "card_label": "CON GIÁP & VẬN",
+  "you_are": "Tuổi {animal}",
+  "lucky_colour": "Màu may mắn",
+  "lucky_number": "Số may mắn",
+  "lucky_dish": "Món may mắn",
+  "disclaimer": "Chỉ để cho vui. Con giáp và mùa thì được tính thật, còn vận thì không. Năm con giáp đổi vào Seollal, nên sinh tháng Một hoặc đầu tháng Hai thường thuộc về năm trước.",
   "animal": {
     "rat": {
-      "name": "Rat",
-      "line": "Read as quick and hard-working, never as the pest it is in English. A 쥐띠 right now is about 29 or 41."
+      "name": "Tý (Chuột)",
+      "line": "Ở đây được hiểu là nhanh nhẹn và chăm chỉ, không phải con vật phá phách. Người tuổi 쥐띠 bây giờ khoảng 29 hoặc 41."
     },
     "ox": {
-      "name": "Ox",
-      "line": "Slow, but gets there. Saying you're a 소띠 in Korea is close to saying people can count on you."
+      "name": "Sửu (Trâu)",
+      "line": "Chậm, nhưng đến nơi. Nói mình là 소띠 ở Hàn gần như nói rằng người khác có thể tin cậy bạn."
     },
     "tiger": {
-      "name": "Tiger",
-      "line": "The one that gets called strong-willed most often. Anyone born in 1988 gets the Olympics brought up too."
+      "name": "Dần (Hổ)",
+      "line": "Tuổi bị gọi là cứng đầu nhiều nhất. Ai sinh năm 1988 thì còn bị nhắc đến Olympic nữa."
     },
     "rabbit": {
-      "name": "Rabbit",
-      "line": "Gentle and quick to read a room. Tell a Korean you're a 토끼띠 and the first thing they'll say is that you must be easy to get on with."
+      "name": "Mão (Thỏ)",
+      "line": "Hiền và tinh ý. Nói với người Hàn rằng bạn là 토끼띠 thì câu đầu tiên họ nói là chắc bạn dễ chịu lắm."
     },
     "dragon": {
-      "name": "Dragon",
-      "line": "The one people actually plan around. Korean birth rates visibly jump in dragon years, so a 용띠 grew up in a bigger class than everyone else."
+      "name": "Thìn (Rồng)",
+      "line": "Tuổi mà người ta canh để sinh. Tỉ lệ sinh ở Hàn tăng rõ vào năm rồng, nên 용띠 lớn lên trong lớp học đông hơn hẳn."
     },
     "snake": {
-      "name": "Snake",
-      "line": "Sharp, and hard to read. Probably the most misunderstood of the twelve — it's not a sinister thing here."
+      "name": "Tỵ (Rắn)",
+      "line": "Sắc sảo và khó đoán. Có lẽ là tuổi bị hiểu lầm nhiều nhất trong mười hai — ở đây không mang nghĩa xấu."
     },
     "horse": {
-      "name": "Horse",
-      "line": "Can't sit still, and that's meant well. 말띠 people are said to hate being stuck more than anything."
+      "name": "Ngọ (Ngựa)",
+      "line": "Không ngồi yên được, và đó là lời khen. Người ta bảo 말띠 ghét bị gò bó hơn bất cứ gì."
     },
     "goat": {
-      "name": "Goat",
-      "line": "Easy-going, accommodating. There used to be an old superstition about women born in goat years; nobody says it now."
+      "name": "Mùi (Dê)",
+      "line": "Dễ tính, hay nhường. Ngày xưa có lời đồn về phụ nữ tuổi dê; bây giờ không ai nói nữa."
     },
     "monkey": {
-      "name": "Monkey",
-      "line": "Clever and good with words. Say you're a 원숭이띠 and people expect you to be funny."
+      "name": "Thân (Khỉ)",
+      "line": "Khéo tay và khéo miệng. Nói mình là 원숭이띠 thì người ta chờ bạn pha trò."
     },
     "rooster": {
-      "name": "Rooster",
-      "line": "Early riser, says what they think. The two go together more often than you'd expect."
+      "name": "Dậu (Gà)",
+      "line": "Dậy sớm, nghĩ gì nói nấy. Hai điều đó đi cùng nhau thường xuyên hơn bạn tưởng."
     },
     "dog": {
-      "name": "Dog",
-      "line": "Loyal is the first word out of anyone's mouth. A 개띠 born in 1994 is 31 now."
+      "name": "Tuất (Chó)",
+      "line": "Trung thành là từ đầu tiên ai cũng nói. Người 개띠 sinh 1994 năm nay 31 tuổi."
     },
     "pig": {
-      "name": "Pig",
-      "line": "Lucky, straightforwardly. Dreaming of a pig in Korea means money's coming, and the animal carries the same shine."
+      "name": "Hợi (Lợn)",
+      "line": "May mắn, đơn giản vậy thôi. Mơ thấy lợn ở Hàn nghĩa là tiền sắp vào, và con giáp này mang đúng ánh sáng đó."
     }
   },
   "luck": {
-    "love": "Love",
-    "luck": "Luck",
-    "work": "Work",
-    "people": "People"
+    "love": "Tình cảm",
+    "luck": "Vận may",
+    "work": "Công việc",
+    "people": "Quan hệ"
   },
   "colour": {
-    "blue": "청색 · blue",
-    "red": "적색 · red",
-    "yellow": "황색 · yellow",
-    "white": "백색 · white",
-    "black": "흑색 · black"
+    "blue": "청색 · xanh",
+    "red": "적색 · đỏ",
+    "yellow": "황색 · vàng",
+    "white": "백색 · trắng",
+    "black": "흑색 · đen"
   },
   "dish": {
     "spring": {
-      "name": "쑥국 Mugwort soup",
-      "line": "Made with the first mugwort of the year. You eat it to shake off the winter."
+      "name": "쑥국 Canh ngải cứu",
+      "line": "Nấu với lứa ngải cứu đầu năm. Ăn để rũ bỏ mùa đông."
     },
     "summer": {
-      "name": "삼계탕 Ginseng chicken soup",
-      "line": "The hottest food on the hottest days. On 복날 there are queues outside the samgyetang places."
+      "name": "삼계탕 Gà hầm sâm",
+      "line": "Món nóng nhất vào ngày nóng nhất. Đến 복날 là các quán samgyetang xếp hàng ra tận ngoài."
     },
     "autumn": {
-      "name": "전 Savoury pancakes",
-      "line": "The whole family sits around frying these at Chuseok. Whoever's frying eats the most."
+      "name": "전 Bánh xèo mặn",
+      "line": "Cả nhà ngồi quanh chảo rán vào Chuseok. Ai rán thì người đó ăn nhiều nhất."
     },
     "winter": {
-      "name": "만둣국 Dumpling soup",
-      "line": "Eaten on new year's morning. Finish a bowl and you've aged a year, is the saying."
+      "name": "만둣국 Canh bánh bao",
+      "line": "Ăn vào sáng mùng một. Hết một bát là thêm một tuổi, người ta nói vậy."
     }
   },
-  "year": "Year",
-  "month": "Month",
-  "day": "Day"
+  "year": "Năm",
+  "month": "Tháng",
+  "day": "Ngày"
 }

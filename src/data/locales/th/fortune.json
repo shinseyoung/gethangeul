@@ -1,100 +1,100 @@
 {
-  "eyebrow": "What's your animal?",
-  "title": "Your Korean zodiac, and how this year looks",
-  "sub": "Name and birthday, that's it. It's the thing that comes up the moment anyone in Korea asks how old you are.",
-  "name_label": "Name",
+  "eyebrow": "คุณปีนักษัตรอะไร",
+  "title": "นักษัตรเกาหลีของคุณ และปีนี้เป็นอย่างไร",
+  "sub": "แค่ชื่อกับวันเกิด เรื่องนี้จะโผล่มาทันทีที่ใครในเกาหลีถามอายุคุณ",
+  "name_label": "ชื่อ",
   "name_placeholder": "Kim Hajun",
-  "birthday_label": "Birthday",
-  "waiting": "Put in a name and a birthday and it'll come up.",
-  "out_of_range": "This only covers 1920 to 2044. Outside that we don't have the lunar new year dates, so we'd just be guessing.",
-  "card_label": "ZODIAC & FORTUNE",
-  "you_are": "Year of the {animal}",
-  "lucky_colour": "Lucky colour",
-  "lucky_number": "Lucky number",
-  "lucky_dish": "Lucky dish",
-  "disclaimer": "Just for fun. The animal and the season are really calculated; the fortunes aren't. The zodiac year turns at Seollal, so a January or early-February birthday usually belongs to the year before.",
+  "birthday_label": "วันเกิด",
+  "waiting": "ใส่ชื่อกับวันเกิดแล้วผลจะขึ้นมาเอง",
+  "out_of_range": "ส่วนนี้ครอบคลุมแค่ปี 1920 ถึง 2044 นอกช่วงนั้นเราไม่มีวันตรุษจีนตามจันทรคติ ก็จะเป็นแค่การเดา",
+  "card_label": "นักษัตรและดวง",
+  "you_are": "ปี{animal}",
+  "lucky_colour": "สีนำโชค",
+  "lucky_number": "เลขนำโชค",
+  "lucky_dish": "อาหารนำโชค",
+  "disclaimer": "ดูสนุก ๆ เท่านั้น นักษัตรกับฤดูคำนวณจริง แต่ดวงไม่ใช่ ปีนักษัตรเปลี่ยนที่วันซอลลัล คนเกิดเดือนมกราคมหรือต้นกุมภาพันธ์จึงมักนับเป็นปีก่อนหน้า",
   "animal": {
     "rat": {
-      "name": "Rat",
-      "line": "Read as quick and hard-working, never as the pest it is in English. A 쥐띠 right now is about 29 or 41."
+      "name": "ชวด (หนู)",
+      "line": "ที่นี่อ่านว่าไวและขยัน ไม่ใช่สัตว์รบกวนแบบในภาษาอังกฤษ คน 쥐띠 ตอนนี้อายุราว 29 หรือ 41"
     },
     "ox": {
-      "name": "Ox",
-      "line": "Slow, but gets there. Saying you're a 소띠 in Korea is close to saying people can count on you."
+      "name": "ฉลู (วัว)",
+      "line": "ช้าแต่ถึงที่หมาย บอกว่าเป็น 소띠 ในเกาหลีเกือบเท่ากับบอกว่าคนอื่นพึ่งคุณได้"
     },
     "tiger": {
-      "name": "Tiger",
-      "line": "The one that gets called strong-willed most often. Anyone born in 1988 gets the Olympics brought up too."
+      "name": "ขาล (เสือ)",
+      "line": "ปีที่ถูกเรียกว่าใจแข็งบ่อยที่สุด ใครเกิดปี 1988 ก็จะถูกพูดถึงโอลิมปิกด้วย"
     },
     "rabbit": {
-      "name": "Rabbit",
-      "line": "Gentle and quick to read a room. Tell a Korean you're a 토끼띠 and the first thing they'll say is that you must be easy to get on with."
+      "name": "เถาะ (กระต่าย)",
+      "line": "อ่อนโยนและอ่านบรรยากาศเก่ง บอกคนเกาหลีว่าเป็น 토끼띠 สิ่งแรกที่เขาพูดคือคุณคงคบง่าย"
     },
     "dragon": {
-      "name": "Dragon",
-      "line": "The one people actually plan around. Korean birth rates visibly jump in dragon years, so a 용띠 grew up in a bigger class than everyone else."
+      "name": "มะโรง (มังกร)",
+      "line": "ปีที่คนวางแผนจะมีลูกจริง ๆ อัตราการเกิดในเกาหลีพุ่งชัดในปีมังกร คน 용띠 จึงโตมาในห้องเรียนที่ใหญ่กว่าคนอื่น"
     },
     "snake": {
-      "name": "Snake",
-      "line": "Sharp, and hard to read. Probably the most misunderstood of the twelve — it's not a sinister thing here."
+      "name": "มะเส็ง (งู)",
+      "line": "คมและอ่านยาก น่าจะเป็นปีที่ถูกเข้าใจผิดมากที่สุดในสิบสองปี ที่นี่ไม่ได้แปลว่าร้าย"
     },
     "horse": {
-      "name": "Horse",
-      "line": "Can't sit still, and that's meant well. 말띠 people are said to hate being stuck more than anything."
+      "name": "มะเมีย (ม้า)",
+      "line": "อยู่นิ่งไม่ได้ และพูดในทางดี เขาว่าคน 말띠 เกลียดการถูกกักมากกว่าอะไรทั้งนั้น"
     },
     "goat": {
-      "name": "Goat",
-      "line": "Easy-going, accommodating. There used to be an old superstition about women born in goat years; nobody says it now."
+      "name": "มะแม (แพะ)",
+      "line": "สบาย ๆ ยอมคนง่าย เมื่อก่อนมีความเชื่อเก่าเรื่องผู้หญิงเกิดปีแพะ เดี๋ยวนี้ไม่มีใครพูดแล้ว"
     },
     "monkey": {
-      "name": "Monkey",
-      "line": "Clever and good with words. Say you're a 원숭이띠 and people expect you to be funny."
+      "name": "วอก (ลิง)",
+      "line": "มือไวและพูดเก่ง บอกว่าเป็น 원숭이띠 คนก็จะคาดหวังให้คุณตลก"
     },
     "rooster": {
-      "name": "Rooster",
-      "line": "Early riser, says what they think. The two go together more often than you'd expect."
+      "name": "ระกา (ไก่)",
+      "line": "ตื่นเช้า คิดอะไรก็พูด สองอย่างนี้มาคู่กันบ่อยกว่าที่คิด"
     },
     "dog": {
-      "name": "Dog",
-      "line": "Loyal is the first word out of anyone's mouth. A 개띠 born in 1994 is 31 now."
+      "name": "จอ (สุนัข)",
+      "line": "คำแรกที่ทุกคนพูดคือซื่อสัตย์ คน 개띠 ที่เกิดปี 1994 ตอนนี้อายุ 31"
     },
     "pig": {
-      "name": "Pig",
-      "line": "Lucky, straightforwardly. Dreaming of a pig in Korea means money's coming, and the animal carries the same shine."
+      "name": "กุน (หมู)",
+      "line": "โชคดีตรง ๆ ฝันเห็นหมูในเกาหลีแปลว่าเงินกำลังมา และปีนี้ก็มีแววเดียวกัน"
     }
   },
   "luck": {
-    "love": "Love",
-    "luck": "Luck",
-    "work": "Work",
-    "people": "People"
+    "love": "ความรัก",
+    "luck": "โชค",
+    "work": "การงาน",
+    "people": "ผู้คน"
   },
   "colour": {
-    "blue": "청색 · blue",
-    "red": "적색 · red",
-    "yellow": "황색 · yellow",
-    "white": "백색 · white",
-    "black": "흑색 · black"
+    "blue": "청색 · น้ำเงิน",
+    "red": "적색 · แดง",
+    "yellow": "황색 · เหลือง",
+    "white": "백색 · ขาว",
+    "black": "흑색 · ดำ"
   },
   "dish": {
     "spring": {
-      "name": "쑥국 Mugwort soup",
-      "line": "Made with the first mugwort of the year. You eat it to shake off the winter."
+      "name": "쑥국 ซุปโกฐจุฬาลัมพา",
+      "line": "ทำจากใบแรกของปี กินเพื่อสลัดฤดูหนาวออกไป"
     },
     "summer": {
-      "name": "삼계탕 Ginseng chicken soup",
-      "line": "The hottest food on the hottest days. On 복날 there are queues outside the samgyetang places."
+      "name": "삼계탕 ไก่ตุ๋นโสม",
+      "line": "อาหารร้อนที่สุดในวันร้อนที่สุด ถึงวัน 복날 ร้านซัมกเยทังต่อคิวออกมาถึงนอกร้าน"
     },
     "autumn": {
-      "name": "전 Savoury pancakes",
-      "line": "The whole family sits around frying these at Chuseok. Whoever's frying eats the most."
+      "name": "전 แพนเค้กทอด",
+      "line": "ทั้งบ้านนั่งล้อมกระทะทอดกันในวันชูซอก ใครทอดคนนั้นกินมากที่สุด"
     },
     "winter": {
-      "name": "만둣국 Dumpling soup",
-      "line": "Eaten on new year's morning. Finish a bowl and you've aged a year, is the saying."
+      "name": "만둣국 ซุปเกี๊ยว",
+      "line": "กินเช้าวันปีใหม่ หมดหนึ่งชามคืออายุเพิ่มหนึ่งปี เขาว่ากันอย่างนั้น"
     }
   },
-  "year": "Year",
-  "month": "Month",
-  "day": "Day"
+  "year": "ปี",
+  "month": "เดือน",
+  "day": "วัน"
 }
