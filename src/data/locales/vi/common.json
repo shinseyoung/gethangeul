@@ -156,270 +156,270 @@
   "situations": {
     "cup": {
       "order": {
-        "title": "The barista asks for a name. What goes on the cup?",
-        "description": "Cafés here call your name out rather than buzz a pager, and a foreign name is where it gets awkward.",
+        "title": "Nhân viên quán hỏi tên. Viết gì lên cốc?",
+        "description": "Quán cà phê ở đây gọi tên chứ không rung chuông, và tên nước ngoài là chỗ hay lúng túng.",
         "options": {
-          "own": "My own name. I'll spell it out",
-          "short": "Something short they can write",
-          "korean": "The Korean name I'm trying out",
-          "whatever": "Whatever you hear is fine"
+          "own": "Tên tôi, nguyên vẹn. Tôi đánh vần cho",
+          "short": "Rút ngắn lại, cho dễ viết",
+          "korean": "Cái tên Hàn tôi đang thử dùng",
+          "whatever": "Nghe sao viết vậy cũng được"
         }
       },
       "mispronounce": {
-        "title": "They call a name out, and you don't think it's yours.",
-        "description": "Sounds Korean doesn't have get swapped for the nearest one it does. It's almost never rudeness.",
+        "title": "Họ gọi một cái tên, và bạn không chắc đó là tên mình.",
+        "description": "Âm nào tiếng Hàn không có thì bị đổi sang âm gần nhất. Gần như không bao giờ là bất lịch sự.",
         "options": {
-          "repeat": "Say it again, slowly and clearly",
-          "adopt": "“That works too,” you say, laughing",
-          "nod": "Nod and take the cup",
-          "prettier": "Tell them their version sounds better"
+          "repeat": "Nói lại lần nữa, chậm và rõ",
+          "adopt": "“Vậy cũng được”, bạn cười",
+          "nod": "Gật đầu rồi cầm cốc đi",
+          "prettier": "Bảo họ rằng bản của họ nghe hay hơn"
         }
       },
       "regular": {
-        "title": "It's the café you go to every day. They know you now.",
-        "description": "Become a regular and there's a place where the order arrives without being placed.",
+        "title": "Quán bạn tới mỗi ngày. Giờ họ biết bạn rồi.",
+        "description": "Thành khách quen thì sẽ có một chỗ mà đồ uống ra mà không cần gọi.",
         "options": {
-          "usual": "Skip the name. “The usual”",
-          "newthing": "Ask what's new first",
-          "sameseat": "Go straight to the seat you always take",
-          "theirname": "You learned their name off the badge first"
+          "usual": "Bỏ qua tên. “Như mọi khi”",
+          "newthing": "Hỏi trước xem có gì mới",
+          "sameseat": "Đi thẳng tới chỗ vẫn ngồi",
+          "theirname": "Bạn đã thuộc tên trên thẻ của họ trước"
         }
       }
     },
     "train": {
       "grandmother": {
-        "title": "Last train. There's a grandmother standing in front of you.",
-        "description": "One seat left, and everyone else is looking at their phone.",
+        "title": "Chuyến cuối. Có một bà cụ đang đứng trước mặt bạn.",
+        "description": "Còn một chỗ, và ai cũng đang nhìn điện thoại.",
         "options": {
-          "standup": "You stand up without saying anything",
-          "tap": "“Please, sit here.” You say it first",
-          "gesture": "You catch her eye and nod at the seat",
-          "pretend": "You wait to see if someone else moves"
+          "standup": "Bạn đứng dậy, không nói gì",
+          "tap": "“Bà ngồi đây ạ.” Bạn nói trước",
+          "gesture": "Bạn bắt ánh mắt bà rồi hất đầu về phía ghế",
+          "pretend": "Bạn chờ xem có ai khác nhường không"
         }
       },
       "sleeper": {
-        "title": "The person beside you falls asleep on your shoulder.",
-        "description": "Common enough on the evening line, and almost nobody wakes them.",
+        "title": "Người bên cạnh ngủ gục vào vai bạn.",
+        "description": "Chuyện thường trên chuyến tàu tan ca, và gần như không ai đánh thức.",
         "options": {
-          "still": "You don't move",
-          "wake": "You wake them gently and ask their stop",
-          "shift": "You shift position without a word",
-          "almost": "You nearly take a photo"
+          "still": "Bạn không nhúc nhích",
+          "wake": "Bạn khẽ đánh thức và hỏi họ xuống ga nào",
+          "shift": "Bạn chỉ lặng lẽ đổi tư thế",
+          "almost": "Bạn suýt chụp một tấm"
         }
       },
       "lost": {
-        "title": "Someone asks you for directions and the Korean isn't getting through.",
-        "description": "Getting lost in a station is close to a rite of passage in Seoul.",
+        "title": "Có người hỏi đường mà tiếng Hàn không thông.",
+        "description": "Lạc trong ga tàu gần như là một nghi thức nhập môn ở Seoul.",
         "options": {
-          "walkthem": "You walk them there yourself",
-          "honest": "You tell them exactly as much as you know",
-          "mapit": "You open a map and look at it together",
-          "wherefrom": "You ask where they're from first"
+          "walkthem": "Bạn dẫn họ tới tận nơi",
+          "honest": "Bạn nói đúng những gì mình biết",
+          "mapit": "Bạn mở bản đồ và cùng xem",
+          "wherefrom": "Bạn hỏi họ từ đâu tới trước đã"
         }
       }
     },
     "dinner": {
       "pour": {
-        "title": "Company dinner. The colleague beside you fills your glass.",
-        "description": "You never pour your own in Korea, and a drink received is a drink returned.",
+        "title": "Tiệc công ty. Đồng nghiệp bên cạnh rót đầy ly bạn.",
+        "description": "Ở Hàn không ai tự rót cho mình, và nhận một ly là phải rót lại một ly.",
         "options": {
-          "twohands": "Take it with both hands and turn away to drink",
-          "pourback": "Fill theirs straight back",
-          "ask": "Ask why the order works this way",
-          "toast": "Raise it and say something"
+          "twohands": "Nhận bằng hai tay và quay mặt đi khi uống",
+          "pourback": "Rót lại cho họ ngay",
+          "ask": "Hỏi vì sao thứ tự lại như vậy",
+          "toast": "Nâng ly và nói vài câu"
         }
       },
       "lastbite": {
-        "title": "One piece left on the plate. Nobody is taking it.",
-        "description": "The last piece has a name in Korean. It's the one that goes cold while everyone is polite.",
+        "title": "Còn đúng một miếng trên đĩa. Không ai gắp.",
+        "description": "Miếng cuối cùng có tên riêng trong tiếng Hàn. Là miếng nguội đi trong lúc ai cũng lịch sự.",
         "options": {
-          "leaveit": "Leave it. All the way to the end",
-          "offerit": "Put it on the most senior person's plate",
-          "askname": "Ask what it's called, and take it",
-          "rps": "Suggest rock-paper-scissors for it"
+          "leaveit": "Cứ để đó. Tới cùng",
+          "offerit": "Gắp sang đĩa người lớn tuổi nhất",
+          "askname": "Hỏi món này tên gì, rồi gắp",
+          "rps": "Rủ oẳn tù tì giành miếng đó"
         }
       },
       "noraebang": {
-        "title": "Round two is a noraebang. You're up next.",
-        "description": "Saying you can't sing is part of the order of things.",
+        "title": "Tăng hai là quán karaoke. Tới lượt bạn.",
+        "description": "Nói mình hát dở cũng là một phần của trình tự.",
         "options": {
-          "knowone": "Sing the one song you actually know, properly",
-          "singalong": "Pick something everyone can join",
-          "learnit": "Try a Korean song you learned for this",
-          "dancefirst": "Stand up and dance before you sing"
+          "knowone": "Hát đúng bài duy nhất bạn thuộc, cho tử tế",
+          "singalong": "Chọn bài ai cũng hát theo được",
+          "learnit": "Thử một bài Hàn bạn học sẵn cho dịp này",
+          "dancefirst": "Đứng dậy nhảy trước khi hát"
         }
       }
     },
     "lift": {
       "closing": {
-        "title": "Three minutes late. The lift doors are closing.",
-        "description": "There's someone inside, and they've seen you.",
+        "title": "Muộn ba phút. Cửa thang máy đang đóng.",
+        "description": "Bên trong có người, và họ đã nhìn thấy bạn.",
         "options": {
-          "run": "Run. Get a hand in the gap",
-          "wave": "Wave and call “hold it!”",
-          "wait": "Let it go and take the next one",
-          "stairs": "Turn for the stairs"
+          "run": "Chạy. Thò tay vào khe cửa",
+          "wave": "Vẫy tay và gọi “giữ cửa với!”",
+          "wait": "Để nó đi và chờ chuyến sau",
+          "stairs": "Quay sang cầu thang bộ"
         }
       },
       "full": {
-        "title": "A full lift, and there's just about room for one more.",
-        "description": "The display says there's capacity. Whether you get in is a separate question.",
+        "title": "Thang máy chật, và còn vừa đủ chỗ cho một người.",
+        "description": "Bảng báo còn tải trọng. Có chen vào hay không lại là chuyện khác.",
         "options": {
-          "squeeze": "Get in. One more fits",
-          "sorry": "“Sorry —” and you edge in",
-          "next": "Watch it close and wait",
-          "silentin": "Get in without a word. Nobody looks up"
+          "squeeze": "Vào. Thêm một người vẫn vừa",
+          "sorry": "“Xin lỗi —” rồi bạn lách vào",
+          "next": "Nhìn cửa đóng lại và chờ",
+          "silentin": "Vào, không nói gì. Không ai ngẩng lên"
         }
       },
       "button": {
-        "title": "Someone behind you asks you to press their floor.",
-        "description": "Stand by the buttons and that floor becomes your job.",
+        "title": "Ai đó phía sau nhờ bạn bấm tầng giúp.",
+        "description": "Đứng cạnh bảng nút là tầng đó thành việc của bạn.",
         "options": {
-          "askfloor": "“Which floor?” you ask, loudly",
-          "smilepress": "Press it with a smile",
-          "quietpress": "Press it without a word",
-          "already": "You already pressed it"
+          "askfloor": "“Tầng mấy ạ?” bạn hỏi to",
+          "smilepress": "Bấm và mỉm cười",
+          "quietpress": "Bấm, không nói gì",
+          "already": "Bạn đã bấm rồi"
         }
       }
     },
     "market": {
       "extra": {
-        "title": "The market 아주머니 adds one more and waves your money away.",
-        "description": "The extra is normal here, and refusing it is the part that offends.",
+        "title": "Bà bán hàng ngoài chợ thêm cho một cái nữa và gạt tiền đi.",
+        "description": "Cho thêm là chuyện thường ở đây, và từ chối mới là phần làm phật lòng.",
         "options": {
-          "insist": "Insist on paying for it anyway",
-          "accept": "Thank her, loudly",
-          "return": "Come back next time with something",
-          "regular": "Promise she's the only one you'll buy from"
+          "insist": "Vẫn nhất quyết trả tiền phần đó",
+          "accept": "Cảm ơn bà, thật to",
+          "return": "Lần sau quay lại mang theo thứ gì đó",
+          "regular": "Hứa chỉ mua ở hàng bà thôi"
         }
       },
       "haggle": {
-        "title": "This is the moment where you'd ask for a better price.",
-        "description": "In a market, haggling is nearer to a greeting than to rudeness.",
+        "title": "Đây là lúc người ta sẽ xin bớt giá.",
+        "description": "Ở chợ, mặc cả gần với lời chào hơn là bất lịch sự.",
         "options": {
-          "asked": "Pay what was asked",
-          "smileask": "Smile and ask for a little off",
-          "buymore": "Buy another and pay full price",
-          "checkfirst": "Go and check the next stall first"
+          "asked": "Trả đúng giá được hỏi",
+          "smileask": "Cười và xin bớt một chút",
+          "buymore": "Mua thêm một cái và trả đủ giá",
+          "checkfirst": "Đi xem hàng bên cạnh trước đã"
         }
       },
       "change": {
-        "title": "You count your change and there's too much of it.",
-        "description": "Plenty of stalls are still cash, and the arithmetic is done by hand.",
+        "title": "Bạn đếm tiền thối và thấy thừa.",
+        "description": "Nhiều sạp vẫn dùng tiền mặt, và phép tính làm bằng tay.",
         "options": {
-          "goback": "Go straight back and return it",
-          "handback": "Press it back into her hand, smiling",
-          "nexttime": "Put it towards next time",
-          "countit": "Count it again to be sure how much"
+          "goback": "Quay lại ngay và trả lại",
+          "handback": "Dúi lại vào tay bà, vừa cười",
+          "nexttime": "Tính vào lần sau",
+          "countit": "Đếm lại cho chắc là thừa bao nhiêu"
         }
       }
     },
     "evening": {
       "lastnight": {
-        "title": "Your last evening in Korea. You can be anywhere.",
-        "description": "One day left, and room for exactly one place.",
+        "title": "Tối cuối cùng ở Hàn. Bạn có thể đi bất cứ đâu.",
+        "description": "Còn một ngày, và chỗ cho đúng một nơi.",
         "options": {
-          "hangang": "The Han. Under a bridge, watching the sun go",
-          "bukhansan": "The mountain. Somewhere with only wind in the trees",
-          "sea": "The sea. First train out to the coast",
-          "alley": "The alley near you, with the flower shop and the bakery"
+          "hangang": "Sông Hàn. Ngồi dưới gầm cầu nhìn mặt trời lặn",
+          "bukhansan": "Núi. Chỗ nào chỉ có tiếng gió trong tán cây",
+          "sea": "Biển. Chuyến tàu đầu tiên ra bờ biển",
+          "alley": "Con ngõ gần nhà, có tiệm hoa và tiệm bánh"
         }
       },
       "photo": {
-        "title": "If you could keep one photograph, which one?",
-        "description": "There are a thousand on the phone and one in the memory.",
+        "title": "Nếu chỉ giữ được một tấm ảnh, sẽ là tấm nào?",
+        "description": "Trong máy có cả nghìn tấm và trong trí nhớ chỉ một.",
         "options": {
-          "bridge": "The river and the sky, from the bridge",
-          "throughtrees": "Light coming through the trees",
-          "wintersun": "The sun over a winter sea",
-          "wallflower": "Flowers on an alley wall"
+          "bridge": "Dòng sông và bầu trời, nhìn từ trên cầu",
+          "throughtrees": "Ánh sáng xuyên qua tán cây",
+          "wintersun": "Mặt trời trên biển mùa đông",
+          "wallflower": "Hoa trên bức tường trong ngõ"
         }
       },
       "weather": {
-        "title": "Pick the best weather you had while you were here.",
-        "description": "Korea's four seasons are distinct enough that the weather you loved is the season you loved.",
+        "title": "Chọn kiểu thời tiết đẹp nhất bạn gặp khi ở đây.",
+        "description": "Bốn mùa ở Hàn rõ đến mức thời tiết bạn yêu chính là mùa bạn yêu.",
         "options": {
-          "summerwind": "A summer evening with wind off the river",
-          "autumnleaves": "Autumn, when the mountain turned",
-          "winterclear": "A cold, clear winter morning",
-          "springday": "A spring afternoon with everything in bloom"
+          "summerwind": "Một tối mùa hạ có gió từ sông thổi lên",
+          "autumnleaves": "Mùa thu, khi trên núi lá đổi màu",
+          "winterclear": "Một sáng mùa đông lạnh và trong",
+          "springday": "Một chiều mùa xuân hoa nở khắp nơi"
         }
       }
     }
   },
   "reasons": {
-    "own": "someone who doesn't shorten their name",
-    "short": "someone who'd rather be understood fast",
-    "korean": "someone who wants to be called by this place's name for them",
-    "whatever": "someone happy to be called anything",
-    "repeat": "someone who holds on to their own name",
-    "adopt": "someone who'll take a new one",
-    "nod": "someone who doesn't bother correcting it",
-    "prettier": "someone who picks the prettier version",
-    "usual": "someone who sticks with what they chose",
-    "newthing": "someone who asks what's new",
-    "sameseat": "someone with a seat of their own",
-    "theirname": "someone who learns your name first",
-    "standup": "someone who moves before they speak",
-    "tap": "someone who says the thing out loud",
-    "gesture": "someone who fixes it without a fuss",
-    "pretend": "someone who watches first",
-    "still": "someone who stays put through the awkward bit",
-    "wake": "someone who'd rather just say it",
-    "shift": "someone who fixes it so nobody notices",
-    "almost": "someone who nearly makes the joke",
-    "walkthem": "someone who takes you all the way there",
-    "honest": "someone who tells you only what they know",
-    "mapit": "someone who works it out with you",
-    "wherefrom": "someone curious first",
-    "twohands": "someone who does it the way it's done",
-    "pourback": "someone who returns a kindness on the spot",
-    "ask": "someone who wants to know why",
-    "toast": "someone who warms the room up",
-    "leaveit": "someone who lets it sit",
-    "offerit": "someone who serves the table first",
-    "askname": "someone who asks, then takes it",
-    "rps": "someone who turns it into a game",
-    "knowone": "someone who does one thing properly",
-    "singalong": "someone who picks what everyone can join",
-    "learnit": "someone who learned it for this",
-    "dancefirst": "someone who dances before they sing",
-    "run": "someone who runs first",
-    "wave": "someone who asks with a smile",
-    "wait": "someone in no hurry",
-    "stairs": "someone who sorts it out alone",
-    "squeeze": "someone who makes room",
-    "sorry": "someone who apologises first",
-    "next": "someone who waits for the next one",
-    "silentin": "someone who gets on quietly",
-    "askfloor": "someone who just asks",
-    "smilepress": "someone who does it with a smile",
-    "quietpress": "someone who does it without a word",
-    "already": "someone who did it already",
-    "insist": "someone who won't be in anyone's debt",
-    "accept": "someone who says thank you loudly",
-    "return": "someone who remembers what they were given",
-    "regular": "someone who picks one place and stays",
-    "asked": "someone who pays what was asked",
-    "smileask": "someone who asks nicely",
-    "buymore": "someone who buys more instead",
-    "checkfirst": "someone who looks around first",
-    "goback": "someone who turns straight back",
-    "handback": "someone who gives it back smiling",
-    "nexttime": "someone who leaves it for next time",
-    "countit": "someone who counts before moving",
-    "hangang": "someone who loses time by the water",
-    "bukhansan": "someone who goes somewhere quiet",
-    "sea": "someone who'll travel for it",
-    "alley": "someone who finds it close to home",
-    "bridge": "someone who frames the wide shot",
-    "throughtrees": "someone who notices the light",
-    "wintersun": "someone who goes out in the cold",
-    "wallflower": "someone who notices the small thing",
-    "summerwind": "someone who remembers the wind",
-    "autumnleaves": "someone who remembers the colour",
-    "winterclear": "someone who likes it clear",
-    "springday": "someone waiting for spring"
+    "own": "người không rút gọn tên mình",
+    "short": "người thà được hiểu nhanh",
+    "korean": "người muốn được gọi bằng cái tên nơi này đặt cho",
+    "whatever": "người gọi sao cũng được",
+    "repeat": "người giữ lấy tên của chính mình",
+    "adopt": "người nhận luôn một cái tên mới",
+    "nod": "người không buồn đính chính",
+    "prettier": "người chọn bản nghe hay hơn",
+    "usual": "người đã chọn thì không đổi",
+    "newthing": "người hỏi xem có gì mới",
+    "sameseat": "người có một chỗ của riêng mình",
+    "theirname": "người thuộc tên bạn trước",
+    "standup": "người thân mình động trước lời nói",
+    "tap": "người nói thẳng điều mình nghĩ",
+    "gesture": "người xử lý mà không làm ồn",
+    "pretend": "người quan sát trước",
+    "still": "người ngồi yên qua đoạn khó xử",
+    "wake": "người thà nói thẳng ra",
+    "shift": "người sửa sao cho không ai nhận ra",
+    "almost": "người suýt đùa một câu",
+    "walkthem": "người dẫn bạn tới tận nơi",
+    "honest": "người chỉ nói những gì mình biết",
+    "mapit": "người cùng bạn tìm ra",
+    "wherefrom": "người tò mò trước đã",
+    "twohands": "người làm theo cách vẫn làm",
+    "pourback": "người đáp lại ngay tại chỗ",
+    "ask": "người muốn biết vì sao",
+    "toast": "người làm ấm cả bàn",
+    "leaveit": "người để yên đấy",
+    "offerit": "người mời cả bàn trước",
+    "askname": "người hỏi rồi mới lấy",
+    "rps": "người biến nó thành trò chơi",
+    "knowone": "người làm một việc cho ra việc",
+    "singalong": "người chọn thứ ai cũng tham gia được",
+    "learnit": "người học sẵn cho dịp này",
+    "dancefirst": "người nhảy trước khi hát",
+    "run": "người chạy trước đã",
+    "wave": "người nhờ vả kèm nụ cười",
+    "wait": "người không vội",
+    "stairs": "người tự xoay xở một mình",
+    "squeeze": "người chen được chỗ",
+    "sorry": "người xin lỗi trước",
+    "next": "người chờ chuyến sau",
+    "silentin": "người lên xe lặng lẽ",
+    "askfloor": "người cứ hỏi thẳng",
+    "smilepress": "người làm kèm nụ cười",
+    "quietpress": "người làm không nói gì",
+    "already": "người đã làm sẵn",
+    "insist": "người không muốn nợ ai",
+    "accept": "người cảm ơn thật to",
+    "return": "người nhớ thứ mình đã nhận",
+    "regular": "người chọn một chỗ rồi ở lại",
+    "asked": "người trả đúng giá được hỏi",
+    "smileask": "người hỏi nhẹ nhàng",
+    "buymore": "người mua thêm thay vì mặc cả",
+    "checkfirst": "người đi xem quanh trước",
+    "goback": "người quay lại ngay",
+    "handback": "người trả lại kèm nụ cười",
+    "nexttime": "người để dành cho lần sau",
+    "countit": "người đếm rồi mới động",
+    "hangang": "người để thời gian trôi bên mặt nước",
+    "bukhansan": "người tìm tới chỗ yên tĩnh",
+    "sea": "người chịu đi xa vì nó",
+    "alley": "người tìm thấy ngay gần nhà",
+    "bridge": "người lấy khuôn hình rộng",
+    "throughtrees": "người để ý tới ánh sáng",
+    "wintersun": "người vẫn ra ngoài khi trời lạnh",
+    "wallflower": "người để ý thứ nhỏ",
+    "summerwind": "người nhớ cơn gió",
+    "autumnleaves": "người nhớ màu sắc",
+    "winterclear": "người thích trời trong",
+    "springday": "người chờ mùa xuân"
   },
   "tags": {
     "vibes": {
