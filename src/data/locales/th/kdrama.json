@@ -291,243 +291,243 @@
   "makjang": {
     "q": {
       "wedding": {
-        "title": "A wedding. There's a seat for {name} on the bride's side. You're seeing the groom for the first time today.",
+        "title": "งานแต่ง มีเก้าอี้เตรียมไว้ให้ {name} ฝั่งเจ้าสาว วันนี้คุณเพิ่งเห็นหน้าเจ้าบ่าวเป็นครั้งแรก",
         "options": {
-          "groom": "You don't stop looking at the groom",
-          "back": "You sit at the very back and stay there",
-          "hands": "You go to the bride first and take her hands",
-          "envelope": "You leave your name off the gift envelope"
+          "groom": "คุณละสายตาจากเจ้าบ่าวไม่ได้เลย",
+          "back": "คุณนั่งแถวหลังสุดและอยู่ตรงนั้น",
+          "hands": "คุณไปหาเจ้าสาวก่อนแล้วกุมมือเธอ",
+          "envelope": "คุณไม่เขียนชื่อตัวเองลงบนซองใส่เงิน"
         }
       },
       "slap": {
-        "title": "A slap, delivered with a handful of kimchi. It didn't land on you.",
+        "title": "ตบหนึ่งที มาพร้อมกิมจิเต็มกำมือ ไม่ได้โดนคุณ",
         "options": {
-          "toward": "You walk slowly towards the one who was hit",
-          "wrist2": "You catch the wrist that's holding the kimchi",
-          "towel": "You go and get a wet towel first",
-          "film": "You lift your phone. Recording first"
+          "toward": "คุณเดินช้า ๆ ไปหาคนที่เพิ่งโดน",
+          "wrist2": "คุณคว้าข้อมือที่ถือกิมจิไว้",
+          "towel": "คุณไปหยิบผ้าเย็นมาก่อน",
+          "film": "คุณยกโทรศัพท์ขึ้น อัดไว้ก่อน"
         }
       },
       "photo2": {
-        "title": "An old photo turns up in a drawer. A woman of about twenty, and she looks far too much like {name}.",
+        "title": "รูปเก่ารูปหนึ่งโผล่มาจากลิ้นชัก ผู้หญิงอายุราวยี่สิบ และหน้าเหมือน {name} เกินไปหน่อย",
         "options": {
-          "ask2": "You take the photo straight to your mother",
-          "drawer": "You put it back and lock the drawer",
-          "careful": "You ask who she is, carefully",
-          "copy": "You photograph it and send it to nobody"
+          "ask2": "คุณถือรูปไปหาแม่ทันที",
+          "drawer": "คุณเก็บกลับแล้วล็อกลิ้นชัก",
+          "careful": "คุณถามอย่างระมัดระวังว่านี่ใคร",
+          "copy": "คุณถ่ายรูปไว้แล้วไม่ส่งให้ใครเลย"
         }
       },
       "hospital2": {
-        "title": "A hospital room. Someone you've never met is calling {name} by name.",
+        "title": "ห้องผู้ป่วย มีคนที่คุณไม่เคยเจอกำลังเรียกชื่อ {name}",
         "options": {
-          "handonly": "You take their hand and ask nothing",
-          "whoareyou": "You ask who they are, straight out",
-          "tuck": "You straighten the blanket first",
-          "chart": "You call a nurse and read the chart"
+          "handonly": "คุณกุมมือเขาไว้และไม่ถามอะไร",
+          "whoareyou": "คุณถามตรง ๆ ว่าเขาเป็นใคร",
+          "tuck": "คุณจัดผ้าห่มให้เรียบร้อยก่อน",
+          "chart": "คุณเรียกพยาบาลแล้วขอดูชาร์ต"
         }
       },
       "will": {
-        "title": "The will is being read. The lawyer says {name}.",
+        "title": "กำลังอ่านพินัยกรรม ทนายอ่านมาถึงชื่อ {name}",
         "options": {
-          "listen2": "You just listen. Your face doesn't move",
-          "reread": "You stand and ask him to read it again in full",
-          "hold3": "You take the hand of the person beside you",
-          "copy2": "You ask the lawyer for a copy"
+          "listen2": "คุณแค่นั่งฟัง สีหน้าไม่เปลี่ยน",
+          "reread": "คุณลุกขึ้นแล้วขอให้อ่านใหม่ทั้งฉบับ",
+          "hold3": "คุณกุมมือคนที่นั่งข้าง ๆ",
+          "copy2": "คุณขอสำเนาจากทนาย"
         }
       },
       "orphan": {
-        "title": "{name} is in an orphanage record. 1998.",
+        "title": "ชื่อ {name} อยู่ในทะเบียนสถานเลี้ยงเด็กกำพร้า ปี 1998",
         "options": {
-          "stare2": "You look at the record for a long time",
-          "callnow": "You ring the director straight away",
-          "others": "You look for the others who were there first",
-          "take2": "You copy the record and put it in your bag"
+          "stare2": "คุณจ้องเอกสารนั้นอยู่นาน",
+          "callnow": "คุณโทรหาผู้อำนวยการทันที",
+          "others": "คุณไปตามหาคนที่เคยอยู่ที่นั่นก่อน",
+          "take2": "คุณถ่ายสำเนาแล้วใส่กระเป๋า"
         }
       },
       "twin": {
-        "title": "Someone messages: they've just seen a person on the street who looks exactly like {name}.",
+        "title": "มีคนส่งข้อความมา: เพิ่งเห็นคนบนถนนหน้าเหมือน {name} เป๊ะ",
         "options": {
-          "keep2": "You keep the photo and don't reply",
-          "gothere": "You go straight to where they saw them",
-          "hush": "You decide not to tell the family",
-          "mimic": "You pose as them and send a photo back"
+          "keep2": "คุณเก็บรูปไว้และไม่ตอบ",
+          "gothere": "คุณไปที่ที่เขาเห็นทันที",
+          "hush": "คุณตัดสินใจไม่บอกทางบ้าน",
+          "mimic": "คุณทำท่าเลียนแบบแล้วถ่ายรูปส่งกลับไป"
         }
       },
       "dna": {
-        "title": "The paternity result has arrived, still in its envelope. You haven't opened it.",
+        "title": "ผลตรวจความเป็นพ่อลูกมาถึงแล้ว ยังอยู่ในซอง คุณยังไม่ได้เปิด",
         "options": {
-          "openit": "You open it where you stand",
-          "lawyer": "You agree to open it with the lawyer present",
-          "showher": "You show your mother first",
-          "fridge": "You put the whole envelope in the fridge"
+          "openit": "คุณเปิดตรงที่ยืนอยู่นั่นเลย",
+          "lawyer": "คุณตกลงจะเปิดต่อหน้าทนาย",
+          "showher": "คุณให้แม่ดูก่อน",
+          "fridge": "คุณยัดทั้งซองเข้าตู้เย็น"
         }
       },
       "stepmother": {
-        "title": "Your stepmother has tidied your room. Everything except the photo frame.",
+        "title": "แม่เลี้ยงจัดห้องให้คุณแล้ว ทุกอย่าง ยกเว้นกรอบรูป",
         "options": {
-          "nothing3": "You don't bring the frame up",
-          "whereis": "You ask where the frame is, immediately",
-          "thanks": "You thank her for tidying",
-          "bigger": "You buy a bigger frame and hang it higher"
+          "nothing3": "คุณไม่พูดถึงกรอบรูปเลย",
+          "whereis": "คุณถามทันทีว่ากรอบรูปอยู่ไหน",
+          "thanks": "คุณขอบคุณที่ช่วยจัดให้",
+          "bigger": "คุณซื้อกรอบใหญ่กว่าเดิมแล้วแขวนให้สูงขึ้น"
         }
       },
       "amnesia": {
-        "title": "Since the accident they don't recognise {name}.",
+        "title": "ตั้งแต่อุบัติเหตุ เขาจำ {name} ไม่ได้อีกเลย",
         "options": {
-          "again2": "You tell them the same story from the start, every day",
-          "doctor2": "You hear the doctor out to the end first",
-          "okay": "You tell them it's fine not to remember",
-          "photos": "You quietly hang old photos in the room"
+          "again2": "คุณเล่าเรื่องเดิมตั้งแต่ต้นให้ฟังทุกวัน",
+          "doctor2": "คุณฟังหมอจนจบก่อน",
+          "okay": "คุณบอกเขาว่าจำไม่ได้ก็ไม่เป็นไร",
+          "photos": "คุณแอบเอารูปเก่าไปแขวนไว้ในห้อง"
         }
       },
       "boardroom": {
-        "title": "The board meeting. Shares come up, and then the name {name}.",
+        "title": "ประชุมบอร์ด เรื่องหุ้นถูกยกขึ้นมา แล้วก็มาถึงชื่อ {name}",
         "options": {
-          "protect": "You state that their shares are not to be touched",
-          "readall": "You read the papers through before saying anything",
-          "staff": "You start with the people still working there",
-          "delay": "You move to push the vote to next week"
+          "protect": "คุณประกาศว่าหุ้นส่วนของเขาห้ามใครแตะ",
+          "readall": "คุณอ่านเอกสารจนจบก่อนจะพูดอะไร",
+          "staff": "คุณเริ่มจากคนที่ยังทำงานอยู่ที่นั่น",
+          "delay": "คุณเสนอให้เลื่อนลงมติไปสัปดาห์หน้า"
         }
       },
       "deathbed": {
-        "title": "At the very end, your mother takes {name} by the hand and tries to say something.",
+        "title": "ในวินาทีสุดท้าย แม่คุณกุมมือ {name} ไว้แล้วพยายามจะพูดอะไรบางอย่าง",
         "options": {
-          "listenclose": "You put your ear close and listen to the end",
-          "family2": "You call the rest of the family in first",
-          "dontspeak": "You tell her it's alright, she doesn't have to",
-          "record": "You press record"
+          "listenclose": "คุณเอียงหูเข้าไปใกล้แล้วฟังจนจบ",
+          "family2": "คุณเรียกคนที่เหลือในบ้านเข้ามาก่อน",
+          "dontspeak": "คุณบอกแม่ว่าไม่เป็นไร ไม่ต้องพูดก็ได้",
+          "record": "คุณกดอัดเสียง"
         }
       },
       "swap2": {
-        "title": "The hospital calls. Two babies may have been swapped in 1998. One of them is {name}.",
+        "title": "โรงพยาบาลโทรมา ปี 1998 อาจมีเด็กสองคนถูกสลับกัน หนึ่งในนั้นคือ {name}",
         "options": {
-          "gohome": "You go straight to the parents who raised you",
-          "records": "You demand every record the hospital holds",
-          "theirs": "Your first thought is for the other family",
-          "alone2": "You tell nobody and look into it yourself"
+          "gohome": "คุณกลับไปหาพ่อแม่ที่เลี้ยงคุณมาทันที",
+          "records": "คุณเรียกร้องเอกสารทั้งหมดที่โรงพยาบาลมี",
+          "theirs": "สิ่งแรกที่คุณคิดถึงคืออีกครอบครัวหนึ่ง",
+          "alone2": "คุณไม่บอกใครและสืบเอง"
         }
       },
       "crash": {
-        "title": "Wet road. Brakes. And a phone that won't stop ringing.",
+        "title": "ถนนเปียก เบรก แล้วก็โทรศัพท์ที่ดังไม่หยุด",
         "options": {
-          "nopick": "You don't answer it. You stay where you are",
-          "call119": "You call an ambulance first",
-          "umbrella": "You hold the umbrella over them and get soaked",
-          "dashcam": "You get the dashcam first"
+          "nopick": "คุณไม่รับสาย คุณยืนอยู่ตรงนั้น",
+          "call119": "คุณโทรเรียกรถพยาบาลก่อน",
+          "umbrella": "คุณกางร่มให้เขาแล้วตัวเองเปียกหมด",
+          "dashcam": "คุณคว้ากล้องหน้ารถก่อน"
         }
       },
       "secret2": {
-        "title": "There's something your mother hasn't said in twenty years. “I think {name} should hear it from me.”",
+        "title": "มีเรื่องที่แม่คุณไม่ได้พูดมายี่สิบปี “แม่ว่า {name} ควรได้ยินจากปากแม่เอง”",
         "options": {
-          "nowhere": "You tell her to say it. Now, here",
-          "quieter": "You ask to move somewhere quieter",
-          "dontneed": "You tell her she doesn't have to if it's hard",
-          "knew": "You tell her you already knew"
+          "nowhere": "คุณบอกให้แม่พูดเลย ตรงนี้ เดี๋ยวนี้",
+          "quieter": "คุณขอย้ายไปที่ที่เงียบกว่านี้",
+          "dontneed": "คุณบอกว่าถ้าพูดยากก็ไม่ต้องพูดก็ได้",
+          "knew": "คุณบอกแม่ว่าคุณรู้อยู่แล้ว"
         }
       },
       "rain": {
-        "title": "Rain. They're standing in it with no umbrella.",
+        "title": "ฝนตก เขายืนอยู่กลางฝนโดยไม่มีร่ม",
         "options": {
-          "soaked": "You stand next to them and get just as wet",
-          "tocar": "You put the umbrella over them and walk them to the car",
-          "giveit": "You hand them the umbrella and go on",
-          "throwit": "You throw it to them and run"
+          "soaked": "คุณไปยืนข้าง ๆ แล้วเปียกพอ ๆ กัน",
+          "tocar": "คุณกางร่มให้แล้วพาเดินไปถึงรถ",
+          "giveit": "คุณยื่นร่มให้แล้วเดินต่อ",
+          "throwit": "คุณโยนร่มให้แล้ววิ่ง"
         }
       },
       "funeral": {
-        "title": "The funeral hall. Your name is on the chief mourner's card.",
+        "title": "ศาลาสวดอภิธรรม ชื่อคุณอยู่บนป้ายเจ้าภาพ",
         "options": {
-          "sit2": "You take the seat and say nothing",
-          "greet2": "You greet every mourner, one by one",
-          "beside2": "You go and sit next to whoever is crying",
-          "swapname": "You take the card down and put another name on it"
+          "sit2": "คุณนั่งลงตรงนั้นและไม่พูดอะไร",
+          "greet2": "คุณต้อนรับแขกทีละคน ทุกคน",
+          "beside2": "คุณไปนั่งข้างคนที่กำลังร้องไห้",
+          "swapname": "คุณปลดป้ายลงแล้วใส่ชื่อคนอื่นแทน"
         }
       },
       "reunion2": {
-        "title": "After twenty years, they're standing at the door.",
+        "title": "ผ่านไปยี่สิบปี เขามายืนอยู่หน้าประตู",
         "options": {
-          "silent3": "You open the door and say nothing",
-          "comein": "You tell them to come in, before they speak",
-          "meal": "You start making food",
-          "interest": "“Twenty years. There's interest on that,” you say"
+          "silent3": "คุณเปิดประตูแล้วไม่พูดอะไร",
+          "comein": "คุณบอกให้เข้ามาก่อนที่เขาจะทันพูด",
+          "meal": "คุณเริ่มจัดข้าวจัดกับ",
+          "interest": "“ยี่สิบปี อันนี้มีดอกเบี้ยนะ” คุณพูด"
         }
       },
       "trial": {
-        "title": "A courtroom. You're in the witness box.",
+        "title": "ห้องพิจารณาคดี คุณอยู่บนคอกพยาน",
         "options": {
-          "onlyasked": "You answer only what you're asked",
-          "more2": "You say the part nobody asked about",
-          "dontlook": "You don't look their way once",
-          "gallery": "You say something to the public gallery"
+          "onlyasked": "คุณตอบเฉพาะที่ถูกถาม",
+          "more2": "คุณพูดส่วนที่ไม่มีใครถามด้วย",
+          "dontlook": "คุณไม่หันไปทางเขาสักครั้ง",
+          "gallery": "คุณพูดอะไรบางอย่างไปทางที่นั่งผู้ฟัง"
         }
       },
       "confront": {
-        "title": "Everyone is in the room. Now you speak.",
+        "title": "ทุกคนอยู่ในห้องครบแล้ว ตอนนี้ถึงตาคุณพูด",
         "options": {
-          "callthem": "You say their name first",
-          "papers": "You put the papers on the table and wait",
-          "neither": "You say up front that you're taking nobody's side",
-          "playit": "You play the recording"
+          "callthem": "คุณเรียกชื่อเขาก่อนเป็นคนแรก",
+          "papers": "คุณวางแฟ้มเอกสารลงบนโต๊ะแล้วรอ",
+          "neither": "คุณบอกไว้ก่อนเลยว่าคุณไม่เข้าข้างใคร",
+          "playit": "คุณเปิดไฟล์เสียง"
         }
       },
       "forgive": {
-        "title": "“{name}. All you have to do is take my hand.”",
+        "title": "“{name} แค่จับมือแม่ไว้ก็พอ”",
         "options": {
-          "sitdown": "You don't take it. You sit down beside them",
-          "takeit": "You take it, in front of everyone",
-          "later": "“Give me a little longer.”",
-          "eat": "“Forget the hand. Let's eat first.”"
+          "sitdown": "คุณไม่จับ คุณนั่งลงข้าง ๆ",
+          "takeit": "คุณจับ ต่อหน้าทุกคน",
+          "later": "“ขออีกสักหน่อยนะ”",
+          "eat": "“มือไว้ก่อน กินข้าวก่อนเถอะ”"
         }
       }
     },
     "poster": {
       "lead_direct": {
-        "title": "{name} and the Real Name in That House",
-        "logline": "{name} opens the envelope where they stand. Nobody in that house goes back to how they were."
+        "title": "{name} กับชื่อจริงในบ้านหลังนั้น",
+        "logline": "{name} เปิดซองตรงที่ยืนอยู่ ไม่มีใครในบ้านนั้นกลับไปเป็นเหมือนเดิมได้อีก"
       },
       "lead_careful": {
-        "title": "{name} Waited Twenty Years",
-        "logline": "{name} let twenty years go by without a word. Then, once, with everyone in the room, {name} speaks."
+        "title": "{name} รอมายี่สิบปี",
+        "logline": "{name} ปล่อยให้ยี่สิบปีผ่านไปโดยไม่พูดอะไร แล้วครั้งหนึ่ง ตอนที่ทุกคนอยู่พร้อมหน้า {name} ก็เปิดปาก"
       },
       "firstLove_direct": {
-        "title": "{name} and a Promise in the Rain",
-        "logline": "{name} can't walk past someone standing in the rain with no umbrella. That once carries a hundred episodes."
+        "title": "{name} กับคำสัญญากลางสายฝน",
+        "logline": "{name} เดินผ่านคนที่ยืนตากฝนโดยไม่มีร่มไม่ได้ ครั้งเดียวนั้นแบกทั้งร้อยตอนไว้"
       },
       "firstLove_careful": {
-        "title": "{name} and the Photo in the Drawer",
-        "logline": "{name} put the photo back in the drawer and asked nobody. Which is why nothing was ever finished."
+        "title": "{name} กับรูปในลิ้นชัก",
+        "logline": "{name} เก็บรูปกลับเข้าลิ้นชักและไม่ถามใคร เพราะอย่างนั้นถึงไม่มีอะไรจบลงสักอย่าง"
       },
       "spark_direct": {
-        "title": "{name}, the Second Time",
-        "logline": "The second time they meet, {name} just asks. One question turns the whole household over."
+        "title": "{name} ครั้งที่สอง",
+        "logline": "ครั้งที่สองที่เจอกัน {name} ถามไปตรง ๆ คำถามเดียวพลิกทั้งบ้าน"
       },
       "spark_careful": {
-        "title": "{name} and Them, 1998",
-        "logline": "{name} and that person passed each other once in 1998. Neither of them knows. Only you do."
+        "title": "{name} กับเขา ปี 1998",
+        "logline": "{name} กับคนคนนั้นเคยเดินสวนกันครั้งหนึ่งในปี 1998 ทั้งคู่ไม่รู้ มีแต่คนดูที่รู้"
       },
       "second_direct": {
-        "title": "{name} on the Mourner's Card",
-        "logline": "{name}'s name was on the chief mourner's card. {name} sat down, and half the audience changed sides that night."
+        "title": "{name} บนป้ายเจ้าภาพ",
+        "logline": "ชื่อ {name} อยู่บนป้ายเจ้าภาพ {name} นั่งลง และคืนนั้นคนดูครึ่งหนึ่งเปลี่ยนข้าง"
       },
       "second_careful": {
-        "title": "{name} Stayed to the End",
-        "logline": "Everyone went home and {name} was still in the corridor. Nobody knew until the final episode."
+        "title": "{name} อยู่จนคนสุดท้าย",
+        "logline": "ทุกคนกลับกันหมดแล้ว {name} ยังอยู่ที่ทางเดิน ไม่มีใครรู้จนถึงตอนสุดท้าย"
       },
       "rival_direct": {
-        "title": "{name}, the Last Line of the Will",
-        "logline": "{name}'s name was on the last line. {name} stands up and asks for it to be read again."
+        "title": "{name} บรรทัดสุดท้ายของพินัยกรรม",
+        "logline": "ชื่อ {name} อยู่บรรทัดสุดท้าย {name} ลุกขึ้นแล้วขอให้อ่านอีกครั้ง"
       },
       "rival_careful": {
-        "title": "{name}, a Quiet Inheritance",
-        "logline": "{name} asks for nothing. The shares keep moving {name}'s way regardless."
+        "title": "{name} การรับมรดกอย่างเงียบ ๆ",
+        "logline": "{name} ไม่เรียกร้องอะไร แต่หุ้นก็ยังขยับมาทาง {name} เรื่อย ๆ"
       },
       "bestie_direct": {
-        "title": "{name} Is the Noise in This House",
-        "logline": "A quiet house gets loud when {name} walks in. Without that noise it would have fallen down already."
+        "title": "{name} คือเสียงดังของบ้านหลังนี้",
+        "logline": "บ้านที่เงียบสงบจะดังขึ้นมาทันทีที่ {name} เดินเข้ามา ถ้าไม่มีเสียงนั้นบ้านนี้พังไปนานแล้ว"
       },
       "bestie_careful": {
-        "title": "{name} Takes Nobody's Side",
-        "logline": "{name} won't take sides, which is why {name} is the only one anyone tells the truth to."
+        "title": "{name} ไม่เข้าข้างใครทั้งนั้น",
+        "logline": "{name} ไม่ยอมเลือกข้าง และเพราะอย่างนั้น {name} จึงเป็นคนเดียวที่ทุกคนพูดความจริงด้วย"
       }
     }
   },

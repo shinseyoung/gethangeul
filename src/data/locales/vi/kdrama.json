@@ -291,243 +291,243 @@
   "makjang": {
     "q": {
       "wedding": {
-        "title": "A wedding. There's a seat for {name} on the bride's side. You're seeing the groom for the first time today.",
+        "title": "Một đám cưới. Có một ghế dành cho {name} bên họ nhà gái. Hôm nay bạn mới thấy mặt chú rể lần đầu.",
         "options": {
-          "groom": "You don't stop looking at the groom",
-          "back": "You sit at the very back and stay there",
-          "hands": "You go to the bride first and take her hands",
-          "envelope": "You leave your name off the gift envelope"
+          "groom": "Bạn không rời mắt khỏi chú rể",
+          "back": "Bạn ngồi hàng cuối cùng và ở yên đó",
+          "hands": "Bạn tới chỗ cô dâu trước và nắm lấy tay cô ấy",
+          "envelope": "Bạn không ghi tên mình lên phong bì mừng"
         }
       },
       "slap": {
-        "title": "A slap, delivered with a handful of kimchi. It didn't land on you.",
+        "title": "Một cái tát, kèm theo nắm kimchi. Không trúng bạn.",
         "options": {
-          "toward": "You walk slowly towards the one who was hit",
-          "wrist2": "You catch the wrist that's holding the kimchi",
-          "towel": "You go and get a wet towel first",
-          "film": "You lift your phone. Recording first"
+          "toward": "Bạn đi chậm về phía người vừa bị tát",
+          "wrist2": "Bạn chụp lấy cổ tay đang cầm kimchi",
+          "towel": "Bạn đi lấy khăn ướt trước",
+          "film": "Bạn giơ điện thoại lên. Quay đã"
         }
       },
       "photo2": {
-        "title": "An old photo turns up in a drawer. A woman of about twenty, and she looks far too much like {name}.",
+        "title": "Một tấm ảnh cũ rơi ra từ ngăn kéo. Một người phụ nữ chừng hai mươi, và giống {name} đến mức khó chịu.",
         "options": {
-          "ask2": "You take the photo straight to your mother",
-          "drawer": "You put it back and lock the drawer",
-          "careful": "You ask who she is, carefully",
-          "copy": "You photograph it and send it to nobody"
+          "ask2": "Bạn cầm tấm ảnh đi thẳng tới chỗ mẹ",
+          "drawer": "Bạn cất lại và khóa ngăn kéo",
+          "careful": "Bạn hỏi đó là ai, thật dè dặt",
+          "copy": "Bạn chụp lại và không gửi cho ai cả"
         }
       },
       "hospital2": {
-        "title": "A hospital room. Someone you've never met is calling {name} by name.",
+        "title": "Một phòng bệnh. Một người bạn chưa từng gặp đang gọi tên {name}.",
         "options": {
-          "handonly": "You take their hand and ask nothing",
-          "whoareyou": "You ask who they are, straight out",
-          "tuck": "You straighten the blanket first",
-          "chart": "You call a nurse and read the chart"
+          "handonly": "Bạn nắm tay họ và không hỏi gì",
+          "whoareyou": "Bạn hỏi thẳng họ là ai",
+          "tuck": "Bạn kéo lại chăn cho ngay ngắn trước đã",
+          "chart": "Bạn gọi y tá và xem bệnh án"
         }
       },
       "will": {
-        "title": "The will is being read. The lawyer says {name}.",
+        "title": "Di chúc đang được đọc. Luật sư đọc tới tên {name}.",
         "options": {
-          "listen2": "You just listen. Your face doesn't move",
-          "reread": "You stand and ask him to read it again in full",
-          "hold3": "You take the hand of the person beside you",
-          "copy2": "You ask the lawyer for a copy"
+          "listen2": "Bạn chỉ ngồi nghe. Mặt không đổi sắc",
+          "reread": "Bạn đứng dậy và yêu cầu đọc lại toàn văn",
+          "hold3": "Bạn nắm lấy tay người ngồi bên cạnh",
+          "copy2": "Bạn xin luật sư một bản sao"
         }
       },
       "orphan": {
-        "title": "{name} is in an orphanage record. 1998.",
+        "title": "{name} có tên trong hồ sơ một trại trẻ mồ côi. Năm 1998.",
         "options": {
-          "stare2": "You look at the record for a long time",
-          "callnow": "You ring the director straight away",
-          "others": "You look for the others who were there first",
-          "take2": "You copy the record and put it in your bag"
+          "stare2": "Bạn nhìn tờ hồ sơ rất lâu",
+          "callnow": "Bạn gọi ngay cho giám đốc trại",
+          "others": "Bạn đi tìm những người từng ở đó trước đã",
+          "take2": "Bạn sao hồ sơ và bỏ vào túi"
         }
       },
       "twin": {
-        "title": "Someone messages: they've just seen a person on the street who looks exactly like {name}.",
+        "title": "Có người nhắn: họ vừa thấy trên phố một người giống hệt {name}.",
         "options": {
-          "keep2": "You keep the photo and don't reply",
-          "gothere": "You go straight to where they saw them",
-          "hush": "You decide not to tell the family",
-          "mimic": "You pose as them and send a photo back"
+          "keep2": "Bạn giữ tấm ảnh và không trả lời",
+          "gothere": "Bạn tới thẳng chỗ họ nhìn thấy",
+          "hush": "Bạn quyết định không nói với gia đình",
+          "mimic": "Bạn bắt chước người đó và chụp một tấm gửi lại"
         }
       },
       "dna": {
-        "title": "The paternity result has arrived, still in its envelope. You haven't opened it.",
+        "title": "Kết quả xét nghiệm huyết thống đã tới, còn nguyên trong phong bì. Bạn chưa mở.",
         "options": {
-          "openit": "You open it where you stand",
-          "lawyer": "You agree to open it with the lawyer present",
-          "showher": "You show your mother first",
-          "fridge": "You put the whole envelope in the fridge"
+          "openit": "Bạn mở ngay tại chỗ",
+          "lawyer": "Bạn đồng ý mở trước mặt luật sư",
+          "showher": "Bạn đưa mẹ xem trước",
+          "fridge": "Bạn nhét cả phong bì vào tủ lạnh"
         }
       },
       "stepmother": {
-        "title": "Your stepmother has tidied your room. Everything except the photo frame.",
+        "title": "Mẹ kế đã dọn phòng bạn. Mọi thứ, trừ cái khung ảnh.",
         "options": {
-          "nothing3": "You don't bring the frame up",
-          "whereis": "You ask where the frame is, immediately",
-          "thanks": "You thank her for tidying",
-          "bigger": "You buy a bigger frame and hang it higher"
+          "nothing3": "Bạn không nhắc gì tới cái khung",
+          "whereis": "Bạn hỏi ngay cái khung đâu rồi",
+          "thanks": "Bạn cảm ơn bà đã dọn giúp",
+          "bigger": "Bạn mua khung to hơn và treo cao hơn"
         }
       },
       "amnesia": {
-        "title": "Since the accident they don't recognise {name}.",
+        "title": "Từ sau tai nạn, họ không còn nhận ra {name}.",
         "options": {
-          "again2": "You tell them the same story from the start, every day",
-          "doctor2": "You hear the doctor out to the end first",
-          "okay": "You tell them it's fine not to remember",
-          "photos": "You quietly hang old photos in the room"
+          "again2": "Ngày nào bạn cũng kể lại từ đầu, y như cũ",
+          "doctor2": "Bạn nghe bác sĩ nói hết trước đã",
+          "okay": "Bạn bảo họ không nhớ cũng không sao",
+          "photos": "Bạn lặng lẽ treo ảnh cũ trong phòng"
         }
       },
       "boardroom": {
-        "title": "The board meeting. Shares come up, and then the name {name}.",
+        "title": "Cuộc họp hội đồng. Chuyện cổ phần được nêu ra, rồi tới cái tên {name}.",
         "options": {
-          "protect": "You state that their shares are not to be touched",
-          "readall": "You read the papers through before saying anything",
-          "staff": "You start with the people still working there",
-          "delay": "You move to push the vote to next week"
+          "protect": "Bạn tuyên bố phần của họ không ai được đụng vào",
+          "readall": "Bạn đọc hết hồ sơ rồi mới nói gì",
+          "staff": "Bạn bắt đầu từ những người còn làm ở đó",
+          "delay": "Bạn đề nghị dời biểu quyết sang tuần sau"
         }
       },
       "deathbed": {
-        "title": "At the very end, your mother takes {name} by the hand and tries to say something.",
+        "title": "Vào lúc cuối, mẹ bạn nắm tay {name} và cố nói điều gì đó.",
         "options": {
-          "listenclose": "You put your ear close and listen to the end",
-          "family2": "You call the rest of the family in first",
-          "dontspeak": "You tell her it's alright, she doesn't have to",
-          "record": "You press record"
+          "listenclose": "Bạn ghé tai lại gần và nghe tới hết",
+          "family2": "Bạn gọi những người còn lại trong nhà vào trước",
+          "dontspeak": "Bạn bảo mẹ không sao đâu, không cần nói cũng được",
+          "record": "Bạn bấm ghi âm"
         }
       },
       "swap2": {
-        "title": "The hospital calls. Two babies may have been swapped in 1998. One of them is {name}.",
+        "title": "Bệnh viện gọi. Năm 1998 có thể đã có hai đứa trẻ bị tráo. Một trong hai là {name}.",
         "options": {
-          "gohome": "You go straight to the parents who raised you",
-          "records": "You demand every record the hospital holds",
-          "theirs": "Your first thought is for the other family",
-          "alone2": "You tell nobody and look into it yourself"
+          "gohome": "Bạn về thẳng chỗ bố mẹ đã nuôi mình",
+          "records": "Bạn yêu cầu bệnh viện đưa toàn bộ hồ sơ",
+          "theirs": "Ý nghĩ đầu tiên của bạn là về gia đình kia",
+          "alone2": "Bạn không nói với ai và tự đi tìm hiểu"
         }
       },
       "crash": {
-        "title": "Wet road. Brakes. And a phone that won't stop ringing.",
+        "title": "Đường ướt. Phanh gấp. Và một cuộc gọi cứ đổ chuông mãi.",
         "options": {
-          "nopick": "You don't answer it. You stay where you are",
-          "call119": "You call an ambulance first",
-          "umbrella": "You hold the umbrella over them and get soaked",
-          "dashcam": "You get the dashcam first"
+          "nopick": "Bạn không nghe máy. Bạn đứng nguyên đó",
+          "call119": "Bạn gọi cấp cứu trước",
+          "umbrella": "Bạn che ô cho họ và để mình ướt hết",
+          "dashcam": "Bạn lấy camera hành trình trước"
         }
       },
       "secret2": {
-        "title": "There's something your mother hasn't said in twenty years. “I think {name} should hear it from me.”",
+        "title": "Có điều mẹ bạn đã không nói suốt hai mươi năm. “Mẹ nghĩ {name} nên nghe từ chính mẹ.”",
         "options": {
-          "nowhere": "You tell her to say it. Now, here",
-          "quieter": "You ask to move somewhere quieter",
-          "dontneed": "You tell her she doesn't have to if it's hard",
-          "knew": "You tell her you already knew"
+          "nowhere": "Bạn bảo mẹ nói đi. Ngay đây, bây giờ",
+          "quieter": "Bạn xin chuyển sang chỗ nào yên hơn",
+          "dontneed": "Bạn bảo nếu khó nói thì mẹ không cần nói cũng được",
+          "knew": "Bạn nói với mẹ rằng bạn đã biết rồi"
         }
       },
       "rain": {
-        "title": "Rain. They're standing in it with no umbrella.",
+        "title": "Mưa. Họ đứng giữa trời mà không có ô.",
         "options": {
-          "soaked": "You stand next to them and get just as wet",
-          "tocar": "You put the umbrella over them and walk them to the car",
-          "giveit": "You hand them the umbrella and go on",
-          "throwit": "You throw it to them and run"
+          "soaked": "Bạn tới đứng cạnh và ướt y như họ",
+          "tocar": "Bạn che ô cho họ và dắt ra tận xe",
+          "giveit": "Bạn đưa cái ô rồi đi tiếp",
+          "throwit": "Bạn ném cái ô cho họ rồi chạy"
         }
       },
       "funeral": {
-        "title": "The funeral hall. Your name is on the chief mourner's card.",
+        "title": "Nhà tang lễ. Tên bạn nằm trên tấm biển tang chủ.",
         "options": {
-          "sit2": "You take the seat and say nothing",
-          "greet2": "You greet every mourner, one by one",
-          "beside2": "You go and sit next to whoever is crying",
-          "swapname": "You take the card down and put another name on it"
+          "sit2": "Bạn ngồi vào chỗ đó và không nói gì",
+          "greet2": "Bạn tiếp từng người viếng, từng người một",
+          "beside2": "Bạn tới ngồi cạnh người đang khóc",
+          "swapname": "Bạn gỡ tấm biển xuống và thay tên khác vào"
         }
       },
       "reunion2": {
-        "title": "After twenty years, they're standing at the door.",
+        "title": "Sau hai mươi năm, họ đứng trước cửa nhà.",
         "options": {
-          "silent3": "You open the door and say nothing",
-          "comein": "You tell them to come in, before they speak",
-          "meal": "You start making food",
-          "interest": "“Twenty years. There's interest on that,” you say"
+          "silent3": "Bạn mở cửa và không nói gì",
+          "comein": "Bạn bảo họ vào đi, trước khi họ kịp nói",
+          "meal": "Bạn bắt đầu dọn cơm",
+          "interest": "“Hai mươi năm. Cái đó có lãi đấy,” bạn nói"
         }
       },
       "trial": {
-        "title": "A courtroom. You're in the witness box.",
+        "title": "Một phòng xử. Bạn đang ngồi ở ghế nhân chứng.",
         "options": {
-          "onlyasked": "You answer only what you're asked",
-          "more2": "You say the part nobody asked about",
-          "dontlook": "You don't look their way once",
-          "gallery": "You say something to the public gallery"
+          "onlyasked": "Bạn chỉ trả lời đúng những gì được hỏi",
+          "more2": "Bạn nói cả phần không ai hỏi tới",
+          "dontlook": "Bạn không nhìn về phía họ một lần nào",
+          "gallery": "Bạn nói một câu về phía hàng ghế dự khán"
         }
       },
       "confront": {
-        "title": "Everyone is in the room. Now you speak.",
+        "title": "Mọi người đã có mặt đủ. Giờ tới lượt bạn mở miệng.",
         "options": {
-          "callthem": "You say their name first",
-          "papers": "You put the papers on the table and wait",
-          "neither": "You say up front that you're taking nobody's side",
-          "playit": "You play the recording"
+          "callthem": "Bạn gọi tên họ trước tiên",
+          "papers": "Bạn đặt tập hồ sơ lên bàn và chờ",
+          "neither": "Bạn nói trước rằng mình không đứng về phía ai",
+          "playit": "Bạn bật đoạn ghi âm"
         }
       },
       "forgive": {
-        "title": "“{name}. All you have to do is take my hand.”",
+        "title": "“{name} à. Chỉ cần nắm lấy tay mẹ thôi.”",
         "options": {
-          "sitdown": "You don't take it. You sit down beside them",
-          "takeit": "You take it, in front of everyone",
-          "later": "“Give me a little longer.”",
-          "eat": "“Forget the hand. Let's eat first.”"
+          "sitdown": "Bạn không nắm. Bạn ngồi xuống bên cạnh",
+          "takeit": "Bạn nắm lấy, trước mặt tất cả mọi người",
+          "later": "“Cho con thêm một chút nữa.”",
+          "eat": "“Thôi tay để đó. Ăn cơm trước đã.”"
         }
       }
     },
     "poster": {
       "lead_direct": {
-        "title": "{name} and the Real Name in That House",
-        "logline": "{name} opens the envelope where they stand. Nobody in that house goes back to how they were."
+        "title": "{name} Và Cái Tên Thật Trong Nhà Ấy",
+        "logline": "{name} mở chiếc phong bì ngay tại chỗ. Không ai trong nhà đó trở lại được như cũ."
       },
       "lead_careful": {
-        "title": "{name} Waited Twenty Years",
-        "logline": "{name} let twenty years go by without a word. Then, once, with everyone in the room, {name} speaks."
+        "title": "{name} Đã Đợi Hai Mươi Năm",
+        "logline": "{name} để hai mươi năm trôi qua không một lời. Rồi một lần, giữa lúc đông đủ, {name} lên tiếng."
       },
       "firstLove_direct": {
-        "title": "{name} and a Promise in the Rain",
-        "logline": "{name} can't walk past someone standing in the rain with no umbrella. That once carries a hundred episodes."
+        "title": "{name} Và Lời Hẹn Trong Mưa",
+        "logline": "{name} không thể đi ngang một người đứng dưới mưa mà không có ô. Một lần đó gánh cả trăm tập."
       },
       "firstLove_careful": {
-        "title": "{name} and the Photo in the Drawer",
-        "logline": "{name} put the photo back in the drawer and asked nobody. Which is why nothing was ever finished."
+        "title": "{name} Và Tấm Ảnh Trong Ngăn Kéo",
+        "logline": "{name} cất tấm ảnh lại vào ngăn kéo và không hỏi ai. Vì thế mà chẳng có gì kết thúc."
       },
       "spark_direct": {
-        "title": "{name}, the Second Time",
-        "logline": "The second time they meet, {name} just asks. One question turns the whole household over."
+        "title": "{name}, Lần Thứ Hai",
+        "logline": "Lần thứ hai gặp nhau, {name} hỏi thẳng. Một câu hỏi lật tung cả nhà."
       },
       "spark_careful": {
-        "title": "{name} and Them, 1998",
-        "logline": "{name} and that person passed each other once in 1998. Neither of them knows. Only you do."
+        "title": "{name} Và Người Ấy, Năm 1998",
+        "logline": "{name} và người ấy từng lướt qua nhau một lần năm 1998. Cả hai đều không biết. Chỉ khán giả biết."
       },
       "second_direct": {
-        "title": "{name} on the Mourner's Card",
-        "logline": "{name}'s name was on the chief mourner's card. {name} sat down, and half the audience changed sides that night."
+        "title": "{name} Trên Tấm Biển Tang Chủ",
+        "logline": "Tên {name} nằm trên tấm biển tang chủ. {name} ngồi xuống, và đêm đó nửa khán giả đổi phe."
       },
       "second_careful": {
-        "title": "{name} Stayed to the End",
-        "logline": "Everyone went home and {name} was still in the corridor. Nobody knew until the final episode."
+        "title": "{name} Ở Lại Tới Cuối",
+        "logline": "Mọi người về hết rồi mà {name} vẫn còn ở hành lang. Không ai biết cho tới tập cuối."
       },
       "rival_direct": {
-        "title": "{name}, the Last Line of the Will",
-        "logline": "{name}'s name was on the last line. {name} stands up and asks for it to be read again."
+        "title": "{name}, Dòng Cuối Của Di Chúc",
+        "logline": "Tên {name} nằm ở dòng cuối. {name} đứng dậy và yêu cầu đọc lại."
       },
       "rival_careful": {
-        "title": "{name}, a Quiet Inheritance",
-        "logline": "{name} asks for nothing. The shares keep moving {name}'s way regardless."
+        "title": "{name}, Một Cuộc Thừa Kế Lặng Lẽ",
+        "logline": "{name} không đòi hỏi gì. Cổ phần vẫn cứ dịch dần về phía {name}."
       },
       "bestie_direct": {
-        "title": "{name} Is the Noise in This House",
-        "logline": "A quiet house gets loud when {name} walks in. Without that noise it would have fallen down already."
+        "title": "{name} Là Tiếng Ồn Của Nhà Này",
+        "logline": "Một căn nhà yên ắng trở nên ồn ào khi {name} bước vào. Không có tiếng ồn đó thì nó sập từ lâu rồi."
       },
       "bestie_careful": {
-        "title": "{name} Takes Nobody's Side",
-        "logline": "{name} won't take sides, which is why {name} is the only one anyone tells the truth to."
+        "title": "{name} Không Đứng Về Phía Ai",
+        "logline": "{name} không chịu đứng về phía nào, và vì thế {name} là người duy nhất ai cũng nói thật."
       }
     }
   },
