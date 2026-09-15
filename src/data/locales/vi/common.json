@@ -1,21 +1,9 @@
 {
-  "header": {
-    "title": "Tạo Tên Tiếng Hàn Của Bạn",
-    "subtitle": "Get Your Hangeul Name",
-    "languages": {
-      "ko": "한국어",
-      "en": "English",
-      "th": "ไทย",
-      "vi": "Tiếng Việt"
-    }
-  },
+  "header": {},
   "footer": {
     "copyright": "© 2026 ganada.com All rights reserved."
   },
   "layout": {
-    "progress_badge": "Tiến trình",
-    "progress_desc": "Phân tích tính cách đặc trưng của bạn để tạo nên một tên tiếng Hàn độc nhất và ý nghĩa.",
-    "step_prefix": "BƯỚC",
     "steps": {
       "1": "Café",
       "2": "Last train",
@@ -76,28 +64,14 @@
   },
   "result": {
     "title": "Tên Tiếng Hàn Của Bạn",
-    "badge_pure_korean": "Thuần Hàn",
-    "meaning_prefix": "Ý nghĩa: ",
-    "tags": {
-      "male": "Nam",
-      "female": "Nữ",
-      "neutral": "Mọi giới tính"
-    },
     "buttons": {
-      "retry": "Thử lại",
       "share": "Chia sẻ kết quả",
       "sharing": "Đang chuẩn bị...",
       "download": "Lưu hình ảnh",
       "downloading": "Đang lưu..."
     },
     "ads": {
-      "sponsor_badge": "QUẢNG CÁO",
-      "sponsor_title": "Banner quảng cáo tài trợ",
-      "sponsor_desc": "[ Vùng hiển thị phía trên ]",
-      "banner_title": "Quảng cáo",
-      "banner_desc": "[ Khu vực banner hiển thị 300 × 250 ]",
-      "mobile_badge": "QC",
-      "mobile_desc": "Khu vực banner thanh ngang di động"
+      "mobile_badge": "QC"
     },
     "start_over": "Bắt đầu lại",
     "start_over_desc": "Trả lời lại từ đầu để nhận một cái tên khác.",

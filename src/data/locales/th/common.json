@@ -1,21 +1,9 @@
 {
-  "header": {
-    "title": "ตั้งชื่อเกาหลีของคุณ",
-    "subtitle": "Get Your Hangeul Name",
-    "languages": {
-      "ko": "한국어",
-      "en": "English",
-      "th": "ไทย",
-      "vi": "Tiếng Việt"
-    }
-  },
+  "header": {},
   "footer": {
     "copyright": "© 2026 ganada.com All rights reserved."
   },
   "layout": {
-    "progress_badge": "ความคืบหน้า",
-    "progress_desc": "เราวิเคราะห์ตัวตนและเอกลักษณ์เฉพาะตัวของคุณ เพื่อตั้งชื่อภาษาเกาหลีที่งดงามและมีเพียงหนึ่งเดียว",
-    "step_prefix": "STEP",
     "steps": {
       "1": "Café",
       "2": "Last train",
@@ -76,28 +64,14 @@
   },
   "result": {
     "title": "ชื่อภาษาเกาหลีของฉัน",
-    "badge_pure_korean": "คำเกาหลีแท้",
-    "meaning_prefix": "ความหมาย: ",
-    "tags": {
-      "male": "ชาย",
-      "female": "หญิง",
-      "neutral": "ไม่จำกัดเพศ"
-    },
     "buttons": {
-      "retry": "ลองใหม่อีกครั้ง",
       "share": "แชร์ผลลัพธ์",
       "sharing": "กำลังเตรียม...",
       "download": "บันทึกรูปภาพ",
       "downloading": "กำลังบันทึก..."
     },
     "ads": {
-      "sponsor_badge": "โฆษณา",
-      "sponsor_title": "แบนเนอร์ผู้สนับสนุน",
-      "sponsor_desc": "[ พื้นที่แสดงผลด้านบน ]",
-      "banner_title": "โฆษณา",
-      "banner_desc": "[ พื้นที่แบนเนอร์แสดงผลขนาด 300 × 250 ]",
-      "mobile_badge": "AD",
-      "mobile_desc": "พื้นที่แบนเนอร์แถบแนวนอนบนมือถือ"
+      "mobile_badge": "AD"
     },
     "start_over": "เริ่มใหม่",
     "start_over_desc": "ตอบใหม่ตั้งแต่ต้นเพื่อรับชื่ออื่น",

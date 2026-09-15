@@ -1,13 +1,5 @@
 {
   "header": {
-    "title": "Get Your Hangeul Name",
-    "subtitle": "Get Your Hangeul Name",
-    "languages": {
-      "ko": "한국어",
-      "en": "English",
-      "th": "ไทย",
-      "vi": "Tiếng Việt"
-    },
     "detected": "Your browser is set to {lang}. Not right?",
     "dismiss": "DISMISS"
   },
@@ -15,9 +7,6 @@
     "copyright": "© 2026 ganada.com All rights reserved."
   },
   "layout": {
-    "progress_badge": "Progress",
-    "progress_desc": "We analyze your unique traits to create a beautiful, one-of-a-kind Korean name.",
-    "step_prefix": "STEP",
     "steps": {
       "1": "Café",
       "2": "Last train",
@@ -54,10 +43,7 @@
         "desc": "Your information is completely protected and is never stored."
       }
     ],
-    "eyebrow": "A real Korean name, and the story inside it",
-    "cta_sub": "4 questions · about 40 seconds",
     "trust": "Free · no sign-up · nothing stored",
-    "specimen_label": "Someone just received",
     "features_label": "What you walk away with"
   },
   "surname": {
@@ -83,15 +69,7 @@
   },
   "result": {
     "title": "My Korean Name",
-    "badge_pure_korean": "Pure Korean",
-    "meaning_prefix": "Meaning: ",
-    "tags": {
-      "male": "Male",
-      "female": "Female",
-      "neutral": "Gender Neutral"
-    },
     "buttons": {
-      "retry": "Try Again",
       "share": "Share Result",
       "sharing": "Sharing...",
       "download": "Save Image",
@@ -99,13 +77,7 @@
       "listen": "Listen to the pronunciation"
     },
     "ads": {
-      "sponsor_badge": "ADVERTISEMENT",
-      "sponsor_title": "Sponsored Banner",
-      "sponsor_desc": "[ Top Display Area ]",
-      "banner_title": "Advertisement",
-      "banner_desc": "[ 300 × 250 Display Banner Area ]",
       "mobile_badge": "AD",
-      "mobile_desc": "Mobile Anchor Banner Area",
       "label": "Advertisement"
     },
     "before_you_go": "Before you go",
@@ -119,26 +91,10 @@
     "because": "You're {a} and {b} — so, {name}."
   },
   "name": {
-    "eyebrow": "Before the questions",
-    "title": "Start with the name you already have.",
-    "sub": "We look for a Korean name that sounds like it. Your four answers then decide which one is yours.",
     "label": "Your name",
-    "placeholder": "Sarah",
-    "skip": "Skip this",
-    "begin": "Begin",
-    "sound_title": "The sound",
-    "sound_count": "{count} Korean names begin with that sound. Your answers narrow them to one.",
-    "sound_none_title": "No match by sound",
-    "sound_none": "No Korean given name begins with that sound, so yours will be chosen on meaning alone — and the result will say so.",
-    "sound_script_title": "We can't read that script yet",
-    "sound_script": "Try writing it the way it sounds in Latin letters, or skip this step and we will go by meaning.",
-    "placeholder_long": "Enter your name",
-    "privacy": "Read in your browser to find the sound, then dropped."
+    "placeholder_long": "Enter your name"
   },
   "weaving": {
-    "title": "Writing your name.",
-    "sub": "Reading your four answers against every name we have.",
-    "working": "Writing…",
     "reveal": "See my names"
   },
   "loading": {
