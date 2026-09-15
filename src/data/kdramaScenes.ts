@@ -17,7 +17,7 @@ import { BRANCH_AT, SLOTS } from './kdramaSlots';
 
 /** Widened by one as each genre is finished, so a genre reaches the picker on
  *  exactly the commit that completes it and never as a stub. */
-export const GENRES = ['chaebol', 'makjang', 'highteen'] as const;
+export const GENRES = ['chaebol', 'makjang', 'highteen', 'idol'] as const;
 
 /** How many scenes a playthrough walks. The same for every genre: the engine
  *  decides it, not the story. */
@@ -162,6 +162,42 @@ export const STORIES: Record<Genre, Story> = {
       }),
       fixed('graduation', 'sleeve', 'backside', 'message2', 'upside'),
       fixed('after', 'same', 'number', 'later2', 'run2'),
+    ],
+  },
+
+  /* 아이돌 — 연습생, 데뷔조, 숙소, 열애설, 음방 1위, 팬사인회, 앙콜.
+     The K most foreigners arrive through, and the only genre here where the
+     other person is a team rather than one face. */
+  idol: {
+    name: [0, 2, 3, 6, 8, 11],
+    tellings: [
+      fixed('trainee', 'eyes', 'center2', 'names', 'mirror2'),
+      fixed('monthly', 'theirs2', 'topline', 'bottom', 'photo3'),
+      fixed('bunk', 'ceiling', 'plan', 'tea', 'light'),
+      branch({
+        romance: scene('practice', 'again4', 'count', 'stretch', 'music'),
+        presence: scene('center', 'step', 'claim2', 'give', 'coin'),
+        warmth: scene('cover2', 'mine3', 'facts', 'together', 'blame'),
+        mischief: scene('vlive', 'own4', 'shut', 'cover3', 'encore2'),
+      }),
+      fixed('debut', 'search', 'front2', 'hug', 'tear'),
+      fixed('sunbae', 'keepon', 'meet', 'share3', 'post'),
+      branch({
+        romance: scene('dating', 'truth', 'company', 'protect2', 'meme'),
+        presence: scene('first', 'onlyone', 'speech2', 'credit2', 'drop'),
+        warmth: scene('injury', 'wait5', 'rework', 'carry', 'cast'),
+        mischief: scene('edit', 'quiet3', 'context', 'sorry', 'more3'),
+      }),
+      fixed('hiatus', 'letter5', 'ask3', 'call2', 'vlog'),
+      fixed('renew', 'sign', 'terms2', 'team', 'pen'),
+      branch({
+        romance: scene('fansign', 'hold5', 'mic2', 'tissue2', 'selfie'),
+        presence: scene('award', 'onename', 'long', 'thankall', 'song'),
+        warmth: scene('letter4', 'read2', 'reply', 'keep3', 'read3'),
+        mischief: scene('leak2', 'nothing5', 'official', 'sorryteam', 'live2'),
+      }),
+      fixed('comeback', 'breathe', 'louder', 'handoff', 'adlib'),
+      fixed('encore', 'nosing', 'lead2', 'sideby', 'throw'),
     ],
   },
 };

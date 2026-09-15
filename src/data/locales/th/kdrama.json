@@ -38,6 +38,11 @@
       "label": "Highteen",
       "tagline": "Uniforms, study hall, the roof, first snow",
       "slot": "12 episodes · Fri–Sat"
+    },
+    "idol": {
+      "label": "Idol",
+      "tagline": "Trainees, the debut line-up, a dating story",
+      "slot": "16 episodes · Mon–Tue"
     }
   },
   "chaebol": {
@@ -766,6 +771,249 @@
       "bestie_careful": {
         "title": "The Chocolate Bar {name} Left",
         "logline": "{name} walks you home, remembers what you said in March, and never brings it up. The class doesn't work without {name}."
+      }
+    }
+  },
+  "idol": {
+    "q": {
+      "trainee": {
+        "title": "In front of the practice room mirror. Same team from today. “{name}'s the youngest.”",
+        "options": {
+          "eyes": "In the mirror you keep looking at one of them",
+          "center2": "You take the middle of the room",
+          "names": "You ask each name and learn it",
+          "mirror2": "You pull a face at the mirror"
+        }
+      },
+      "monthly": {
+        "title": "Monthly assessment. The rankings go up on the wall.",
+        "options": {
+          "theirs2": "You look for their place before your own",
+          "topline": "You say out loud you'll be on the top line",
+          "bottom": "You go and sit next to whoever came last",
+          "photo3": "You photograph the list and set it as your wallpaper"
+        }
+      },
+      "bunk": {
+        "title": "Bunk beds, three in the morning, and neither {name} nor they are asleep.",
+        "options": {
+          "ceiling": "You look at the ceiling and say nothing",
+          "plan": "You start it. What you'll do once you debut",
+          "tea": "You go down and make two hot drinks",
+          "light": "You make shadow puppets with your phone"
+        }
+      },
+      "practice": {
+        "title": "Two in the morning in the practice room. Only {name} and them left.",
+        "options": {
+          "again4": "You ask for one more run",
+          "count": "You stand at the mirror and count the beat",
+          "stretch": "You check their ankle first",
+          "music": "You put something else on and dance badly"
+        }
+      },
+      "center": {
+        "title": "The centre position is open. The leader looks at {name}.",
+        "options": {
+          "step": "You take one step forward",
+          "claim2": "“I'll do it,” hand up",
+          "give": "You give it to whoever prepared longest",
+          "coin": "You get a coin out and offer to flip"
+        }
+      },
+      "cover2": {
+        "title": "They got the choreography wrong, and the teacher calls {name}.",
+        "options": {
+          "mine3": "You say it was you",
+          "facts": "You say exactly who did what",
+          "together": "You ask to run it again, both of you",
+          "blame": "“I think the mirror's bent”"
+        }
+      },
+      "vlive": {
+        "title": "Nobody knew the live was still on. Everything {name} just said went out.",
+        "options": {
+          "own4": "You look at the camera and own it",
+          "shut": "You cut it and tell the company first",
+          "cover3": "You make out it wasn't about them",
+          "encore2": "You leave it running another hour"
+        }
+      },
+      "debut": {
+        "title": "The debut line-up is posted on the wall.",
+        "options": {
+          "search": "You read down the list looking for one name",
+          "front2": "You stand at the front and read it out",
+          "hug": "You go to whoever didn't make it first",
+          "tear": "You take the list down and pocket it"
+        }
+      },
+      "sunbae": {
+        "title": "Word goes round that a senior group has been watching you.",
+        "options": {
+          "keepon": "You say nothing and practise more",
+          "meet": "You go and introduce yourself",
+          "share3": "You tell the team before anyone else",
+          "post": "You post one of their songs"
+        }
+      },
+      "dating": {
+        "title": "A dating story breaks. The backs in the photo are {name} and them.",
+        "options": {
+          "truth": "You say you'll confirm it",
+          "company": "You sort the company's statement first",
+          "protect2": "You make sure their name never appears",
+          "meme": "You make the photo your profile picture"
+        }
+      },
+      "first": {
+        "title": "Number one on the music show. The encore mic is in {name}'s hand.",
+        "options": {
+          "onlyone": "You sing it looking at one person",
+          "speech2": "You say everything you want to say to the fans",
+          "credit2": "You name the crew, one by one",
+          "drop": "You dance instead of singing"
+        }
+      },
+      "injury": {
+        "title": "They've done their ankle. Three weeks to comeback, and their part comes to {name}.",
+        "options": {
+          "wait5": "You say you'll wait and do it together",
+          "rework": "You rewrite the choreography and take it to the company",
+          "carry": "You carry them up the dorm stairs",
+          "cast": "You write every member's name on the cast"
+        }
+      },
+      "edit": {
+        "title": "A clip is going round. Three seconds of {name} messing about at the back.",
+        "options": {
+          "quiet3": "You don't respond at all",
+          "context": "You post the whole video yourself",
+          "sorry": "You apologise to whoever it made awkward",
+          "more3": "You film something funnier and post that"
+        }
+      },
+      "hiatus": {
+        "title": "A hiatus notice goes up. No reason given.",
+        "options": {
+          "letter5": "You write a long post to the fan café",
+          "ask3": "You ask the company for the reason, in writing",
+          "call2": "You ring each member",
+          "vlog": "You film something for yourself and keep it"
+        }
+      },
+      "renew": {
+        "title": "The renewal is on {name}'s desk. Another seven years.",
+        "options": {
+          "sign": "You ask them before you read it",
+          "terms2": "You go through it clause by clause",
+          "team": "You say it's all of you or none",
+          "pen": "You ask to borrow a pen rather than use your own"
+        }
+      },
+      "fansign": {
+        "title": "Fan signing. The person in front of you starts crying.",
+        "options": {
+          "hold5": "You take their hand and say nothing",
+          "mic2": "You stand up and say it into the mic",
+          "tissue2": "You hand them a tissue and make the queue wait",
+          "selfie": "You pull a face and take a photo together"
+        }
+      },
+      "award": {
+        "title": "Year-end awards. It's your turn to speak.",
+        "options": {
+          "onename": "You say one name and step back",
+          "long": "You say the whole thing you prepared",
+          "thankall": "You name about twenty people",
+          "song": "You sing a line instead of speaking"
+        }
+      },
+      "letter4": {
+        "title": "One fan letter arrives very late. It's dated three years ago.",
+        "options": {
+          "read2": "You read it alone and fold it back up",
+          "reply": "You write back and leave it with the company",
+          "keep3": "You carry it in your wallet",
+          "read3": "You read it out on a live"
+        }
+      },
+      "leak2": {
+        "title": "An unreleased track has leaked. Nobody outside the room had heard it.",
+        "options": {
+          "nothing5": "You say nothing and let the fans take it down",
+          "official": "You push the company to release it properly",
+          "sorryteam": "You apologise to the writer first",
+          "live2": "You just sing it on a live"
+        }
+      },
+      "comeback": {
+        "title": "Comeback showcase. The first line is yours.",
+        "options": {
+          "breathe": "You breathe, and look at one person",
+          "louder": "You go in at full volume from the first word",
+          "handoff": "You hand the first line to them",
+          "adlib": "You put in an ad lib that wasn't there"
+        }
+      },
+      "encore": {
+        "title": "Encore stage, and it might be the last one. “{name}, take the mic.”",
+        "options": {
+          "nosing": "You don't sing. You just look at the crowd",
+          "lead2": "You go to the front and start it",
+          "sideby": "You take each member's hand",
+          "throw": "You hold the mic out to the audience"
+        }
+      }
+    },
+    "poster": {
+      "lead_direct": {
+        "title": "{name} Makes the Debut Line-up",
+        "logline": "{name} says as a trainee what most groups save for year three. The company's least manageable member."
+      },
+      "lead_careful": {
+        "title": "Seven Years of {name}",
+        "logline": "{name} never raises their voice once. The team moves at {name}'s pace regardless."
+      },
+      "firstLove_direct": {
+        "title": "{name}, Two in the Morning",
+        "logline": "In a practice room with the lights off, {name} finally says it. It made the documentary and the fans still rewatch it."
+      },
+      "firstLove_careful": {
+        "title": "{name} and a Letter Three Years Late",
+        "logline": "{name} never wrote back. The letter is still in {name}'s wallet."
+      },
+      "spark_direct": {
+        "title": "{name}, the Dating Story",
+        "logline": "The day it breaks, {name} simply says it's true. The company couldn't stop it and the fans loved it more."
+      },
+      "spark_careful": {
+        "title": "{name} and Them, Bunk Beds",
+        "logline": "{name} and that person spend three years one bunk apart. Nothing is ever said and the fans get there first."
+      },
+      "second_direct": {
+        "title": "{name} and the Encore Mic",
+        "logline": "First place, encore, and {name} says all of it. The trends are {name}'s name by midnight."
+      },
+      "second_careful": {
+        "title": "{name} Carries Them Up the Stairs",
+        "logline": "{name} carries the injured member up to the dorm every night. Never mentions it. It all comes out in the last episode."
+      },
+      "rival_direct": {
+        "title": "{name} Takes the Centre",
+        "logline": "{name} steps forward into the empty centre. It's the right call, which makes the team more uncomfortable."
+      },
+      "rival_careful": {
+        "title": "{name}, Quietly Number One",
+        "logline": "{name} asks for nothing. Centre stage keeps drifting {name}'s way anyway."
+      },
+      "bestie_direct": {
+        "title": "{name} Is the Noise in This Group",
+        "logline": "The practice room flips when {name} walks in. Half the behind-the-scenes views are {name}."
+      },
+      "bestie_careful": {
+        "title": "The Two Cups {name} Made",
+        "logline": "{name} makes something hot at 3am, remembers what you said as trainees, and never brings it up."
       }
     }
   }
