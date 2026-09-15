@@ -2,7 +2,7 @@
 // test framework is installed) and runs it.
 import { rolldown } from 'rolldown';
 
-for (const input of ['scripts/matcher.check.ts', 'scripts/surname.check.ts', 'scripts/pair.check.ts', 'scripts/traits.check.ts', 'scripts/kdrama.check.ts']) {
+for (const input of ['scripts/matcher.check.ts', 'scripts/surname.check.ts', 'scripts/pair.check.ts', 'scripts/traits.check.ts', 'scripts/kdrama.check.ts', 'scripts/fortune.check.ts']) {
   const bundle = await rolldown({ input, platform: 'node', logLevel: 'warn' });
   const { output } = await bundle.generate({ format: 'esm' });
   await bundle.close();
