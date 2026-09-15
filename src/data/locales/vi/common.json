@@ -1,5 +1,8 @@
 {
-  "header": {},
+  "header": {
+    "detected": "Trình duyệt của bạn đang đặt là {lang}. Không đúng?",
+    "dismiss": "ĐÓNG"
+  },
   "footer": {
     "copyright": "© 2026 ganada.com All rights reserved."
   },
@@ -39,7 +42,9 @@
         "title": "An tâm sử dụng",
         "desc": "Thông tin của bạn được bảo mật tuyệt đối và không lưu trữ trên hệ thống."
       }
-    ]
+    ],
+    "trust": "Miễn phí · không cần đăng ký · không lưu gì cả",
+    "features_label": "Bạn sẽ mang về những gì"
   },
   "surname": {
     "eyebrow": "Dòng họ của bạn",
@@ -68,10 +73,12 @@
       "share": "Chia sẻ kết quả",
       "sharing": "Đang chuẩn bị...",
       "download": "Lưu hình ảnh",
-      "downloading": "Đang lưu..."
+      "downloading": "Đang lưu...",
+      "listen": "Nghe phát âm"
     },
     "ads": {
-      "mobile_badge": "QC"
+      "mobile_badge": "QC",
+      "label": "Quảng cáo"
     },
     "start_over": "Bắt đầu lại",
     "start_over_desc": "Trả lời lại từ đầu để nhận một cái tên khác.",
@@ -79,18 +86,20 @@
     "change_surname_desc": "Giữ nguyên tên, chọn dòng họ khác.",
     "see_match": "Xem hợp tên",
     "see_match_desc": "Hai cái tên, số nét, một con số.",
-    "because": "Bạn là {a} và {b} — nên, {name}."
+    "because": "Bạn là {a} và {b} — nên, {name}.",
+    "before_you_go": "Trước khi bạn rời đi",
+    "no_sound": "Không có tên tiếng Hàn nào bắt đầu bằng âm trong tên bạn, nên cái tên này được chọn chỉ dựa trên ý nghĩa."
   },
   "nav": {
     "name": "Đặt tên",
     "pair": "Hợp tên",
     "impression": "Ấn tượng",
-    "menu": "Rooms",
+    "menu": "Danh mục",
     "kdrama": "K-Drama",
     "fortune": "Vận",
     "group": {
-      "name": "Names",
-      "fun": "For fun"
+      "name": "Tên",
+      "fun": "Giải trí"
     }
   },
   "impression": {
@@ -458,5 +467,19 @@
       "sun": "Nắng",
       "flower": "Hoa"
     }
+  },
+  "name": {
+    "label": "Tên bạn",
+    "placeholder_long": "Nhập tên của bạn"
+  },
+  "weaving": {
+    "reveal": "Xem tên của tôi"
+  },
+  "loading": {
+    "stage1": "Đang đọc câu trả lời của bạn",
+    "stage2": "Đang khớp âm",
+    "stage3": "Đang cân nghĩa",
+    "stage4": "Đang viết tên bạn",
+    "ready": "Xong rồi"
   }
 }
