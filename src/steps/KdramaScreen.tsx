@@ -4,7 +4,7 @@ import { useTranslation } from '../hooks/useTranslation';
 import { useImageShare } from '../hooks/useImageShare';
 import { QUESTIONS } from '../data/kdramaQuestions';
 import { ACTS, AXES, SCENES_PER_ACT, actOf, cast, recapKey, type ActId } from '../utils/kdramaCasting';
-import { nameFor } from '../utils/kdramaName';
+import { hangulFor } from '../utils/romanToHangul';
 import { sentences } from '../utils/sentences';
 import MountainWash from '../components/MountainWash';
 import TraitMeter from '../components/TraitMeter';
@@ -13,12 +13,14 @@ import AdSlot from '../components/AdSlot';
 import Button, { ArrowLeft, ArrowRight } from '../components/Button';
 
 /**
- * K-Drama 이름 테스트 — the fourth room.
+ * K-Drama 배역 테스트 — the fourth room.
  *
  * The other three rooms read something you already have: a name you typed, two
- * names you picked. This one reads what you would *do*, and the casting is the
- * result — the name that comes with it is the gift, not the headline. That is
- * the whole reason it is not the name generator wearing a different hat.
+ * names you picked. This one reads what you would *do*. It asks for a name
+ * first, and six of the twelve scenes speak to you by it — the name is how you
+ * are *in* the story, not what you get out of it. The result is a casting and
+ * nothing else; handing out a name at the end is the name generator's job, and
+ * having both blurred each.
  */
 
 /** The four axes borrow marks the quiz already uses, so nothing new was drawn. */
@@ -29,10 +31,21 @@ const MARK: Record<string, string> = {
   mischief: 'whimsical',
 };
 
+/**
+ * What the scenes call you: the Hangul the site already makes on a Korean page,
+ * your own spelling everywhere else. `사라 씨` is the line a Korean would say;
+ * `Sarah 씨` is a line nobody says.
+ */
+function displayName(name: string, lang: string): string {
+  const trimmed = name.trim();
+  if (lang !== 'ko') return trimmed;
+  return hangulFor(trimmed)?.hangul ?? trimmed;
+}
+
 export default function KdramaScreen() {
   const {
-    kdramaAnswers, kdramaStep, kdramaReroll,
-    setKdramaAnswer, setKdramaStep, resetKdrama,
+    kdramaAnswers, kdramaStep, kdramaName, lang,
+    setKdramaAnswer, setKdramaStep, setKdramaName, resetKdrama,
   } = useFlowStore();
   const { t } = useTranslation();
   /* which act's opening card has already been read. Held here rather than in the
@@ -42,19 +55,19 @@ export default function KdramaScreen() {
 
   const casting = useMemo(() => cast(kdramaAnswers), [kdramaAnswers]);
 
-  /* the seed is the answers themselves, so the first name a visitor sees is
-     fixed by what they said rather than by when they said it */
-  const seed = useMemo(
-    () => kdramaAnswers.reduce<number>((sum, a) => sum + (a ?? 0), 0),
-    [kdramaAnswers],
-  );
-  const name = casting ? nameFor(casting.role, seed, kdramaReroll) : null;
-
   const { captureRef, isSaving, isSharing, handleDownload, handleShare } = useImageShare(
     casting ? `hangeul-kdrama-${casting.typeKey}` : 'hangeul-kdrama',
   );
 
   const onCard = kdramaStep > QUESTIONS.length;
+
+  /* half the scenes address the visitor, so there is nothing to show without a
+     name — a deep link straight into scene seven would otherwise render lines
+     spoken to nobody */
+  if (kdramaStep > 0 && kdramaName.trim() === '') {
+    setKdramaStep(0);
+    return null;
+  }
 
   // ---- the intro ----------------------------------------------------------
   if (kdramaStep === 0) {
@@ -70,7 +83,30 @@ export default function KdramaScreen() {
             <span key={line} className="block">{line}</span>
           ))}
         </span>
-        <Button full className="mt-8" onClick={() => setKdramaStep(1)}>
+        <div className="mt-7">
+          <label htmlFor="kdrama-name" className="eyebrow mb-2 block text-[8.5px] text-ink-4">
+            {t('kdrama.name_label')}
+          </label>
+          <input
+            id="kdrama-name"
+            type="text"
+            value={kdramaName}
+            onChange={(e) => setKdramaName(e.target.value)}
+            placeholder={String(t('kdrama.name_placeholder'))}
+            autoComplete="off"
+            autoCorrect="off"
+            spellCheck={false}
+            className="h-[56px] w-full rounded-2xl border-[1.5px] border-rule-strong bg-paper-hi px-5 font-disp text-[20px] text-ink caret-accent outline-none transition-colors duration-150 placeholder:font-body placeholder:text-[15px] placeholder:text-ink-4 focus:border-accent"
+          />
+          {/* only on a Korean page: elsewhere the preview would repeat what was
+              just typed, which reads as the field stuttering */}
+          <span className="mt-2 block h-[22px] font-brush text-[19px] leading-none text-accent">
+            {lang === 'ko' ? displayName(kdramaName, lang) : ''}
+          </span>
+          <p className="mt-1 text-[12px] leading-relaxed text-ink-4">{t('kdrama.name_hint')}</p>
+        </div>
+
+        <Button full className="mt-6" disabled={kdramaName.trim() === ''} onClick={() => setKdramaStep(1)}>
           {t('kdrama.start')}
           <ArrowRight />
         </Button>
@@ -89,6 +125,12 @@ export default function KdramaScreen() {
     const selected = kdramaAnswers[index];
     const act = actOf(index);
     const recap = recapKey(act, kdramaAnswers);
+
+    /* the placeholder is in the copy rather than around it, so a scene with no
+       name in it needs no special case — replace finds nothing and the line
+       stands as written */
+    const who = displayName(kdramaName, lang);
+    const named = (copy: unknown) => String(copy).replace('{name}', who);
 
     /* the beat between acts. It does not advance the step, so Back from the
        scene after it returns to the previous act's last scene rather than here. */
@@ -134,7 +176,7 @@ export default function KdramaScreen() {
         </span>
 
         <h2 className="mb-2.5 mt-3 -ml-[0.035em] text-pretty font-disp text-[29px] leading-[1.1] tracking-tight text-ink md:text-[38px]">
-          {t(`kdrama.q.${question.id}.title`)}
+          {named(t(`kdrama.q.${question.id}.title`))}
         </h2>
 
         <div className="mt-6 grid gap-2.5">
@@ -153,7 +195,7 @@ export default function KdramaScreen() {
                 }`}
               >
                 <span className={`min-w-0 flex-1 text-balance font-disp text-[17px] leading-snug md:text-[18px] ${on ? 'text-ink' : 'text-ink-2'}`}>
-                  {t(`kdrama.q.${question.id}.options.${option.id}`)}
+                  {named(t(`kdrama.q.${question.id}.options.${option.id}`))}
                 </span>
               </button>
             );
@@ -175,7 +217,7 @@ export default function KdramaScreen() {
   }
 
   // ---- the card -----------------------------------------------------------
-  if (!casting || !name) {
+  if (!casting) {
     // only reachable if the step was pushed past the questions unanswered
     setKdramaStep(1);
     return null;
@@ -203,9 +245,6 @@ export default function KdramaScreen() {
           <OpticalText className="mt-3 block text-center font-disp text-[27px] leading-tight text-ink md:text-[31px]">
             {headline}
           </OpticalText>
-
-          <span className="mt-5 font-brush text-[40px] leading-none text-ink">{name.hangul}</span>
-          <span className="eyebrow mt-2 text-[8.5px] tracking-[0.24em] text-ink-4">{name.id}</span>
 
           <span className="my-6 block h-px w-11 bg-accent" />
 
@@ -247,9 +286,6 @@ export default function KdramaScreen() {
         <Button full variant="secondary" onClick={handleShare} disabled={isSaving || isSharing}>
           {isSharing ? t('result.buttons.sharing') : t('result.buttons.share')}
         </Button>
-        {/* no name reroll. The casting is the result and the name is what came
-            with it — a button offering a different one invited the reading that
-            the name was the point, which is the one thing this room is not. */}
         <Button variant="ghost" full className="mt-1" onClick={resetKdrama}>
           {t('kdrama.again')}
         </Button>
