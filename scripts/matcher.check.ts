@@ -165,6 +165,50 @@ for (let situation = 0; situation < SITUATIONS.length; situation += 1) {
   ok(`answering ${SITUATIONS[situation].id} differently can change the name`, moves);
 }
 
+// --- the room has to be fully written --------------------------------------
+// vi and th may still carry the English string; they must not be missing.
+
+for (const [lang, bundle] of Object.entries({ en, ko, vi, th })) {
+  const b = bundle as Record<string, any>;
+  for (const situation of SITUATIONS) {
+    const block = b.situations?.[situation.id];
+    ok(`${lang}: situations.${situation.id}.title`,
+      typeof block?.title === 'string' && block.title.length > 0);
+    ok(`${lang}: situations.${situation.id}.description`,
+      typeof block?.description === 'string' && block.description.length > 0);
+    for (const option of situation.options) {
+      ok(`${lang}: situations.${situation.id}.options.${option.id}`,
+        typeof block?.options?.[option.id] === 'string' && block.options[option.id].length > 0);
+      // the card names the answer, not the question, so every option needs one
+      ok(`${lang}: reasons.${option.id}`,
+        typeof b.reasons?.[option.id] === 'string' && b.reasons[option.id].length > 0);
+    }
+  }
+
+  // every tag a name carries can now reach a chip on the card — including the
+  // three that were unreachable until the evening question existed
+  for (const axis of ['vibes', 'personalities', 'nature'] as const) {
+    for (const tag of POOL[axis]) {
+      ok(`${lang}: tags.${axis}.${tag}`,
+        typeof b.tags?.[axis]?.[tag] === 'string' && b.tags[axis][tag].length > 0);
+    }
+  }
+
+  ok(`${lang}: result.because names all three slots`,
+    ['{a}', '{b}', '{name}'].every((slot) => String(b.result?.because ?? '').includes(slot)),
+    b.result?.because);
+  ok(`${lang}: surname.gender_label`,
+    typeof b.surname?.gender_label === 'string' && b.surname.gender_label.length > 0);
+  ok(`${lang}: seven rail labels`, Object.keys(b.layout?.steps ?? {}).length === 7,
+    Object.keys(b.layout?.steps ?? {}).length);
+
+  // the four adjective grids are gone, not merely unused
+  for (const group of ['vibe', 'personality', 'nature']) {
+    ok(`${lang}: options.${group} is gone`, b.options?.[group] === undefined);
+  }
+  ok(`${lang}: the four old question screens are gone`, b.questions === undefined);
+}
+
 // --- the option lists must not answer each other in the same words ----------
 
 for (const [lang, bundle] of Object.entries({ en, ko, vi, th })) {

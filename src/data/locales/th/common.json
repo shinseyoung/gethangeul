@@ -17,11 +17,13 @@
     "progress_desc": "เราวิเคราะห์ตัวตนและเอกลักษณ์เฉพาะตัวของคุณ เพื่อตั้งชื่อภาษาเกาหลีที่งดงามและมีเพียงหนึ่งเดียว",
     "step_prefix": "STEP",
     "steps": {
-      "1": "เลือกเพศ",
-      "2": "บรรยากาศของชื่อ",
-      "3": "บุคลิกและค่านิยม",
-      "4": "ฤดูกาลและธรรมชาติ",
-      "5": "นามสกุล"
+      "1": "Café",
+      "2": "Last train",
+      "3": "Dinner",
+      "4": "Lift",
+      "5": "Market",
+      "6": "Last evening",
+      "7": "Family name"
     },
     "buttons": {
       "prev": "ย้อนกลับ",
@@ -51,24 +53,6 @@
       }
     ]
   },
-  "questions": {
-    "step1": {
-      "title": "คุณต้องการชื่อที่เหมาะกับเพศใด?",
-      "description": "ข้อมูลนี้ใช้เพื่อกำหนดขอบเขตของชื่อที่จะแนะนำ"
-    },
-    "step2": {
-      "title": "คุณอยากให้ผู้คนจดจำคุณในบรรยากาศแบบใด?",
-      "description": "ตัวเลือกนี้ช่วยกำหนดความประทับใจแรกของชื่อคุณ"
-    },
-    "step3": {
-      "title": "ลักษณะเด่นข้อใดที่อธิบายตัวตนของคุณได้ดีที่สุด?",
-      "description": "นี่คือปัจจัยสำคัญที่ช่วยสะท้อนเอกลักษณ์เฉพาะตัวของคุณ"
-    },
-    "step4": {
-      "title": "คุณอยากให้ชื่อถ่ายทอดความรู้สึกของฤดูกาลหรือธรรมชาติแบบใด?",
-      "description": "สิ่งนี้จะช่วยเพิ่มมิติของความหมายและสัญลักษณ์ให้กับชื่อของคุณ"
-    }
-  },
   "surname": {
     "eyebrow": "ตระกูลของคุณ",
     "title": "ชื่อเกาหลีเริ่มต้นที่นามสกุล",
@@ -80,47 +64,14 @@
     "browse_fewer": "ย่อ",
     "share": "{share}% ของคนเกาหลี",
     "share_rare": "พบไม่บ่อย",
-    "suggested": "แนะนำ"
+    "suggested": "แนะนำ",
+    "gender_label": "Reads as"
   },
   "options": {
     "gender": {
       "male": "ชาย",
       "female": "หญิง",
       "neutral": "ไม่จำกัดเพศ"
-    },
-    "vibe": {
-      "bright": "สดใสและปลอดโปร่ง",
-      "calm": "สงบและเรียบร้อย",
-      "natural": "เรียบง่ายและผ่อนคลาย",
-      "soft": "อ่อนโยนและนุ่มนวล",
-      "mystic": "ลึกลับและน่าหลงใหล",
-      "trendy": "ชิคและทันสมัย",
-      "strong": "เข้มแข็งและเท่",
-      "lovely": "น่ารักและน่าเอ็นดู"
-    },
-    "personality": {
-      "radiant": "สดใสและคิดบวก",
-      "considerate": "อบอุ่นและใส่ใจผู้อื่น",
-      "dependable": "มีความรับผิดชอบและน่าเชื่อถือ",
-      "whimsical": "สร้างสรรค์และไม่เหมือนใคร",
-      "genuine": "เป็นธรรมชาติและจริงใจ",
-      "inquisitive": "ฉลาดและชอบเรียนรู้",
-      "enterprising": "กล้าท้าทายและมุ่งมั่น",
-      "prudent": "สุขุมและรอบคอบ",
-      "upright": "ซื่อสัตย์และมีหลักการ",
-      "sensitive": "ลึกซึ้งและละเอียดอ่อน",
-      "graceful": "สง่างามและประณีต",
-      "resilient": "มั่นคงและแข็งแกร่ง"
-    },
-    "nature": {
-      "spring": "ฤดูใบไม้ผลิ",
-      "summer": "ฤดูร้อน",
-      "autumn": "ฤดูใบไม้ร่วง",
-      "winter": "ฤดูหนาว",
-      "mountain": "ภูเขา",
-      "sea": "ทะเล",
-      "river": "แม่น้ำ",
-      "forest": "ป่าไม้"
     }
   },
   "result": {
@@ -153,7 +104,8 @@
     "change_surname": "เปลี่ยนนามสกุล",
     "change_surname_desc": "คงชื่อเดิม แต่เปลี่ยนตระกูล",
     "see_match": "ดูการจับคู่ชื่อ",
-    "see_match_desc": "สองชื่อ จำนวนเส้น และหนึ่งตัวเลข"
+    "see_match_desc": "สองชื่อ จำนวนเส้น และหนึ่งตัวเลข",
+    "because": "You're {a} and {b} — so, {name}."
   },
   "nav": {
     "name": "ตั้งชื่อ",
@@ -221,6 +173,132 @@
       "cute_calm": "One talks, one listens, and both prefer it that way.",
       "cute_uncommon": "Sounds made up, in a good way. People remember it.",
       "calm_uncommon": "Quiet and hard to place. Takes a while to read."
+    }
+  },
+  "situations": {
+    "cup": {
+      "title": "The barista asks for a name. What goes on the cup?",
+      "description": "Cafés here call your name out rather than buzz a pager, and a foreign name is where it gets awkward.",
+      "options": {
+        "own": "My own name. I'll spell it out",
+        "short": "Something short they can write",
+        "korean": "The Korean name I'm trying out",
+        "whatever": "Whatever you hear is fine"
+      }
+    },
+    "train": {
+      "title": "Last train. There's a grandmother standing in front of you.",
+      "description": "One seat left, and everyone else is looking at their phone.",
+      "options": {
+        "standup": "You stand up without saying anything",
+        "tap": "“Please, sit here.” You say it first",
+        "gesture": "You catch her eye and nod at the seat",
+        "pretend": "You wait to see if someone else moves"
+      }
+    },
+    "dinner": {
+      "title": "Company dinner. The colleague beside you fills your glass.",
+      "description": "You never pour your own in Korea, and a drink received is a drink returned.",
+      "options": {
+        "twohands": "Take it with both hands and turn away to drink",
+        "pourback": "Fill theirs straight back",
+        "ask": "Ask why the order works this way",
+        "toast": "Raise it and say something"
+      }
+    },
+    "lift": {
+      "title": "Three minutes late. The lift doors are closing.",
+      "description": "There's someone inside, and they've seen you.",
+      "options": {
+        "run": "Run. Get a hand in the gap",
+        "wave": "Wave and call “hold it!”",
+        "wait": "Let it go and take the next one",
+        "stairs": "Turn for the stairs"
+      }
+    },
+    "market": {
+      "title": "The market 아주머니 adds one more and waves your money away.",
+      "description": "The extra is normal here, and refusing it is the part that offends.",
+      "options": {
+        "insist": "Insist on paying for it anyway",
+        "accept": "Thank her, loudly",
+        "return": "Come back next time with something",
+        "regular": "Promise she's the only one you'll buy from"
+      }
+    },
+    "evening": {
+      "title": "Your last evening in Korea. You can be anywhere.",
+      "description": "One day left, and room for exactly one place.",
+      "options": {
+        "hangang": "The Han. Under a bridge, watching the sun go",
+        "bukhansan": "The mountain. Somewhere with only wind in the trees",
+        "sea": "The sea. First train out to the coast",
+        "alley": "The alley near you, with the flower shop and the bakery"
+      }
+    }
+  },
+  "reasons": {
+    "own": "someone who doesn't shorten their name",
+    "short": "someone who'd rather be understood fast",
+    "korean": "someone who wants to be called by this place's name for them",
+    "whatever": "someone happy to be called anything",
+    "standup": "someone who moves before they speak",
+    "tap": "someone who says the thing out loud",
+    "gesture": "someone who fixes it without a fuss",
+    "pretend": "someone who watches first",
+    "twohands": "someone who does it the way it's done",
+    "pourback": "someone who returns a kindness on the spot",
+    "ask": "someone who wants to know why",
+    "toast": "someone who warms the room up",
+    "run": "someone who runs first",
+    "wave": "someone who asks with a smile",
+    "wait": "someone in no hurry",
+    "stairs": "someone who sorts it out alone",
+    "insist": "someone who won't be in anyone's debt",
+    "accept": "someone who says thank you loudly",
+    "return": "someone who remembers what they were given",
+    "regular": "someone who picks one place and stays",
+    "hangang": "someone who loses time by the water",
+    "bukhansan": "someone who goes somewhere quiet",
+    "sea": "someone who'll travel for it",
+    "alley": "someone who finds it close to home"
+  },
+  "tags": {
+    "vibes": {
+      "bright": "Bright",
+      "calm": "Calm",
+      "soft": "Soft",
+      "mystic": "Mystic",
+      "trendy": "Modern",
+      "strong": "Strong",
+      "lovely": "Lovely"
+    },
+    "personalities": {
+      "radiant": "Radiant",
+      "considerate": "Considerate",
+      "dependable": "Dependable",
+      "whimsical": "Whimsical",
+      "genuine": "Genuine",
+      "inquisitive": "Curious",
+      "enterprising": "Driven",
+      "prudent": "Prudent",
+      "upright": "Upright",
+      "sensitive": "Sensitive",
+      "graceful": "Graceful",
+      "resilient": "Resilient"
+    },
+    "nature": {
+      "spring": "Spring",
+      "summer": "Summer",
+      "autumn": "Autumn",
+      "winter": "Winter",
+      "mountain": "Mountain",
+      "sea": "Sea",
+      "river": "River",
+      "forest": "Forest",
+      "sky": "Sky",
+      "sun": "Sun",
+      "flower": "Flower"
     }
   }
 }
