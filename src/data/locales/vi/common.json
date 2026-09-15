@@ -7,8 +7,7 @@
       "en": "English",
       "th": "ไทย",
       "vi": "Tiếng Việt"
-    },
-    "tagline": "KOREA, FOR FUN"
+    }
   },
   "footer": {
     "copyright": "© 2026 ganada.com All rights reserved."
@@ -117,7 +116,7 @@
     "fortune": "Fortune",
     "group": {
       "name": "Names",
-      "fun": "Fun"
+      "fun": "For fun"
     }
   },
   "impression": {

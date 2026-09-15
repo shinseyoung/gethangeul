@@ -9,8 +9,7 @@
       "vi": "Tiếng Việt"
     },
     "detected": "브라우저 언어에 맞춰 {lang}(으)로 열었어요. 아니라면?",
-    "dismiss": "닫기",
-    "tagline": "한국을 재미로"
+    "dismiss": "닫기"
   },
   "footer": {
     "copyright": "© 2026 ganada.com All rights reserved."
@@ -158,7 +157,7 @@
     "fortune": "운세",
     "group": {
       "name": "이름",
-      "fun": "재미"
+      "fun": "심심풀이"
     }
   },
   "impression": {

@@ -9,8 +9,7 @@
       "vi": "Tiếng Việt"
     },
     "detected": "Your browser is set to {lang}. Not right?",
-    "dismiss": "DISMISS",
-    "tagline": "KOREA, FOR FUN"
+    "dismiss": "DISMISS"
   },
   "footer": {
     "copyright": "© 2026 ganada.com All rights reserved."
@@ -158,7 +157,7 @@
     "fortune": "Fortune",
     "group": {
       "name": "Names",
-      "fun": "Fun"
+      "fun": "For fun"
     }
   },
   "impression": {

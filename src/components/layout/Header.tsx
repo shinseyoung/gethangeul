@@ -56,12 +56,15 @@ function LanguageRow({
 /**
  * The rooms, in two groups.
  *
- * The split is not by subject but by what the room needs from you: the first
- * three read or make a *name*, the last two want nothing but answers. That axis
- * is the one that holds as more rooms arrive — a seal carver goes in the first,
- * a 사주 in the second — which is why the header names the groups rather than
- * the room you happen to be standing in. A button whose label changes every
- * time you move tells you where you are and never what else is here.
+ * The split is by what the room is *about*. All five ask for a name — the
+ * fortune and the drama included — so needing one is no kind of line. The line
+ * is whether the name is the subject or you are: the first three read a name,
+ * the last two read the person carrying it. A 사주 or a personality test walks
+ * into the second without argument.
+ *
+ * The header names the groups rather than the room you are standing in. A
+ * button whose label changes every time you move tells you where you are and
+ * never what else is here.
  */
 const GROUPS = [
   { id: 'name', tools: ['name', 'pair', 'impression'] as Tool[] },
@@ -124,11 +127,14 @@ export function Header() {
           }}
           className="focus-ring flex flex-col gap-[5px] text-left transition-opacity hover:opacity-70"
         >
-          <span className="font-disp text-[21px] leading-none tracking-tight text-ink md:text-[24px]">
+          {/* No line under it. Every phrase that covered all five rooms came out
+              as vague as the rooms are various — "Korea, for fun" says nothing
+              the landing page does not say better. A wordmark that does not
+              explain itself is the more confident of the two. */}
+          <span /* uppercase costs width: GANADA at 22px measured 99px against gethangeul's
+     62, and with 심심풀이 beside it the bar ran 7px over at 375. */
+          className="font-disp text-[18px] uppercase leading-none tracking-[0.06em] text-ink sm:text-[22px] md:text-[25px]">
             ganada
-          </span>
-          <span className="eyebrow hidden text-[7.5px] tracking-[0.22em] text-ink-4 sm:block">
-            {t('header.tagline')}
           </span>
         </button>
 
@@ -148,7 +154,7 @@ export function Header() {
                   onClick={() => setOpenGroup(open ? null : group.id)}
                   aria-expanded={open}
                   aria-haspopup="menu"
-                  className={`focus-ring flex min-h-[38px] items-center gap-1.5 rounded-full px-2.5 transition-colors md:px-3 ${
+                  className={`focus-ring flex min-h-[38px] items-center gap-1.5 rounded-full px-2 transition-colors sm:px-2.5 md:px-3 ${
                     open ? 'bg-accent/[0.09] text-accent'
                       : here ? 'text-ink hover:bg-accent/[0.05]'
                       : 'text-ink-4 hover:bg-accent/[0.05] hover:text-ink-2'
