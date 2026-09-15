@@ -222,63 +222,195 @@
   },
   "situations": {
     "cup": {
-      "title": "The barista asks for a name. What goes on the cup?",
-      "description": "Cafés here call your name out rather than buzz a pager, and a foreign name is where it gets awkward.",
-      "options": {
-        "own": "My own name. I'll spell it out",
-        "short": "Something short they can write",
-        "korean": "The Korean name I'm trying out",
-        "whatever": "Whatever you hear is fine"
+      "order": {
+        "title": "The barista asks for a name. What goes on the cup?",
+        "description": "Cafés here call your name out rather than buzz a pager, and a foreign name is where it gets awkward.",
+        "options": {
+          "own": "My own name. I'll spell it out",
+          "short": "Something short they can write",
+          "korean": "The Korean name I'm trying out",
+          "whatever": "Whatever you hear is fine"
+        }
+      },
+      "mispronounce": {
+        "title": "They call a name out, and you don't think it's yours.",
+        "description": "Sounds Korean doesn't have get swapped for the nearest one it does. It's almost never rudeness.",
+        "options": {
+          "repeat": "Say it again, slowly and clearly",
+          "adopt": "“That works too,” you say, laughing",
+          "nod": "Nod and take the cup",
+          "prettier": "Tell them their version sounds better"
+        }
+      },
+      "regular": {
+        "title": "It's the café you go to every day. They know you now.",
+        "description": "Become a regular and there's a place where the order arrives without being placed.",
+        "options": {
+          "usual": "Skip the name. “The usual”",
+          "newthing": "Ask what's new first",
+          "sameseat": "Go straight to the seat you always take",
+          "theirname": "You learned their name off the badge first"
+        }
       }
     },
     "train": {
-      "title": "Last train. There's a grandmother standing in front of you.",
-      "description": "One seat left, and everyone else is looking at their phone.",
-      "options": {
-        "standup": "You stand up without saying anything",
-        "tap": "“Please, sit here.” You say it first",
-        "gesture": "You catch her eye and nod at the seat",
-        "pretend": "You wait to see if someone else moves"
+      "grandmother": {
+        "title": "Last train. There's a grandmother standing in front of you.",
+        "description": "One seat left, and everyone else is looking at their phone.",
+        "options": {
+          "standup": "You stand up without saying anything",
+          "tap": "“Please, sit here.” You say it first",
+          "gesture": "You catch her eye and nod at the seat",
+          "pretend": "You wait to see if someone else moves"
+        }
+      },
+      "sleeper": {
+        "title": "The person beside you falls asleep on your shoulder.",
+        "description": "Common enough on the evening line, and almost nobody wakes them.",
+        "options": {
+          "still": "You don't move",
+          "wake": "You wake them gently and ask their stop",
+          "shift": "You shift position without a word",
+          "almost": "You nearly take a photo"
+        }
+      },
+      "lost": {
+        "title": "Someone asks you for directions and the Korean isn't getting through.",
+        "description": "Getting lost in a station is close to a rite of passage in Seoul.",
+        "options": {
+          "walkthem": "You walk them there yourself",
+          "honest": "You tell them exactly as much as you know",
+          "mapit": "You open a map and look at it together",
+          "wherefrom": "You ask where they're from first"
+        }
       }
     },
     "dinner": {
-      "title": "Company dinner. The colleague beside you fills your glass.",
-      "description": "You never pour your own in Korea, and a drink received is a drink returned.",
-      "options": {
-        "twohands": "Take it with both hands and turn away to drink",
-        "pourback": "Fill theirs straight back",
-        "ask": "Ask why the order works this way",
-        "toast": "Raise it and say something"
+      "pour": {
+        "title": "Company dinner. The colleague beside you fills your glass.",
+        "description": "You never pour your own in Korea, and a drink received is a drink returned.",
+        "options": {
+          "twohands": "Take it with both hands and turn away to drink",
+          "pourback": "Fill theirs straight back",
+          "ask": "Ask why the order works this way",
+          "toast": "Raise it and say something"
+        }
+      },
+      "lastbite": {
+        "title": "One piece left on the plate. Nobody is taking it.",
+        "description": "The last piece has a name in Korean. It's the one that goes cold while everyone is polite.",
+        "options": {
+          "leaveit": "Leave it. All the way to the end",
+          "offerit": "Put it on the most senior person's plate",
+          "askname": "Ask what it's called, and take it",
+          "rps": "Suggest rock-paper-scissors for it"
+        }
+      },
+      "noraebang": {
+        "title": "Round two is a noraebang. You're up next.",
+        "description": "Saying you can't sing is part of the order of things.",
+        "options": {
+          "knowone": "Sing the one song you actually know, properly",
+          "singalong": "Pick something everyone can join",
+          "learnit": "Try a Korean song you learned for this",
+          "dancefirst": "Stand up and dance before you sing"
+        }
       }
     },
     "lift": {
-      "title": "Three minutes late. The lift doors are closing.",
-      "description": "There's someone inside, and they've seen you.",
-      "options": {
-        "run": "Run. Get a hand in the gap",
-        "wave": "Wave and call “hold it!”",
-        "wait": "Let it go and take the next one",
-        "stairs": "Turn for the stairs"
+      "closing": {
+        "title": "Three minutes late. The lift doors are closing.",
+        "description": "There's someone inside, and they've seen you.",
+        "options": {
+          "run": "Run. Get a hand in the gap",
+          "wave": "Wave and call “hold it!”",
+          "wait": "Let it go and take the next one",
+          "stairs": "Turn for the stairs"
+        }
+      },
+      "full": {
+        "title": "A full lift, and there's just about room for one more.",
+        "description": "The display says there's capacity. Whether you get in is a separate question.",
+        "options": {
+          "squeeze": "Get in. One more fits",
+          "sorry": "“Sorry —” and you edge in",
+          "next": "Watch it close and wait",
+          "silentin": "Get in without a word. Nobody looks up"
+        }
+      },
+      "button": {
+        "title": "Someone behind you asks you to press their floor.",
+        "description": "Stand by the buttons and that floor becomes your job.",
+        "options": {
+          "askfloor": "“Which floor?” you ask, loudly",
+          "smilepress": "Press it with a smile",
+          "quietpress": "Press it without a word",
+          "already": "You already pressed it"
+        }
       }
     },
     "market": {
-      "title": "The market 아주머니 adds one more and waves your money away.",
-      "description": "The extra is normal here, and refusing it is the part that offends.",
-      "options": {
-        "insist": "Insist on paying for it anyway",
-        "accept": "Thank her, loudly",
-        "return": "Come back next time with something",
-        "regular": "Promise she's the only one you'll buy from"
+      "extra": {
+        "title": "The market 아주머니 adds one more and waves your money away.",
+        "description": "The extra is normal here, and refusing it is the part that offends.",
+        "options": {
+          "insist": "Insist on paying for it anyway",
+          "accept": "Thank her, loudly",
+          "return": "Come back next time with something",
+          "regular": "Promise she's the only one you'll buy from"
+        }
+      },
+      "haggle": {
+        "title": "This is the moment where you'd ask for a better price.",
+        "description": "In a market, haggling is nearer to a greeting than to rudeness.",
+        "options": {
+          "asked": "Pay what was asked",
+          "smileask": "Smile and ask for a little off",
+          "buymore": "Buy another and pay full price",
+          "checkfirst": "Go and check the next stall first"
+        }
+      },
+      "change": {
+        "title": "You count your change and there's too much of it.",
+        "description": "Plenty of stalls are still cash, and the arithmetic is done by hand.",
+        "options": {
+          "goback": "Go straight back and return it",
+          "handback": "Press it back into her hand, smiling",
+          "nexttime": "Put it towards next time",
+          "countit": "Count it again to be sure how much"
+        }
       }
     },
     "evening": {
-      "title": "Your last evening in Korea. You can be anywhere.",
-      "description": "One day left, and room for exactly one place.",
-      "options": {
-        "hangang": "The Han. Under a bridge, watching the sun go",
-        "bukhansan": "The mountain. Somewhere with only wind in the trees",
-        "sea": "The sea. First train out to the coast",
-        "alley": "The alley near you, with the flower shop and the bakery"
+      "lastnight": {
+        "title": "Your last evening in Korea. You can be anywhere.",
+        "description": "One day left, and room for exactly one place.",
+        "options": {
+          "hangang": "The Han. Under a bridge, watching the sun go",
+          "bukhansan": "The mountain. Somewhere with only wind in the trees",
+          "sea": "The sea. First train out to the coast",
+          "alley": "The alley near you, with the flower shop and the bakery"
+        }
+      },
+      "photo": {
+        "title": "If you could keep one photograph, which one?",
+        "description": "There are a thousand on the phone and one in the memory.",
+        "options": {
+          "bridge": "The river and the sky, from the bridge",
+          "throughtrees": "Light coming through the trees",
+          "wintersun": "The sun over a winter sea",
+          "wallflower": "Flowers on an alley wall"
+        }
+      },
+      "weather": {
+        "title": "Pick the best weather you had while you were here.",
+        "description": "Korea's four seasons are distinct enough that the weather you loved is the season you loved.",
+        "options": {
+          "summerwind": "A summer evening with wind off the river",
+          "autumnleaves": "Autumn, when the mountain turned",
+          "winterclear": "A cold, clear winter morning",
+          "springday": "A spring afternoon with everything in bloom"
+        }
       }
     }
   },
@@ -287,26 +419,74 @@
     "short": "someone who'd rather be understood fast",
     "korean": "someone who wants to be called by this place's name for them",
     "whatever": "someone happy to be called anything",
+    "repeat": "someone who holds on to their own name",
+    "adopt": "someone who'll take a new one",
+    "nod": "someone who doesn't bother correcting it",
+    "prettier": "someone who picks the prettier version",
+    "usual": "someone who sticks with what they chose",
+    "newthing": "someone who asks what's new",
+    "sameseat": "someone with a seat of their own",
+    "theirname": "someone who learns your name first",
     "standup": "someone who moves before they speak",
     "tap": "someone who says the thing out loud",
     "gesture": "someone who fixes it without a fuss",
     "pretend": "someone who watches first",
+    "still": "someone who stays put through the awkward bit",
+    "wake": "someone who'd rather just say it",
+    "shift": "someone who fixes it so nobody notices",
+    "almost": "someone who nearly makes the joke",
+    "walkthem": "someone who takes you all the way there",
+    "honest": "someone who tells you only what they know",
+    "mapit": "someone who works it out with you",
+    "wherefrom": "someone curious first",
     "twohands": "someone who does it the way it's done",
     "pourback": "someone who returns a kindness on the spot",
     "ask": "someone who wants to know why",
     "toast": "someone who warms the room up",
+    "leaveit": "someone who lets it sit",
+    "offerit": "someone who serves the table first",
+    "askname": "someone who asks, then takes it",
+    "rps": "someone who turns it into a game",
+    "knowone": "someone who does one thing properly",
+    "singalong": "someone who picks what everyone can join",
+    "learnit": "someone who learned it for this",
+    "dancefirst": "someone who dances before they sing",
     "run": "someone who runs first",
     "wave": "someone who asks with a smile",
     "wait": "someone in no hurry",
     "stairs": "someone who sorts it out alone",
+    "squeeze": "someone who makes room",
+    "sorry": "someone who apologises first",
+    "next": "someone who waits for the next one",
+    "silentin": "someone who gets on quietly",
+    "askfloor": "someone who just asks",
+    "smilepress": "someone who does it with a smile",
+    "quietpress": "someone who does it without a word",
+    "already": "someone who did it already",
     "insist": "someone who won't be in anyone's debt",
     "accept": "someone who says thank you loudly",
     "return": "someone who remembers what they were given",
     "regular": "someone who picks one place and stays",
+    "asked": "someone who pays what was asked",
+    "smileask": "someone who asks nicely",
+    "buymore": "someone who buys more instead",
+    "checkfirst": "someone who looks around first",
+    "goback": "someone who turns straight back",
+    "handback": "someone who gives it back smiling",
+    "nexttime": "someone who leaves it for next time",
+    "countit": "someone who counts before moving",
     "hangang": "someone who loses time by the water",
     "bukhansan": "someone who goes somewhere quiet",
     "sea": "someone who'll travel for it",
-    "alley": "someone who finds it close to home"
+    "alley": "someone who finds it close to home",
+    "bridge": "someone who frames the wide shot",
+    "throughtrees": "someone who notices the light",
+    "wintersun": "someone who goes out in the cold",
+    "wallflower": "someone who notices the small thing",
+    "summerwind": "someone who remembers the wind",
+    "autumnleaves": "someone who remembers the colour",
+    "winterclear": "someone who likes it clear",
+    "springday": "someone waiting for spring"
   },
   "tags": {
     "vibes": {

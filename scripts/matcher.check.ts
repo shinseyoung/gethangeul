@@ -3,7 +3,7 @@
 // Run with: npm run check
 import { readOnset } from '../src/utils/soundBridge';
 import { matchNames, type MatchAnswers } from '../src/utils/nameMatcher';
-import { SITUATIONS, type Answers } from '../src/data/situations';
+import { SITUATIONS, VARIANT_COUNT, type Answers } from '../src/data/situations';
 import { choseongOf } from '../src/utils/soundBridge';
 import { NAME_DATABASE } from '../src/data/nameDatabase';
 import en from '../src/data/locales/en/common.json';
@@ -54,25 +54,44 @@ const POOL: Record<string, Set<string>> = {
 
 ok('six situations', SITUATIONS.length === 6, SITUATIONS.length);
 ok('situation ids are unique', new Set(SITUATIONS.map((s) => s.id)).size === 6);
-ok('four options each', SITUATIONS.every((s) => s.options.length === 4));
-ok('option ids are unique across the six',
-  new Set(SITUATIONS.flatMap((s) => s.options.map((o) => o.id))).size === 24);
+ok('four tag sets each', SITUATIONS.every((s) => s.tags.length === 4));
 ok('every option moves at least one tag',
-  SITUATIONS.every((s) => s.options.every((o) => o.tags.length > 0)));
+  SITUATIONS.every((s) => s.tags.every((tags) => tags.length > 0)));
+
+/* Each situation is written three ways and a visit gets one. The tags sit on
+   the situation rather than the telling, so answering first always puts the
+   same tags on the table — which is why the 4,096-set walk below is still a
+   walk of 4,096 and not of 4,096 x 3^6, and why a shared card reproduces for
+   someone reading different scenes than the person who sent it. */
+ok('every situation is written the same number of ways',
+  SITUATIONS.every((s) => s.variants.length === VARIANT_COUNT), VARIANT_COUNT);
+ok('more than one telling, or there was no point',
+  VARIANT_COUNT > 1, VARIANT_COUNT);
+ok('every telling offers four options',
+  SITUATIONS.every((s) => s.variants.every((x) => x.options.length === 4)));
+ok('variant ids are unique within their situation',
+  SITUATIONS.every((s) => new Set(s.variants.map((x) => x.id)).size === s.variants.length));
+
+/* the reasons dictionary is keyed by option id alone, so a collision between
+   two tellings would print one telling's line for the other's answer */
+const OPTION_IDS = SITUATIONS.flatMap((s) => s.variants.flatMap((x) => x.options));
+ok('option ids are unique across every telling of every situation',
+  new Set(OPTION_IDS).size === OPTION_IDS.length,
+  OPTION_IDS.filter((id, i) => OPTION_IDS.indexOf(id) !== i));
 
 for (const situation of SITUATIONS) {
   const pool = POOL[situation.axis];
-  for (const option of situation.options) {
-    const unknown = option.tags.filter((tag) => !pool.has(tag));
-    ok(`${situation.id}.${option.id} references only tags names carry`,
+  situation.tags.forEach((tags, i) => {
+    const unknown = tags.filter((tag) => !pool.has(tag));
+    ok(`${situation.id} option ${i} references only tags names carry`,
       unknown.length === 0, unknown);
-  }
+  });
 }
 
 // a tag nothing offers is a tag names can be narrowed by and never selected for
 for (const axis of ['vibes', 'personalities', 'nature'] as const) {
   const offered = new Set(SITUATIONS.filter((s) => s.axis === axis)
-    .flatMap((s) => s.options.flatMap((o) => o.tags)));
+    .flatMap((s) => s.tags.flat()));
   const missed = [...POOL[axis]].filter((tag) => !offered.has(tag));
   ok(`every ${axis} tag is offered by some option`, missed.length === 0, missed);
 }
@@ -171,18 +190,21 @@ for (let situation = 0; situation < SITUATIONS.length; situation += 1) {
 for (const [lang, bundle] of Object.entries({ en, ko, vi, th })) {
   const b = bundle as Record<string, any>;
   for (const situation of SITUATIONS) {
-    const block = b.situations?.[situation.id];
-    ok(`${lang}: situations.${situation.id}.title`,
-      typeof block?.title === 'string' && block.title.length > 0);
-    ok(`${lang}: situations.${situation.id}.description`,
-      typeof block?.description === 'string' && block.description.length > 0);
-    for (const option of situation.options) {
-      ok(`${lang}: situations.${situation.id}.options.${option.id}`,
-        typeof block?.options?.[option.id] === 'string' && block.options[option.id].length > 0);
-      // the card names the answer, not the question, so every option needs one
-      ok(`${lang}: reasons.${option.id}`,
-        typeof b.reasons?.[option.id] === 'string' && b.reasons[option.id].length > 0);
+    for (const variant of situation.variants) {
+      const block = b.situations?.[situation.id]?.[variant.id];
+      ok(`${lang}: situations.${situation.id}.${variant.id}.title`,
+        typeof block?.title === 'string' && block.title.length > 0);
+      ok(`${lang}: situations.${situation.id}.${variant.id}.description`,
+        typeof block?.description === 'string' && block.description.length > 0);
+      for (const optionId of variant.options) {
+        ok(`${lang}: situations.${situation.id}.${variant.id}.options.${optionId}`,
+          typeof block?.options?.[optionId] === 'string' && block.options[optionId].length > 0);
+        // the card names the answer, not the question, so every option needs one
+        ok(`${lang}: reasons.${optionId}`,
+          typeof b.reasons?.[optionId] === 'string' && b.reasons[optionId].length > 0);
+      }
     }
+
   }
 
   // every tag a name carries can now reach a chip on the card — including the

@@ -18,11 +18,15 @@ import Button, { ArrowLeft, ArrowRight } from '../components/Button';
  * about a barista is decoration pretending to be information.
  */
 export default function StepOptions({ step }: { step: QuestionStep }) {
-  const { nameAnswers, setNameAnswer, next, prev } = useFlowStore();
+  const { nameAnswers, nameVariants, setNameAnswer, next, prev } = useFlowStore();
   const { t } = useTranslation();
 
   const index = QUESTION_STEPS.indexOf(step);
   const situation = SITUATIONS[index];
+  /* one of three tellings of the same question. Which one changes nothing about
+     the answer: the tags sit on the situation, not on the telling. */
+  const variant = situation.variants[nameVariants[index] ?? 0];
+  const key = `situations.${situation.id}.${variant.id}`;
   const selected = nameAnswers[index];
 
   return (
@@ -33,21 +37,21 @@ export default function StepOptions({ step }: { step: QuestionStep }) {
         {/* one block per sentence: a situation is where you are and then what is
             happening, and the two wrapping together read as one run-on */}
         <h2 className="mb-2.5 -ml-[0.035em] flex flex-col text-pretty font-disp text-[29px] leading-[1.1] tracking-tight text-ink md:text-[38px]">
-          {sentences(String(t(`situations.${situation.id}.title`))).map((line) => (
+          {sentences(String(t(`${key}.title`))).map((line) => (
             <span key={line} className="block">{line}</span>
           ))}
         </h2>
         <p className="text-[14px] leading-relaxed text-ink-3 md:text-[15px]">
-          {t(`situations.${situation.id}.description`)}
+          {t(`${key}.description`)}
         </p>
       </div>
 
       <div className="grid gap-2.5">
-        {situation.options.map((option, o) => {
+        {variant.options.map((optionId, o) => {
           const on = selected === o;
           return (
             <button
-              key={option.id}
+              key={optionId}
               type="button"
               aria-pressed={on}
               onClick={() => setNameAnswer(index, o)}
@@ -60,7 +64,7 @@ export default function StepOptions({ step }: { step: QuestionStep }) {
               }`}
             >
               <span className={`min-w-0 flex-1 text-balance font-disp text-[17px] leading-snug md:text-[18px] ${on ? 'text-ink' : 'text-ink-2'}`}>
-                {t(`situations.${situation.id}.options.${option.id}`)}
+                {t(`${key}.options.${optionId}`)}
               </span>
               <CheckMark on={on} />
             </button>

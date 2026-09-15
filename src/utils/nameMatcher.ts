@@ -159,7 +159,7 @@ const CEILING: Record<string, number> = Object.fromEntries(
   NAME_DATABASE.map((name) => [
     name.id,
     Math.sqrt(SITUATIONS.reduce((total, situation) => total + Math.max(
-      ...situation.options.map((o) => o.tags
+      ...situation.tags.map((tags) => tags
         .filter((t) => name[situation.axis].includes(t))
         .reduce((sum, t) => sum + (IDF[t] ?? 0), 0)),
     ), 0)) || 1,

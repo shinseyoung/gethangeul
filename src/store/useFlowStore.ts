@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import type { Genre } from '../data/kdramaScenes';
-import type { Answers } from '../data/situations';
+import { drawVariants, type Answers, type Variants } from '../data/situations';
 
 export type Language = 'ko' | 'en' | 'vi' | 'th';
 
@@ -94,6 +94,11 @@ interface FlowState {
   gender: 'male' | 'female' | 'neutral' | null;
   /** one option index per situation, null until answered */
   nameAnswers: Answers;
+  /* Which telling of each situation this visit is getting. Drawn once, not
+     per render, so stepping back and forward does not reshuffle the quiz
+     under the visitor. Only the wording changes: the tags belong to the
+     situation, so a shared card still reproduces for whoever opens it. */
+  nameVariants: Variants;
   /** null until the surname screen resolves one; never null past it */
   surnameId: string | null;
 
@@ -173,6 +178,7 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   givenName: '',
   gender: null,
   nameAnswers: Array(6).fill(null),
+  nameVariants: drawVariants(),
   surnameId: null,
   pairA: '',
   pairB: '',
@@ -264,5 +270,7 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   restart: () => set({
     step: 'landing', givenName: '', gender: null,
     nameAnswers: Array(6).fill(null), surnameId: null,
+    // starting over draws again: that is the whole point of writing three
+    nameVariants: drawVariants(),
   }),
 }));

@@ -5,7 +5,7 @@ import { useMatches } from '../hooks/useMatches';
 import { useSurname } from '../hooks/useSurname';
 import { useImageShare } from '../hooks/useImageShare';
 import OptionMark, { markColor } from '../components/OptionMark';
-import { SITUATIONS, profileOf } from '../data/situations';
+import { SITUATIONS, optionIdAt, profileOf } from '../data/situations';
 import MountainWash, { SEASON_WASH } from '../components/MountainWash';
 import AdSlot from '../components/AdSlot';
 import Button from '../components/Button';
@@ -69,7 +69,7 @@ function useSpeech(text: string) {
 }
 
 export default function StepResult() {
-  const { nameAnswers, gender, restart, setStep, setPair, setTool } = useFlowStore();
+  const { nameAnswers, nameVariants, gender, restart, setStep, setPair, setTool } = useFlowStore();
   const { t } = useTranslation();
   const { matches, sound } = useMatches();
   const { surname } = useSurname();
@@ -109,8 +109,8 @@ export default function StepResult() {
     .slice(0, 2)
     .map((id) => {
       const i = SITUATIONS.findIndex((x) => x.id === id);
-      const option = SITUATIONS[i].options[nameAnswers[i] ?? -1];
-      return option ? String(t(`reasons.${option.id}`)) : null;
+      const optionId = optionIdAt(i, nameVariants[i] ?? 0, nameAnswers[i] ?? -1);
+      return optionId ? String(t(`reasons.${optionId}`)) : null;
     })
     .filter(Boolean) as string[];
 
