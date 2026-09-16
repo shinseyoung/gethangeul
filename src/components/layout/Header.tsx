@@ -56,9 +56,9 @@ function LanguageRow({
 /**
  * The rooms, in two groups.
  *
- * The split is by what the room is *about*. All five ask for a name — the
- * fortune and the drama included — so needing one is no kind of line. The line
- * is whether the name is the subject or you are: the first three read a name,
+ * The split is by what the room is *about*. All five need a name — the fortune
+ * and the drama included — so needing one is no kind of line. The line is
+ * whether the name is the subject or you are: the first three read the name,
  * the last two read the person carrying it. A 사주 or a personality test walks
  * into the second without argument.
  *
@@ -72,7 +72,7 @@ const GROUPS = [
 ] as const;
 
 export function Header() {
-  const { lang, setLang, langAutoPicked, dismissLangHint, tool, setTool } = useFlowStore();
+  const { lang, setLang, langAutoPicked, dismissLangHint, tool, setTool, koreanName } = useFlowStore();
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
@@ -142,9 +142,14 @@ export function Header() {
             inside it, so the header says what kind of thing you are doing and
             where the rest of it lives. Measured at 375px — logo 94, these two
             124, language 87 — which leaves 22px of the bar unused, so the two
-            group words have to stay short. */}
+            group words have to stay short.
+
+            Neither is here until there is a name. Every room behind them reads
+            one, so to a visitor who has not got one yet they lead only to a
+            field asking for it — which is the split this was meant to end.
+            The landing page is the way in; the header is the way back. */}
         <div className="flex items-center gap-1" ref={roomsRef}>
-          {GROUPS.map((group) => {
+          {(koreanName ? GROUPS : []).map((group) => {
             const here = group.tools.includes(tool);
             const open = openGroup === group.id;
             return (
