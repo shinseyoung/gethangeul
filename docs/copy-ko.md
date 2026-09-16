@@ -4,27 +4,35 @@
 각 줄 앞의 `[키]`는 건드리지 마시고, 그 뒤 문장만 바꿔 주세요.
 나머지 3개 언어(en/vi/th)는 한국어 확정된 뒤에 맞추겠습니다.
 
+0부와 1부는 보내주신 원고가 반영된 상태입니다.
+`[reasons.*]` 줄은 제가 새로 맞춰 쓴 것이라 손봐 주시면 좋겠습니다 — 결과 카드에
+`"{a}, {b}. 그래서 {이름}입니다."` 형태로 두 개가 뽑혀 들어갑니다.
+
 ---
 
 # 0부 · 이름짓기 — 앞뒤 화면
 
 ## 성별 고르기 (첫 화면)
 
-- [gender.eyebrow] 먼저
-- [gender.title] 누구의 이름인가요?
-- [gender.sub] 후보에 오를 이름 자체가 갈리는 질문이라, 다른 것보다 먼저 묻습니다.
+- [gender.eyebrow] 성별
+- [gender.title] 어떤 이름을 찾아볼까요?
+- [gender.sub] 이름에 따라 자연스럽게 들리는 느낌이 달라요.
   - [options.gender.female] 여성
-    [gender.note.female] 한국 사람이 여자 이름으로 읽는 이름들.
+    [gender.note.female] 보통 한국에서 여자 이름으로 들리는 이름들.
   - [options.gender.male] 남성
-    [gender.note.male] 한국 사람이 남자 이름으로 읽는 이름들.
+    [gender.note.male] 보통 한국에서 남자 이름으로 들리는 이름들.
   - [options.gender.neutral] 성별 무관
-    [gender.note.neutral] 어느 쪽으로도 읽히는 이름들. 좋은 이름이 여기 꽤 많습니다.
+    [gender.note.neutral] 어느 쪽으로도 자연스럽게 들리는 이름들.
 
 ## 이름 세 개 중 고르기 (상황 질문 다음)
 
-- [pick.eyebrow] 이름 세 개
-- [pick.title] 어느 쪽이 내 이름인가요?
-- [pick.sub] 셋 다 답에서 나온 이름입니다. 한 번씩 소리 내어 읽어 보세요. 대개 거기서 갈립니다.
+- [pick.eyebrow] 이름 후보
+- [pick.title] 당신의 이름을 골라주세요.
+- [pick.sub] 셋 다 당신의 답에서 나온 이름이에요. 한 번씩 소리 내어 보세요.
+
+## 결과 카드의 한 줄
+
+- [result.because] {a}, {b}. 그래서 {name}입니다.
 
 ## 진행 막대 라벨
 
@@ -40,95 +48,133 @@
 # 1부 · 이름짓기 — 상황 질문
 
 여섯 개 상황이 순서대로 나오고, 상황마다 표현이 세 가지입니다.
-접속할 때마다 셋 중 하나가 뽑힙니다 — 장소는 같고 문장만 달라집니다.
-네 개의 보기는 어느 표현에서든 같은 것을 가리키므로, 순서와 뜻은 유지해 주세요.
+접속할 때마다 셋 중 하나가 뽑힙니다.
+
+보기 아래 들여쓴 `[reasons.*]` 는 그 보기를 고른 사람을 한마디로 말하는 줄입니다.
+결과 카드에 두 개가 뽑혀 나가니, 보기와 짝이 맞게 읽히면 됩니다.
 
 ## 1. 카페  `cup`
 
 ### 표현 order
 
-- [cup.order.title] 카페에서 이름을 묻습니다. 컵에 뭐라고 적을까요?
-- [cup.order.description] 한국 카페는 진동벨 대신 이름을 부르는 데가 많습니다. 외국 이름이면 여기서 한 번 멈칫하게 되고요.
-  - [cup.order.own] 내 이름 그대로. 철자까지 불러 준다
-  - [cup.order.short] 짧게 줄여서. 쓰기 쉬운 걸로
-  - [cup.order.korean] 요즘 써 보는 한국 이름으로
-  - [cup.order.whatever] 들리는 대로 적어 주세요
+- [cup.order.title] 카페에 자리가 생겼습니다. 어디에 앉을까요?
+- [cup.order.description] 빈자리가 몇 군데 보입니다. 눈에 먼저 들어오는 곳은 어디인가요?
+  - [cup.order.own] 창가 쪽, 밖이 잘 보이는 자리
+    [reasons.own] 밖을 보고 앉는 사람
+  - [cup.order.short] 사람들이 오가는 길목에 가까운 자리
+    [reasons.short] 사람 오가는 걸 보는 사람
+  - [cup.order.korean] 구석진 곳, 조용히 앉을 수 있는 자리
+    [reasons.korean] 조용한 구석을 찾는 사람
+  - [cup.order.whatever] 가운데쯤, 어느 자리에서나 주변이 보이는 곳
+    [reasons.whatever] 가운데가 편한 사람
 
 ### 표현 mispronounce
 
-- [cup.mispronounce.title] 직원이 이름을 불렀는데, 내 이름이 아닌 것 같습니다.
-- [cup.mispronounce.description] 한국어에 없는 소리는 제일 가까운 소리로 바뀝니다. 대부분은 악의가 아니라 발음의 문제예요.
-  - [cup.mispronounce.repeat] 또박또박 한 번 더 말해 준다
-  - [cup.mispronounce.adopt] 웃으면서 “그것도 좋은데요” 한다
-  - [cup.mispronounce.nod] 고개만 끄덕이고 받아 온다
-  - [cup.mispronounce.prettier] 그 발음이 더 예쁘다고 한다
+- [cup.mispronounce.title] 카페에 앉아 있는데 옆자리 사람이 먼저 말을 겁니다.
+- [cup.mispronounce.description] 처음 보는 사람인데, 생각보다 자연스럽게 말을 걸어왔습니다.
+  - [cup.mispronounce.repeat] 웃으면서 자연스럽게 받아 준다
+    [reasons.repeat] 웃으면서 받아 주는 사람
+  - [cup.mispronounce.adopt] 짧게 대답하고 다시 내 할 일을 한다
+    [reasons.adopt] 제 할 일로 돌아오는 사람
+  - [cup.mispronounce.nod] 먼저 얼굴을 확인한다
+    [reasons.nod] 먼저 얼굴부터 보는 사람
+  - [cup.mispronounce.prettier] 무시한다
+    [reasons.prettier] 굳이 대꾸하지 않는 사람
 
 ### 표현 regular
 
-- [cup.regular.title] 매일 가는 카페입니다. 이제 직원이 당신을 압니다.
-- [cup.regular.description] 단골이 되면 주문을 안 해도 나오는 집이 생깁니다.
-  - [cup.regular.usual] 이름 말고 “늘 마시던 걸로” 한다
-  - [cup.regular.newthing] 새로 나온 게 뭔지부터 물어본다
-  - [cup.regular.sameseat] 늘 앉던 자리로 그냥 간다
-  - [cup.regular.theirname] 직원 이름표를 먼저 외워 뒀다
+- [cup.regular.title] 카페에서 혼자 시간을 보내고 있습니다. 누군가 옆자리에 앉았습니다.
+- [cup.regular.description] 자리를 옮길 수도 있고, 그냥 있을 수도 있습니다.
+  - [cup.regular.usual] 그대로 앉아 있는다
+    [reasons.usual] 자리를 안 옮기는 사람
+  - [cup.regular.newthing] 다른 자리로 옮긴다
+    [reasons.newthing] 슬쩍 자리를 옮기는 사람
+  - [cup.regular.sameseat] 먼저 얼굴을 확인한다.
+    [reasons.sameseat] 먼저 얼굴부터 보는 사람
+  - [cup.regular.theirname] 옆자리에 앉은 사람에게 먼저 말을 건다
+    [reasons.theirname] 먼저 말을 거는 사람
 
 ## 2. 막차  `train`
 
 ### 표현 grandmother
 
 - [train.grandmother.title] 막차입니다. 앞에 할머니가 서 계십니다.
-- [train.grandmother.description] 자리는 하나 남았고, 다들 휴대폰만 보고 있습니다.
-  - [train.grandmother.standup] 말없이 일어나서 비켜 드린다
-  - [train.grandmother.tap] “여기 앉으세요” 하고 먼저 말한다
-  - [train.grandmother.gesture] 눈짓으로 자리를 가리킨다
-  - [train.grandmother.pretend] 옆 사람이 일어날 때까지 기다려 본다
+- [train.grandmother.description] 자리는 이미 다 찼고, 아무도 먼저 움직이지 않습니다.
+  - [train.grandmother.standup] 말없이 일어나 자리를 내어 드린다
+    [reasons.standup] 말보다 먼저 몸이 움직이는 사람
+  - [train.grandmother.tap] 옆 사람에게 눈치를 준다
+    [reasons.tap] 옆 사람에게 눈치를 주는 사람
+  - [train.grandmother.gesture] 일단 상황을 지켜본다
+    [reasons.gesture] 일단 지켜보는 사람
+  - [train.grandmother.pretend] 자는 척을 한다
+    [reasons.pretend] 모른 척이 편한 사람
 
 ### 표현 sleeper
 
 - [train.sleeper.title] 옆 사람이 잠들면서 당신 어깨에 기댔습니다.
-- [train.sleeper.description] 퇴근길 지하철에서 꽤 흔한 일이고, 대부분 아무도 깨우지 않습니다.
-  - [train.sleeper.still] 안 움직이고 그대로 있는다
-  - [train.sleeper.wake] 살짝 깨워서 어디서 내리는지 묻는다
-  - [train.sleeper.shift] 자세만 조용히 고쳐 앉는다
-  - [train.sleeper.almost] 사진 찍을까 하다가 만다
+- [train.sleeper.description] 깨울지, 그냥 둘지 잠깐 고민하게 됩니다.
+  - [train.sleeper.still] 그냥 그대로 있는다
+    [reasons.still] 불편해도 가만있는 사람
+  - [train.sleeper.wake] 살짝 깨워서 자리를 바로잡는다
+    [reasons.wake] 솔직하게 깨우는 사람
+  - [train.sleeper.shift] 조용히 자세만 고쳐 앉는다
+    [reasons.shift] 티 안 나게 고쳐 주는 사람
+  - [train.sleeper.almost] 어깨에서 살짝 밀어내고 자세를 바로잡는다
+    [reasons.almost] 말없이 밀어내는 사람
 
 ### 표현 lost
 
-- [train.lost.title] 누가 길을 묻는데 한국어가 잘 안 통합니다.
-- [train.lost.description] 역 안에서 길 잃기는 서울에서 통과의례에 가깝습니다.
-  - [train.lost.walkthem] 가는 방향까지 같이 걸어 준다
-  - [train.lost.honest] 아는 만큼만 솔직하게 말해 준다
-  - [train.lost.mapit] 지도를 켜서 같이 들여다본다
-  - [train.lost.wherefrom] 어디서 왔는지부터 물어본다
+- [train.lost.title] 누가 길을 묻는데, 한국어가 잘 통하지 않습니다.
+- [train.lost.description] 지도를 켜면 금방 찾을 수도 있을 것 같습니다.
+  - [train.lost.walkthem] 가는 데까지 같이 걸어 준다
+    [reasons.walkthem] 끝까지 데려다주는 사람
+  - [train.lost.honest] 아는 만큼만 말해 준다
+    [reasons.honest] 아는 만큼만 말하는 사람
+  - [train.lost.mapit] 지도를 켜서 같이 찾아본다
+    [reasons.mapit] 같이 들여다보는 사람
+  - [train.lost.wherefrom] 도망간다
+    [reasons.wherefrom] 그 자리를 뜨는 사람
 
 ## 3. 회식  `dinner`
 
 ### 표현 pour
 
-- [dinner.pour.title] 회식 자리. 옆자리 동료가 잔을 채워 줍니다.
-- [dinner.pour.description] 한국에서는 술을 자기 잔에 따르지 않습니다. 받으면 돌려주는 게 순서고요.
-  - [dinner.pour.twohands] 두 손으로 받고, 고개를 살짝 돌려 마신다
-  - [dinner.pour.pourback] 바로 그 사람 잔을 채워 준다
-  - [dinner.pour.ask] 이 순서가 왜 이런지 물어본다
-  - [dinner.pour.toast] 잔을 들고 한마디 한다
+- [dinner.pour.title] 회식 자리입니다. 옆자리 동료가 잔을 채워 줍니다.
+- [dinner.pour.description] 옆자리 사람이 잔을 내밀었습니다.
+  - [dinner.pour.twohands] 바로 그 사람 잔을 채워 준다
+    [reasons.twohands] 바로 잔을 채워 주는 사람
+  - [dinner.pour.pourback] 따르면서 상대와 눈을 마주친다
+    [reasons.pourback] 눈을 맞추고 따르는 사람
+  - [dinner.pour.ask] 내 술부터 한 모금 마신다
+    [reasons.ask] 제 속도로 가는 사람
+  - [dinner.pour.toast] 못 본 척한다
+    [reasons.toast] 못 본 척하는 사람
 
 ### 표현 lastbite
 
-- [dinner.lastbite.title] 접시에 딱 한 점이 남았습니다. 아무도 안 집습니다.
-- [dinner.lastbite.description] 마지막 한 점에는 이름이 있습니다. 눈치 보다가 식는 그거요.
-  - [dinner.lastbite.leaveit] 그냥 둔다. 끝까지
+- [dinner.lastbite.title] 접시에 딱 한 점이 남았습니다.
+- [dinner.lastbite.description] 아무도 먼저 손을 대지 않고 있습니다.
+  - [dinner.lastbite.leaveit] 끝까지 그냥 둔다.
+    [reasons.leaveit] 끝까지 안 집는 사람
   - [dinner.lastbite.offerit] 제일 윗사람 앞접시에 놓아 드린다
-  - [dinner.lastbite.askname] 이게 뭐냐고 물으면서 집는다
+    [reasons.offerit] 윗사람부터 챙기는 사람
+  - [dinner.lastbite.askname] 자연스럽게 본인이 먹는다
+    [reasons.askname] 말없이 집는 사람
   - [dinner.lastbite.rps] 가위바위보 하자고 한다
+    [reasons.rps] 판을 만드는 사람
 
 ### 표현 noraebang
 
-- [dinner.noraebang.title] 2차는 노래방입니다. 다음 순서가 당신입니다.
-- [dinner.noraebang.description] 못한다고 빼는 것까지가 순서에 들어 있습니다.
+- [dinner.noraebang.title] 2차는 노래방입니다.
+- [dinner.noraebang.description] 다들 한 곡씩 부르고 있고, 이제 당신 차례입니다.
   - [dinner.noraebang.knowone] 아는 곡 하나를 정확하게 부른다
+    [reasons.knowone] 잘하는 걸 확실히 하는 사람
   - [dinner.noraebang.singalong] 다 같이 부를 수 있는 걸 고른다
-  - [dinner.noraebang.learnit] 한국 노래를 하나 배워서 해 본다
-  - [dinner.noraebang.dancefirst] 일어나서 춤부터 춘다
+    [reasons.singalong] 같이 할 걸 고르는 사람
+  - [dinner.noraebang.learnit] 노래를 잘 못한다고 말하고 안 부른다
+    [reasons.learnit] 못하는 건 못한다고 하는 사람
+  - [dinner.noraebang.dancefirst] 미리 화장실로 도망간다
+    [reasons.dancefirst] 미리 빠져나가는 사람
 
 ## 4. 엘리베이터  `lift`
 
@@ -137,89 +183,125 @@
 - [lift.closing.title] 3분 지각. 엘리베이터 문이 닫히고 있습니다.
 - [lift.closing.description] 안에 사람이 있고, 눈이 마주쳤습니다.
   - [lift.closing.run] 뛴다. 문틈에 손을 넣는다
-  - [lift.closing.wave] 손을 흔들며 “잠깐만요!”
+    [reasons.run] 일단 뛰고 보는 사람
+  - [lift.closing.wave] 손을 흔들며 “잠깐만요!”라고 외친다
+    [reasons.wave] 웃으면서 부탁하는 사람
   - [lift.closing.wait] 그냥 보낸다. 다음 거 탄다
+    [reasons.wait] 서두르지 않는 사람
   - [lift.closing.stairs] 계단으로 방향을 튼다
+    [reasons.stairs] 혼자 해결하는 사람
 
 ### 표현 full
 
-- [lift.full.title] 꽉 찬 엘리베이터. 한 자리가 애매하게 남았습니다.
-- [lift.full.description] 정원이 남았다고 표시가 떠도, 탈지 말지는 다른 문제입니다.
-  - [lift.full.squeeze] 탄다. 한 명쯤 더 들어간다
-  - [lift.full.sorry] “죄송합니다” 하면서 비집고 선다
-  - [lift.full.next] 문 닫히는 걸 보고 다음을 기다린다
-  - [lift.full.silentin] 말없이 탄다. 아무도 쳐다보지 않는다
+- [lift.full.title] 꽉 찬 엘리베이터. 한 사람 들어갈 자리는 남아 있습니다.
+- [lift.full.description] 문이 곧 닫힐 것 같습니다.
+  - [lift.full.squeeze] 그 틈으로 조용하게 쏙 들어간다
+    [reasons.squeeze] 비집고 들어가는 사람
+  - [lift.full.sorry] “죄송합니다.” 하면서 조심스럽게 들어간다
+    [reasons.sorry] 미안하다고 먼저 하는 사람
+  - [lift.full.next] 걸어가며 “기다려 주세요”라고 소리친다
+    [reasons.next] 기다려 달라고 말하는 사람
+  - [lift.full.silentin] 다음 엘리베이터를 기다린다
+    [reasons.silentin] 다음 걸 기다리는 사람
 
 ### 표현 button
 
-- [lift.button.title] 뒤에서 누가 층 좀 눌러 달라고 합니다.
-- [lift.button.description] 버튼 앞에 서면 그 층은 당신 담당이 됩니다.
-  - [lift.button.askfloor] “몇 층이요?” 하고 크게 묻는다
-  - [lift.button.smilepress] 웃으면서 눌러 준다
-  - [lift.button.quietpress] 말없이 눌러 준다
-  - [lift.button.already] 이미 눌러 놨다
+- [lift.button.title] 엘리베이터 안에서 뒤에 선 사람이 층을 눌러 달라고 합니다.
+- [lift.button.description] 당신은 버튼 앞에 서 있습니다.
+  - [lift.button.askfloor] 웃으면서 해당 층을 눌러 준다
+    [reasons.askfloor] 웃으면서 눌러 주는 사람
+  - [lift.button.smilepress] 말없이 해당 층을 눌러 준다
+    [reasons.smilepress] 말없이 눌러 주는 사람
+  - [lift.button.quietpress] 직접 손으로 버튼을 누르라고 말한다
+    [reasons.quietpress] 직접 하라고 말하는 사람
+  - [lift.button.already] 무시한다
+    [reasons.already] 굳이 나서지 않는 사람
 
 ## 5. 시장  `market`
 
 ### 표현 extra
 
-- [market.extra.title] 시장 아주머니가 하나 더 얹어 주고 돈은 안 받으십니다.
-- [market.extra.description] 덤은 여기서 흔한 일이고, 거절하면 오히려 서운해하십니다.
-  - [market.extra.insist] 그래도 값은 드리겠다고 한다
-  - [market.extra.accept] 고맙다고 크게 인사한다
-  - [market.extra.return] 다음에 뭐라도 들고 다시 온다
-  - [market.extra.regular] 이 집만 오겠다고 약속한다
+- [market.extra.title] 시장 아주머니가 하나를 더 얹어 주셨습니다. 돈은 받지 않으십니다.
+- [market.extra.description] 웃으면서 그냥 가져가라고 하십니다.
+  - [market.extra.insist] “돈 드릴게요.” 하고 돈을 건넨다
+    [reasons.insist] 빚은 안 지는 사람
+  - [market.extra.accept] “감사합니다.” 하고 웃으며 받는다
+    [reasons.accept] 고마운 건 크게 말하는 사람
+  - [market.extra.return] “그럼 이것도 하나 더 주세요.” 하고 농담한다
+    [reasons.return] 농담으로 받는 사람
+  - [market.extra.regular] 거절한다
+    [reasons.regular] 그냥 사양하는 사람
 
 ### 표현 haggle
 
-- [market.haggle.title] 값을 깎아 달라는 말이 나올 자리입니다.
-- [market.haggle.description] 시장에서는 흥정이 무례가 아니라 인사에 가깝습니다.
-  - [market.haggle.asked] 부르는 값 그대로 드린다
-  - [market.haggle.smileask] 웃으면서 조금만 깎아 달라고 해 본다
-  - [market.haggle.buymore] 하나 더 사면서 값은 그대로 치른다
-  - [market.haggle.checkfirst] 다른 가게 값을 먼저 보고 온다
+- [market.haggle.title] 가격표를 보니 생각보다 비쌉니다.
+- [market.haggle.description] 조금 깎아 달라고 말해도 괜찮을 것 같습니다.
+  - [market.haggle.asked] 그냥 적힌 가격을 그대로 낸다
+    [reasons.asked] 부르는 값을 그대로 내는 사람
+  - [market.haggle.smileask] “조금만 깎아 주실 수 있어요?” 하고 물어본다
+    [reasons.smileask] 웃으면서 물어보는 사람
+  - [market.haggle.buymore] 다른 가게 가격부터 확인해 본다
+    [reasons.buymore] 먼저 알아보는 사람
+  - [market.haggle.checkfirst] 사는 것을 포기한다
+    [reasons.checkfirst] 아니면 그만두는 사람
 
 ### 표현 change
 
-- [market.change.title] 거스름돈을 세어 보니 더 받았습니다.
-- [market.change.description] 현금을 쓰는 가게가 아직 많고, 계산은 손으로 합니다.
-  - [market.change.goback] 바로 돌아가서 돌려드린다
-  - [market.change.handback] 웃으면서 손에 쥐여 드린다
-  - [market.change.nexttime] 다음에 올 때 계산에 넣기로 한다
-  - [market.change.countit] 먼저 다시 세어서 얼마인지 확인한다
+- [market.change.title] 거스름돈을 세어 보니 돈을 더 받았습니다.
+- [market.change.description] 이미 집에 거의 도착한 상황입니다.
+  - [market.change.goback] 바로 가게로 돌아가 돌려드린다
+    [reasons.goback] 그 자리에서 돌려주는 사람
+  - [market.change.handback] 웃으면서 주머니에 넣는다
+    [reasons.handback] 웃으면서 넣어 두는 사람
+  - [market.change.nexttime] 다음에 가면 말씀드리기로 한다
+    [reasons.nexttime] 다음을 기약하는 사람
+  - [market.change.countit] 기부한다
+    [reasons.countit] 다른 데로 보내는 사람
 
 ## 6. 마지막 저녁  `evening`
 
 ### 표현 lastnight
 
-- [evening.lastnight.title] 한국에서의 마지막 저녁. 어디든 갈 수 있습니다.
-- [evening.lastnight.description] 하루가 남았고, 딱 한 군데만 고를 수 있습니다.
-  - [evening.lastnight.hangang] 한강. 다리 밑에 앉아서 해 지는 걸 본다
-  - [evening.lastnight.bukhansan] 산. 나무 사이로 바람 소리만 들리는 데
-  - [evening.lastnight.sea] 바다. 새벽 첫차로 을왕리까지
-  - [evening.lastnight.alley] 동네 골목. 꽃집이랑 빵집이 있는 그 길
+- [evening.lastnight.title] 한국에서 보내는 마지막 저녁입니다. 오늘은 어디로 갈까요?
+- [evening.lastnight.description] 오늘 하루가 끝나기 전에 한 곳만 갈 수 있습니다.
+  - [evening.lastnight.hangang] 한강. 천천히 걸으면서 해 지는 걸 본다
+    [reasons.hangang] 물가에서 시간이 잘 가는 사람
+  - [evening.lastnight.bukhansan] 산. 조용한 길을 따라 천천히 걷는다
+    [reasons.bukhansan] 조용한 데로 가는 사람
+  - [evening.lastnight.sea] 바다. 밤이 깊어질 때까지 앉아 있는다
+    [reasons.sea] 멀리까지 가 보는 사람
+  - [evening.lastnight.alley] 동네 골목. 가게들을 천천히 구경하며 걷는다
+    [reasons.alley] 가까운 데서 찾는 사람
 
 ### 표현 photo
 
-- [evening.photo.title] 딱 한 장만 가져갈 수 있다면 어떤 사진일까요?
-- [evening.photo.description] 휴대폰에 천 장이 있어도 기억에 남는 건 한 장입니다.
-  - [evening.photo.bridge] 다리 위에서 본 강과 하늘
-  - [evening.photo.throughtrees] 나무 사이로 든 빛
-  - [evening.photo.wintersun] 겨울 바다 위에 뜬 해
-  - [evening.photo.wallflower] 골목 담장에 핀 꽃
+- [evening.photo.title] 마지막으로 사진 한 장만 남길 수 있다면요?
+- [evening.photo.description] 한국에서 본 것 중 하나만 남겨 간다면 어떤 장면일까요?
+  - [evening.photo.bridge] 다리 위에서 바라본 강과 하늘
+    [reasons.bridge] 넓은 걸 담는 사람
+  - [evening.photo.throughtrees] 나무 사이로 들어온 햇빛
+    [reasons.throughtrees] 빛을 보는 사람
+  - [evening.photo.wintersun] 겨울 바다 위로 떠오른 해
+    [reasons.wintersun] 추워도 나가는 사람
+  - [evening.photo.wallflower] 골목 담장에 피어 있던 꽃
+    [reasons.wallflower] 작은 걸 보는 사람
 
 ### 표현 weather
 
-- [evening.weather.title] 여기 사는 동안 제일 좋았던 날씨를 하나 고른다면.
-- [evening.weather.description] 한국은 네 계절이 뚜렷해서, 좋았던 날씨가 곧 좋았던 계절입니다.
-  - [evening.weather.summerwind] 강바람 불던 여름 저녁
-  - [evening.weather.autumnleaves] 산에 단풍 들던 가을
-  - [evening.weather.winterclear] 차갑고 맑던 겨울 아침
-  - [evening.weather.springday] 꽃 피던 봄날 오후
+- [evening.weather.title] 한국에서 가장 보고 싶은 날씨는 무엇인가요?
+- [evening.weather.description] 아직 한국에서 만나보지 못한 날씨도 괜찮아요.
+  - [evening.weather.summerwind] 한강에 바람이 부는 여름 저녁
+    [reasons.summerwind] 바람을 기억하는 사람
+  - [evening.weather.autumnleaves] 단풍으로 물든 가을의 산
+    [reasons.autumnleaves] 색을 기억하는 사람
+  - [evening.weather.winterclear] 눈이 내린 서울의 겨울 아침
+    [reasons.winterclear] 맑은 걸 좋아하는 사람
+  - [evening.weather.springday] 벚꽃이 피는 봄날의 거리
+    [reasons.springday] 봄을 기다리는 사람
 
 ---
 
-# 2부 · K-드라마 — 장면과 보기
+# 2부 · K-드라마 — 장면과 보기  (아직 손대지 않은 부분)
 
 장르마다 스물한 장면이 있고, 한 번 볼 때 그중 열두 장면을 지납니다.
 `{name}` 은 사용자의 이름이 들어가는 자리이니 지우지 마세요.
