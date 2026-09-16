@@ -18,6 +18,8 @@
 /** the stylesheet text, and each font file as a data URL — fetched once */
 let sheet: Promise<string> | null = null;
 const files = new Map<string, Promise<string>>();
+/** the finished CSS, built once per session and started before it is needed */
+let building: Promise<string> | null = null;
 
 const FACE = /@font-face[^}]*}/g;
 const URL_IN = /url\((https:\/\/fonts\.gstatic\.com[^)]+)\)/;
@@ -56,12 +58,34 @@ function needed(face: string, used: Set<number>): boolean {
 }
 
 /**
+ * Start building, if nothing has yet.
+ *
+ * Called while the card is on screen rather than when Save is pressed. Doing
+ * this work inline made a cold save take 111 seconds on the deployed site —
+ * thirty font files and a megabyte of base64 for html-to-image to chew on,
+ * with the button reading "저장 중..." the whole time. It is the same work
+ * either way; the difference is whether anyone is waiting for it.
+ */
+export function warmFontEmbed(node: HTMLElement): void {
+  if (!building) building = build(node);
+}
+
+/**
  * @font-face rules for everything `node` says, with the font files inlined.
  *
- * Returns '' if anything at all goes wrong — an export in the wrong font is
- * worth having; an export that throws is not.
+ * Returns '' if it is not ready in time or anything goes wrong. An export in
+ * the wrong font is worth having; one that never arrives is not, and the
+ * export has to stay quick whatever the network is doing.
  */
-export async function fontEmbedCSS(node: HTMLElement): Promise<string> {
+export function fontEmbedCSS(node: HTMLElement, within = 2000): Promise<string> {
+  warmFontEmbed(node);
+  return Promise.race([
+    building!.catch(() => ''),
+    new Promise<string>((resolve) => setTimeout(() => resolve(''), within)),
+  ]);
+}
+
+async function build(node: HTMLElement): Promise<string> {
   try {
     const href = googleHref();
     if (!href) return '';

@@ -1,11 +1,17 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { toPng } from 'html-to-image';
-import { fontEmbedCSS } from '../utils/fontEmbed';
+import { fontEmbedCSS, warmFontEmbed } from '../utils/fontEmbed';
 
 export const useImageShare = (fileName: string = '나의_한글_이름') => {
   const captureRef = useRef<HTMLDivElement>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
+
+  /* Every render, because the card appears when a name does rather than when
+     this mounts, and warming is a no-op after the first one that finds it. */
+  useEffect(() => {
+    if (captureRef.current) warmFontEmbed(captureRef.current);
+  });
 
   const generateImage = async () => {
     const node = captureRef.current;
