@@ -219,10 +219,19 @@ for (const [lang, bundle] of Object.entries({ en, ko, vi, th })) {
   ok(`${lang}: result.because names all three slots`,
     ['{a}', '{b}', '{name}'].every((slot) => String(b.result?.because ?? '').includes(slot)),
     b.result?.because);
-  ok(`${lang}: surname.gender_label`,
-    typeof b.surname?.gender_label === 'string' && b.surname.gender_label.length > 0);
-  ok(`${lang}: seven rail labels`, Object.keys(b.layout?.steps ?? {}).length === 7,
-    Object.keys(b.layout?.steps ?? {}).length);
+  /* One rail label per screen between the landing and the loading, keyed by
+     the screen rather than by its position: the numbering meant nothing the
+     moment the flow grew a gender screen at the front. */
+  const slots = ['gender', ...SITUATIONS.map((s) => s.id), 'pick', 'surname'];
+  for (const slot of slots) {
+    ok(`${lang}: layout.steps.${slot}`,
+      typeof b.layout?.steps?.[slot] === 'string' && b.layout.steps[slot].length > 0);
+  }
+  ok(`${lang}: no rail label outside the flow`,
+    Object.keys(b.layout?.steps ?? {}).length === slots.length,
+    Object.keys(b.layout?.steps ?? {}));
+  // gender moved to a screen of its own, so the surname screen's label is gone
+  ok(`${lang}: surname.gender_label is gone`, b.surname?.gender_label === undefined);
 
   // the four adjective grids are gone, not merely unused
   for (const group of ['vibe', 'personality', 'nature']) {

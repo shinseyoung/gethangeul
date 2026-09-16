@@ -8,13 +8,15 @@
   },
   "layout": {
     "steps": {
-      "1": "Café",
-      "2": "Last train",
-      "3": "Dinner",
-      "4": "Lift",
-      "5": "Market",
-      "6": "Last evening",
-      "7": "Family name"
+      "gender": "For",
+      "cup": "Café",
+      "train": "Last train",
+      "dinner": "Dinner",
+      "lift": "Lift",
+      "market": "Market",
+      "evening": "Last evening",
+      "pick": "Choose",
+      "surname": "Family name"
     },
     "buttons": {
       "prev": "Previous",
@@ -63,8 +65,7 @@
     "browse_fewer": "Show fewer",
     "share": "{share}% of Koreans",
     "share_rare": "Rare",
-    "suggested": "Suggested",
-    "gender_label": "Reads as"
+    "suggested": "Suggested"
   },
   "options": {
     "gender": {
@@ -492,5 +493,20 @@
       "title": "Star in your own drama",
       "desc": "Twelve scenes, then a poster."
     }
+  },
+  "gender": {
+    "eyebrow": "First",
+    "title": "Who is the name for?",
+    "sub": "It decides which names are on the table at all, so it comes before anything else.",
+    "note": {
+      "female": "Names Koreans read as a woman’s.",
+      "male": "Names Koreans read as a man’s.",
+      "neutral": "Names that go either way — a good many of the best ones do."
+    }
+  },
+  "pick": {
+    "eyebrow": "Three names",
+    "title": "Which one is yours?",
+    "sub": "All three came out of your answers. Say the sound of each out loud once — that is usually what decides it."
   }
 }

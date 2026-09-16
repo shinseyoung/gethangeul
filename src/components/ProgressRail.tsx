@@ -18,7 +18,10 @@ import { useTranslation } from '../hooks/useTranslation';
  * phone at any size worth reading, and a row of overlapping words is worse than
  * no words at all: the diamonds still say how far along you are.
  */
-const SLOTS = [...QUESTION_STEPS, 'surname'] as const;
+/* Every screen between the landing and the loading, in the order it comes.
+   Nine now: the two ends are the two decisions the flow is actually made of —
+   who the name is for, and which of the three offered names it is. */
+const SLOTS = ['gender', ...QUESTION_STEPS, 'pick', 'surname'] as const;
 type Slot = (typeof SLOTS)[number];
 
 export default function ProgressRail({ current }: { current: Slot }) {
@@ -48,7 +51,7 @@ export default function ProgressRail({ current }: { current: Slot }) {
                 i === index ? 'text-accent' : 'text-ink-4 max-sm:hidden'
               }`}
             >
-              {t(`layout.steps.${i + 1}`)}
+              {t(`layout.steps.${slot}`)}
             </span>
           </span>
           {i < last && (

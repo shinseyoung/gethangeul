@@ -17,7 +17,7 @@ import Button, { ArrowLeft, ArrowRight } from '../components/Button';
  * that it does. Sound narrows forty to a handful; the rest stay one tap away.
  */
 export default function StepSurname() {
-  const { givenName, lang, surnameId, setSurname, gender, setGender, next, prev } = useFlowStore();
+  const { givenName, lang, surnameId, setSurname, next, prev } = useFlowStore();
   const { t } = useTranslation();
   const { surname, suggestion, chosen } = useSurname();
 
@@ -87,33 +87,6 @@ export default function StepSurname() {
           {t('surname.title')}
         </h2>
         <p className="text-[14px] leading-relaxed text-ink-3 md:text-[15px]">{t('surname.sub')}</p>
-      </div>
-
-      {/* Gender used to be the first question, which set the form tone for
-          everything after it. It is the one genuinely administrative field in
-          the flow, so it sits here, where it reads as part of assembling a
-          name rather than as the first thing the site wants to know about you.
-          Leaving it unset is a real answer — it keeps the whole pool. */}
-      <div className="mb-7">
-        <span className="eyebrow mb-2 block text-[8.5px] text-ink-4">{t('surname.gender_label')}</span>
-        <div className="grid grid-cols-3 gap-2 sm:max-w-[380px]">
-          {(['female', 'male', 'neutral'] as const).map((g) => {
-            const on = gender === g;
-            return (
-              <button
-                key={g}
-                type="button"
-                aria-pressed={on}
-                onClick={() => setGender(on ? null : g)}
-                className={`focus-ring flex min-h-[46px] items-center justify-center rounded-2xl border-[1.5px] px-3 text-center font-disp text-[15px] transition-colors duration-150 ${
-                  on ? 'border-accent bg-accent/[0.05] text-ink' : 'border-rule bg-paper-hi text-ink-2 hover:border-rule-strong'
-                }`}
-              >
-                {t(`options.gender.${g}`)}
-              </button>
-            );
-          })}
-        </div>
       </div>
 
       {suggested.length > 0 ? (

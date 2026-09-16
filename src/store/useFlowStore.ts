@@ -12,7 +12,8 @@ export const LANGUAGES: { code: Language; endonym: string; english: string }[] =
 ];
 
 export const STEPS = [
-  'landing', 'cup', 'train', 'dinner', 'lift', 'market', 'evening', 'surname', 'loading', 'result',
+  'landing', 'gender', 'cup', 'train', 'dinner', 'lift', 'market', 'evening',
+  'pick', 'surname', 'loading', 'result',
 ] as const;
 export type StepId = (typeof STEPS)[number];
 
@@ -128,11 +129,16 @@ interface FlowState {
      room downstream of the name reads this and asks nothing. */
   koreanName: string;
   setKoreanName: (value: string) => void;
-  /* Not a question any more: it is the one genuinely administrative field
-     in the flow, and asking it first set the form tone for everything after.
-     It lives on the surname screen now, where it reads as part of assembling
-     a name rather than as the first thing the site wants to know about you. */
+  /* Back to the front, on a screen of its own.
+     It had been buried on the surname screen to keep the flow from opening
+     with a form. But it is a hard filter on the whole pool — answering it last
+     means the six situations were scored against names the visitor was never
+     going to be shown. Asked first, and with 성별 무관 a real answer rather
+     than a blank, it reads as the first thing the name is built from. */
   gender: 'male' | 'female' | 'neutral' | null;
+  /** which of the three offered names was taken; index into the match list */
+  picked: number;
+  setPicked: (index: number) => void;
   /** one option index per situation, null until answered */
   nameAnswers: Answers;
   /* Which telling of each situation this visit is getting. Drawn once, not
@@ -207,6 +213,8 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   lang: initialLang,
   langAutoPicked: fromPath === null && stored === null,
 
+  picked: 0,
+  setPicked: (picked) => set({ picked }),
   givenName: typeof window === 'undefined' ? '' : readStored(NAME_KEY),
   koreanName: typeof window === 'undefined' ? '' : readStored(KOREAN_KEY),
   setKoreanName: (koreanName) => {
@@ -304,7 +312,7 @@ export const useFlowStore = create<FlowState>((set, get) => ({
      every time someone walked from their result to the fortune room — and the
      quiz overwrites it the moment it settles on another one anyway. */
   restart: () => set({
-    step: 'landing', gender: null,
+    step: 'landing', gender: null, picked: 0,
     nameAnswers: Array(6).fill(null), surnameId: null,
     // starting over draws again: that is the whole point of writing three
     nameVariants: drawVariants(),

@@ -70,12 +70,15 @@ function useSpeech(text: string) {
 }
 
 export default function StepResult() {
-  const { nameAnswers, nameVariants, gender, restart, setStep, setTool, setKoreanName } = useFlowStore();
+  const { nameAnswers, nameVariants, gender, picked, restart, setStep, setTool, setKoreanName } = useFlowStore();
   const { t } = useTranslation();
   const { matches, sound } = useMatches();
   const { surname } = useSurname();
 
-  const match = matches[0];
+  /* the one the visitor took on the pick screen, not the one that scored
+     highest — those stopped being the same thing when the flow started
+     offering three */
+  const match = matches[picked] ?? matches[0];
 
   const name = match?.name;
   // Family name first, the way a Korean name is actually written and said.

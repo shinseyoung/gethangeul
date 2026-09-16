@@ -6,6 +6,40 @@
 
 ---
 
+# 0부 · 이름짓기 — 앞뒤 화면
+
+## 성별 고르기 (첫 화면)
+
+- [gender.eyebrow] 먼저
+- [gender.title] 누구의 이름인가요?
+- [gender.sub] 후보에 오를 이름 자체가 갈리는 질문이라, 다른 것보다 먼저 묻습니다.
+  - [options.gender.female] 여성
+    [gender.note.female] 한국 사람이 여자 이름으로 읽는 이름들.
+  - [options.gender.male] 남성
+    [gender.note.male] 한국 사람이 남자 이름으로 읽는 이름들.
+  - [options.gender.neutral] 성별 무관
+    [gender.note.neutral] 어느 쪽으로도 읽히는 이름들. 좋은 이름이 여기 꽤 많습니다.
+
+## 이름 세 개 중 고르기 (상황 질문 다음)
+
+- [pick.eyebrow] 이름 세 개
+- [pick.title] 어느 쪽이 내 이름인가요?
+- [pick.sub] 셋 다 답에서 나온 이름입니다. 한 번씩 소리 내어 읽어 보세요. 대개 거기서 갈립니다.
+
+## 진행 막대 라벨
+
+- [layout.steps.gender] 누구
+- [layout.steps.cup] 카페
+- [layout.steps.train] 막차
+- [layout.steps.dinner] 회식
+- [layout.steps.lift] 엘리베이터
+- [layout.steps.market] 시장
+- [layout.steps.evening] 마지막 저녁
+- [layout.steps.pick] 고르기
+- [layout.steps.surname] 성
+
+---
+
 # 1부 · 이름짓기 — 상황 질문
 
 여섯 개 상황이 순서대로 나오고, 상황마다 표현이 세 가지입니다.

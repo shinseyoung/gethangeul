@@ -8,13 +8,15 @@
   },
   "layout": {
     "steps": {
-      "1": "Quán cà phê",
-      "2": "Chuyến cuối",
-      "3": "Tiệc công ty",
-      "4": "Thang máy",
-      "5": "Chợ",
-      "6": "Tối cuối",
-      "7": "Họ"
+      "gender": "Cho ai",
+      "cup": "Quán cà phê",
+      "train": "Chuyến cuối",
+      "dinner": "Tiệc công ty",
+      "lift": "Thang máy",
+      "market": "Chợ",
+      "evening": "Tối cuối",
+      "pick": "Chọn",
+      "surname": "Họ"
     },
     "buttons": {
       "prev": "Quay lại",
@@ -63,8 +65,7 @@
     "browse_fewer": "Thu gọn",
     "share": "{share}% người Hàn",
     "share_rare": "Hiếm",
-    "suggested": "Gợi ý",
-    "gender_label": "Đọc như"
+    "suggested": "Gợi ý"
   },
   "options": {
     "gender": {
@@ -492,5 +493,20 @@
       "title": "Đóng chính trong phim của bạn",
       "desc": "Mười hai cảnh, rồi một tấm poster."
     }
+  },
+  "gender": {
+    "eyebrow": "Trước tiên",
+    "title": "Cái tên này là của ai?",
+    "sub": "Câu này quyết định những cái tên nào được đưa ra, nên nó đi trước.",
+    "note": {
+      "female": "Những tên người Hàn đọc ra là tên nữ.",
+      "male": "Những tên người Hàn đọc ra là tên nam.",
+      "neutral": "Những tên đi được cả hai phía — khá nhiều tên hay nằm ở đây."
+    }
+  },
+  "pick": {
+    "eyebrow": "Ba cái tên",
+    "title": "Cái nào là của bạn?",
+    "sub": "Cả ba đều ra từ câu trả lời của bạn. Đọc to từng cái một lần — thường là chỗ đó quyết định."
   }
 }

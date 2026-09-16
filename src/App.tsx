@@ -3,6 +3,8 @@ import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import Step0Landing from './steps/Step0Landing';
 import StepOptions from './steps/StepOptions';
+import StepGender from './steps/StepGender';
+import StepPick from './steps/StepPick';
 import StepSurname from './steps/StepSurname';
 import StepLoading from './steps/StepLoading';
 import StepResult from './steps/StepResult';
@@ -71,7 +73,9 @@ export default function App() {
         {tool === 'name' && (
           <>
             {step === 'landing' && <Step0Landing />}
+            {step === 'gender' && <StepGender />}
             {isQuestion(step) && <StepOptions step={step} />}
+            {step === 'pick' && <StepPick />}
             {step === 'surname' && <StepSurname />}
             {step === 'loading' && <StepLoading />}
             {step === 'result' && <StepResult />}
