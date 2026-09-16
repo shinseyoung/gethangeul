@@ -107,7 +107,7 @@ export default function PairScreen() {
           id="pair-a"
           label={t('pair.you')}
           value={pairA}
-          hangul={readA?.hangul ?? null}
+          hangul={readA?.converted ? readA.hangul : null}
           onChange={(v) => setPair('a', v)}
           placeholder={t('pair.you_placeholder')}
         />
@@ -115,7 +115,7 @@ export default function PairScreen() {
           id="pair-b"
           label={t('pair.them')}
           value={pairB}
-          hangul={readB?.hangul ?? null}
+          hangul={readB?.converted ? readB.hangul : null}
           onChange={(v) => setPair('b', v)}
           placeholder={t('pair.them_placeholder')}
         />

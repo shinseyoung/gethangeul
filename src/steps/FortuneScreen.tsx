@@ -77,7 +77,7 @@ export default function FortuneScreen() {
             className={field}
           />
           <span className="mt-2 block h-[22px] font-brush text-[19px] leading-none text-accent">
-            {read?.hangul}
+            {read?.converted ? read.hangul : ''}
           </span>
         </div>
         <div className="flex-1">

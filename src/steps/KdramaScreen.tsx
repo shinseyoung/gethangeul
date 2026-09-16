@@ -135,10 +135,13 @@ export default function KdramaScreen() {
             spellCheck={false}
             className="h-[56px] w-full rounded-2xl border-[1.5px] border-rule-strong bg-paper-hi px-5 font-disp text-[20px] text-ink caret-accent outline-none transition-colors duration-150 placeholder:font-body placeholder:text-[15px] placeholder:text-ink-4 focus:border-accent"
           />
-          {/* only on a Korean page: elsewhere the preview would repeat what was
-              just typed, which reads as the field stuttering */}
+          {/* Only when the field was actually read out of Latin. Somebody who
+              typed 하린 does not need to be shown 하린 underneath it — that is
+              the field stuttering, not a reading. The rule was the wrong way
+              round here: it showed the echo on the Korean page, where it can
+              only ever repeat, and hid it everywhere it had something to say. */}
           <span className="mt-2 block h-[22px] font-brush text-[19px] leading-none text-accent">
-            {lang === 'ko' ? displayName(koreanName, lang) : ''}
+            {hangulFor(koreanName)?.converted ? displayName(koreanName, lang) : ''}
           </span>
           <p className="mt-1 text-[12px] leading-relaxed text-ink-4">{t('kdrama.name_hint')}</p>
         </div>

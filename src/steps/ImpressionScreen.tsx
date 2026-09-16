@@ -67,7 +67,7 @@ export default function ImpressionScreen() {
           className="h-[56px] w-full rounded-2xl border-[1.5px] border-rule-strong bg-paper-hi px-5 font-disp text-[20px] text-ink caret-accent outline-none transition-colors duration-150 placeholder:font-body placeholder:text-[15px] placeholder:text-ink-4 focus:border-accent"
         />
         <span className="mt-2 block h-[22px] font-brush text-[19px] leading-none text-accent">
-          {read?.hangul}
+          {read?.converted ? read.hangul : ''}
         </span>
       </div>
 
