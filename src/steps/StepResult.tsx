@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
 import { useMatches } from '../hooks/useMatches';
 import { useSurname } from '../hooks/useSurname';
 import { useImageShare } from '../hooks/useImageShare';
+import { useSpeech } from '../hooks/useSpeech';
 import { markColor } from '../components/OptionMark';
 import { SITUATIONS, optionIdAt, profileOf } from '../data/situations';
 import MountainWash, { SEASON_WASH } from '../components/MountainWash';
@@ -16,57 +17,6 @@ const SEASONS = ['spring', 'summer', 'autumn', 'winter'] as const;
 function tint(hex: string, alpha: number) {
   const n = parseInt(hex.slice(1), 16);
   return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${alpha})`;
-}
-
-/** ko-KR speech synthesis: free, already in the browser, and the single most
- *  useful thing this audience asked for. Hidden entirely when unsupported. */
-function useSpeech(text: string) {
-  const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(null);
-  const [supported, setSupported] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return undefined;
-    setSupported(true);
-
-    // Setting utterance.lang is not enough: browsers happily read Hangul with
-    // whatever voice is default, which is why this came out sounding English.
-    // The ko voice has to be picked explicitly, and the list arrives async.
-    //
-    // Which ko voice matters just as much. Windows ships Heami, a 2010 SAPI
-    // voice that sounds like a train announcement; Chrome and Edge often also
-    // carry a neural one, and it is a different league. Rank, do not take the
-    // first match.
-    const rank = (v: SpeechSynthesisVoice) => {
-      const n = v.name.toLowerCase();
-      if (/natural|neural|online/.test(n)) return 3;
-      if (n.includes('google')) return 2;
-      return v.localService ? 1 : 0;
-    };
-    const pick = () => {
-      const korean = window.speechSynthesis
-        .getVoices()
-        .filter((v) => v.lang.replace('_', '-').toLowerCase().startsWith('ko'))
-        .sort((a, b) => rank(b) - rank(a))[0];
-      if (korean) setVoice(korean);
-    };
-    pick();
-    window.speechSynthesis.addEventListener('voiceschanged', pick);
-    return () => window.speechSynthesis.removeEventListener('voiceschanged', pick);
-  }, []);
-
-  const speak = () => {
-    if (!supported) return;
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'ko-KR';
-    if (voice) utterance.voice = voice;
-    // 0.85 read as careful; on a two-syllable name it only smeared the vowels
-    utterance.rate = 1;
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utterance);
-  };
-
-  // no Korean voice installed means it would be read as English — hide it
-  return { supported: supported && voice !== null, speak };
 }
 
 export default function StepResult() {

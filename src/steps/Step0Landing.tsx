@@ -4,6 +4,7 @@ import { useTranslation } from '../hooks/useTranslation';
 import { hangulFor } from '../utils/romanToHangul';
 import Button, { ArrowRight } from '../components/Button';
 import ChromaticImage from '../components/ChromaticImage';
+import OpticalText from '../components/OpticalText';
 import { asset } from '../utils/asset';
 
 /** One brush drawing per promise: a tied knot, a scroll, a bell, a seal. */
@@ -169,24 +170,34 @@ export default function Step0Landing() {
                 key={i}
                 className="flex flex-col gap-3 rounded-2xl border border-rule bg-paper-hi p-5 transition-colors duration-150 hover:border-rule-strong"
               >
-                <span
-                  className="block h-11 w-11 overflow-hidden rounded-xl"
-                  style={{
-                    boxSizing: 'border-box',
-                    backgroundColor: tint(mark.color, 0.1),
-                    border: `1px solid ${tint(mark.color, 0.22)}`,
-                  }}
-                  aria-hidden="true"
-                >
-                  <img
-                    src={asset(`marks/${mark.id}.webp`)}
-                    alt=""
-                    width={44}
-                    height={44}
-                    className="block h-full w-full object-contain mix-blend-multiply"
-                  />
+                {/* The title reads as the label of the drawing beside it, so it
+                    sits beside it. OpticalText rather than items-center alone:
+                    Gowun Batang's ink rides above the middle of its line box, so
+                    centring the boxes leaves the words visibly high against a
+                    44px tile. The titles were cut to fit on one line here — the
+                    narrowest this card ever gets is the four-up at 1024. */}
+                <span className="flex items-center gap-3">
+                  <span
+                    className="block h-11 w-11 shrink-0 overflow-hidden rounded-xl"
+                    style={{
+                      boxSizing: 'border-box',
+                      backgroundColor: tint(mark.color, 0.1),
+                      border: `1px solid ${tint(mark.color, 0.22)}`,
+                    }}
+                    aria-hidden="true"
+                  >
+                    <img
+                      src={asset(`marks/${mark.id}.webp`)}
+                      alt=""
+                      width={44}
+                      height={44}
+                      className="block h-full w-full object-contain mix-blend-multiply"
+                    />
+                  </span>
+                  <OpticalText className="block font-disp text-[18px] leading-tight text-ink">
+                    {f.title}
+                  </OpticalText>
                 </span>
-                <span className="font-disp text-[20px] leading-tight text-ink">{f.title}</span>
                 <span className="text-pretty text-[13.5px] leading-relaxed text-ink-3">{f.desc}</span>
               </li>
             );

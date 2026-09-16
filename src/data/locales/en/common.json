@@ -26,19 +26,19 @@
     "cta_button": "Find My Name",
     "features": [
       {
-        "title": "Customized Just for You",
+        "title": "A name of your own",
         "desc": "A special Korean name that reflects your unique personality and values."
       },
       {
-        "title": "Deep Meaning Inside",
+        "title": "What it means",
         "desc": "Discover the beautiful story and meaning behind each character."
       },
       {
-        "title": "Share & Keep Your Name",
+        "title": "Saved as an image",
         "desc": "Download your name card as an image to save and share with others."
       },
       {
-        "title": "Safe & Secure",
+        "title": "This browser only",
         "desc": "Nothing is sent to a server. The name stays in this browser."
       }
     ],

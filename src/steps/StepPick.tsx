@@ -4,6 +4,7 @@ import { useEnterAdvance } from '../hooks/useEnterAdvance';
 import { useMatches } from '../hooks/useMatches';
 import Button from '../components/Button';
 import CheckMark from '../components/CheckMark';
+import SpeakButton from '../components/SpeakButton';
 
 /**
  * Three names, and the visitor takes one.
@@ -34,26 +35,35 @@ export default function StepPick() {
         {matches.map((match, i) => {
           const on = picked === i;
           return (
-            <button
+            /* The speaker cannot live inside the card's own button — a button
+               inside a button is not a thing — and it should not select the
+               card either: hearing a name is how you decide, not the decision.
+               So the row is the frame, and the two controls sit in it. */
+            <div
               key={match.name.id}
-              type="button"
-              aria-pressed={on}
-              onClick={() => setPicked(i)}
-              className={`focus-ring flex min-h-[86px] items-center gap-5 rounded-2xl border-[1.5px] px-5 py-4 text-left transition-colors duration-150 ${
+              className={`flex min-h-[86px] items-center gap-2 rounded-2xl border-[1.5px] pr-3.5 transition-colors duration-150 ${
                 on ? 'border-accent bg-accent/[0.05]' : 'border-rule bg-paper-hi hover:border-rule-strong'
               }`}
             >
-              <span className="font-brush text-[34px] leading-none text-ink">{match.name.hangul}</span>
-              <span className="flex flex-1 flex-col gap-1.5">
-                <span className="block font-disp text-[15px] leading-none text-ink-2">
-                  {match.name.id.charAt(0).toUpperCase() + match.name.id.slice(1)}
+              <button
+                type="button"
+                aria-pressed={on}
+                onClick={() => setPicked(i)}
+                className="focus-ring flex flex-1 items-center gap-5 rounded-2xl py-4 pl-5 text-left"
+              >
+                <span className="font-brush text-[34px] leading-none text-ink">{match.name.hangul}</span>
+                <span className="flex flex-1 flex-col gap-1.5">
+                  <span className="block font-disp text-[15px] leading-none text-ink-2">
+                    {match.name.id.charAt(0).toUpperCase() + match.name.id.slice(1)}
+                  </span>
+                  <span className="text-[12.5px] leading-[1.4] text-ink-3">
+                    {t(`names.${match.name.id}.shortMeaning`)}
+                  </span>
                 </span>
-                <span className="text-[12.5px] leading-[1.4] text-ink-3">
-                  {t(`names.${match.name.id}.shortMeaning`)}
-                </span>
-              </span>
+              </button>
+              <SpeakButton text={match.name.hangul} label={String(t('result.buttons.listen'))} />
               <CheckMark on={on} />
-            </button>
+            </div>
           );
         })}
       </div>

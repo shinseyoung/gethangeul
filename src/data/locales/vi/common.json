@@ -26,19 +26,19 @@
     "cta_button": "Bắt đầu tìm tên",
     "features": [
       {
-        "title": "Tên thiết kế riêng cho bạn",
+        "title": "Tên riêng của bạn",
         "desc": "Một tên tiếng Hàn đặc biệt phản ánh tính cách và giá trị của riêng bạn."
       },
       {
-        "title": "Ý nghĩa ẩn sau mỗi cái tên",
+        "title": "Ý nghĩa từng chữ",
         "desc": "Khám phá câu chuyện và ý nghĩa tuyệt đẹp của từng chữ cái."
       },
       {
-        "title": "Chia sẻ và lưu giữ kỷ niệm",
+        "title": "Lưu thành ảnh",
         "desc": "Tải thẻ tên dưới dạng hình ảnh để lưu lại và chia sẻ với mọi người."
       },
       {
-        "title": "An tâm sử dụng",
+        "title": "Chỉ trên máy bạn",
         "desc": "Không có gì được gửi lên máy chủ. Tên chỉ nằm trong trình duyệt này."
       }
     ],
