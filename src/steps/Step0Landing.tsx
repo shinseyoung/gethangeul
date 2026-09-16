@@ -71,7 +71,7 @@ export default function Step0Landing() {
       <div className="grain" />
 
       <section className="relative z-10 flex min-h-[calc(100dvh-150px)] flex-col items-center justify-center px-6 py-14 text-center">
-        <h1 className="max-w-[740px] whitespace-pre-line font-disp text-[38px] leading-[1.06] tracking-tight text-ink md:text-[58px]">
+        <h1 className="max-w-[740px] whitespace-pre-line font-disp text-[38px] font-bold leading-[1.06] tracking-tight text-ink md:text-[58px]">
           {t('landing.title_main')}
         </h1>
 
@@ -112,12 +112,27 @@ export default function Step0Landing() {
             </Button>
           </div>
 
-          {/* which door the same field opens */}
+          {/* Which door the same field opens.
+              Glass rather than a filled cell, because it sits on the painting:
+              a solid swatch cut a hole in the mountain, and the two words then
+              read as two buttons rather than as one control with a position.
+              The pill is the whole state — it slides, the labels only change
+              weight — so the eye follows one object instead of watching two
+              backgrounds swap. Its travel is exactly its own width: the track
+              is padded by 4px on each side, so half the inner width is
+              calc(50% - 4px), which is what translate-x-full then moves it. */}
           <div
             role="radiogroup"
             aria-label={String(t('landing.mode.label'))}
-            className="mt-3 flex gap-1 rounded-2xl border border-rule bg-paper-hi p-1"
+            className="relative mt-3 grid grid-cols-2 rounded-full border border-white/55 bg-paper-hi/40 p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_12px_30px_-22px_rgba(23,24,26,0.55)] backdrop-blur-md"
           >
+            <span
+              aria-hidden="true"
+              style={{ transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)' }}
+              className={`pointer-events-none absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-gradient-to-b from-white/95 to-paper-hi/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),inset_0_-1px_0_rgba(23,24,26,0.05),0_1px_2px_rgba(23,24,26,0.12),0_10px_20px_-14px_rgba(62,107,168,0.6)] ring-1 ring-white/70 transition-transform duration-[520ms] ${
+                mode === 'have' ? 'translate-x-full' : 'translate-x-0'
+              }`}
+            />
             {(['new', 'have'] as const).map((id) => (
               <button
                 key={id}
@@ -125,8 +140,8 @@ export default function Step0Landing() {
                 role="radio"
                 aria-checked={mode === id}
                 onClick={() => setMode(id)}
-                className={`focus-ring flex-1 rounded-[13px] px-3 py-2.5 text-[13px] leading-snug transition-colors duration-150 ${
-                  mode === id ? 'bg-accent/10 text-ink' : 'text-ink-3 hover:text-ink-2'
+                className={`focus-ring relative z-10 rounded-full px-3 py-2.5 text-[13px] leading-snug transition-colors duration-300 ${
+                  mode === id ? 'font-medium text-ink' : 'text-ink-3 hover:text-ink-2'
                 }`}
               >
                 {t(`landing.mode.${id}`)}

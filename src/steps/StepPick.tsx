@@ -2,7 +2,6 @@ import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
 import { useMatches } from '../hooks/useMatches';
 import Button from '../components/Button';
-import ProgressRail from '../components/ProgressRail';
 
 /**
  * Three names, and the visitor takes one.
@@ -21,8 +20,6 @@ export default function StepPick() {
 
   return (
     <div className="mx-auto w-full max-w-[620px] px-5 pb-24 pt-6 lg:px-4">
-      <ProgressRail current="pick" />
-
       <span className="eyebrow text-[8.5px] tracking-[0.26em] text-accent">{t('pick.eyebrow')}</span>
       <h1 className="mb-2.5 mt-3 -ml-[0.035em] font-disp text-[31px] leading-[1.08] tracking-tight text-ink md:text-[40px]">
         {t('pick.title')}

@@ -1,7 +1,6 @@
 import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
 import Button from '../components/Button';
-import ProgressRail from '../components/ProgressRail';
 
 /**
  * The first screen after the landing: who the name is for.
@@ -23,8 +22,6 @@ export default function StepGender() {
 
   return (
     <div className="mx-auto w-full max-w-[620px] px-5 pb-24 pt-6 lg:px-4">
-      <ProgressRail current="gender" />
-
       <span className="eyebrow text-[8.5px] tracking-[0.26em] text-accent">{t('gender.eyebrow')}</span>
       <h1 className="mb-2.5 mt-3 -ml-[0.035em] font-disp text-[31px] leading-[1.08] tracking-tight text-ink md:text-[40px]">
         {t('gender.title')}
@@ -39,7 +36,7 @@ export default function StepGender() {
               key={choice}
               type="button"
               aria-pressed={on}
-              onClick={() => { setGender(choice); next(); }}
+              onClick={() => setGender(choice)}
               className={`focus-ring flex min-h-[64px] items-center rounded-2xl border-[1.5px] px-5 text-left transition-colors duration-150 ${
                 on ? 'border-accent bg-accent/[0.05]' : 'border-rule bg-paper-hi hover:border-rule-strong'
               }`}

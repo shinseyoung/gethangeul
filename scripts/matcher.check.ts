@@ -222,12 +222,12 @@ for (const [lang, bundle] of Object.entries({ en, ko, vi, th })) {
   /* One rail label per screen between the landing and the loading, keyed by
      the screen rather than by its position: the numbering meant nothing the
      moment the flow grew a gender screen at the front. */
-  const slots = ['gender', ...SITUATIONS.map((s) => s.id), 'pick', 'surname'];
+  const slots = [...SITUATIONS.map((s) => s.id), 'surname'];
   for (const slot of slots) {
     ok(`${lang}: layout.steps.${slot}`,
       typeof b.layout?.steps?.[slot] === 'string' && b.layout.steps[slot].length > 0);
   }
-  ok(`${lang}: no rail label outside the flow`,
+  ok(`${lang}: no rail label outside the timeline`,
     Object.keys(b.layout?.steps ?? {}).length === slots.length,
     Object.keys(b.layout?.steps ?? {}));
   // gender moved to a screen of its own, so the surname screen's label is gone

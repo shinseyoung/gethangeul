@@ -28,14 +28,12 @@
 
 ## 진행 막대 라벨
 
-- [layout.steps.gender] 누구
 - [layout.steps.cup] 카페
 - [layout.steps.train] 막차
 - [layout.steps.dinner] 회식
 - [layout.steps.lift] 엘리베이터
 - [layout.steps.market] 시장
 - [layout.steps.evening] 마지막 저녁
-- [layout.steps.pick] 고르기
 - [layout.steps.surname] 성
 
 ---

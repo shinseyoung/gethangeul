@@ -8,14 +8,12 @@
   },
   "layout": {
     "steps": {
-      "gender": "누구",
       "cup": "카페",
       "train": "막차",
       "dinner": "회식",
       "lift": "엘리베이터",
       "market": "시장",
       "evening": "마지막 저녁",
-      "pick": "고르기",
       "surname": "성"
     },
     "buttons": {

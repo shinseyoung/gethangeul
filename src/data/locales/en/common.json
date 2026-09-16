@@ -8,14 +8,12 @@
   },
   "layout": {
     "steps": {
-      "gender": "For",
       "cup": "Café",
       "train": "Last train",
       "dinner": "Dinner",
       "lift": "Lift",
       "market": "Market",
       "evening": "Last evening",
-      "pick": "Choose",
       "surname": "Family name"
     },
     "buttons": {
