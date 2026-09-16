@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
 import { useImageShare } from '../hooks/useImageShare';
@@ -56,6 +56,15 @@ function NameField({
 export default function PairScreen() {
   const { pairA, pairB, setPair, setTool, restart } = useFlowStore();
   const { t } = useTranslation();
+
+  /* The first name is you. On mount only, so a reload and a direct link fill it
+     the same way an in-site tap does — and so clearing the field to compare two
+     other people is not undone a render later. */
+  useEffect(() => {
+    const { pairA: current, koreanName } = useFlowStore.getState();
+    if (!current && koreanName) setPair('a', koreanName);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const readA = useMemo(() => hangulFor(pairA), [pairA]);
   const readB = useMemo(() => hangulFor(pairB), [pairB]);

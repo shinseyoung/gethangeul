@@ -31,11 +31,11 @@ const MARK: Record<Axis, string> = {
 };
 
 export default function ImpressionScreen() {
-  const { impressionName, setImpressionName } = useFlowStore();
+  const { koreanName, setKoreanName } = useFlowStore();
   const { t } = useTranslation();
 
-  const read = useMemo(() => hangulFor(impressionName), [impressionName]);
-  const shapeOk = useMemo(() => looksKorean(impressionName), [impressionName]);
+  const read = useMemo(() => hangulFor(koreanName), [koreanName]);
+  const shapeOk = useMemo(() => looksKorean(koreanName), [koreanName]);
   const reading = useMemo(() => (read && shapeOk ? readName(read.hangul) : null), [read, shapeOk]);
 
   const { captureRef, isSaving, isSharing, handleDownload, handleShare } =
@@ -56,8 +56,8 @@ export default function ImpressionScreen() {
         <input
           id="impression-name"
           type="text"
-          value={impressionName}
-          onChange={(e) => setImpressionName(e.target.value)}
+          value={koreanName}
+          onChange={(e) => setKoreanName(e.target.value)}
           placeholder={t('impression.placeholder')}
           autoComplete="off"
           autoCorrect="off"

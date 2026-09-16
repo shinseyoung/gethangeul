@@ -26,6 +26,11 @@ export type Tool = 'name' | 'pair' | 'impression' | 'kdrama' | 'fortune';
 /* renamed with the site. An old visitor loses a remembered language once,
    which the detect bar then offers to set again. */
 const LANG_KEY = 'ganada.lang';
+/* The name outlives the tab. Without this the site has no profile, only a
+   session: every reload put the visitor back at an empty field, and every room
+   they walked into asked who they were again. */
+const NAME_KEY = 'ganada.name';
+const KOREAN_KEY = 'ganada.korean';
 const SUPPORTED = LANGUAGES.map((l) => l.code);
 const PATH_LANG = /^\/(ko|en|vi|th)(?=\/|$)/;
 const PATH_TOOL = /^\/(?:ko|en|vi|th)\/(pair|impression|kdrama|fortune)(?=\/|$)/;
@@ -53,6 +58,21 @@ function readStoredLang(): Language | null {
   } catch {
     return null;
   }
+}
+
+function readStored(key: string): string {
+  try {
+    return localStorage.getItem(key) ?? '';
+  } catch {
+    return '';
+  }
+}
+
+function store(key: string, value: string) {
+  try {
+    if (value) localStorage.setItem(key, value);
+    else localStorage.removeItem(key);
+  } catch { /* private mode */ }
 }
 
 function detectLang(): { lang: Language; fromBrowser: boolean } {
@@ -86,7 +106,15 @@ interface FlowState {
   /** true until the visitor picks a language themselves — gates the detect bar */
   langAutoPicked: boolean;
 
+  /* Your own name, as you type it — "seyoung", "Sarah", or already 하린.
+     One field, not one per room: the site has a single subject, and asking
+     five times is what made five features feel like five sites. */
   givenName: string;
+  /* The Korean name you ended up with, always hangul. The quiz writes it when
+     it settles on one; typing your own name writes what it romanises to. Every
+     room downstream of the name reads this and asks nothing. */
+  koreanName: string;
+  setKoreanName: (value: string) => void;
   /* Not a question any more: it is the one genuinely administrative field
      in the flow, and asking it first set the form tone for everything after.
      It lives on the surname screen now, where it reads as part of assembling
@@ -102,31 +130,22 @@ interface FlowState {
   /** null until the surname screen resolves one; never null past it */
   surnameId: string | null;
 
-  /** the two names on the compatibility screen, kept across navigation */
+  /** the two names on the compatibility screen; A is yours, prefilled on entry */
   pairA: string;
   pairB: string;
 
-  /** the name on the first-impression screen, kept across navigation */
-  impressionName: string;
-  setImpressionName: (value: string) => void;
-
-  /** the fortune room's two fields, kept across navigation */
-  fortuneName: string;
+  /** the fortune room's other field — the one thing it needs that a name isn't */
   fortuneBirthday: string;
-  setFortuneName: (value: string) => void;
   setFortuneBirthday: (value: string) => void;
 
   /** one option index per question, null until answered */
   kdramaAnswers: (number | null)[];
   /** 0 is the intro, 1..12 are the scenes, 13 is the card */
   kdramaStep: number;
-  /** the visitor's own name, and the only name in the room */
-  kdramaName: string;
   /** which drama they are in; null until they pick one */
   kdramaGenre: Genre | null;
   setKdramaAnswer: (index: number, option: number) => void;
   setKdramaStep: (step: number) => void;
-  setKdramaName: (name: string) => void;
   setKdramaGenre: (genre: Genre | null) => void;
   resetKdrama: () => void;
 
@@ -175,26 +194,24 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   lang: initialLang,
   langAutoPicked: fromPath === null && stored === null,
 
-  givenName: '',
+  givenName: typeof window === 'undefined' ? '' : readStored(NAME_KEY),
+  koreanName: typeof window === 'undefined' ? '' : readStored(KOREAN_KEY),
+  setKoreanName: (koreanName) => {
+    store(KOREAN_KEY, koreanName);
+    set({ koreanName });
+  },
   gender: null,
   nameAnswers: Array(6).fill(null),
   nameVariants: drawVariants(),
   surnameId: null,
   pairA: '',
   pairB: '',
-  impressionName: '',
-  setImpressionName: (impressionName) => set({ impressionName }),
 
-  fortuneName: '',
   fortuneBirthday: '',
-  setFortuneName: (fortuneName) => set({ fortuneName }),
   setFortuneBirthday: (fortuneBirthday) => set({ fortuneBirthday }),
 
   kdramaAnswers: Array(12).fill(null),
   kdramaStep: 0,
-  /* both asked for before the first scene: six of the twelve speak to the
-     name, and the genre decides which twelve they are */
-  kdramaName: '',
   kdramaGenre: null,
   setKdramaAnswer: (index, option) => set((s) => {
     const next = [...s.kdramaAnswers];
@@ -202,7 +219,6 @@ export const useFlowStore = create<FlowState>((set, get) => ({
     return { kdramaAnswers: next };
   }),
   setKdramaStep: (kdramaStep) => set({ kdramaStep }),
-  setKdramaName: (kdramaName) => set({ kdramaName }),
   setKdramaGenre: (kdramaGenre) => set({ kdramaGenre }),
   /* the casting is the result, so this clears the answers and sends the visitor
      back to the first scene. The name stays: they are still themselves. */
@@ -228,13 +244,13 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   },
   resetTool: (tool) => {
     const s = get();
+    /* Answers are what goes stale between visits, not the name. Every room used
+       to clear its own copy of the name on the way out, which is the same bug
+       as asking for it on the way in — you were a stranger again one tap later. */
     if (tool === 'name') s.restart();
-    // the name goes too, unlike resetKdrama, which is "다시 하기" on the card and
-    // should not make someone type their own name in again to answer again
-    else if (tool === 'kdrama') { s.resetKdrama(); s.setKdramaName(''); s.setKdramaGenre(null); }
-    else if (tool === 'impression') s.setImpressionName('');
-    else if (tool === 'pair') { s.setPair('a', ''); s.setPair('b', ''); }
-    else if (tool === 'fortune') { s.setFortuneName(''); s.setFortuneBirthday(''); }
+    else if (tool === 'kdrama') { s.resetKdrama(); s.setKdramaGenre(null); }
+    else if (tool === 'pair') s.setPair('b', '');
+    else if (tool === 'fortune') s.setFortuneBirthday('');
   },
   setLang: (lang) => {
     try { localStorage.setItem(LANG_KEY, lang); } catch { /* private mode */ }
@@ -255,7 +271,10 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   },
   dismissLangHint: () => set({ langAutoPicked: false }),
 
-  setGivenName: (givenName) => set({ givenName }),
+  setGivenName: (givenName) => {
+    store(NAME_KEY, givenName);
+    set({ givenName });
+  },
   setGender: (gender) => set({ gender }),
   setNameAnswer: (index, option) => set((state) => {
     const next = [...state.nameAnswers];
@@ -266,9 +285,13 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   setPair: (which, value) => set(which === 'a' ? { pairA: value } : { pairB: value }),
 
 
-  /** The only way back: answer again and get another name. */
+  /* The only way back: answer again and get another name.
+     Neither name is cleared. This runs on the way out of the room as well as
+     from the button, so clearing the Korean name here would wipe the profile
+     every time someone walked from their result to the fortune room — and the
+     quiz overwrites it the moment it settles on another one anyway. */
   restart: () => set({
-    step: 'landing', givenName: '', gender: null,
+    step: 'landing', gender: null,
     nameAnswers: Array(6).fill(null), surnameId: null,
     // starting over draws again: that is the whole point of writing three
     nameVariants: drawVariants(),

@@ -40,11 +40,16 @@
       },
       {
         "title": "Safe & Secure",
-        "desc": "Your information is completely protected and is never stored."
+        "desc": "Nothing is sent to a server. Your name is remembered in this browser only, and clearing your browser data removes it."
       }
     ],
-    "trust": "Free · no sign-up · nothing stored",
-    "features_label": "What you walk away with"
+    "trust": "Free · no sign-up · your name stays in this browser",
+    "features_label": "What you walk away with",
+    "mode": {
+      "label": "Where to start",
+      "new": "Find me a name",
+      "have": "I have a name"
+    }
   },
   "surname": {
     "eyebrow": "Your house",

@@ -69,7 +69,7 @@ function useSpeech(text: string) {
 }
 
 export default function StepResult() {
-  const { nameAnswers, nameVariants, gender, restart, setStep, setPair, setTool } = useFlowStore();
+  const { nameAnswers, nameVariants, gender, restart, setStep, setTool, setKoreanName } = useFlowStore();
   const { t } = useTranslation();
   const { matches, sound } = useMatches();
   const { surname } = useSurname();
@@ -84,6 +84,13 @@ export default function StepResult() {
     name ? `ganada-name-${surname.id}-${name.id}` : 'ganada-name',
   );
   const { supported: canSpeak, speak } = useSpeech(fullHangul);
+
+  /* The card is where the visitor stops being someone who wants a name and
+     starts being someone who has one. Every room past here reads it from the
+     store instead of asking, and the surname screen can still change it. */
+  useEffect(() => {
+    if (fullHangul) setKoreanName(fullHangul);
+  }, [fullHangul, setKoreanName]);
 
   if (!name) return null;
 
@@ -270,7 +277,8 @@ export default function StepResult() {
               title: t('result.see_match'),
               desc: t('result.see_match_desc'),
               // hands the name straight over, so the second room opens half-filled
-              action: () => { setPair('a', fullHangul); setTool('pair'); },
+              // the name is already in the store; the room fills its first field from it
+              action: () => setTool('pair'),
             },
             {
               mark: 'feature-keep',

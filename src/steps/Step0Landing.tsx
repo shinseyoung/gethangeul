@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
+import { hangulFor } from '../utils/romanToHangul';
 import Button, { ArrowRight } from '../components/Button';
 import ChromaticImage from '../components/ChromaticImage';
 
@@ -17,9 +19,21 @@ function tint(hex: string, alpha: number) {
 }
 
 export default function Step0Landing() {
-  const { givenName, setGivenName, next } = useFlowStore();
+  const { givenName, setGivenName, setKoreanName, setTool, next } = useFlowStore();
   const { t } = useTranslation();
   const features: { title: string; desc: string }[] = t('landing.features') || [];
+
+  /* Both doors take the same field, so they are a switch under it rather than
+     two cards beside it. Local state on purpose: it is read once, on submit. */
+  const [mode, setMode] = useState<'new' | 'have'>('new');
+
+  const go = () => {
+    if (mode === 'new') return next();
+    const read = hangulFor(givenName);
+    if (!read) return;
+    setKoreanName(read.hangul);
+    setTool('impression');
+  };
 
   return (
     <div className="relative w-full">
@@ -75,7 +89,7 @@ export default function Step0Landing() {
               type="text"
               value={givenName}
               onChange={(e) => setGivenName(e.target.value)}
-              onKeyDown={(e) => { if (e.key === 'Enter') next(); }}
+              onKeyDown={(e) => { if (e.key === 'Enter') go(); }}
               placeholder={t('name.placeholder_long')}
               /* the browser's saved-name dropdown covered the field on every
                  focus, which is not a suggestion anyone asked this site for */
@@ -85,13 +99,40 @@ export default function Step0Landing() {
               enterKeyHint="go"
               className="h-[60px] w-full sm:flex-1 rounded-2xl border-[1.5px] border-rule-strong bg-paper-hi px-6 text-center font-disp text-[22px] text-ink caret-accent shadow-[0_8px_24px_-18px_rgba(23,24,26,0.35)] outline-none transition-colors duration-150 placeholder:font-body placeholder:text-[16px] placeholder:text-ink-4 focus:border-accent sm:text-left"
             />
-            <Button shape="box" onClick={next} className="h-[60px] shrink-0 px-7">
+            <Button
+              shape="box"
+              onClick={go}
+              disabled={mode === 'have' && !hangulFor(givenName)}
+              className="h-[60px] shrink-0 px-7"
+            >
               {t('landing.cta_button')}
               <ArrowRight />
             </Button>
           </div>
 
-          <p className="mt-5 text-[12.5px] leading-relaxed text-ink-4">{t('landing.trust')}</p>
+          {/* which door the same field opens */}
+          <div
+            role="radiogroup"
+            aria-label={String(t('landing.mode.label'))}
+            className="mt-3 flex gap-1 rounded-2xl border border-rule bg-paper-hi p-1"
+          >
+            {(['new', 'have'] as const).map((id) => (
+              <button
+                key={id}
+                type="button"
+                role="radio"
+                aria-checked={mode === id}
+                onClick={() => setMode(id)}
+                className={`focus-ring flex-1 rounded-[13px] px-3 py-2.5 text-[13px] leading-snug transition-colors duration-150 ${
+                  mode === id ? 'bg-accent/10 text-ink' : 'text-ink-3 hover:text-ink-2'
+                }`}
+              >
+                {t(`landing.mode.${id}`)}
+              </button>
+            ))}
+          </div>
+
+          <p className="mt-4 text-[12.5px] leading-relaxed text-ink-4">{t('landing.trust')}</p>
         </div>
       </section>
 

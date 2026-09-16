@@ -32,10 +32,10 @@ const SWATCH: Record<string, string> = {
 };
 
 export default function FortuneScreen() {
-  const { fortuneName, fortuneBirthday, setFortuneName, setFortuneBirthday } = useFlowStore();
+  const { koreanName, fortuneBirthday, setKoreanName, setFortuneBirthday } = useFlowStore();
   const { t } = useTranslation();
 
-  const read = useMemo(() => hangulFor(fortuneName), [fortuneName]);
+  const read = useMemo(() => hangulFor(koreanName), [koreanName]);
   const fortune = useMemo(
     () => (read && fortuneBirthday ? tell(read.hangul, fortuneBirthday) : null),
     [read, fortuneBirthday],
@@ -67,8 +67,8 @@ export default function FortuneScreen() {
           <input
             id="fortune-name"
             type="text"
-            value={fortuneName}
-            onChange={(e) => setFortuneName(e.target.value)}
+            value={koreanName}
+            onChange={(e) => setKoreanName(e.target.value)}
             placeholder={t('fortune.name_placeholder')}
             autoComplete="off"
             autoCorrect="off"

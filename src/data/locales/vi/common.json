@@ -40,11 +40,16 @@
       },
       {
         "title": "An tâm sử dụng",
-        "desc": "Thông tin của bạn được bảo mật tuyệt đối và không lưu trữ trên hệ thống."
+        "desc": "Không có gì được gửi lên máy chủ. Tên của bạn chỉ được ghi nhớ trong trình duyệt này, và xoá dữ liệu trình duyệt là nó biến mất."
       }
     ],
-    "trust": "Miễn phí · không cần đăng ký · không lưu gì cả",
-    "features_label": "Bạn sẽ mang về những gì"
+    "trust": "Miễn phí · không cần đăng ký · tên chỉ nằm trong trình duyệt này",
+    "features_label": "Bạn sẽ mang về những gì",
+    "mode": {
+      "label": "Bắt đầu thế nào",
+      "new": "Đặt tên cho tôi",
+      "have": "Tôi đã có tên"
+    }
   },
   "surname": {
     "eyebrow": "Dòng họ của bạn",

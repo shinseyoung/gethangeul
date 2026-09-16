@@ -58,8 +58,8 @@ function displayName(name: string, lang: string): string {
 
 export default function KdramaScreen() {
   const {
-    kdramaAnswers, kdramaStep, kdramaName, kdramaGenre, lang,
-    setKdramaAnswer, setKdramaStep, setKdramaName, setKdramaGenre, resetKdrama,
+    kdramaAnswers, kdramaStep, koreanName, kdramaGenre, lang,
+    setKdramaAnswer, setKdramaStep, setKoreanName, setKdramaGenre, resetKdrama,
   } = useFlowStore();
   const { t } = useTranslation();
   const casting = useMemo(() => cast(kdramaAnswers), [kdramaAnswers]);
@@ -72,7 +72,7 @@ export default function KdramaScreen() {
   /* the placeholder is in the copy rather than around it, so a scene with no
      name in it needs no special case — replace finds nothing and the line
      stands as written */
-  const who = displayName(kdramaName, lang);
+  const who = displayName(koreanName, lang);
   /* the name goes in, and then the particles that depend on it: Korean picks
      between 은/는 and 과/와 by the syllable in front, and the syllable in front
      is a name the copy has never seen */
@@ -126,8 +126,8 @@ export default function KdramaScreen() {
           <input
             id="kdrama-name"
             type="text"
-            value={kdramaName}
-            onChange={(e) => setKdramaName(e.target.value)}
+            value={koreanName}
+            onChange={(e) => setKoreanName(e.target.value)}
             placeholder={String(t('kdrama.name_placeholder'))}
             autoComplete="off"
             autoCorrect="off"
@@ -137,12 +137,12 @@ export default function KdramaScreen() {
           {/* only on a Korean page: elsewhere the preview would repeat what was
               just typed, which reads as the field stuttering */}
           <span className="mt-2 block h-[22px] font-brush text-[19px] leading-none text-accent">
-            {lang === 'ko' ? displayName(kdramaName, lang) : ''}
+            {lang === 'ko' ? displayName(koreanName, lang) : ''}
           </span>
           <p className="mt-1 text-[12px] leading-relaxed text-ink-4">{t('kdrama.name_hint')}</p>
         </div>
 
-        <Button full className="mt-6" disabled={kdramaGenre === null || kdramaName.trim() === ''} onClick={() => setKdramaStep(1)}>
+        <Button full className="mt-6" disabled={kdramaGenre === null || koreanName.trim() === ''} onClick={() => setKdramaStep(1)}>
           {t('kdrama.start')}
           <ArrowRight />
         </Button>
@@ -159,7 +159,7 @@ export default function KdramaScreen() {
      while the genre decides which twelve they are, so it goes back to the top.
      Placed here rather than above the intro so the rest of the component can
      see that kdramaGenre is a Genre. */
-  if (kdramaGenre === null || kdramaName.trim() === '') {
+  if (kdramaGenre === null || koreanName.trim() === '') {
     setKdramaStep(0);
     return null;
   }
