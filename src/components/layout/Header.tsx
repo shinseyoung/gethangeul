@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { LANGUAGES, useFlowStore, type Tool } from '../../store/useFlowStore';
+import { LANGUAGES, useFlowStore } from '../../store/useFlowStore';
 import { useTranslation } from '../../hooks/useTranslation';
 import OpticalText from '../OpticalText';
 
@@ -53,51 +53,14 @@ function LanguageRow({
   );
 }
 
-/**
- * The rooms, in two groups.
- *
- * The split is by what the room is *about*. All five need a name — the fortune
- * and the drama included — so needing one is no kind of line. The line is
- * whether the name is the subject or you are: the first three read the name,
- * the last two read the person carrying it. A 사주 or a personality test walks
- * into the second without argument.
- *
- * The header names the groups rather than the room you are standing in. A
- * button whose label changes every time you move tells you where you are and
- * never what else is here.
- */
-const GROUPS = [
-  { id: 'name', tools: ['name', 'pair', 'impression'] as Tool[] },
-  { id: 'fun', tools: ['kdrama', 'fortune'] as Tool[] },
-] as const;
-
 export function Header() {
   const { lang, setLang, langAutoPicked, dismissLangHint, tool, setTool, koreanName } = useFlowStore();
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
-  /* the rooms menus get their own state and ref: sharing `open` with the
-     language picker below would open both popovers on either click. One id
-     rather than a flag each, so opening 재미 closes 이름. */
-  const [openGroup, setOpenGroup] = useState<string | null>(null);
-  const roomsRef = useRef<HTMLDivElement>(null);
 
   const current = LANGUAGES.find((l) => l.code === lang) ?? LANGUAGES[0];
   const others = LANGUAGES.filter((l) => l.code !== lang);
-
-  useEffect(() => {
-    if (!openGroup) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpenGroup(null); };
-    const onClick = (e: MouseEvent) => {
-      if (roomsRef.current && !roomsRef.current.contains(e.target as Node)) setOpenGroup(null);
-    };
-    document.addEventListener('keydown', onKey);
-    document.addEventListener('mousedown', onClick);
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.removeEventListener('mousedown', onClick);
-    };
-  }, [openGroup]);
 
   useEffect(() => {
     if (!open) return;
@@ -118,12 +81,14 @@ export function Header() {
       <div className="flex h-[58px] w-full items-center justify-between border-b border-rule px-6 md:h-[70px] lg:mx-auto lg:w-[1024px] lg:px-4 xl:w-[1200px]">
         <button
           type="button"
-          /* back to the top of the room you are in, not out of it. The logo
-             used to reset the name flow whichever room you were standing in,
-             which read as the site throwing your place away. */
+          /* Out to the landing, wherever you are. It is the one place a name
+             starts, and with the name remembered the field is already filled,
+             so this is one tap from any room back to the beginning rather than
+             a reset that throws your place away. */
           onClick={() => {
             const s = useFlowStore.getState();
-            s.resetTool(s.tool);
+            s.setTool('name');
+            s.restart();
           }}
           className="focus-ring flex flex-col gap-[5px] text-left transition-opacity hover:opacity-70"
         >
@@ -131,80 +96,40 @@ export function Header() {
               as vague as the rooms are various — "Korea, for fun" says nothing
               the landing page does not say better. A wordmark that does not
               explain itself is the more confident of the two. */}
-          <span /* uppercase costs width: GANADA at 22px measured 99px against gethangeul's
-     62, and with 심심풀이 beside it the bar ran 7px over at 375. */
+          <span /* uppercase costs width: GANADA at 22px measured 99px against
+     gethangeul's 62, which is most of what the bar has at 375. */
           className="font-disp text-[18px] uppercase leading-none tracking-[0.06em] text-ink sm:text-[22px] md:text-[25px]">
             ganada
           </span>
         </button>
 
-        {/* Two buttons, not one: the group you are in stays lit while you move
-            inside it, so the header says what kind of thing you are doing and
-            where the rest of it lives. Measured at 375px — logo 94, these two
-            124, language 87 — which leaves 22px of the bar unused, so the two
-            group words have to stay short.
-
-            Neither is here until there is a name. Every room behind them reads
-            one, so to a visitor who has not got one yet they lead only to a
-            field asking for it — which is the split this was meant to end.
-            The landing page is the way in; the header is the way back. */}
-        <div className="flex items-center gap-1" ref={roomsRef}>
-          {(koreanName ? GROUPS : []).map((group) => {
-            const here = group.tools.includes(tool);
-            const open = openGroup === group.id;
-            return (
-              <div key={group.id} className="relative">
-                <button
-                  type="button"
-                  onClick={() => setOpenGroup(open ? null : group.id)}
-                  aria-expanded={open}
-                  aria-haspopup="menu"
-                  className={`focus-ring flex min-h-[38px] items-center gap-1.5 rounded-full px-2 transition-colors sm:px-2.5 md:px-3 ${
-                    open ? 'bg-accent/[0.09] text-accent'
-                      : here ? 'text-ink hover:bg-accent/[0.05]'
-                      : 'text-ink-4 hover:bg-accent/[0.05] hover:text-ink-2'
-                  }`}
-                >
-                  <OpticalText className="block font-body text-[12.5px] leading-none md:text-[13.5px]">
-                    {String(t(`nav.group.${group.id}`))}
-                  </OpticalText>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"
-                    className={`h-3 w-3 shrink-0 transition-transform ${open ? 'rotate-180 text-accent' : 'text-ink-4'}`} aria-hidden="true">
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
-                </button>
-
-                <div
-                  role="menu"
-                  aria-label={String(t(`nav.group.${group.id}`))}
-                  /* fades only, and leaves at once: the click that closes it also
-                     changes the page underneath, and a panel that hangs about for
-                     another 150ms is a panel you watch change its mind. */
-                  className={`absolute left-1/2 top-full z-50 mt-2 w-[180px] -translate-x-1/2 overflow-hidden rounded-2xl border border-rule-strong bg-paper-hi shadow-[0_20px_44px_-26px_rgba(23,24,26,0.45)] transition-opacity ease-out ${
-                    open ? 'opacity-100 duration-150' : 'pointer-events-none opacity-0 duration-0'
-                  }`}
-                >
-                  {group.tools.map((item) => (
-                    <button
-                      key={item}
-                      type="button"
-                      role="menuitem"
-                      aria-current={tool === item ? 'page' : undefined}
-                      onClick={() => { if (item !== tool) setTool(item); setOpenGroup(null); }}
-                      className={`flex min-h-[48px] w-full items-center border-l-[3px] px-4 text-left transition-colors hover:bg-paper-lo ${
-                        tool === item ? 'border-accent bg-accent/5' : 'border-transparent'
-                      }`}
-                    >
-                      <OpticalText className={`block font-body text-[14px] leading-none ${tool === item ? 'text-ink' : 'text-ink-2'}`}>
-                        {String(t(`nav.${item}`))}
-                      </OpticalText>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        {/* Your name, and nothing else.
+            Two dropdowns listing five rooms was a menu of features, which is
+            what the site stopped being: there is one subject here and the rooms
+            all hang off it. So the header carries the subject. Tapping it goes
+            to the reading, which is where the four rooms are listed — one link
+            back rather than a copy of the whole map in the bar.
+            Nothing before there is a name: then the logo is the only way, and
+            it goes to the landing, which is the only place a name starts. */}
+        {koreanName && (
+          <button
+            type="button"
+            onClick={() => setTool('impression')}
+            aria-label={String(t('rooms.impression.title'))}
+            aria-current={tool === 'impression' ? 'page' : undefined}
+            className={`focus-ring flex min-h-[38px] max-w-[42vw] items-center rounded-full px-3 transition-colors ${
+              tool === 'impression' ? 'bg-accent/[0.09]' : 'hover:bg-accent/[0.05]'
+            }`}
+          >
+            <OpticalText
+              className={`block truncate font-brush text-[17px] leading-none md:text-[19px] ${
+                tool === 'impression' ? 'text-accent' : 'text-ink-2'
+              }`}
+            >
+              {koreanName}
+            </OpticalText>
+          </button>
+        )}
 
         <div className="relative" ref={boxRef}>
           <button
@@ -229,8 +154,8 @@ export function Header() {
 
           <div
             role="listbox"
-            /* leaves at once, for the same reason as the rooms panel above —
-               and here the page behind it changes language as it goes */
+            /* fades only, and leaves at once: the click that closes it also
+               changes the page behind it — here, into another language */
             className={`absolute right-0 top-full z-50 mt-2 w-[230px] overflow-hidden rounded-2xl border border-rule-strong bg-paper-hi shadow-[0_20px_44px_-26px_rgba(23,24,26,0.45)] transition-[opacity,transform] ease-out ${
               open ? 'translate-y-0 opacity-100 duration-150' : 'pointer-events-none -translate-y-1 opacity-0 duration-0'
             }`}

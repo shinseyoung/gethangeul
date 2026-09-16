@@ -34,7 +34,7 @@ ok('the English locale has files', files.length > 0, files);
 // language. Everything else still matching English word for word was never
 // translated.
 const SHARED = /(^|[._])(placeholder|placeholder_long|copyright)$/;
-const LOANWORDS = new Set(['nav.kdrama', 'genre.makjang.label']);
+const LOANWORDS = new Set(['genre.makjang.label']);
 
 for (const lang of LANGS) {
   const missing: string[] = [];

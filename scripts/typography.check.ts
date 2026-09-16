@@ -93,12 +93,14 @@ if (start !== -1) {
   ok('the menu row is typed with the pinned stack', row.includes('font-endonym'));
 }
 
-// --- the panels leave at once ---------------------------------------------
-// Both close on a click that also changes the page behind them. A panel still
-// fading while that lands is a panel you watch change.
+// --- the panel leaves at once ----------------------------------------------
+// It closes on a click that also changes the page behind it — here, into
+// another language. A panel still fading while that lands is a panel you watch
+// change its mind. One panel now: the rooms menus went when the header stopped
+// listing rooms, which is why this counts rather than assuming.
 const closedStates = [...header.matchAll(/: '(pointer-events-none[^']*)'/g)].map((m) => m[1]);
-ok('both panels have a closed state', closedStates.length === 2, closedStates.length);
-ok('neither animates on the way out',
+ok('every panel has a closed state', closedStates.length === 1, closedStates.length);
+ok('none animates on the way out',
   closedStates.every((s) => s.includes('duration-0')), closedStates);
 
 // --- the language lands before the page is measured -----------------------

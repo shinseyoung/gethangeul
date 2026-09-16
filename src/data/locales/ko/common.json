@@ -47,8 +47,8 @@
     "features_label": "받아 가시는 것",
     "mode": {
       "label": "시작 방법",
-      "new": "이름 지어주기",
-      "have": "이름 있어요"
+      "new": "이름이 필요해요",
+      "have": "이름이 있어요"
     }
   },
   "surname": {
@@ -106,18 +106,6 @@
     "stage3": "뜻을 재는 중",
     "stage4": "이름을 쓰는 중",
     "ready": "준비됐습니다"
-  },
-  "nav": {
-    "name": "이름 짓기",
-    "pair": "이름 궁합",
-    "impression": "첫인상",
-    "menu": "메뉴",
-    "kdrama": "K-드라마",
-    "fortune": "운세",
-    "group": {
-      "name": "이름",
-      "fun": "심심풀이"
-    }
   },
   "impression": {
     "eyebrow": "들리는 느낌",

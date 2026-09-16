@@ -10,6 +10,14 @@
       ],
       "port": 5173,
       "autoPort": true
+    },
+    {
+      "name": "pages-preview",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "scripts/preview-pages.mjs"
+      ],
+      "port": 4173
     }
   ]
 }

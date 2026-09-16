@@ -47,8 +47,8 @@
     "features_label": "What you walk away with",
     "mode": {
       "label": "Where to start",
-      "new": "Find me a name",
-      "have": "I have a name"
+      "new": "I need a Korean name",
+      "have": "I have a Korean name"
     }
   },
   "surname": {
@@ -106,18 +106,6 @@
     "stage3": "Weighing the meanings",
     "stage4": "Writing your name",
     "ready": "Ready"
-  },
-  "nav": {
-    "name": "Name",
-    "pair": "Name match",
-    "impression": "Impression",
-    "menu": "Rooms",
-    "kdrama": "K-Drama",
-    "fortune": "Fortune",
-    "group": {
-      "name": "Names",
-      "fun": "For fun"
-    }
   },
   "impression": {
     "eyebrow": "How it lands",

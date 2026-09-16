@@ -4,10 +4,6 @@
 import { decompose, strokesOf, strokesOfSyllable } from '../src/utils/strokes';
 import { compatibility } from '../src/utils/nameCompat';
 import { hangulFor, romanToHangul } from '../src/utils/romanToHangul';
-import en from '../src/data/locales/en/common.json';
-import ko from '../src/data/locales/ko/common.json';
-import vi from '../src/data/locales/vi/common.json';
-import th from '../src/data/locales/th/common.json';
 
 let failures = 0;
 function ok(label: string, condition: boolean, detail?: unknown) {
@@ -131,22 +127,12 @@ for (const [latin] of roman) {
   ok(`${latin} is entirely countable`, strokesOf(hangul).length === [...hangul].length, hangul);
 }
 
-// --- the second room has to be fully translated ---------------------------
-// `blend` (added alongside the match-card label) is a nested object, not a
-// flat string like every other key here — it gets its own per-key coverage
-// check in traits.check.ts, so this loop only walks the keys that are
-// actually strings in en.pair rather than mistaking blend for a missing one.
-
-const keys = Object.keys(en.pair).filter((k) => typeof (en.pair as Record<string, unknown>)[k] === 'string');
-for (const [lang, bundle] of Object.entries({ ko, vi, th })) {
-  for (const key of keys) {
-    const value = (bundle.pair as Record<string, string>)[key];
-    ok(`${lang}: pair.${key} exists`, typeof value === 'string' && value.length > 0);
-  }
-  for (const key of ['name', 'pair', 'impression', 'kdrama', 'fortune', 'menu']) {
-    ok(`${lang}: nav.${key} exists`, typeof (bundle.nav as Record<string, string>)[key] === 'string');
-  }
-}
+// Translation coverage used to be asserted here, key by key, for this room and
+// for the header's room list. locale.check.ts now walks every file in every
+// language against English and catches more than the list did — a missing key,
+// copy still in English, a lost placeholder — so the list is gone rather than
+// kept in step by hand. Deleting the header's menus is what caught it: the
+// hand-written names outlived the thing that rendered them.
 
 // --- report ---------------------------------------------------------------
 

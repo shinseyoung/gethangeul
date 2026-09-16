@@ -47,7 +47,7 @@
     "features_label": "Bạn sẽ mang về những gì",
     "mode": {
       "label": "Bắt đầu thế nào",
-      "new": "Đặt tên cho tôi",
+      "new": "Tôi cần một cái tên",
       "have": "Tôi đã có tên"
     }
   },
@@ -92,18 +92,6 @@
     "because": "Bạn là {a} và {b} — nên, {name}.",
     "before_you_go": "Trước khi bạn rời đi",
     "no_sound": "Không có tên tiếng Hàn nào bắt đầu bằng âm trong tên bạn, nên cái tên này được chọn chỉ dựa trên ý nghĩa."
-  },
-  "nav": {
-    "name": "Đặt tên",
-    "pair": "Hợp tên",
-    "impression": "Ấn tượng",
-    "menu": "Danh mục",
-    "kdrama": "K-Drama",
-    "fortune": "Vận",
-    "group": {
-      "name": "Tên",
-      "fun": "Giải trí"
-    }
   },
   "impression": {
     "eyebrow": "Nghe ra sao",

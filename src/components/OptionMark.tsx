@@ -9,6 +9,8 @@
 // away into whatever the tile is tinted, and no alpha channel has to be cut
 // around a watercolour edge.
 
+import { asset } from '../utils/asset';
+
 const PIG = {
   cheong: '#4F7A8A',
   nok: '#5B7A5C',
@@ -112,7 +114,7 @@ export default function OptionMark({ id, active = false, size = 40, className = 
       }}
     >
       <img
-        src={`/marks/${id}.webp`}
+        src={asset(`marks/${id}.webp`)}
         alt=""
         width={size}
         height={size}

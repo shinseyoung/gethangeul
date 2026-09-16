@@ -35,20 +35,33 @@ const SUPPORTED = LANGUAGES.map((l) => l.code);
 const PATH_LANG = /^\/(ko|en|vi|th)(?=\/|$)/;
 const PATH_TOOL = /^\/(?:ko|en|vi|th)\/(pair|impression|kdrama|fortune)(?=\/|$)/;
 
+/* Where the site is served from: '/' in dev and on a domain of its own,
+   '/<repo>/' on a GitHub project page. Every path the router reads and writes
+   goes through it — without that, /ganada/ko reads as no language at all, and
+   the address it writes back is one the server has never heard of. */
+const BASE = (import.meta.env.BASE_URL || '/').replace(/\/+$/, '');
+
+/** location.pathname with the base taken off, so the patterns above match the
+ *  same way wherever the site is hosted. */
+function routePath(): string {
+  const path = location.pathname;
+  return BASE && path.startsWith(BASE) ? path.slice(BASE.length) || '/' : path;
+}
+
 /** The URL wins: a shared link must open in the language it was shared in. */
 export function langFromPath(): Language | null {
   if (typeof location === 'undefined') return null;
-  const m = PATH_LANG.exec(location.pathname);
+  const m = PATH_LANG.exec(routePath());
   return m ? (m[1] as Language) : null;
 }
 
 export function toolFromPath(): Tool {
   if (typeof location === 'undefined') return 'name';
-  return (PATH_TOOL.exec(location.pathname)?.[1] as Tool) ?? 'name';
+  return (PATH_TOOL.exec(routePath())?.[1] as Tool) ?? 'name';
 }
 
 export function pathFor(lang: Language, tool: Tool): string {
-  return tool === 'name' ? `/${lang}` : `/${lang}/${tool}`;
+  return tool === 'name' ? `${BASE}/${lang}` : `${BASE}/${lang}/${tool}`;
 }
 
 function readStoredLang(): Language | null {

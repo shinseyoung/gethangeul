@@ -4,6 +4,7 @@ import { useTranslation } from '../hooks/useTranslation';
 import { hangulFor } from '../utils/romanToHangul';
 import Button, { ArrowRight } from '../components/Button';
 import ChromaticImage from '../components/ChromaticImage';
+import { asset } from '../utils/asset';
 
 /** One brush drawing per promise: a tied knot, a scroll, a bell, a seal. */
 const FEATURE_MARKS = [
@@ -42,7 +43,7 @@ export default function Step0Landing() {
           left a hard seam where the block ended. */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[92vh] overflow-hidden">
         <ChromaticImage
-          src="/bg-mountain.webp"
+          src={asset('bg-mountain.webp')}
           alt=""
           backgroundColor="#EDF1F9"
           /* far below the reference values: on a misty ink painting the effect
@@ -159,7 +160,7 @@ export default function Step0Landing() {
                   aria-hidden="true"
                 >
                   <img
-                    src={`/marks/${mark.id}.webp`}
+                    src={asset(`marks/${mark.id}.webp`)}
                     alt=""
                     width={44}
                     height={44}

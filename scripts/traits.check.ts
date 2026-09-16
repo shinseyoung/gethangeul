@@ -274,7 +274,6 @@ for (const [lang, bundle] of [['en', en], ['ko', ko], ['vi', vi], ['th', th]] as
   for (const key of PAIRS) {
     ok(`${lang}: impression.blend.${key}`, typeof room?.blend?.[key] === 'string' && room.blend[key].length > 0);
   }
-  ok(`${lang}: nav.impression`, typeof (bundle as Record<string, any>).nav?.impression === 'string');
 }
 
 // --- a typed Roman surname has to reach the split at all --------------------
