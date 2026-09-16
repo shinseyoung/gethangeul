@@ -136,8 +136,11 @@ interface FlowState {
      going to be shown. Asked first, and with 성별 무관 a real answer rather
      than a blank, it reads as the first thing the name is built from. */
   gender: 'male' | 'female' | 'neutral' | null;
-  /** which of the three offered names was taken; index into the match list */
-  picked: number;
+  /* Which of the three offered names was taken — an index into the match list,
+     and null until one is. Defaulting to 0 meant the screen opened with the top
+     name already ticked, which is the old behaviour wearing a choice: the
+     visitor had not chosen it, the scorer had. */
+  picked: number | null;
   setPicked: (index: number) => void;
   /** one option index per situation, null until answered */
   nameAnswers: Answers;
@@ -213,7 +216,7 @@ export const useFlowStore = create<FlowState>((set, get) => ({
   lang: initialLang,
   langAutoPicked: fromPath === null && stored === null,
 
-  picked: 0,
+  picked: null,
   setPicked: (picked) => set({ picked }),
   givenName: typeof window === 'undefined' ? '' : readStored(NAME_KEY),
   koreanName: typeof window === 'undefined' ? '' : readStored(KOREAN_KEY),
@@ -312,7 +315,7 @@ export const useFlowStore = create<FlowState>((set, get) => ({
      every time someone walked from their result to the fortune room — and the
      quiz overwrites it the moment it settles on another one anyway. */
   restart: () => set({
-    step: 'landing', gender: null, picked: 0,
+    step: 'landing', gender: null, picked: null,
     nameAnswers: Array(6).fill(null), surnameId: null,
     // starting over draws again: that is the whole point of writing three
     nameVariants: drawVariants(),

@@ -78,7 +78,7 @@ export default function StepResult() {
   /* the one the visitor took on the pick screen, not the one that scored
      highest — those stopped being the same thing when the flow started
      offering three */
-  const match = matches[picked] ?? matches[0];
+  const match = matches[picked ?? 0];
 
   const name = match?.name;
   // Family name first, the way a Korean name is actually written and said.

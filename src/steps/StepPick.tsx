@@ -18,7 +18,7 @@ export default function StepPick() {
   const { t } = useTranslation();
   const { matches } = useMatches();
 
-  useEnterAdvance(matches.length > 0, next);
+  useEnterAdvance(picked !== null, next);
 
   if (matches.length === 0) return null;
 
@@ -60,7 +60,7 @@ export default function StepPick() {
 
       <div className="mt-8 flex items-center justify-between">
         <Button variant="ghost" onClick={prev}>{t('layout.buttons.prev')}</Button>
-        <Button onClick={next}>{t('layout.buttons.next')}</Button>
+        <Button onClick={next} disabled={picked === null}>{t('layout.buttons.next')}</Button>
       </div>
     </div>
   );
