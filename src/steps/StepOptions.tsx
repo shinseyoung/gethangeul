@@ -1,5 +1,6 @@
 import { QUESTION_STEPS, useFlowStore, type QuestionStep } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
+import { useEnterAdvance } from '../hooks/useEnterAdvance';
 import { SITUATIONS } from '../data/situations';
 import { sentences } from '../utils/sentences';
 import ProgressRail from '../components/ProgressRail';
@@ -28,6 +29,8 @@ export default function StepOptions({ step }: { step: QuestionStep }) {
   const variant = situation.variants[nameVariants[index] ?? 0];
   const key = `situations.${situation.id}.${variant.id}`;
   const selected = nameAnswers[index];
+
+  useEnterAdvance(selected !== null && selected !== undefined, next);
 
   return (
     <div className="mx-auto flex w-full max-w-[900px] flex-1 flex-col px-6 pb-8 pt-5 lg:px-4">

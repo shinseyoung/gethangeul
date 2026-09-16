@@ -75,11 +75,14 @@ export default function Step0Landing() {
           {t('landing.title_main')}
         </h1>
 
-        <p className="mt-4 max-w-[460px] text-pretty text-[15.5px] leading-relaxed text-ink-3 md:text-[17px]">
+        {/* Equal air above and below: it had 16px to the headline and 40px to
+            the field, so it read as a second line of the headline rather than
+            as its own sentence. Same 56px in total, split evenly. */}
+        <p className="my-7 max-w-[460px] text-pretty text-[15.5px] leading-relaxed text-ink-3 md:text-[17px]">
           {t('landing.subtitle')}
         </p>
 
-        <div className="mt-10 w-full max-w-[560px]">
+        <div className="w-full max-w-[560px]">
           <label htmlFor="given-name" className="sr-only">{t('name.label')}</label>
           {/* flex-1 governs the main axis, and stacked that axis is the height —
               so h-[60px] was being overridden and the field collapsed to its

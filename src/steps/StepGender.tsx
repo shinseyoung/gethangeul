@@ -1,5 +1,6 @@
 import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
+import { useEnterAdvance } from '../hooks/useEnterAdvance';
 import Button from '../components/Button';
 import CheckMark from '../components/CheckMark';
 
@@ -20,6 +21,8 @@ const CHOICES = ['female', 'male', 'neutral'] as const;
 export default function StepGender() {
   const { gender, setGender, next } = useFlowStore();
   const { t } = useTranslation();
+
+  useEnterAdvance(gender !== null, next);
 
   return (
     <div className="mx-auto w-full max-w-[620px] px-5 pb-24 pt-6 lg:px-4">

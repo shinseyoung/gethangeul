@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
+import { useEnterAdvance } from '../hooks/useEnterAdvance';
 import { useSurname } from '../hooks/useSurname';
 import { familyToken } from '../utils/surnameMatcher';
 import { SURNAME_DATABASE } from '../data/surnameDatabase';
@@ -19,6 +20,9 @@ export default function StepSurname() {
   const { givenName, lang, surnameId, setSurname, next, prev } = useFlowStore();
   const { t } = useTranslation();
   const { surname, suggestion, chosen } = useSurname();
+
+  /* the same thing 다음 does: an untouched screen takes the suggestion */
+  useEnterAdvance(true, () => { if (!surnameId) setSurname(surname.id); next(); });
 
   const suggested = suggestion.matches;
   const suggestedIds = new Set(suggested.map((s) => s.id));

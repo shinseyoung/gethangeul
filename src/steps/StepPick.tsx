@@ -1,5 +1,6 @@
 import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
+import { useEnterAdvance } from '../hooks/useEnterAdvance';
 import { useMatches } from '../hooks/useMatches';
 import Button from '../components/Button';
 import CheckMark from '../components/CheckMark';
@@ -16,6 +17,8 @@ export default function StepPick() {
   const { picked, setPicked, next, prev } = useFlowStore();
   const { t } = useTranslation();
   const { matches } = useMatches();
+
+  useEnterAdvance(matches.length > 0, next);
 
   if (matches.length === 0) return null;
 
