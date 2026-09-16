@@ -10,6 +10,7 @@ import TraitMeter from '../components/TraitMeter';
 import OpticalText from '../components/OpticalText';
 import Note from '../components/Note';
 import AdSlot from '../components/AdSlot';
+import Disclaimer from '../components/Disclaimer';
 import Button from '../components/Button';
 import BirthdayPicker from '../components/BirthdayPicker';
 
@@ -184,9 +185,7 @@ export default function FortuneScreen() {
         </>
       )}
 
-      <p className="mt-7 whitespace-pre-line text-[12.5px] leading-relaxed text-ink-4">
-        {t('fortune.disclaimer')}
-      </p>
+      <Disclaimer>{String(t('fortune.disclaimer'))}</Disclaimer>
 
       <AdSlot size="300x250" className="mt-8" />
     </div>

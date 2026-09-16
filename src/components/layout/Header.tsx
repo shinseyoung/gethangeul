@@ -54,7 +54,7 @@ function LanguageRow({
 }
 
 export function Header() {
-  const { lang, setLang, langAutoPicked, dismissLangHint, tool, setTool, koreanName } = useFlowStore();
+  const { lang, setLang, langAutoPicked, dismissLangHint } = useFlowStore();
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
@@ -103,33 +103,11 @@ export function Header() {
           </span>
         </button>
 
-        {/* Your name, and nothing else.
-            Two dropdowns listing five rooms was a menu of features, which is
-            what the site stopped being: there is one subject here and the rooms
-            all hang off it. So the header carries the subject. Tapping it goes
-            to the reading, which is where the four rooms are listed — one link
-            back rather than a copy of the whole map in the bar.
-            Nothing before there is a name: then the logo is the only way, and
-            it goes to the landing, which is the only place a name starts. */}
-        {koreanName && (
-          <button
-            type="button"
-            onClick={() => setTool('impression')}
-            aria-label={String(t('rooms.impression.title'))}
-            aria-current={tool === 'impression' ? 'page' : undefined}
-            className={`focus-ring flex min-h-[38px] max-w-[42vw] items-center rounded-full px-3 transition-colors ${
-              tool === 'impression' ? 'bg-accent/[0.09]' : 'hover:bg-accent/[0.05]'
-            }`}
-          >
-            <OpticalText
-              className={`block truncate font-brush text-[17px] leading-none md:text-[19px] ${
-                tool === 'impression' ? 'text-accent' : 'text-ink-2'
-              }`}
-            >
-              {koreanName}
-            </OpticalText>
-          </button>
-        )}
+        {/* Nothing between the two. It held five rooms in two dropdowns, then
+            the name, then one mark — each smaller than the last, and each still
+            a map in a bar that does not need one. The wordmark goes back to the
+            landing, the landing goes everywhere, and the rooms are listed where
+            they belong: under the reading of the name they all use. */}
 
         <div className="relative" ref={boxRef}>
           <button

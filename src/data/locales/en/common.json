@@ -40,7 +40,7 @@
       },
       {
         "title": "Safe & Secure",
-        "desc": "Nothing is sent to a server. Your name is remembered in this browser only, and clearing your browser data removes it."
+        "desc": "Nothing is sent to a server. The name stays in this browser."
       }
     ],
     "trust": "Free · no sign-up · your name stays in this browser",
@@ -49,7 +49,8 @@
       "label": "Where to start",
       "new": "I need a Korean name",
       "have": "I have a Korean name"
-    }
+    },
+    "cta_have": "See my first impression"
   },
   "surname": {
     "eyebrow": "Your house",
@@ -108,7 +109,7 @@
     "ready": "Ready"
   },
   "impression": {
-    "eyebrow": "How it lands",
+    "eyebrow": "First impression",
     "title": "What a Korean hears in your name.",
     "sub": "Not what it means — what it sounds like. Five things a Korean ear picks up before it thinks about anything else.",
     "label": "A Korean name",

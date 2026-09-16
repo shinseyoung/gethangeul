@@ -40,7 +40,7 @@
       },
       {
         "title": "An tâm sử dụng",
-        "desc": "Không có gì được gửi lên máy chủ. Tên của bạn chỉ được ghi nhớ trong trình duyệt này, và xoá dữ liệu trình duyệt là nó biến mất."
+        "desc": "Không có gì được gửi lên máy chủ. Tên chỉ nằm trong trình duyệt này."
       }
     ],
     "trust": "Miễn phí · không cần đăng ký · tên chỉ nằm trong trình duyệt này",
@@ -49,7 +49,8 @@
       "label": "Bắt đầu thế nào",
       "new": "Tôi cần một cái tên",
       "have": "Tôi đã có tên"
-    }
+    },
+    "cta_have": "Xem ấn tượng đầu"
   },
   "surname": {
     "eyebrow": "Dòng họ của bạn",
@@ -94,7 +95,7 @@
     "no_sound": "Không có tên tiếng Hàn nào bắt đầu bằng âm trong tên bạn, nên cái tên này được chọn chỉ dựa trên ý nghĩa."
   },
   "impression": {
-    "eyebrow": "Nghe ra sao",
+    "eyebrow": "Ấn tượng đầu",
     "title": "Người Hàn nghe thấy gì trong tên bạn.",
     "sub": "Không phải nghĩa — mà là âm. Năm điều tai người Hàn bắt được trước khi kịp nghĩ gì khác.",
     "label": "Một cái tên Hàn",

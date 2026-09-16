@@ -124,6 +124,13 @@ html[lang='ko'] input::placeholder {
        near-white body meant the first painted frame was the wrong colour */
     @apply bg-ground text-ink-2 font-body antialiased;
   }
+  /* A last line carrying one word reads as a mistake rather than a line break,
+     and Korean orphans more than English does: keep-all below means it breaks
+     between words, and Korean words are short. Balancing is inherited, so it is
+     set once here; browsers stop applying it past a handful of lines, which is
+     exactly right — short blocks get evened out, body copy is left alone.
+     Measured at 375: five orphaned last lines across the rooms, none after. */
+  body { text-wrap: balance; }
   /* Korean and Thai need more leading than Latin; Korean must break on word boundaries. */
   :lang(ko) { word-break: keep-all; }
   :lang(th) { line-height: 1.75; word-break: break-word; }

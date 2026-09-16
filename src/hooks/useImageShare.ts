@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { toPng } from 'html-to-image';
+import { fontEmbedCSS } from '../utils/fontEmbed';
 
 export const useImageShare = (fileName: string = '나의_한글_이름') => {
   const captureRef = useRef<HTMLDivElement>(null);
@@ -7,12 +8,18 @@ export const useImageShare = (fileName: string = '나의_한글_이름') => {
   const [isSharing, setIsSharing] = useState(false);
 
   const generateImage = async () => {
-    if (!captureRef.current) return null;
+    const node = captureRef.current;
+    if (!node) return null;
     try {
-      return await toPng(captureRef.current, {
+      // Both are about the card coming out set the way it looks on screen: the
+      // fonts have to have finished loading, and html-to-image has to be handed
+      // the ones it cannot read off a cross-origin stylesheet.
+      await document.fonts.ready;
+      return await toPng(node, {
         quality: 1.0,
         pixelRatio: 2,
-        backgroundColor: '#F9FAFB', 
+        backgroundColor: '#F9FAFB',
+        fontEmbedCSS: await fontEmbedCSS(node),
       });
     } catch (error) {
       console.error("이미지 생성 실패:", error);

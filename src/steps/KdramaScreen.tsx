@@ -12,6 +12,7 @@ import TraitMeter from '../components/TraitMeter';
 import OptionMark from '../components/OptionMark';
 import OpticalText from '../components/OpticalText';
 import AdSlot from '../components/AdSlot';
+import Disclaimer from '../components/Disclaimer';
 import Button, { ArrowLeft, ArrowRight } from '../components/Button';
 
 /**
@@ -146,9 +147,7 @@ export default function KdramaScreen() {
           {t('kdrama.start')}
           <ArrowRight />
         </Button>
-        <p className="mt-7 whitespace-pre-line text-[12.5px] leading-relaxed text-ink-4">
-          {t('kdrama.disclaimer')}
-        </p>
+        <Disclaimer>{String(t('kdrama.disclaimer'))}</Disclaimer>
         <AdSlot size="300x250" className="mt-8" />
       </div>
     );
@@ -317,9 +316,7 @@ export default function KdramaScreen() {
         </Button>
       </div>
 
-      <p className="mt-7 whitespace-pre-line text-[12.5px] leading-relaxed text-ink-4">
-        {t('kdrama.disclaimer')}
-      </p>
+      <Disclaimer>{String(t('kdrama.disclaimer'))}</Disclaimer>
 
       <AdSlot size="300x250" className="mt-8" />
     </div>

@@ -9,6 +9,7 @@ import { sentences } from '../utils/sentences';
 import OptionMark from '../components/OptionMark';
 import MountainWash from '../components/MountainWash';
 import AdSlot from '../components/AdSlot';
+import Disclaimer from '../components/Disclaimer';
 import Button from '../components/Button';
 import Note from '../components/Note';
 
@@ -199,9 +200,7 @@ export default function PairScreen() {
         </>
       )}
 
-      <p className="mt-7 whitespace-pre-line text-[12.5px] leading-relaxed text-ink-4">
-        {t('pair.disclaimer')}
-      </p>
+      <Disclaimer>{String(t('pair.disclaimer'))}</Disclaimer>
 
       {/* the other room, for anyone who arrived here from a shared image */}
       <div className="mt-9">

@@ -106,7 +106,8 @@ export default function Step0Landing() {
               disabled={mode === 'have' && !hangulFor(givenName)}
               className="h-[60px] shrink-0 px-7"
             >
-              {t('landing.cta_button')}
+              {/* the same field, so the button is what says which door it opens */}
+              {t(mode === 'new' ? 'landing.cta_button' : 'landing.cta_have')}
               <ArrowRight />
             </Button>
           </div>

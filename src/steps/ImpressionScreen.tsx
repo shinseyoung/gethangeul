@@ -8,6 +8,7 @@ import MountainWash from '../components/MountainWash';
 import TraitMeter from '../components/TraitMeter';
 import OptionMark from '../components/OptionMark';
 import AdSlot from '../components/AdSlot';
+import Disclaimer from '../components/Disclaimer';
 import Button from '../components/Button';
 import RoomRow from '../components/RoomRow';
 import Note from '../components/Note';
@@ -154,9 +155,7 @@ export default function ImpressionScreen() {
         </>
       )}
 
-      <p className="mt-7 whitespace-pre-line text-[12.5px] leading-relaxed text-ink-4">
-        {t('impression.disclaimer')}
-      </p>
+      <Disclaimer>{String(t('impression.disclaimer'))}</Disclaimer>
 
       {/* --- what the name is for. The fan-out only exists once there is a
               name to fan out, so it waits for one rather than offering four
