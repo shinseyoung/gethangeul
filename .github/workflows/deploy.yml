@@ -23,10 +23,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # Turns Pages on for the repository if it is off, so the first deploy
-      # does not need anyone to visit Settings. Without it deploy-pages@v4
-      # fails with a bare 'Not Found' after a perfectly good build.
+      # Tries to turn Pages on so the first deploy needs nobody in Settings.
+      # The job token is not always allowed to, and when it is not this step
+      # is the wrong thing to fail a build over: the artifact is still good,
+      # and the deploy below will pick it up as soon as Pages is on.
       - uses: actions/configure-pages@v5
+        continue-on-error: true
         with:
           enablement: true
       - uses: actions/setup-node@v4
