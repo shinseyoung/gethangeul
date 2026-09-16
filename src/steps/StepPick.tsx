@@ -2,6 +2,7 @@ import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
 import { useMatches } from '../hooks/useMatches';
 import Button from '../components/Button';
+import CheckMark from '../components/CheckMark';
 
 /**
  * Three names, and the visitor takes one.
@@ -48,6 +49,7 @@ export default function StepPick() {
                   {t(`names.${match.name.id}.shortMeaning`)}
                 </span>
               </span>
+              <CheckMark on={on} />
             </button>
           );
         })}

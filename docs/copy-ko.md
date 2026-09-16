@@ -34,7 +34,6 @@
 - [layout.steps.lift] 엘리베이터
 - [layout.steps.market] 시장
 - [layout.steps.evening] 마지막 저녁
-- [layout.steps.surname] 성
 
 ---
 

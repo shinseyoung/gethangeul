@@ -6,7 +6,6 @@ import { familyToken } from '../utils/surnameMatcher';
 import { SURNAME_DATABASE } from '../data/surnameDatabase';
 import type { SurnameItem } from '../types/name';
 import CheckMark from '../components/CheckMark';
-import ProgressRail from '../components/ProgressRail';
 import Button, { ArrowLeft, ArrowRight } from '../components/Button';
 
 /**
@@ -79,8 +78,6 @@ export default function StepSurname() {
 
   return (
     <div className="mx-auto flex w-full max-w-[900px] flex-1 flex-col px-6 pb-8 pt-5 lg:px-4">
-      <ProgressRail current="surname" />
-
       <div className="pb-5 pt-7">
         <span className="eyebrow text-[8.5px] tracking-[0.26em] text-accent">{t('surname.eyebrow')}</span>
         <h2 className="mb-2.5 mt-3 -ml-[0.035em] text-pretty font-disp text-[29px] leading-[1.1] tracking-tight text-ink md:text-[38px]">

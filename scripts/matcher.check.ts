@@ -222,7 +222,7 @@ for (const [lang, bundle] of Object.entries({ en, ko, vi, th })) {
   /* One rail label per screen between the landing and the loading, keyed by
      the screen rather than by its position: the numbering meant nothing the
      moment the flow grew a gender screen at the front. */
-  const slots = [...SITUATIONS.map((s) => s.id), 'surname'];
+  const slots = SITUATIONS.map((s) => s.id);
   for (const slot of slots) {
     ok(`${lang}: layout.steps.${slot}`,
       typeof b.layout?.steps?.[slot] === 'string' && b.layout.steps[slot].length > 0);

@@ -18,12 +18,13 @@ import { useTranslation } from '../hooks/useTranslation';
  * phone at any size worth reading, and a row of overlapping words is worse than
  * no words at all: the diamonds still say how far along you are.
  */
-/* The timeline is the walk through the situations, and the surname at the end
-   of it. The two decisions that bracket it — who the name is for, which of
-   the three it is — are not stops along a walk, and putting them on the rail
-   made nine diamonds where seven say the same thing more clearly. They stand
-   on their own screens, with no rail at all. */
-const SLOTS = [...QUESTION_STEPS, 'surname'] as const;
+/* The timeline is the walk, and only the walk: six situations, six diamonds.
+   Everything either side of it is a decision rather than a stop — who the
+   name is for, which of the three it is, which family it joins — and each of
+   those stands on a screen of its own with no rail at all. A rail that grows
+   a diamond every time the flow gains a screen stops telling anyone how far
+   along they are, which is the only thing it is for. */
+const SLOTS = [...QUESTION_STEPS] as const;
 type Slot = (typeof SLOTS)[number];
 
 export default function ProgressRail({ current }: { current: Slot }) {

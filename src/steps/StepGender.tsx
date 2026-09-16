@@ -1,6 +1,7 @@
 import { useFlowStore } from '../store/useFlowStore';
 import { useTranslation } from '../hooks/useTranslation';
 import Button from '../components/Button';
+import CheckMark from '../components/CheckMark';
 
 /**
  * The first screen after the landing: who the name is for.
@@ -37,11 +38,11 @@ export default function StepGender() {
               type="button"
               aria-pressed={on}
               onClick={() => setGender(choice)}
-              className={`focus-ring flex min-h-[64px] items-center rounded-2xl border-[1.5px] px-5 text-left transition-colors duration-150 ${
+              className={`focus-ring flex min-h-[64px] items-center gap-3.5 rounded-2xl border-[1.5px] px-5 py-3.5 text-left transition-colors duration-150 ${
                 on ? 'border-accent bg-accent/[0.05]' : 'border-rule bg-paper-hi hover:border-rule-strong'
               }`}
             >
-              <span className="flex flex-col gap-1">
+              <span className="flex flex-1 flex-col gap-1">
                 <span className="block font-disp text-[18px] leading-[1.25] text-ink">
                   {t(`options.gender.${choice}`)}
                 </span>
@@ -49,6 +50,7 @@ export default function StepGender() {
                   {t(`gender.note.${choice}`)}
                 </span>
               </span>
+              <CheckMark on={on} />
             </button>
           );
         })}
