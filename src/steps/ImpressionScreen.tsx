@@ -9,6 +9,7 @@ import TraitMeter from '../components/TraitMeter';
 import OptionMark from '../components/OptionMark';
 import AdSlot from '../components/AdSlot';
 import Button from '../components/Button';
+import RoomRow from '../components/RoomRow';
 import Note from '../components/Note';
 import OpticalText from '../components/OpticalText';
 import { sentences } from '../utils/sentences';
@@ -31,7 +32,7 @@ const MARK: Record<Axis, string> = {
 };
 
 export default function ImpressionScreen() {
-  const { koreanName, setKoreanName } = useFlowStore();
+  const { koreanName, setKoreanName, setTool } = useFlowStore();
   const { t } = useTranslation();
 
   const read = useMemo(() => hangulFor(koreanName), [koreanName]);
@@ -156,6 +157,33 @@ export default function ImpressionScreen() {
       <p className="mt-7 whitespace-pre-line text-[12.5px] leading-relaxed text-ink-4">
         {t('impression.disclaimer')}
       </p>
+
+      {/* --- what the name is for. The fan-out only exists once there is a
+              name to fan out, so it waits for one rather than offering four
+              rooms that would each open on an empty field. --- */}
+      {reading && (
+        <div className="mt-10">
+          <div className="mb-3.5 flex items-center gap-2.5">
+            <span className="eyebrow">{t('rooms.label')}</span>
+            <span className="hairline" />
+          </div>
+          <div className="flex flex-col gap-2.5">
+            {([
+              { id: 'pair', mark: 'feature-bond' },
+              { id: 'fortune', mark: 'mystic' },
+              { id: 'kdrama', mark: 'trendy' },
+            ] as const).map((room) => (
+              <RoomRow
+                key={room.id}
+                mark={room.mark}
+                title={String(t(`rooms.${room.id}.title`))}
+                desc={String(t(`rooms.${room.id}.desc`))}
+                onClick={() => setTool(room.id)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
 
       <AdSlot size="300x250" className="mt-8" />
     </div>

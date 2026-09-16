@@ -91,8 +91,6 @@
     "no_sound": "No Korean given name begins with your name’s sound, so this one was chosen on meaning alone.",
     "change_surname": "Change your family name",
     "change_surname_desc": "Keep this name, join a different house.",
-    "see_match": "See your name match",
-    "see_match_desc": "Two names, stroke counts, and one number.",
     "because": "You're {a} and {b} — so, {name}."
   },
   "name": {
@@ -485,6 +483,25 @@
       "sky": "Sky",
       "sun": "Sun",
       "flower": "Flower"
+    }
+  },
+  "rooms": {
+    "label": "What the name is for",
+    "impression": {
+      "title": "Hear how it sounds",
+      "desc": "Five things a Korean ear picks up first."
+    },
+    "pair": {
+      "title": "See your name match",
+      "desc": "Two names, stroke counts, and one number."
+    },
+    "fortune": {
+      "title": "Read your fortune",
+      "desc": "Your name and a birthday, nothing else."
+    },
+    "kdrama": {
+      "title": "Star in your own drama",
+      "desc": "Twelve scenes, then a poster."
     }
   }
 }

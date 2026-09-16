@@ -89,8 +89,6 @@
     "start_over_desc": "Trả lời lại từ đầu để nhận một cái tên khác.",
     "change_surname": "Đổi họ",
     "change_surname_desc": "Giữ nguyên tên, chọn dòng họ khác.",
-    "see_match": "Xem hợp tên",
-    "see_match_desc": "Hai cái tên, số nét, một con số.",
     "because": "Bạn là {a} và {b} — nên, {name}.",
     "before_you_go": "Trước khi bạn rời đi",
     "no_sound": "Không có tên tiếng Hàn nào bắt đầu bằng âm trong tên bạn, nên cái tên này được chọn chỉ dựa trên ý nghĩa."
@@ -486,5 +484,24 @@
     "stage3": "Đang cân nghĩa",
     "stage4": "Đang viết tên bạn",
     "ready": "Xong rồi"
+  },
+  "rooms": {
+    "label": "Chơi với cái tên",
+    "impression": {
+      "title": "Nghe nó vang thế nào",
+      "desc": "Năm điều tai người Hàn bắt được trước tiên."
+    },
+    "pair": {
+      "title": "Xem hợp tên",
+      "desc": "Hai cái tên, đếm nét, ra một con số."
+    },
+    "fortune": {
+      "title": "Xem vận của bạn",
+      "desc": "Chỉ cần tên và ngày sinh."
+    },
+    "kdrama": {
+      "title": "Đóng chính trong phim của bạn",
+      "desc": "Mười hai cảnh, rồi một tấm poster."
+    }
   }
 }

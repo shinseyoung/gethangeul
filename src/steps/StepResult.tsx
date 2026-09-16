@@ -4,11 +4,12 @@ import { useTranslation } from '../hooks/useTranslation';
 import { useMatches } from '../hooks/useMatches';
 import { useSurname } from '../hooks/useSurname';
 import { useImageShare } from '../hooks/useImageShare';
-import OptionMark, { markColor } from '../components/OptionMark';
+import { markColor } from '../components/OptionMark';
 import { SITUATIONS, optionIdAt, profileOf } from '../data/situations';
 import MountainWash, { SEASON_WASH } from '../components/MountainWash';
 import AdSlot from '../components/AdSlot';
 import Button from '../components/Button';
+import RoomRow from '../components/RoomRow';
 
 const SEASONS = ['spring', 'summer', 'autumn', 'winter'] as const;
 
@@ -272,13 +273,13 @@ export default function StepResult() {
         <div className="flex flex-col gap-2.5">
           {[
             {
-              /* feature-bond is the mark drawn for two names together */
-              mark: 'feature-bond',
-              title: t('result.see_match'),
-              desc: t('result.see_match_desc'),
-              // hands the name straight over, so the second room opens half-filled
-              // the name is already in the store; the room fills its first field from it
-              action: () => setTool('pair'),
+              /* The profile, not the four rooms. This screen's job is to hand
+                 over a name; what you can do with a name hangs off the reading,
+                 which is one place rather than four rows of menu. */
+              mark: 'feature-sound',
+              title: t('rooms.impression.title'),
+              desc: t('rooms.impression.desc'),
+              action: () => setTool('impression'),
             },
             {
               mark: 'feature-keep',
@@ -288,31 +289,7 @@ export default function StepResult() {
             },
             { mark: 'start', title: t('result.start_over'), desc: t('result.start_over_desc'), action: restart },
           ].map((row) => (
-            <button
-              key={row.mark}
-              type="button"
-              onClick={row.action}
-              className="focus-ring flex min-h-[64px] items-center gap-3.5 rounded-2xl border border-rule bg-paper-hi p-4 text-left transition-colors hover:border-rule-strong"
-            >
-              {/* tiled, like every other mark on the site. Bare on paper the
-                  wash read as a background nobody had got round to removing. */}
-              <OptionMark id={row.mark} size={34} />
-              {/* both lines ride high in their line boxes, so the block —
-                  not only its measured first line — carries the correction */}
-              <span className="flex flex-1 translate-y-[3px] flex-col justify-center gap-1.5">
-                {/* a plain line-height, not OpticalText: inside a two-line block
-                    the correction that matters is the block's, and OpticalText
-                    centring each line in its own box fought it and won by 9px */}
-                <span className="block font-disp text-[18px] leading-[1.25] text-ink">
-                  {row.title}
-                </span>
-                <span className="text-[12.5px] leading-[1.4] text-ink-3">{row.desc}</span>
-              </span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="#ABAFB3" strokeWidth={1.8} strokeLinecap="round"
-                strokeLinejoin="round" aria-hidden="true" className="h-[15px] w-[15px] shrink-0">
-                <path d="M9 5.5 15.5 12 9 18.5" />
-              </svg>
-            </button>
+            <RoomRow key={row.mark} mark={row.mark} title={String(row.title)} desc={String(row.desc)} onClick={row.action} />
           ))}
         </div>
       </div>
